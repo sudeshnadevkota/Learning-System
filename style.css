@@ -1,0 +1,206 @@
+﻿/* Apply font family to the entire body */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    
+    font-family: "Arial Light", "Arial", "Helvetica", "Calibri", "Tahoma", "Verdana", sans-serif;
+}
+
+/* Apply to main headings */
+h1, h2, h3 {
+    font-family: "Arial Light", "Arial", "Helvetica", "Calibri", "Tahoma", "Verdana", sans-serif;
+}
+
+/* Apply to paragraphs */
+p {
+    font-family: "Arial Light", "Arial", "Helvetica", "Calibri", "Tahoma", "Verdana", sans-serif;
+}
+
+/* Apply to list items */
+li {
+    font-family: "Arial Light", "Arial", "Helvetica", "Calibri", "Tahoma", "Verdana", sans-serif;
+}
+
+/* Apply to elements with the class 'learning-portal' */
+.learning-portal {
+    font-family: "Arial Light", "Arial", "Helvetica", "Calibri", "Tahoma", "Verdana", sans-serif;
+}
+
+
+/* Sidebar Styles */
+#sidebar {
+    position: fixed;
+    top: 5rem;
+    left: 0;
+    width: 0;
+    height: calc(100vh - 5rem);
+    background-color: #343a40;
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 999;
+    transition: width 0.3s ease;
+}
+
+#content {
+    margin-top: 5rem; /* Adjusted to account for navbar height */
+    margin-left: 0;
+    width: 100%;
+    transition: margin-left 0.3s ease;
+}
+
+#sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+    #sidebar a:hover {
+        background-color: #495057;
+    }
+
+#sidebar ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+    #sidebar ul li {
+        padding: 0;
+    }
+
+#sidebar .submenu {
+    display: none;
+    padding-left: 1rem;
+}
+
+/* Open Sidebar Styles */
+.sidebar-open #sidebar {
+    width: 30%;
+}
+
+.sidebar-open #content {
+    margin-left: 30%;
+}
+
+.submenu-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Toggle Icon Styles */
+.fas.fa-caret-down {
+    transition: transform 0.3s ease;
+    font-size: 1rem;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+/* Responsive Menu Bar */
+#menu-bar {
+    padding-top: 6rem; /* Adjusted for the fixed navbar */
+    position: fixed;
+    left: 10rem;
+    z-index: 1000;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    #menu-bar {
+        left: 0.3rem;
+        top: -4.5rem;
+        padding: 0;
+    }
+
+        #menu-bar button {
+            font-size: 1.5rem;
+            padding: 10px;
+        }
+
+    .sidebar-open #sidebar {
+        width: 60%;
+    }
+
+    .sidebar-open #content {
+        margin-left: 60%;
+        width: 40%;
+    }
+
+    #content {
+        padding-top: 10%;
+        width: 100%;
+        margin-left: 0px;
+        padding-left: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #menu-bar button {
+        font-size: 1.2rem;
+        margin-top: 10rem;
+    }
+
+    .sidebar-open #sidebar {
+        width: 75%;
+    }
+
+    .sidebar-open #content {
+        margin-left: 75%;
+        width: 25%;
+    }
+}
+
+
+:root {
+    --bs-primary: #28346f;
+    --bs-primary-rgb: 40, 52, 111;
+}
+
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+        background-color: #1e2754;
+        border-color: #1e2754;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active {
+        background-color: #0b0b0b;
+        border-color: #1e2754;
+    }
+
+.bg-primary {
+    background-color: var(--bs-primary) !important;
+}
+
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+    .navbar-nav li {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+@media (max-width: 767.98px) {
+    .offcanvas-body {
+        margin-top: 1rem !important;
+    }
+}
+
+</style >

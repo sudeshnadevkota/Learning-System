@@ -1,0 +1,350 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="upload.master.cs" Inherits="Learning_System.Bba_Admin.upload" %>
+
+
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link href="mcsdash.css" rel="stylesheet" />
+    <!-- jQuery -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <style>
+        /* Sidebar Styles */
+        #sidebar {
+            position: fixed;
+            top: 5rem;
+            left: 0;
+            width: 0;
+            /* height: calc(100vh - 5rem)*/;
+            height: 100vh;
+            background-color: #343a40;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: auto;
+            z-index: 999;
+            transition: width 0.3s ease;
+        }
+
+        #content {
+            margin-top: 5rem; /* Adjusted to account for navbar height */
+            margin-left: 0;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        #sidebar a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 1rem;
+        }
+
+            #sidebar a:hover {
+                background-color: #495057;
+            }
+
+        #sidebar ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+            #sidebar ul li {
+                padding: 0;
+            }
+
+        #sidebar .submenu {
+            display: none;
+            padding-left: 1rem;
+        }
+
+        /* Open Sidebar Styles */
+        .sidebar-open #sidebar {
+            width: 30%;
+        }
+
+        .sidebar-open #content {
+            margin-left: 30%;
+        }
+
+        .submenu-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Toggle Icon Styles */
+        .fas.fa-caret-down {
+            transition: transform 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Menu Bar */
+        #menu-bar {
+            padding-top: 6rem; /* Adjusted for the fixed navbar */
+            position: fixed;
+            left: 1rem;
+            z-index: 1000;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            #menu-bar {
+                left: 0.3rem;
+                top: -4.5rem;
+                padding: 0;
+            }
+
+                #menu-bar button {
+                    font-size: 1.5rem;
+                    padding: 10px;
+                }
+
+            .sidebar-open #sidebar {
+                width: 60%;
+            }
+
+            .sidebar-open #content {
+                margin-left: 60%;
+                width: 40%;
+            }
+
+            #content {
+                padding-top: 10%;
+                width: 100%;
+                margin-left: 0px;
+                padding-left: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #menu-bar button {
+                font-size: 1.2rem;
+                margin-top: 10rem;
+            }
+
+            .sidebar-open #sidebar {
+                width: 75%;
+            }
+
+            .sidebar-open #content {
+                margin-left: 75%;
+                width: 25%;
+            }
+
+            #sidebar {
+                display: block;
+            }
+
+            /* Default height */
+
+
+        }
+
+        /* Expanded menu */
+        #menu.expanded {
+            transition: height 0.3s ease;
+            padding-bottom: 220px;
+        }
+
+ 
+
+    </style>
+    <title>BBA ADMIN </title>
+</head>
+<body>
+    <form id="form2" runat="server">
+
+        <!-- Header -->
+        <nav class="navbar navbar-expand-md d-flex align-items-center justify-content-between flex-wrap" style="position: fixed; top: 0; left: 0; width: 100%; height: 6rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1rem;">
+            <!-- Logo Section -->
+            <div class="d-flex align-items-center" style="flex: 1; justify-content: flex-start;">
+                <a href="../../Default.aspx">
+                    <img src="logo/logo.png" alt="Logo" class="img-fluid" style="width: 10rem; height: 4rem; object-fit: contain;">
+                </a>
+            </div>
+            <!-- Title Section -->
+            <div class="d-none d-sm-flex align-items-center justify-content-center" style="flex: 1;">
+                <h3 style="font-size: 1.5rem; font-weight: bold; color: #002366; margin: 0;">Texas Learning System</h3>
+            </div>
+            <!-- Logout Button Section -->
+            <div class="d-flex align-items-center" style="flex: 1; justify-content: flex-end;">
+            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkOut_Click" CssClass="btn btn-primary" >Logout</asp:LinkButton>
+            </div>
+        </nav>
+
+
+
+        <div id="menu" class="navbar navbar-expand-md navbar-light" style="background-color: #002366; height: 100px; top: 6rem;">
+            <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color: white;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Menu Items -->
+            <div class="collapse navbar-collapse bg-black" id="navbarSupportedContent">
+                         <asp:Menu ID="Menu1" runat="server" Orientation="horizontal" CssClass="navbar-nav mr-auto" StaticMenuStyle-CssClass="nav-item" 
+            StaticSelectedStyle-CssClass="nav-item" DynamicMenuStyle-CssClass="nav-item dropdown-menu" RenderingMode="List" role="menu" itemscope="itemscope" 
+            Font-Bold="True" Font-Names="Corbel Light" Font-Size="Medium" ForeColor="White" StaticEnableDefaultPopOutImage="false" >
+
+<DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
+                <DynamicSelectedStyle BackColor="#666666" />
+                <Items>
+                    <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Bba_Admin/dash.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="1st Semester" Value="1st Semester">
+                        <asp:MenuItem Text="Business English I" Value="Business English I" NavigateUrl="~/Bba_Admin/business_english_I.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Fundamental Of Computer Principles and Programming" Value="Internet Fundamental" NavigateUrl="~/Bba_Admin/fundamental_of_computer_principles_and_programming.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Introduction to Accounting" Value="Introduction to Accounting" NavigateUrl="~/Bba_Admin/introduction_to_accounting.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Microeconomics" Value="Microeconomics" NavigateUrl="~/Bba_Admin/microeconomics.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Principles of Management" Value="Principles of Management" NavigateUrl="~/Bba_Admin/principles_of_management.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
+                        <asp:MenuItem Text="Business English II" Value="Business English II" NavigateUrl="~/Bba_Admin/business_english_II.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Human Resource Management" Value="Human Resource Management" NavigateUrl="~/Bba_Admin/human_resources_management.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Internet Fundamental and application" Value="Internet Fundamental and application" NavigateUrl="~/Bba_Admin/internet_fundamental_and_applications.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Macroeconomics" Value="Macroeconomics" NavigateUrl="~/Bba_Admin/macroeconomics.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Principle of Marketing" Value="LS &amp; HR" NavigateUrl="~/Bba_Admin/principles_of_marketing.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Principles of Management" Value="Principles of Management" NavigateUrl="~/Bba_Admin/principles_of_management.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
+                        <asp:MenuItem Text="Business Communication" Value="Business Communication" NavigateUrl="~/Bba_Admin/business_communications.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Business Organization" Value="Business Organization"  NavigateUrl="~/Bba_Admin/business_organization.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Enterpreneurship" Value="Enterpreneurship"  NavigateUrl="~/Bba_Admin/enterpreneurship.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Product and Operation Management" Value="Product and Operation Management"  NavigateUrl="~/Bba_Admin/product_and_operation_management.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Quantitative Method (Statistics)" Value="Quantitative Method (Statistics)"  NavigateUrl="~/Bba_Admin/quantitative_methods.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+
+
+                    <asp:MenuItem Text="4th Semester" Value="4th Semester">
+                        <asp:MenuItem Text="Business Law" Value="Business Law"  NavigateUrl="~/Bba_Admin/business_law.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Company Law" Value="Company Law"  NavigateUrl="~/Bba_Admin/company_law.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Introduction to Financial Accounting" Value="Introduction to Financial Accounting"  NavigateUrl="~/Bba_Admin/introduction_to_financial_accounting.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Project Management" Value="Project Management"  NavigateUrl="~/Bba_Admin/project_management.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Psychology" Value="Psychology"  NavigateUrl="~/Bba_Admin/psychology.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+
+
+                    <asp:MenuItem Text="5th Semester" Value="5th Semester">
+                        <asp:MenuItem Text="Business Ethics" Value="Business Ethics"  NavigateUrl="~/Bba_Admin/business_ethics.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="International  Business Management" Value="International  Business Management"  NavigateUrl="~/Bba_Admin/international_business_management.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Management Information System" Value="Management Information System"  NavigateUrl="~/Bba_Admin/management_information_system.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Marketing Management" Value="Marketing Management"  NavigateUrl="~/Bba_Admin/marketing_management.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Sociology" Value="Sociology" NavigateUrl="~/Bba_Admin/sociology.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+
+                    <asp:MenuItem Text="6th Semester" Value="6th Semester">
+                         <asp:MenuItem Text="Consumer Behavior" Value="Consumer Behavior" NavigateUrl="~/Bba_Admin/consumer_behavior.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="E-commerce" Value="E-commerce"  NavigateUrl="~/Bba_Admin/ecommerce.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Innovation Management for Global Competitiveness" Value="Innovation Management for Global Competitiveness"  NavigateUrl="~/Bba_Admin/innovation_management_for_global_competitiveness.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Organizational Behaviour" Value="Organizational Behaviour"  NavigateUrl="~/Bba_Admin/organizational_behavior.aspx"></asp:MenuItem>
+                         <asp:MenuItem Text="Strategic Management" Value="Strategic Management"  NavigateUrl="~/Bba_Admin/strategic_management.aspx"></asp:MenuItem>
+                        
+                    </asp:MenuItem>
+
+                     <asp:MenuItem Text="7th Semester" Value="7th Semester">
+                         <asp:MenuItem Text="Business Environment" Value="Business Environment" NavigateUrl="~/Bba_Admin/business_environment.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Business Finance" Value="Business Finanace"  NavigateUrl="~/Bba_Admin/business_finance.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Business Research Methods" Value="Business Research Methods"  NavigateUrl="~/Bba_Admin/business_research_methods.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Event Management" Value="Event Management"  NavigateUrl="~/Bba_Admin/event_management.aspx"></asp:MenuItem>
+                           <asp:MenuItem Text="Retail Management" Value="Retail Management"  NavigateUrl="~/Bba_Admin/retail_management.aspx"></asp:MenuItem>
+                        
+                    </asp:MenuItem>
+
+                     <asp:MenuItem Text="8th Sem (Marketing)" Value="8th Sem (Marketing)">
+                         <asp:MenuItem Text="Logistics And Supply Chain Management" Value="Logistics And Supply Chain Management" NavigateUrl="~/Bba_Admin/logistic_and_supply_chain_management(mar).aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Marketing Research" Value="Marketing Research"  NavigateUrl="~/Bba_Admin/marketing_research(mar).aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Multinational Enterprises" Value="Multinational Enterprises"  NavigateUrl="~/Bba_Admin/multinational_enterprise(mar).aspx"></asp:MenuItem>
+                         <asp:MenuItem Text="Bachelor Thesis Marketing" Value="Bachelor Thesis Marketing" NavigateUrl="~/Bba_Admin/bachelor_thesis_on_internship_mar.aspx"></asp:MenuItem>
+                      
+                        
+                    </asp:MenuItem>
+
+                     <asp:MenuItem Text="8th Sem (Finance)" Value="8th Sem (Finance)">
+                         <asp:MenuItem Text="Banking And Insurance" Value="Banking And Insurance" NavigateUrl="~/Bba_Admin/banking_and_insurance(fin).aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Financial Management" Value="E-commerce"  NavigateUrl="~/Bba_Admin/financial_management(fin).aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Taxation And Auditing" Value="Taxation And Auditing"  NavigateUrl="~/Bba_Admin/taxation_and_auditing(fin).aspx"></asp:MenuItem>
+
+<asp:MenuItem Text="Bachelor Thesis Finance" Value="Bachelor Thesis Finance" NavigateUrl="~/Bba_Admin/bachelor_thesis_on_internship_fin.aspx"></asp:MenuItem>
+                       
+                    </asp:MenuItem>
+
+                </Items>
+
+                <LevelMenuItemStyles>
+                    <asp:MenuItemStyle CssClass="dropdown-item" HorizontalPadding="15px" Height="50px" VerticalPadding="15px" />
+                </LevelMenuItemStyles>
+                <LevelSelectedStyles>
+                    <asp:MenuItemStyle CssClass="nav-item active" Font-Underline="False" />
+                </LevelSelectedStyles>
+                <StaticHoverStyle Font-Underline="true" ForeColor="#f21f82" BackColor="#002366" Font-Bold="True" Font-Size="Large" />
+
+<StaticMenuStyle CssClass="nav-item"></StaticMenuStyle>
+
+                <StaticSelectedStyle Font-Bold="true"   />
+            <DynamicHoverStyle BackColor="#F21F82" />
+            <DynamicMenuItemStyle CssClass="dropdown-item" BackColor="#002366" BorderStyle="None" />
+        </asp:Menu>
+            </div>
+        </div>
+
+
+
+
+        <div class="d-flex justify-content-center align-items-center ">
+            <!-- Content Area -->
+            <div id="content" style="margin-top: 150px;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+        </div>
+        <div class="container-fluid mt-5" style="text-align:center; height:100px;  color:white; background-color: #002366 ">
+
+            Copyright @ texas lerning portal- 2021/22 
+            </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var navbarToggler = document.querySelector('.navbar-toggler');
+                var navbar = document.getElementById('menu');
+                var collapse = document.querySelector('#navbarSupportedContent');
+
+                navbarToggler.addEventListener('click', function () {
+                    if (collapse.classList.contains('show')) {
+                        navbar.classList.remove('expanded');
+                    } else {
+                        navbar.classList.add('expanded');
+                    }
+                });
+            });
+        </script>
+    </form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,389 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Upload.master.cs" Inherits="Learning_System.Past_Year_Paper_Admin.BHM_Admin.Upload" %>
+
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link href="mcsdash.css" rel="stylesheet" />
+    <!-- jQuery -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Sidebar Styles */
+        #sidebar {
+            position: fixed;
+            top: 5rem;
+            left: 0;
+            width: 0;
+            /* height: calc(100vh - 5rem)*/;
+            height: 100vh;
+            background-color: #343a40;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: auto;
+            z-index: 999;
+            transition: width 0.3s ease;
+        }
+
+        #content {
+            margin-top: 5rem; /* Adjusted to account for navbar height */
+            margin-left: 0;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        #sidebar a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 1rem;
+        }
+
+            #sidebar a:hover {
+                background-color: #495057;
+            }
+
+        #sidebar ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+            #sidebar ul li {
+                padding: 0;
+            }
+
+        #sidebar .submenu {
+            display: none;
+            padding-left: 1rem;
+        }
+
+        /* Open Sidebar Styles */
+        .sidebar-open #sidebar {
+            width: 30%;
+        }
+
+        .sidebar-open #content {
+            margin-left: 30%;
+        }
+
+        .submenu-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Toggle Icon Styles */
+        .fas.fa-caret-down {
+            transition: transform 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Menu Bar */
+        #menu-bar {
+            padding-top: 6rem; /* Adjusted for the fixed navbar */
+            position: fixed;
+            left: 1rem;
+            z-index: 1000;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            #menu-bar {
+                left: 0.3rem;
+                top: -4.5rem;
+                padding: 0;
+            }
+
+                #menu-bar button {
+                    font-size: 1.5rem;
+                    padding: 10px;
+                }
+
+            .sidebar-open #sidebar {
+                width: 60%;
+            }
+
+            .sidebar-open #content {
+                margin-left: 60%;
+                width: 40%;
+            }
+
+            #content {
+                padding-top: 10%;
+                width: 100%;
+                margin-left: 0px;
+                padding-left: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #menu-bar button {
+                font-size: 1.2rem;
+                margin-top: 10rem;
+            }
+
+            .sidebar-open #sidebar {
+                width: 75%;
+            }
+
+            .sidebar-open #content {
+                margin-left: 75%;
+                width: 25%;
+            }
+
+            #sidebar {
+                display: block;
+            }
+
+            /* Default height */
+
+
+        }
+
+        /* Expanded menu */
+        #menu.expanded {
+            transition: height 0.3s ease;
+            padding-bottom: 220px;
+        }
+    </style>
+    <title>past year questions </title>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <!-- Header -->
+        <nav class="navbar navbar-expand-md d-flex align-items-center justify-content-between flex-wrap" style="position: fixed; top: 0; left: 0; width: 100%; height: 6rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1rem;">
+            <!-- Logo Section -->
+            <div class="d-flex align-items-center" style="flex: 1; justify-content: flex-start;">
+                <a href="../../Default.aspx">
+                    <img src="logo/logo.png" alt="Logo" class="img-fluid" style="width: 10rem; height: 4rem; object-fit: contain;">
+                </a>
+            </div>
+            <!-- Title Section -->
+            <div class="d-none d-sm-flex align-items-center justify-content-center" style="flex: 1;">
+                <h3 style="font-size: 1.5rem; font-weight: bold; color: #002366; margin: 0;">Texas Learning System</h3>
+            </div>
+            <!-- Logout Button Section -->
+            <div class="d-flex align-items-center" style="flex: 1; justify-content: flex-end;">
+                <%--                <asp:LinkButton ID="LinkButton2" runat="server" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" OnClick="Linklogin_Click">Logout</asp:LinkButton>--%>
+                <asp:LinkButton ID="LinkButton" runat="server" OnClick="Linklogout_Click" CssClass="btn btn-primary">Logout</asp:LinkButton>
+
+            </div>
+        </nav>
+
+
+
+        <div id="menu" class="navbar navbar-expand-md navbar-light" style="background-color: #002366; height: 100px; top: 6rem;">
+            <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color: white;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Menu Items -->
+            <div class="collapse navbar-collapse bg-black" id="navbarSupportedContent">
+                <asp:Menu ID="Menu1" runat="server" Orientation="horizontal" CssClass="navbar-nav mr-auto px-2" StaticMenuStyle-CssClass="nav-item"
+                    StaticSelectedStyle-CssClass="nav-item" DynamicMenuStyle-CssClass="nav-item dropdown-menu" RenderingMode="List" role="menu" itemscope="itemscope"
+                    Font-Bold="True" Font-Names="Corbel Light" Font-Size="Medium" ForeColor="White" StaticEnableDefaultPopOutImage="false">
+
+
+                    <DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
+                    <DynamicSelectedStyle BackColor="#666666" />
+                    <Items>
+                        <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/dash.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="1st Semester" Value="1st Semester">
+                            <asp:MenuItem Text="BHM 2016" Value="BHM_1_2016" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_1_2016.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2017" Value="BHM_1_2017" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_1_2017.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2018" Value="BHM_1_2018" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_1_2018.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2019" Value="BHM_1_2019" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_1_2019.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2020" Value="BHM_1_2020" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_1_2020.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2021" Value="BHM_1_2021" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_1_2021.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2022" Value="BHM_1_2022" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_1_2022.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2023" Value="BHM_1_2023" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_1_2023.aspx"></asp:MenuItem>
+
+
+
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
+                            <asp:MenuItem Text="BHM 2016" Value="BHM_2_2016" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_2_2016.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2017" Value="BHM_2_2017" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_2_2017.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2018" Value="BHM_2_2018" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_2_2018.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2019" Value="BHM_2_2019" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_2_2019.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2020" Value="BHM_2_2020" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_2_2020.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2021" Value="BHM_2_2021" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_2_2021.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2022" Value="BHM_2_2022" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_2_2022.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2023" Value="BHM_2_2023" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_2_2023.aspx"></asp:MenuItem>
+
+
+
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
+                            <asp:MenuItem Text="BHM 2016" Value="BHM_3_2016" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_3_2016.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2017" Value="BHM_3_2017" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_3_2017.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2018" Value="BHM_3_2018" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_3_2018.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2019" Value="BHM_3_2019" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_3_2019.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2020" Value="BHM_3_2020" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_3_2020.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2021" Value="BHM_3_2021" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_3_2021.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2022" Value="BHM_3_2022" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_3_2022.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2023" Value="BHM_3_2023" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_3_2023.aspx"></asp:MenuItem>
+
+
+
+                        </asp:MenuItem>
+
+
+                        <asp:MenuItem Text="4th Semester" Value="4th Semester">
+                            <asp:MenuItem Text="BHM 2016" Value="BHM_4_2016" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_4_2016.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2017" Value="BHM_4_2017" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_4_2017.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2018" Value="BHM_4_2018" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_4_2018.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2019" Value="BHM_4_2019" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_4_2019.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2020" Value="BHM_4_2020" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_4_2020.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2021" Value="BHM_4_2021" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_4_2021.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2022" Value="BHM_4_2022" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_4_2022.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2023" Value="BHM_4_2023" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_4_2023.aspx"></asp:MenuItem>
+
+
+
+                        </asp:MenuItem>
+
+
+
+
+
+
+                        <asp:MenuItem Text="5th Semester" Value="5th Semester">
+                            <asp:MenuItem Text="BHM 2016" Value="BHM_5_2016" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_5_2016.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2017" Value="BHM_5_2017" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_5_2017.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2018" Value="BHM_5_2018" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_5_2018.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2019" Value="BHM_5_2019" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_5_2019.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2020" Value="BHM_5_2020" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_5_2020.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2021" Value="BHM_5_2021" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_5_2021.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2022" Value="BHM_5_2022" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_5_2022.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2023" Value="BHM_5_2023" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_5_2023.aspx"></asp:MenuItem>
+
+
+
+                        </asp:MenuItem>
+
+
+
+
+
+                        <asp:MenuItem Text="6th Semester" Value="6th Semester">
+
+                            <asp:MenuItem Text="BHM 2016" Value="BHM_6_2016" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_6_2016.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2017" Value="BHM_6_2017" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_6_2017.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2018" Value="BHM_6_2018" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_6_2018.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2019" Value="BHM_6_2019" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_6_2019.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2020" Value="BHM_6_2020" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_6_2020.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2021" Value="BHM_6_2021" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_6_2021.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2022" Value="BHM_6_2022" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_6_2022.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2023" Value="BHM_6_2023" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_6_2023.aspx"></asp:MenuItem>
+
+
+
+                        </asp:MenuItem>
+
+
+
+
+
+                        <asp:MenuItem Text="7th Semester" Value="4th Semester">
+                            <asp:MenuItem Text="BHM 2016" Value="BHM_7_2016" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_7_2016.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2017" Value="BHM_7_2017" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_7_2017.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2018" Value="BHM_7_2018" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_7_2018.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2019" Value="BHM_7_2019" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_7_2019.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2020" Value="BHM_7_2020" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_7_2020.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2021" Value="BHM_7_2021" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_7_2021.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2022" Value="BHM_7_2022" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_7_2022.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2023" Value="BHM_7_2023" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_7_2023.aspx"></asp:MenuItem>
+
+
+
+                        </asp:MenuItem>
+
+
+                        <asp:MenuItem Text="8th Semester" Value="8th Semester">
+                            <asp:MenuItem Text="BHM 2016" Value="BHM_8_2016" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_8_2016.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2017" Value="BHM_8_2017" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_8_2017.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2018" Value="BHM_8_2018" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_8_2018.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2019" Value="BHM_8_2019" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_8_2019.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2020" Value="BHM_8_2020" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_8_2020.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2021" Value="BHM_8_2021" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_8_2021.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2022" Value="BHM_8_2022" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_8_2022.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="BHM 2023" Value="BHM_8_2023" NavigateUrl="~/Past_Year_Paper_Admin/BHM_Admin/BHM_8_2023.aspx"></asp:MenuItem>
+
+
+
+                        </asp:MenuItem>
+
+
+
+                    </Items>
+
+                    <LevelMenuItemStyles>
+                        <asp:MenuItemStyle CssClass="dropdown-item" HorizontalPadding="15px" Height="50px" VerticalPadding="15px" />
+                    </LevelMenuItemStyles>
+                    <LevelSelectedStyles>
+                        <asp:MenuItemStyle CssClass="nav-item active" Font-Underline="False" />
+                    </LevelSelectedStyles>
+                    <StaticHoverStyle Font-Underline="true" ForeColor="#f21f82" BackColor="#002366" Font-Bold="True" Font-Size="Large" />
+
+                    <StaticMenuStyle CssClass="nav-item"></StaticMenuStyle>
+
+                    <StaticSelectedStyle Font-Bold="true" />
+                    <DynamicHoverStyle BackColor="#F21F82" />
+                    <DynamicMenuItemStyle CssClass="dropdown-item" BackColor="#002366" BorderStyle="None" />
+                </asp:Menu>
+
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center ">
+            <!-- Content Area -->
+            <div id="content" style="margin-top: 150px;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+        </div>
+
+        <div class="container-fluid mt-5" style="text-align: center; height: 100px; color: white; background-color: #002366">
+            Copyright @ texas lerning portal- 2021/22 
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var navbarToggler = document.querySelector('.navbar-toggler');
+                var navbar = document.getElementById('menu');
+                var collapse = document.querySelector('#navbarSupportedContent');
+
+                navbarToggler.addEventListener('click', function () {
+                    if (collapse.classList.contains('show')) {
+                        navbar.classList.remove('expanded');
+                    } else {
+                        navbar.classList.add('expanded');
+                    }
+                });
+            });
+        </script>
+    </form>
+
+</body>
+</html>
+
+
+
+
