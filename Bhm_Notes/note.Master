@@ -1,0 +1,399 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Bhm_Notes.note" %>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link href="mcsdash.css" rel="stylesheet" />
+    <style>
+        /* Sidebar Styles */
+        #sidebar {
+            position: fixed;
+            top: 5rem;
+            left: 0;
+            width: 0;
+            height: calc(100vh - 5rem);
+            background-color: #343a40;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: auto;
+            z-index: 999;
+            transition: width 0.3s ease;
+        }
+
+        #content {
+            margin-top: 5rem; /* Adjusted to account for navbar height */
+            margin-left: 0;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        #sidebar a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 1rem;
+        }
+
+            #sidebar a:hover {
+                background-color: #495057;
+            }
+
+        #sidebar ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+            #sidebar ul li {
+                padding: 0;
+            }
+
+        #sidebar .submenu {
+            display: none;
+            padding-left: 1rem;
+        }
+
+        /* Open Sidebar Styles */
+        .sidebar-open #sidebar {
+            width: 30%;
+        }
+
+        .sidebar-open #content {
+            margin-left: 30%;
+        }
+
+        .submenu-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Toggle Icon Styles */
+        .fas.fa-caret-down {
+            transition: transform 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Menu Bar */
+        #menu-bar {
+            padding-top: 6rem; /* Adjusted for the fixed navbar */
+            position: fixed;
+            left: 10rem;
+            z-index: 1000;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            #menu-bar {
+                left: 0.3rem;
+                top: -4.5rem;
+                padding: 0;
+            }
+
+                #menu-bar button {
+                    font-size: 1.5rem;
+                    padding: 10px;
+                }
+
+            .sidebar-open #sidebar {
+                width: 60%;
+            }
+
+            .sidebar-open #content {
+                margin-left: 60%;
+                width: 40%;
+            }
+
+            #content {
+                padding-top: 10%;
+                width: 100%;
+                margin-left: 0px;
+                padding-left: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #menu-bar button {
+                font-size: 1.2rem;
+                margin-top: 10rem;
+            }
+
+            .sidebar-open #sidebar {
+                width: 75%;
+            }
+
+            .sidebar-open #content {
+                margin-left: 75%;
+                width: 25%;
+            }
+        }
+    </style>
+    <title>BHM notes</title>
+</head>
+<body>
+    <form id="form2" runat="server">
+        <!-- Header -->
+                        <nav class="navbar navbar-expand-lg d-flex shad align-items-center justify-content-between flex-wrap navbar-light bg-light shadow  bg-body rounded" style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1rem;">
+            <!-- Logo Section -->
+            <div class="d-flex align-items-center" style="flex: 1; justify-content: center;">
+                <a href="../../Default.aspx">
+<%--                    <img src="logo/logo.png" alt="Logo" class="img-fluid" style="width: 190px; height: 80px; object-fit: contain;">--%>
+                    <img src="logo/logo.png" alt="Logo"   width="150">
+
+                </a>
+            </div>
+            <!-- Title Section -->
+            <div class="d-flex align-items-center justify-content-center" style="flex: 1;">
+                <h3 style="font-size: 2rem; font-weight: bold; color: #002366; margin: 0;">BHM NOTES</h3>
+            </div>
+            <!-- Spacer to balance the right side -->
+            <div class="d-none d-md-flex align-items-center" style="flex: 1; justify-content: flex-end;">
+                <!-- You can add additional items here if needed -->
+            </div>
+        </nav>
+
+        <div class="d-flex">
+            <div id="sidebar">
+                <ul>
+
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'first')">
+                            <span class="submenu-toggle">First Sem <i class="fas fa-caret-down first"></i></span>
+                        </a>
+                        <div id="first-submenu" class="submenu">
+                            <ul>
+                                <li><a href="introduction_to_hospitality_and_tourism_management.aspx">IHTM </a></li>
+                                <li><a href="housekeeping_operation.aspx">HO</a></li>
+                                <li><a href="front_office_operation.aspx">FOO</a></li>
+                                <li><a href="food_and_beverage_service_skill.aspx">FBSS </a></li>
+                                <li><a href="fundamental_of_computer_in_hotel_concept_and_application.aspx">FCH</a></li>
+                                <li><a href="english_for_academics.aspx">EA</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'second')">
+                            <span class="submenu-toggle">Second Sem <i class="fas fa-caret-down second"></i></span>
+                        </a>
+                        <div id="second-submenu" class="submenu">
+                            <ul>
+                                <li><a href="front_office_management.aspx">FOM</a></li>
+                                <li><a href="housekeeping_management.aspx">HM</a></li>
+                                <li><a href="food_production_operation.aspx">FPO</a></li>
+                                <li><a href="food_and_beverage_service_operation.aspx">FBSO</a></li>
+                                <li><a href="hospitality_english.aspx">Hospitality English</a></li>
+                                <li><a href="fundamentals_of_management.aspx">FM</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'third')">
+                            <span class="submenu-toggle">Third Sem <i class="fas fa-caret-down third"></i></span>
+                        </a>
+                        <div id="third-submenu" class="submenu">
+                            <ul>
+                                <li><a href="food_science_and_nutrition.aspx">FSM</a></li>
+                                <li><a href="accounting_for_hospitality.aspx">AH</a></li>
+                                <li><a href="foodd_production_management.aspx">FPM</a></li>
+                                <li><a href="beverage_study.aspx">Beverage Study</a></li>
+                                <li><a href="hospitality_human_resource_management.aspx">HHRM</a></li>
+                                <li><a href="hotel_french.aspx">Hotel French</a></li>
+
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'fourth')">
+                            <span class="submenu-toggle">Fourth Sem <i class="fas fa-caret-down fourth"></i></span>
+                        </a>
+                        <div id="fourth-submenu" class="submenu">
+                            <ul>
+                                <li><a href="food_and_catering_management.aspx">FCM</a></li>
+                                <li><a href="introduction_to_economics.aspx">IE</a></li>
+                                <li><a href="organizational_behavior.aspx">OB</a></li>
+                                <li><a href="entrepreneurship.aspx">Entrepreneurship</a></li>
+                                <li><a href="restaurant_business_operation.aspx">RBO</a></li>
+                                <li><a href="hospitality_service_marketing.aspx">HSM</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'fifth')">
+                            <span class="submenu-toggle">Fifth Sem <i class="fas fa-caret-down fifth"></i></span>
+                        </a>
+                        <div id="fifth-submenu" class="submenu">
+                            <ul>
+                                <li><a href="statistics.aspx">Statistics</a></li>
+                                <li><a href="revenue_management.aspx">Revenue Management</a></li>
+                                <li><a href="purchasing_and_cost_control.aspx">PCC</a></li>
+                                <li><a href="public_relation.aspx">Public Relation</a></li>
+                                <li><a href="hospitality_training_and_development.aspx">HTD</a></li>
+                                <li><a href="hospitality_law.aspx">Hospitality Law</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'sixth')">
+                            <span class="submenu-toggle">Sixth Sem <i class="fas fa-caret-down sixth"></i></span>
+                        </a>
+                        <div id="sixth-submenu" class="submenu">
+                            <ul>
+                                <li><a href="hotel_maintenanace.aspx">Hotel Maintenance</a></li>
+                                <li><a href="event_management.aspx">Event_Management</a></li>
+                                <li><a href="tourist_behavioral_science.aspx">TBS</a></li>
+                                <li><a href="research_methodology.aspx">Research Methodology</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'seventh')">
+                            <span class="submenu-toggle">Seventh Sem <i class="fas fa-caret-down seventh"></i></span>
+                        </a>
+                        <div id="seventh-submenu" class="submenu">
+                            <ul>
+                                <li><a href="industrial_training.aspx">Industrial Training I</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'eight')">
+                            <span class="submenu-toggle">Eighth Sem <i class="fas fa-caret-down eight"></i></span>
+                        </a>
+                        <div id="eight-submenu" class="submenu">
+                            <ul>
+                                <li><a href="industrial_training2.aspx">Industrial Training II </a></li>
+                                <li><a href="internship_report.aspx">Internship Report</a></li>
+
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+
+
+                </ul>
+            </div>
+
+            <!-- Menu Bar -->
+            <div id="menu-bar" class="top:2rem; ">
+                <button type="button" onclick="toggleSidebar()" class="btn " style="background: none;">
+                    <%--                    <i class="fa fa-bars" aria-hidden="true" style="color:black;"></i>--%>
+                    <i class="fa fa-arrow-right" aria-hidden="true" style="color: black;" id="icon"></i>
+
+                </button>
+            </div>
+
+            <!-- Content Area -->
+            <div id="content" style="padding-top: 4%; width: 90%; margin-left: 5%;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            var menuBar = document.getElementById('menu-bar');
+            var sidebarOpen = document.body.classList.toggle('sidebar-open');
+            var icon = document.getElementById('icon');
+
+            if (sidebarOpen) {
+                sidebar.style.width = '20%'; // Adjust to desired width
+
+                content.style.marginLeft = '20%'; // Adjust to match sidebar width
+                content.style.width = '80%'; // Adjust content width accordingly
+                menuBar.style.left = '20%'; // Align menu bar with sidebar
+                menuBar.style.paddingTop = '-0.7rem'; // Adjust padding
+                icon.style.transform = 'rotate(180deg)'; // Rotate icon when sidebar is open
+            } else {
+                sidebar.style.width = '0'; // Collapse sidebar
+                content.style.marginLeft = '0'; // Adjust content margin
+                content.style.width = '100%'; // Full width for content
+                menuBar.style.left = '3%'; // Align menu bar when sidebar is closed
+                icon.style.transform = 'rotate(0deg)'; // Reset icon rotation
+            }
+        }
+
+
+        function toggleSubmenu(event, submenuId) {
+            event.preventDefault();
+
+            // Get submenu and icon elements
+            var submenu = document.getElementById(submenuId + '-submenu');
+            var icon = document.querySelector('.' + submenuId);
+
+            // Ensure sidebar is open
+            document.body.classList.add('sidebar-open');
+
+            // Toggle the submenu visibility
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none'; // Hide submenu
+                icon.classList.remove('rotate'); // Reset icon rotation
+            } else {
+                submenu.style.display = 'block'; // Show submenu
+                icon.classList.add('rotate'); // Rotate icon
+            }
+        }
+
+
+        window.onload = function () {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            var menuBar = document.getElementById('menu-bar');
+            var icon = document.getElementById('icon');
+
+            // Open sidebar by default
+            document.body.classList.add('sidebar-open');
+            sidebar.style.width = '20%'; // Adjust to desired width
+            content.style.marginLeft = '20%'; // Adjust to match sidebar width
+            content.style.width = '80%'; // Adjust content width accordingly
+            menuBar.style.left = '20%'; // Align menu bar with sidebar
+            menuBar.style.paddingTop = '-0.7rem'; // Adjust padding
+            icon.style.transform = 'rotate(180deg)'; // Rotate icon when sidebar is open
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+

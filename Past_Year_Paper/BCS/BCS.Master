@@ -1,0 +1,388 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BCS.master.cs" Inherits="Learning_System.Past_Year_Paper.BCS.BCS" %>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link href="mcsdash.css" rel="stylesheet" />
+    <style>
+        /* Sidebar Styles */
+        #sidebar {
+            position: fixed;
+            top: 5rem;
+            left: 0;
+            width: 0;
+            height: calc(100vh - 5rem);
+            background-color: #343a40;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: auto;
+            z-index: 999;
+            transition: width 0.3s ease;
+        }
+
+        #content {
+            margin-top: 5rem; /* Adjusted to account for navbar height */
+            margin-left: 0;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        #sidebar a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 1rem;
+        }
+
+            #sidebar a:hover {
+                background-color: #495057;
+            }
+
+        #sidebar ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+            #sidebar ul li {
+                padding: 0;
+            }
+
+        #sidebar .submenu {
+            display: none;
+            padding-left: 1rem;
+        }
+
+        /* Open Sidebar Styles */
+        .sidebar-open #sidebar {
+            width: 30%;
+        }
+
+        .sidebar-open #content {
+            margin-left: 30%;
+        }
+
+        .submenu-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Toggle Icon Styles */
+        .fas.fa-caret-down {
+            transition: transform 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Menu Bar */
+        #menu-bar {
+            padding-top: 6rem; /* Adjusted for the fixed navbar */
+            position: fixed;
+            left: 10rem;
+            z-index: 1000;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            #menu-bar {
+                left: 0.3rem;
+                top: -4.5rem;
+                padding: 0;
+            }
+
+                #menu-bar button {
+                    font-size: 1.5rem;
+                    padding: 10px;
+                }
+
+            .sidebar-open #sidebar {
+                width: 60%;
+            }
+
+            .sidebar-open #content {
+                margin-left: 60%;
+                width: 40%;
+            }
+
+            #content {
+                padding-top: 10%;
+                width: 100%;
+                margin-left: 0px;
+                padding-left: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #menu-bar button {
+                font-size: 1.2rem;
+                margin-top: 10rem;
+            }
+
+            .sidebar-open #sidebar {
+                width: 75%;
+            }
+
+            .sidebar-open #content {
+                margin-left: 75%;
+                width: 25%;
+            }
+        }
+    </style>
+    <title>BCS notes</title>
+</head>
+<body>
+    <form id="form2" runat="server">
+        <!-- Header -->
+                        <nav class="navbar navbar-expand-lg d-flex shad align-items-center justify-content-between flex-wrap navbar-light bg-light shadow  bg-body rounded" style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1rem;">
+            <!-- Logo Section -->
+            <div class="d-flex align-items-center" style="flex: 1; justify-content: center;">
+                <a href="../../Default.aspx">
+<%--                    <img src="logo/logo.png" alt="Logo" class="img-fluid" style="width: 190px; height: 80px; object-fit: contain;">--%>
+                    <img src="logo/logo.png" alt="Logo"   width="150">
+
+                </a>
+            </div>
+            <!-- Title Section -->
+            <div class="d-flex align-items-center justify-content-center" style="flex: 1;">
+                <h3 style="font-size: 2rem; font-weight: bold; color: #002366; margin: 0;">BCS Past Year Questions</h3>
+            </div>
+            <!-- Spacer to balance the right side -->
+            <div class="d-none d-md-flex align-items-center" style="flex: 1; justify-content: flex-end;">
+                <!-- You can add additional items here if needed -->
+            </div>
+        </nav>
+
+        <div class="d-flex">
+            <div id="sidebar">
+                <ul>
+
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'first')">
+                            <span class="submenu-toggle">First Sem <i class="fas fa-caret-down first"></i></span>
+                        </a>
+                        <div id="first-submenu" class="submenu">
+                            <ul>
+                                <li><a href="BCS_1_2016.aspx">BCS 1 2016</a></li>
+                                <li><a href="BCS_1_2017.aspx">BCS 1 2017</a></li>
+                                <li><a href="BCS_1_2018.aspx">BCS 1 2018</a></li>
+                                <li><a href="BCS_1_2019.aspx">BCS 1 2019</a></li>
+                                <li><a href="BCS_1_2020.aspx">BCS 1 2020</a></li>
+                                <li><a href="BCS_1_2021.aspx">BCS 1 2021</a></li>
+                                <li><a href="BCS_1_2022.aspx">BCS 1 2022</a></li>
+                                <li><a href="BCS_1_2023.aspx">BCS 1 2023</a></li>
+
+
+
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'second')">
+                            <span class="submenu-toggle">Second Sem <i class="fas fa-caret-down second"></i></span>
+                        </a>
+                        <div id="second-submenu" class="submenu">
+                            <ul>
+                                <li><a href="BCS_2_2016.aspx">BCS 2 2016</a></li>
+                                <li><a href="BCS_2_2017.aspx">BCS 2 2017</a></li>
+                                <li><a href="BCS_2_2018.aspx">BCS 2 2018</a></li>
+                                <li><a href="BCS_2_2019.aspx">BCS 2 2019</a></li>
+                                <li><a href="BCS_2_2020.aspx">BCS 2 2020</a></li>
+                                <li><a href="BCS_2_2021.aspx">BCS 2 2021</a></li>
+                                <li><a href="BCS_2_2022.aspx">BCS 2 2022</a></li>
+                                <li><a href="BCS_2_2023.aspx">BCS 2 2023</a></li>
+
+
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'third')">
+                            <span class="submenu-toggle">Third Sem <i class="fas fa-caret-down third"></i></span>
+                        </a>
+                        <div id="third-submenu" class="submenu">
+                            <ul>
+                                <li><a href="BCS_3_2016.aspx">BCS 3 2016</a></li>
+                                <li><a href="BCS_3_2017.aspx">BCS 3 2017</a></li>
+                                <li><a href="BCS_3_2018.aspx">BCS 3 2018</a></li>
+                                <li><a href="BCS_3_2019.aspx">BCS 3 2019</a></li>
+                                <li><a href="BCS_3_2020.aspx">BCS 3 2020</a></li>
+                                <li><a href="BCS_3_2021.aspx">BCS 3 2021</a></li>
+                                <li><a href="BCS_3_2022.aspx">BCS 3 2022</a></li>
+                                <li><a href="BCS_3_2023.aspx">BCS 3 2023</a></li>
+
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'fourth')">
+                            <span class="submenu-toggle">Fourth Sem <i class="fas fa-caret-down fourth"></i></span>
+                        </a>
+                        <div id="fourth-submenu" class="submenu">
+                            <ul>
+                                <li><a href="BCS_4_2016.aspx">BCS 4 2016</a></li>
+                                <li><a href="BCS_4_2017.aspx">BCS 4 2017</a></li>
+                                <li><a href="BCS_4_2018.aspx">BCS 4 2018</a></li>
+                                <li><a href="BCS_4_2019.aspx">BCS 4 2019</a></li>
+                                <li><a href="BCS_4_2020.aspx">BCS 4 2020</a></li>
+                                <li><a href="BCS_4_2021.aspx">BCS 4 2021</a></li>
+                                <li><a href="BCS_4_2022.aspx">BCS 4 2022</a></li>
+                                <li><a href="BCS_4_2023.aspx">BCS 4 2023</a></li>
+
+
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'fifth')">
+                            <span class="submenu-toggle">Fifth Sem <i class="fas fa-caret-down fifth"></i></span>
+                        </a>
+                        <div id="fifth-submenu" class="submenu">
+                            <ul>
+                                <li><a href="BCS_5_2016.aspx">BCS 5 2016</a></li>
+                                <li><a href="BCS_5_2017.aspx">BCS 5 2017</a></li>
+                                <li><a href="BCS_5_2018.aspx">BCS 5 2018</a></li>
+                                <li><a href="BCS_5_2019.aspx">BCS 5 2019</a></li>
+                                <li><a href="BCS_5_2020.aspx">BCS 5 2020</a></li>
+                                <li><a href="BCS_5_2021.aspx">BCS 5 2021</a></li>
+                                <li><a href="BCS_5_2022.aspx">BCS 5 2022</a></li>
+                                <li><a href="BCS_5_2023.aspx">BCS 5 2023</a></li>
+
+
+
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'sixth')">
+                            <span class="submenu-toggle">Sixth Sem <i class="fas fa-caret-down sixth"></i></span>
+                        </a>
+                        <div id="sixth-submenu" class="submenu">
+                            <ul>
+                                <li><a href="BCS_6_2016.aspx">BCS 6 2016</a></li>
+                                <li><a href="BCS_6_2017.aspx">BCS 6 2017</a></li>
+                                <li><a href="BCS_6_2018.aspx">BCS 6 2018</a></li>
+                                <li><a href="BCS_6_2019.aspx">BCS 6 2019</a></li>
+                                <li><a href="BCS_6_2020.aspx">BCS 6 2020</a></li>
+                                <li><a href="BCS_6_2021.aspx">BCS 6 2021</a></li>
+                                <li><a href="BCS_6_2022.aspx">BCS 6 2022</a></li>
+                                <li><a href="BCS_6_2023.aspx">BCS 6 2023</a></li>
+
+
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+            <!-- Menu Bar -->
+            <div id="menu-bar" class="top:2rem; ">
+                <button type="button" onclick="toggleSidebar()" class="btn " style="background: none;">
+                    <%--                    <i class="fa fa-bars" aria-hidden="true" style="color:black;"></i>--%>
+                    <i class="fa fa-arrow-right" aria-hidden="true" style="color: black;" id="icon"></i>
+
+                </button>
+            </div>
+
+            <!-- Content Area -->
+            <div id="content" style="padding-top: 4%; width: 90%; margin-left: 5%;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            var menuBar = document.getElementById('menu-bar');
+            var sidebarOpen = document.body.classList.toggle('sidebar-open');
+            var icon = document.getElementById('icon');
+
+            if (sidebarOpen) {
+                sidebar.style.width = '20%'; // Adjust to desired width
+
+                content.style.marginLeft = '20%'; // Adjust to match sidebar width
+                content.style.width = '80%'; // Adjust content width accordingly
+                menuBar.style.left = '20%'; // Align menu bar with sidebar
+                menuBar.style.paddingTop = '-0.7rem'; // Adjust padding
+                icon.style.transform = 'rotate(180deg)'; // Rotate icon when sidebar is open
+            } else {
+                sidebar.style.width = '0'; // Collapse sidebar
+                content.style.marginLeft = '0'; // Adjust content margin
+                content.style.width = '100%'; // Full width for content
+                menuBar.style.left = '3%'; // Align menu bar when sidebar is closed
+                icon.style.transform = 'rotate(0deg)'; // Reset icon rotation
+            }
+        }
+
+
+        function toggleSubmenu(event, submenuId) {
+            event.preventDefault();
+
+            // Get submenu and icon elements
+            var submenu = document.getElementById(submenuId + '-submenu');
+            var icon = document.querySelector('.' + submenuId);
+
+            // Ensure sidebar is open
+            document.body.classList.add('sidebar-open');
+
+            // Toggle the submenu visibility
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none'; // Hide submenu
+                icon.classList.remove('rotate'); // Reset icon rotation
+            } else {
+                submenu.style.display = 'block'; // Show submenu
+                icon.classList.add('rotate'); // Rotate icon
+            }
+        }
+
+
+        window.onload = function () {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            var menuBar = document.getElementById('menu-bar');
+            var icon = document.getElementById('icon');
+
+            // Open sidebar by default
+            document.body.classList.add('sidebar-open');
+            sidebar.style.width = '20%'; // Adjust to desired width
+            content.style.marginLeft = '20%'; // Adjust to match sidebar width
+            content.style.width = '80%'; // Adjust content width accordingly
+            menuBar.style.left = '20%'; // Align menu bar with sidebar
+            menuBar.style.paddingTop = '-0.7rem'; // Adjust padding
+            icon.style.transform = 'rotate(180deg)'; // Rotate icon when sidebar is open
+        }
+
+    </script>
+</body>
+</html>
+

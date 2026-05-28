@@ -1,0 +1,312 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="upload.master.cs" Inherits="Learning_System.Mcs_Admin.upload" %>
+
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link href="mcsdash.css" rel="stylesheet" />
+    <!-- jQuery -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <style>
+        /* Sidebar Styles */
+        #sidebar {
+            position: fixed;
+            top: 5rem;
+            left: 0;
+            width: 0;
+            /* height: calc(100vh - 5rem)*/;
+            height: 100vh;
+            background-color: #343a40;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: auto;
+            z-index: 999;
+            transition: width 0.3s ease;
+        }
+
+        #content {
+            margin-top: 5rem; /* Adjusted to account for navbar height */
+            margin-left: 0;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        #sidebar a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 1rem;
+        }
+
+            #sidebar a:hover {
+                background-color: #495057;
+            }
+
+        #sidebar ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+            #sidebar ul li {
+                padding: 0;
+            }
+
+        #sidebar .submenu {
+            display: none;
+            padding-left: 1rem;
+        }
+
+        /* Open Sidebar Styles */
+        .sidebar-open #sidebar {
+            width: 30%;
+        }
+
+        .sidebar-open #content {
+            margin-left: 30%;
+        }
+
+        .submenu-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Toggle Icon Styles */
+        .fas.fa-caret-down {
+            transition: transform 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Menu Bar */
+        #menu-bar {
+            padding-top: 6rem; /* Adjusted for the fixed navbar */
+            position: fixed;
+            left: 1rem;
+            z-index: 1000;
+        }
+        .nav-item-margin-right {
+    margin-right: 15px; /* Adjust the value as needed */
+}
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            #menu-bar {
+                left: 0.3rem;
+                top: -4.5rem;
+                padding: 0;
+            }
+
+                #menu-bar button {
+                    font-size: 1.5rem;
+                    padding: 10px;
+                }
+
+            .sidebar-open #sidebar {
+                width: 60%;
+            }
+
+            .sidebar-open #content {
+                margin-left: 60%;
+                width: 40%;
+            }
+
+            #content {
+                padding-top: 10%;
+                width: 100%;
+                margin-left: 0px;
+                padding-left: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #menu-bar button {
+                font-size: 1.2rem;
+                margin-top: 10rem;
+            }
+
+            .sidebar-open #sidebar {
+                width: 75%;
+            }
+
+            .sidebar-open #content {
+                margin-left: 75%;
+                width: 25%;
+            }
+
+            #sidebar {
+                display: block;
+            }
+
+            /* Default height */
+
+
+        }
+
+        /* Expanded menu */
+        #menu.expanded {
+            transition: height 0.3s ease;
+            padding-bottom: auto;
+        }
+
+
+
+
+ 
+
+    </style>
+    <title>MCS ADMIN </title>
+</head>
+<body>
+    <form id="form2" runat="server">
+
+        <!-- Header -->
+        <nav class="navbar navbar-expand-md d-flex align-items-center justify-content-between flex-wrap" style="position: fixed; top: 0; left: 0; width: 100%; height: 6rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1rem;">
+            <!-- Logo Section -->
+            <div class="d-flex align-items-center" style="flex: 1; justify-content: flex-start;">
+                <a href="../../Default.aspx">
+                    <img src="logo/logo.png" alt="Logo" class="img-fluid" style="width: 10rem; height: 4rem; object-fit: contain;">
+                </a>
+            </div>
+            <!-- Title Section -->
+            <div class="d-none d-sm-flex align-items-center justify-content-center" style="flex: 1;">
+                <h3 style="font-size: 1.5rem; font-weight: bold; color: #002366; margin: 0;">Texas Learning System</h3>
+            </div>
+            <!-- Logout Button Section -->
+            <div class="d-flex align-items-center" style="flex: 1; justify-content: flex-end;">
+                        <asp:LinkButton ID="LinkButton" runat="server" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" OnClick="Linklogout_Click" >Logout</asp:LinkButton> 
+
+            </div>
+        </nav>
+
+
+
+        <div id="menu" class="navbar navbar-expand-md navbar-light" style="background-color: #002366; height: 100px; top: 6rem;">
+            <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color: white;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Menu Items -->
+            <div class="collapse navbar-collapse bg-black" id="navbarSupportedContent">
+                     <asp:Menu ID="MainMenu" runat="server" Orientation="horizontal" CssClass="navbar-nav mr-auto" StaticMenuStyle-CssClass="nav-item" 
+            StaticSelectedStyle-CssClass="nav-item" DynamicMenuStyle-CssClass="nav-item dropdown-menu" RenderingMode="List" role="menu" itemscope="itemscope" 
+            Font-Bold="True" Font-Names="Corbel Light" Font-Size="Medium" ForeColor="White" StaticEnableDefaultPopOutImage="false" >
+
+<DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
+                <DynamicSelectedStyle BackColor="#666666" />
+                <Items>
+                    <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Mcs_Admin/dash.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="1st Semester" Value="1st Semester">
+                        <asp:MenuItem Text="Object Orinted Programming" Value="C Programming" NavigateUrl="~/Mcs_Admin/object_oriented_programming.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Design and Analysis Algorithm" Value="Internet Fundamental" NavigateUrl="~/Mcs_Admin/desgin_and_analysis_Algorithm.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Managerial Communication" Value="Busines Eng" NavigateUrl="~/Mcs_Admin/Managerial_communication.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Open Source Technology" Value="Mathematics 1" NavigateUrl="~/Mcs_Admin/opensource_technology.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Telecommunication Systems" Value="Basic Computer Architecture" NavigateUrl="~/Mcs_Admin/telecommunication_systems.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
+                        <asp:MenuItem Text="Data Warehousing and Big Data" Value="C++ Programming" NavigateUrl="~/Mcs_Admin/data_warehousing_and_bigdata.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Data Analytics Visualization" Value="Data Analytics Visualization" NavigateUrl="~/Mcs_Admin/Data_Analytics_Visualization.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Cyber Security" Value="Digital Logic" NavigateUrl="~/Mcs_Admin/cyber_security.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Artificial Intelligence" Value="System Analysis and Design" NavigateUrl="~/Mcs_Admin/AI.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Digital Marketing" Value="LS &amp; HR" NavigateUrl="~/Mcs_Admin/digital_marketing.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
+                        
+
+                        <asp:MenuItem Text="Technopreneurship" Value="Technopreneurship" NavigateUrl="~/Mcs_Admin/Technopreneurship.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Digital forensics" Value="Database Management System"  NavigateUrl="~/Mcs_Admin/digital_forensics.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Cluod Computing" Value="Cluod Computing"  NavigateUrl="~/Mcs_Admin/Cloud_Computing.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Software Project Management" Value="Software Project Management"  NavigateUrl="~/Mcs_Admin/Software_Project_Management.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Software Quality Testing" Value="Software Quality Testing"  NavigateUrl="~/Mcs_Admin/Software_Quality_Testing.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+
+
+                    <asp:MenuItem Text="4th Semester" Value="4th Semester">
+                        <asp:MenuItem Text="Project paper" Value="Project paper"  NavigateUrl="~/Mcs_Admin/project_paper.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Research Methodology-Operation Research" Value="RDBMS"  NavigateUrl="~/Mcs_Admin/research_methodology_Operation_research.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Seminar in Emerging Issue in IT" Value="Java Programming"  NavigateUrl="~/Mcs_Admin/seminar_in_emerging_issues_in_IT.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+
+
+                </Items>
+
+                <LevelMenuItemStyles>
+                    <asp:MenuItemStyle CssClass="dropdown-item" HorizontalPadding="15px" Height="50px" VerticalPadding="15px" />
+                </LevelMenuItemStyles>
+                <LevelSelectedStyles>
+                    <asp:MenuItemStyle CssClass="nav-item active" Font-Underline="False" />
+                </LevelSelectedStyles>
+                <StaticHoverStyle Font-Underline="true" ForeColor="#f21f82" BackColor="#002366" Font-Bold="True" Font-Size="Large" />
+
+<StaticMenuStyle CssClass="nav-item"></StaticMenuStyle>
+
+                <StaticSelectedStyle Font-Bold="true"   />
+            <DynamicHoverStyle BackColor="#F21F82" />
+            <DynamicMenuItemStyle CssClass="dropdown-item" BackColor="#002366" BorderStyle="None" />
+        </asp:Menu>   
+
+            </div>
+        </div>
+
+
+
+
+        <div class="d-flex justify-content-center align-items-center ">
+            <!-- Content Area -->
+            <div id="content" style="margin-top: 150px;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+        </div>
+        <div class="container-fluid mt-5" style="text-align:center; height:100px;  color:white; background-color: #002366 ">
+
+            Copyright @ texas lerning portal- 2021/22 
+            </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var navbarToggler = document.querySelector('.navbar-toggler');
+                var navbar = document.getElementById('menu');
+                var collapse = document.querySelector('#navbarSupportedContent');
+
+                navbarToggler.addEventListener('click', function () {
+                    if (collapse.classList.contains('show')) {
+                        navbar.classList.remove('expanded');
+                    } else {
+                        navbar.classList.add('expanded');
+                    }
+                });
+            });
+        </script>
+    </form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
