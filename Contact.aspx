@@ -6,7 +6,7 @@
 
     <style>
         body {
-            background: linear-gradient(135deg,#0B1F66,#081547);
+            background: white;
             min-height: 100vh;
         }
 
@@ -17,19 +17,19 @@
         .contact-title {
             font-size: 3rem;
             font-weight: 800;
-            color: white;
+            color: linear-gradient(135deg,#0B1F66,#081547);
         }
 
         .contact-subtitle {
             max-width: 750px;
             margin: auto;
-            color: #555;
+            color: dimgray;
             font-size: 17px;
             line-height: 1.8;
-        }
+        } 
 
         .contact-card {
-            background: white;
+            background: #e8e7e6;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
 
@@ -59,7 +59,7 @@
             width: 58px;
             height: 58px;
 
-            background: linear-gradient(135deg, #0d6efd, #4dabff);
+            background:linear-gradient(135deg,#0B1F66,#081547);
 
             border-radius: 18px;
 
@@ -82,6 +82,8 @@
             margin-bottom: 4px;
         }
 
+        
+
         .form-control {
             border-radius: 15px;
             border: 1px solid #d6e4ff;
@@ -101,7 +103,7 @@
         }
 
         .btn-contact {
-            background: linear-gradient(135deg, #0d6efd, #3b82f6);
+            background: linear-gradient(135deg,#0B1F66,#081547);
             border: none;
 
             border-radius: 15px;
@@ -119,6 +121,7 @@
         .btn-contact:hover {
             transform: scale(1.02);
             box-shadow: 0 10px 25px rgba(13,110,253,0.25);
+            
         }
 
         .map-container iframe {

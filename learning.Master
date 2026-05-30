@@ -440,39 +440,11 @@
 
 
                             <li><a href="Default.aspx" class="text-decoration-none text-primary fs-5">Home</a></li>
-                            <li><a href="Blog.aspx" class="text-decoration-none text-primary fs-5">Developer</a></li>
+              
                             <li><a href="AboutUs.aspx" class="text-decoration-none text-primary fs-5">About Us</a></li>
                             <li><a href="Contact.aspx" class="text-decoration-none text-primary fs-5">Contact Us</a></li>
                             <li><a href="Feedback.aspx" class="text-decoration-none text-primary fs-5">Feedback</a></li>
-                           <!-- ✅ Corrected Working Dropdown -->
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle text-primary fs-5" 
-       href="#" 
-       id="otherProjectDropdown" 
-       role="button" 
-       data-bs-toggle="dropdown" 
-       aria-expanded="false">
-        Other Project
-    </a>
-    <ul class="dropdown-menu shadow border-0" 
-        aria-labelledby="otherProjectDropdown">
-        <li>
-            <a class="dropdown-item" href="https://certificate.texascollegenepal.com/Default.aspx" target="_blank">
-                Certificate
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="Notes.aspx">Notes</a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="Verify.aspx">Verify</a>
-        </li>
-    </ul>
-</li>
 
-
-
-                        </ul>
 
                         <div class="d-flex flex-column flex-lg-row align-items-center gap-3">
 

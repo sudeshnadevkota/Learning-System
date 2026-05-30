@@ -163,23 +163,32 @@ body{
 
 /* SECTIONS */
 
-#courses-section{
+/* SERVICES SECTION = BLUE */
+
+#services-section{
     background:linear-gradient(135deg,#0B1F66,#081547) !important;
     padding:60px 50px !important;
-    margin-top:20px;
+}
+
+#services-section .section-title{
+    color:white !important;
+}
+
+#services-section .section-subtitle{
+    color:#d8ddf0 !important;
+}
+
+/* COURSES SECTION = WHITE */
+
+#courses-section{
+    background:white !important;
+    padding:60px 50px !important;
+    margin-top:0;
 }
 
 .container,
 .container-xl{
     background:transparent !important;
-}
-
-#courses-section .section-title{
-    color:white !important;
-}
-
-#courses-section .section-subtitle{
-    color:#d8ddf0 !important;
 }
 
 /* SECTION TITLE */
@@ -334,7 +343,7 @@ body{
 
 <!-- STUDENT SERVICES -->
 
-<div class="container py-5">
+<div id="services-section" class="container-fluid py-5">
 
     <h1 class="section-title text-center">
         Our Services

@@ -1408,6 +1408,7 @@
     <Content Include="students\module_details.aspx" />
     <Content Include="students\ViewFile.aspx" />
     <Content Include="style.css" />
+    <Content Include="TextFile1.txt" />
     <Content Include="TreeLineImages\dash.gif" />
     <Content Include="TreeLineImages\dashminus.gif" />
     <Content Include="TreeLineImages\dashplus.gif" />
