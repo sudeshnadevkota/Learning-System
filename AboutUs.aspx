@@ -48,84 +48,71 @@
     </div>
 
     <!-- Developer Section -->
-    <div class="container py-5">
+   <div class="container py-5">
 
-        <h2 class="text-center section-title">Development Team</h2>
+    <h2 class="text-center section-title">Development Team</h2>
 
-        <p class="text-center section-subtitle">
-            This Learning Portal was developed to provide a modern and efficient
-            digital learning experience for students and faculty.
-        </p>
+    <p class="text-center section-subtitle">
+        This Learning Portal was developed to provide a modern and efficient
+        digital learning experience for students and faculty.
+    </p>
 
-        <div class="row justify-content-center">
+    <div class="row justify-content-center g-4">
 
-            <div class="col-md-6 col-lg-4">
-                <div class="developer-card text-center">
+        <!-- Developer 1 -->
+        <div class="col-md-6 col-lg-4 d-flex">
+            <div class="developer-card text-center">
 
-                    <img src="slide/Durganand.png"
-                        alt="Developer"
-                        class="developer-img" />
+                <img src="slide/Durganand.png"
+                     alt="Developer"
+                     class="developer-img" />
 
-                    <h4 class="mt-3">Durganand Panjiyar</h4>
+                <h4 class="mt-3">Durganand Panjiyar</h4>
 
-                    <p class="developer-role">
-                        Lead Developer
-                    </p>
+                <p class="developer-role">Lead Developer</p>
 
-                    <p class="developer-description">
-                        Designed and developed the Learning Portal using ASP.NET,
-                        SQL Server, Bootstrap, and modern web technologies to
-                        support digital education and academic management.
-                    </p>
+                <p class="developer-description">
+                    Designed and developed the Learning Portal using ASP.NET,
+                    SQL Server, Bootstrap, and modern web technologies to
+                    support digital education and academic management.
+                </p>
 
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/durganand-panjiyar-b06b19308/"
-                            target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/durganand-panjiyar-b06b19308/"
+                       target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
                 </div>
-            </div>
 
+            </div>
         </div>
 
+        <!-- Developer 2 -->
+        <div class="col-md-6 col-lg-4 d-flex">
+            <div class="developer-card text-center">
 
-       <div class="row justify-content-center">
+                <img src="slide/devgroup.png"
+                     alt="Developer"
+                     class="developer-img" />
 
-     <div class="col-md-6 col-lg-4">
-         <div class="developer-card text-center">
+                <h4 class="mt-3">Texas Imaginology Team</h4>
 
-             <img src="slide/Durganand.png"
-                 alt="Developer"
-                 class="developer-img" />
+                <p class="developer-role">Developer</p>
 
-             <h4 class="mt-3">Durganand Panjiyar</h4>
+                <p class="developer-description">
+                    The success of this Learning Portal is the result of teamwork, innovation, and dedication.
+                  Developed using .NET and modern web technologies, the platform showcases the collective expertise
+                  of our team in delivering a secure, efficient, and user-friendly educational solution.
+                </p>
 
-             <p class="developer-role">
-                 Lead Developer
-             </p>
+                
 
-             <p class="developer-description">
-                 Designed and developed the Learning Portal using ASP.NET,
-                 SQL Server, Bootstrap, and modern web technologies to
-                 support digital education and academic management.
-             </p>
+            </div>
+        </div>
 
-             <div class="social-links">
-                 <a href="https://www.linkedin.com/in/durganand-panjiyar-b06b19308/"
-                     target="_blank">
-                     <i class="fab fa-linkedin-in"></i>
-                 </a>
-             </div>
-
-         </div>
-     </div>
-
- </div>
     </div>
 
-
+</div>
 
     <style>
 
@@ -207,19 +194,26 @@
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             transition: 0.3s ease;
+
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .developer-card:hover {
             transform: translateY(-5px);
         }
 
-        .developer-img {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid #f1f1f1;
-        }
+      .developer-img {
+    width: 180px;
+    height: auto;
+    max-height: 220px;
+    border-radius: 20px;
+    border: 5px solid #f1f1f1;
+
+    display: block;
+    margin: 0 auto;
+}
 
         .developer-role {
             color: linear-gradient(135deg,#0B1F66,#081547);
@@ -230,6 +224,7 @@
         .developer-description {
             color: #555;
             line-height: 1.7;
+            min-height: 140px;
         }
 
         .social-links a {
