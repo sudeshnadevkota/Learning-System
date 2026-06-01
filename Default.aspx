@@ -99,24 +99,23 @@ body{
 
 /* BUTTONS */
 
-.hero-btn,
-.btn-primary{
-    background:var(--pink) !important;
-    color:white !important;
-    border:none !important;
-    border-radius:50px !important;
-    padding:11px 26px !important;
-    font-size:14px;
-    font-weight:700 !important;
-    transition:.3s;
-    box-shadow:0 8px 18px rgba(255,45,141,.25);
+
+
+.hero-btn {
+    background: var(--pink);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 11px 26px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: .3s;
+    box-shadow: 0 8px 18px rgba(255,45,141,.25);
 }
 
-.hero-btn:hover,
-.btn-primary:hover{
-    background:var(--yellow) !important;
-    color:var(--primary) !important;
-    transform:translateY(-2px);
+.hero-btn:hover {
+    background: var(--yellow);
+    color: var(--primary);
 }
 
 /* SECOND BUTTON */
@@ -365,7 +364,7 @@ body{
         Attendance
     </h5>
 
-    <a href="https://texasattendance.com/" class="btn btn-primary">
+    <a href="https://texasattendance.com/" class="btn hero-btn">
         Open
     </a>
 
@@ -381,7 +380,7 @@ body{
         Certificate
     </h5>
 
-    <a href="https://certificate.texascollegenepal.com/Default.aspx" class="btn btn-primary">
+    <a href="https://certificate.texascollegenepal.com/Default.aspx" class="btn hero-btn">
         Open
     </a>
 
@@ -397,7 +396,7 @@ body{
                 Leave
             </h5>
 
-            <a href="" class="btn btn-primary">
+            <a href="" class="btn hero-btn">
                 Open
             </a>
 
@@ -413,7 +412,7 @@ body{
                 Jobs
             </h5>
 
-            <a href="https://texasjobportal.com/default.aspx  QA" class="btn btn-primary">
+            <a href="https://texasjobportal.com/default.aspx  " class="btn hero-btn">
                 Open
             </a>
 
@@ -433,7 +432,7 @@ body{
                 Information
             </h5>
 
-            <a href="information.aspx" class="btn btn-primary">
+            <a href="information.aspx" class="btn hero-btn">
                 Open
             </a>
 
@@ -467,7 +466,7 @@ body{
                 Notes
             </a>
 
-            <a href="Past_Year_Paper/MBA/dash.aspx" class="btn btn-primary">
+            <a href="Past_Year_Paper/MBA/dash.aspx" class="btn hero-btn">
                 Past Year Questions
             </a>
         </div>
@@ -482,7 +481,7 @@ body{
                 Notes
             </a>
 
-            <a href="Past_Year_Paper/MCS/dash.aspx" class="btn btn-primary">
+            <a href="Past_Year_Paper/MCS/dash.aspx" class="btn hero-btn">
                 Past Year Questions
             </a>
         </div>
@@ -497,7 +496,7 @@ body{
                 Notes
             </a>
 
-            <a href="Past_Year_Paper/BBA/dash.aspx" class="btn btn-primary">
+            <a href="Past_Year_Paper/BBA/dash.aspx" class="btn hero-btn">
                 Past Year Questions
             </a>
         </div>
@@ -512,7 +511,7 @@ body{
                 Notes
             </a>
 
-            <a href="Past_Year_Paper/BCS/dash.aspx" class="btn btn-primary">
+            <a href="Past_Year_Paper/BCS/dash.aspx" class="btn hero-btn">
                 Past Year Questions
             </a>
         </div>
@@ -527,7 +526,7 @@ body{
                 Notes
             </a>
 
-            <a href="Past_Year_Paper/Bit/dash.aspx" class="btn btn-primary">
+            <a href="Past_Year_Paper/Bit/dash.aspx" class="btn hero-btn">
                 Past Year Questions
             </a>
         </div>

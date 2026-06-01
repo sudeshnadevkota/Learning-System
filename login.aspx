@@ -1,55 +1,97 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/learning.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Learning_System.login" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/learning.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Learning_System.login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container-fluid" style="width: 100%; min-height: 80vh; display: flex; justify-content: center; align-items: center;">
-        <div class="container">
-            <div class="row" style="align-items: center; display: flex; justify-content: center;">
-                <div class="col-md-4">
-                    <div style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); padding: 40px 30px 20px 30px; border-radius: 10px;">
-                        <div style="text-align: center;">
-                            <h4 style="color: #2D3748;">Texas Learning Portal
-                            </h4>
-                        </div>
-                        <asp:Label ID="Label2" runat="server" Text="Username" Style="font-size: 13px;"></asp:Label><br />
-                        <div style="position: relative; width: 100%;">
-                            <asp:TextBox ID="Username" runat="server" required="true" Style="width: 100%; background-color: #3D3BDD0A; border: 1px solid #EAEAEA; outline: none; border-radius: 8px; font-size: 12px; padding: 6px 8px;" placeholder="Enter number or email"></asp:TextBox><br />
-                            <span style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);"><i class="bi bi-person-fill"></i></span>
-                        </div>
-                        <asp:Label ID="Label3" runat="server" Text="Password" Style="font-size: 13px;"></asp:Label><br />
-                        <div style="position: relative; width: 100%;">
-                            <asp:TextBox ID="Password" runat="server" TextMode="Password" required="true" Style="width: 100%; background-color: #3D3BDD0A; border: 1px solid #EAEAEA; outline: none; border-radius: 8px; font-size: 12px; padding: 6px 8px;" placeholder="Enter Password"> </asp:TextBox>
-                            <span id="togglePassword" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;"><i class="bi bi-eye-slash-fill"></i></span>
-                            <asp:Label ID="Label1" runat="server" Style="color: red;"></asp:Label>
-                        </div>
 
-                        <div style="width: 100%; padding: 15px 0px; text-align: right;">
-                            <a href="#" style="text-decoration: none;">Forgot Password</a>
-                        </div>
-                        <div style="text-align: center;">
-                            <asp:Button ID="Button1" runat="server" Text="Login" OnClick="Button1_Click" Style="width: 80%; border-radius: 25px; font-size: 20px; border: none; background-color: #2D3748; color: #ffffff; padding: 4px 0px;" />
-                        </div>
 
-                        <br />
-                        <p style="text-align: center">Don't have an account? <span><a href="register.aspx" style="text-decoration: none;">Sigup</a></span></p>
-                    </div>
-                </div>
+    <div style="
+        width: 100%;
+        min-height: calc(100vh - 120px);
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 80px;
+        box-sizing: border-box;
+    ">
+
+        <div style="
+            width: 350px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            padding: 40px 30px 20px 30px;
+            border-radius: 10px;
+        ">
+
+            <h4 style="text-align:center; color:#2D3748;">
+                Texas Learning Portal
+            </h4>
+
+            <br />
+
+            <asp:Label ID="Label2" runat="server" Text="Username" Style="font-size:13px;"></asp:Label>
+
+            <div style="position:relative;">
+                <asp:TextBox ID="Username" runat="server"
+                    style="width:100%; background:#3D3BDD0A; border:1px solid #EAEAEA;
+                           border-radius:8px; font-size:12px; padding:6px 8px;"
+                    placeholder="Enter number or email" />
+
+                <span style="position:absolute; right:10px; top:50%; transform:translateY(-50%);">
+                    <i class="bi bi-person-fill"></i>
+                </span>
             </div>
+
+            <br />
+
+            <asp:Label ID="Label3" runat="server" Text="Password" Style="font-size:13px;"></asp:Label>
+
+            <div style="position:relative;">
+                <asp:TextBox ID="Password" runat="server" TextMode="Password"
+                    style="width:100%; background:#3D3BDD0A; border:1px solid #EAEAEA;
+                           border-radius:8px; font-size:12px; padding:6px 8px;"
+                    placeholder="Enter Password" />
+
+                <span id="togglePassword"
+                    style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer;">
+                    <i class="bi bi-eye-slash-fill"></i>
+                </span>
+            </div>
+
+            <asp:Label ID="Label1" runat="server" Style="color:red;"></asp:Label>
+
+            <div style="text-align:right; padding:10px 0;">
+                <a href="#">Forgot Password</a>
+            </div>
+
+            <div style="text-align:center;">
+                <asp:Button ID="Button1" runat="server" Text="Login"
+                    OnClick="Button1_Click"
+                    style="width:80%; border-radius:25px; font-size:20px;
+                           background:#2D3748; color:white; border:none; padding:5px 0;" />
+            </div>
+
+            <p style="text-align:center; margin-top:10px;">
+                Don't have an account?
+                <a href="register.aspx">Signup</a>
+            </p>
+
         </div>
     </div>
+
     <script>
-        document.getElementById("togglePassword").addEventListener("click", function () {
-            var passwordField = document.getElementById("<%= Password.ClientID %>");
-            var toggleIcon = this.querySelector("i");
+document.getElementById("togglePassword").addEventListener("click", function () {
+  var passwordField = document.getElementById("<%= Password.ClientID %>");
+            var icon = this.querySelector("i");
 
             if (passwordField.type === "password") {
                 passwordField.type = "text";
-                toggleIcon.classList.remove("bi-eye-slash-fill");
-                toggleIcon.classList.add("bi-eye-fill");
+                icon.classList.remove("bi-eye-slash-fill");
+                icon.classList.add("bi-eye-fill");
             } else {
                 passwordField.type = "password";
-                toggleIcon.classList.remove("bi-eye-fill");
-                toggleIcon.classList.add("bi-eye-slash-fill");
+                icon.classList.remove("bi-eye-fill");
+                icon.classList.add("bi-eye-slash-fill");
             }
         });
-</script>
+    </script>
+
 </asp:Content>
