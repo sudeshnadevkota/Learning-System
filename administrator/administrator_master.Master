@@ -1,10 +1,10 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="administrator_master.master.cs" Inherits="Learning_System.administrator.administrator_master" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="administrator_master.master.cs" 
+    Inherits="Learning_System.administrator.administrator_master" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
     <title>Administrator Panel</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Bootstrap -->
@@ -14,204 +14,277 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
 
     <style>
+        :root {
+            --primary: #0B1F66;
+            --secondary: #081547;
+            --pink: #FF2D8D;
+            --baby-pink: #FF69B4;
+        }
+
         body {
             margin: 0;
-            background: #f4f7fc;
+            background: #f8fafd;
+            font-family: 'Segoe UI', sans-serif;
             overflow-x: hidden;
-            font-family: 'Segoe UI';
         }
 
+        /* TOPBAR */
         .topbar {
-            height: 70px;
+            height: 72px;
             background: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
             position: sticky;
             top: 0;
-            z-index: 999;
+            z-index: 1000;
         }
 
+        .logo-img {
+            width: 65px;
+        }
+
+        .welcome-text {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* SIDEBAR (DESKTOP) */
         .sidebar {
-            background: #111827;
-            min-height: calc(100vh - 70px);
-            padding: 20px 15px;
+            background: #0f1f4d;
+            min-height: calc(100vh - 72px);
+            padding: 20px 14px;
+            color: #d1d5db;
         }
 
         .sidebar .nav-link {
             color: #d1d5db;
-            padding: 12px 15px;
+            padding: 12px 16px;
             border-radius: 10px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             transition: 0.3s;
-            font-size: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
 
         .sidebar .nav-link:hover {
-            background: #1f2937;
-            color: white;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            transform: translateX(4px);
         }
 
-        .sidebar .active {
-            background: #2563eb;
-            color: white !important;
+        .sidebar .nav-link.active {
+            background: var(--primary);
+            color: #fff !important;
         }
 
+        /* MAIN CONTENT */
         .main-content {
-            padding: 25px;
+            padding: 24px;
+            min-height: calc(100vh - 72px);
         }
 
-        .logo-img {
-            width: 75px;
+        .btn-baby-pink {
+            background: var(--baby-pink);
+            color: #fff;
+            border: none;
         }
 
-        .welcome-text {
-            font-size: 18px;
-            font-weight: 600;
+        .btn-baby-pink:hover {
+            background: #ff4da3;
         }
 
         .footer {
             text-align: center;
-            padding: 10px;
+            padding: 14px;
             background: white;
-            color: gray;
-            font-size: 14px;
+            border-top: 1px solid #eee;
+            font-size: 13px;
         }
 
-        @media(max-width:768px) {
+        /* ================= MOBILE ================= */
 
-            .sidebar {
-                min-height: auto;
+        /* Hide sidebar on mobile */
+        @media (max-width: 991px) {
+            .sidebar-desktop {
+                display: none;
             }
 
-            .topbar {
-                height: auto;
-                padding: 10px 0;
+            .main-content {
+                padding: 18px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .welcome-text {
+                font-size: 14px;
             }
 
+            .logo-img {
+                width: 55px;
+            }
+        }
+
+        /* Offcanvas sidebar style */
+        .offcanvas {
+            background: #0f1f4d;
+            color: #fff;
+        }
+
+        .offcanvas .nav-link {
+            color: #d1d5db;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .offcanvas .nav-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .hamburger {
+            font-size: 26px;
+            cursor: pointer;
         }
     </style>
-
 </head>
 
 <body>
 
-    <form id="form1" runat="server">
+<form id="form1" runat="server">
 
-        <!-- Topbar -->
-        <div class="container-fluid topbar">
-            <div class="row align-items-center h-100">
+<!-- ================= TOPBAR ================= -->
+<div class="container-fluid topbar">
+    <div class="row align-items-center h-100 px-2">
 
-                <div class="col-lg-2 col-md-3 col-4 text-center">
-                    <a href="default_administrator.aspx">
-                        <img src="images/logo.png" class="logo-img" />
-                    </a>
-                </div>
-
-                <div class="col-lg-8 col-md-6 d-none d-md-block text-center">
-
-                    <asp:DataList ID="username" runat="server" RepeatColumns="1">
-                        <ItemTemplate>
-
-                            <div class="welcome-text">
-                                Welcome,
-                                <span class="text-primary">
-                                    <%# Eval("full_name") %>
-                                </span>
-                                | SuperAdmin
-                            </div>
-
-                        </ItemTemplate>
-                    </asp:DataList>
-
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-8 text-center">
-
-                    <a href="../logout.aspx" class="btn btn-danger btn-sm">
-                        <i class="bi bi-box-arrow-right"></i>
-                        Logout
-                    </a>
-
-                </div>
-
-            </div>
+        <!-- MOBILE MENU BUTTON -->
+        <div class="col-2 d-lg-none">
+            <i class="bi bi-list hamburger" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar"></i>
         </div>
 
-        <!-- Main Area -->
-        <div class="container-fluid">
-
-            <div class="row">
-
-                <!-- Sidebar -->
-                <div class="col-lg-2 col-md-3 sidebar">
-
-                    <ul class="nav flex-column">
-
-                        <li class="nav-item">
-                            <a href="default_administrator.aspx" class="nav-link active">
-                                <i class="bi bi-speedometer2"></i>
-                                Dashboard
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="access.aspx" class="nav-link">
-                                <i class="bi bi-person-lock"></i>
-                                Access Control
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-people"></i>
-                                Users
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-book"></i>
-                                Courses
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-graph-up"></i>
-                                Analytics
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-gear"></i>
-                                Settings
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <!-- Content -->
-                <div class="col-lg-10 col-md-9 main-content">
-
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
-
-                </div>
-
-            </div>
-
+        <!-- LOGO -->
+        <div class="col-lg-2 col-4">
+            <a href="default_administrator.aspx">
+                <img src="images/logo.png" class="logo-img" />
+            </a>
         </div>
 
-        <!-- Footer -->
-        <div class="footer">
-            Powered by RAS © 2026
+        <!-- WELCOME -->
+        <div class="col-lg-7 d-none d-lg-block text-center">
+            <asp:DataList ID="username" runat="server">
+                <ItemTemplate>
+                    <div class="welcome-text">
+                        Welcome,
+                        <span style="color: var(--primary);">
+                            <%# Eval("full_name") %>
+                        </span>
+                        | SuperAdmin
+                    </div>
+                </ItemTemplate>
+            </asp:DataList>
         </div>
 
-    </form>
+        <!-- LOGOUT -->
+        <div class="col-lg-3 col-6 text-end">
+            <a href="../logout.aspx" class="btn btn-baby-pink btn-sm px-3">
+                <i class="bi bi-box-arrow-right"></i>
+                <span class="d-none d-sm-inline">Logout</span>
+            </a>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+</div>
+
+<!-- ================= MAIN LAYOUT ================= -->
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- DESKTOP SIDEBAR -->
+        <div class="col-lg-2 sidebar sidebar-desktop">
+            <ul class="nav flex-column">
+
+                <li><a href="default_administrator.aspx" class="nav-link active">
+                    <i class="bi bi-speedometer2"></i> Dashboard
+                </a></li>
+
+                <li><a href="access.aspx" class="nav-link">
+                    <i class="bi bi-person-lock"></i> Access Control
+                </a></li>
+
+                <li><a href="#" class="nav-link">
+                    <i class="bi bi-people"></i> Users
+                </a></li>
+
+                <li><a href="#" class="nav-link">
+                    <i class="bi bi-book"></i> Courses
+                </a></li>
+
+                <li><a href="#" class="nav-link">
+                    <i class="bi bi-graph-up"></i> Analytics
+                </a></li>
+
+                <li><a href="#" class="nav-link">
+                    <i class="bi bi-gear"></i> Settings
+                </a></li>
+
+            </ul>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="col-lg-10 col-12 main-content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+    </div>
+</div>
+
+<!-- ================= MOBILE SIDEBAR (OFFCANVAS) ================= -->
+<div class="offcanvas offcanvas-start text-white" tabindex="-1" id="mobileSidebar">
+
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <div class="offcanvas-body">
+        <ul class="nav flex-column">
+
+            <li><a href="default_administrator.aspx" class="nav-link">
+                <i class="bi bi-speedometer2"></i> Dashboard
+            </a></li>
+
+            <li><a href="access.aspx" class="nav-link">
+                <i class="bi bi-person-lock"></i> Access Control
+            </a></li>
+
+            <li><a href="#" class="nav-link">
+                <i class="bi bi-people"></i> Users
+            </a></li>
+
+            <li><a href="#" class="nav-link">
+                <i class="bi bi-book"></i> Courses
+            </a></li>
+
+            <li><a href="#" class="nav-link">
+                <i class="bi bi-graph-up"></i> Analytics
+            </a></li>
+
+            <li><a href="#" class="nav-link">
+                <i class="bi bi-gear"></i> Settings
+            </a></li>
+
+        </ul>
+    </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<div class="footer">
+    Powered by RAS © 2026 | All Rights Reserved
+</div>
+
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
