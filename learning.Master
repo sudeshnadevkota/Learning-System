@@ -1,4 +1,6 @@
+<<<<<<< HEAD
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="learning.master.cs" Inherits="Learning_System.learning" %>
+
 
 
 <!DOCTYPE html>
@@ -364,6 +366,7 @@
 
 
 
+<<<<<<< HEAD
        /* FOOTER */
 
 .footer-custom{
@@ -399,6 +402,7 @@
 .custom-p-hover:hover{
     color:#F6B400 !important;
 }
+
     </style>
 </head>
 

@@ -1,3 +1,4 @@
+
 <%@ Page Title="Contact Us" Language="C#" MasterPageFile="~/learning.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="Learning_System.Contact" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -7,6 +8,7 @@
     <style>
         body {
             background: white;
+
             min-height: 100vh;
         }
 
@@ -18,6 +20,7 @@
             font-size: 3rem;
             font-weight: 800;
             color: linear-gradient(135deg,#0B1F66,#081547);
+
         }
 
         .contact-subtitle {
@@ -30,6 +33,7 @@
 
         .contact-card {
             background: #e8e7e6;
+
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
 
@@ -331,3 +335,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 
 </asp:Content>
+

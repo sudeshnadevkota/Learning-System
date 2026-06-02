@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -8,10 +8,12 @@ namespace Learning_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
 
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
+
             // Get the connection string from Web.config
             string connString = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
 

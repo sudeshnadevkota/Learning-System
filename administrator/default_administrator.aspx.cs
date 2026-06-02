@@ -9,6 +9,7 @@ namespace Learning_System.administrator
         string connectionString =
             ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
 
+     
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
