@@ -1336,7 +1336,9 @@
     <Content Include="slide\3.jpg" />
     <Content Include="slide\a.jpg" />
     <Content Include="slide\arik.png" />
+
     <Content Include="slide\attendence.png" />
+
     <Content Include="slide\bba2.jpg" />
     <Content Include="slide\bcs3.png" />
     <Content Include="slide\bcs4.png" />
@@ -1345,24 +1347,29 @@
     <Content Include="slide\bhmcard.png" />
     <Content Include="slide\bit.png" />
     <Content Include="slide\bit2.jpeg" />
+
     <Content Include="slide\canteen-03.png" />
     <Content Include="slide\certificate.png" />
+
     <Content Include="slide\chefcap.png" />
     <Content Include="slide\college.jpg" />
     <Content Include="slide\comcard.jpg" />
     <Content Include="slide\deepaksir.png" />
-    <Content Include="slide\devgroup.png" />
     <Content Include="slide\Durganand.png" />
     <Content Include="slide\facedetection.png" />
     <Content Include="slide\fs.jpg" />
     <Content Include="slide\haik.jpg" />
+
     <Content Include="slide\info.png" />
     <Content Include="slide\job.png" />
+
     <Content Include="slide\learn.png" />
     <Content Include="slide\learn2.png" />
     <Content Include="slide\learn3.png" />
     <Content Include="slide\learn4.jfif" />
+
     <Content Include="slide\leave.png" />
+
     <Content Include="slide\lgo.png" />
     <Content Include="slide\logo.png" />
     <Content Include="slide\manoj.png" />
@@ -1371,7 +1378,9 @@
     <Content Include="slide\mbacard.png" />
     <Content Include="slide\mcs.jpg" />
     <Content Include="slide\mcs2.png" />
+
     <Content Include="slide\QRinfo.png" />
+
     <Content Include="slide\rohitsri.png" />
     <Content Include="slide\saroj.png" />
     <Content Include="slide\sartak.png" />
@@ -1382,6 +1391,7 @@
     <Content Include="slide\sumansir.png" />
     <Content Include="slide\tara.png" />
     <Content Include="slide\Tcmit.png" />
+
     <Content Include="slide\td.jpg" />
     <Content Include="Past_Year_Paper\BBA\BBA.Master" />
     <Content Include="Past_Year_Paper\BCS\BCS.Master" />
@@ -1409,7 +1419,6 @@
     <Content Include="students\module_details.aspx" />
     <Content Include="students\ViewFile.aspx" />
     <Content Include="style.css" />
-    <Content Include="TextFile1.txt" />
     <Content Include="TreeLineImages\dash.gif" />
     <Content Include="TreeLineImages\dashminus.gif" />
     <Content Include="TreeLineImages\dashplus.gif" />
@@ -8961,7 +8970,9 @@
     <Content Include="Scripts\jquery-3.7.1.min.map" />
     <Content Include="students\student.Master" />
     <Content Include="verification\verification_dash.Master" />
+
     <Content Include="slide\Tcmit.webp" />
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
