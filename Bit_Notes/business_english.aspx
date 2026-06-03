@@ -1384,16 +1384,16 @@
 
 <script>
 function openSyllabus() {
-    document.getElementById("sylModal").classList.add("open");
+    document.getElementById("sylModal")?.classList.add("open");
     document.body.style.overflow = "hidden";
 }
 
 function closeSyllabus() {
-    document.getElementById("sylModal").classList.remove("open");
+    document.getElementById("sylModal")?.classList.remove("open");
     document.body.style.overflow = "";
 }
 
-document.getElementById("sylModal").addEventListener("click", function (e) {
+document.getElementById("sylModal")?.addEventListener("click", function (e) {
     if (e.target === this) closeSyllabus();
 });
 

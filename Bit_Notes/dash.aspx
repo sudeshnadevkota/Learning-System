@@ -1512,31 +1512,31 @@
       <div class="sem-subjects">
         ${sem.subjects.map((s, j) => `<div class="subject-link${i === 0 && j === 0 ? ' active' : ''}" onclick="pickSubject(this)"><div class="subject-dot"></div>${s}</div>`).join('')}
       </div>`;
-        menu.appendChild(el);
+        menu?.appendChild(el);
     });
 
-    function toggleSem(el) {
+    function toggleSem(el : any) {
         el.parentElement.classList.toggle('open');
     }
 
-    function pickSubject(el) {
+    function pickSubject(el : any) {
         document.querySelectorAll('.subject-link').forEach(l => l.classList.remove('active'));
         el.classList.add('active');
         if (window.innerWidth < 900) closeSidebar();
     }
 
     function scrollToCourses() {
-        document.getElementById('coursesSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('coursesSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('open');
-        document.getElementById('overlay').classList.toggle('show');
-    }
+    // function toggleSidebar() {
+    //     document.getElementById('sidebar').classList.toggle('open');
+    //     document.getElementById('overlay').classList.toggle('show');
+    // }
 
     function closeSidebar() {
-        document.getElementById('sidebar').classList.remove('open');
-        document.getElementById('overlay').classList.remove('show');
+        document.getElementById('sidebar')?.classList.remove('open');
+        document.getElementById('overlay')?.classList.remove('show');
     }
 </script>
 

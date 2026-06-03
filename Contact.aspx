@@ -8,7 +8,6 @@
     <style>
         body {
             background: white;
-
             min-height: 100vh;
         }
 
@@ -16,12 +15,31 @@
             padding: 70px 0;
         }
 
-        .contact-title {
-            font-size: 3rem;
-            font-weight: 800;
-            color: linear-gradient(135deg,#0B1F66,#081547);
+        
+        .title-banner {
+    background: linear-gradient(135deg, #0B1F66, #081547);
+    padding: 60px 20px;
+    border-radius:35px 35px 35px 35px;
+    text-align: center;
 
-        }
+    color: white;
+
+    margin-bottom: 40px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.title-banner h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.title-banner p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+}
 
         .contact-subtitle {
             max-width: 750px;
@@ -33,7 +51,6 @@
 
         .contact-card {
             background: #e8e7e6;
-
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
 
@@ -147,18 +164,16 @@
     <div class="container contact-section">
 
         <!-- Heading -->
-        <div class="text-center mb-5">
+        <div class="title-banner">
 
-            <h1 class="contact-title">
-                Contact Us
-            </h1>
+    <h1>Contact Us!!</h1>
 
-            <p class="contact-subtitle mt-3">
-                We'd love to hear from you! Whether you have questions about admissions,
-                courses, or anything else, our team is always ready to help.
-            </p>
+    <p>
+        We'd love to hear from you! Whether you have questions about admissions,
+        courses, or anything else, our team is always ready to help.
+    </p>
 
-        </div>
+</div>
 
         <div class="row g-4">
 
@@ -333,6 +348,5 @@
 
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-
 </asp:Content>
 
