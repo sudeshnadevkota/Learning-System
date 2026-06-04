@@ -316,10 +316,10 @@
                         <div id="first-submenu" class="submenu">
                             <ul>
                                 <li><a href="business_english.aspx">Business English</a></li>
-                                <li><a href="math_i.aspx">Math i</a></li>
-                                <li><a href="computer_network.aspx">Computer Network</a></li>
-                                <li><a href="c_programming.aspx">C Programming</a></li>
-                                <li><a href="basic_computer_architecture.aspx">BCA</a></li>
+                                <li><a href="math_i.aspx">Principls of Information Technology </a></li>
+                                <li><a href="computer_network.aspx">Introduction to C++ Programming</a></li>
+                                <li><a href="c_programming.aspx">Computer Related Mathematics and Statistics</a></li>
+                                <li><a href="basic_computer_architecture.aspx">Basic Computer Architecture</a></li>
 
                             </ul>
                         </div>
@@ -331,11 +331,11 @@
                         </a>
                         <div id="second-submenu" class="submenu">
                             <ul>
-                                <li><a href="internet_fundamental_and_applications.aspx">IFA</a></li>
-                                <li><a href="discrete_mathematics.aspx">Math II</a></li>
-                                <li><a href="java_programming.aspx">JAVA</a></li>
-                                <li><a href="advance_computer_network.aspx">ACN</a></li>
-                                <li><a href="operating_system.aspx">OS</a></li>
+                                <li><a href="internet_fundamental_and_applications.aspx">Human Computer Interaction</a></li>
+                                <li><a href="discrete_mathematics.aspx">Discrete Mathematics</a></li>
+                                <li><a href="java_programming.aspx">Data Communication and Networks</a></li>
+                                <li><a href="advance_computer_network.aspx">Object oriented programming</a></li>
+                                <li><a href="operating_system.aspx">Operating systems</a></li>
                             </ul>
                         </div>
                     </li>
@@ -345,11 +345,11 @@
                         </a>
                         <div id="third-submenu" class="submenu">
                             <ul>
-                                <li><a href="e_commerce.aspx">EC</a></li>
-                                <li><a href="data_structure_and_algorithm.aspx">DSA</a></li>
-                                <li><a href="web_technology(python).aspx">WT</a></li>
-                                <li><a href="digital_logics.aspx">DL</a></li>
-                                <li><a href="IndustryManagement.aspx">IM</a></li>
+                                <li><a href="e_commerce.aspx">Digital Electronics and Logic Design</a></li>
+                                <li><a href="data_structure_and_algorithm.aspx">Data Structure & Algorithm</a></li>
+                                <li><a href="web_technology(python).aspx">Industrial Management</a></li>
+                                <li><a href="digital_logics.aspx">Web Technology</a></li>
+                                <li><a href="IndustryManagement.aspx">Linux Administration</a></li>
                             </ul>
                         </div>
                     </li>

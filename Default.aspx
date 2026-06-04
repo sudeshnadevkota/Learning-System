@@ -100,24 +100,23 @@ body{
 
 /* BUTTONS */
 
-.hero-btn,
-.btn-primary{
-    background:var(--pink) !important;
-    color:white !important;
-    border:none !important;
-    border-radius:50px !important;
-    padding:11px 26px !important;
-    font-size:14px;
-    font-weight:700 !important;
-    transition:.3s;
-    box-shadow:0 8px 18px rgba(255,45,141,.25);
+
+
+.hero-btn {
+    background: var(--pink);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 11px 26px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: .3s;
+    box-shadow: 0 8px 18px rgba(255,45,141,.25);
 }
 
-.hero-btn:hover,
-.btn-primary:hover{
-    background:var(--yellow) !important;
-    color:var(--primary) !important;
-    transform:translateY(-2px);
+.hero-btn:hover {
+    background: var(--yellow);
+    color: var(--primary);
 }
 
 /* SECOND BUTTON */
@@ -347,7 +346,7 @@ body{
 <div id="services-section" class="container-fluid py-5">
 
     <h1 class="section-title text-center">
-        Our Services
+        Services Provided
     </h1>
 
     <p class="section-subtitle text-center mb-5">
@@ -366,7 +365,7 @@ body{
         Attendance
     </h5>
 
-    <a href="https://texasattendance.com/" class="btn btn-primary">
+    <a href="https://texasattendance.com/" class="btn hero-btn">
         Open
     </a>
 
@@ -382,7 +381,7 @@ body{
         Certificate
     </h5>
 
-    <a href="https://certificate.texascollegenepal.com/Default.aspx" class="btn btn-primary">
+    <a href="https://certificate.texascollegenepal.com/Default.aspx" class="btn hero-btn">
         Open
     </a>
 
@@ -398,7 +397,7 @@ body{
                 Leave
             </h5>
 
-            <a href="" class="btn btn-primary">
+            <a href="" class="btn hero-btn">
                 Open
             </a>
 
@@ -414,7 +413,7 @@ body{
                 Jobs
             </h5>
 
-            <a href="https://texasjobportal.com/default.aspx  QA" class="btn btn-primary">
+            <a href="https://texasjobportal.com/default.aspx  " class="btn hero-btn">
                 Open
             </a>
 
@@ -434,7 +433,7 @@ body{
                 Information
             </h5>
 
-            <a href="information.aspx" class="btn btn-primary">
+            <a href="information.aspx" class="btn hero-btn">
                 Open
             </a>
 
@@ -449,14 +448,44 @@ body{
 <div id="courses-section" class="container-fluid py-5">
 
     <h1 class="section-title text-center">
-        Browse By Your Degree
+        Get Your Learning Material
     </h1>
 
     <p class="section-subtitle text-center mb-5">
-        Discover curated notes across programs.
+        Access study materials and previous exam papers for your courses.
     </p>
 
     <div class="row justify-content-center">
+
+           <!-- BIT -->
+
+   <div class="nima-card card">
+       <img src="slide/bit.png" class="card-img-top" />
+       <h5 class="card-title text-center">BIT</h5>
+
+       <a href="Bit_Notes/dash.aspx" class="btn btn-secondary mb-2">
+           Notes
+       </a>
+
+       <a href="Past_Year_Paper/Bit/dash.aspx" class="btn hero-btn">
+           Past Year Questions
+       </a>
+   </div>
+
+    <!-- BCS -->
+
+<div class="nima-card card">
+    <img src="slide/bcs4.png" class="card-img-top" />
+    <h5 class="card-title text-center">BCS</h5>
+
+    <a href="Bcs_Notes/dash.aspx" class="btn btn-secondary mb-2">
+        Notes
+    </a>
+
+    <a href="Past_Year_Paper/BCS/dash.aspx" class="btn hero-btn">
+        Past Year Questions
+    </a>
+</div>
 
         <!-- MBA -->
 
@@ -468,7 +497,7 @@ body{
                 Notes
             </a>
 
-            <a href="Past_Year_Paper/MBA/dash.aspx" class="btn btn-primary">
+            <a href="Past_Year_Paper/MBA/dash.aspx" class="btn hero-btn">
                 Past Year Questions
             </a>
         </div>
@@ -483,7 +512,7 @@ body{
                 Notes
             </a>
 
-            <a href="Past_Year_Paper/MCS/dash.aspx" class="btn btn-primary">
+            <a href="Past_Year_Paper/MCS/dash.aspx" class="btn hero-btn">
                 Past Year Questions
             </a>
         </div>
@@ -498,40 +527,13 @@ body{
                 Notes
             </a>
 
-            <a href="Past_Year_Paper/BBA/dash.aspx" class="btn btn-primary">
+            <a href="Past_Year_Paper/BBA/dash.aspx" class="btn hero-btn">
                 Past Year Questions
             </a>
         </div>
 
-        <!-- BCS -->
-
-        <div class="nima-card card">
-            <img src="slide/bcs4.png" class="card-img-top" />
-            <h5 class="card-title text-center">BCS</h5>
-
-            <a href="Bcs_Notes/dash.aspx" class="btn btn-secondary mb-2">
-                Notes
-            </a>
-
-            <a href="Past_Year_Paper/BCS/dash.aspx" class="btn btn-primary">
-                Past Year Questions
-            </a>
-        </div>
-
-        <!-- BIT -->
-
-        <div class="nima-card card">
-            <img src="slide/bit.png" class="card-img-top" />
-            <h5 class="card-title text-center">BIT</h5>
-
-            <a href="Bit_Notes/dash.aspx" class="btn btn-secondary mb-2">
-                Notes
-            </a>
-
-            <a href="Past_Year_Paper/Bit/dash.aspx" class="btn btn-primary">
-                Past Year Questions
-            </a>
-        </div>
+        
+     
 
     </div>
 
