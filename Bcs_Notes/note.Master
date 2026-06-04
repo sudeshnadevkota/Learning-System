@@ -1,6 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Bcs_Notes.note" %>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,39 +10,43 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link href="mcsdash.css" rel="stylesheet" />
+
     <style>
-        /* Sidebar Styles */
+        /* ── Google Font ── */
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap');
+
+        /* ══ SIDEBAR ══ */
         #sidebar {
             position: fixed;
             top: 5rem;
             left: 0;
             width: 0;
             height: calc(100vh - 5rem);
-            background-color: #343a40;
+            background-color: #12183a;
             color: #fff;
             overflow-x: hidden;
             overflow-y: auto;
             z-index: 999;
             transition: width 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+            border-right: 1px solid rgba(255,255,255,0.07);
         }
 
-        #content {
-            margin-top: 5rem; /* Adjusted to account for navbar height */
-            margin-left: 0;
-            width: 100%;
-            transition: margin-left 0.3s ease;
-        }
+        #sidebar::-webkit-scrollbar { width: 4px; }
+        #sidebar::-webkit-scrollbar-track { background: transparent; }
+        #sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
 
-        #sidebar a {
-            color: #fff;
-            text-decoration: none;
+        #sidebar::before {
+            content: "SEMESTERS";
             display: block;
-            padding: 0.5rem 1rem;
+            font-family: 'Sora', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.35);
+            padding: 18px 20px 10px;
+            white-space: nowrap;
         }
-
-            #sidebar a:hover {
-                background-color: #495057;
-            }
 
         #sidebar ul {
             padding: 0;
@@ -52,136 +54,198 @@
             margin: 0;
         }
 
-            #sidebar ul li {
-                padding: 0;
-            }
-
-        #sidebar .submenu {
-            display: none;
-            padding-left: 1rem;
+        /* Semester top-level link */
+        #sidebar > ul > li > a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 11px 16px;
+            font-family: 'Sora', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            border-left: 3px solid transparent;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
+            gap: 10px;
+            white-space: nowrap;
         }
 
-        /* Open Sidebar Styles */
-        .sidebar-open #sidebar {
-            width: 30%;
+        #sidebar > ul > li > a:hover {
+            background: rgba(255,255,255,0.06);
+            color: #fff;
         }
 
-        .sidebar-open #content {
-            margin-left: 30%;
+        #sidebar > ul > li.active-sem > a {
+            border-left-color: #FF2D8D;
+            background: rgba(255,45,141,0.10);
+            color: #fff;
         }
 
         .submenu-toggle {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             width: 100%;
+            gap: 8px;
         }
 
-        /* Toggle Icon Styles */
         .fas.fa-caret-down {
             transition: transform 0.3s ease;
-            font-size: 1rem;
+            font-size: 11px;
+            opacity: 0.5;
+            margin-left: auto;
         }
 
-        .rotate {
-            transform: rotate(180deg);
+        .rotate { transform: rotate(180deg); }
+
+        /* Submenu */
+        #sidebar .submenu {
+            display: none;
+            padding: 4px 0 8px 0;
+            background: rgba(0,0,0,0.15);
         }
 
-        /* Responsive Menu Bar */
+        #sidebar .submenu ul li a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 7px 16px 7px 36px;
+            font-size: 13px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        #sidebar .submenu ul li a::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            flex-shrink: 0;
+        }
+
+        #sidebar .submenu ul li a:hover {
+            color: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.04);
+        }
+
+        #sidebar .submenu ul li a:hover::before {
+            background: rgba(255,255,255,0.6);
+        }
+
+        #sidebar .submenu ul li.active-subject > a {
+            color: #FF2D8D;
+            font-weight: 500;
+        }
+
+        #sidebar .submenu ul li.active-subject > a::before {
+            background: #FF2D8D;
+        }
+
+        /* Content */
+        #content {
+            margin-top: 5rem;
+            margin-left: 0;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        .sidebar-open #sidebar { width: 260px; }
+        .sidebar-open #content { margin-left: 260px; width: calc(100% - 260px); }
+
+        /* Menu Bar */
         #menu-bar {
-            padding-top: 6rem; /* Adjusted for the fixed navbar */
+            padding-top: 6rem;
             position: fixed;
             left: 10rem;
             z-index: 1000;
         }
 
-        /* Media Queries */
-        @media (max-width: 768px) {
-            #menu-bar {
-                left: 0.3rem;
-                top: -4.5rem;
-                padding: 0;
-            }
+        #menu-bar button {
+            background: rgba(255,255,255,0.08) !important;
+            border: 1px solid rgba(255,255,255,0.12) !important;
+            border-radius: 8px;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-                #menu-bar button {
-                    font-size: 1.5rem;
-                    padding: 10px;
-                }
+        #menu-bar button:hover {
+            background: rgba(255,255,255,0.15) !important;
+        }
 
+        #icon { color: #fff !important; font-size: 13px; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
             .sidebar-open #sidebar {
-                width: 60%;
+                width: 260px;
+                box-shadow: 4px 0 24px rgba(0,0,0,0.4);
             }
-
             .sidebar-open #content {
-                margin-left: 60%;
-                width: 40%;
+                margin-left: 0 !important;
+                width: 100% !important;
             }
-
-            #content {
-                padding-top: 10%;
-                width: 100%;
-                margin-left: 0px;
-                padding-left: 2rem;
+            #sidebar-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.45);
+                z-index: 998;
             }
+            .sidebar-open #sidebar-overlay { display: block; }
+            #content { padding-left: 0.75rem; padding-right: 0.75rem; }
+            #menu-bar { left: 0.5rem; padding-top: 5.6rem; }
         }
 
         @media (max-width: 576px) {
-            #menu-bar button {
-                font-size: 1.2rem;
-                margin-top: 10rem;
-            }
-
-            .sidebar-open #sidebar {
-                width: 75%;
-            }
-
-            .sidebar-open #content {
-                margin-left: 75%;
-                width: 25%;
-            }
+            .sidebar-open #sidebar { width: 240px; }
+            #menu-bar { left: 0.3rem; }
         }
     </style>
-    <title>BCS notes</title>
+
+    <title>BCS Notes</title>
 </head>
 <body>
     <form id="form2" runat="server">
+        <!-- Mobile sidebar overlay -->
+        <div id="sidebar-overlay" onclick="closeSidebarOverlay()"></div>
+
         <!-- Header -->
-        <nav class="navbar navbar-expand-lg d-flex shad align-items-center justify-content-between flex-wrap navbar-light bg-light shadow  bg-body rounded" style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1rem;">
-            <!-- Logo Section -->
+        <nav class="navbar navbar-expand-lg d-flex shad align-items-center justify-content-between flex-wrap navbar-light bg-light shadow bg-body rounded"
+            style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1rem;">
             <div class="d-flex align-items-center" style="flex: 1; justify-content: center;">
                 <a href="../../Default.aspx">
-                    <%--                    <img src="logo/logo.png" alt="Logo" class="img-fluid" style="width: 190px; height: 80px; object-fit: contain;">--%>
                     <img src="logo/logo.png" alt="Logo" width="150">
                 </a>
             </div>
-            <!-- Title Section -->
             <div class="d-flex align-items-center justify-content-center" style="flex: 1;">
                 <h3 style="font-size: 2rem; font-weight: bold; color: #002366; margin: 0;">BCS NOTES</h3>
             </div>
-            <!-- Spacer to balance the right side -->
-            <div class="d-none d-md-flex align-items-center" style="flex: 1; justify-content: flex-end;">
-                <!-- You can add additional items here if needed -->
-            </div>
+            <div class="d-none d-md-flex align-items-center" style="flex: 1; justify-content: flex-end;"></div>
         </nav>
 
         <div class="d-flex">
             <div id="sidebar">
                 <ul>
-
-
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'first')">
                             <span class="submenu-toggle">First Sem <i class="fas fa-caret-down first"></i></span>
                         </a>
                         <div id="first-submenu" class="submenu">
                             <ul>
-                                <li><a href="basic_computer_architecture.aspx">BCA</a></li>
-                                <li><a href="business_english.aspx">Business English</a></li>
+                                <li><a href="business_english.aspx">English</a></li>
                                 <li><a href="computer_network.aspx">Computer Network</a></li>
-                                <li><a href="discrete_math.aspx">Discrete Math</a></li>
-                                <li><a href="security_in_computing.aspx">Security Computing</a></li>
-                                <li><a href="CProgamming.aspx">C prog</a></li>
-
+                                <li><a href="discrete_math.aspx">Discrete Mathematics and Probability</a></li>
+                                <li><a href="security_in_computing.aspx">Computer System</a></li>
+                                <li><a href="CProgamming.aspx">Principle of Programming</a></li>
                             </ul>
                         </div>
                     </li>
@@ -192,33 +256,30 @@
                         </a>
                         <div id="second-submenu" class="submenu">
                             <ul>
-                                <li><a href="security_in_computing.aspx">Security Computing</a></li>
-                                <li><a href="advance_computer_architecture.aspx">ACA</a></li>
-                                <li><a href="advance_computer_network.aspx">ACN</a></li>
-                                <li><a href="system_analysis_and_design.aspx">SAD</a></li>
-                                <li><a href="Python.aspx">Python.aspx</a></li>
-                                <li><a href="operating_system.aspx">OS</a></li>
-
-
+                                <li><a href="security_in_computing.aspx">Computetrr Ethics</a></li>
+                                <li><a href="advance_computer_network.aspx">Data Communication & Networking</a></li>
+                                <li><a href="system_analysis_and_design.aspx">Object Oriented Programming</a></li>
+                                <li><a href="Python.aspx">Computer Organization</a></li>
+                                <li><a href="operating_system.aspx">Operating System</a></li>
                             </ul>
                         </div>
                     </li>
+
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'third')">
                             <span class="submenu-toggle">Third Sem <i class="fas fa-caret-down third"></i></span>
                         </a>
                         <div id="third-submenu" class="submenu">
                             <ul>
-                                <li><a href="digital_logic.aspx">DL</a></li>
-                                <li><a href="windows_server_2016.aspx">Win server2016</a></li>
-                                <li><a href="cyber_security_law_and_policy.aspx">CSLP</a>
-                                <li><a href="e_commerce.aspx">EC</a></li>
-                                <li><a href="system_analysis_and_design.aspx">SE(SAD)</a></li>
-
-
+                                <li><a href="digital_logic.aspx">Software Engineering Fundamentals</a></li>
+                                <li><a href="windows_server_2016.aspx">Human Computer Interaction</a></li>
+                                <li><a href="cyber_security_law_and_policy.aspx">Applied Statistics</a></li>
+                                <li><a href="e_commerce.aspx">Microsoft Windows Server Administration</a></li>
+                                <li><a href="system_analysis_and_design.aspx">Cyber Security Leagal Issues & Policy Analysis</a></li>
                             </ul>
                         </div>
                     </li>
+
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'fourth')">
                             <span class="submenu-toggle">Fourth Sem <i class="fas fa-caret-down fourth"></i></span>
@@ -227,12 +288,9 @@
                             <ul>
                                 <li><a href="web_designing.aspx">Web Designing</a></li>
                                 <li><a href="Technopreneurship.aspx">Technopreneurship.aspx</a></li>
-
                                 <li><a href="wireless_communications.aspx">Wireless Communications</a></li>
                                 <li><a href="ethical_hacking.aspx">Ethical Hacking</a></li>
                                 <li><a href="database_management_system.aspx">DMS</a></li>
-
-
                             </ul>
                         </div>
                     </li>
@@ -263,11 +321,9 @@
                                 <li><a href="industrial_management.aspx">Industry Management</a></li>
                                 <li><a href="InformationSecurityMangement.aspx">ISM</a></li>
                                 <li><a href="SoftwareProjectManagement.aspx">SPM</a></li>
-
                             </ul>
                         </div>
                     </li>
-
 
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'seventh')">
@@ -278,7 +334,6 @@
                                 <li><a href="system_software_and_administration.aspx">SS & A</a></li>
                                 <li><a href="advance_switching_tech_and_trroubleshoot.aspx">AST &T</a></li>
                                 <li><a href="project_work.aspx">project work</a></li>
-
                                 <li><a href="CluoudComputing.aspx">Cloud Computing</a></li>
                             </ul>
                         </div>
@@ -290,104 +345,123 @@
                         </a>
                         <div id="eighth-submenu" class="submenu">
                             <ul>
-
                                 <li><a href="industrial_training.aspx">Industry Training</a></li>
                             </ul>
                         </div>
                     </li>
-
-
-
-
-
                 </ul>
             </div>
 
             <!-- Menu Bar -->
-            <div id="menu-bar" class="top:2rem; ">
-                <button type="button" onclick="toggleSidebar()" class="btn " style="background: none;">
-                    <%--                    <i class="fa fa-bars" aria-hidden="true" style="color:black;"></i>--%>
+            <div id="menu-bar">
+                <button type="button" onclick="toggleSidebar()" class="btn">
                     <i class="fa fa-arrow-right" aria-hidden="true" style="color: black;" id="icon"></i>
-
                 </button>
             </div>
 
             <!-- Content Area -->
-            <div id="content" style="padding-top: 4%; width: 90%; margin-left: 5%;">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
+            <div id="content" style="padding-top: 1%; width: 90%; margin-left: 5%;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
             </div>
         </div>
     </form>
 
-
     <script>
-        function toggleSidebar() {
-            var sidebar = document.getElementById('sidebar');
-            var content = document.getElementById('content');
-            var menuBar = document.getElementById('menu-bar');
-            var sidebarOpen = document.body.classList.toggle('sidebar-open');
-            var icon = document.getElementById('icon');
+function isMobile() { return window.innerWidth <= 900; }
 
-            if (sidebarOpen) {
-                sidebar.style.width = '20%'; // Adjust to desired width
+function toggleSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    var content = document.getElementById('content');
+    var menuBar = document.getElementById('menu-bar');
+    var icon = document.getElementById('icon');
+    var sidebarOpen = document.body.classList.toggle('sidebar-open');
 
-                content.style.marginLeft = '20%'; // Adjust to match sidebar width
-                content.style.width = '80%'; // Adjust content width accordingly
-                menuBar.style.left = '20%'; // Align menu bar with sidebar
-                menuBar.style.paddingTop = '-0.7rem'; // Adjust padding
-                icon.style.transform = 'rotate(180deg)'; // Rotate icon when sidebar is open
-            } else {
-                sidebar.style.width = '0'; // Collapse sidebar
-                content.style.marginLeft = '0'; // Adjust content margin
-                content.style.width = '100%'; // Full width for content
-                menuBar.style.left = '3%'; // Align menu bar when sidebar is closed
-                icon.style.transform = 'rotate(0deg)'; // Reset icon rotation
-            }
+    if (sidebarOpen) {
+        sidebar.style.width = '260px';
+        if (!isMobile()) {
+            content.style.marginLeft = '260px';
+            content.style.width = 'calc(100% - 260px)';
+            menuBar.style.left = '260px';
         }
+        icon.style.transform = 'rotate(180deg)';
+    } else {
+        sidebar.style.width = '0';
+        content.style.marginLeft = '0';
+        content.style.width = '100%';
+        menuBar.style.left = '0.5rem';
+        icon.style.transform = 'rotate(0deg)';
+    }
+}
 
+function closeSidebarOverlay() {
+    document.body.classList.remove('sidebar-open');
+    document.getElementById('sidebar').style.width = '0';
+    document.getElementById('content').style.marginLeft = '0';
+    document.getElementById('content').style.width = '100%';
+    document.getElementById('icon').style.transform = 'rotate(0deg)';
+}
 
-        function toggleSubmenu(event, submenuId) {
-            event.preventDefault();
+function toggleSubmenu(event, submenuId) {
+    event.preventDefault();
+    var submenu = document.getElementById(submenuId + '-submenu');
+    var icon = document.querySelector('.' + submenuId);
+    var parentLi = submenu.parentElement;
 
-            // Get submenu and icon elements
-            var submenu = document.getElementById(submenuId + '-submenu');
-            var icon = document.querySelector('.' + submenuId);
+    document.body.classList.add('sidebar-open');
 
-            // Ensure sidebar is open
-            document.body.classList.add('sidebar-open');
-
-            // Toggle the submenu visibility
-            if (submenu.style.display === 'block') {
-                submenu.style.display = 'none'; // Hide submenu
-                icon.classList.remove('rotate'); // Reset icon rotation
-            } else {
-                submenu.style.display = 'block'; // Show submenu
-                icon.classList.add('rotate'); // Rotate icon
-            }
+    document.querySelectorAll('#sidebar > ul > li').forEach(function (li) {
+        if (li !== parentLi) {
+            li.classList.remove('active-sem');
+            var otherSubmenu = li.querySelector('.submenu');
+            var otherIcon = li.querySelector('.fas.fa-caret-down');
+            if (otherSubmenu) otherSubmenu.style.display = 'none';
+            if (otherIcon) otherIcon.classList.remove('rotate');
         }
+    });
 
+    if (submenu.style.display === 'block') {
+        submenu.style.display = 'none';
+        if (icon) icon.classList.remove('rotate');
+        parentLi.classList.remove('active-sem');
+    } else {
+        submenu.style.display = 'block';
+        if (icon) icon.classList.add('rotate');
+        parentLi.classList.add('active-sem');
+    }
+}
 
-        window.onload = function () {
-            var sidebar = document.getElementById('sidebar');
-            var content = document.getElementById('content');
-            var menuBar = document.getElementById('menu-bar');
-            var icon = document.getElementById('icon');
+window.onload = function () {
+    var sidebar = document.getElementById('sidebar');
+    var content = document.getElementById('content');
+    var menuBar = document.getElementById('menu-bar');
+    var icon = document.getElementById('icon');
 
-            // Open sidebar by default
-            document.body.classList.add('sidebar-open');
-            sidebar.style.width = '20%'; // Adjust to desired width
-            content.style.marginLeft = '20%'; // Adjust to match sidebar width
-            content.style.width = '80%'; // Adjust content width accordingly
-            menuBar.style.left = '20%'; // Align menu bar with sidebar
-            menuBar.style.paddingTop = '-0.7rem'; // Adjust padding
-            icon.style.transform = 'rotate(180deg)'; // Rotate icon when sidebar is open
+    if (!isMobile()) {
+        document.body.classList.add('sidebar-open');
+        sidebar.style.width = '260px';
+        content.style.marginLeft = '260px';
+        content.style.width = 'calc(100% - 260px)';
+        menuBar.style.left = '260px';
+        icon.style.transform = 'rotate(180deg)';
+    } else {
+        menuBar.style.left = '0.5rem';
+    }
+
+    // Auto highlight current page
+    var currentPage = window.location.pathname.split('/').pop().toLowerCase();
+    var links = document.querySelectorAll('#sidebar .submenu ul li a');
+    links.forEach(function (link) {
+        if (link.getAttribute('href').toLowerCase() === currentPage) {
+            link.parentElement.classList.add('active-subject');
+            var parentSubmenu = link.closest('.submenu');
+            var parentLi = parentSubmenu.parentElement;
+            parentSubmenu.style.display = 'block';
+            parentLi.classList.add('active-sem');
+            var caret = parentLi.querySelector('.fas.fa-caret-down');
+            if (caret) caret.classList.add('rotate');
         }
-
-
-    </script>
+    });
+}
+</script>
 </body>
 </html>
-
-
-<li><a href="web_designing.aspx">Web Designing</a></li>
