@@ -316,7 +316,7 @@
     position: relative; z-index: 2;
   }
 
-  .hero-badge {
+/*  .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.13);
@@ -327,13 +327,14 @@
     letter-spacing: 0.5px;
     margin-bottom: 18px;
     width: fit-content;
-  }
-  .hero-badge .dot {
+  }*/
+
+/*  .hero-badge .dot {
     width: 6px; height: 6px; border-radius: 50%;
     background: #F5C542;
     box-shadow: 0 0 6px #F5C542;
     animation: pulse 2s ease-in-out infinite;
-  }
+  }*/
   @keyframes pulse {
     0%,100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.5; transform: scale(0.8); }
@@ -1097,8 +1098,7 @@
       </div>
 
       <div class="hero-content">
-        <div class="hero-badge">
-       </div>
+        
 
         <div class="hero-title">
           Shape the Future<br>
@@ -1455,11 +1455,11 @@
         menu?.appendChild(el);
     });
 
-    function toggleSem(el : any) {
+    function toggleSem(el: any) {
         el.parentElement.classList.toggle('open');
     }
 
-    function pickSubject(el : any) {
+    function pickSubject(el: any) {
         document.querySelectorAll('.subject-link').forEach(l => l.classList.remove('active'));
         el.classList.add('active');
         if (window.innerWidth < 900) closeSidebar();
