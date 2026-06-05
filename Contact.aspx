@@ -1,3 +1,4 @@
+
 <%@ Page Title="Contact Us" Language="C#" MasterPageFile="~/learning.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="Learning_System.Contact" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -6,7 +7,7 @@
 
     <style>
         body {
-            background: linear-gradient(135deg,#0B1F66,#081547);
+            background: white;
             min-height: 100vh;
         }
 
@@ -14,22 +15,42 @@
             padding: 70px 0;
         }
 
-        .contact-title {
-            font-size: 3rem;
-            font-weight: 800;
-            color: white;
-        }
+        
+        .title-banner {
+    background: linear-gradient(135deg, #0B1F66, #081547);
+    padding: 60px 20px;
+    border-radius:35px 35px 35px 35px;
+    text-align: center;
+
+    color: white;
+
+    margin-bottom: 40px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.title-banner h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.title-banner p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+}
 
         .contact-subtitle {
             max-width: 750px;
             margin: auto;
-            color: #555;
+            color: dimgray;
             font-size: 17px;
             line-height: 1.8;
-        }
+        } 
 
         .contact-card {
-            background: white;
+            background: #e8e7e6;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
 
@@ -59,7 +80,7 @@
             width: 58px;
             height: 58px;
 
-            background: linear-gradient(135deg, #0d6efd, #4dabff);
+            background:linear-gradient(135deg,#0B1F66,#081547);
 
             border-radius: 18px;
 
@@ -82,6 +103,8 @@
             margin-bottom: 4px;
         }
 
+        
+
         .form-control {
             border-radius: 15px;
             border: 1px solid #d6e4ff;
@@ -101,7 +124,7 @@
         }
 
         .btn-contact {
-            background: linear-gradient(135deg, #0d6efd, #3b82f6);
+            background: linear-gradient(135deg,#0B1F66,#081547);
             border: none;
 
             border-radius: 15px;
@@ -119,6 +142,7 @@
         .btn-contact:hover {
             transform: scale(1.02);
             box-shadow: 0 10px 25px rgba(13,110,253,0.25);
+            
         }
 
         .map-container iframe {
@@ -140,18 +164,16 @@
     <div class="container contact-section">
 
         <!-- Heading -->
-        <div class="text-center mb-5">
+        <div class="title-banner">
 
-            <h1 class="contact-title">
-                Contact Us
-            </h1>
+    <h1>Contact Us!!</h1>
 
-            <p class="contact-subtitle mt-3">
-                We'd love to hear from you! Whether you have questions about admissions,
-                courses, or anything else, our team is always ready to help.
-            </p>
+    <p>
+        We'd love to hear from you! Whether you have questions about admissions,
+        courses, or anything else, our team is always ready to help.
+    </p>
 
-        </div>
+</div>
 
         <div class="row g-4">
 
@@ -326,5 +348,5 @@
 
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-
 </asp:Content>
+

@@ -1,10 +1,10 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="administrator_master.master.cs" Inherits="Learning_System.administrator.administrator_master" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="administrator_master.master.cs" 
+    Inherits="Learning_System.administrator.administrator_master" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
     <title>Administrator Panel</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Bootstrap -->
@@ -13,319 +13,278 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: #0B1F66;
+            --secondary: #081547;
+            --pink: #FF2D8D;
+            --baby-pink: #FF69B4;
         }
 
         body {
-            background: #f1f5f9;
-            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: #f8fafd;
+            font-family: 'Segoe UI', sans-serif;
             overflow-x: hidden;
         }
 
-        a {
-            text-decoration: none;
-        }
-
         /* TOPBAR */
-
         .topbar {
-            height: 75px;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            height: 72px;
+            background: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
             position: sticky;
             top: 0;
-            z-index: 999;
-            padding: 0 20px;
+            z-index: 1000;
         }
 
         .logo-img {
-            width: 60px;
-            transition: 0.3s;
-        }
-
-        .logo-img:hover {
-            transform: scale(1.05);
-        }
-
-        .welcome-box {
-            background: #eff6ff;
-            padding: 10px 20px;
-            border-radius: 14px;
-            display: inline-block;
-            border: 1px solid #dbeafe;
+            width: 65px;
         }
 
         .welcome-text {
-            font-size: 15px;
-            font-weight: 500;
-            color: #334155;
+            font-size: 16px;
+            font-weight: 600;
         }
 
-        .welcome-text span {
-            color: #2563eb;
-            font-weight: 700;
-        }
-
-        .logout-btn {
-            border-radius: 12px;
-            padding: 10px 18px;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .logout-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* SIDEBAR */
-
+        /* SIDEBAR (DESKTOP) */
         .sidebar {
-            background: linear-gradient(180deg, #0f172a, #111827);
-            min-height: calc(100vh - 75px);
-            padding: 25px 15px;
-            position: sticky;
-            top: 75px;
-        }
-
-        .sidebar-title {
-            color: #94a3b8;
-            font-size: 13px;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-            letter-spacing: 1px;
-            padding-left: 12px;
+            background: #0f1f4d;
+            min-height: calc(100vh - 72px);
+            padding: 20px 14px;
+            color: #d1d5db;
         }
 
         .sidebar .nav-link {
-            color: #cbd5e1;
-            padding: 14px 16px;
-            border-radius: 14px;
-            margin-bottom: 10px;
-            font-size: 15px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            color: #d1d5db;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 6px;
+            transition: 0.3s;
             display: flex;
+            gap: 10px;
             align-items: center;
-            gap: 12px;
-        }
-
-        .sidebar .nav-link i {
-            font-size: 18px;
         }
 
         .sidebar .nav-link:hover {
-            background: rgba(255,255,255,0.08);
-            color: white;
-            transform: translateX(5px);
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            transform: translateX(4px);
         }
 
-        .sidebar .active {
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
-            color: white !important;
-            box-shadow: 0 8px 20px rgba(37,99,235,0.3);
+        .sidebar .nav-link.active {
+            background: var(--primary);
+            color: #fff !important;
         }
 
         /* MAIN CONTENT */
-
         .main-content {
-            padding: 30px;
-            min-height: calc(100vh - 75px);
+            padding: 24px;
+            min-height: calc(100vh - 72px);
         }
 
-        .content-card {
-            background: white;
-            border-radius: 24px;
-            padding: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+        .btn-baby-pink {
+            background: var(--baby-pink);
+            color: #fff;
+            border: none;
         }
 
-        /* FOOTER */
+        .btn-baby-pink:hover {
+            background: #ff4da3;
+        }
 
         .footer {
-            background: white;
             text-align: center;
-            padding: 15px;
-            font-size: 14px;
-            color: #64748b;
-            border-top: 1px solid #e2e8f0;
+            padding: 14px;
+            background: white;
+            border-top: 1px solid #eee;
+            font-size: 13px;
         }
 
-        /* MOBILE */
+        /* ================= MOBILE ================= */
 
-        @media(max-width: 768px) {
-
-            .topbar {
-                height: auto;
-                padding: 15px 10px;
-            }
-
-            .sidebar {
-                min-height: auto;
-                position: relative;
-                top: 0;
+        /* Hide sidebar on mobile */
+        @media (max-width: 991px) {
+            .sidebar-desktop {
+                display: none;
             }
 
             .main-content {
                 padding: 18px;
             }
+        }
 
-            .welcome-box {
-                margin-top: 10px;
+        @media (max-width: 576px) {
+            .welcome-text {
+                font-size: 14px;
             }
 
-            .logout-btn {
-                width: 100%;
-                margin-top: 10px;
+            .logo-img {
+                width: 55px;
             }
         }
-    </style>
 
+        /* Offcanvas sidebar style */
+        .offcanvas {
+            background: #0f1f4d;
+            color: #fff;
+        }
+
+        .offcanvas .nav-link {
+            color: #d1d5db;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .offcanvas .nav-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .hamburger {
+            font-size: 26px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
 
-    <form id="form1" runat="server">
+<form id="form1" runat="server">
 
-        <!-- TOPBAR -->
-        <div class="container-fluid topbar">
+<!-- ================= TOPBAR ================= -->
+<div class="container-fluid topbar">
+    <div class="row align-items-center h-100 px-2">
 
-            <div class="row align-items-center h-100">
-
-                <!-- LOGO -->
-                <div class="col-lg-2 col-md-3 col-4 text-center">
-                    <a href="default_administrator.aspx">
-                        <img src="images/logo.png" class="logo-img" />
-                    </a>
-                </div>
-
-                <!-- USER -->
-                <div class="col-lg-8 col-md-6 text-center">
-
-                    <asp:DataList ID="username" runat="server" RepeatColumns="1">
-                        <ItemTemplate>
-
-                            <div class="welcome-box">
-                                <div class="welcome-text">
-                                    Welcome Back,
-                                    <span>
-                                        <%# Eval("full_name") %>
-                                    </span>
-                                    | Super Admin
-                                </div>
-                            </div>
-
-                        </ItemTemplate>
-                    </asp:DataList>
-
-                </div>
-
-                <!-- LOGOUT -->
-                <div class="col-lg-2 col-md-3 col-8 text-center">
-
-                    <a href="../logout.aspx" class="btn btn-danger logout-btn">
-                        <i class="bi bi-box-arrow-right"></i>
-                        Logout
-                    </a>
-
-                </div>
-
-            </div>
-
+        <!-- MOBILE MENU BUTTON -->
+        <div class="col-2 d-lg-none">
+            <i class="bi bi-list hamburger" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar"></i>
         </div>
 
-        <!-- MAIN -->
-        <div class="container-fluid">
+        <!-- LOGO -->
+        <div class="col-lg-2 col-4">
+            <a href="default_administrator.aspx">
+                <img src="images/logo.png" class="logo-img" />
+            </a>
+        </div>
 
-            <div class="row">
-
-                <!-- SIDEBAR -->
-                <div class="col-lg-2 col-md-3 sidebar">
-
-                    <div class="sidebar-title">
-                        Main Navigation
+        <!-- WELCOME -->
+        <div class="col-lg-7 d-none d-lg-block text-center">
+            <asp:DataList ID="username" runat="server">
+                <ItemTemplate>
+                    <div class="welcome-text">
+                        Welcome,
+                        <span style="color: var(--primary);">
+                            <%# Eval("full_name") %>
+                        </span>
+                        | SuperAdmin
                     </div>
-
-                    <ul class="nav flex-column">
-
-                        <li class="nav-item">
-                            <a href="default_administrator.aspx" class="nav-link active">
-                                <i class="bi bi-speedometer2"></i>
-                                Dashboard
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="access.aspx" class="nav-link">
-                                <i class="bi bi-person-lock"></i>
-                                Access Control
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-people"></i>
-                                Users
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-book-half"></i>
-                                Courses
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-bar-chart-line"></i>
-                                Analytics
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-gear"></i>
-                                Settings
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <!-- CONTENT -->
-                <div class="col-lg-10 col-md-9 main-content">
-
-                    <div class="content-card">
-
-                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                        </asp:ContentPlaceHolder>
-
-                    </div>
-
-                </div>
-
-            </div>
-
+                </ItemTemplate>
+            </asp:DataList>
         </div>
 
-        <!-- FOOTER -->
-        <div class="footer">
-            Powered by RAS © 2026 | Administrator Panel
+        <!-- LOGOUT -->
+        <div class="col-lg-3 col-6 text-end">
+            <a href="../logout.aspx" class="btn btn-baby-pink btn-sm px-3">
+                <i class="bi bi-box-arrow-right"></i>
+                <span class="d-none d-sm-inline">Logout</span>
+            </a>
         </div>
 
-    </form>
+    </div>
+</div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- ================= MAIN LAYOUT ================= -->
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- DESKTOP SIDEBAR -->
+        <div class="col-lg-2 sidebar sidebar-desktop">
+            <ul class="nav flex-column">
+
+                <li><a href="default_administrator.aspx" class="nav-link active">
+                    <i class="bi bi-speedometer2"></i> Dashboard
+                </a></li>
+
+                <li><a href="access.aspx" class="nav-link">
+                    <i class="bi bi-person-lock"></i> Access Control
+                </a></li>
+
+                <li><a href="#" class="nav-link">
+                    <i class="bi bi-people"></i> Users
+                </a></li>
+
+                <li><a href="#" class="nav-link">
+                    <i class="bi bi-book"></i> Courses
+                </a></li>
+
+                <li><a href="#" class="nav-link">
+                    <i class="bi bi-graph-up"></i> Analytics
+                </a></li>
+
+                <li><a href="#" class="nav-link">
+                    <i class="bi bi-gear"></i> Settings
+                </a></li>
+
+            </ul>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="col-lg-10 col-12 main-content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+    </div>
+</div>
+
+<!-- ================= MOBILE SIDEBAR (OFFCANVAS) ================= -->
+<div class="offcanvas offcanvas-start text-white" tabindex="-1" id="mobileSidebar">
+
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <div class="offcanvas-body">
+        <ul class="nav flex-column">
+
+            <li><a href="default_administrator.aspx" class="nav-link">
+                <i class="bi bi-speedometer2"></i> Dashboard
+            </a></li>
+
+            <li><a href="access.aspx" class="nav-link">
+                <i class="bi bi-person-lock"></i> Access Control
+            </a></li>
+
+            <li><a href="#" class="nav-link">
+                <i class="bi bi-people"></i> Users
+            </a></li>
+
+            <li><a href="#" class="nav-link">
+                <i class="bi bi-book"></i> Courses
+            </a></li>
+
+            <li><a href="#" class="nav-link">
+                <i class="bi bi-graph-up"></i> Analytics
+            </a></li>
+
+            <li><a href="#" class="nav-link">
+                <i class="bi bi-gear"></i> Settings
+            </a></li>
+
+        </ul>
+    </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<div class="footer">
+    Powered by RAS © 2026 | All Rights Reserved
+</div>
+
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

@@ -268,14 +268,6 @@
   .main { margin-left: var(--sidebar-w); padding-top: var(--header-h); min-height: 100vh; width: calc(100% - var(--sidebar-w)); }
   .main-inner { padding: 30px 36px; width: 100%; }
 
-  /* breadcrumb */
-  .breadcrumb {
-    display: flex; align-items: center; gap: 7px;
-    font-size: 12.5px; color: var(--text-light);
-    margin-bottom: 24px;
-  }
-  .breadcrumb a { color: var(--pink); text-decoration: none; font-weight: 500; }
-  .breadcrumb a:hover { text-decoration: underline; }
 
   /* ══ HERO BANNER ══ */
   .hero-banner {
@@ -287,7 +279,7 @@
     margin-bottom: 28px;
     display: grid;
     grid-template-columns: 1fr 340px;
-    min-height: 280px;
+    min-height: 28px;
   }
 
   .hero-banner::before {
@@ -324,7 +316,7 @@
     position: relative; z-index: 2;
   }
 
-  .hero-badge {
+/*  .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.13);
@@ -335,13 +327,14 @@
     letter-spacing: 0.5px;
     margin-bottom: 18px;
     width: fit-content;
-  }
-  .hero-badge .dot {
+  }*/
+
+/*  .hero-badge .dot {
     width: 6px; height: 6px; border-radius: 50%;
     background: #F5C542;
     box-shadow: 0 0 6px #F5C542;
     animation: pulse 2s ease-in-out infinite;
-  }
+  }*/
   @keyframes pulse {
     0%,100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.5; transform: scale(0.8); }
@@ -360,12 +353,7 @@
     font-weight: 300; margin: 0 8px;
   }
 
-  .hero-subtitle {
-    font-size: 13.5px; color: rgba(255,255,255,0.5);
-    line-height: 1.6;
-    margin-bottom: 28px;
-    max-width: 460px;
-  }
+
 
   .hero-mini-stats {
     display: flex; gap: 0; margin-bottom: 30px;
@@ -409,17 +397,7 @@
     box-shadow: 0 8px 28px rgba(255,45,141,0.55);
   }
 
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 9px;
-    background: rgba(255,255,255,0.07);
-    border: 1.5px solid rgba(255,255,255,0.16);
-    color: rgba(255,255,255,0.75);
-    font-family: 'Sora', sans-serif;
-    font-weight: 500; font-size: 13.5px;
-    padding: 12px 22px; border-radius: 12px;
-    cursor: pointer; transition: var(--ease);
-  }
-  .btn-ghost:hover { background: rgba(255,255,255,0.13); color: white; border-color: rgba(255,255,255,0.28); }
+
 
   /* illustration panel */
   .hero-visual {
@@ -864,17 +842,7 @@
 
   .about-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
-  .btn-ghost-light {
-    display: inline-flex; align-items: center; gap: 9px;
-    background: transparent;
-    border: 1.5px solid var(--border);
-    color: var(--text-secondary);
-    font-family: 'Sora', sans-serif;
-    font-weight: 600; font-size: 13px;
-    padding: 11px 20px; border-radius: 12px;
-    cursor: pointer; transition: var(--ease);
-  }
-  .btn-ghost-light:hover { border-color: var(--pink); color: var(--pink); }
+
 
   /* ══ POSTER ══ */
   .about-right {
@@ -1119,14 +1087,7 @@
 <main class="main">
   <div class="main-inner">
 
-    <!-- BREADCRUMB -->
-    <div class="breadcrumb fade-up d1">
-      <a href="#">Home</a>
-      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-      <span>Programs</span>
-      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-      <span>BIT</span>
-    </div>
+
 
     <!-- HERO BANNER -->
     <div class="hero-banner fade-up d1">
@@ -1137,19 +1098,13 @@
       </div>
 
       <div class="hero-content">
-        <div class="hero-badge">
-          <div class="dot"></div>
-          Spring Intake 2026 — Admission Open
-        </div>
+        
 
         <div class="hero-title">
           Shape the Future<br>
           <span class="highlight">with Technology</span>
         </div>
 
-        <p class="hero-subtitle">
-          Nepal's premier Bachelor of Information Technology — a comprehensive 4-year, 8-semester program affiliated with Lincoln University College, Malaysia, accredited by MQA, TU-equivalent, and approved by Nepal's Ministry of Education.
-        </p>
 
         <div class="hero-mini-stats">
           <div class="hms-item">
@@ -1175,10 +1130,7 @@
             <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><polygon points="5,3 19,10 5,18"/></svg>
             Browse Notes
           </button>
-          <button class="btn-ghost">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Syllabus PDF
-          </button>
+  
         </div>
       </div>
 
@@ -1281,16 +1233,11 @@
         <h2 class="about-heading">Nepal's Premier <span>BIT Degree</span></h2>
 
         <p class="about-para">
-          The <strong>Bachelor of Information Technology (BIT)</strong> at Texas College of Management and IT (TCMIT) is a 4-year, 8-semester program with 129 credit hours, affiliated with <strong>Lincoln University College (LUC), Malaysia</strong> — internationally accredited by MQA, recognised as equivalent by Tribhuvan University, and approved by Nepal's Ministry of Education.
+          The <strong>Bachelor of Information Technology (BIT)</strong> at Texas College of Management and IT (TCMIT) is a 4-year, 8-semester program affiliated with <strong>Lincoln University College, Malaysia</strong>. Designed to blend technical expertise with practical skills, the program covers software development, networking, databases, web technologies, cloud computing, and emerging fields like AI and DevOps.
         </p>
         <p class="about-para">
-          BIT is <strong>both highly technical and people-orientated</strong>. The program focuses on scientific and technical areas related to software, networks, web, database, and internet services — alongside management, communications, and human behaviour. Students gain in-depth knowledge for the IT profession and develop effective communication, creativity, critical judgment, and ethical understanding that sets them apart in the global workforce.
-        </p>
-        <p class="about-para">
-          Texas BIT is a regular, full-time programme structured to give depth and accuracy in understanding the impact of information technology <strong>within organisations, society, and at a global scale</strong> — making graduates ready not just for Nepal's growing tech sector but for opportunities internationally. With dedicated IoT &amp; Robotics labs, a VFX Studio, an Incubation Center, and a resourceful e-library, students are equipped with hands-on experience from day one.
-        </p>
-        <p class="about-para">
-          The curriculum evolves with the industry. From foundational programming and data structures in the early semesters to advanced topics in machine learning, cloud computing, mobile app development, and DevOps in the later years — every semester builds upon the last. Industrial training, project work, and globally-recognised certifications ensure that BIT graduates enter the job market with real-world skills, a strong portfolio, and the confidence to lead.
+
+        With modern facilities including IoT & Robotics labs, a VFX Studio, an Incubation Center, and an e-library, students gain hands-on experience throughout their studies. Industry training, project work, and professional certifications help graduates build strong portfolios and become career-ready for opportunities in Nepal and around the world.
         </p>
 
         <div class="about-highlights">
@@ -1318,14 +1265,7 @@
         </div>
 
         <div class="about-btns">
-          <button class="btn-pink">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><polygon points="5,3 19,10 5,18"/></svg>
-            Start Browsing Notes
-          </button>
-          <button class="btn-ghost-light">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Download Syllabus
-          </button>
+
         </div>
       </div>
 
@@ -1512,31 +1452,31 @@
       <div class="sem-subjects">
         ${sem.subjects.map((s, j) => `<div class="subject-link${i === 0 && j === 0 ? ' active' : ''}" onclick="pickSubject(this)"><div class="subject-dot"></div>${s}</div>`).join('')}
       </div>`;
-        menu.appendChild(el);
+        menu?.appendChild(el);
     });
 
-    function toggleSem(el) {
+    function toggleSem(el: any) {
         el.parentElement.classList.toggle('open');
     }
 
-    function pickSubject(el) {
+    function pickSubject(el: any) {
         document.querySelectorAll('.subject-link').forEach(l => l.classList.remove('active'));
         el.classList.add('active');
         if (window.innerWidth < 900) closeSidebar();
     }
 
     function scrollToCourses() {
-        document.getElementById('coursesSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('coursesSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('open');
-        document.getElementById('overlay').classList.toggle('show');
-    }
+    // function toggleSidebar() {
+    //     document.getElementById('sidebar').classList.toggle('open');
+    //     document.getElementById('overlay').classList.toggle('show');
+    // }
 
     function closeSidebar() {
-        document.getElementById('sidebar').classList.remove('open');
-        document.getElementById('overlay').classList.remove('show');
+        document.getElementById('sidebar')?.classList.remove('open');
+        document.getElementById('overlay')?.classList.remove('show');
     }
 </script>
 

@@ -1,7 +1,9 @@
-﻿using System;
+using System;
+
 using System.Data.SqlClient;
 using System.Web.UI;
 using System.Configuration; // Needed for ConfigurationManager
+
 
 namespace Learning_System
 {
@@ -10,11 +12,13 @@ namespace Learning_System
         protected void Page_Load(object sender, EventArgs e)
         {
             // Optional: Add any logic needed when the page loads.
+
         }
 
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
             // Validate inputs before proceeding
+
             if (string.IsNullOrWhiteSpace(name.Text) ||
                 string.IsNullOrWhiteSpace(email.Text) ||
                 string.IsNullOrWhiteSpace(subject.Text) ||
@@ -56,6 +60,7 @@ namespace Learning_System
                 }
 
                 // Clear the form fields after successful submission
+
                 name.Text = "";
                 email.Text = "";
                 subject.Text = "";
@@ -72,3 +77,4 @@ namespace Learning_System
         }
     }
 }
+

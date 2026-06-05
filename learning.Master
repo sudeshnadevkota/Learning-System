@@ -1,6 +1,7 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="learning.master.cs" Inherits="Learning_System.learning" %>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
@@ -360,7 +361,16 @@
                 height: 20rem; /* Ensure full width on small screens */
             }
         }
+.login-btn {
+    background-color: #0B1F66 !important;
+    border-color: #0B1F66 !important;
+    color: white !important;
+}
 
+.login-btn:hover {
+    background-color: #081547 !important;
+    border-color: #081547 !important;
+}
 
 
 
@@ -440,48 +450,21 @@
 
 
                             <li><a href="Default.aspx" class="text-decoration-none text-primary fs-5">Home</a></li>
-                            <li><a href="Blog.aspx" class="text-decoration-none text-primary fs-5">Developer</a></li>
+              
                             <li><a href="AboutUs.aspx" class="text-decoration-none text-primary fs-5">About Us</a></li>
                             <li><a href="Contact.aspx" class="text-decoration-none text-primary fs-5">Contact Us</a></li>
-                            <li><a href="Feedback.aspx" class="text-decoration-none text-primary fs-5">Feedback</a></li>
-                           <!-- ✅ Corrected Working Dropdown -->
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle text-primary fs-5" 
-       href="#" 
-       id="otherProjectDropdown" 
-       role="button" 
-       data-bs-toggle="dropdown" 
-       aria-expanded="false">
-        Other Project
-    </a>
-    <ul class="dropdown-menu shadow border-0" 
-        aria-labelledby="otherProjectDropdown">
-        <li>
-            <a class="dropdown-item" href="https://certificate.texascollegenepal.com/Default.aspx" target="_blank">
-                Certificate
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="Notes.aspx">Notes</a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="Verify.aspx">Verify</a>
-        </li>
-    </ul>
-</li>
+                           <!-- <li><a href="Feedback.aspx" class="text-decoration-none text-primary fs-5">Feedback</a></li> -->
+                          </ul>
 
 
-
-                        </ul>
-
-                        <div class="d-flex flex-column flex-lg-row align-items-center gap-3">
-
-
-
-                            <%--                            <asp:LinkButton ID="Linklogin" runat="server" class="btn text-primary me-2 fs-5" role="button" aria-pressed="true" OnClick="Linklogin_Click">Login</asp:LinkButton>--%>
-                            <asp:LinkButton ID="Linklogin" runat="server" class="btn btn-primary w-100 fs-5" role="button" aria-pressed="true" OnClick="Linklogin_Click" Style="border-radius: 35px;">Login</asp:LinkButton>
-                            <%--                            <asp:LinkButton ID="Linkregister" runat="server" class="btn btn-primary fs-5" role="button" aria-pressed="true" OnClick="Linkregister_Click" Style="border-radius: 35px;">Register</asp:LinkButton>--%>
-                        </div>
+       
+      <div class="d-flex align-items-center ms-auto gap-3 mt-3 mt-lg-0">
+       <asp:LinkButton ID="Linklogin" runat="server"
+    CssClass="btn btn-primary fs-5 login-btn"
+    OnClick="Linklogin_Click"
+    Style="border-radius: 35px;">
+    Login
+</asp:LinkButton>
                     </div>
 
                 </div>

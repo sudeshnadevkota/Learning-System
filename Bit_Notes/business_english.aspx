@@ -1031,26 +1031,78 @@
     .syl-modal-bg { padding: 0; align-items: flex-end; }
   }
 
+  /* ── Back to Home link in hero-tag ── */
+  .btn-back-home {
+    display: inline-flex; align-items: center; gap: 7px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-family: 'Sora', sans-serif;
+    font-size: 12px; font-weight: 600;
+    transition: color 0.2s;
+  }
+  .btn-back-home:hover { color: #fff; text-decoration: none; }
+
+  /* ── Content tabs (Notes / Past Papers) ── */
+  .content-tabs {
+    display: flex; gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 16px;
+    width: fit-content;
+  }
+  .ctab-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 9px 20px; border-radius: 9px;
+    border: none; background: transparent;
+    color: var(--text-secondary);
+    font-family: 'Sora', sans-serif;
+    font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .ctab-btn:hover { background: var(--bg); color: var(--text-primary); }
+  .ctab-btn.active {
+    background: var(--pink); color: #fff;
+    box-shadow: 0 3px 12px var(--pink-glow);
+  }
+
+  /* ── Empty state ── */
+  .empty-state {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 48px 24px; text-align: center; gap: 10px;
+  }
+  .empty-icon { font-size: 40px; }
+  .empty-title {
+    font-family: 'Sora', sans-serif; font-size: 15px;
+    font-weight: 700; color: var(--text-primary);
+  }
+  .empty-text {
+    font-size: 13px; color: var(--text-secondary);
+    max-width: 340px; line-height: 1.6;
+  }
+
+  @media (max-width: 500px) {
+    .content-tabs { width: 100%; }
+    .ctab-btn { flex: 1; justify-content: center; }
+    .hero-card-compact { padding: 20px 18px !important; }
+  }
+
 </style>
 
 <main class="main">
   <div class="main-inner">
 
-    <!-- Breadcrumb -->
-    <div class="breadcrumb fade-up">
-      <a href="dash.aspx">Home</a>
-      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-      <span>First Sem</span>
-      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-      <span>Business English</span>
-    </div>
-
     <!-- Hero Card -->
     <div class="hero-card hero-card-compact fade-up d1">
 
       <div class="hero-tag">
-        <svg width="11" height="11" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,2 12.5,7.5 18,7.5 13.5,11 15.5,17 10,13.5 4.5,17 6.5,11 2,7.5 7.5,7.5"/></svg>
-        First Semester · BIT Program
+        <a href="../../Default.aspx" class="btn-back-home">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Back to Home
+        </a>
       </div>
 
       <div class="hero-row">
@@ -1064,24 +1116,30 @@
       </div>
 
       <div class="hero-btns">
-        <asp:Button ID="btnBackToDash" runat="server" Text="&#8592; Back to Dashboard"
-            OnClick="btnBackToDash_Click" CssClass="btn-primary" />
-      </div>
-    </div>
-
-    <!-- ══ DOWNLOADABLE NOTES — original GridView preserved ══ -->
-    <div class="fade-up d2">
-      <div class="section-head">
-        <div class="section-title">
-          <div class="section-icon">📁</div>
-          Downloadable Notes
-        </div>
-        <button class="btn-view-syl" type="button" onclick="openSyllabus()">
+        <button type="button" class="btn-view-syl" onclick="openSyllabus()">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
           View Syllabus
         </button>
       </div>
-      <div class="files-card">
+    </div>
+
+    <!-- ══ NOTES / PAST PAPERS TABS ══ -->
+    <div class="fade-up d2">
+      <div class="section-head">
+        <div class="content-tabs">
+          <button type="button" class="ctab-btn active" id="tabNotes" onclick="switchTab('notes')">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Downloadable Notes
+          </button>
+          <button type="button" class="ctab-btn" id="tabPapers" onclick="switchTab('papers')">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            Past Papers
+          </button>
+        </div>
+      </div>
+
+      <%-- NOTES PANEL --%>
+      <div class="files-card" id="panelNotes">
         <asp:GridView ID="GridView1" runat="server"
             CssClass="table table-bordered table-condensed table-hover"
             AutoGenerateColumns="False">
@@ -1098,6 +1156,21 @@
             </asp:TemplateField>
           </Columns>
         </asp:GridView>
+      </div>
+
+      <%-- PAST PAPERS PANEL --%>
+      <div class="files-card" id="panelPapers" style="display:none;">
+        <%--
+          FUTURE: Replace this GridView with a real one bound to past papers data.
+          For now showing a placeholder message.
+          Example when ready:
+          <asp:GridView ID="GridView2" runat="server" ... />
+        --%>
+        <div class="empty-state">
+          <div class="empty-icon">📄</div>
+          <div class="empty-title">Past Papers Coming Soon</div>
+          <div class="empty-text">Past year question papers for Business English will be added once available from the teacher.</div>
+        </div>
       </div>
     </div>
 
@@ -1383,23 +1456,42 @@
 </div>
 
 <script>
-    function openSyllabus() {
-        document.getElementById("sylModal").classList.add("open");
-        document.body.style.overflow = "hidden";
+  function switchTab(tab) {
+    var panelNotes  = document.getElementById('panelNotes');
+    var panelPapers = document.getElementById('panelPapers');
+    var tabNotes    = document.getElementById('tabNotes');
+    var tabPapers   = document.getElementById('tabPapers');
+
+    if (tab === 'notes') {
+      panelNotes.style.display  = '';
+      panelPapers.style.display = 'none';
+      tabNotes.classList.add('active');
+      tabPapers.classList.remove('active');
+    } else {
+      panelNotes.style.display  = 'none';
+      panelPapers.style.display = '';
+      tabPapers.classList.add('active');
+      tabNotes.classList.remove('active');
     }
+  }
 
-    function closeSyllabus() {
-        document.getElementById("sylModal").classList.remove("open");
-        document.body.style.overflow = "";
-    }
+  function openSyllabus() {
+    document.getElementById("sylModal").classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
 
-    document.getElementById("sylModal").addEventListener("click", function (e) {
-        if (e.target === this) closeSyllabus();
-    });
+  function closeSyllabus() {
+    document.getElementById("sylModal").classList.remove("open");
+    document.body.style.overflow = "";
+  }
 
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") closeSyllabus();
-    });
+  document.getElementById("sylModal").addEventListener("click", function(e) {
+    if (e.target === this) closeSyllabus();
+  });
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") closeSyllabus();
+  });
 </script>
 
 </asp:Content>
