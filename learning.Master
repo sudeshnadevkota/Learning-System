@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="learning.master.cs" Inherits="Learning_System.learning" %>
 
 

@@ -50,7 +50,7 @@
             letter-spacing: 2px;
             color: rgba(255,255,255,0.35);
             padding: 18px 20px 10px;
-            white-space: nowrap;
+            
         }
 
         #sidebar ul {
@@ -76,7 +76,7 @@
             border-left: 3px solid transparent;
             transition: background 0.2s, border-color 0.2s, color 0.2s;
             gap: 10px;
-            white-space: nowrap;
+            
         }
 
         #sidebar > ul > li > a:hover {
@@ -153,7 +153,7 @@
             font-family: 'DM Sans', sans-serif;
             font-weight: 400;
             transition: color 0.2s, background 0.2s;
-            white-space: nowrap;
+            
             position: relative;
         }
 
@@ -197,7 +197,7 @@
 
         /* ══ OPEN STATE ══ */
         .sidebar-open #sidebar {
-            width: 260px;
+            width: 300px;
         }
 
         .sidebar-open #content {
@@ -236,7 +236,7 @@
         @media (max-width: 900px) {
             /* On tablet/mobile: sidebar overlays content instead of pushing it */
             .sidebar-open #sidebar {
-                width: 260px;
+                width: 300px;
                 box-shadow: 4px 0 24px rgba(0,0,0,0.4);
             }
 
@@ -443,123 +443,123 @@
     </form>
 
     <script>
-function isMobile() { return window.innerWidth <= 900; }
+        function isMobile() { return window.innerWidth <= 900; }
 
-function toggleSidebar() {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var menuBar = document.getElementById('menu-bar');
-    var icon = document.getElementById('icon');
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            var menuBar = document.getElementById('menu-bar');
+            var icon = document.getElementById('icon');
 
-    var sidebarOpen = document.body.classList.toggle('sidebar-open');
+            var sidebarOpen = document.body.classList.toggle('sidebar-open');
 
-    if (sidebarOpen) {
-        sidebar.style.width = '260px';
-        if (!isMobile()) {
-            content.style.marginLeft = '260px';
-            content.style.width = 'calc(100% - 260px)';
-            menuBar.style.left = '260px';
-        } else {
-            content.style.marginLeft = '0';
-            content.style.width = '100%';
-            menuBar.style.left = '0.5rem';
+            if (sidebarOpen) {
+                sidebar.style.width = '300px';
+                if (!isMobile()) {
+                    content.style.marginLeft = '300px';
+                    content.style.width = 'calc(100% - 300px)';
+                    menuBar.style.left = '300px';
+                } else {
+                    content.style.marginLeft = '0';
+                    content.style.width = '100%';
+                    menuBar.style.left = '0.5rem';
+                }
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                sidebar.style.width = '0';
+                content.style.marginLeft = '0';
+                content.style.width = '100%';
+                menuBar.style.left = '0.5rem';
+                icon.style.transform = 'rotate(0deg)';
+            }
         }
-        icon.style.transform = 'rotate(180deg)';
-    } else {
-        sidebar.style.width = '0';
-        content.style.marginLeft = '0';
-        content.style.width = '100%';
-        menuBar.style.left = '0.5rem';
-        icon.style.transform = 'rotate(0deg)';
-    }
-}
 
-function closeSidebarOverlay() {
-    document.body.classList.remove('sidebar-open');
-    document.getElementById('sidebar').style.width = '0';
-    document.getElementById('content').style.marginLeft = '0';
-    document.getElementById('content').style.width = '100%';
-    document.getElementById('icon').style.transform = 'rotate(0deg)';
-}
-
-function toggleSubmenu(event, submenuId) {
-    event.preventDefault();
-
-    var submenu = document.getElementById(submenuId + '-submenu');
-    var icon = document.querySelector('.' + submenuId);
-    var parentLi = submenu.parentElement;
-
-    document.body.classList.add('sidebar-open');
-
-    // Close other open semesters
-    document.querySelectorAll('#sidebar > ul > li').forEach(function (li) {
-        if (li !== parentLi) {
-            li.classList.remove('active-sem');
-            var otherSubmenu = li.querySelector('.submenu');
-            var otherIcon = li.querySelector('.fas.fa-caret-down');
-            if (otherSubmenu) otherSubmenu.style.display = 'none';
-            if (otherIcon) otherIcon.classList.remove('rotate');
+        function closeSidebarOverlay() {
+            document.body.classList.remove('sidebar-open');
+            document.getElementById('sidebar').style.width = '0';
+            document.getElementById('content').style.marginLeft = '0';
+            document.getElementById('content').style.width = '100%';
+            document.getElementById('icon').style.transform = 'rotate(0deg)';
         }
-    });
 
-    if (submenu.style.display === 'block') {
-        submenu.style.display = 'none';
-        icon.classList.remove('rotate');
-        parentLi.classList.remove('active-sem');
-    } else {
-        submenu.style.display = 'block';
-        icon.classList.add('rotate');
-        parentLi.classList.add('active-sem');
+        function toggleSubmenu(event, submenuId) {
+            event.preventDefault();
 
-        // Update sidebar width in JS too
-        var sidebar = document.getElementById('sidebar');
-        var content = document.getElementById('content');
-        var menuBar = document.getElementById('menu-bar');
-        sidebar.style.width = '260px';
-        content.style.marginLeft = '260px';
-        content.style.width = 'calc(100% - 260px)';
-        menuBar.style.left = '260px';
-        document.getElementById('icon').style.transform = 'rotate(180deg)';
-    }
-}
+            var submenu = document.getElementById(submenuId + '-submenu');
+            var icon = document.querySelector('.' + submenuId);
+            var parentLi = submenu.parentElement;
 
-// Mark active subject based on current page URL
-window.onload = function () {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var menuBar = document.getElementById('menu-bar');
-    var icon = document.getElementById('icon');
+            document.body.classList.add('sidebar-open');
 
-    // Only auto-open sidebar on desktop
-    if (!isMobile()) {
-        document.body.classList.add('sidebar-open');
-        sidebar.style.width = '260px';
-        content.style.marginLeft = '260px';
-        content.style.width = 'calc(100% - 260px)';
-        menuBar.style.left = '260px';
-        icon.style.transform = 'rotate(180deg)';
-    } else {
-        menuBar.style.left = '0.5rem';
-    }
+            // Close other open semesters
+            document.querySelectorAll('#sidebar > ul > li').forEach(function(li) {
+                if (li !== parentLi) {
+                    li.classList.remove('active-sem');
+                    var otherSubmenu = li.querySelector('.submenu');
+                    var otherIcon = li.querySelector('.fas.fa-caret-down');
+                    if (otherSubmenu) otherSubmenu.style.display = 'none';
+                    if (otherIcon) otherIcon.classList.remove('rotate');
+                }
+            });
 
-    // Auto-highlight current page in sidebar
-    var currentPage = window.location.pathname.split('/').pop().toLowerCase();
-    var links = document.querySelectorAll('#sidebar .submenu ul li a');
-    links.forEach(function (link) {
-        var href = link.getAttribute('href').toLowerCase();
-        if (href === currentPage) {
-            link.parentElement.classList.add('active-subject');
-            // Also open + activate the parent semester
-            var parentSubmenu = link.closest('.submenu');
-            var parentLi = parentSubmenu.parentElement;
-            parentSubmenu.style.display = 'block';
-            parentLi.classList.add('active-sem');
-            var caret = parentLi.querySelector('.fas.fa-caret-down');
-            if (caret) caret.classList.add('rotate');
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+                icon.classList.remove('rotate');
+                parentLi.classList.remove('active-sem');
+            } else {
+                submenu.style.display = 'block';
+                icon.classList.add('rotate');
+                parentLi.classList.add('active-sem');
+
+                // Update sidebar width in JS too
+                var sidebar = document.getElementById('sidebar');
+                var content = document.getElementById('content');
+                var menuBar = document.getElementById('menu-bar');
+                sidebar.style.width = '300px';
+                content.style.marginLeft = '300px';
+                content.style.width = 'calc(100% - 300px)';
+                menuBar.style.left = '300px';
+                document.getElementById('icon').style.transform = 'rotate(180deg)';
+            }
         }
-    });
-}
-</script>
+
+        // Mark active subject based on current page URL
+        window.onload = function () {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            var menuBar = document.getElementById('menu-bar');
+            var icon = document.getElementById('icon');
+
+            // Only auto-open sidebar on desktop
+            if (!isMobile()) {
+                document.body.classList.add('sidebar-open');
+                sidebar.style.width = '300px';
+                content.style.marginLeft = '300px';
+                content.style.width = 'calc(100% - 300px)';
+                menuBar.style.left = '300px';
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                menuBar.style.left = '0.5rem';
+            }
+
+            // Auto-highlight current page in sidebar
+            var currentPage = window.location.pathname.split('/').pop().toLowerCase();
+            var links = document.querySelectorAll('#sidebar .submenu ul li a');
+            links.forEach(function(link) {
+                var href = link.getAttribute('href').toLowerCase();
+                if (href === currentPage) {
+                    link.parentElement.classList.add('active-subject');
+                    // Also open + activate the parent semester
+                    var parentSubmenu = link.closest('.submenu');
+                    var parentLi = parentSubmenu.parentElement;
+                    parentSubmenu.style.display = 'block';
+                    parentLi.classList.add('active-sem');
+                    var caret = parentLi.querySelector('.fas.fa-caret-down');
+                    if (caret) caret.classList.add('rotate');
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
