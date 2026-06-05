@@ -1336,9 +1336,7 @@
     <Content Include="slide\3.jpg" />
     <Content Include="slide\a.jpg" />
     <Content Include="slide\arik.png" />
-
     <Content Include="slide\attendence.png" />
-
     <Content Include="slide\bba2.jpg" />
     <Content Include="slide\bcs3.png" />
     <Content Include="slide\bcs4.png" />
@@ -1347,10 +1345,8 @@
     <Content Include="slide\bhmcard.png" />
     <Content Include="slide\bit.png" />
     <Content Include="slide\bit2.jpeg" />
-
     <Content Include="slide\canteen-03.png" />
     <Content Include="slide\certificate.png" />
-
     <Content Include="slide\chefcap.png" />
     <Content Include="slide\college.jpg" />
     <Content Include="slide\comcard.jpg" />
@@ -1359,17 +1355,13 @@
     <Content Include="slide\facedetection.png" />
     <Content Include="slide\fs.jpg" />
     <Content Include="slide\haik.jpg" />
-
     <Content Include="slide\info.png" />
     <Content Include="slide\job.png" />
-
     <Content Include="slide\learn.png" />
     <Content Include="slide\learn2.png" />
     <Content Include="slide\learn3.png" />
     <Content Include="slide\learn4.jfif" />
-
     <Content Include="slide\leave.png" />
-
     <Content Include="slide\lgo.png" />
     <Content Include="slide\logo.png" />
     <Content Include="slide\manoj.png" />
@@ -1379,7 +1371,6 @@
     <Content Include="slide\mcs.jpg" />
     <Content Include="slide\mcs2.png" />
     <Content Include="slide\QRinfo.png" />
-
     <Content Include="slide\rohitsri.png" />
     <Content Include="slide\saroj.png" />
     <Content Include="slide\sartak.png" />
@@ -1389,9 +1380,7 @@
     <Content Include="slide\subash.png" />
     <Content Include="slide\sumansir.png" />
     <Content Include="slide\tara.png" />
-
     <Content Include="slide\Tcmit.png" />
-
     <Content Include="slide\td.jpg" />
     <Content Include="Past_Year_Paper\BBA\BBA.Master" />
     <Content Include="Past_Year_Paper\BCS\BCS.Master" />
@@ -8972,7 +8961,6 @@
     <Content Include="students\student.Master" />
     <Content Include="verification\verification_dash.Master" />
     <Content Include="slide\Tcmit.webp" />
-
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -9028,7 +9016,6 @@
     <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
   </Target>
   <Import Project="packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
-  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -9036,4 +9023,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
 </Project>
