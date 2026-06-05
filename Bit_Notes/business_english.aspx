@@ -1108,7 +1108,7 @@
       <div class="hero-row">
         <h1 class="hero-title hero-title-inline">Business <span>English</span></h1>
         <div class="hero-stats hero-stats-inline">
-          <div class="stat-item"><span class="stat-val">BIT 113</span><span class="stat-lbl">Course Code</span></div>
+          <div class="stat-item"><span class="stat-val">ENG 1</span><span class="stat-lbl">Course Code</span></div>
           <div class="stat-item"><span class="stat-val">8</span><span class="stat-lbl">Topics</span></div>
           <div class="stat-item"><span class="stat-val">3</span><span class="stat-lbl">Credits</span></div>
           <div class="stat-item"><span class="stat-val">128h</span><span class="stat-lbl">Total hrs</span></div>
