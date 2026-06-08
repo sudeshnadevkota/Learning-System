@@ -797,7 +797,7 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    background: var(--primary);
+    background: var(--pink) !important;
     color: #fff;
     font-family: 'Sora', sans-serif;
     font-size: 13px;
@@ -807,10 +807,11 @@
     border: none;
     cursor: pointer;
     transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 18px var(--pink-glow);
   }
   .btn-view-syl:hover {
-    background: var(--secondary);
-    box-shadow: 0 4px 14px rgba(11,31,102,0.18);
+    background: var(--pink-dark) !important;
+    box-shadow: 0 6px 24px var(--pink-glow) !important;
   }
   .btn-outline-syl {
     display: inline-flex;
@@ -878,6 +879,7 @@
     .syl-modal { max-height: 95vh; border-radius: 12px; }
     .syl-preview { padding: 16px; }
   }
+
   /* ── Hero compact layout ── */
   .hero-card-compact { padding: 28px 36px 28px !important; }
   .hero-deco { display: none !important; }
@@ -906,25 +908,20 @@
     flex-shrink: 0;
   }
 
-  /* prevent BIT 113 from wrapping */
-  .hero-stats-inline .stat-val {
-    white-space: nowrap;
-  }
-
-  /* ── Pink buttons for View Syllabus ── */
-  .btn-view-syl {
-    background: var(--pink) !important;
-    box-shadow: 0 4px 18px var(--pink-glow);
-  }
-  .btn-view-syl:hover {
-    background: var(--pink-dark) !important;
-    box-shadow: 0 6px 24px var(--pink-glow) !important;
-  }
+  .hero-stats-inline .stat-val { white-space: nowrap; }
 
   @media (max-width: 860px) {
     .hero-row { flex-direction: column; align-items: flex-start; gap: 14px; }
     .hero-title-inline { white-space: normal; font-size: 26px !important; }
-    .hero-stats-inline { flex-wrap: wrap; gap: 8px 0; }
+    .hero-stats-inline { flex-wrap: wrap; gap: 0; width: 100%; }
+    .hero-stats-inline .stat-item { flex: 1 1 auto; min-width: 80px; }
+  }
+  @media (max-width: 480px) {
+    .hero-stats-inline { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0; }
+    .hero-stats-inline .stat-item { border-left: none !important; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 8px 0 !important; }
+    .hero-stats-inline .stat-item:nth-child(2n) { border-left: 1px solid rgba(255,255,255,0.1) !important; padding-left: 14px !important; }
+    .hero-title-inline { font-size: 22px !important; }
+    .content-tabs { max-width: 100%; }
   }
 
   /* ── Syllabus document layout ── */
@@ -940,8 +937,7 @@
   .syl-row-doc:last-child { border-bottom: none; }
 
   .syl-num {
-    min-width: 40px;
-    width: 40px;
+    min-width: 40px; width: 40px;
     padding: 12px 10px;
     font-weight: 700;
     font-family: 'Sora', sans-serif;
@@ -955,74 +951,33 @@
     flex-shrink: 0;
   }
 
-  .syl-cell {
-    padding: 12px 16px;
-    flex: 1;
-  }
+  .syl-cell { padding: 12px 16px; flex: 1; }
   .syl-cell strong { color: #0B1F66; }
-  .syl-cell ul {
-    margin: 6px 0 0 18px;
-    padding: 0;
-  }
+  .syl-cell ul { margin: 6px 0 0 18px; padding: 0; }
   .syl-cell ul li { margin-bottom: 3px; }
 
-  /* Inner tables (course hours, assessment, content outline) */
   .syl-inner-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    font-size: 12.5px;
+    width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12.5px;
   }
   .syl-inner-table th {
-    background: #f0f3fc;
-    color: #5a6a99;
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    padding: 7px 10px;
-    text-align: left;
-    border: 1px solid #e0e5f0;
+    background: #f0f3fc; color: #5a6a99;
+    font-weight: 700; font-size: 11px; letter-spacing: 0.5px;
+    text-transform: uppercase; padding: 7px 10px;
+    text-align: left; border: 1px solid #e0e5f0;
   }
-  .syl-inner-table td {
-    padding: 8px 10px;
-    border: 1px solid #e0e5f0;
-    vertical-align: top;
-  }
+  .syl-inner-table td { padding: 8px 10px; border: 1px solid #e0e5f0; vertical-align: top; }
   .syl-topics-table td:first-child {
-    font-weight: 700;
-    text-align: center;
-    white-space: nowrap;
-    color: #0B1F66;
-    width: 30px;
+    font-weight: 700; text-align: center; white-space: nowrap;
+    color: #0B1F66; width: 30px;
   }
   .syl-topics-table td:nth-child(3),
   .syl-topics-table td:nth-child(4),
   .syl-topics-table td:nth-child(5),
-  .syl-topics-table td:nth-child(6) {
-    text-align: center;
-    white-space: nowrap;
-    width: 50px;
-  }
-  .syl-topics-table td ul {
-    margin: 4px 0 0 16px;
-    padding: 0;
-  }
-  .syl-topics-table td ul li {
-    margin-bottom: 2px;
-    font-size: 12.5px;
-  }
-  .syl-topics-table td strong {
-    display: block;
-    color: #0B1F66;
-    margin-bottom: 2px;
-  }
-    background: #f0f3fc;
-    font-weight: 700;
-    color: #0B1F66;
-  }
+  .syl-topics-table td:nth-child(6) { text-align: center; white-space: nowrap; width: 50px; }
+  .syl-topics-table td ul { margin: 4px 0 0 16px; padding: 0; }
+  .syl-topics-table td ul li { margin-bottom: 2px; font-size: 12.5px; }
+  .syl-topics-table td strong { display: block; color: #0B1F66; margin-bottom: 2px; }
 
-  /* Mobile: make content table horizontally scrollable */
   @media (max-width: 600px) {
     .syl-num { min-width: 28px; width: 28px; font-size: 11px; padding: 12px 5px; }
     .syl-cell { padding: 10px 10px; font-size: 12.5px; }
@@ -1031,7 +986,7 @@
     .syl-modal-bg { padding: 0; align-items: flex-end; }
   }
 
-  /* ── Back to Home link in hero-tag ── */
+  /* ── Back to Home link ── */
   .btn-back-home {
     display: inline-flex; align-items: center; gap: 7px;
     color: rgba(255,255,255,0.7);
@@ -1042,19 +997,20 @@
   }
   .btn-back-home:hover { color: #fff; text-decoration: none; }
 
-  /* ── Content tabs (Notes / Past Papers) ── */
+  /* ── Content tabs ── */
   .content-tabs {
-    display: flex; gap: 8px;
+    display: flex; gap: 6px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 5px;
     margin-bottom: 16px;
-    width: fit-content;
+    width: 100%; max-width: 480px;
   }
   .ctab-btn {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 9px 20px; border-radius: 9px;
+    flex: 1;
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    padding: 10px 16px; border-radius: 9px;
     border: none; background: transparent;
     color: var(--text-secondary);
     font-family: 'Sora', sans-serif;
@@ -1090,6 +1046,57 @@
     .hero-card-compact { padding: 20px 18px !important; }
   }
 
+  /* ── Filter bar ── */
+  .filter-bar {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 12px; flex-wrap: wrap;
+  }
+  .filter-label {
+    font-family: 'Sora', sans-serif; font-size: 12px;
+    font-weight: 700; color: var(--text-secondary);
+    white-space: nowrap; text-transform: uppercase; letter-spacing: 0.6px;
+  }
+  .filter-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .fchip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 50px;
+    border: 1.5px solid var(--border);
+    background: var(--bg-card); color: var(--text-secondary);
+    font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .fchip:hover { border-color: var(--pink); color: var(--pink); background: rgba(255,45,141,0.05); }
+  .fchip.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .fchip[data-filter="Lecture"].active  { background: #0B1F66; border-color: #0B1F66; }
+  .fchip[data-filter="Tutorial"].active { background: #059669; border-color: #059669; }
+  .fchip[data-filter="Workshop"].active { background: #7c3aed; border-color: #7c3aed; }
+
+  /* ── Type badge in table ── */
+  .type-badge {
+    display: inline-flex; align-items: center;
+    padding: 3px 10px; border-radius: 50px;
+    font-family: 'Sora', sans-serif; font-size: 11px;
+    font-weight: 700; white-space: nowrap;
+  }
+  .type-lecture  { background: rgba(11,31,102,0.09);  color: #0B1F66; }
+  .type-tutorial { background: rgba(5,150,105,0.1);   color: #059669; }
+  .type-workshop { background: rgba(124,58,237,0.1);  color: #7c3aed; }
+
+  @media (max-width: 500px) {
+    .filter-bar { gap: 8px; }
+    .filter-label { font-size: 11px; }
+    .fchip { font-size: 11px; padding: 5px 11px; }
+  }
+
+  .files-card { min-height: 120px; }
+
+  #filterEmpty {
+    display: none; /* Hidden by default */
+    justify-content: center;
+    padding: 40px;
+    color: #888;
+}
+
 </style>
 
 <main class="main">
@@ -1108,7 +1115,7 @@
       <div class="hero-row">
         <h1 class="hero-title hero-title-inline">Business <span>English</span></h1>
         <div class="hero-stats hero-stats-inline">
-          <div class="stat-item"><span class="stat-val">ENG 1</span><span class="stat-lbl">Course Code</span></div>
+          <div class="stat-item"><span class="stat-val">ENG I</span><span class="stat-lbl">Course Code</span></div>
           <div class="stat-item"><span class="stat-val">8</span><span class="stat-lbl">Topics</span></div>
           <div class="stat-item"><span class="stat-val">3</span><span class="stat-lbl">Credits</span></div>
           <div class="stat-item"><span class="stat-val">128h</span><span class="stat-lbl">Total hrs</span></div>
@@ -1139,45 +1146,101 @@
       </div>
 
       <%-- NOTES PANEL --%>
-      <div class="files-card" id="panelNotes">
-        <asp:GridView ID="GridView1" runat="server"
-            CssClass="table table-bordered table-condensed table-hover"
-            AutoGenerateColumns="False">
-          <Columns>
-            <asp:BoundField DataField="Name" HeaderText="File Name" />
-            <asp:BoundField DataField="Topic" HeaderText="Topic" />
-            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Download and View">
-              <ItemTemplate>
-                <asp:LinkButton ID="lnkDownload" runat="server" Text="Download"
-                    OnClick="DownloadFile" CssClass="btn btn-success"
-                    CommandArgument='<%# Eval("Id") %>'></asp:LinkButton>
-              </ItemTemplate>
-              <ItemStyle HorizontalAlign="Center"></ItemStyle>
-            </asp:TemplateField>
-          </Columns>
-        </asp:GridView>
+      <div id="panelNotes">
+
+        <%-- Filter chips --%>
+        <div class="filter-bar">
+          <span class="filter-label">Filter by type:</span>
+          <div class="filter-chips">
+            <button type="button" class="fchip active" data-filter="all" onclick="filterNotes(this,'all')">
+              All
+            </button>
+            <button type="button" class="fchip" data-filter="Lecture" onclick="filterNotes(this,'Lecture')">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              Lecture Slides
+            </button>
+            <button type="button" class="fchip" data-filter="Tutorial" onclick="filterNotes(this,'Tutorial')">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              Tutorial Slides
+            </button>
+            <button type="button" class="fchip" data-filter="Workshop" onclick="filterNotes(this,'Workshop')">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+              Workshop Slides
+            </button>
+          </div>
+        </div>
+
+          <div class="files-card" id="notesTable">
+
+              <asp:GridView ID="GridViewNotes" runat="server" 
+    AutoGenerateColumns="False" 
+    CssClass="files-table" 
+    GridLines="None" 
+    ShowHeader="False" 
+    OnRowDataBound="GridView_RowDataBound">
+    <Columns>
+        <asp:TemplateField>
+            <ItemTemplate>
+                <span class="type-badge type-<%# Eval("FileCategory").ToString().ToLower().Split(' ')[0] %>">
+                    <%# Eval("FileCategory") %>
+                </span>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:BoundField DataField="Name" />
+        <asp:BoundField DataField="Topic" />
+        <asp:TemplateField>
+            <ItemTemplate>
+                <asp:LinkButton ID="lnkDownload" runat="server" Text="Download" 
+                    OnClick="DownloadFile" CommandArgument='<%# Eval("id") %>' 
+                    CssClass="download-link"></asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>
+    </Columns>
+</asp:GridView>
+          </div>
+
+        <%-- Empty state shown when filter returns no results --%>
+        <div class="empty-state" id="filterEmpty" style="display:none;">
+          <div class="empty-icon">🔍</div>
+          <div class="empty-title">No slides found</div>
+          <div class="empty-text">No notes match the selected filter. Try a different type.</div>
+        </div>
+
       </div>
 
       <%-- PAST PAPERS PANEL --%>
-      <div class="files-card" id="panelPapers" style="display:none;">
-        <%--
-          FUTURE: Replace this GridView with a real one bound to past papers data.
-          For now showing a placeholder message.
-          Example when ready:
-          <asp:GridView ID="GridView2" runat="server" ... />
-        --%>
-        <div class="empty-state">
-          <div class="empty-icon">📄</div>
-          <div class="empty-title">Past Papers Coming Soon</div>
-          <div class="empty-text">Past year question papers for Business English will be added once available from the teacher.</div>
+        <div class="files-card" id="panelPapers" style="display: none;">
+            <asp:GridView ID="GridViewPapers" runat="server" 
+    AutoGenerateColumns="False" 
+    CssClass="files-table" 
+    GridLines="None" 
+    ShowHeader="False">
+    <Columns>
+        <asp:TemplateField>
+            <ItemTemplate>
+                <span class="type-badge type-past">
+                    Past Paper
+                </span>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:BoundField DataField="Name" />
+        <asp:BoundField DataField="Topic" />
+        <asp:TemplateField>
+            <ItemTemplate>
+                <asp:LinkButton ID="lnkDownload" runat="server" Text="Download" 
+                    OnClick="DownloadFile" CommandArgument='<%# Eval("id") %>' 
+                    CssClass="download-link"></asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>
+    </Columns>
+</asp:GridView>
         </div>
-      </div>
     </div>
 
   </div>
 </main>
 
-<!-- ══ SYLLABUS MODAL (desktop preview) ══ -->
+<!-- ══ SYLLABUS MODAL ══ -->
 <div class="syl-modal-bg" id="sylModal">
   <div class="syl-modal">
     <div class="syl-modal-header">
@@ -1186,7 +1249,6 @@
     </div>
     <div class="syl-modal-body">
       <div class="syl-preview">
-
         <div class="syl-doc-table">
 
           <div class="syl-row-doc">
@@ -1426,7 +1488,7 @@
                     </td>
                     <td>4</td><td>2</td><td>6</td><td>12</td>
                   </tr>
-                  <tr class="syl-total-row">
+                  <tr>
                     <td colspan="2"><strong>Total</strong></td>
                     <td>45</td><td>16</td><td>61</td><td>122</td>
                   </tr>
@@ -1456,42 +1518,85 @@
 </div>
 
 <script>
-  function switchTab(tab) {
-    var panelNotes  = document.getElementById('panelNotes');
-    var panelPapers = document.getElementById('panelPapers');
-    var tabNotes    = document.getElementById('tabNotes');
-    var tabPapers   = document.getElementById('tabPapers');
+    function switchTab(tab) {
+        var panelNotes = document.getElementById('panelNotes');
+        var panelPapers = document.getElementById('panelPapers');
+        var tabNotes = document.getElementById('tabNotes');
+        var tabPapers = document.getElementById('tabPapers');
 
-    if (tab === 'notes') {
-      panelNotes.style.display  = '';
-      panelPapers.style.display = 'none';
-      tabNotes.classList.add('active');
-      tabPapers.classList.remove('active');
-    } else {
-      panelNotes.style.display  = 'none';
-      panelPapers.style.display = '';
-      tabPapers.classList.add('active');
-      tabNotes.classList.remove('active');
+        if (tab === 'notes') {
+            panelNotes.style.display = '';
+            panelPapers.style.display = 'none';
+            tabNotes.classList.add('active');
+            tabPapers.classList.remove('active');
+        } else {
+            panelNotes.style.display = 'none';
+            panelPapers.style.display = '';
+            tabPapers.classList.add('active');
+            tabNotes.classList.remove('active');
+        }
     }
-  }
 
-  function openSyllabus() {
-    document.getElementById("sylModal").classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
+    // ── Notes filter by Type ──
+    function filterNotes(btn, filterType) {
+        // 1. Manage Active Class
+        document.querySelectorAll('.fchip').forEach(function (c) {
+            c.classList.remove('active');
+        });
+        btn.classList.add('active');
 
-  function closeSyllabus() {
-    document.getElementById("sylModal").classList.remove("open");
-    document.body.style.overflow = "";
-  }
+        // 2. Select rows from the GridView table
+        var rows = document.querySelectorAll('#notesTable table tr');
+        var visible = 0;
 
-  document.getElementById("sylModal").addEventListener("click", function(e) {
-    if (e.target === this) closeSyllabus();
-  });
+        rows.forEach(function (row) {
+            // Skip header row if it exists (GridView usually renders <th> or no <td> in first row)
+            if (row.querySelector('th')) return;
 
-  document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") closeSyllabus();
-  });
+            var badge = row.querySelector('.type-badge');
+            if (!badge) return; // Skip if no badge found in this row
+
+            var badgeText = badge.textContent.trim().toLowerCase();
+
+            // 3. Logic: Match 'all' or check if the badge text contains the filter type
+            if (filterType === 'all' || badgeText.includes(filterType.toLowerCase())) {
+                row.style.display = '';
+                visible++;
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        // 4. Handle "No Results" state
+        var emptyEl = document.getElementById('filterEmpty');
+        var tableEl = document.getElementById('notesTable');
+
+        if (visible === 0 && tableEl) {
+            tableEl.style.display = 'none';
+            if (emptyEl) emptyEl.style.display = 'flex';
+        } else if (tableEl) {
+            tableEl.style.display = '';
+            if (emptyEl) emptyEl.style.display = 'none';
+        }
+    }
+
+    function openSyllabus() {
+        document.getElementById("sylModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeSyllabus() {
+        document.getElementById("sylModal").classList.remove("open");
+        document.body.style.overflow = "";
+    }
+
+    document.getElementById("sylModal").addEventListener("click", function (e) {
+        if (e.target === this) closeSyllabus();
+    });
+
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeSyllabus();
+    });
 </script>
 
 </asp:Content>

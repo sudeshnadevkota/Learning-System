@@ -231,10 +231,37 @@
             </div>
 
             <div class="form-group">
+                <label for="Category">Select File Type</label>
+                <asp:DropDownList ID="ddlFileType" runat="server" class="form-control">
+                    <asp:ListItem Text="-- Select Category --" Value="" />
+                    <asp:ListItem Text="Lecture Slides" Value="Lecture Slides" />
+                    <asp:ListItem Text="Tutorial Slides" Value="Tutorial Slides" />
+                    <asp:ListItem Text="Workshop Slides" Value="Workshop Slides" />
+                </asp:DropDownList>
+                <asp:RequiredFieldValidator ID="rfvCategory" runat="server" ErrorMessage="Please select a category*"
+                    ControlToValidate="ddlFileType" InitialValue="" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
+            </div>
+
+            <div class="form-group">
                 <label for="Unite">Upload Files</label>
                 <asp:FileUpload ID="FileUpload1" runat="server" class="form-control" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Upload your file*" ControlToValidate="FileUpload1" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
             </div>
+
+            
+
+
+        </div>
+
+        <div class="form-group">
+            <label for="ContentType">File Destination</label>
+            <asp:DropDownList ID="ddlContentType" runat="server" class="form-control">
+                <asp:ListItem Text="-- Select Destination --" Value="" />
+                <asp:ListItem Text="Notes" Value="Notes" />
+                <asp:ListItem Text="Past Year Question" Value="PastYearQuestion" />
+            </asp:DropDownList>
+            <asp:RequiredFieldValidator ID="rfvContentType" runat="server" ErrorMessage="Select destination*"
+                ControlToValidate="ddlContentType" InitialValue="" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
         </div>
 
         <div class="c-form-footer">
@@ -252,43 +279,67 @@
         </div>
 
         <div class="c-table-container">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" class="table-modern" OnRowDeleting="GridView1_RowDeleting1">
-                <Columns>
-                    <asp:TemplateField HeaderText="Topic">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Eval("Topic") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("Topic") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Name">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Eval("Name") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label3" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Data Type">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Eval("ContentType") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label4" runat="server" Text='<%# Eval("ContentType") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Data">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Eval("Data") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label5" runat="server" Text='<%# Eval("Data") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:CommandField ShowDeleteButton="True" ButtonType="Button" ControlStyle-ForeColor="Red" />
-                </Columns>
-            </asp:GridView>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" 
+    class="table-modern" 
+    OnRowDeleting="GridView1_RowDeleting1" 
+    OnRowUpdating="GridView1_RowUpdating1" 
+    OnRowEditing="GridView1_RowEditing1" 
+    OnRowCancelingEdit="GridView1_RowCancelingEdit1">
+    <Columns>
+        <asp:TemplateField HeaderText="Topic">
+            <EditItemTemplate>
+                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Topic") %>'></asp:TextBox>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Topic") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+        
+        <asp:TemplateField HeaderText="Name">
+            <EditItemTemplate>
+                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label3" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+
+        <asp:TemplateField HeaderText="Data Type">
+            <EditItemTemplate>
+                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("ContentType") %>'></asp:TextBox>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label4" runat="server" Text='<%# Eval("ContentType") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+
+        <asp:TemplateField HeaderText="Data">
+            <ItemTemplate>
+                <asp:LinkButton ID="lnkDownload" runat="server" Text="Download" CommandArgument='<%# Eval("id") %>' OnClick="lnkDownload_Click"></asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>
+
+        <asp:TemplateField HeaderText="Category">
+            <EditItemTemplate>
+                <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("FileCategory") %>'></asp:TextBox>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label5" runat="server" Text='<%# Eval("FileCategory") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+
+        <asp:TemplateField HeaderText="Type">
+            <EditItemTemplate>
+                <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("FileType") %>'></asp:TextBox>
+            </EditItemTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label6" runat="server" Text='<%# Eval("FileType") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+
+        <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" ButtonType="Button" />
+    </Columns>
+</asp:GridView>
         </div>
     </div>
 
