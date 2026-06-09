@@ -464,12 +464,11 @@ body{
        <h5 class="card-title text-center">BIT</h5>
 
        <a href="Bit_Notes/dash.aspx" class="btn btn-secondary mb-2">
-           Notes
+           Study Materials
+           
        </a>
 
-       <a href="Past_Year_Paper/Bit/dash.aspx" class="btn hero-btn">
-           Past Year Questions
-       </a>
+       
    </div>
 
     <!-- BCS -->
@@ -479,12 +478,10 @@ body{
     <h5 class="card-title text-center">BCS</h5>
 
     <a href="Bcs_Notes/dash.aspx" class="btn btn-secondary mb-2">
-        Notes
+        Study Materials
     </a>
 
-    <a href="Past_Year_Paper/BCS/dash.aspx" class="btn hero-btn">
-        Past Year Questions
-    </a>
+    
 </div>
 
         <!-- MBA -->
@@ -494,12 +491,10 @@ body{
             <h5 class="card-title text-center">MBA</h5>
 
             <a href="Mba_Notes/dash.aspx" class="btn btn-secondary mb-2">
-                Notes
+                Study Materials
             </a>
 
-            <a href="Past_Year_Paper/MBA/dash.aspx" class="btn hero-btn">
-                Past Year Questions
-            </a>
+            
         </div>
 
         <!-- MCS -->
@@ -509,12 +504,10 @@ body{
             <h5 class="card-title text-center">MCS</h5>
 
             <a href="Mcs_Notes/dash.aspx" class="btn btn-secondary mb-2">
-                Notes
+                Study Materials
             </a>
 
-            <a href="Past_Year_Paper/MCS/dash.aspx" class="btn hero-btn">
-                Past Year Questions
-            </a>
+           
         </div>
 
         <!-- BBA -->
@@ -524,12 +517,10 @@ body{
             <h5 class="card-title text-center">BBA</h5>
 
             <a href="Bba_Notes/dash.aspx" class="btn btn-secondary mb-2">
-                Notes
+                Study Materials
             </a>
 
-            <a href="Past_Year_Paper/BBA/dash.aspx" class="btn hero-btn">
-                Past Year Questions
-            </a>
+            
         </div>
 
         

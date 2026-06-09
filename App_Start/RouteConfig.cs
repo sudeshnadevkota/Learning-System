@@ -9,8 +9,13 @@ namespace Learning_System
         {
             // 1. Tell MVC to ignore the exact root URL so it falls back to Default.aspx
             routes.IgnoreRoute("");
+            
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+             
+
+            // K xa Hajur ? Ma ta Thikai xu ta yar ? Timi chai k xau ta 
+
 
             routes.MapRoute(
                 name: "Default",

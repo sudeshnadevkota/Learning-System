@@ -337,7 +337,7 @@
     <title>BIT ADMIN</title>
 </head>
 <body>
-    <form id="form2" runat="server">
+    <form id="form2" runat="server" enctype="multipart/form-data">
 
         <!-- ── TOP NAVBAR (logo + title + logout) ── -->
         <nav class="top-navbar">

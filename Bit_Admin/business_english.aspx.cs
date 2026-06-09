@@ -2,6 +2,8 @@
 using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
+using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Learning_System.Bit_Admin
@@ -9,116 +11,155 @@ namespace Learning_System.Bit_Admin
     public partial class business_english : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                BindGrid();
-            }
+            if (!IsPostBack) BindGrid();
         }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string topic = TextBox1.Text.Trim();
-            string filename = Path.GetFileName(FileUpload1.PostedFile.FileName);
-            string contentType = FileUpload1.PostedFile.ContentType;
-            using (Stream fs = FileUpload1.PostedFile.InputStream)
+            // Validation to ensure data integrity
+            if (string.IsNullOrEmpty(ddlContentType.SelectedValue))
             {
-                using (BinaryReader br = new BinaryReader(fs))
+                lblMessage.Text = "Error: Please select a File Destination.";
+                return;
+            }
 
+            if (FileUpload1.HasFile)
+            {
+                try
                 {
-                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                    byte[] bytes;
+                    using (BinaryReader br = new BinaryReader(FileUpload1.PostedFile.InputStream))
+                    {
+                        bytes = br.ReadBytes(FileUpload1.PostedFile.ContentLength);
+                    }
 
                     using (SqlConnection con = new SqlConnection(strcon))
                     {
-                        string query = "insert into bit_1_BE(Topic,Name,ContentType,Data)values(@Topic, @Name, @ContentType, @Data)";
-                        using (SqlCommand cmd = new SqlCommand(query))
+                        string query = "INSERT INTO bit_1_BE (Topic, Name, ContentType, Data, FileCategory, UploadDate, FileType) " +
+                                       "VALUES (@Topic, @Name, @ContentType, @Data, @FileCategory, GETDATE(), @FileType)";
+                        using (SqlCommand cmd = new SqlCommand(query, con))
                         {
-                            cmd.Connection = con;
-                            cmd.Parameters.AddWithValue("@Topic", topic);
-                            cmd.Parameters.AddWithValue("@Name", filename);
-                            cmd.Parameters.AddWithValue("@ContentType", contentType);
+                            cmd.Parameters.AddWithValue("@Topic", TextBox1.Text.Trim());
+                            cmd.Parameters.AddWithValue("@Name", Path.GetFileName(FileUpload1.PostedFile.FileName));
+                            cmd.Parameters.AddWithValue("@ContentType", FileUpload1.PostedFile.ContentType);
                             cmd.Parameters.AddWithValue("@Data", bytes);
+                            cmd.Parameters.AddWithValue("@FileCategory", ddlFileType.SelectedItem.Text);
+                            cmd.Parameters.AddWithValue("@FileType", ddlContentType.SelectedValue);
+
                             con.Open();
                             cmd.ExecuteNonQuery();
-                            con.Close();
-                            this.BindGrid();
+                        }
+                    }
+                    BindGrid();
+                    lblMessage.Text = "Successfully Added.";
+                }
+                catch (Exception ex)
+                {
+                    lblMessage.Text = "Upload failed: " + ex.Message;
+                }
+            }
+            else
+            {
+                lblMessage.Text = "Please select a file first.";
+            }
+        }
 
+        protected void lnkDownload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(((LinkButton)sender).CommandArgument);
+                using (SqlConnection con = new SqlConnection(strcon))
+                {
+                    string query = "SELECT Name, ContentType, Data FROM bit_1_BE WHERE id = @id";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    con.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            byte[] bytes = (byte[])dr["Data"];
+                            Response.Clear();
+                            Response.Buffer = true;
+                            Response.ContentType = dr["ContentType"].ToString();
+                            Response.AddHeader("content-disposition", "attachment;filename=" + dr["Name"].ToString());
+                            Response.BinaryWrite(bytes);
+                            Response.Flush();
+
+                            // Essential for avoiding ThreadAbortException
+                            HttpContext.Current.ApplicationInstance.CompleteRequest();
                         }
                     }
                 }
-
             }
-
-            lblMessage.Text = "Successfully Added..";
+            catch (Exception ex)
+            {
+                lblMessage.Text = "Download failed: " + ex.Message;
+            }
         }
+
         private void BindGrid()
         {
-            string strcon = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                using (SqlCommand cmd = new SqlCommand())
+                string query = "SELECT id, Topic, Name, ContentType, FileCategory, FileType FROM bit_1_BE";
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    cmd.CommandText = "select * from bit_1_BE";
-                    cmd.Connection = con;
                     con.Open();
                     GridView1.DataSource = cmd.ExecuteReader();
                     GridView1.DataBind();
-                    con.Close();
                 }
             }
         }
 
-        private void update(int id, string topic, string name, string content, string data)
+        // Standard Row Management Methods
+        private void update(int id, string topic, string name, string content, string category, string type)
         {
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                string sqlquery = "update bit_1_BE set Topic = '" + topic + "',Name='" + name + "',ContentType='" + content + "',Data='" + data + "' where id=" + id + "";
-                SqlCommand cmd = new SqlCommand(sqlquery, con);
-                con.Open();
-                cmd.ExecuteNonQuery();
+                string sqlquery = "UPDATE bit_1_BE SET Topic = @Topic, Name = @Name, ContentType = @ContentType, FileCategory = @FileCategory, FileType = @FileType WHERE id = @id";
+                using (SqlCommand cmd = new SqlCommand(sqlquery, con))
+                {
+                    cmd.Parameters.AddWithValue("@Topic", topic);
+                    cmd.Parameters.AddWithValue("@Name", name);
+                    cmd.Parameters.AddWithValue("@ContentType", content);
+                    cmd.Parameters.AddWithValue("@FileCategory", category);
+                    cmd.Parameters.AddWithValue("@FileType", type);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
+
         private void delete(int id)
         {
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                string sqlquery = "delete from bit_1_BE where id=" + id + "";
-                SqlCommand cmd = new SqlCommand(sqlquery, con);
-                con.Open();
-                cmd.ExecuteNonQuery();
+                string sqlquery = "DELETE FROM bit_1_BE WHERE id = @id";
+                using (SqlCommand cmd = new SqlCommand(sqlquery, con))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
         protected void GridView1_RowUpdating1(object sender, GridViewUpdateEventArgs e)
         {
             int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
-            TextBox txtTopic = (TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox2");
-            TextBox txtName = (TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox3");
-            TextBox txtContent = (TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox4");
-            TextBox txtData = (TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox5");
-            update(id, txtTopic.Text, txtName.Text, txtContent.Text, txtData.Text);
+            update(id, ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox2")).Text, ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox3")).Text, ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox4")).Text, ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox5")).Text, ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox6")).Text);
             GridView1.EditIndex = -1;
             BindGrid();
         }
 
-        protected void GridView1_RowEditing1(object sender, GridViewEditEventArgs e)
-        {
-            GridView1.EditIndex = e.NewEditIndex;
-            BindGrid();
-        }
-
-
-        protected void GridView1_RowDeleting1(object sender, GridViewDeleteEventArgs e)
-        {
-            int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
-            delete(id); // Call your delete method
-            BindGrid(); // Rebind the GridView to reflect the changes
-        }
-
-        protected void GridView1_RowCancelingEdit1(object sender, GridViewCancelEditEventArgs e)
-        {
-            GridView1.EditIndex = -1;
-            BindGrid();
-        }
+        protected void GridView1_RowEditing1(object sender, GridViewEditEventArgs e) { GridView1.EditIndex = e.NewEditIndex; BindGrid(); }
+        protected void GridView1_RowDeleting1(object sender, GridViewDeleteEventArgs e) { delete(int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString())); BindGrid(); }
+        protected void GridView1_RowCancelingEdit1(object sender, GridViewCancelEditEventArgs e) { GridView1.EditIndex = -1; BindGrid(); }
     }
 }
