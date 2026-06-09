@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="digital_logics.aspx.cs" Inherits="Learning_System.Bit_Admin.digital_logics" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="Human_Computer_Interaction.aspx.cs" Inherits="Learning_System.Bit_Admin.Human_Computer_Interaction" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <style>
@@ -214,7 +214,7 @@
     <%-- HEADER HERO BANNER --%>
     <div class="c-hero">
         <div class="c-hero-ring"></div>
-        <h3><i class="ti ti-cpu"></i> Course Content Management: Digital Logics</h3>
+        <h3><i class="ti ti-world-www"></i> Course Content Management: Human Computer Interaction</h3>
     </div>
 
     <%-- STACK 1: FULL WIDTH FORM PANEL --%>
@@ -226,7 +226,7 @@
         <div class="c-form-row">
             <div class="form-group">
                 <label for="Unite">Name of Topic</label>
-                <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter topic name (e.g., Sequential Circuit Design & Karnaugh Maps)"></asp:TextBox>
+                <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter topic name (e.g., Usability Principles & Prototyping)"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter topic name*" ControlToValidate="TextBox1" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
             </div>
 

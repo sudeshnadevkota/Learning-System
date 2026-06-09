@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="internet_fundamental_and_applications.aspx.cs" Inherits="Learning_System.Bit_Admin.internet_fundamental_and_applications" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="Industrial_Management.aspx.cs" Inherits="Learning_System.Bit_Admin.IndustrialMangement" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <style>
@@ -188,7 +188,7 @@
         border-radius: 6px;
     }
 
-    /* Custom Delete buttons inside cells */
+    /* Custom Delete/Action buttons inside cells */
     .c-wrap .table-modern input[type="button"] {
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: 11px;
@@ -214,7 +214,7 @@
     <%-- HEADER HERO BANNER --%>
     <div class="c-hero">
         <div class="c-hero-ring"></div>
-        <h3><i class="ti ti-world-www"></i> Course Content Management: Internet Fundamental & Applications</h3>
+        <h3><i class="ti ti-settings-automation"></i> Course Content Management: Industrial Management</h3>
     </div>
 
     <%-- STACK 1: FULL WIDTH FORM PANEL --%>
@@ -225,13 +225,13 @@
         
         <div class="c-form-row">
             <div class="form-group">
-                <label for="Unite">Name of Topic</label>
-                <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter topic name (e.g., Web Architectures & Protocols)"></asp:TextBox>
+                <label for="Topic">Name of Topic</label>
+                <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter topic name (e.g., Six Sigma Systems & Lean Production Control)"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter topic name*" ControlToValidate="TextBox1" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
             </div>
 
             <div class="form-group">
-                <label for="Unite">Upload Files</label>
+                <label for="FileUpload1">Upload Files</label>
                 <asp:FileUpload ID="FileUpload1" runat="server" class="form-control" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Upload your file*" ControlToValidate="FileUpload1" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
             </div>
@@ -252,7 +252,7 @@
         </div>
 
         <div class="c-table-container">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" class="table-modern" OnRowDeleting="GridView1_RowDeleting1">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" class="table-modern" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowCancelingEdit="GridView1_RowCancelingEdit">
                 <Columns>
                     <asp:TemplateField HeaderText="Topic">
                         <EditItemTemplate>
