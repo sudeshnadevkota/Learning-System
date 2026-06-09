@@ -201,8 +201,8 @@
         }
 
         .sidebar-open #content {
-            margin-left: 260px;
-            width: calc(100% - 260px);
+            margin-left: 300px;
+            width: calc(100% - 300px);
         }
 
         /* ══ MENU BAR TOGGLE BUTTON ══ */
@@ -214,23 +214,25 @@
         }
 
         #menu-bar button {
-            background: rgba(255,255,255,0.08) !important;
-            border: 1px solid rgba(255,255,255,0.12) !important;
+            background: #e8ecf7 !important;
+            border: 1.5px solid #c5cde8 !important;
             border-radius: 8px;
-            width: 34px;
-            height: 34px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 0;
-            transition: background 0.2s;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(8,21,71,0.12);
         }
 
         #menu-bar button:hover {
-            background: rgba(255,255,255,0.15) !important;
+            background: #d0d8f0 !important;
+            box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
         }
 
-        #icon { color: #fff !important; font-size: 13px; }
+        #icon { color: #12183a !important; font-size: 15px; font-weight: 900; }
 
         /* ══ MEDIA QUERIES ══ */
         @media (max-width: 900px) {
@@ -323,7 +325,6 @@
 
                             </ul>
                         </div>
-
                     </li>
 
                     <li>
@@ -436,7 +437,7 @@
             </div>
 
             <!-- Content Area -->
-            <div id="content" style="padding-top: 1%; width: 90%; margin-left: 5%;">
+            <div id="content" style="padding-top: 12px; width: 90%; margin-left: 5%;">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
@@ -493,7 +494,7 @@
             document.body.classList.add('sidebar-open');
 
             // Close other open semesters
-            document.querySelectorAll('#sidebar > ul > li').forEach(function(li) {
+            document.querySelectorAll('#sidebar > ul > li').forEach(function (li) {
                 if (li !== parentLi) {
                     li.classList.remove('active-sem');
                     var otherSubmenu = li.querySelector('.submenu');
@@ -546,7 +547,7 @@
             // Auto-highlight current page in sidebar
             var currentPage = window.location.pathname.split('/').pop().toLowerCase();
             var links = document.querySelectorAll('#sidebar .submenu ul li a');
-            links.forEach(function(link) {
+            links.forEach(function (link) {
                 var href = link.getAttribute('href').toLowerCase();
                 if (href === currentPage) {
                     link.parentElement.classList.add('active-subject');
