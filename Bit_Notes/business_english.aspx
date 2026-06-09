@@ -1215,33 +1215,39 @@
       </div>
 
       <%-- PAST PAPERS PANEL --%>
-        <div class="files-card" id="panelPapers" style="display: none;">
-            <asp:GridView ID="GridViewPapers" runat="server" 
-    AutoGenerateColumns="False" 
-    CssClass="files-table" 
-    GridLines="None" 
-    ShowHeader="False">
-    <Columns>
-        <asp:TemplateField>
-            <ItemTemplate>
-                <span class="type-badge type-past">
-                    Past Paper
-                </span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:BoundField DataField="Name" />
-        <asp:BoundField DataField="Topic" />
-        <asp:TemplateField>
-            <ItemTemplate>
-                <asp:LinkButton ID="lnkDownload" runat="server" Text="Download" 
-                    OnClick="DownloadFile" CommandArgument='<%# Eval("id") %>' 
-                    CssClass="download-link"></asp:LinkButton>
-            </ItemTemplate>
-        </asp:TemplateField>
-    </Columns>
-</asp:GridView>
-        </div>
-    </div>
+<div class="files-card" id="panelPapers" style="display: none;">
+    <asp:GridView ID="GridViewPapers" runat="server" 
+        AutoGenerateColumns="False" 
+        CssClass="table table-bordered table-condensed table-hover" 
+        ShowHeader="True">
+        <Columns>
+            
+            <%-- 1. Type Badge Column with Header --%>
+            <asp:TemplateField HeaderText="Type">
+                <ItemTemplate>
+                    <span class="type-badge type-past">
+                        Past Paper
+                    </span>
+                </ItemTemplate>
+            </asp:TemplateField>
+            
+            <%-- 2. Bound Fields with Headers --%>
+            <asp:BoundField DataField="Name" HeaderText="File Name" />
+            <asp:BoundField DataField="Topic" HeaderText="Topic" />
+            
+            <%-- 3. Download Link Button with Header and Centering --%>
+            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Download and View">
+                <ItemTemplate>
+                    <asp:LinkButton ID="lnkDownload" runat="server" Text="Download" 
+                        OnClick="DownloadFile" CommandArgument='<%# Eval("id") %>' 
+                        CssClass="btn btn-success"></asp:LinkButton>
+                </ItemTemplate>
+                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+            </asp:TemplateField>
+
+        </Columns>
+    </asp:GridView>
+</div>
 
   </div>
 </main>
