@@ -925,7 +925,15 @@
   @media (max-width: 860px) {
     .hero-row { flex-direction: column; align-items: flex-start; gap: 14px; }
     .hero-title-inline { white-space: normal; font-size: 26px !important; }
-    .hero-stats-inline { flex-wrap: wrap; gap: 8px 0; }
+    .hero-stats-inline { flex-wrap: wrap; gap: 0; width: 100%; }
+    .hero-stats-inline .stat-item { flex: 1 1 auto; min-width: 80px; }
+  }
+  @media (max-width: 480px) {
+    .hero-stats-inline { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0; }
+    .hero-stats-inline .stat-item { border-left: none !important; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 8px 0 !important; }
+    .hero-stats-inline .stat-item:nth-child(2n) { border-left: 1px solid rgba(255,255,255,0.1) !important; padding-left: 14px !important; }
+    .hero-title-inline { font-size: 22px !important; }
+    .content-tabs { max-width: 100%; }
   }
 
   /* ── Syllabus document layout ── */
@@ -1045,17 +1053,19 @@
 
   /* ── Content tabs (Notes / Past Papers) ── */
   .content-tabs {
-    display: flex; gap: 8px;
+    display: flex; gap: 6px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 5px;
     margin-bottom: 16px;
-    width: fit-content;
+    width: 100%;
+    max-width: 480px;
   }
   .ctab-btn {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 9px 20px; border-radius: 9px;
+    flex: 1;
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    padding: 10px 16px; border-radius: 9px;
     border: none; background: transparent;
     color: var(--text-secondary);
     font-family: 'Sora', sans-serif;
@@ -1105,17 +1115,19 @@
 
   /* ── Content tabs ── */
   .content-tabs {
-    display: flex; gap: 8px;
+    display: flex; gap: 6px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 5px;
     margin-bottom: 16px;
-    width: fit-content;
+    width: 100%;
+    max-width: 480px;
   }
   .ctab-btn {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 9px 20px; border-radius: 9px;
+    flex: 1;
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    padding: 10px 16px; border-radius: 9px;
     border: none; background: transparent;
     color: var(--text-secondary);
     font-family: 'Sora', sans-serif;
@@ -1219,6 +1231,46 @@
     font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s;
   }
   .btn-primary:hover { background: var(--secondary); color: #fff; }
+  /* ── files-card min height ── */
+  .files-card { min-height: 120px; }
+
+  /* ── Filter bar ── */
+  .filter-bar {{
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 12px; flex-wrap: wrap;
+  }}
+  .filter-label {{
+    font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 700;
+    color: var(--text-secondary); white-space: nowrap;
+    text-transform: uppercase; letter-spacing: 0.6px;
+  }}
+  .filter-chips {{ display: flex; gap: 8px; flex-wrap: wrap; }}
+  .fchip {{
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 50px;
+    border: 1.5px solid var(--border);
+    background: var(--bg-card); color: var(--text-secondary);
+    font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }}
+  .fchip:hover {{ border-color: var(--pink); color: var(--pink); background: rgba(255,45,141,0.05); }}
+  .fchip.active {{ background: var(--primary); border-color: var(--primary); color: #fff; }}
+  .fchip[data-filter="Lecture"].active  {{ background: #0B1F66; border-color: #0B1F66; }}
+  .fchip[data-filter="Tutorial"].active {{ background: #059669; border-color: #059669; }}
+  .fchip[data-filter="Workshop"].active {{ background: #7c3aed; border-color: #7c3aed; }}
+  .type-badge {{
+    display: inline-flex; align-items: center;
+    padding: 3px 10px; border-radius: 50px;
+    font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 700; white-space: nowrap;
+  }}
+  .type-lecture  {{ background: rgba(11,31,102,0.09); color: #0B1F66; }}
+  .type-tutorial {{ background: rgba(5,150,105,0.1);  color: #059669; }}
+  .type-workshop {{ background: rgba(124,58,237,0.1); color: #7c3aed; }}
+  @media (max-width: 500px) {{
+    .filter-label {{ font-size: 11px; }}
+    .fchip {{ font-size: 11px; padding: 5px 11px; }}
+  }}
+
 </style>
 
 <main class="main">
@@ -1267,23 +1319,57 @@
         </div>
       </div>
 
-      <div class="files-card" id="panelNotes">
-        <asp:GridView ID="GridView1" runat="server"
-            CssClass="table table-bordered table-condensed table-hover"
-            AutoGenerateColumns="False">
-          <Columns>
-            <asp:BoundField DataField="Name" HeaderText="File Name" />
-            <asp:BoundField DataField="Topic" HeaderText="Topic" />
-            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Download and View">
-              <ItemTemplate>
-                <asp:LinkButton ID="lnkDownload" runat="server" Text="Download"
-                    OnClick="DownloadFile" CssClass="btn btn-success"
-                    CommandArgument='<%# Eval("Id") %>'></asp:LinkButton>
-              </ItemTemplate>
-              <ItemStyle HorizontalAlign="Center"></ItemStyle>
-            </asp:TemplateField>
-          </Columns>
-        </asp:GridView>
+      <div id="panelNotes">
+
+        <div class="filter-bar">
+          <span class="filter-label">Filter by type:</span>
+          <div class="filter-chips">
+            <button type="button" class="fchip active" data-filter="all" onclick="filterNotes(this,'all')">All</button>
+            <button type="button" class="fchip" data-filter="Lecture" onclick="filterNotes(this,'Lecture')">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              Lecture Slides
+            </button>
+            <button type="button" class="fchip" data-filter="Tutorial" onclick="filterNotes(this,'Tutorial')">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              Tutorial Slides
+            </button>
+            <button type="button" class="fchip" data-filter="Workshop" onclick="filterNotes(this,'Workshop')">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+              Workshop Slides
+            </button>
+          </div>
+        </div>
+
+        <div class="files-card" id="notesTable">
+          <asp:GridView ID="GridView1" runat="server"
+              CssClass="table table-bordered table-condensed table-hover"
+              AutoGenerateColumns="False">
+            <Columns>
+              <asp:TemplateField HeaderText="Type">
+                <ItemTemplate>
+                  <span class='<%# "type-badge type-" + Eval("Type").ToString().ToLower() %>'><%# Eval("Type") %></span>
+                </ItemTemplate>
+              </asp:TemplateField>
+              <asp:BoundField DataField="Name" HeaderText="File Name" />
+              <asp:BoundField DataField="Topic" HeaderText="Topic" />
+              <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderText="Download and View">
+                <ItemTemplate>
+                  <asp:LinkButton ID="lnkDownload" runat="server" Text="Download"
+                      OnClick="DownloadFile" CssClass="btn btn-success"
+                      CommandArgument='<%# Eval("Id") %>'></asp:LinkButton>
+                </ItemTemplate>
+                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+              </asp:TemplateField>
+            </Columns>
+          </asp:GridView>
+        </div>
+
+        <div class="empty-state" id="filterEmpty" style="display:none;">
+          <div class="empty-icon">🔍</div>
+          <div class="empty-title">No slides found</div>
+          <div class="empty-text">No notes match the selected filter. Try a different type.</div>
+        </div>
+
       </div>
 
       <div class="files-card" id="panelPapers" style="display:none;">
@@ -1357,26 +1443,52 @@
 </div>
 
 <script>
-  function switchTab(tab) {
-    document.getElementById('panelNotes').style.display  = tab === 'notes' ? '' : 'none';
-    document.getElementById('panelPapers').style.display = tab === 'papers' ? '' : 'none';
-    document.getElementById('tabNotes').classList.toggle('active', tab === 'notes');
-    document.getElementById('tabPapers').classList.toggle('active', tab === 'papers');
-  }
-  function openSyllabus() {
-    document.getElementById("sylModal").classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
-  function closeSyllabus() {
-    document.getElementById("sylModal").classList.remove("open");
-    document.body.style.overflow = "";
-  }
-  document.getElementById("sylModal").addEventListener("click", function(e) {
-    if (e.target === this) closeSyllabus();
-  });
-  document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") closeSyllabus();
-  });
+    function switchTab(tab) {
+        var panelNotes = document.getElementById('panelNotes');
+        var panelPapers = document.getElementById('panelPapers');
+        var tabNotes = document.getElementById('tabNotes');
+        var tabPapers = document.getElementById('tabPapers');
+        if (tab === 'notes') {
+            panelNotes.style.display = ''; panelPapers.style.display = 'none';
+            tabNotes.classList.add('active'); tabPapers.classList.remove('active');
+        } else {
+            panelNotes.style.display = 'none'; panelPapers.style.display = '';
+            tabPapers.classList.add('active'); tabNotes.classList.remove('active');
+        }
+    }
+    function filterNotes(btn, type) {
+        document.querySelectorAll('.fchip').forEach(function (c) { c.classList.remove('active'); });
+        btn.classList.add('active');
+        var rows = document.querySelectorAll('#notesTable table tbody tr');
+        var visible = 0;
+        rows.forEach(function (row) {
+            if (type === 'all') { row.style.display = ''; visible++; }
+            else {
+                var badge = row.querySelector('td:first-child .type-badge');
+                var rowType = badge ? badge.textContent.trim() : '';
+                if (rowType.toLowerCase() === type.toLowerCase()) { row.style.display = ''; visible++; }
+                else { row.style.display = 'none'; }
+            }
+        });
+        var emptyEl = document.getElementById('filterEmpty');
+        var tableEl = document.getElementById('notesTable');
+        if (visible === 0 && rows.length > 0) { tableEl.style.display = 'none'; emptyEl.style.display = 'flex'; }
+        else { tableEl.style.display = ''; emptyEl.style.display = 'none'; }
+    }
+    function openSyllabus() {
+        document.getElementById("sylModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
+    function closeSyllabus() {
+        document.getElementById("sylModal").classList.remove("open");
+        document.body.style.overflow = "";
+    }
+    document.getElementById("sylModal").addEventListener("click", function (e) {
+        if (e.target === this) closeSyllabus();
+    });
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeSyllabus();
+    });
 </script>
 
 </asp:Content>
