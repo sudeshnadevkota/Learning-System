@@ -17,12 +17,17 @@ namespace Learning_System.Bit_Admin
             if (!IsPostBack) BindGrid();
         }
 
+        protected void cvFile_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = FileUpload1.HasFile;
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-            // Validation to ensure data integrity
             if (string.IsNullOrEmpty(ddlContentType.SelectedValue))
             {
-                lblMessage.Text = "Error: Please select a File Destination.";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = "Please select a File Destination.";
                 return;
             }
 
@@ -48,21 +53,29 @@ namespace Learning_System.Bit_Admin
                             cmd.Parameters.AddWithValue("@Data", bytes);
                             cmd.Parameters.AddWithValue("@FileCategory", ddlFileType.SelectedItem.Text);
                             cmd.Parameters.AddWithValue("@FileType", ddlContentType.SelectedValue);
-
                             con.Open();
                             cmd.ExecuteNonQuery();
                         }
                     }
+
+                    // Clear form after success
+                    TextBox1.Text = "";
+                    ddlFileType.SelectedIndex = 0;
+                    ddlContentType.SelectedIndex = 0;
+
                     BindGrid();
-                    lblMessage.Text = "Successfully Added.";
+                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                    lblMessage.Text = "✓ File uploaded successfully.";
                 }
                 catch (Exception ex)
                 {
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
                     lblMessage.Text = "Upload failed: " + ex.Message;
                 }
             }
             else
             {
+                lblMessage.ForeColor = System.Drawing.Color.Red;
                 lblMessage.Text = "Please select a file first.";
             }
         }
@@ -83,21 +96,29 @@ namespace Learning_System.Bit_Admin
                         if (dr.Read())
                         {
                             byte[] bytes = (byte[])dr["Data"];
+                            string fileName = dr["Name"].ToString();
+                            string contentType = dr["ContentType"].ToString();
+                            dr.Close();
+                            con.Close();
+
                             Response.Clear();
                             Response.Buffer = true;
-                            Response.ContentType = dr["ContentType"].ToString();
-                            Response.AddHeader("content-disposition", "attachment;filename=" + dr["Name"].ToString());
+                            Response.ContentType = contentType;
+                            Response.AddHeader("content-disposition", "attachment;filename=" + fileName);
                             Response.BinaryWrite(bytes);
                             Response.Flush();
-
-                            // Essential for avoiding ThreadAbortException
-                            HttpContext.Current.ApplicationInstance.CompleteRequest();
+                            Response.End();
                         }
                     }
                 }
             }
+            catch (System.Threading.ThreadAbortException)
+            {
+                // Expected after Response.End() — safe to ignore
+            }
             catch (Exception ex)
             {
+                lblMessage.ForeColor = System.Drawing.Color.Red;
                 lblMessage.Text = "Download failed: " + ex.Message;
             }
         }
@@ -116,12 +137,11 @@ namespace Learning_System.Bit_Admin
             }
         }
 
-        // Standard Row Management Methods
         private void update(int id, string topic, string name, string content, string category, string type)
         {
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                string sqlquery = "UPDATE bit_1_BE SET Topic = @Topic, Name = @Name, ContentType = @ContentType, FileCategory = @FileCategory, FileType = @FileType WHERE id = @id";
+                string sqlquery = "UPDATE bit_1_BE SET Topic=@Topic, Name=@Name, ContentType=@ContentType, FileCategory=@FileCategory, FileType=@FileType WHERE id=@id";
                 using (SqlCommand cmd = new SqlCommand(sqlquery, con))
                 {
                     cmd.Parameters.AddWithValue("@Topic", topic);
@@ -140,7 +160,7 @@ namespace Learning_System.Bit_Admin
         {
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                string sqlquery = "DELETE FROM bit_1_BE WHERE id = @id";
+                string sqlquery = "DELETE FROM bit_1_BE WHERE id=@id";
                 using (SqlCommand cmd = new SqlCommand(sqlquery, con))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
@@ -153,13 +173,34 @@ namespace Learning_System.Bit_Admin
         protected void GridView1_RowUpdating1(object sender, GridViewUpdateEventArgs e)
         {
             int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
-            update(id, ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox2")).Text, ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox3")).Text, ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox4")).Text, ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox5")).Text, ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox6")).Text);
+            update(
+                id,
+                ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox2")).Text,
+                ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox3")).Text,
+                ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox4")).Text,
+                ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox5")).Text,
+                ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox6")).Text
+            );
             GridView1.EditIndex = -1;
             BindGrid();
         }
 
-        protected void GridView1_RowEditing1(object sender, GridViewEditEventArgs e) { GridView1.EditIndex = e.NewEditIndex; BindGrid(); }
-        protected void GridView1_RowDeleting1(object sender, GridViewDeleteEventArgs e) { delete(int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString())); BindGrid(); }
-        protected void GridView1_RowCancelingEdit1(object sender, GridViewCancelEditEventArgs e) { GridView1.EditIndex = -1; BindGrid(); }
+        protected void GridView1_RowEditing1(object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            BindGrid();
+        }
+
+        protected void GridView1_RowDeleting1(object sender, GridViewDeleteEventArgs e)
+        {
+            delete(int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString()));
+            BindGrid();
+        }
+
+        protected void GridView1_RowCancelingEdit1(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView1.EditIndex = -1;
+            BindGrid();
+        }
     }
 }

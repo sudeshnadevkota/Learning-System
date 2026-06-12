@@ -19,7 +19,6 @@
         padding: 1.5rem;
     }
 
-    /* ── HEADER HERO BANNER ── */
     .c-hero {
         background: linear-gradient(135deg, #0B1F66 0%, #1a3499 100%);
         padding: 30px 32px;
@@ -33,7 +32,6 @@
     .c-hero h3 { font-size: 24px; font-weight: 700; color: #fff; letter-spacing: 0.5px; margin: 0; display: flex; align-items: center; gap: 12px; }
     .c-hero h3 i { color: #FF2D8D; font-size: 26px; }
 
-    /* ── CONTAINER PANELS (STACKED FULL WIDTH) ── */
     .c-panel {
         background: #ffffff;
         border: 1px solid var(--border-color);
@@ -56,7 +54,6 @@
     }
     .c-panel-title::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
 
-    /* ── FORM CONTROL ROW MIX ── */
     .c-form-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -102,7 +99,6 @@
         font-weight: 500;
     }
 
-    /* Action footer inside form panel */
     .c-form-footer {
         display: flex;
         align-items: center;
@@ -132,7 +128,6 @@
         font-weight: 600;
     }
 
-    /* ── FULL WIDTH INTERACTIVE DATA TABLE ── */
     .c-table-container {
         overflow-x: auto;
         width: 100%;
@@ -172,13 +167,8 @@
         background: #fff;
     }
 
-    .c-wrap .table-modern tr:last-child td {
-        border-bottom: none;
-    }
-
-    .c-wrap .table-modern tr:hover td {
-        background-color: rgba(11,31,102,0.01);
-    }
+    .c-wrap .table-modern tr:last-child td { border-bottom: none; }
+    .c-wrap .table-modern tr:hover td { background-color: rgba(11,31,102,0.01); }
 
     .c-wrap .table-modern td input[type="text"] {
         width: 100%;
@@ -188,7 +178,6 @@
         border-radius: 6px;
     }
 
-    /* Custom Delete buttons inside cells */
     .c-wrap .table-modern input[type="button"] {
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: 11px;
@@ -209,70 +198,101 @@
     }
 </style>
 
+<script type="text/javascript">
+    function validateFile(sender, args) {
+        var fileUpload = document.getElementById('<%= FileUpload1.ClientID %>');
+        args.IsValid = (fileUpload != null && fileUpload.value !== '');
+    }
+</script>
+
 <div class="c-wrap container-fluid">
 
-    <%-- HEADER HERO BANNER --%>
     <div class="c-hero">
         <div class="c-hero-ring"></div>
         <h3><i class="ti ti-vocabulary"></i> Course Content Management: Business English</h3>
     </div>
 
-    <%-- STACK 1: FULL WIDTH FORM PANEL --%>
     <div class="c-panel">
         <div class="c-panel-title">
             <i class="ti ti-file-plus" style="font-size: 14px; color: var(--pink)"></i> Upload Resource Form
         </div>
         
         <div class="c-form-row">
+
+            <%-- Column 1: Topic --%>
             <div class="form-group">
-                <label for="Unite">Name of Topic</label>
-                <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter topic name (e.g., Corporate Communication)"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter topic name*" ControlToValidate="TextBox1" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
+                <label>Name of Topic</label>
+                <asp:TextBox ID="TextBox1" runat="server" class="form-control" 
+                    placeholder="Enter topic name (e.g., Corporate Communication)">
+                </asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                    ErrorMessage="Enter topic name*" 
+                    ControlToValidate="TextBox1" 
+                    ForeColor="Red" 
+                    CssClass="c-val-msg">
+                </asp:RequiredFieldValidator>
             </div>
 
+            <%-- Column 2: File Type --%>
             <div class="form-group">
-                <label for="Category">Select File Type</label>
+                <label>Select File Type</label>
                 <asp:DropDownList ID="ddlFileType" runat="server" class="form-control">
                     <asp:ListItem Text="-- Select Category --" Value="" />
                     <asp:ListItem Text="Lecture Slides" Value="Lecture Slides" />
                     <asp:ListItem Text="Tutorial Slides" Value="Tutorial Slides" />
                     <asp:ListItem Text="Workshop Slides" Value="Workshop Slides" />
                 </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvCategory" runat="server" ErrorMessage="Please select a category*"
-                    ControlToValidate="ddlFileType" InitialValue="" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="rfvCategory" runat="server" 
+                    ErrorMessage="Please select a category*"
+                    ControlToValidate="ddlFileType" 
+                    InitialValue="" 
+                    ForeColor="Red" 
+                    CssClass="c-val-msg">
+                </asp:RequiredFieldValidator>
             </div>
 
-            <div class="form-group">
-                <label for="Unite">Upload Files</label>
+            <%-- ✅ FIXED: Full width + ValidateEmptyText="true" --%>
+            <div class="form-group" style="grid-column: 1 / -1;">
+                <label>Upload Files</label>
                 <asp:FileUpload ID="FileUpload1" runat="server" class="form-control" />
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Upload your file*" ControlToValidate="FileUpload1" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
+                <asp:CustomValidator ID="cvFile" runat="server"
+                    ErrorMessage="Please upload a file*"
+                    ForeColor="Red"
+                    CssClass="c-val-msg"
+                    ClientValidationFunction="validateFile"
+                    ValidateEmptyText="true"
+                    OnServerValidate="cvFile_ServerValidate">
+                </asp:CustomValidator>
             </div>
-
-            
-
 
         </div>
 
-        <div class="form-group">
-            <label for="ContentType">File Destination</label>
+        <%-- File Destination — full width below the grid --%>
+        <div class="form-group" style="margin-bottom: 16px;">
+            <label>File Destination</label>
             <asp:DropDownList ID="ddlContentType" runat="server" class="form-control">
                 <asp:ListItem Text="-- Select Destination --" Value="" />
                 <asp:ListItem Text="Notes" Value="Notes" />
                 <asp:ListItem Text="Past Year Question" Value="PastYearQuestion" />
             </asp:DropDownList>
-            <asp:RequiredFieldValidator ID="rfvContentType" runat="server" ErrorMessage="Select destination*"
-                ControlToValidate="ddlContentType" InitialValue="" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvContentType" runat="server" 
+                ErrorMessage="Select destination*"
+                ControlToValidate="ddlContentType" 
+                InitialValue="" 
+                ForeColor="Red" 
+                CssClass="c-val-msg">
+            </asp:RequiredFieldValidator>
         </div>
 
         <div class="c-form-footer">
             <div>
                 <asp:Label ID="lblMessage" Text="" runat="server" CssClass="c-msg-lbl" />
             </div>
-            <asp:Button ID="Button1" runat="server" class="c-btn-submit" Text="Submit Content" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" runat="server" class="c-btn-submit" 
+                Text="Submit Content" OnClick="Button1_Click" />
         </div>
     </div>
 
-    <%-- STACK 2: FULL WIDTH DATABASE RECORDS --%>
     <div class="c-panel">
         <div class="c-panel-title">
             <i class="ti ti-database" style="font-size: 14px; color: var(--primary)"></i> Uploaded Course Modules Database
@@ -280,66 +300,69 @@
 
         <div class="c-table-container">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" 
-    class="table-modern" 
-    OnRowDeleting="GridView1_RowDeleting1" 
-    OnRowUpdating="GridView1_RowUpdating1" 
-    OnRowEditing="GridView1_RowEditing1" 
-    OnRowCancelingEdit="GridView1_RowCancelingEdit1">
-    <Columns>
-        <asp:TemplateField HeaderText="Topic">
-            <EditItemTemplate>
-                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Topic") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Topic") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-        
-        <asp:TemplateField HeaderText="Name">
-            <EditItemTemplate>
-                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <asp:Label ID="Label3" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
+                class="table-modern" 
+                OnRowDeleting="GridView1_RowDeleting1" 
+                OnRowUpdating="GridView1_RowUpdating1" 
+                OnRowEditing="GridView1_RowEditing1" 
+                OnRowCancelingEdit="GridView1_RowCancelingEdit1">
+                <Columns>
+                    <asp:TemplateField HeaderText="Topic">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Topic") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("Topic") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField HeaderText="Name">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="Data Type">
-            <EditItemTemplate>
-                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("ContentType") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <asp:Label ID="Label4" runat="server" Text='<%# Eval("ContentType") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Data Type">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("ContentType") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label4" runat="server" Text='<%# Eval("ContentType") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="Data">
-            <ItemTemplate>
-                <asp:LinkButton ID="lnkDownload" runat="server" Text="Download" CommandArgument='<%# Eval("id") %>' OnClick="lnkDownload_Click"></asp:LinkButton>
-            </ItemTemplate>
-        </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Data">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lnkDownload" runat="server" Text="Download" 
+                                CommandArgument='<%# Eval("id") %>' 
+                                OnClick="lnkDownload_Click">
+                            </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="Category">
-            <EditItemTemplate>
-                <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("FileCategory") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <asp:Label ID="Label5" runat="server" Text='<%# Eval("FileCategory") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Category">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("FileCategory") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label5" runat="server" Text='<%# Eval("FileCategory") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="Type">
-            <EditItemTemplate>
-                <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("FileType") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <asp:Label ID="Label6" runat="server" Text='<%# Eval("FileType") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Type">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("FileType") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label6" runat="server" Text='<%# Eval("FileType") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
 
-        <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" ButtonType="Button" />
-    </Columns>
-</asp:GridView>
+                    <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" ButtonType="Button" />
+                </Columns>
+            </asp:GridView>
         </div>
     </div>
 
