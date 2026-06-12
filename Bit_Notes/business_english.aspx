@@ -1136,12 +1136,9 @@
         <div class="content-tabs">
           <button type="button" class="ctab-btn active" id="tabNotes" onclick="switchTab('notes')">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Downloadable Notes
+             Notes
           </button>
-          <button type="button" class="ctab-btn" id="tabPapers" onclick="switchTab('papers')">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-            Past Papers
-          </button>
+          
         </div>
       </div>
 
@@ -1175,7 +1172,7 @@
         AutoGenerateColumns="False" 
         CssClass="table table-bordered table-condensed table-hover" 
         ShowHeader="True" 
-        OnRowDataBound="GridView_RowDataBound">
+        >
         <Columns>
             
             <%-- 1. Dynamic Type Badge Column with Header --%>
