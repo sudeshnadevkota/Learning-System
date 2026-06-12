@@ -1,609 +1,119 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="learning.master.cs" Inherits="Learning_System.learning" %>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Texas College Virtual System</title>
-    <link href="style.css" rel="stylesheet" />
- <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-        /* Apply font family to the entire body */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Arial Light", "Arial", "Helvetica", "Calibri", "Tahoma", "Verdana", sans-serif;
+        /* Base Reset & Typography */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Segoe UI", Arial, sans-serif; background-color: #F5F7FD; display: flex; flex-direction: column; min-height: 100vh; }
+
+        /* Modern Navbar Styling */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            padding: 12px 0 !important;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .hover-effect:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-        }
-
-
-        .hover-effect:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-        }
-
-        .card-img-top {
-            object-fit: cover;
-            height: 150px;
-            width: 100%;
-        }
-
-        .card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-
-        /* Apply to main headings */
-        h1, h2, h3 {
-            font-family: "Arial Light", "Arial", "Helvetica", "Calibri", "Tahoma", "Verdana", sans-serif;
-        }
-
-        /* Apply to paragraphs */
-        p {
-            font-family: "Arial Light", "Arial", "Helvetica", "Calibri", "Tahoma", "Verdana", sans-serif;
-        }
-
-        /* Apply to list items */
-        li {
-            font-family: "Arial Light", "Arial", "Helvetica", "Calibri", "Tahoma", "Verdana", sans-serif;
-        }
-
-        :root {
-            --bs-primary: #28346f;
-            --bs-primary-rgb: 40, 52, 111;
-        }
-
-
-        .btn-primary {
-            background-color: var(--bs-primary);
-            border-color: var(--bs-primary);
-        }
-
-            .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-                background-color: #1e2754;
-                border-color: #1e2754;
-            }
-
-            .btn-primary:hover,
-            .btn-primary:focus,
-            .btn-primary:active {
-                background-color: #0b0b0b;
-                border-color: #1e2754;
-            }
-
-        .bg-primary {
-            background-color: var(--bs-primary) !important;
-        }
-
-        .text-primary {
-            color: var(--bs-primary) !important;
-        }
-
-        .navbar-nav {
-            margin: auto;
-        }
-
-            .navbar-nav li {
-                margin-left: 15px;
-                margin-right: 15px;
-            }
-
-        @media (max-width: 767.98px) {
-            .offcanvas-body {
-                margin-top: 1rem !important;
-            }
-        }
-
-
-        .hover-effect {
-            position: relative;
-            transition: transform 0.3s ease-in-out;
-        }
-
-            .hover-effect:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            }
-
-        .social-links {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .hover-effect:hover .social-links {
-            opacity: 1;
-        }
-
-        .card-body {
-            position: relative;
-            padding-bottom: 50px; /* Add some padding to ensure space for the social links */
-        }
-
-
-        .instructor-card {
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-            .instructor-card img {
-                width: 100%;
-                height: 300px;
-                object-fit: cover;
-            }
-
-        .social-icons {
-            position: absolute;
-            right: -40px;
-            top: 70px;
-            transition: right 0.3s ease;
-        }
-
-        .instructor-card:hover .social-icons {
-            right: 10px;
-        }
-
-        .social-icons a {
-            display: block;
-            margin-bottom: 10px;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-            text-align: center;
-            width: 30px;
-            height: 30px;
-            background: #28346f;
-            color: white;
-        }
-
-        .instructor-name {
-            font-weight: bold;
-            margin-top: 10px;
-            margin-bottom: 0;
-        }
-
-        .instructor-role {
-            color: #888;
-            font-size: 0.9em;
-        }
-
-        .custom-hover:hover {
-            text-decoration: underline;
-            color: #28346f;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .custom-hover a:hover {
+        .navbar-nav .nav-link {
+            font-weight: 500;
             color: #28346f !important;
+            padding: 0 15px !important;
+            transition: color 0.3s ease;
         }
 
+        .navbar-nav .nav-link:hover { color: #F6B400 !important; }
 
-        .instructor-card {
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 20px;
+        /* Enhanced Login Button */
+        .login-btn {
+            background: linear-gradient(135deg, #0B1F66, #1e2754) !important;
+            border: none !important;
+            color: white !important;
+            padding: 10px 28px !important;
+            border-radius: 50px !important;
+            font-weight: 600 !important;
+            transition: all 0.4s ease !important;
+            box-shadow: 0 4px 15px rgba(11, 31, 102, 0.2) !important;
         }
 
-            .instructor-card img {
-                width: 100%;
-                height: 300px;
-                object-fit: cover;
-            }
-
-        .social-icons {
-            position: absolute;
-            right: -40px;
-            top: 70px;
-            transition: right 0.3s ease;
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(11, 31, 102, 0.35) !important;
         }
 
-        .instructor-card:hover .social-icons {
-            right: 25px;
-        }
-
-        .social-icons a {
-            display: block;
-            margin-bottom: 10px;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
+        /* Footer */
+        footer {
+            background-color: #081547 !important;
+            color: rgba(255,255,255,0.6) !important;
+            padding: 30px 20px;
             text-align: center;
-            width: 30px;
-            height: 30px;
-       
-            background-color: var(--bs-primary);
-            color: white;
-        }
-
-        .instructor-name {
-            font-weight: bold;
-            margin-top: 10px;
-            margin-bottom: 0;
-        }
-
-        .instructor-role {
-            color: #888;
-            font-size: 0.9em;
-        }
-
-
-        .carousel .carousel-item {
-            color: #999;
-            overflow: hidden;
-            min-height: 120px;
             font-size: 13px;
+            margin-top: auto;
         }
 
-        .carousel .media img {
-            width: 80px;
-            height: 80px;
-            display: block;
-            border-radius: 50%;
-        }
-
-        .carousel .testimonial {
-            padding: 0 15px 0 60px;
-            position: relative;
-        }
-
-            .carousel .testimonial::before {
-                content: "\201C";
-                font-family: Arial, sans-serif;
-                color: #e2e2e2;
-                font-weight: bold;
-                font-size: 68px;
-                line-height: 54px;
-                position: absolute;
-                left: 15px;
-                top: 0;
-            }
-
-        .carousel .overview b {
-            text-transform: uppercase;
-            color: #1c47e3;
-        }
-
-        .carousel-indicators {
-            bottom: -40px;
-        }
-
-            .carousel-indicators [data-bs-target], .carousel-indicators [data-bs-target].active {
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                margin: 1px 3px;
-                box-sizing: border-box;
-            }
-
-            .carousel-indicators [data-bs-target] {
-                background: #e2e2e2;
-                border: 4px solid #fff;
-            }
-
-                .carousel-indicators [data-bs-target].active {
-                    color: #fff;
-                    background: #1c47e3;
-                    border: 5px double;
-                }
-        /*  .nima-card {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .button-container {
-            position: absolute;
-            bottom: 0;
-            top:0rem;
-            left: 0;
-            right: 0;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-        .nima-card:hover .button-container {
-            transform: translateY(0);
-        }*/
-
-        .nima-card {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-            .nima-card img {
-                transition: transform 0.3s ease;
-            }
-
-            .nima-card:hover img {
-                transform: scale(1.1); /* Optional: zoom image slightly on hover */
-            }
-
-        .button-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            top: 2.5rem;
-            right: 0;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .nima-card:hover .button-container {
-            transform: translateY(0);
-        }
-
-        @media (max-width: 576px) {
-            .nima-card {
-                width: 100% !important;
-                height: 20rem; /* Ensure full width on small screens */
-            }
-        }
-.login-btn {
-    background-color: #0B1F66 !important;
-    border-color: #0B1F66 !important;
-    color: white !important;
-}
-
-.login-btn:hover {
-    background-color: #081547 !important;
-    border-color: #081547 !important;
-}
-
-
-
-       /* FOOTER */
-
-.footer-custom{
-    background:linear-gradient(135deg,#0B1F66,#081547) !important;
-    color:white !important;
-    padding:50px 20px 25px;
-}
-
-.footer-text{
-    font-size:14px;
-    color:#d8ddf0 !important;
-}
-
-.footer-custom p,
-.footer-custom a{
-    font-size:14px;
-    color:#d8ddf0 !important;
-    text-decoration:none;
-    transition:.3s;
-}
-
-.footer-custom h3{
-    font-size:18px;
-    color:white !important;
-    font-weight:700;
-    margin-bottom:18px;
-}
-
-.custom-hover:hover{
-    color:#F6B400 !important;
-}
-
-.custom-p-hover:hover{
-    color:#F6B400 !important;
-}
+        /* Main Content Spacing */
+        .main-content { padding-top: 80px; flex: 1; }
     </style>
 </head>
 
-<body class="text-primary">
-
+<body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow  bg-body rounded" style="position:fixed; top:0; z-index:999; left:0; right:0;">
+        <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="Default.aspx">
-
-
-
-                    <img src="slide/logo.png" alt="logo" width="150" />
-
+                    <img src="slide/logo.png" alt="logo" width="140" />
                 </a>
-                <!-- Toggler Button -->
-                <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                
+                <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" 
+                        data-bs-target="#offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-
-                <div class="sidebar offcanvas offcanvas-end bg-custom text-light" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
-                    <!-- Sidebar Header -->
-                    <div class="offcanvas-header text-white border-bottom">
-                        <h5 class="offcanvas-title text-primary" id="offcanvasNavbarLabel">Texas Learning Portal</h5>
-                        <button type="button" class="btn-close btn-close-dark shadow-none" data-bs-dismiss="offcanvas"
-                            aria-label="Close">
-                        </button>
+                <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+                    <div class="offcanvas-header border-bottom">
+                        <h5 class="offcanvas-title text-primary">Texas Portal</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
                     </div>
+                    
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav mx-auto align-items-center">
+                            <li class="nav-item"><a href="https://texasattendance.com/Admin/Dashboard.aspx" class="nav-link">Attendance</a></li>
+                            <li class="nav-item"><a href="https://certificate.texascollegenepal.com/Default.aspx" class="nav-link">Certificate</a></li>
+                            <li class="nav-item"><a href="/" class="nav-link">Leave</a></li>
+                            <li class="nav-item"><a href="https://texasjobportal.com/default.aspx" class="nav-link">Jobs</a></li>
+                            <li class="nav-item"><a href="/" class="nav-link">Notice Board</a></li>
+                        </ul>
 
-                    <!-- Sidebar Body -->
-                    <div class="offcanvas-body d-flex flex-column  flex-lg-row p-4 p-lg-0">
-                        <ul
-                            class="navbar-nav mx-auto justify-content-center align-items-center flex-grow-1 pe-3  z-3 opacity-100">
-
-
-                            <li><a href="Default.aspx" class="text-decoration-none text-primary fs-5">Home</a></li>
-              
-                            <li><a href="AboutUs.aspx" class="text-decoration-none text-primary fs-5">About Us</a></li>
-                            <li><a href="Contact.aspx" class="text-decoration-none text-primary fs-5">Contact Us</a></li>
-                           <!-- <li><a href="Feedback.aspx" class="text-decoration-none text-primary fs-5">Feedback</a></li> -->
-                          </ul>
-
-
-       
-      <div class="d-flex align-items-center ms-auto gap-3 mt-3 mt-lg-0">
-       <asp:LinkButton ID="Linklogin" runat="server"
-    CssClass="btn btn-primary fs-5 login-btn"
-    OnClick="Linklogin_Click"
-    Style="border-radius: 35px;">
-    Login
-</asp:LinkButton>
+                        <div class="d-flex align-items-center mt-3 mt-lg-0">
+                            <asp:LinkButton ID="Linklogin" runat="server" CssClass="btn login-btn" OnClick="Linklogin_Click">
+                                Login <i class="fas fa-sign-in-alt ms-2"></i>
+                            </asp:LinkButton>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </nav>
 
-
-
-
-
-
-        <div style="padding-top:60px;">
-
+        <div class="main-content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
-
         </div>
 
-        <footer class="bg-light text-center text-lg-start text-dark container-fluid pt-3 footer-custom">
-            <div class="container p-4">
-                <div class="row my-4">
-                    <!-- Logo and Description Section -->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                            <a class="shadow-1-strong d-flex justify-content-center mb-4 mx-auto justify-content-md-start " href="Default.aspx">
-                            <img src="slide/logo.png" height="70" alt="College Logo" />
-                            </a>
-                        
-
-                        <p class="custom-p-hover footer-text fs-6" style="text-align: justify">
-                            Texas,the premier institution offering comprehensive programs in management and technology, preparing students for successful careers through innovative education and industry expertise.
-                        </p>
-
-                        <%--<ul class="list-unstyled d-flex flex-row justify-content-center">
-                            <li class="mx-1">
-                                <a class="btn text-white btn-sm btn-floating" style="background-color: black;" href="#!" role="button">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li class="mx-1">
-                                <a class="btn text-white btn-sm btn-floating" style="background-color: black;" href="#!" role="button">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </li>
-                            <li class="mx-1">
-                                <a class="btn text-white btn-sm btn-floating" style="background-color: black;" href="#!" role="button">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </li>
-                            <li class="mx-1">
-                                <a class="btn text-white btn-sm btn-floating" style="background-color: black;" href="#!" role="button">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="mx-1">
-                                <a class="btn text-white btn-sm btn-floating" style="background-color: black;" href="#!" role="button">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </li>
-                        </ul>--%>
-                    </div>
-
-                    <!-- Popular Courses Section -->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h3 class="text-uppercase mb-4 fw-bolder  text-primary">Popular Courses</h3>
-                        <ul class="list-unstyled">
-                            <li class="mb-2 custom-hover footer-text">
-                                <a href="#" class="text-dark text-decoration-none fs-6">Master of Business Administration</a>
-                            </li>
-                            <li class="mb-2 custom-hover footer-text">
-                                <a href="#" class="text-dark text-decoration-none fs-6">Bachelor of Hospitality Management</a>
-                            </li>
-
-                            <li class="mb-2 custom-hover footer-text">
-                                <a href="#" class="text-dark text-decoration-none fs-6">Bachelor of Business Administration</a>
-                            </li>
-                            <li class="mb-2 custom-hover footer-text">
-                                <a href="#" class="text-dark text-decoration-none fs-6">Bachelor of Cyber Security</a>
-                            </li>
-                            <li class="mb-2 custom-hover footer-text">
-                                <a href="#" class="text-dark text-decoration-none fs-6">BIT (Bachelor of Information Technology)</a>
-                            </li>
-                            <li class="mb-2 custom-hover footer-text">
-                                <a href="#" class="text-dark text-decoration-none fs-6">BCS (Bachelor of Computer Science)</a>
-                            </li>
-
-
-                        </ul>
-                    </div>
-
-                    <!-- Course Categories Section -->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h3 class="text-uppercase mb-4 fw-bolder  text-primary">Course Categories</h3>
-                        <ul class="list-unstyled">
-                            <li class="mb-2 custom-hover footer-text">
-                                <a href="#!" class="text-dark text-decoration-none fs-6">Information Technology</a>
-                            </li>
-                            <li class="mb-2 custom-hover footer-text">
-                                <a href="#!" class="text-dark text-decoration-none fs-6">Art and Design</a>
-                            </li>
-                            <li class="mb-2 custom-hover footer-text">
-                                <a href="#!" class="text-dark text-decoration-none fs-6">Social Sciences</a>
-                            </li>
-                            <li class="mb-2 custom-hover footer-text">
-                                <a href="#!" class="text-dark text-decoration-none fs-6">Languages and Literature</a>
-                            </li>
-                            <li class="mb-2 custom-hover footer-text">
-                                <a href="#!" class="text-dark text-decoration-none fs-6">Finance and Accounting</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Contact Information Section -->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h3 class="text-uppercase mb-4 fw-bolder  text-primary">Contact</h3>
-                        <ul class="list-unstyled">
-                            <li class="custom-hover mb-2 footer-text">
-                                <p class="m-0 fs-6">
-                                    <i class="me-2 fas fa-map-marker-alt"></i>Sifal, Chabahil
-Kathmandu, Nepal
-                                </p>
-                            </li>
-                            <li class="custom-hover mb-2 footer-text">
-                                <p class="m-0 fs-6"><i class="me-2 fas fa-phone-alt"></i>01-4589134, 01-4588627,9801644462</p>
-                            </li>
-                            <li class="custom-hover mb-2 footer-text">
-                                <p class="m-0 fs-6"><i class="me-2 fas fa-envelope"></i>inquiry@texascollege.edu.np</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <footer>
+            <p>&copy; 2026 Texas College of Management and IT. All rights reserved.</p>
         </footer>
-
-
-
-
-
     </form>
-
-   
 </body>
-
 </html>

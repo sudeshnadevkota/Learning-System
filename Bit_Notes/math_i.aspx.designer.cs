@@ -15,12 +15,21 @@ namespace Learning_System.Bit_Notes
     {
 
         /// <summary>
-        /// GridView1 control.
+        /// GridViewNotes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView GridViewNotes;
+
+        /// <summary>
+        /// GridViewPapers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewPapers;
     }
 }
