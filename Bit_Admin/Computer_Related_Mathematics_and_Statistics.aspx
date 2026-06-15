@@ -170,6 +170,7 @@
         border-left: none;
         border-right: none;
         background: #fff;
+
     }
 
     .c-wrap .table-modern tr:last-child td {
