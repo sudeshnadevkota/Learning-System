@@ -63,11 +63,9 @@
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.5.2\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.5.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -266,16 +264,16 @@
     <Content Include="Bcs_Admin\windows_server_2016.aspx" />
     <Content Include="Bcs_Admin\wireless_communications.aspx" />
     <Content Include="Bcs_Notes\advance_computer_architecture.aspx" />
-    <Content Include="Bcs_Notes\advance_computer_network.aspx" />
+    <Content Include="Bcs_Notes\data_communication_networking.aspx" />
     <Content Include="Bcs_Notes\advance_database_management_system.aspx" />
     <Content Include="Bcs_Notes\advance_routing_technology%28WAN%29.aspx" />
     <Content Include="Bcs_Notes\advance_switching_tech_and_trroubleshoot.aspx" />
-    <Content Include="Bcs_Notes\AI.aspx" />
+    <Content Include="Bcs_Notes\computer_ethics.aspx" />
     <Content Include="Bcs_Notes\basic_computer_architecture.aspx" />
-    <Content Include="Bcs_Notes\business_english.aspx" />
+    <Content Include="Bcs_Notes\english.aspx" />
     <Content Include="Bcs_Notes\CluoudComputing.aspx" />
     <Content Include="Bcs_Notes\computer_network.aspx" />
-    <Content Include="Bcs_Notes\CProgamming.aspx" />
+    <Content Include="Bcs_Notes\principle_of_programming.aspx" />
     <Content Include="Bcs_Notes\cryptography.aspx" />
     <Content Include="Bcs_Notes\cyber_security_law_and_policy.aspx" />
     <Content Include="Bcs_Notes\cyber_security_law_and_policy_5.aspx" />
@@ -303,7 +301,7 @@
     <Content Include="Bcs_Notes\operating_system.aspx" />
     <Content Include="Bcs_Notes\project_work.aspx" />
     <Content Include="Bcs_Notes\Python.aspx" />
-    <Content Include="Bcs_Notes\security_in_computing.aspx" />
+    <Content Include="Bcs_Notes\computer_system.aspx" />
     <Content Include="Bcs_Notes\SoftwareProjectManagement.aspx" />
     <Content Include="Bcs_Notes\system_analysis_and_design.aspx" />
     <Content Include="Bcs_Notes\system_software_and_administration.aspx" />
@@ -2396,12 +2394,12 @@
     <Compile Include="Bcs_Notes\advance_computer_architecture.aspx.designer.cs">
       <DependentUpon>advance_computer_architecture.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\advance_computer_network.aspx.cs">
-      <DependentUpon>advance_computer_network.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\data_communication_networking.aspx.cs">
+      <DependentUpon>data_communication_networking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bcs_Notes\advance_computer_network.aspx.designer.cs">
-      <DependentUpon>advance_computer_network.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\data_communication_networking.aspx.designer.cs">
+      <DependentUpon>data_communication_networking.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\advance_database_management_system.aspx.cs">
       <DependentUpon>advance_database_management_system.aspx</DependentUpon>
@@ -2424,12 +2422,12 @@
     <Compile Include="Bcs_Notes\advance_switching_tech_and_trroubleshoot.aspx.designer.cs">
       <DependentUpon>advance_switching_tech_and_trroubleshoot.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\AI.aspx.cs">
-      <DependentUpon>AI.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\computer_ethics.aspx.cs">
+      <DependentUpon>computer_ethics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bcs_Notes\AI.aspx.designer.cs">
-      <DependentUpon>AI.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\computer_ethics.aspx.designer.cs">
+      <DependentUpon>computer_ethics.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\basic_computer_architecture.aspx.cs">
       <DependentUpon>basic_computer_architecture.aspx</DependentUpon>
@@ -2438,12 +2436,12 @@
     <Compile Include="Bcs_Notes\basic_computer_architecture.aspx.designer.cs">
       <DependentUpon>basic_computer_architecture.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\business_english.aspx.cs">
-      <DependentUpon>business_english.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\english.aspx.cs">
+      <DependentUpon>english.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bcs_Notes\business_english.aspx.designer.cs">
-      <DependentUpon>business_english.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\english.aspx.designer.cs">
+      <DependentUpon>english.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\CluoudComputing.aspx.cs">
       <DependentUpon>CluoudComputing.aspx</DependentUpon>
@@ -2459,12 +2457,12 @@
     <Compile Include="Bcs_Notes\computer_network.aspx.designer.cs">
       <DependentUpon>computer_network.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\CProgamming.aspx.cs">
-      <DependentUpon>CProgamming.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\principle_of_programming.aspx.cs">
+      <DependentUpon>principle_of_programming.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bcs_Notes\CProgamming.aspx.designer.cs">
-      <DependentUpon>CProgamming.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\principle_of_programming.aspx.designer.cs">
+      <DependentUpon>principle_of_programming.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\cryptography.aspx.cs">
       <DependentUpon>cryptography.aspx</DependentUpon>
@@ -2648,12 +2646,12 @@
     <Compile Include="Bcs_Notes\Python.aspx.designer.cs">
       <DependentUpon>Python.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\security_in_computing.aspx.cs">
-      <DependentUpon>security_in_computing.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\computer_system.aspx.cs">
+      <DependentUpon>computer_system.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bcs_Notes\security_in_computing.aspx.designer.cs">
-      <DependentUpon>security_in_computing.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\computer_system.aspx.designer.cs">
+      <DependentUpon>computer_system.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\SoftwareProjectManagement.aspx.cs">
       <DependentUpon>SoftwareProjectManagement.aspx</DependentUpon>
@@ -9020,7 +9018,7 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them. For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\EntityFramework.6.5.2\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.2\build\EntityFramework.props'))" />
     <Error Condition="!Exists('packages\EntityFramework.6.5.2\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.2\build\EntityFramework.targets'))" />

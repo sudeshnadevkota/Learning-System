@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="7" virtualPath="/Bcs_Notes/dash.aspx" hash="fffffff9acec72d9" filehash="2bf9c16e5" flags="100000" CCUpreservationFileName="dash.aspx.40acfc91_CBMResult.ccu">
+    <filedeps>
+        <filedep name="/Bcs_Notes/dash.aspx" />
+        <filedep name="/Bcs_Notes/note.Master" />
+    </filedeps>
+</preserve>

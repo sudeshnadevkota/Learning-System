@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bcs_Notes/note.Master" AutoEventWireup="true" CodeBehind="dash.aspx.cs" Inherits="Learning_System.Bcs_Notes.dash" %>
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <style>
@@ -202,14 +204,6 @@
 
   .hero-content { padding: 44px 44px 40px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
 
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.13);
-    color: rgba(255,255,255,0.75); font-size: 11px; font-weight: 700;
-    padding: 5px 14px; border-radius: 50px; font-family: 'Sora', sans-serif;
-    letter-spacing: 0.5px; margin-bottom: 18px; width: fit-content;
-  }
-  .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #F5C542; box-shadow: 0 0 6px #F5C542; animation: pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
 
   .hero-title { font-family: 'Sora', sans-serif; font-size: 34px; font-weight: 800; color: white; line-height: 1.15; letter-spacing: -0.8px; margin-bottom: 10px; }
@@ -223,7 +217,6 @@
   .hms-val span { color: #F5C542; font-size: 16px; }
   .hms-lbl { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.38); text-transform: uppercase; letter-spacing: 0.9px; }
 
-  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
   .btn-pink {
     display: inline-flex; align-items: center; gap: 9px;
@@ -255,25 +248,9 @@
   .ib-txt span { font-size: 10px; color: var(--text-secondary); }
 
   /* ══ SECTIONS ══ */
-  .section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
   .section-title { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 10px; }
   .section-icon { width: 32px; height: 32px; border-radius: 9px; background: var(--pink-soft); display: flex; align-items: center; justify-content: center; font-size: 15px; }
 
-  /* ══ WHY CHOOSE ROW ══ */
-  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
-
-  .why-card { background: white; border-radius: 16px; border: 1.5px solid var(--border); padding: 22px 20px; box-shadow: var(--shadow-sm); transition: var(--ease); display: flex; flex-direction: column; gap: 12px; }
-  .why-card:hover { border-color: rgba(255,45,141,0.3); box-shadow: 0 8px 28px var(--pink-glow); transform: translateY(-2px); }
-
-  .wc-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-  .wc-icon.indigo { background: rgba(11,31,102,0.08); }
-  .wc-icon.rose { background: rgba(255,45,141,0.1); }
-  .wc-icon.sky { background: rgba(14,165,233,0.1); }
-  .wc-icon.violet { background: rgba(124,58,237,0.08); }
-  .wc-icon.emerald { background: rgba(16,185,129,0.1); }
-  .wc-icon.amber { background: rgba(245,158,11,0.1); }
-  .wc-title { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--primary); }
-  .wc-text { font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; margin-top: -4px; }
 
   /* ══ AFFILIATION BANNER ══ */
   .affil-banner {
@@ -309,12 +286,6 @@
   .about-para strong { color: var(--primary); font-weight: 700; }
   .about-para:last-of-type { margin-bottom: 24px; }
 
-  .about-highlights { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; padding: 20px; background: var(--bg); border-radius: 14px; border: 1.5px solid var(--border); }
-  .ah-card { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: white; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: var(--ease); }
-  .ah-card:hover { border-color: var(--pink); box-shadow: 0 4px 16px var(--pink-glow); }
-  .ah-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--pink-soft); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-  .ah-title { font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 3px; }
-  .ah-text { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
 
   .about-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
@@ -355,7 +326,7 @@
 
   .poster-admission { position: absolute; bottom: 50px; right: 16px; z-index: 3; text-align: right; }
   .pa-open { font-family: 'Sora', sans-serif; font-size: 20px; font-weight: 900; color: white; line-height: 1.1; letter-spacing: -0.5px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-  .pa-intake { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+  
 
   .poster-student { position: absolute; bottom: 0; right: -8px; z-index: 2; }
 
@@ -412,7 +383,6 @@
       </div>
 
       <div class="hero-content">
-        <div class="hero-badge"></div>
 
         <div class="hero-title">
           Defend the Digital<br>
@@ -429,21 +399,15 @@
             <div class="hms-lbl">Semesters</div>
           </div>
           <div class="hms-item">
-            <div class="hms-val">129</div>
+            <div class="hms-val">126</div>
             <div class="hms-lbl">Credit Hours</div>
           </div>
           <div class="hms-item">
-            <div class="hms-val">300<span>+</span></div>
+            <div class="hms-val">1000<span>+</span></div>
             <div class="hms-lbl">Graduates</div>
           </div>
         </div>
 
-        <div class="hero-btns">
-          <button class="btn-pink" onclick="scrollToCourses()">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><polygon points="5,3 19,10 5,18"/></svg>
-            Browse Notes
-          </button>
-        </div>
       </div>
 
       <!-- ILLUSTRATION PANEL -->
@@ -537,35 +501,20 @@
         <h2 class="about-heading">Nepal's Premier <span>BCS Degree</span></h2>
 
         <p class="about-para">
-          The <strong>Bachelor of Cyber Security (BCS)</strong> at Texas College of Management and IT (TCMIT) is a 4-year, 8-semester program affiliated with <strong>Lincoln University College, Malaysia</strong>. Designed to train the next generation of security professionals, the program covers threat analysis, ethical hacking, digital forensics, risk management, network security, and emerging areas like cloud security and incident response.
+          The <strong>Bachelor of Cyber Security (BCS)</strong> at Texas College of Management and IT (TCMIT) is a 4-year, 8-semester program affiliated with <strong>Lincoln University College, Malaysia</strong>. 
+            Designed to blend technical theory with practical execution, the program covers software development, networking, databases, cloud computing, AI, and DevOps. 
+            With modern facilities like the IoT & Robotics labs, VFX Studio, and Incubation Center, students gain hands-on experience through project work and industry training to graduate completely career-ready.
         </p>
         <p class="about-para">
-          With dedicated CEH &amp; CHFI labs, an Incubation Center, and a state-of-the-art e-library, students gain hands-on experience defending real-world systems. Industry training, live project work, and globally recognised certifications ensure graduates are career-ready for cybersecurity roles in Nepal and around the world.
+            To ensure graduates are industry-ready from day one, Texas College integrates structured, After-Class Professional Classes directly into the academic timeline
+          With dedicated CEH &amp; CHFI labs, an Incubation Center, and a state-of-the-art e-library, students gain hands-on experience defending real-world systems. 
+            Industry training, live project work, and globally recognised certifications ensure graduates are career-ready for cybersecurity roles in Nepal and around the world.
         </p>
-
-        <div class="about-highlights">
-          <div class="ah-card">
-            <div class="ah-icon">🛡️</div>
-            <div>
-              <div class="ah-title">Security Depth</div>
-              <div class="ah-text">Mastery in ethical hacking, network defence, cryptography, digital forensics, and incident response across all semesters.</div>
-            </div>
-          </div>
-          <div class="ah-card">
-            <div class="ah-icon">🌐</div>
-            <div>
-              <div class="ah-title">Global Recognition</div>
-              <div class="ah-text">Lincoln University College (LUC) affiliation with MQA accreditation — degree recognised internationally and TU-equivalent in Nepal.</div>
-            </div>
-          </div>
-          <div class="ah-card">
-            <div class="ah-icon">🚀</div>
-            <div>
-              <div class="ah-title">Industry Ready</div>
-              <div class="ah-text">Mandatory industrial training, CEH/CHFI certification tracks, and a career placement cell ensure graduates are job-ready from day one.</div>
-            </div>
-          </div>
-        </div>
+        <p class="about-para">
+            Alongside this core development track, the student journey includes specialized industry certifications to make them globally competitive. 
+            Students dive into professional Cisco Training and UI/UX / Multimedia design workshops, build cross-platform mobile apps with React Native, and master Cybersecurity Essentials. 
+            Finally, they achieve production-ready expertise in Cloud Foundations and Cloud Architecting running on Linux 9.0.
+        </p>
 
         <div class="about-btns"></div>
       </div>
@@ -576,9 +525,6 @@
             <div class="poster-inner">
               <div class="poster-logos">
                 <div class="poster-logo-tx">
-                  <div class="tx-ring">
-                    <svg viewBox="0 0 28 28" width="28" height="28"><circle cx="14" cy="14" r="12" stroke="#FF2D8D" stroke-width="2" fill="none"/><text x="14" y="18" text-anchor="middle" font-family="Sora,sans-serif" font-weight="800" font-size="11" fill="#0B1F66">TX</text></svg>
-                  </div>
                   <div class="tx-text-wrap">
                     <span class="tx-name">Texas</span>
                     <span class="tx-sub">College of Management &amp; IT</span>
@@ -591,14 +537,14 @@
               </div>
 
               <div class="poster-tagline">DEFEND THE DIGITAL WORLD</div>
-              <div class="poster-main-title">WITH<br>CYBER SEC</div>
+              <div class="poster-main-title">WITH<br>CYBER SECURITY</div>
               <div class="poster-degree-row">
                 <div class="poster-degree-title">BCS</div>
               </div>
               <div class="poster-degree-sub">Bachelor of (Hons.) in<br><strong>Cyber Security</strong></div>
 
               <div class="poster-why-box">
-                <div class="pwb-title">Why choose <span>BCS</span><br>at Texas</div>
+                <div class="pwb-title">Discover <span>BCS</span><br>at Texas</div>
                 <div class="pwb-item">▶ CEH &amp; CHFI Lab</div>
                 <div class="pwb-item">▶ Digital Forensics Studio</div>
                 <div class="pwb-item">▶ Incubation Center</div>
@@ -608,7 +554,7 @@
 
               <div class="poster-admission">
                 <div class="pa-open">ADMISSION<br>OPEN 2026</div>
-                <div class="pa-intake">Spring Intake</div>
+                
               </div>
 
               <!-- Poster student SVG (identical to BIT) -->
@@ -673,55 +619,17 @@
       </div>
 
       <div class="affil-right">
-        <button class="btn-learn">
-          Learn More
-          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </button>
-      </div>
-    </div>
+  <a href="https://www.lincoln.edu.my" target="_blank" rel="noopener noreferrer" class="btn-learn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+    Learn More
+    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+  </a>
+</div>
 
-    <!-- WHY CHOOSE BCS -->
-    <div class="fade-up d5">
-      <div class="section-head">
-        <div class="section-title">
-          <div class="section-icon">🛡️</div>
-          Why Choose BCS at Texas?
-        </div>
-      </div>
-
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="wc-icon indigo">🏛️</div>
-          <div class="wc-title">Dedicated Security Labs</div>
-          <div class="wc-text">Hands-on access to CEH & CHFI labs, a Digital Forensics Studio, and a Security Research Cell — all on one campus in Sifal, Kathmandu.</div>
-        </div>
-        <div class="why-card">
-          <div class="wc-icon rose">🔐</div>
-          <div class="wc-title">Industry Certifications</div>
-          <div class="wc-text">Embedded tracks for CEH, CHFI, CompTIA Security+, and AWS Security Specialty — exam-ready before you graduate.</div>
-        </div>
-        <div class="why-card">
-          <div class="wc-icon sky">🌐</div>
-          <div class="wc-title">International Degree</div>
-          <div class="wc-text">Globally recognised via Lincoln University College (LUC) MQA accreditation — fully equivalent to Tribhuvan University in Nepal.</div>
-        </div>
-        <div class="why-card">
-          <div class="wc-icon violet">🕵️</div>
-          <div class="wc-title">Ethical Hacking Focus</div>
-          <div class="wc-text">Master penetration testing, vulnerability assessment, and incident response through live, scenario-based lab challenges every semester.</div>
-        </div>
-        <div class="why-card">
-          <div class="wc-icon emerald">💼</div>
-          <div class="wc-title">Career Placement Cell</div>
-          <div class="wc-text">90% of graduates secure roles within 6 months via the CSC career cell, with direct links to leading cybersecurity firms in Nepal and abroad.</div>
-        </div>
-        <div class="why-card">
-          <div class="wc-icon amber">📖</div>
-          <div class="wc-title">Smart Notes Hub</div>
-          <div class="wc-text">Access semester-wise curated notes, past papers, CTF challenges, and video links — all in one beautifully organised platform.</div>
-        </div>
-      </div>
-    </div>
+    
 
   </div>
 </main>

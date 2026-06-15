@@ -1527,85 +1527,85 @@
 </div>
 
 <script>
-    function switchTab(tab) {
-        var panelNotes = document.getElementById('panelNotes');
-        var panelPapers = document.getElementById('panelPapers');
-        var tabNotes = document.getElementById('tabNotes');
-        var tabPapers = document.getElementById('tabPapers');
+function switchTab(tab) {
+    var panelNotes = document.getElementById('panelNotes');
+    var panelPapers = document.getElementById('panelPapers');
+    var tabNotes = document.getElementById('tabNotes');
+    var tabPapers = document.getElementById('tabPapers');
 
-        if (tab === 'notes') {
-            panelNotes.style.display = '';
-            panelPapers.style.display = 'none';
-            tabNotes.classList.add('active');
-            tabPapers.classList.remove('active');
+    if (tab === 'notes') {
+        panelNotes.style.display = '';
+        panelPapers.style.display = 'none';
+        tabNotes.classList.add('active');
+        tabPapers.classList.remove('active');
+    } else {
+        panelNotes.style.display = 'none';
+        panelPapers.style.display = '';
+        tabPapers.classList.add('active');
+        tabNotes.classList.remove('active');
+    }
+}
+
+// ── Notes filter by Type ──
+function filterNotes(btn, filterType) {
+    // 1. Manage Active Class
+    document.querySelectorAll('.fchip').forEach(function (c) {
+        c.classList.remove('active');
+    });
+    btn.classList.add('active');
+
+    // 2. Select rows from the GridView table
+    var rows = document.querySelectorAll('#notesTable table tr');
+    var visible = 0;
+
+    rows.forEach(function (row) {
+        // Skip header row if it exists (GridView usually renders <th> or no <td> in first row)
+        if (row.querySelector('th')) return;
+
+        var badge = row.querySelector('.type-badge');
+        if (!badge) return; // Skip if no badge found in this row
+
+        var badgeText = badge.textContent.trim().toLowerCase();
+
+        // 3. Logic: Match 'all' or check if the badge text contains the filter type
+        if (filterType === 'all' || badgeText.includes(filterType.toLowerCase())) {
+            row.style.display = '';
+            visible++;
         } else {
-            panelNotes.style.display = 'none';
-            panelPapers.style.display = '';
-            tabPapers.classList.add('active');
-            tabNotes.classList.remove('active');
+            row.style.display = 'none';
         }
-    }
-
-    // ── Notes filter by Type ──
-    function filterNotes(btn, filterType) {
-        // 1. Manage Active Class
-        document.querySelectorAll('.fchip').forEach(function (c) {
-            c.classList.remove('active');
-        });
-        btn.classList.add('active');
-
-        // 2. Select rows from the GridView table
-        var rows = document.querySelectorAll('#notesTable table tr');
-        var visible = 0;
-
-        rows.forEach(function (row) {
-            // Skip header row if it exists (GridView usually renders <th> or no <td> in first row)
-            if (row.querySelector('th')) return;
-
-            var badge = row.querySelector('.type-badge');
-            if (!badge) return; // Skip if no badge found in this row
-
-            var badgeText = badge.textContent.trim().toLowerCase();
-
-            // 3. Logic: Match 'all' or check if the badge text contains the filter type
-            if (filterType === 'all' || badgeText.includes(filterType.toLowerCase())) {
-                row.style.display = '';
-                visible++;
-            } else {
-                row.style.display = 'none';
-            }
-        });
-
-        // 4. Handle "No Results" state
-        var emptyEl = document.getElementById('filterEmpty');
-        var tableEl = document.getElementById('notesTable');
-
-        if (visible === 0 && tableEl) {
-            tableEl.style.display = 'none';
-            if (emptyEl) emptyEl.style.display = 'flex';
-        } else if (tableEl) {
-            tableEl.style.display = '';
-            if (emptyEl) emptyEl.style.display = 'none';
-        }
-    }
-
-    function openSyllabus() {
-        document.getElementById("sylModal").classList.add("open");
-        document.body.style.overflow = "hidden";
-    }
-
-    function closeSyllabus() {
-        document.getElementById("sylModal").classList.remove("open");
-        document.body.style.overflow = "";
-    }
-
-    document.getElementById("sylModal").addEventListener("click", function (e) {
-        if (e.target === this) closeSyllabus();
     });
 
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") closeSyllabus();
-    });
+    // 4. Handle "No Results" state
+    var emptyEl = document.getElementById('filterEmpty');
+    var tableEl = document.getElementById('notesTable');
+
+    if (visible === 0 && tableEl) {
+        tableEl.style.display = 'none';
+        if (emptyEl) emptyEl.style.display = 'flex';
+    } else if (tableEl) {
+        tableEl.style.display = '';
+        if (emptyEl) emptyEl.style.display = 'none';
+    }
+}
+
+function openSyllabus() {
+    document.getElementById("sylModal").classList.add("open");
+    document.body.style.overflow = "hidden";
+}
+
+function closeSyllabus() {
+    document.getElementById("sylModal").classList.remove("open");
+    document.body.style.overflow = "";
+}
+
+document.getElementById("sylModal").addEventListener("click", function (e) {
+    if (e.target === this) closeSyllabus();
+});
+
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeSyllabus();
+});
 </script>
 
 </asp:Content>
