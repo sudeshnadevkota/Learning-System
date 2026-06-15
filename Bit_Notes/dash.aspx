@@ -377,7 +377,6 @@
     text-transform: uppercase; letter-spacing: 0.9px;
   }
 
-  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
   .btn-pink {
     display: inline-flex; align-items: center; gap: 9px;
@@ -462,23 +461,7 @@
   .ib-txt strong { font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 700; color: var(--primary); display: block; line-height: 1.2; }
   .ib-txt span { font-size: 10px; color: var(--text-secondary); }
 
-  /* ══ COURSE SELECTOR CARDS ══ */
-  .section-head {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 16px;
-  }
-  .section-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 16px; font-weight: 700;
-    color: var(--primary);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .section-icon {
-    width: 32px; height: 32px; border-radius: 9px;
-    background: var(--pink-soft);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px;
-  }
+
 
   /* ══ COURSE CARDS ══ */
   .course-cards {
@@ -606,50 +589,7 @@
   .cc-cta:hover { background: var(--pink); box-shadow: 0 4px 16px rgba(255,45,141,0.4); transform: translateY(-1px); }
   .course-card.selected .cc-cta { background: var(--pink); box-shadow: 0 4px 16px rgba(255,45,141,0.35); }
 
-  /* ══ WHY CHOOSE ROW ══ */
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px; margin-bottom: 28px;
-  }
 
-  .why-card {
-    background: white;
-    border-radius: 16px;
-    border: 1.5px solid var(--border);
-    padding: 22px 20px;
-    box-shadow: var(--shadow-sm);
-    transition: var(--ease);
-    display: flex; flex-direction: column; gap: 12px;
-  }
-  .why-card:hover {
-    border-color: rgba(255,45,141,0.3);
-    box-shadow: 0 8px 28px var(--pink-glow);
-    transform: translateY(-2px);
-  }
-
-  .wc-icon {
-    width: 44px; height: 44px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; flex-shrink: 0;
-  }
-  .wc-icon.indigo { background: rgba(11,31,102,0.08); }
-  .wc-icon.rose { background: rgba(255,45,141,0.1); }
-  .wc-icon.sky { background: rgba(14,165,233,0.1); }
-  .wc-icon.violet { background: rgba(124,58,237,0.08); }
-  .wc-icon.emerald { background: rgba(16,185,129,0.1); }
-  .wc-icon.amber { background: rgba(245,158,11,0.1); }
-
-  .wc-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 14px; font-weight: 700;
-    color: var(--primary);
-  }
-  .wc-text {
-    font-size: 12.5px; color: var(--text-secondary);
-    line-height: 1.6;
-    margin-top: -4px;
-  }
 
   /* ══ AFFILIATION BANNER ══ */
   .affil-banner {
@@ -1116,22 +1056,16 @@
             <div class="hms-lbl">Semesters</div>
           </div>
           <div class="hms-item">
-            <div class="hms-val">129</div>
+            <div class="hms-val">120</div>
             <div class="hms-lbl">Credit Hours</div>
           </div>
           <div class="hms-item">
-            <div class="hms-val">500<span>+</span></div>
+            <div class="hms-val">7000<span>+</span></div>
             <div class="hms-lbl">Graduates</div>
           </div>
         </div>
 
-        <div class="hero-btns">
-          <button class="btn-pink" onclick="scrollToCourses()">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><polygon points="5,3 19,10 5,18"/></svg>
-            Browse Notes
-          </button>
-  
-        </div>
+     
       </div>
 
       <!-- ILLUSTRATION PANEL -->
@@ -1233,36 +1167,16 @@
         <h2 class="about-heading">Nepal's Premier <span>BIT Degree</span></h2>
 
         <p class="about-para">
-          The <strong>Bachelor of Information Technology (BIT)</strong> at Texas College of Management and IT (TCMIT) is a 4-year, 8-semester program affiliated with <strong>Lincoln University College, Malaysia</strong>. Designed to blend technical expertise with practical skills, the program covers software development, networking, databases, web technologies, cloud computing, and emerging fields like AI and DevOps.
+        The <strong>Bachelor of Information Technology (BIT)</strong> at Texas College of Management and IT (TCMIT) is a 4-year, 8-semester program affiliated with <strong> Lincoln University College, Malaysia</strong>. Designed to blend technical theory with practical execution, the program covers software development, networking, databases, cloud computing, AI, and DevOps. With modern facilities like our IoT & Robotics labs, VFX Studio, and Incubation Center, students gain hands-on experience through project work and industry training to graduate completely career-ready
         </p>
         <p class="about-para">
 
-        With modern facilities including IoT & Robotics labs, a VFX Studio, an Incubation Center, and an e-library, students gain hands-on experience throughout their studies. Industry training, project work, and professional certifications help graduates build strong portfolios and become career-ready for opportunities in Nepal and around the world.
+        To ensure our students are industry-ready from day one, Texas College integrates structured, After-Class Professional Classes directly into the academic timeline. Students will kickstart their first semester with foundational web design in <strong>HTML/CSS alongside hands-on IoT & Robotics engineering</strong>. Moving into the second semester, they will begin building dynamic applications using React and Node.js, which seamlessly scales into your third and fourth semesters with<strong> Advanced React, Node.js with Express, and Python Django</strong>. By the fifth semester and leading up to graduation, they will master the full MERN Stack to handle enterprise-level architectures.
         </p>
-
-        <div class="about-highlights">
-          <div class="ah-card">
-            <div class="ah-icon">🖥️</div>
-            <div>
-              <div class="ah-title">Technical Depth</div>
-              <div class="ah-text">Mastery in programming, networks, databases, web, software engineering, and emerging technologies across all semesters.</div>
-            </div>
-          </div>
-          <div class="ah-card">
-            <div class="ah-icon">🌐</div>
-            <div>
-              <div class="ah-title">Global Recognition</div>
-              <div class="ah-text">Lincoln University College (LUC) affiliation with MQA accreditation — degree recognised internationally and TU-equivalent in Nepal.</div>
-            </div>
-          </div>
-          <div class="ah-card">
-            <div class="ah-icon">🚀</div>
-            <div>
-              <div class="ah-title">Industry Ready</div>
-              <div class="ah-text">Mandatory industrial training, project work, global certifications, and career services ensure graduates are job-ready from day one.</div>
-            </div>
-          </div>
-        </div>
+       <p class="about-para">
+           Alongside this core development track, students' journey includes specialized industry certifications to make you globally competitive. You will dive into professional<strong> Cisco Training and UI/UX / Multimedia design workshops, build cross-platform mobile apps with React Native, and master Cybersecurity Essentials</strong>. Finally, students will achieve production-ready expertise in Cloud Foundations and Cloud Architecting running on Linux 9.0. This progressive curriculum aligns beautifully with the semester-by-semester navigation, giving prospective students a clear, exciting view of their technical future.
+       </p>
+        
 
         <div class="about-btns">
 
@@ -1275,9 +1189,7 @@
             <div class="poster-inner">
               <div class="poster-logos">
                 <div class="poster-logo-tx">
-                  <div class="tx-ring">
-                    <svg viewBox="0 0 28 28" width="28" height="28"><circle cx="14" cy="14" r="12" stroke="#FF2D8D" stroke-width="2" fill="none"/><text x="14" y="18" text-anchor="middle" font-family="Sora,sans-serif" font-weight="800" font-size="11" fill="#0B1F66">TX</text></svg>
-                  </div>
+                  
                   <div class="tx-text-wrap">
                     <span class="tx-name">Texas</span>
                     <span class="tx-sub">College of Management &amp; IT</span>
@@ -1297,17 +1209,17 @@
               <div class="poster-degree-sub">Bachelor of (Hons.) in<br><strong>Information Technology</strong></div>
 
               <div class="poster-why-box">
-                <div class="pwb-title">Why choose <span>BIT</span><br>at Texas</div>
-                <div class="pwb-item">▶ CEH &amp; CHFI Lab</div>
-                <div class="pwb-item">▶ Incubation Center</div>
-                <div class="pwb-item">▶ IoT &amp; Robotics Lab</div>
-                <div class="pwb-item">▶ Resourceful Library and ebrary</div>
-                <div class="pwb-item">▶ VFX Studio</div>
+                <div class="pwb-title">Discover <span>BIT</span>at Texas</div>
+                <div class="pwb-item">▶ Learn by Building Real Projects</div>
+                <div class="pwb-item">▶ Professional Skill Development</div>
+                <div class="pwb-item">▶ Career &amp; Internship Opportunities</div>
+                <div class="pwb-item">▶ Workshops, Seminars &amp; Tech Events</div>
+                <div class="pwb-item">▶ Advanced IT Labs</div>
               </div>
 
               <div class="poster-admission">
                 <div class="pa-open">ADMISSION<br>OPEN 2026</div>
-                <div class="pa-intake">Spring Intake</div>
+
               </div>
 
               <div class="poster-student">
@@ -1373,56 +1285,20 @@
         <div class="apill"><span class="apill-icon">🏆</span> Top-ranked College</div>
       </div>
 
-      <div class="affil-right">
-        <button class="btn-learn">
-          Learn More
-          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </button>
-      </div>
+     <div class="affil-right">
+  <a href="https://www.lincoln.edu.my" target="_blank" rel="noopener noreferrer" class="btn-learn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+    Learn More
+    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+  </a>
+</div>
     </div>
 
-    <!-- WHY CHOOSE -->
-    <div class="fade-up d5">
-      <div class="section-head">
-        <div class="section-title">
-          <div class="section-icon">💡</div>
-          Why Choose BIT at Texas?
-        </div>
-      </div>
-
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="wc-icon indigo">🏛️</div>
-          <div class="wc-title">World-Class Facilities</div>
-          <div class="wc-text">Dedicated CEH & CHFI Lab, IoT & Robotics studio, VFX suite, and an e-library — all on one campus in Sifal, Kathmandu.</div>
-        </div>
-        <div class="why-card">
-          <div class="wc-icon rose">🔐</div>
-          <div class="wc-title">Industry Certifications</div>
-          <div class="wc-text">Prepare for CEH, CHFI, CompTIA Security+, and AWS certifications with guided exam tracks embedded in the curriculum.</div>
-        </div>
-        <div class="why-card">
-          <div class="wc-icon sky">🌐</div>
-          <div class="wc-title">International Degree</div>
-          <div class="wc-text">Your degree is recognised globally — equivalent to Tribhuvan University in Nepal and fully accredited by Malaysia's MQA body.</div>
-        </div>
-        <div class="why-card">
-          <div class="wc-icon violet">🚀</div>
-          <div class="wc-title">Startup Incubation</div>
-          <div class="wc-text">Turn your ideas into reality at the Texas Incubation Center, supported by mentors, funding guidance, and co-working space.</div>
-        </div>
-        <div class="why-card">
-          <div class="wc-icon emerald">💼</div>
-          <div class="wc-title">Career Placement Cell</div>
-          <div class="wc-text">92% of graduates land roles within 6 months via the CSC career cell, with direct links to top IT firms across Nepal and abroad.</div>
-        </div>
-        <div class="why-card">
-          <div class="wc-icon amber">📖</div>
-          <div class="wc-title">Smart Notes Hub</div>
-          <div class="wc-text">Access semester-wise curated notes, past papers, practice problems, and video links — all in one beautifully organised platform.</div>
-        </div>
-      </div>
-    </div>
+  
+   
 
   </div>
 </main>

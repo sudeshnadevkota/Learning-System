@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bit_Notes/system_analysis_and_design.aspx" hash="fffffff9acec72d9" filehash="623a7fffff0f17ae" flags="110000" assembly="App_Web_qr4wbgbb" type="ASP.bit_notes_system_analysis_and_design_aspx">
+    <filedeps>
+        <filedep name="/Bit_Notes/note.Master" />
+        <filedep name="/Bit_Notes/system_analysis_and_design.aspx" />
+    </filedeps>
+</preserve>

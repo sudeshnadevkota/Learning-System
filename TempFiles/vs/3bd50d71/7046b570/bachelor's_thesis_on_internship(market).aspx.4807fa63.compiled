@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bba_Notes/bachelor's_thesis_on_internship(market).aspx" hash="fffffff9acec72d9" filehash="4441fa7323dc1c22" flags="110000" assembly="App_Web_4urgkv4m" type="ASP.bba_notes_bachelor_s_thesis_on_internship_market__aspx">
+    <filedeps>
+        <filedep name="/Bba_Notes/bachelor's_thesis_on_internship(market).aspx" />
+        <filedep name="/Bba_Notes/note.Master" />
+    </filedeps>
+</preserve>

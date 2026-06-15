@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bba_Notes/fundamental_of_computer_principles_and_programming.aspx" hash="fffffff9acec72d9" filehash="14f8d966d6c3c3ca" flags="110000" assembly="App_Web_4urgkv4m" type="ASP.bba_notes_fundamental_of_computer_principles_and_programming_aspx">
+    <filedeps>
+        <filedep name="/Bba_Notes/fundamental_of_computer_principles_and_programming.aspx" />
+        <filedep name="/Bba_Notes/note.Master" />
+    </filedeps>
+</preserve>

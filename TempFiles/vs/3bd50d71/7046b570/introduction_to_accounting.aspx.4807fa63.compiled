@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bba_Notes/introduction_to_accounting.aspx" hash="fffffff9acec72d9" filehash="f340f7733b8fba25" flags="110000" assembly="App_Web_4urgkv4m" type="ASP.bba_notes_introduction_to_accounting_aspx">
+    <filedeps>
+        <filedep name="/Bba_Notes/introduction_to_accounting.aspx" />
+        <filedep name="/Bba_Notes/note.Master" />
+    </filedeps>
+</preserve>

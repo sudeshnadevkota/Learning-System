@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bba_Notes/psychology.aspx" hash="fffffff9acec72d9" filehash="2dad957c5f442d32" flags="110000" assembly="App_Web_4urgkv4m" type="ASP.bba_notes_psychology_aspx">
+    <filedeps>
+        <filedep name="/Bba_Notes/note.Master" />
+        <filedep name="/Bba_Notes/psychology.aspx" />
+    </filedeps>
+</preserve>

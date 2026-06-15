@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bit_Notes/IndustryManagement.aspx" hash="fffffff9acec72d9" filehash="9da66dceff6ba95d" flags="110000" assembly="App_Web_cxrledid" type="ASP.bit_notes_industrymanagement_aspx">
+    <filedeps>
+        <filedep name="/Bit_Notes/IndustryManagement.aspx" />
+        <filedep name="/Bit_Notes/note.Master" />
+    </filedeps>
+</preserve>

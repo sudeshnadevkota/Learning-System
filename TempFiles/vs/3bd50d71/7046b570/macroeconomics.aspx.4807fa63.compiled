@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bba_Notes/macroeconomics.aspx" hash="fffffff9acec72d9" filehash="d6afe66b88cd06b6" flags="110000" assembly="App_Web_4urgkv4m" type="ASP.bba_notes_macroeconomics_aspx">
+    <filedeps>
+        <filedep name="/Bba_Notes/macroeconomics.aspx" />
+        <filedep name="/Bba_Notes/note.Master" />
+    </filedeps>
+</preserve>
