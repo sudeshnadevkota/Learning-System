@@ -1,348 +1,315 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="business_english.aspx.cs" Inherits="Learning_System.Bit_Admin.business_english" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-    @import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css');
 
-    :root {
-        --primary: #0B1F66;
-        --secondary: #081547;
-        --pink: #FF2D8D;
-        --yellow: #F6B400;
-        --gray-bg: #fafbff;
-        --border-color: rgba(11,31,102,0.08);
-    }
+        :root {
+            --primary: #0B1F66;
+            --secondary: #081547;
+            --pink: #FF2D8D;
+            --gray-bg: #fafbff;
+            --border-color: rgba(11,31,102,0.08);
+        }
 
-    .c-wrap { 
-        font-family: 'Plus Jakarta Sans', sans-serif; 
-        padding: 1.5rem;
-    }
+        .c-wrap {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            padding: 1.5rem;
+        }
 
-    /* ── HEADER HERO BANNER ── */
-    .c-hero {
-        background: linear-gradient(135deg, #0B1F66 0%, #1a3499 100%);
-        padding: 30px 32px;
-        border-radius: 16px;
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 24px;
-        box-shadow: 0 4px 20px rgba(11, 31, 102, 0.08);
-    }
-    .c-hero-ring { position: absolute; right: -20px; top: -20px; width: 140px; height: 140px; border-radius: 50%; border: 1px solid rgba(255,45,141,0.1); pointer-events: none; }
-    .c-hero h3 { font-size: 24px; font-weight: 700; color: #fff; letter-spacing: 0.5px; margin: 0; display: flex; align-items: center; gap: 12px; }
-    .c-hero h3 i { color: #FF2D8D; font-size: 26px; }
+        .c-hero {
+            background: linear-gradient(135deg, #0B1F66 0%, #1a3499 100%);
+            padding: 30px 32px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            color: #fff;
+        }
 
-    /* ── CONTAINER PANELS (STACKED FULL WIDTH) ── */
-    .c-panel {
-        background: #ffffff;
-        border: 1px solid var(--border-color);
-        border-radius: 14px;
-        padding: 28px;
-        box-shadow: 0 4px 15px rgba(11,31,102,0.02);
-        margin-bottom: 24px;
-    }
+        .c-panel {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
 
-    .c-panel-title {
-        font-size: 11px;
-        letter-spacing: 1.5px;
-        color: var(--primary);
-        text-transform: uppercase;
-        font-weight: 700;
-        margin-bottom: 22px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .c-panel-title::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
+        .c-panel-title {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    /* ── FORM CONTROL ROW MIX ── */
-    .c-form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-bottom: 12px;
-    }
+            .c-panel-title::after {
+                content: '';
+                flex: 1;
+                height: 1px;
+                background: var(--border-color);
+            }
 
-    @media (max-width: 768px) {
-        .c-form-row { grid-template-columns: 1fr; gap: 14px; }
-    }
+        .c-form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 12px;
+        }
 
-    .form-group { position: relative; }
-    .form-group label { font-size: 12px; font-weight: 600; color: var(--primary); margin-bottom: 8px; display: block; }
-    
-    .c-wrap .form-control {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 13.5px;
-        color: #333;
-        background-color: var(--gray-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        padding: 11px 16px;
-        height: auto;
-        width: 100%;
-        box-sizing: border-box;
-        transition: border-color 0.2s, background-color 0.2s;
-    }
-    .c-wrap .form-control:focus {
-        border-color: rgba(255, 45, 141, 0.4);
-        background-color: #fff;
-        box-shadow: none;
-        outline: none;
-    }
+        .form-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
 
-    .c-wrap input[type="file"].form-control {
-        padding: 8px 14px;
-    }
+            .form-group label {
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--primary);
+                margin-bottom: 8px;
+                display: block;
+            }
 
-    .c-val-msg {
-        display: block;
-        font-size: 11px;
-        margin-top: 5px;
-        font-weight: 500;
-    }
+        .form-control {
+            width: 100%;
+            box-sizing: border-box;
+            display: block;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--gray-bg);
+        }
 
-    /* Action footer inside form panel */
-    .c-form-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 10px;
-        padding-top: 10px;
-    }
+        select.form-control {
+            width: 100%;
+            min-width: 0;
+        }
 
-    .c-btn-submit {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        color: #fff !important;
-        background: var(--pink) !important;
-        border: none !important;
-        border-radius: 8px;
-        padding: 11px 28px;
-        cursor: pointer;
-        transition: transform 0.15s, opacity 0.15s;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    .c-btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+        .c-val-msg {
+            font-size: 11px;
+            color: red;
+            margin-top: 5px;
+        }
 
-    .c-msg-lbl {
-        font-size: 13px;
-        font-weight: 600;
-    }
+        .c-btn-submit {
+            background: var(--pink);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 11px 28px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
 
-    /* ── FULL WIDTH INTERACTIVE DATA TABLE ── */
-    .c-table-container {
-        overflow-x: auto;
-        width: 100%;
-    }
+        .c-table-container {
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: #ffffff;
+        }
 
-    .c-wrap .table-modern {
-        width: 100%;
-        margin-bottom: 0;
-        color: var(--primary);
-        border-collapse: separate;
-        border-spacing: 0;
-        border: none;
-    }
+        .table-modern,
+        .table-modern th,
+        .table-modern td {
+            border-color: var(--border-color);
+        }
 
-    .c-wrap .table-modern th {
-        background: var(--gray-bg);
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: rgba(11,31,102,0.6);
-        padding: 16px 20px;
-        border-bottom: 2px solid var(--border-color);
-        border-top: none;
-        border-left: none;
-        border-right: none;
-    }
+        .table-modern {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
 
-    .c-wrap .table-modern td {
-        padding: 16px 20px;
-        font-size: 13.5px;
-        vertical-align: middle;
-        border-bottom: 1px solid var(--border-color);
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        background: #fff;
-    }
+            .table-modern th {
+                background: var(--gray-bg);
+                color: var(--primary);
+                font-weight: 700;
+                padding: 16px 20px;
+                text-align: left;
+                border-bottom: 2px solid var(--border-color);
+            }
 
-    .c-wrap .table-modern tr:last-child td {
-        border-bottom: none;
-    }
+            .table-modern td {
+                padding: 14px 20px;
+                border-bottom: 1px solid var(--border-color);
+                color: #4a4a4a;
+            }
 
-    .c-wrap .table-modern tr:hover td {
-        background-color: rgba(11,31,102,0.01);
-    }
+            .table-modern tr:last-child td {
+                border-bottom: none;
+            }
 
-    .c-wrap .table-modern td input[type="text"] {
-        width: 100%;
-        padding: 6px 12px;
-        font-size: 13px;
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-    }
+            .table-modern tr:hover {
+                background-color: #fcfcfd;
+            }
 
-    /* Custom Delete buttons inside cells */
-    .c-wrap .table-modern input[type="button"] {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        background: rgba(255, 45, 141, 0.08);
-        border: 1px solid rgba(255, 45, 141, 0.15);
-        padding: 6px 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-    .c-wrap .table-modern input[type="button"]:hover {
-        background: var(--pink);
-        color: #fff !important;
-        border-color: transparent;
-    }
-</style>
+            .table-modern a {
+                color: var(--pink);
+                text-decoration: none;
+                font-weight: 600;
+                margin-right: 10px;
+            }
 
-<div class="c-wrap container-fluid">
+                .table-modern a:hover {
+                    text-decoration: underline;
+                }
 
-    <%-- HEADER HERO BANNER --%>
-    <div class="c-hero">
-        <div class="c-hero-ring"></div>
-        <h3><i class="ti ti-vocabulary"></i> Course Content Management: Business English</h3>
-    </div>
+        /* Smooth show/hide animation for destination panel */
+        #divFileDestination {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+        }
 
-    <%-- STACK 1: FULL WIDTH FORM PANEL --%>
-    <div class="c-panel">
-        <div class="c-panel-title">
-            <i class="ti ti-file-plus" style="font-size: 14px; color: var(--pink)"></i> Upload Resource Form
+        #divFileDestination.visible {
+            max-height: 200px;
+            opacity: 1;
+        }
+    </style>
+
+    <div class="c-wrap container-fluid">
+        <div class="c-hero">
+            <h3><i class="ti ti-vocabulary"></i> Course Content Management: Business English</h3>
         </div>
-        
-        <div class="c-form-row">
-            <div class="form-group">
-                <label for="Unite">Name of Topic</label>
-                <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter topic name (e.g., Corporate Communication)"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter topic name*" ControlToValidate="TextBox1" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
+
+        <div class="c-panel">
+            <div class="c-panel-title">Upload Resource Form</div>
+
+            <div class="c-form-row">
+                <div class="form-group">
+                    <label>Name of Topic</label>
+                    <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter topic name"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                        ErrorMessage="Enter topic name*"
+                        ControlToValidate="TextBox1"
+                        CssClass="c-val-msg">
+                    </asp:RequiredFieldValidator>
+                </div>
+
+                <div class="form-group">
+                    <label>Select File Type</label>
+                    <%-- AutoPostBack and OnSelectedIndexChanged removed --%>
+                    <asp:DropDownList ID="ddlFileType" runat="server" class="form-control">
+                        <asp:ListItem Text="-- Select Category --" Value="" />
+                        <asp:ListItem Text="Lecture Content"      Value="Lecture" />
+                        <asp:ListItem Text="Tutorial Content"     Value="Tutorial" />
+                        <asp:ListItem Text="Workshop Content"     Value="Workshop" />
+                        <asp:ListItem Text="Past Year Question"   Value="PYQ" />
+                        <asp:ListItem Text="Assignment"           Value="Assignment" />
+                    </asp:DropDownList>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="Category">Select File Type</label>
-                <asp:DropDownList ID="ddlFileType" runat="server" class="form-control">
-                    <asp:ListItem Text="-- Select Category --" Value="" />
-                    <asp:ListItem Text="Lecture Slides" Value="Lecture Slides" />
-                    <asp:ListItem Text="Tutorial Slides" Value="Tutorial Slides" />
-                    <asp:ListItem Text="Workshop Slides" Value="Workshop Slides" />
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvCategory" runat="server" ErrorMessage="Please select a category*"
-                    ControlToValidate="ddlFileType" InitialValue="" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
-            </div>
-
-            <div class="form-group">
-                <label for="Unite">Upload Files</label>
+                <label>Upload Files</label>
                 <asp:FileUpload ID="FileUpload1" runat="server" class="form-control" />
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Upload your file*" ControlToValidate="FileUpload1" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
             </div>
 
-            
-
-
-        </div>
-
-        <div class="form-group">
-            <label for="ContentType">File Destination</label>
-            <asp:DropDownList ID="ddlContentType" runat="server" class="form-control">
-                <asp:ListItem Text="-- Select Destination --" Value="" />
-                <asp:ListItem Text="Notes" Value="Notes" />
-                <asp:ListItem Text="Past Year Question" Value="PastYearQuestion" />
-            </asp:DropDownList>
-            <asp:RequiredFieldValidator ID="rfvContentType" runat="server" ErrorMessage="Select destination*"
-                ControlToValidate="ddlContentType" InitialValue="" ForeColor="Red" CssClass="c-val-msg"></asp:RequiredFieldValidator>
-        </div>
-
-        <div class="c-form-footer">
-            <div>
-                <asp:Label ID="lblMessage" Text="" runat="server" CssClass="c-msg-lbl" />
+            <%-- Replaced asp:Panel with a plain div — JS controls visibility with no postback --%>
+            <div id="divFileDestination">
+                <div class="form-group">
+                    <label>File Destination</label>
+                    <asp:DropDownList ID="ddlContentType" runat="server" class="form-control">
+                        <asp:ListItem Text="-- Select Destination --" Value="" />
+                        <asp:ListItem Text="Lecture Slides"  Value="Lecture Slides"  data-group="Lecture" />
+                        <asp:ListItem Text="Lecture Notes"   Value="Lecture Notes"   data-group="Lecture" />
+                        <asp:ListItem Text="Tutorial Slides" Value="Tutorial Slides" data-group="Tutorial" />
+                        <asp:ListItem Text="Tutorial Notes"  Value="Tutorial Notes"  data-group="Tutorial" />
+                        <asp:ListItem Text="Workshop Slides" Value="Workshop Slides" data-group="Workshop" />
+                        <asp:ListItem Text="Workshop Notes"  Value="Workshop Notes"  data-group="Workshop" />
+                    </asp:DropDownList>
+                </div>
             </div>
+
+            <asp:Label ID="lblMessage" runat="server" CssClass="c-val-msg"></asp:Label>
+            <br /><br />
             <asp:Button ID="Button1" runat="server" class="c-btn-submit" Text="Submit Content" OnClick="Button1_Click" />
         </div>
-    </div>
 
-    <%-- STACK 2: FULL WIDTH DATABASE RECORDS --%>
-    <div class="c-panel">
-        <div class="c-panel-title">
-            <i class="ti ti-database" style="font-size: 14px; color: var(--primary)"></i> Uploaded Course Modules Database
-        </div>
-
-        <div class="c-table-container">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" 
-    class="table-modern" 
-    OnRowDeleting="GridView1_RowDeleting1" 
-    OnRowUpdating="GridView1_RowUpdating1" 
-    OnRowEditing="GridView1_RowEditing1" 
-    OnRowCancelingEdit="GridView1_RowCancelingEdit1">
-    <Columns>
-        <asp:TemplateField HeaderText="Topic">
-            <EditItemTemplate>
-                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Topic") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Topic") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-        
-        <asp:TemplateField HeaderText="Name">
-            <EditItemTemplate>
-                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <asp:Label ID="Label3" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-
-        <asp:TemplateField HeaderText="Data Type">
-            <EditItemTemplate>
-                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("ContentType") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <asp:Label ID="Label4" runat="server" Text='<%# Eval("ContentType") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-
-        <asp:TemplateField HeaderText="Data">
-            <ItemTemplate>
-                <asp:LinkButton ID="lnkDownload" runat="server" Text="Download" CommandArgument='<%# Eval("id") %>' OnClick="lnkDownload_Click"></asp:LinkButton>
-            </ItemTemplate>
-        </asp:TemplateField>
-
-        <asp:TemplateField HeaderText="Category">
-            <EditItemTemplate>
-                <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("FileCategory") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <asp:Label ID="Label5" runat="server" Text='<%# Eval("FileCategory") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-
-        <asp:TemplateField HeaderText="Type">
-            <EditItemTemplate>
-                <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("FileType") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <asp:Label ID="Label6" runat="server" Text='<%# Eval("FileType") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-
-        <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" ButtonType="Button" />
-    </Columns>
-</asp:GridView>
+        <div class="c-panel">
+            <div class="c-panel-title">Uploaded Course Modules Database</div>
+            <div class="c-table-container">
+                <asp:GridView ID="GridView1" runat="server"
+                    AutoGenerateColumns="False"
+                    DataKeyNames="id"
+                    class="table-modern"
+                    GridLines="None"
+                    BorderWidth="0"
+                    CellPadding="0"
+                    OnRowDeleting="GridView1_RowDeleting1"
+                    OnRowEditing="GridView1_RowEditing1">
+                    <Columns>
+                        <asp:BoundField DataField="Topic"       HeaderText="Topic" />
+                        <asp:BoundField DataField="Name"        HeaderText="Name" />
+                        <asp:BoundField DataField="ContentType" HeaderText="Data Type" />
+                        <asp:TemplateField HeaderText="Action">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lnkDownload" runat="server"
+                                    Text="Download"
+                                    CommandArgument='<%# Eval("id") %>'
+                                    OnClick="lnkDownload_Click">
+                                </asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
+                    </Columns>
+                </asp:GridView>
+            </div>
         </div>
     </div>
 
-</div>
+    <script>
+        (function () {
+            var fileTypeEl  = document.getElementById('<%= ddlFileType.ClientID %>');
+            var destWrapper = document.getElementById('divFileDestination');
+            var destEl      = document.getElementById('<%= ddlContentType.ClientID %>');
+
+            // Save all destination options (skip index 0 = placeholder) at page load
+            var allOptions = Array.from(destEl.options).slice(1);
+
+            // Groups that need a destination sub-selection
+            var hasDestination = ['Lecture', 'Tutorial', 'Workshop'];
+
+            function filterDestination(selectedGroup) {
+                if (hasDestination.indexOf(selectedGroup) !== -1) {
+
+                    // Show the destination panel (CSS transition handles the animation)
+                    destWrapper.classList.add('visible');
+
+                    // Clear current options (keep placeholder at index 0)
+                    while (destEl.options.length > 1) destEl.remove(1);
+
+                    // Add only options that belong to the selected group
+                    allOptions.forEach(function (opt) {
+                        if (opt.getAttribute('data-group') === selectedGroup) {
+                            destEl.add(opt.cloneNode(true));
+                        }
+                    });
+
+                    destEl.selectedIndex = 0; // reset to "-- Select Destination --"
+
+                } else {
+                    // Hide for PYQ, Assignment, or blank selection
+                    destWrapper.classList.remove('visible');
+
+                    // Clear options so nothing stale is submitted
+                    while (destEl.options.length > 1) destEl.remove(1);
+                }
+            }
+
+            // Run on change
+            fileTypeEl.addEventListener('change', function () {
+                filterDestination(this.value);
+            });
+
+            // Also run on page load in case of postback that preserved a selection
+            filterDestination(fileTypeEl.value);
+        })();
+    </script>
 
 </asp:Content>

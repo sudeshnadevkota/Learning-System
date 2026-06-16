@@ -3,7 +3,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Learning_System
@@ -12,7 +11,6 @@ namespace Learning_System
     {
         protected string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
 
-        // Individual pages will override this to specify their table
         protected virtual string TableName => "";
 
         protected void BindData(GridView gvNotes, GridView gvPapers)
@@ -26,13 +24,16 @@ namespace Learning_System
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
 
-                DataView dvNotes = dt.DefaultView;
-                dvNotes.RowFilter = "FileType = 'Notes'";
+                // Notes grid: everything that is NOT a Past Year Question or Assignment
+                // FileCategory is stored as "Lecture Content", "Tutorial Content", "Workshop Content"
+                DataView dvNotes = new DataView(dt);
+                dvNotes.RowFilter = "FileCategory <> 'Past Year Question' AND FileCategory <> 'Assignment'";
                 gvNotes.DataSource = dvNotes;
                 gvNotes.DataBind();
 
-                DataView dvPapers = dt.DefaultView;
-                dvPapers.RowFilter = "FileType = 'PastYearQuestion'";
+                // Past papers grid: only Past Year Question
+                DataView dvPapers = new DataView(dt);
+                dvPapers.RowFilter = "FileCategory = 'Past Year Question'";
                 gvPapers.DataSource = dvPapers;
                 gvPapers.DataBind();
             }

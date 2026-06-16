@@ -1,10 +1,8 @@
 ﻿using System;
-// Remove: using System.Web.UI;  — not needed
-// Remove: using Learning_System; — you're a sub-namespace, no need
 
 namespace Learning_System.Bit_Notes
 {
-    public partial class business_english : BasePage  // simplified
+    public partial class business_english : BasePage
     {
         protected override string TableName => "bit_1_BE";
 
