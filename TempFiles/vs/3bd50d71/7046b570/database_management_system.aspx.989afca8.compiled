@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bit_Notes/database_management_system.aspx" hash="fffffff9acec72d9" filehash="7a850944dfb44830" flags="110000" assembly="App_Web_cxrledid" type="ASP.bit_notes_database_management_system_aspx">
+    <filedeps>
+        <filedep name="/Bit_Notes/database_management_system.aspx" />
+        <filedep name="/Bit_Notes/note.Master" />
+    </filedeps>
+</preserve>

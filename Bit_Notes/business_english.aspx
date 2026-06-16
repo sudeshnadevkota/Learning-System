@@ -1572,9 +1572,9 @@
         });
         btn.classList.add('active');
 
-        // 2. Select rows from the GridView table
-        var rows = document.querySelectorAll('#notesTable table tr');
-        var visible = 0;
+    // 2. Select rows from the GridView table
+    var rows = document.querySelectorAll('#notesTable table tr');
+    var visible = 0;
 
         rows.forEach(function (row) {
             if (row.querySelector('th')) return;
@@ -1594,14 +1594,14 @@
         var emptyEl = document.getElementById('filterEmpty');
         var tableEl = document.getElementById('notesTable');
 
-        if (visible === 0 && tableEl) {
-            tableEl.style.display = 'none';
-            if (emptyEl) emptyEl.style.display = 'flex';
-        } else if (tableEl) {
-            tableEl.style.display = '';
-            if (emptyEl) emptyEl.style.display = 'none';
-        }
+    if (visible === 0 && tableEl) {
+        tableEl.style.display = 'none';
+        if (emptyEl) emptyEl.style.display = 'flex';
+    } else if (tableEl) {
+        tableEl.style.display = '';
+        if (emptyEl) emptyEl.style.display = 'none';
     }
+}
 
     function openSyllabus() {
         var modal = document.getElementById("sylModal");
@@ -1628,9 +1628,9 @@
         }
     });
 
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") closeSyllabus();
-    });
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeSyllabus();
+});
 </script>
 
 </asp:Content>

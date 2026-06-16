@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bit_Notes/real_time_system.aspx" hash="fffffff9acec72d9" filehash="9dc5916b5e2aec43" flags="110000" assembly="App_Web_qr4wbgbb" type="ASP.bit_notes_real_time_system_aspx">
+    <filedeps>
+        <filedep name="/Bit_Notes/note.Master" />
+        <filedep name="/Bit_Notes/real_time_system.aspx" />
+    </filedeps>
+</preserve>

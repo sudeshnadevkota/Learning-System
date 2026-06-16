@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/register.aspx" hash="fffffff9acec72d9" filehash="f68b55e6d205b742" flags="110000" assembly="App_Web_cer3rwsc" type="ASP.register_aspx">
+    <filedeps>
+        <filedep name="/learning.Master" />
+        <filedep name="/register.aspx" />
+    </filedeps>
+</preserve>

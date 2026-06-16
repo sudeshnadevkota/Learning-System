@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Default.aspx" hash="fffffff9acec72d9" filehash="3f436996595636f8" flags="110000" assembly="App_Web_cer3rwsc" type="ASP.default_aspx">
+    <filedeps>
+        <filedep name="/Default.aspx" />
+        <filedep name="/learning.Master" />
+    </filedeps>
+</preserve>

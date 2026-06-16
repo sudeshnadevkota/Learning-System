@@ -63,11 +63,9 @@
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.5.2\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.5.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -266,16 +264,16 @@
     <Content Include="Bcs_Admin\windows_server_2016.aspx" />
     <Content Include="Bcs_Admin\wireless_communications.aspx" />
     <Content Include="Bcs_Notes\advance_computer_architecture.aspx" />
-    <Content Include="Bcs_Notes\advance_computer_network.aspx" />
+    <Content Include="Bcs_Notes\data_communication_networking.aspx" />
     <Content Include="Bcs_Notes\advance_database_management_system.aspx" />
     <Content Include="Bcs_Notes\advance_routing_technology%28WAN%29.aspx" />
     <Content Include="Bcs_Notes\advance_switching_tech_and_trroubleshoot.aspx" />
-    <Content Include="Bcs_Notes\AI.aspx" />
+    <Content Include="Bcs_Notes\computer_ethics.aspx" />
     <Content Include="Bcs_Notes\basic_computer_architecture.aspx" />
-    <Content Include="Bcs_Notes\business_english.aspx" />
+    <Content Include="Bcs_Notes\english.aspx" />
     <Content Include="Bcs_Notes\CluoudComputing.aspx" />
     <Content Include="Bcs_Notes\computer_network.aspx" />
-    <Content Include="Bcs_Notes\CProgamming.aspx" />
+    <Content Include="Bcs_Notes\principle_of_programming.aspx" />
     <Content Include="Bcs_Notes\cryptography.aspx" />
     <Content Include="Bcs_Notes\cyber_security_law_and_policy.aspx" />
     <Content Include="Bcs_Notes\cyber_security_law_and_policy_5.aspx" />
@@ -303,7 +301,7 @@
     <Content Include="Bcs_Notes\operating_system.aspx" />
     <Content Include="Bcs_Notes\project_work.aspx" />
     <Content Include="Bcs_Notes\Python.aspx" />
-    <Content Include="Bcs_Notes\security_in_computing.aspx" />
+    <Content Include="Bcs_Notes\computer_system.aspx" />
     <Content Include="Bcs_Notes\SoftwareProjectManagement.aspx" />
     <Content Include="Bcs_Notes\system_analysis_and_design.aspx" />
     <Content Include="Bcs_Notes\system_software_and_administration.aspx" />
@@ -390,33 +388,33 @@
     <Content Include="Bhm_Notes\revenue_management.aspx" />
     <Content Include="Bhm_Notes\statistics.aspx" />
     <Content Include="Bhm_Notes\tourist_behavioral_science.aspx" />
-    <Content Include="Bit_Admin\advance_computer_network.aspx" />
+    <Content Include="Bit_Admin\Data_Communication_and_Networks.aspx" />
     <Content Include="Bit_Admin\AI.aspx" />
     <Content Include="Bit_Admin\basic_computer_architecture.aspx" />
     <Content Include="Bit_Admin\business_english.aspx" />
     <Content Include="Bit_Admin\CloudComputing.aspx" />
     <Content Include="Bit_Admin\cloud_computing.aspx" />
     <Content Include="Bit_Admin\complier_and_design_constructions.aspx" />
-    <Content Include="Bit_Admin\computer_network.aspx" />
+    <Content Include="Bit_Admin\Principles_of_Information_Technology.aspx" />
     <Content Include="Bit_Admin\cyber_security_law_and_policy.aspx" />
     <Content Include="Bit_Admin\cyptography.aspx" />
-    <Content Include="Bit_Admin\c_programming.aspx" />
+    <Content Include="Bit_Admin\Introduction_to_C++_Programming.aspx" />
     <Content Include="Bit_Admin\dash.aspx" />
     <Content Include="Bit_Admin\database_management_system.aspx" />
     <Content Include="Bit_Admin\data_structure_and_algorithm.aspx" />
-    <Content Include="Bit_Admin\digital_logics.aspx" />
+    <Content Include="Bit_Admin\Digital_Electronics_and_Logic_Design.aspx" />
     <Content Include="Bit_Admin\discrete_mathematics.aspx" />
-    <Content Include="Bit_Admin\e_commerce.aspx" />
+    <Content Include="Bit_Admin\Linux_Administration.aspx" />
     <Content Include="Bit_Admin\fundamental_algorithm.aspx" />
-    <Content Include="Bit_Admin\IndustrialManagement.aspx" />
+    <Content Include="Bit_Admin\Industrial_Management.aspx" />
     <Content Include="Bit_Admin\industrial_training.aspx" />
-    <Content Include="Bit_Admin\internet_fundamental_and_applications.aspx" />
+    <Content Include="Bit_Admin\Human_Computer_Interaction.aspx" />
     <Content Include="Bit_Admin\java4.aspx" />
-    <Content Include="Bit_Admin\java_programming.aspx" />
+    <Content Include="Bit_Admin\Object_Orinented_Programming.aspx" />
     <Content Include="Bit_Admin\leadership_and_human_relations.aspx" />
     <Content Include="Bit_Admin\logo\logo.png" />
     <Content Include="Bit_Admin\ManagementInforamtionSystem.aspx" />
-    <Content Include="Bit_Admin\math_I.aspx" />
+    <Content Include="Bit_Admin\Computer_Related_Mathematics_and_Statistics.aspx" />
     <Content Include="Bit_Admin\mobile_computing.aspx" />
     <Content Include="Bit_Admin\multimedia_system.aspx" />
     <Content Include="Bit_Admin\operating_system.aspx" />
@@ -2396,12 +2394,12 @@
     <Compile Include="Bcs_Notes\advance_computer_architecture.aspx.designer.cs">
       <DependentUpon>advance_computer_architecture.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\advance_computer_network.aspx.cs">
-      <DependentUpon>advance_computer_network.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\data_communication_networking.aspx.cs">
+      <DependentUpon>data_communication_networking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bcs_Notes\advance_computer_network.aspx.designer.cs">
-      <DependentUpon>advance_computer_network.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\data_communication_networking.aspx.designer.cs">
+      <DependentUpon>data_communication_networking.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\advance_database_management_system.aspx.cs">
       <DependentUpon>advance_database_management_system.aspx</DependentUpon>
@@ -2424,12 +2422,12 @@
     <Compile Include="Bcs_Notes\advance_switching_tech_and_trroubleshoot.aspx.designer.cs">
       <DependentUpon>advance_switching_tech_and_trroubleshoot.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\AI.aspx.cs">
-      <DependentUpon>AI.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\computer_ethics.aspx.cs">
+      <DependentUpon>computer_ethics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bcs_Notes\AI.aspx.designer.cs">
-      <DependentUpon>AI.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\computer_ethics.aspx.designer.cs">
+      <DependentUpon>computer_ethics.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\basic_computer_architecture.aspx.cs">
       <DependentUpon>basic_computer_architecture.aspx</DependentUpon>
@@ -2438,12 +2436,12 @@
     <Compile Include="Bcs_Notes\basic_computer_architecture.aspx.designer.cs">
       <DependentUpon>basic_computer_architecture.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\business_english.aspx.cs">
-      <DependentUpon>business_english.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\english.aspx.cs">
+      <DependentUpon>english.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bcs_Notes\business_english.aspx.designer.cs">
-      <DependentUpon>business_english.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\english.aspx.designer.cs">
+      <DependentUpon>english.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\CluoudComputing.aspx.cs">
       <DependentUpon>CluoudComputing.aspx</DependentUpon>
@@ -2459,12 +2457,12 @@
     <Compile Include="Bcs_Notes\computer_network.aspx.designer.cs">
       <DependentUpon>computer_network.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\CProgamming.aspx.cs">
-      <DependentUpon>CProgamming.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\principle_of_programming.aspx.cs">
+      <DependentUpon>principle_of_programming.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bcs_Notes\CProgamming.aspx.designer.cs">
-      <DependentUpon>CProgamming.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\principle_of_programming.aspx.designer.cs">
+      <DependentUpon>principle_of_programming.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\cryptography.aspx.cs">
       <DependentUpon>cryptography.aspx</DependentUpon>
@@ -2648,12 +2646,12 @@
     <Compile Include="Bcs_Notes\Python.aspx.designer.cs">
       <DependentUpon>Python.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\security_in_computing.aspx.cs">
-      <DependentUpon>security_in_computing.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\computer_system.aspx.cs">
+      <DependentUpon>computer_system.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bcs_Notes\security_in_computing.aspx.designer.cs">
-      <DependentUpon>security_in_computing.aspx</DependentUpon>
+    <Compile Include="Bcs_Notes\computer_system.aspx.designer.cs">
+      <DependentUpon>computer_system.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\SoftwareProjectManagement.aspx.cs">
       <DependentUpon>SoftwareProjectManagement.aspx</DependentUpon>
@@ -3250,12 +3248,12 @@
     <Compile Include="Bhm_Notes\tourist_behavioral_science.aspx.designer.cs">
       <DependentUpon>tourist_behavioral_science.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Admin\advance_computer_network.aspx.cs">
-      <DependentUpon>advance_computer_network.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Data_Communication_and_Networks.aspx.cs">
+      <DependentUpon>Data_Communication_and_Networks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Admin\advance_computer_network.aspx.designer.cs">
-      <DependentUpon>advance_computer_network.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Data_Communication_and_Networks.aspx.designer.cs">
+      <DependentUpon>Data_Communication_and_Networks.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\AI.aspx.cs">
       <DependentUpon>AI.aspx</DependentUpon>
@@ -3299,12 +3297,12 @@
     <Compile Include="Bit_Admin\complier_and_design_constructions.aspx.designer.cs">
       <DependentUpon>complier_and_design_constructions.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Admin\computer_network.aspx.cs">
-      <DependentUpon>computer_network.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Principles_of_Information_Technology.aspx.cs">
+      <DependentUpon>Principles_of_Information_Technology.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Admin\computer_network.aspx.designer.cs">
-      <DependentUpon>computer_network.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Principles_of_Information_Technology.aspx.designer.cs">
+      <DependentUpon>Principles_of_Information_Technology.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\cyber_security_law_and_policy.aspx.cs">
       <DependentUpon>cyber_security_law_and_policy.aspx</DependentUpon>
@@ -3320,12 +3318,12 @@
     <Compile Include="Bit_Admin\cyptography.aspx.designer.cs">
       <DependentUpon>cyptography.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Admin\c_programming.aspx.cs">
-      <DependentUpon>c_programming.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Introduction_to_C++_Programming.aspx.cs">
+      <DependentUpon>Introduction_to_C++_Programming.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Admin\c_programming.aspx.designer.cs">
-      <DependentUpon>c_programming.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Introduction_to_C++_Programming.aspx.designer.cs">
+      <DependentUpon>Introduction_to_C++_Programming.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\dash.aspx.cs">
       <DependentUpon>dash.aspx</DependentUpon>
@@ -3348,12 +3346,12 @@
     <Compile Include="Bit_Admin\data_structure_and_algorithm.aspx.designer.cs">
       <DependentUpon>data_structure_and_algorithm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Admin\digital_logics.aspx.cs">
-      <DependentUpon>digital_logics.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Digital_Electronics_and_Logic_Design.aspx.cs">
+      <DependentUpon>Digital_Electronics_and_Logic_Design.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Admin\digital_logics.aspx.designer.cs">
-      <DependentUpon>digital_logics.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Digital_Electronics_and_Logic_Design.aspx.designer.cs">
+      <DependentUpon>Digital_Electronics_and_Logic_Design.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\discrete_mathematics.aspx.cs">
       <DependentUpon>discrete_mathematics.aspx</DependentUpon>
@@ -3362,12 +3360,12 @@
     <Compile Include="Bit_Admin\discrete_mathematics.aspx.designer.cs">
       <DependentUpon>discrete_mathematics.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Admin\e_commerce.aspx.cs">
-      <DependentUpon>e_commerce.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Linux_Administration.aspx.cs">
+      <DependentUpon>Linux_Administration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Admin\e_commerce.aspx.designer.cs">
-      <DependentUpon>e_commerce.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Linux_Administration.aspx.designer.cs">
+      <DependentUpon>Linux_Administration.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\fundamental_algorithm.aspx.cs">
       <DependentUpon>fundamental_algorithm.aspx</DependentUpon>
@@ -3376,12 +3374,12 @@
     <Compile Include="Bit_Admin\fundamental_algorithm.aspx.designer.cs">
       <DependentUpon>fundamental_algorithm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Admin\IndustrialManagement.aspx.cs">
-      <DependentUpon>IndustrialManagement.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Industrial_Management.aspx.cs">
+      <DependentUpon>Industrial_Management.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Admin\IndustrialManagement.aspx.designer.cs">
-      <DependentUpon>IndustrialManagement.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Industrial_Management.aspx.designer.cs">
+      <DependentUpon>Industrial_Management.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\industrial_training.aspx.cs">
       <DependentUpon>industrial_training.aspx</DependentUpon>
@@ -3390,12 +3388,12 @@
     <Compile Include="Bit_Admin\industrial_training.aspx.designer.cs">
       <DependentUpon>industrial_training.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Admin\internet_fundamental_and_applications.aspx.cs">
-      <DependentUpon>internet_fundamental_and_applications.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Human_Computer_Interaction.aspx.cs">
+      <DependentUpon>Human_Computer_Interaction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Admin\internet_fundamental_and_applications.aspx.designer.cs">
-      <DependentUpon>internet_fundamental_and_applications.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Human_Computer_Interaction.aspx.designer.cs">
+      <DependentUpon>Human_Computer_Interaction.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\java4.aspx.cs">
       <DependentUpon>java4.aspx</DependentUpon>
@@ -3404,12 +3402,12 @@
     <Compile Include="Bit_Admin\java4.aspx.designer.cs">
       <DependentUpon>java4.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Admin\java_programming.aspx.cs">
-      <DependentUpon>java_programming.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Object_Orinented_Programming.aspx.cs">
+      <DependentUpon>Object_Orinented_Programming.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Admin\java_programming.aspx.designer.cs">
-      <DependentUpon>java_programming.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Object_Orinented_Programming.aspx.designer.cs">
+      <DependentUpon>Object_Orinented_Programming.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\leadership_and_human_relations.aspx.cs">
       <DependentUpon>leadership_and_human_relations.aspx</DependentUpon>
@@ -3425,12 +3423,12 @@
     <Compile Include="Bit_Admin\ManagementInforamtionSystem.aspx.designer.cs">
       <DependentUpon>ManagementInforamtionSystem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Admin\math_I.aspx.cs">
-      <DependentUpon>math_I.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Computer_Related_Mathematics_and_Statistics.aspx.cs">
+      <DependentUpon>Computer_Related_Mathematics_and_Statistics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Admin\math_I.aspx.designer.cs">
-      <DependentUpon>math_I.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\Computer_Related_Mathematics_and_Statistics.aspx.designer.cs">
+      <DependentUpon>Computer_Related_Mathematics_and_Statistics.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\mobile_computing.aspx.cs">
       <DependentUpon>mobile_computing.aspx</DependentUpon>
@@ -9020,7 +9018,7 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them. For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\EntityFramework.6.5.2\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.2\build\EntityFramework.props'))" />
     <Error Condition="!Exists('packages\EntityFramework.6.5.2\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.2\build\EntityFramework.targets'))" />

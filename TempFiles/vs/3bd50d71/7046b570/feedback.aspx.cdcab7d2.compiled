@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Feedback.aspx" hash="fffffff9acec72d9" filehash="b9208f7fe152e2c2" flags="110000" assembly="App_Web_cer3rwsc" type="ASP.feedback_aspx">
+    <filedeps>
+        <filedep name="/Feedback.aspx" />
+        <filedep name="/learning.Master" />
+    </filedeps>
+</preserve>
