@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bba_Notes/sociology.aspx" hash="fffffff9acec72d9" filehash="2dad7796b4863e28" flags="110000" assembly="App_Web_4urgkv4m" type="ASP.bba_notes_sociology_aspx">
+<preserve resultType="3" virtualPath="/Bba_Notes/sociology.aspx" hash="fffffff9acec72d9" filehash="d28010a68dedcca4" flags="110000" assembly="App_Web_w1ex0b3h" type="ASP.bba_notes_sociology_aspx">
     <filedeps>
         <filedep name="/Bba_Notes/note.Master" />
         <filedep name="/Bba_Notes/sociology.aspx" />

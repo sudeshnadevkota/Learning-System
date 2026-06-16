@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bit_Admin/Computer_Related_Mathematics_and_Statistics.aspx" hash="fffffff9acec72d9" filehash="d9059cf2656e9585" flags="110000" assembly="App_Web_nfy5ib31" type="ASP.bit_admin_computer_related_mathematics_and_statistics_aspx">
+    <filedeps>
+        <filedep name="/Bit_Admin/Computer_Related_Mathematics_and_Statistics.aspx" />
+        <filedep name="/Bit_Admin/upload.Master" />
+    </filedeps>
+</preserve>

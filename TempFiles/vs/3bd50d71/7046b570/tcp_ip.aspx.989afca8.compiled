@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Notes/tcp_ip.aspx" hash="fffffff9acec72d9" filehash="623a9ca7d47ce00c" flags="110000" assembly="App_Web_qr4wbgbb" type="ASP.bit_notes_tcp_ip_aspx">
-    <filedeps>
-        <filedep name="/Bit_Notes/note.Master" />
-        <filedep name="/Bit_Notes/tcp_ip.aspx" />
-    </filedeps>
-</preserve>

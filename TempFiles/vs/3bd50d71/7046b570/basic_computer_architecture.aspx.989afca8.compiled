@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Notes/basic_computer_architecture.aspx" hash="fffffff9acec72d9" filehash="ace32382b8840576" flags="110000" assembly="App_Web_qr4wbgbb" type="ASP.bit_notes_basic_computer_architecture_aspx">
-    <filedeps>
-        <filedep name="/Bit_Notes/basic_computer_architecture.aspx" />
-        <filedep name="/Bit_Notes/note.Master" />
-    </filedeps>
-</preserve>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bba_Notes/business_ethics.aspx" hash="fffffff9acec72d9" filehash="1f80b5a4e5b47a83" flags="110000" assembly="App_Web_4urgkv4m" type="ASP.bba_notes_business_ethics_aspx">
+<preserve resultType="3" virtualPath="/Bba_Notes/business_ethics.aspx" hash="fffffff9acec72d9" filehash="e07f4a5556d1bd0f" flags="110000" assembly="App_Web_mlb00kuw" type="ASP.bba_notes_business_ethics_aspx">
     <filedeps>
         <filedep name="/Bba_Notes/business_ethics.aspx" />
         <filedep name="/Bba_Notes/note.Master" />

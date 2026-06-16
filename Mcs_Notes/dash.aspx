@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Mcs_Notes/note.Master" AutoEventWireup="true" CodeBehind="dash.aspx.cs" Inherits="Learning_System.Mcs_Notes.dash" %>
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <style>
-
 
   :root {
     --primary: #0B1F66;
@@ -268,7 +269,6 @@
   .main { margin-left: var(--sidebar-w); padding-top: var(--header-h); min-height: 100vh; width: calc(100% - var(--sidebar-w)); }
   .main-inner { padding: 30px 36px; width: 100%; }
 
-
   /* ══ HERO BANNER ══ */
   .hero-banner {
     background: linear-gradient(135deg, #0B1F66 0%, #081547 100%);
@@ -279,14 +279,14 @@
     margin-bottom: 28px;
     display: grid;
     grid-template-columns: 1fr 340px;
-    min-height: 340px;
+    min-height: 28px;
   }
 
   .hero-banner::before {
     content: '';
     position: absolute; top: -100px; right: 280px;
     width: 420px; height: 420px;
-    background: radial-gradient(circle, rgba(245,197,66,0.10) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(0,200,255,0.10) 0%, transparent 65%);
     pointer-events: none;
   }
   .hero-banner::after {
@@ -297,7 +297,6 @@
     pointer-events: none;
   }
 
-  /* floating shapes */
   .hero-shapes {
     position: absolute; inset: 0; pointer-events: none; overflow: hidden;
   }
@@ -305,12 +304,12 @@
     position: absolute; border-radius: 50%;
     border: 1px solid rgba(255,255,255,0.07);
   }
-  .shape-1 { width: 200px; height: 200px; top: -60px; right: 300px; border-color: rgba(245,197,66,0.12); }
+  .shape-1 { width: 200px; height: 200px; top: -60px; right: 300px; border-color: rgba(0,200,255,0.12); }
   .shape-2 { width: 120px; height: 120px; bottom: -30px; right: 380px; border-color: rgba(255,255,255,0.06); }
-  .shape-3 { width: 60px; height: 60px; top: 40px; right: 440px; background: rgba(245,197,66,0.05); border: none; }
+  .shape-3 { width: 60px; height: 60px; top: 40px; right: 440px; background: rgba(0,200,255,0.05); border: none; }
 
   .hero-content {
-    padding: 56px 44px;
+    padding: 44px 44px 40px;
     display: flex; flex-direction: column;
     justify-content: center;
     position: relative; z-index: 2;
@@ -334,8 +333,6 @@
     font-weight: 300; margin: 0 8px;
   }
 
-
-
   .hero-mini-stats {
     display: flex; gap: 0; margin-bottom: 30px;
   }
@@ -358,8 +355,6 @@
     text-transform: uppercase; letter-spacing: 0.9px;
   }
 
-  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-
   .btn-pink {
     display: inline-flex; align-items: center; gap: 9px;
     background: var(--pink);
@@ -378,8 +373,6 @@
     box-shadow: 0 8px 28px rgba(255,45,141,0.55);
   }
 
-
-
   /* illustration panel */
   .hero-visual {
     position: relative; z-index: 2;
@@ -388,7 +381,6 @@
     overflow: hidden;
   }
 
-  /* SVG illustration placeholder */
   .hero-illustration {
     width: 100%; height: 100%;
     display: flex; align-items: flex-end; justify-content: center;
@@ -399,7 +391,7 @@
     position: absolute; bottom: 0; left: 50%;
     transform: translateX(-50%);
     width: 260px; height: 120px;
-    background: radial-gradient(ellipse, rgba(245,197,66,0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(0,200,255,0.15) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -409,7 +401,6 @@
     flex-shrink: 0;
   }
 
-  /* floating badges on illustration */
   .ilu-badge {
     position: absolute;
     background: white;
@@ -443,68 +434,131 @@
   .ib-txt strong { font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 700; color: var(--primary); display: block; line-height: 1.2; }
   .ib-txt span { font-size: 10px; color: var(--text-secondary); }
 
-  /* ══ COURSE SELECTOR CARDS ══ */
-  .section-head {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 16px;
-  }
-  .section-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 16px; font-weight: 700;
-    color: var(--primary);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .section-icon {
-    width: 32px; height: 32px; border-radius: 9px;
-    background: var(--pink-soft);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px;
+  /* ══ COURSE CARDS ══ */
+  .course-cards {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 18px; margin-bottom: 28px;
   }
 
-  /* ══ WHY CHOOSE ROW (reused for Course Content) ══ */
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px; margin-bottom: 28px;
-  }
-
-  .why-card {
+  .course-card {
     background: white;
-    border-radius: 16px;
-    border: 1.5px solid var(--border);
-    padding: 22px 20px;
+    border-radius: 20px;
+    border: 2px solid var(--border);
+    overflow: hidden;
     box-shadow: var(--shadow-sm);
     transition: var(--ease);
-    display: flex; flex-direction: column; gap: 12px;
+    cursor: pointer;
+    position: relative;
   }
-  .why-card:hover {
-    border-color: rgba(255,45,141,0.3);
-    box-shadow: 0 8px 28px var(--pink-glow);
-    transform: translateY(-2px);
+  .course-card:hover {
+    border-color: var(--pink);
+    box-shadow: 0 12px 40px var(--pink-glow);
+    transform: translateY(-3px);
+  }
+  .course-card.selected {
+    border-color: var(--pink);
+    box-shadow: 0 10px 36px var(--pink-glow);
   }
 
-  .wc-icon {
-    width: 44px; height: 44px; border-radius: 12px;
+  .cc-header {
+    padding: 22px 24px 18px;
+    display: flex; align-items: flex-start; gap: 14px;
+    position: relative;
+  }
+
+  .cc-icon {
+    width: 50px; height: 50px;
+    border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 20px; flex-shrink: 0;
+    font-size: 24px; flex-shrink: 0;
   }
-  .wc-icon.indigo { background: rgba(11,31,102,0.08); }
-  .wc-icon.rose { background: rgba(255,45,141,0.1); }
-  .wc-icon.sky { background: rgba(14,165,233,0.1); }
-  .wc-icon.violet { background: rgba(124,58,237,0.08); }
-  .wc-icon.emerald { background: rgba(16,185,129,0.1); }
-  .wc-icon.amber { background: rgba(245,158,11,0.1); }
+  .cc-icon.bit { background: rgba(11,31,102,0.08); }
+  .cc-icon.bcs { background: rgba(255,45,141,0.09); }
 
-  .wc-title {
+  .cc-info { flex: 1; }
+  .cc-abbr {
     font-family: 'Sora', sans-serif;
-    font-size: 14px; font-weight: 700;
+    font-size: 22px; font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .cc-name {
+    font-size: 11.5px; color: var(--text-secondary);
+    margin-top: 4px; line-height: 1.3;
+  }
+
+  .cc-badge {
+    position: absolute; top: 18px; right: 20px;
+    font-size: 10px; font-weight: 700;
+    font-family: 'Sora', sans-serif;
+    padding: 4px 11px; border-radius: 50px;
+    letter-spacing: 0.4px;
+  }
+  .cc-badge.popular { background: rgba(255,45,141,0.12); color: var(--pink); }
+  .cc-badge.new { background: rgba(11,31,102,0.08); color: var(--primary); }
+
+  .cc-divider { height: 1px; background: var(--border); margin: 0 24px; }
+
+  .cc-body { padding: 18px 24px 22px; }
+
+  .cc-desc {
+    font-size: 13px; color: var(--text-secondary);
+    line-height: 1.6; margin-bottom: 16px;
+  }
+
+  .cc-features {
+    display: flex; flex-direction: column; gap: 6px;
+    margin-bottom: 18px;
+  }
+  .cc-feat {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 12.5px; color: var(--text-primary);
+  }
+  .feat-dot {
+    width: 18px; height: 18px; border-radius: 5px;
+    background: var(--pink-soft);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 10px;
+  }
+
+  .cc-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px 16px;
+    background: rgba(11,31,102,0.025);
+    border-top: 1px solid var(--border);
+  }
+  .cc-meta {
+    display: flex; gap: 16px;
+  }
+  .cm-item {
+    display: flex; flex-direction: column; gap: 1px;
+  }
+  .cm-val {
+    font-family: 'Sora', sans-serif;
+    font-size: 15px; font-weight: 700;
     color: var(--primary);
   }
-  .wc-text {
-    font-size: 12.5px; color: var(--text-secondary);
-    line-height: 1.6;
-    margin-top: -4px;
+  .cm-lbl {
+    font-size: 10px; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.7px;
+    font-weight: 600;
   }
+
+  .cc-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--primary);
+    color: white;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 12.5px;
+    padding: 10px 18px; border-radius: 10px;
+    border: none; cursor: pointer;
+    transition: var(--ease);
+    letter-spacing: 0.2px;
+  }
+  .cc-cta:hover { background: var(--pink); box-shadow: 0 4px 16px rgba(255,45,141,0.4); transform: translateY(-1px); }
+  .course-card.selected .cc-cta { background: var(--pink); box-shadow: 0 4px 16px rgba(255,45,141,0.35); }
 
   /* ══ AFFILIATION BANNER ══ */
   .affil-banner {
@@ -584,6 +638,37 @@
     white-space: nowrap;
   }
   .btn-learn:hover { background: var(--pink); color: white; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,45,141,0.4); }
+
+  /* ══ QUICK STATS ROW ══ */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin-bottom: 28px;
+  }
+
+  .stat-card {
+    background: white; border-radius: 16px;
+    border: 1.5px solid var(--border);
+    padding: 20px;
+    display: flex; align-items: center; gap: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--ease);
+  }
+  .stat-card:hover {
+    border-color: var(--pink);
+    box-shadow: 0 6px 24px var(--pink-glow);
+    transform: translateY(-2px);
+  }
+  .sc-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .sc-icon.blue { background: rgba(11,31,102,0.08); }
+  .sc-icon.green { background: rgba(16,185,129,0.1); }
+  .sc-icon.pink { background: rgba(255,45,141,0.1); }
+  .sc-icon.amber { background: rgba(245,158,11,0.1); }
+  .sc-val { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: var(--primary); }
+  .sc-lbl { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
 
   /* ══ ABOUT SECTION ══ */
   .about-section {
@@ -666,8 +751,6 @@
 
   .about-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
-
-
   /* ══ POSTER ══ */
   .about-right {
     position: sticky; top: calc(var(--header-h) + 20px);
@@ -680,7 +763,7 @@
     position: absolute; bottom: -20px; left: 50%;
     transform: translateX(-50%);
     width: 280px; height: 60px;
-    background: radial-gradient(ellipse, rgba(255,45,141,0.25) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(0,200,255,0.25) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -702,7 +785,7 @@
     content: '';
     position: absolute; top: -80px; right: -60px;
     width: 280px; height: 280px;
-    background: radial-gradient(circle, rgba(255,45,141,0.15) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(0,200,255,0.15) 0%, transparent 65%);
     pointer-events: none;
   }
   .poster-inner::after {
@@ -884,6 +967,8 @@
     .sidebar-toggle { display: flex; }
     .hero-banner { grid-template-columns: 1fr; }
     .hero-visual { display: none; }
+    .course-cards { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
     .why-grid { grid-template-columns: 1fr; }
   }
 
@@ -892,23 +977,21 @@
     .hero-content { padding: 28px 24px; }
     .hero-title { font-size: 24px; }
     .affil-banner { padding: 20px 20px; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
   }
-
 
   /* ── Master Page overrides: neutralise standalone layout ── */
   header { display: none !important; }
   .sidebar { display: none !important; }
   .overlay { display: none !important; }
-  body { padding-top: 0 !important; background: var(--bg) !important; margin: 0 !important; }
-  .main { margin-left: 0 !important; margin-top: 0 !important; padding-top: 0 !important; width: 100% !important; }
-  .main-inner { padding: 24px 32px !important; padding-top: 8px !important; }
+  body { padding-top: 0 !important; background: var(--bg) !important; }
+  .main { margin-left: 0 !important; padding-top: 0 !important; width: 100% !important; }
+  .main-inner { padding: 24px 32px !important; }
 
 </style>
 
 <main class="main">
   <div class="main-inner">
-
-
 
     <!-- HERO BANNER -->
     <div class="hero-banner fade-up d1">
@@ -921,10 +1004,9 @@
       <div class="hero-content">
 
         <div class="hero-title">
-          Shape the Future<br>
-          <span class="highlight">with Technology</span>
+          Code with Purpose,<br>
+          <span class="highlight">Innovate with Precision</span>
         </div>
-
 
         <div class="hero-mini-stats">
           <div class="hms-item">
@@ -936,11 +1018,11 @@
             <div class="hms-lbl">Semesters</div>
           </div>
           <div class="hms-item">
-            <div class="hms-val">5</div>
-            <div class="hms-lbl">Core Topics</div>
+            <div class="hms-val">60</div>
+            <div class="hms-lbl">Credit Hours</div>
           </div>
           <div class="hms-item">
-            <div class="hms-val">100<span>+</span></div>
+            <div class="hms-val">400<span>+</span></div>
             <div class="hms-lbl">Graduates</div>
           </div>
         </div>
@@ -952,63 +1034,62 @@
         <div class="hero-illustration">
           <div class="ilu-glow"></div>
 
-          <!-- SVG Student Illustration -->
+          <!-- MCS Tech/Developer SVG Illustration -->
           <svg class="student-fig" viewBox="0 0 240 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- body / suit -->
-            <rect x="68" y="155" width="104" height="125" rx="14" fill="#1a2e6e"/>
-            <!-- shirt / tie area -->
-            <rect x="108" y="155" width="24" height="80" rx="4" fill="#0B1F66"/>
-            <polygon points="120,162 115,190 120,196 125,190" fill="#FF2D8D"/>
-            <!-- collar -->
-            <polygon points="108,155 120,175 132,155 118,160" fill="white" opacity="0.9"/>
-            <polygon points="132,155 120,175 108,155 122,160" fill="#e0e4f0" opacity="0.9"/>
-            <!-- arms -->
-            <rect x="38" y="158" width="36" height="92" rx="14" fill="#1a2e6e"/>
-            <rect x="166" y="158" width="36" height="92" rx="14" fill="#1a2e6e"/>
-            <!-- hand left -->
-            <ellipse cx="56" cy="256" rx="16" ry="12" fill="#f5c5a3"/>
-            <!-- hand right holding cube -->
-            <ellipse cx="184" cy="253" rx="16" ry="12" fill="#f5c5a3"/>
-            <!-- rubiks cube -->
-            <rect x="188" y="228" width="38" height="38" rx="6" fill="#222"/>
-            <rect x="190" y="230" width="10" height="10" rx="2" fill="#FF2D8D"/>
-            <rect x="203" y="230" width="10" height="10" rx="2" fill="#4ade80"/>
-            <rect x="216" y="230" width="8" height="10" rx="2" fill="#60a5fa"/>
-            <rect x="190" y="243" width="10" height="10" rx="2" fill="#fbbf24"/>
-            <rect x="203" y="243" width="10" height="10" rx="2" fill="#FF2D8D"/>
-            <rect x="216" y="243" width="8" height="10" rx="2" fill="#4ade80"/>
-            <rect x="190" y="256" width="10" height="8" rx="2" fill="#60a5fa"/>
-            <rect x="203" y="256" width="10" height="8" rx="2" fill="#fbbf24"/>
-            <rect x="216" y="256" width="8" height="8" rx="2" fill="#FF2D8D"/>
-            <!-- neck -->
-            <rect x="108" y="132" width="24" height="28" rx="8" fill="#f5c5a3"/>
-            <!-- head -->
-            <ellipse cx="120" cy="110" rx="46" ry="50" fill="#f5c5a3"/>
-            <!-- hair -->
-            <path d="M74 96 Q76 52 120 50 Q164 52 166 96 Q155 72 120 70 Q85 72 74 96Z" fill="#2d1a08"/>
-            <!-- bun -->
-            <ellipse cx="120" cy="55" rx="20" ry="14" fill="#2d1a08"/>
-            <!-- facial features -->
-            <ellipse cx="108" cy="114" rx="6" ry="7" fill="white"/>
-            <ellipse cx="132" cy="114" rx="6" ry="7" fill="white"/>
-            <ellipse cx="109" cy="115" rx="3.5" ry="4" fill="#1a0a0a"/>
-            <ellipse cx="133" cy="115" rx="3.5" ry="4" fill="#1a0a0a"/>
-            <ellipse cx="110" cy="114" rx="1.5" ry="2" fill="white"/>
-            <ellipse cx="134" cy="114" rx="1.5" ry="2" fill="white"/>
-            <!-- smile -->
-            <path d="M112 128 Q120 135 128 128" stroke="#c27a5a" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- eyebrows -->
-            <path d="M102 107 Q108 104 114 106" stroke="#2d1a08" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M126 106 Q132 104 138 107" stroke="#2d1a08" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <!-- laptop on lap -->
-            <rect x="72" y="236" width="96" height="6" rx="3" fill="#374151"/>
-            <rect x="78" y="208" width="84" height="30" rx="4" fill="#1f2937"/>
-            <rect x="80" y="210" width="80" height="26" rx="3" fill="#0B1F66"/>
+            <!-- desk/table -->
+            <rect x="10" y="230" width="220" height="10" rx="4" fill="#1a2e6e" opacity="0.5"/>
+            <!-- laptop base -->
+            <rect x="50" y="205" width="140" height="26" rx="6" fill="#374151"/>
+            <!-- laptop screen -->
+            <rect x="58" y="140" width="124" height="68" rx="6" fill="#1e293b"/>
+            <rect x="62" y="144" width="116" height="60" rx="4" fill="#0f172a"/>
             <!-- code lines on screen -->
-            <rect x="84" y="214" width="28" height="2" rx="1" fill="#FF2D8D" opacity="0.8"/>
-            <rect x="84" y="219" width="44" height="2" rx="1" fill="#60a5fa" opacity="0.7"/>
-            <rect x="84" y="224" width="36" height="2" rx="1" fill="#4ade80" opacity="0.7"/>
-            <rect x="84" y="229" width="20" height="2" rx="1" fill="#fbbf24" opacity="0.7"/>
+            <rect x="68" y="152" width="40" height="3" rx="1.5" fill="#00c8ff" opacity="0.9"/>
+            <rect x="72" y="159" width="60" height="3" rx="1.5" fill="#a78bfa" opacity="0.8"/>
+            <rect x="72" y="166" width="30" height="3" rx="1.5" fill="#34d399" opacity="0.8"/>
+            <rect x="106" y="166" width="20" height="3" rx="1.5" fill="#f87171" opacity="0.8"/>
+            <rect x="72" y="173" width="50" height="3" rx="1.5" fill="#fbbf24" opacity="0.8"/>
+            <rect x="68" y="180" width="40" height="3" rx="1.5" fill="#00c8ff" opacity="0.9"/>
+            <rect x="72" y="187" width="35" height="3" rx="1.5" fill="#a78bfa" opacity="0.8"/>
+            <!-- cursor blink -->
+            <rect x="130" y="187" width="2" height="10" rx="1" fill="white" opacity="0.85"/>
+            <!-- hinge -->
+            <rect x="110" y="207" width="20" height="4" rx="2" fill="#4b5563"/>
+            <!-- neck -->
+            <rect x="108" y="115" width="24" height="28" rx="8" fill="#f5c5a3"/>
+            <!-- head -->
+            <ellipse cx="120" cy="93" rx="46" ry="48" fill="#f5c5a3"/>
+            <!-- hair -->
+            <path d="M74 82 Q76 40 120 38 Q164 40 166 82 Q155 58 120 56 Q85 58 74 82Z" fill="#1a0a00"/>
+            <ellipse cx="120" cy="44" rx="40" ry="15" fill="#1a0a00"/>
+            <!-- eyes -->
+            <ellipse cx="108" cy="97" rx="6" ry="7" fill="white"/>
+            <ellipse cx="132" cy="97" rx="6" ry="7" fill="white"/>
+            <ellipse cx="109" cy="98" rx="3.5" ry="4" fill="#1a0a0a"/>
+            <ellipse cx="133" cy="98" rx="3.5" ry="4" fill="#1a0a0a"/>
+            <ellipse cx="110" cy="97" rx="1.5" ry="2" fill="white"/>
+            <ellipse cx="134" cy="97" rx="1.5" ry="2" fill="white"/>
+            <!-- smile -->
+            <path d="M112 112 Q120 119 128 112" stroke="#c27a5a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- eyebrows -->
+            <path d="M102 90 Q108 87 114 89" stroke="#1a0a00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M126 89 Q132 87 138 90" stroke="#1a0a00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- glasses -->
+            <rect x="100" y="91" width="16" height="11" rx="4" fill="none" stroke="#374151" stroke-width="1.8"/>
+            <rect x="124" y="91" width="16" height="11" rx="4" fill="none" stroke="#374151" stroke-width="1.8"/>
+            <line x1="116" y1="96" x2="124" y2="96" stroke="#374151" stroke-width="1.5"/>
+            <line x1="84"  y1="95" x2="100" y2="95" stroke="#374151" stroke-width="1.5"/>
+            <line x1="140" y1="95" x2="154" y2="95" stroke="#374151" stroke-width="1.5"/>
+            <!-- hoodie/tshirt body -->
+            <rect x="68" y="140" width="84" height="90" rx="14" fill="#1e3a8a"/>
+            <!-- hoodie pocket -->
+            <rect x="96" y="185" width="48" height="28" rx="8" fill="#162e75"/>
+            <!-- arms -->
+            <rect x="32" y="143" width="40" height="80" rx="14" fill="#1e3a8a"/>
+            <rect x="168" y="143" width="40" height="80" rx="14" fill="#1e3a8a"/>
+            <!-- hands on keyboard -->
+            <ellipse cx="52"  cy="228" rx="18" ry="10" fill="#f5c5a3"/>
+            <ellipse cx="188" cy="228" rx="18" ry="10" fill="#f5c5a3"/>
           </svg>
 
           <!-- Floating badges -->
@@ -1021,18 +1102,18 @@
           </div>
 
           <div class="ilu-badge ib-2">
-            <div class="ib-icon pink">🤖</div>
+            <div class="ib-icon pink">💻</div>
             <div class="ib-txt">
-              <strong>AI & Data Science</strong>
-              <span>Research-driven curriculum</span>
+              <strong>Project-Based Learning</strong>
+              <span>Real-world tech builds</span>
             </div>
           </div>
 
           <div class="ilu-badge ib-3">
-            <div class="ib-icon green">💼</div>
+            <div class="ib-icon green">🚀</div>
             <div class="ib-txt">
-              <strong>Career Ready</strong>
-              <span>Leadership roles in tech</span>
+              <strong>92% Placement</strong>
+              <span>2024 cohort</span>
             </div>
           </div>
         </div>
@@ -1046,38 +1127,16 @@
         <h2 class="about-heading">Nepal's Premier <span>MCS Degree</span></h2>
 
         <p class="about-para">
-          The <strong>Master of Computer Science (MCS)</strong> program provides an in-depth exploration of advanced computer science topics and prepares students for leadership roles in the technology sector. This program emphasizes both theoretical knowledge and practical skills, covering areas such as algorithms, software engineering, data science, and artificial intelligence. Ideal for professionals seeking to advance their expertise and career opportunities in computing, the MCS program equips students with the tools needed to tackle complex technical challenges.
+          The <strong>Master of Computer Science (MCS)</strong> at Texas College of Management and IT (TCMIT) is a 2-year, 4-semester postgraduate program affiliated with <strong>Lincoln University College, Malaysia</strong>. Designed for aspiring software engineers, researchers, and tech leaders, the program integrates advanced algorithms, artificial intelligence, software engineering, database systems, and cybersecurity. With a strong emphasis on hands-on project development, industry internships, and research, students graduate as globally competitive computing professionals ready to drive digital innovation.
         </p>
         <p class="about-para">
-          Gain cutting-edge knowledge in emerging technologies and develop problem-solving skills essential for innovation and advancement in the field of computer science. With modern facilities including IoT & Robotics labs, a VFX Studio, an Incubation Center, and an e-library, students gain hands-on experience throughout their studies.
+          The MCS curriculum at Texas College is structured to build deep technical expertise semester by semester. The first semester establishes strong foundations in <strong>Advanced Algorithms, Discrete Mathematics, Computer Architecture, and Research Methodology</strong>. The second semester advances into <strong>Artificial Intelligence, Database Management Systems, Software Engineering, and Computer Networks</strong>, equipping students with both theoretical depth and applied skills.
+        </p>
+        <p class="about-para">
+          The third and fourth semesters focus on advanced topics and specialization. Students engage with <strong>Machine Learning, Cybersecurity, Cloud Computing, and Distributed Systems</strong>. The program culminates in a comprehensive <strong>MCS Thesis/Project and Industry Internship</strong>, giving students direct exposure to Nepal's growing IT sector and global technology environments. Elective tracks in AI/ML, Cybersecurity, and Software Engineering allow students to tailor their MCS to match their career ambitions.
         </p>
 
-        <div class="about-highlights">
-          <div class="ah-card">
-            <div class="ah-icon">🧠</div>
-            <div>
-              <div class="ah-title">Advanced Algorithms & Systems</div>
-              <div class="ah-text">Master advanced algorithms, data structures, software engineering, and system design.</div>
-            </div>
-          </div>
-          <div class="ah-card">
-            <div class="ah-icon">📊</div>
-            <div>
-              <div class="ah-title">Data Science & AI</div>
-              <div class="ah-text">Explore data science methodologies, machine learning techniques, and applied artificial intelligence.</div>
-            </div>
-          </div>
-          <div class="ah-card">
-            <div class="ah-icon">🛡️</div>
-            <div>
-              <div class="ah-title">Cybersecurity & Data Protection</div>
-              <div class="ah-text">Gain skills in cybersecurity, data protection strategies, and secure system design.</div>
-            </div>
-          </div>
-        </div>
-
         <div class="about-btns">
-
         </div>
       </div>
 
@@ -1087,9 +1146,6 @@
             <div class="poster-inner">
               <div class="poster-logos">
                 <div class="poster-logo-tx">
-                  <div class="tx-ring">
-                    <svg viewBox="0 0 28 28" width="28" height="28"><circle cx="14" cy="14" r="12" stroke="#FF2D8D" stroke-width="2" fill="none"/><text x="14" y="18" text-anchor="middle" font-family="Sora,sans-serif" font-weight="800" font-size="11" fill="#0B1F66">TX</text></svg>
-                  </div>
                   <div class="tx-text-wrap">
                     <span class="tx-name">Texas</span>
                     <span class="tx-sub">College of Management &amp; IT</span>
@@ -1101,57 +1157,82 @@
                 </div>
               </div>
 
-              <div class="poster-tagline">SHAPE THE FUTURE</div>
-              <div class="poster-main-title">WITH<br>TECHNOLOGY</div>
+              <div class="poster-tagline">CODE WITH PURPOSE</div>
+              <div class="poster-main-title">INNOVATE<br>WITH PRECISION</div>
               <div class="poster-degree-row">
                 <div class="poster-degree-title">MCS</div>
               </div>
-              <div class="poster-degree-sub">Master of (Hons.) in<br><strong>Computer Science</strong></div>
+              <div class="poster-degree-sub">Master of Computer<br><strong>Science</strong></div>
 
               <div class="poster-why-box">
-                <div class="pwb-title">Why choose <span>MCS</span><br>at Texas</div>
-                <div class="pwb-item">▶ CEH &amp; CHFI Lab</div>
-                <div class="pwb-item">▶ Incubation Center</div>
-                <div class="pwb-item">▶ IoT &amp; Robotics Lab</div>
-                <div class="pwb-item">▶ Resourceful Library and ebrary</div>
-                <div class="pwb-item">▶ VFX Studio</div>
+                <div class="pwb-title">Discover <span>MCS</span> at Texas</div>
+                <div class="pwb-item">▶ Project &amp; Research-Based Learning</div>
+                <div class="pwb-item">▶ AI, ML &amp; Data Science Tracks</div>
+                <div class="pwb-item">▶ Industry Internship Program</div>
+                <div class="pwb-item">▶ Cybersecurity &amp; Cloud Labs</div>
+                <div class="pwb-item">▶ Thesis &amp; Publication Support</div>
               </div>
 
               <div class="poster-admission">
                 <div class="pa-open">ADMISSION<br>OPEN 2026</div>
-                <div class="pa-intake">Spring Intake</div>
               </div>
 
               <div class="poster-student">
+                <!-- MCS Developer Figure SVG -->
                 <svg viewBox="0 0 160 270" fill="none" xmlns="http://www.w3.org/2000/svg" width="155" height="270">
-                  <rect x="38" y="125" width="84" height="145" rx="12" fill="#1e3a8a"/>
-                  <rect x="72" y="125" width="16" height="70" rx="3" fill="#1a2e6e"/>
-                  <polygon points="80,131 76,155 80,160 84,155" fill="#FF2D8D"/>
-                  <polygon points="72,125 80,142 88,125 79,129" fill="white" opacity="0.85"/>
-                  <rect x="16" y="128" width="28" height="84" rx="12" fill="#1e3a8a"/>
-                  <rect x="116" y="128" width="28" height="84" rx="12" fill="#1e3a8a"/>
-                  <ellipse cx="30" cy="218" rx="13" ry="10" fill="#f5c5a3"/>
-                  <ellipse cx="130" cy="216" rx="13" ry="10" fill="#f5c5a3"/>
-                  <rect x="132" y="188" width="32" height="32" rx="5" fill="#111"/>
-                  <rect x="134" y="190" width="9" height="9" rx="2" fill="#FF2D8D"/>
-                  <rect x="145" y="190" width="9" height="9" rx="2" fill="#4ade80"/>
-                  <rect x="134" y="201" width="9" height="9" rx="2" fill="#fbbf24"/>
-                  <rect x="145" y="201" width="9" height="9" rx="2" fill="#60a5fa"/>
-                  <rect x="134" y="212" width="9" height="6" rx="2" fill="#a78bfa"/>
-                  <rect x="145" y="212" width="9" height="6" rx="2" fill="#FF2D8D"/>
-                  <rect x="72" y="103" width="16" height="26" rx="7" fill="#f5c5a3"/>
+                  <!-- desk -->
+                  <rect x="0" y="235" width="160" height="8" rx="3" fill="#1a2e6e" opacity="0.5"/>
+                  <!-- laptop base -->
+                  <rect x="22" y="212" width="116" height="22" rx="5" fill="#374151"/>
+                  <!-- laptop screen -->
+                  <rect x="28" y="152" width="104" height="62" rx="5" fill="#1e293b"/>
+                  <rect x="32" y="156" width="96" height="54" rx="3" fill="#0f172a"/>
+                  <!-- code lines -->
+                  <rect x="38" y="163" width="32" height="3" rx="1.5" fill="#00c8ff" opacity="0.9"/>
+                  <rect x="42" y="170" width="48" height="3" rx="1.5" fill="#a78bfa" opacity="0.8"/>
+                  <rect x="42" y="177" width="24" height="3" rx="1.5" fill="#34d399" opacity="0.8"/>
+                  <rect x="70" y="177" width="16" height="3" rx="1.5" fill="#f87171" opacity="0.8"/>
+                  <rect x="42" y="184" width="40" height="3" rx="1.5" fill="#fbbf24" opacity="0.8"/>
+                  <rect x="38" y="191" width="30" height="3" rx="1.5" fill="#00c8ff" opacity="0.9"/>
+                  <!-- cursor -->
+                  <rect x="100" y="191" width="2" height="8" rx="1" fill="white" opacity="0.8"/>
+                  <!-- hinge -->
+                  <rect x="72" y="213" width="16" height="4" rx="2" fill="#4b5563"/>
+                  <!-- neck -->
+                  <rect x="72" y="103" width="16" height="52" rx="7" fill="#f5c5a3"/>
+                  <!-- head -->
                   <ellipse cx="80" cy="82" rx="36" ry="40" fill="#f5c5a3"/>
-                  <path d="M44 72 Q46 34 80 32 Q114 34 116 72 Q106 50 80 52 Q54 50 44 72Z" fill="#2d1a08"/>
-                  <ellipse cx="80" cy="36" rx="18" ry="12" fill="#2d1a08"/>
+                  <!-- hair -->
+                  <path d="M44 72 Q46 34 80 32 Q114 34 116 72 Q106 50 80 52 Q54 50 44 72Z" fill="#1a0a00"/>
+                  <ellipse cx="80" cy="40" rx="32" ry="14" fill="#1a0a00"/>
+                  <!-- eyes -->
                   <ellipse cx="68" cy="86" rx="5.5" ry="6.5" fill="white"/>
                   <ellipse cx="92" cy="86" rx="5.5" ry="6.5" fill="white"/>
                   <ellipse cx="69" cy="87" rx="3.2" ry="3.8" fill="#1a0a0a"/>
                   <ellipse cx="93" cy="87" rx="3.2" ry="3.8" fill="#1a0a0a"/>
                   <ellipse cx="70" cy="86" rx="1.3" ry="1.6" fill="white"/>
                   <ellipse cx="94" cy="86" rx="1.3" ry="1.6" fill="white"/>
+                  <!-- glasses -->
+                  <rect x="60" y="82" width="13" height="9" rx="3" fill="none" stroke="#374151" stroke-width="1.5"/>
+                  <rect x="87" y="82" width="13" height="9" rx="3" fill="none" stroke="#374151" stroke-width="1.5"/>
+                  <line x1="73" y1="86" x2="87" y2="86" stroke="#374151" stroke-width="1.2"/>
+                  <line x1="46" y1="86" x2="60" y2="86" stroke="#374151" stroke-width="1.2"/>
+                  <line x1="100" y1="86" x2="114" y2="86" stroke="#374151" stroke-width="1.2"/>
+                  <!-- smile -->
                   <path d="M73 100 Q80 107 87 100" stroke="#c27a5a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-                  <path d="M62 78 Q68 75 74 77" stroke="#2d1a08" stroke-width="2" fill="none" stroke-linecap="round"/>
-                  <path d="M86 77 Q92 75 98 78" stroke="#2d1a08" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <!-- eyebrows -->
+                  <path d="M62 78 Q68 75 74 77" stroke="#1a0a00" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M86 77 Q92 75 98 78" stroke="#1a0a00" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <!-- hoodie -->
+                  <rect x="38" y="150" width="84" height="88" rx="12" fill="#1e3a8a"/>
+                  <!-- pocket -->
+                  <rect x="56" y="196" width="48" height="26" rx="8" fill="#162e75"/>
+                  <!-- arms -->
+                  <rect x="10" y="153" width="32" height="72" rx="12" fill="#1e3a8a"/>
+                  <rect x="118" y="153" width="32" height="72" rx="12" fill="#1e3a8a"/>
+                  <!-- hands on keyboard -->
+                  <ellipse cx="26"  cy="228" rx="15" ry="9" fill="#f5c5a3"/>
+                  <ellipse cx="134" cy="228" rx="15" ry="9" fill="#f5c5a3"/>
                 </svg>
               </div>
 
@@ -1186,10 +1267,14 @@
       </div>
 
       <div class="affil-right">
-        <button class="btn-learn">
+        <a href="https://www.lincoln.edu.my" target="_blank" rel="noopener noreferrer" class="btn-learn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
           Learn More
-          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </button>
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
       </div>
     </div>
 
@@ -1198,7 +1283,10 @@
 
 <script>
 const semesterData = [
-    { label: "MCS Topics", icon: "📚", subjects: ["Advanced Algorithms and Data Structures", "Software Engineering and System Design", "Data Science and Machine Learning", "Artificial Intelligence and Applications", "Cybersecurity and Data Protection"] },
+    { label: "First Sem", icon: "1️⃣", subjects: ["Advanced Algorithms", "Discrete Mathematics", "Computer Architecture", "Research Methodology", "Programming Paradigms"] },
+    { label: "Second Sem", icon: "2️⃣", subjects: ["Artificial Intelligence", "Database Management Systems", "Software Engineering", "Computer Networks", "Statistical Methods"] },
+    { label: "Third Sem", icon: "3️⃣", subjects: ["Machine Learning", "Cybersecurity", "Cloud Computing", "Distributed Systems", "Elective I"] },
+    { label: "Fourth Sem", icon: "4️⃣", subjects: ["MCS Thesis / Project", "Industry Internship", "Elective II", "Elective III"] },
 ];
 
 const menu = document.getElementById('semMenu');
@@ -1217,14 +1305,18 @@ semesterData.forEach((sem, i) => {
     menu?.appendChild(el);
 });
 
-function toggleSem(el: any) {
+function toggleSem(el) {
     el.parentElement.classList.toggle('open');
 }
 
-function pickSubject(el: any) {
+function pickSubject(el) {
     document.querySelectorAll('.subject-link').forEach(l => l.classList.remove('active'));
     el.classList.add('active');
     if (window.innerWidth < 900) closeSidebar();
+}
+
+function scrollToCourses() {
+    document.getElementById('coursesSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function closeSidebar() {

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bit_Admin/cyber_security_law_and_policy.aspx" hash="fffffff9acec72d9" filehash="c0c2fc864a47096e" flags="110000" assembly="App_Web_nfy5ib31" type="ASP.bit_admin_cyber_security_law_and_policy_aspx">
+    <filedeps>
+        <filedep name="/Bit_Admin/cyber_security_law_and_policy.aspx" />
+        <filedep name="/Bit_Admin/upload.Master" />
+    </filedeps>
+</preserve>

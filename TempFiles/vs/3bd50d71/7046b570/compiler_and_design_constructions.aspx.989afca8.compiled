@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Notes/compiler_and_design_constructions.aspx" hash="fffffff9acec72d9" filehash="56986c285ea943c5" flags="110000" assembly="App_Web_cxrledid" type="ASP.bit_notes_compiler_and_design_constructions_aspx">
+<preserve resultType="3" virtualPath="/Bit_Notes/compiler_and_design_constructions.aspx" hash="fffffff9acec72d9" filehash="56986bb49d5b7ce5" flags="110000" assembly="App_Web_etjk5pjn" type="ASP.bit_notes_compiler_and_design_constructions_aspx">
     <filedeps>
         <filedep name="/Bit_Notes/compiler_and_design_constructions.aspx" />
         <filedep name="/Bit_Notes/note.Master" />

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bit_Admin/basic_computer_architecture.aspx" hash="fffffff9acec72d9" filehash="908504bd3dabcc57" flags="110000" assembly="App_Web_21x5lzlp" type="ASP.bit_admin_basic_computer_architecture_aspx">
+    <filedeps>
+        <filedep name="/Bit_Admin/basic_computer_architecture.aspx" />
+        <filedep name="/Bit_Admin/upload.Master" />
+    </filedeps>
+</preserve>

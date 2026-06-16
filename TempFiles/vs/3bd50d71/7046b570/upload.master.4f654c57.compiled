@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bit_Admin/upload.Master" hash="fffffff9acec72d9" filehash="ffffbc87a179c7dd" flags="110000" assembly="App_Web_mkv0v2mf" type="ASP.bit_admin_upload_master">
+    <filedeps>
+        <filedep name="/Bit_Admin/upload.Master" />
+    </filedeps>
+</preserve>

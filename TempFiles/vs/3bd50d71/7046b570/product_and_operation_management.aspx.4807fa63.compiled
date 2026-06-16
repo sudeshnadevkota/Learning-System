@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bba_Notes/product_and_operation_management.aspx" hash="fffffff9acec72d9" filehash="2dad80ac23c5ee46" flags="110000" assembly="App_Web_4urgkv4m" type="ASP.bba_notes_product_and_operation_management_aspx">
+<preserve resultType="3" virtualPath="/Bba_Notes/product_and_operation_management.aspx" hash="fffffff9acec72d9" filehash="d280178a78c595ca" flags="110000" assembly="App_Web_mlb00kuw" type="ASP.bba_notes_product_and_operation_management_aspx">
     <filedeps>
         <filedep name="/Bba_Notes/note.Master" />
         <filedep name="/Bba_Notes/product_and_operation_management.aspx" />

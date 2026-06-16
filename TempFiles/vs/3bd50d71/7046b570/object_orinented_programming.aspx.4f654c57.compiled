@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bit_Admin/Object_Orinented_Programming.aspx" hash="fffffff9acec72d9" filehash="67a8e30d52ce18c" flags="110000" assembly="App_Web_5fpwx2gc" type="ASP.bit_admin_object_orinented_programming_aspx">
+    <filedeps>
+        <filedep name="/Bit_Admin/Object_Orinented_Programming.aspx" />
+        <filedep name="/Bit_Admin/upload.Master" />
+    </filedeps>
+</preserve>

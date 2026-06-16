@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bit_Admin/SocialValues&amp;Ethics.aspx" hash="fffffff9acec72d9" filehash="fd9a686abd64f179" flags="110000" assembly="App_Web_x3cs2esh" type="ASP.bit_admin_socialvalues_ethics_aspx">
+    <filedeps>
+        <filedep name="/Bit_Admin/SocialValues&amp;Ethics.aspx" />
+        <filedep name="/Bit_Admin/upload.Master" />
+    </filedeps>
+</preserve>

@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bcs_Notes/dash.aspx" hash="fffffff9acec72d9" filehash="4387c5a937fdb04f" flags="110000" assembly="App_Web_dash.aspx.40acfc91.bqvgc3c6" type="ASP.bcs_notes_dash_aspx">
-    <filedeps>
-        <filedep name="/Bcs_Notes/dash.aspx" />
-        <filedep name="/Bcs_Notes/note.Master" />
-    </filedeps>
-</preserve>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bit_Admin/mobile_computing.aspx" hash="fffffff9acec72d9" filehash="31bf517cbe150b08" flags="110000" assembly="App_Web_21x5lzlp" type="ASP.bit_admin_mobile_computing_aspx">
+    <filedeps>
+        <filedep name="/Bit_Admin/mobile_computing.aspx" />
+        <filedep name="/Bit_Admin/upload.Master" />
+    </filedeps>
+</preserve>
