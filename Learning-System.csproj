@@ -391,7 +391,7 @@
     <Content Include="Bit_Admin\Data_Communication_and_Networks.aspx" />
     <Content Include="Bit_Admin\AI.aspx" />
     <Content Include="Bit_Admin\basic_computer_architecture.aspx" />
-    <Content Include="Bit_Admin\business_english.aspx" />
+    <Content Include="Bit_Admin\course_content.aspx" />
     <Content Include="Bit_Admin\CloudComputing.aspx" />
     <Content Include="Bit_Admin\cloud_computing.aspx" />
     <Content Include="Bit_Admin\complier_and_design_constructions.aspx" />
@@ -3270,12 +3270,12 @@
     <Compile Include="Bit_Admin\basic_computer_architecture.aspx.designer.cs">
       <DependentUpon>basic_computer_architecture.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Admin\business_english.aspx.cs">
-      <DependentUpon>business_english.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Admin\business_english.aspx.designer.cs">
-      <DependentUpon>business_english.aspx</DependentUpon>
+    <Compile Include="Bit_Admin\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\CloudComputing.aspx.cs">
       <DependentUpon>CloudComputing.aspx</DependentUpon>
@@ -4597,6 +4597,7 @@
     <Compile Include="Mcs_Notes\telecommunication_system.aspx.designer.cs">
       <DependentUpon>telecommunication_system.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\SubjectMap.cs" />
     <Compile Include="Past_Year_Paper\BBA\BBA.Master.cs">
       <DependentUpon>BBA.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8980,7 +8981,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="photo\" />
     <Folder Include="Uploded_datas\" />
     <Folder Include="Views\Home\" />

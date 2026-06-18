@@ -1,6 +1,6 @@
 ﻿
 
-<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="business_english.aspx.cs" Inherits="Learning_System.Bit_Admin.business_english" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="course_content.aspx.cs" Inherits="Learning_System.Bit_Admin.course_content" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -211,7 +211,7 @@
 
     <div class="c-wrap container-fluid">
         <div class="c-hero">
-            <h3><i class="ti ti-vocabulary"></i> Course Content Management: Business English</h3>
+            <h3><i class="ti ti-vocabulary"></i> Course Content Management: <%= PageTitleText %></h3>
         </div>
 
         <div class="c-panel">
@@ -245,8 +245,7 @@
             <div class="form-group">
                 <label>Upload Files</label>
 
-                <input type="file" id="FileUpload1" name="FileUpload1" style="display:none;"
-                    accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.jpg,.png,.zip,.txt" />
+                <asp:FileUpload ID="FileUpload1" runat="server" style="display:none;" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.jpg,.png,.zip,.txt" />
 
                 <div id="dropZone">
                     <i class="ti ti-cloud-upload" style="font-size:2.5rem; color:var(--primary); margin-bottom:8px; display:block;"></i>
