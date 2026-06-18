@@ -11,7 +11,7 @@ namespace Learning_System.Bit_Notes
 {
 
 
-    public partial class Basic_Computer_Architecture
+    public partial class Computer_Related_Mathematics_And_Statistics
     {
 
         /// <summary>

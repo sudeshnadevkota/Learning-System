@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Notes/note.Master" AutoEventWireup="true" CodeBehind="Basic_Computer_Architecture.aspx.cs" Inherits="Learning_System.Bit_Notes.Basic_Computer_Architecture" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Notes/note.Master" AutoEventWireup="true" CodeBehind="Introduction_To_C-Programming.aspx.cs" Inherits="Learning_System.Bit_Notes.Introduction_To_C_Programming" %>
+
 
 
 
@@ -1114,7 +1115,7 @@
       </div>
 
       <div class="hero-row">
-        <h1 class="hero-title hero-title-inline">Basic <span>Computer Architecture</span></h1>
+        <h1 class="hero-title hero-title-inline">Introduction to <span>C++ Programming</span></h1>
         <div class="hero-stats hero-stats-inline">
           <div class="stat-item"><span class="stat-val">ENG I</span><span class="stat-lbl">Course Code</span></div>
           <div class="stat-item"><span class="stat-val">8</span><span class="stat-lbl">Topics</span></div>
@@ -1644,4 +1645,5 @@
 </script>
 
 </asp:Content>
+
 

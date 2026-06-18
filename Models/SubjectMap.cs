@@ -14,10 +14,10 @@ namespace Learning_System
             new Dictionary<string, SubjectInfo>
             {
                 { "BE", new SubjectInfo { Table = "bit_1_BE", Title = "Business English" } },
-                { "C++", new SubjectInfo { Table = "bit_1_C++", Title = "Introduction to C++ Programming" } },
+                { "ICP", new SubjectInfo { Table = "bit_1_ICP", Title = "Introduction to C++ Programming" } },
                 { "BCA", new SubjectInfo { Table = "bit_1_BCA", Title = "Basic Computer Architecture" } },
                 { "Math", new SubjectInfo { Table = "bit_1_Math", Title = "Computer Related Mathematics and Statics" } },
-                { "P-IT", new SubjectInfo { Table = "bit_1_BE", Title = "Principle of Information Technology" } },
+                { "PIT", new SubjectInfo { Table = "bit_1_PIT", Title = "Principle of Information Technology" } },
                 // Add more subjects below, same pattern:
                 // { "DSA", new SubjectInfo { Table = "bit_1_DSA", Title = "Data Structures and Algorithms" } },
             };

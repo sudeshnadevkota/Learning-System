@@ -1,5 +1,4 @@
 ﻿
-
 <%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="course_content.aspx.cs" Inherits="Learning_System.Bit_Admin.course_content" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -327,120 +326,122 @@
     </div>
 
     <script>
-        (function () {
-
+        window.addEventListener('DOMContentLoaded', (event) => {
             // ── Destination filter ────────────────────────────────────────
             var fileTypeEl = document.getElementById('<%= ddlFileType.ClientID %>');
             var destWrapper = document.getElementById('divFileDestination');
-            var destEl      = document.getElementById('<%= ddlContentType.ClientID %>');
+            var destEl = document.getElementById('<%= ddlContentType.ClientID %>');
 
-            var allOptions = Array.from(destEl.options).slice(1);
-            var hasDestination = ['Lecture', 'Tutorial', 'Workshop'];
+            // Ensure elements exist before accessing properties
+            if (fileTypeEl && destEl) {
+                var allOptions = Array.from(destEl.options).slice(1);
+                var hasDestination = ['Lecture', 'Tutorial', 'Workshop'];
 
-            function filterDestination(selectedGroup) {
-                if (hasDestination.indexOf(selectedGroup) !== -1) {
-                    destWrapper.classList.add('visible');
-                    while (destEl.options.length > 1) destEl.remove(1);
-                    allOptions.forEach(function (opt) {
-                        if (opt.getAttribute('data-group') === selectedGroup) {
-                            destEl.add(opt.cloneNode(true));
-                        }
-                    });
-                    destEl.selectedIndex = 0;
-                } else {
-                    destWrapper.classList.remove('visible');
-                    while (destEl.options.length > 1) destEl.remove(1);
+                function filterDestination(selectedGroup) {
+                    if (hasDestination.indexOf(selectedGroup) !== -1) {
+                        destWrapper.classList.add('visible');
+                        while (destEl.options.length > 1) destEl.remove(1);
+                        allOptions.forEach(function (opt) {
+                            if (opt.getAttribute('data-group') === selectedGroup) {
+                                destEl.add(opt.cloneNode(true));
+                            }
+                        });
+                        destEl.selectedIndex = 0;
+                    } else {
+                        destWrapper.classList.remove('visible');
+                        while (destEl.options.length > 1) destEl.remove(1);
+                    }
                 }
+
+                fileTypeEl.addEventListener('change', function () {
+                    filterDestination(this.value);
+                });
+                filterDestination(fileTypeEl.value);
             }
-
-            fileTypeEl.addEventListener('change', function () {
-                filterDestination(this.value);
-            });
-            filterDestination(fileTypeEl.value);
-
 
             // ── Drag & Drop File Upload ───────────────────────────────────
             var dropZone = document.getElementById('dropZone');
-            var fileInput = document.getElementById('FileUpload1');
+            var fileInput = document.getElementById('<%= FileUpload1.ClientID %>');
             var filePreview = document.getElementById('filePreview');
             var fileNameEl = document.getElementById('fileName');
             var fileSizeEl = document.getElementById('fileSize');
             var btnBrowse = document.getElementById('btnBrowse');
             var btnClear = document.getElementById('btnClearFile');
 
-            function formatSize(bytes) {
-                if (bytes < 1024) return bytes + ' B';
-                if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-                return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
-            }
-
-            function showFile(file) {
-                fileNameEl.textContent = file.name;
-                fileSizeEl.textContent = formatSize(file.size);
-                filePreview.classList.add('visible');
-                dropZone.classList.add('has-file');
-                dropZone.classList.remove('dragover');
-            }
-
-            function clearFile() {
-                fileInput.value = '';
-                filePreview.classList.remove('visible');
-                dropZone.classList.remove('has-file');
-                fileNameEl.textContent = '';
-                fileSizeEl.textContent = '';
-            }
-
-            btnBrowse.addEventListener('click', function (e) {
-                e.stopPropagation();
-                fileInput.click();
-            });
-
-            dropZone.addEventListener('click', function (e) {
-                if (e.target !== btnBrowse && e.target !== btnClear) {
-                    fileInput.click();
+            // Guard clause to prevent errors if these elements are missing
+            if (dropZone && fileInput && btnBrowse && btnClear) {
+                function formatSize(bytes) {
+                    if (bytes < 1024) return bytes + ' B';
+                    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+                    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
                 }
-            });
 
-            fileInput.addEventListener('change', function () {
-                if (this.files && this.files[0]) {
-                    showFile(this.files[0]);
-                }
-            });
-
-            btnClear.addEventListener('click', function (e) {
-                e.stopPropagation();
-                clearFile();
-            });
-
-            dropZone.addEventListener('dragover', function (e) {
-                e.preventDefault();
-                dropZone.classList.add('dragover');
-            });
-
-            dropZone.addEventListener('dragleave', function (e) {
-                if (!dropZone.contains(e.relatedTarget)) {
+                function showFile(file) {
+                    if (fileNameEl) fileNameEl.textContent = file.name;
+                    if (fileSizeEl) fileSizeEl.textContent = formatSize(file.size);
+                    if (filePreview) filePreview.classList.add('visible');
+                    dropZone.classList.add('has-file');
                     dropZone.classList.remove('dragover');
                 }
-            });
 
-            dropZone.addEventListener('drop', function (e) {
-                e.preventDefault();
-                dropZone.classList.remove('dragover');
-                var files = e.dataTransfer.files;
-                if (files && files[0]) {
-                    try {
-                        var dt = new DataTransfer();
-                        dt.items.add(files[0]);
-                        fileInput.files = dt.files;
-                        showFile(files[0]);
-                    } catch (err) {
-                        fileNameEl.textContent = files[0].name;
-                        filePreview.classList.add('visible');
-                    }
+                function clearFile() {
+                    fileInput.value = '';
+                    if (filePreview) filePreview.classList.remove('visible');
+                    dropZone.classList.remove('has-file');
+                    if (fileNameEl) fileNameEl.textContent = '';
+                    if (fileSizeEl) fileSizeEl.textContent = '';
                 }
-            });
 
-        })();
+                btnBrowse.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    fileInput.click();
+                });
+
+                dropZone.addEventListener('click', function (e) {
+                    if (e.target !== btnBrowse && e.target !== btnClear) {
+                        fileInput.click();
+                    }
+                });
+
+                fileInput.addEventListener('change', function () {
+                    if (this.files && this.files[0]) {
+                        showFile(this.files[0]);
+                    }
+                });
+
+                btnClear.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    clearFile();
+                });
+
+                dropZone.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                    dropZone.classList.add('dragover');
+                });
+
+                dropZone.addEventListener('dragleave', function (e) {
+                    if (!dropZone.contains(e.relatedTarget)) {
+                        dropZone.classList.remove('dragover');
+                    }
+                });
+
+                dropZone.addEventListener('drop', function (e) {
+                    e.preventDefault();
+                    dropZone.classList.remove('dragover');
+                    var files = e.dataTransfer.files;
+                    if (files && files[0]) {
+                        try {
+                            var dt = new DataTransfer();
+                            dt.items.add(files[0]);
+                            fileInput.files = dt.files;
+                            showFile(files[0]);
+                        } catch (err) {
+                            showFile(files[0]);
+                        }
+                    }
+                });
+            }
+        });
     </script>
 
 </asp:Content>
