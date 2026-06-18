@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bhm_Notes/hotel_maintenanace.aspx" hash="fffffff9acec72d9" filehash="209045005eb4dd0e" flags="110000" assembly="App_Web_ko5ujrfh" type="ASP.bhm_notes_hotel_maintenanace_aspx">
-    <filedeps>
-        <filedep name="/Bhm_Notes/hotel_maintenanace.aspx" />
-        <filedep name="/Bhm_Notes/note.Master" />
-    </filedeps>
-</preserve>

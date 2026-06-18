@@ -271,7 +271,7 @@
             #menu-bar { left: 0.3rem; }
         }
     </style>
-    <title>BIT notes</title>
+    <title>BHM notes</title>
 </head>
 <body>
     <form id="form2" runat="server">
@@ -285,7 +285,7 @@
                 </a>
             </div>
             <div class="d-flex align-items-center justify-content-center" style="flex: 1;">
-                <h3 style="font-size: 2rem; font-weight: bold; color: #002366; margin: 0;">BIT NOTES</h3>
+                <h3 style="font-size: 2rem; font-weight: bold; color: #002366; margin: 0;">BHM NOTES</h3>
             </div>
             <div class="d-none d-md-flex align-items-center" style="flex: 1; justify-content: flex-end;">
             </div>

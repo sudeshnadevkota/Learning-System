@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bhm_Notes/revenue_management.aspx" hash="fffffff9acec72d9" filehash="ee5dcb98513e2dd8" flags="110000" assembly="App_Web_ko5ujrfh" type="ASP.bhm_notes_revenue_management_aspx">
-    <filedeps>
-        <filedep name="/Bhm_Notes/note.Master" />
-        <filedep name="/Bhm_Notes/revenue_management.aspx" />
-    </filedeps>
-</preserve>

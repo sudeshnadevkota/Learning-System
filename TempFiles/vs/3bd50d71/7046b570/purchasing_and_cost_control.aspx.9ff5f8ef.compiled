@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bhm_Notes/purchasing_and_cost_control.aspx" hash="fffffff9acec72d9" filehash="ee5daa8325c56662" flags="110000" assembly="App_Web_ko5ujrfh" type="ASP.bhm_notes_purchasing_and_cost_control_aspx">
-    <filedeps>
-        <filedep name="/Bhm_Notes/note.Master" />
-        <filedep name="/Bhm_Notes/purchasing_and_cost_control.aspx" />
-    </filedeps>
-</preserve>
