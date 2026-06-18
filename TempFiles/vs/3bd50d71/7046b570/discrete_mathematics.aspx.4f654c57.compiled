@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Admin/discrete_mathematics.aspx" hash="fffffff9acec72d9" filehash="a567a90b8de6614f" flags="110000" assembly="App_Web_nfy5ib31" type="ASP.bit_admin_discrete_mathematics_aspx">
-    <filedeps>
-        <filedep name="/Bit_Admin/discrete_mathematics.aspx" />
-        <filedep name="/Bit_Admin/upload.Master" />
-    </filedeps>
-</preserve>

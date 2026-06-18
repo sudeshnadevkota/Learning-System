@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bhm_Notes/organizational_behavior.aspx" hash="fffffff9acec72d9" filehash="ee5da03a46fdda2a" flags="110000" assembly="App_Web_ko5ujrfh" type="ASP.bhm_notes_organizational_behavior_aspx">
+    <filedeps>
+        <filedep name="/Bhm_Notes/note.Master" />
+        <filedep name="/Bhm_Notes/organizational_behavior.aspx" />
+    </filedeps>
+</preserve>

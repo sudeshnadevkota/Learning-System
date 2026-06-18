@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bhm_Notes/public_relation.aspx" hash="fffffff9acec72d9" filehash="11a2491330d0f189" flags="110000" assembly="App_Web_ko5ujrfh" type="ASP.bhm_notes_public_relation_aspx">
+    <filedeps>
+        <filedep name="/Bhm_Notes/note.Master" />
+        <filedep name="/Bhm_Notes/public_relation.aspx" />
+    </filedeps>
+</preserve>

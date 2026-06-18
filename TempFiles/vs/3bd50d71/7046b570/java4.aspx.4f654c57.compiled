@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Admin/java4.aspx" hash="fffffff9acec72d9" filehash="60d18a9f42c3a8fb" flags="110000" assembly="App_Web_21x5lzlp" type="ASP.bit_admin_java4_aspx">
-    <filedeps>
-        <filedep name="/Bit_Admin/java4.aspx" />
-        <filedep name="/Bit_Admin/upload.Master" />
-    </filedeps>
-</preserve>

@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Admin/AI.aspx" hash="fffffff9acec72d9" filehash="4095a0147e4ca5e" flags="110000" assembly="App_Web_nfy5ib31" type="ASP.bit_admin_ai_aspx">
-    <filedeps>
-        <filedep name="/Bit_Admin/AI.aspx" />
-        <filedep name="/Bit_Admin/upload.Master" />
-    </filedeps>
-</preserve>

@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Notes/digital_logics.aspx" hash="fffffff9acec72d9" filehash="773e65bc75394dda" flags="110000" assembly="App_Web_etjk5pjn" type="ASP.bit_notes_digital_logics_aspx">
-    <filedeps>
-        <filedep name="/Bit_Notes/digital_logics.aspx" />
-        <filedep name="/Bit_Notes/note.Master" />
-    </filedeps>
-</preserve>

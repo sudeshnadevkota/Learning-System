@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bba_Notes/banking_and_insurance(finc).aspx" hash="fffffff9acec72d9" filehash="817c1d5e3b9fc92f" flags="110000" assembly="App_Web_w1ex0b3h" type="ASP.bba_notes_banking_and_insurance_finc__aspx">
-    <filedeps>
-        <filedep name="/Bba_Notes/banking_and_insurance(finc).aspx" />
-        <filedep name="/Bba_Notes/note.Master" />
-    </filedeps>
-</preserve>

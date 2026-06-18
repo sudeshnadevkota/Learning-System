@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Notes/Technopreneurship.aspx" hash="fffffff9acec72d9" filehash="5a1d12547bbc8f3e" flags="110000" assembly="App_Web_etjk5pjn" type="ASP.bit_notes_technopreneurship_aspx">
-    <filedeps>
-        <filedep name="/Bit_Notes/note.Master" />
-        <filedep name="/Bit_Notes/Technopreneurship.aspx" />
-    </filedeps>
-</preserve>

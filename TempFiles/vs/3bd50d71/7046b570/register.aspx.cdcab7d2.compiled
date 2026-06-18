@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/register.aspx" hash="fffffff9acec72d9" filehash="f68b55e6d205b742" flags="110000" assembly="App_Web_tclzvpcm" type="ASP.register_aspx">
+<preserve resultType="3" virtualPath="/register.aspx" hash="fffffff9acec72d9" filehash="94b3d013e09e4b5" flags="110000" assembly="App_Web_zixgpa03" type="ASP.register_aspx">
     <filedeps>
         <filedep name="/learning.Master" />
         <filedep name="/register.aspx" />

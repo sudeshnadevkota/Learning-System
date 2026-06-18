@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bba_Notes/marketing_research(market).aspx" hash="fffffff9acec72d9" filehash="56ae0437cee9b8e" flags="110000" assembly="App_Web_w1ex0b3h" type="ASP.bba_notes_marketing_research_market__aspx">
-    <filedeps>
-        <filedep name="/Bba_Notes/marketing_research(market).aspx" />
-        <filedep name="/Bba_Notes/note.Master" />
-    </filedeps>
-</preserve>

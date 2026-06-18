@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Notes/dash.aspx" hash="fffffff9acec72d9" filehash="3d8e5c2a33b72790" flags="110000" assembly="App_Web_etjk5pjn" type="ASP.bit_notes_dash_aspx">
-    <filedeps>
-        <filedep name="/Bit_Notes/dash.aspx" />
-        <filedep name="/Bit_Notes/note.Master" />
-    </filedeps>
-</preserve>

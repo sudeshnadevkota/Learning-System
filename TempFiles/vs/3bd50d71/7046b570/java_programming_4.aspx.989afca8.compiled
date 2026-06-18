@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Notes/java_programming_4.aspx" hash="fffffff9acec72d9" filehash="118a9f74f5ec53cb" flags="110000" assembly="App_Web_etjk5pjn" type="ASP.bit_notes_java_programming_4_aspx">
-    <filedeps>
-        <filedep name="/Bit_Notes/java_programming_4.aspx" />
-        <filedep name="/Bit_Notes/note.Master" />
-    </filedeps>
-</preserve>

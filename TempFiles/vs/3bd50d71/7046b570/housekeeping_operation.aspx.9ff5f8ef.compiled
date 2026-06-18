@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bhm_Notes/housekeeping_operation.aspx" hash="fffffff9acec72d9" filehash="63f181bb28311945" flags="110000" assembly="App_Web_iwjredtx" type="ASP.bhm_notes_housekeeping_operation_aspx">
+    <filedeps>
+        <filedep name="/Bhm_Notes/housekeeping_operation.aspx" />
+        <filedep name="/Bhm_Notes/note.Master" />
+    </filedeps>
+</preserve>

@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Admin/operating_system.aspx" hash="fffffff9acec72d9" filehash="bd0e3d5cd97a0e90" flags="110000" assembly="App_Web_nfy5ib31" type="ASP.bit_admin_operating_system_aspx">
-    <filedeps>
-        <filedep name="/Bit_Admin/operating_system.aspx" />
-        <filedep name="/Bit_Admin/upload.Master" />
-    </filedeps>
-</preserve>

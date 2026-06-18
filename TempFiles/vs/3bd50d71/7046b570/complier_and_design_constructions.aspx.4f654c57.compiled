@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Admin/complier_and_design_constructions.aspx" hash="fffffff9acec72d9" filehash="9b63005e5315dda3" flags="110000" assembly="App_Web_5fpwx2gc" type="ASP.bit_admin_complier_and_design_constructions_aspx">
-    <filedeps>
-        <filedep name="/Bit_Admin/complier_and_design_constructions.aspx" />
-        <filedep name="/Bit_Admin/upload.Master" />
-    </filedeps>
-</preserve>

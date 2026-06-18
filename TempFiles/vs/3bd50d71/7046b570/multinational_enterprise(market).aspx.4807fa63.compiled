@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bba_Notes/multinational_enterprise(market).aspx" hash="fffffff9acec72d9" filehash="f5a1d17480fbc1f9" flags="110000" assembly="App_Web_mlb00kuw" type="ASP.bba_notes_multinational_enterprise_market__aspx">
-    <filedeps>
-        <filedep name="/Bba_Notes/multinational_enterprise(market).aspx" />
-        <filedep name="/Bba_Notes/note.Master" />
-    </filedeps>
-</preserve>

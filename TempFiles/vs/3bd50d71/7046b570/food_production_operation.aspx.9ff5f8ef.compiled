@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bhm_Notes/food_production_operation.aspx" hash="fffffff9acec72d9" filehash="121526b0bd40f46a" flags="110000" assembly="App_Web_ko5ujrfh" type="ASP.bhm_notes_food_production_operation_aspx">
+    <filedeps>
+        <filedep name="/Bhm_Notes/food_production_operation.aspx" />
+        <filedep name="/Bhm_Notes/note.Master" />
+    </filedeps>
+</preserve>

@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Notes/discrete_mathematics.aspx" hash="fffffff9acec72d9" filehash="af1ebfaa28ea371" flags="110000" assembly="App_Web_etjk5pjn" type="ASP.bit_notes_discrete_mathematics_aspx">
-    <filedeps>
-        <filedep name="/Bit_Notes/discrete_mathematics.aspx" />
-        <filedep name="/Bit_Notes/note.Master" />
-    </filedeps>
-</preserve>

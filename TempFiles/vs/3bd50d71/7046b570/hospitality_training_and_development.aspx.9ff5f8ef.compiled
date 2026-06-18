@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bhm_Notes/hospitality_training_and_development.aspx" hash="fffffff9acec72d9" filehash="120e67ceb5ee17fd" flags="110000" assembly="App_Web_ko5ujrfh" type="ASP.bhm_notes_hospitality_training_and_development_aspx">
+    <filedeps>
+        <filedep name="/Bhm_Notes/hospitality_training_and_development.aspx" />
+        <filedep name="/Bhm_Notes/note.Master" />
+    </filedeps>
+</preserve>

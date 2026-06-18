@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bit_Admin/data_structure_and_algorithm.aspx" hash="fffffff9acec72d9" filehash="ef0caa5501610b8c" flags="110000" assembly="App_Web_x3cs2esh" type="ASP.bit_admin_data_structure_and_algorithm_aspx">
-    <filedeps>
-        <filedep name="/Bit_Admin/data_structure_and_algorithm.aspx" />
-        <filedep name="/Bit_Admin/upload.Master" />
-    </filedeps>
-</preserve>

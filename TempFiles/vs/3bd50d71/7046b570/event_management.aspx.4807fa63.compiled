@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bba_Notes/event_management.aspx" hash="fffffff9acec72d9" filehash="14f22b6819f1e642" flags="110000" assembly="App_Web_w1ex0b3h" type="ASP.bba_notes_event_management_aspx">
-    <filedeps>
-        <filedep name="/Bba_Notes/event_management.aspx" />
-        <filedep name="/Bba_Notes/note.Master" />
-    </filedeps>
-</preserve>

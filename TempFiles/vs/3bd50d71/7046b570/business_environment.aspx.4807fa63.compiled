@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bba_Notes/business_environment.aspx" hash="fffffff9acec72d9" filehash="58cacc35d000c85f" flags="110000" assembly="App_Web_mlb00kuw" type="ASP.bba_notes_business_environment_aspx">
-    <filedeps>
-        <filedep name="/Bba_Notes/business_environment.aspx" />
-        <filedep name="/Bba_Notes/note.Master" />
-    </filedeps>
-</preserve>

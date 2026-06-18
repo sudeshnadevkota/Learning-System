@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="3" virtualPath="/Bba_Notes/logistics_and_supply_chain_management(market).aspx" hash="fffffff9acec72d9" filehash="f51ce6c97a792fc7" flags="110000" assembly="App_Web_w1ex0b3h" type="ASP.bba_notes_logistics_and_supply_chain_management_market__aspx">
-    <filedeps>
-        <filedep name="/Bba_Notes/logistics_and_supply_chain_management(market).aspx" />
-        <filedep name="/Bba_Notes/note.Master" />
-    </filedeps>
-</preserve>
