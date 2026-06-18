@@ -24,14 +24,14 @@ namespace Learning_System
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
 
-                // Notes grid: everything that is NOT a Past Year Question or Assignment
-                // FileCategory is stored as "Lecture Content", "Tutorial Content", "Workshop Content"
+                // Update this filter to include Assignments in the first Grid
+                // Now it excludes ONLY Past Year Questions
                 DataView dvNotes = new DataView(dt);
-                dvNotes.RowFilter = "FileCategory <> 'Past Year Question' AND FileCategory <> 'Assignment'";
+                dvNotes.RowFilter = "FileCategory <> 'Past Year Question'";
                 gvNotes.DataSource = dvNotes;
                 gvNotes.DataBind();
 
-                // Past papers grid: only Past Year Question
+                // Keep this for Past Year Questions
                 DataView dvPapers = new DataView(dt);
                 dvPapers.RowFilter = "FileCategory = 'Past Year Question'";
                 gvPapers.DataSource = dvPapers;

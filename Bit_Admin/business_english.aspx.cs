@@ -17,29 +17,28 @@ namespace Learning_System.Bit_Admin
             if (!IsPostBack) BindGrid();
         }
 
-        // ddlFileType_SelectedIndexChanged REMOVED — JS handles this now with no postback
-
         protected void Button1_Click(object sender, EventArgs e)
         {
-            // Check if the selected file type needs a destination
             string fileType = ddlFileType.SelectedValue;
             bool needsDestination = (fileType == "Lecture" || fileType == "Tutorial" || fileType == "Workshop");
 
-            // Validate destination only if it is required
             if (needsDestination && string.IsNullOrEmpty(ddlContentType.SelectedValue))
             {
                 lblMessage.Text = "Error: Please select a File Destination.";
                 return;
             }
 
-            if (FileUpload1.HasFile)
+            // Use Request.Files instead of FileUpload server control
+            HttpPostedFile uploadedFile = Request.Files["FileUpload1"];
+
+            if (uploadedFile != null && uploadedFile.ContentLength > 0)
             {
                 try
                 {
                     byte[] bytes;
-                    using (BinaryReader br = new BinaryReader(FileUpload1.PostedFile.InputStream))
+                    using (BinaryReader br = new BinaryReader(uploadedFile.InputStream))
                     {
-                        bytes = br.ReadBytes(FileUpload1.PostedFile.ContentLength);
+                        bytes = br.ReadBytes(uploadedFile.ContentLength);
                     }
 
                     using (SqlConnection con = new SqlConnection(strcon))
@@ -50,12 +49,10 @@ namespace Learning_System.Bit_Admin
                         using (SqlCommand cmd = new SqlCommand(query, con))
                         {
                             cmd.Parameters.AddWithValue("@Topic", TextBox1.Text.Trim());
-                            cmd.Parameters.AddWithValue("@Name", Path.GetFileName(FileUpload1.PostedFile.FileName));
-                            cmd.Parameters.AddWithValue("@ContentType", FileUpload1.PostedFile.ContentType);
+                            cmd.Parameters.AddWithValue("@Name", Path.GetFileName(uploadedFile.FileName));
+                            cmd.Parameters.AddWithValue("@ContentType", uploadedFile.ContentType);
                             cmd.Parameters.AddWithValue("@Data", bytes);
                             cmd.Parameters.AddWithValue("@FileCategory", ddlFileType.SelectedItem.Text);
-
-                            // Save N/A if no destination is needed (PYQ, Assignment, etc.)
                             cmd.Parameters.AddWithValue("@FileType", needsDestination ? ddlContentType.SelectedValue : "N/A");
 
                             con.Open();
@@ -100,8 +97,6 @@ namespace Learning_System.Bit_Admin
                             Response.AddHeader("content-disposition", "attachment;filename=\"" + dr["Name"].ToString() + "\"");
                             Response.BinaryWrite(bytes);
                             Response.Flush();
-
-                            // The framework will throw a ThreadAbortException after this
                             HttpContext.Current.ApplicationInstance.CompleteRequest();
                         }
                     }
@@ -109,8 +104,7 @@ namespace Learning_System.Bit_Admin
             }
             catch (System.Threading.ThreadAbortException)
             {
-                // This is expected behavior when calling Response.End() or CompleteRequest().
-                // By catching it here, we prevent the debugger from flagging it as a problem.
+                // Expected after CompleteRequest()
             }
             catch (Exception ex)
             {

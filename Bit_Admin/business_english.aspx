@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="business_english.aspx.cs" Inherits="Learning_System.Bit_Admin.business_english" %>
+﻿
+
+<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="business_english.aspx.cs" Inherits="Learning_System.Bit_Admin.business_english" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -47,12 +49,12 @@
             gap: 8px;
         }
 
-            .c-panel-title::after {
-                content: '';
-                flex: 1;
-                height: 1px;
-                background: var(--border-color);
-            }
+        .c-panel-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
 
         .c-form-row {
             display: grid;
@@ -66,13 +68,13 @@
             margin-bottom: 15px;
         }
 
-            .form-group label {
-                font-size: 12px;
-                font-weight: 600;
-                color: var(--primary);
-                margin-bottom: 8px;
-                display: block;
-            }
+        .form-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: block;
+        }
 
         .form-control {
             width: 100%;
@@ -124,41 +126,40 @@
             font-size: 13px;
         }
 
-            .table-modern th {
-                background: var(--gray-bg);
-                color: var(--primary);
-                font-weight: 700;
-                padding: 16px 20px;
-                text-align: left;
-                border-bottom: 2px solid var(--border-color);
-            }
+        .table-modern th {
+            background: var(--gray-bg);
+            color: var(--primary);
+            font-weight: 700;
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 2px solid var(--border-color);
+        }
 
-            .table-modern td {
-                padding: 14px 20px;
-                border-bottom: 1px solid var(--border-color);
-                color: #4a4a4a;
-            }
+        .table-modern td {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border-color);
+            color: #4a4a4a;
+        }
 
-            .table-modern tr:last-child td {
-                border-bottom: none;
-            }
+        .table-modern tr:last-child td {
+            border-bottom: none;
+        }
 
-            .table-modern tr:hover {
-                background-color: #fcfcfd;
-            }
+        .table-modern tr:hover {
+            background-color: #fcfcfd;
+        }
 
-            .table-modern a {
-                color: var(--pink);
-                text-decoration: none;
-                font-weight: 600;
-                margin-right: 10px;
-            }
+        .table-modern a {
+            color: var(--pink);
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 10px;
+        }
 
-                .table-modern a:hover {
-                    text-decoration: underline;
-                }
+        .table-modern a:hover {
+            text-decoration: underline;
+        }
 
-        /* Smooth show/hide animation for destination panel */
         #divFileDestination {
             overflow: hidden;
             max-height: 0;
@@ -169,6 +170,42 @@
         #divFileDestination.visible {
             max-height: 200px;
             opacity: 1;
+        }
+
+        /* ── Drop Zone ── */
+        #dropZone {
+            border: 2px dashed rgba(11,31,102,0.2);
+            border-radius: 12px;
+            padding: 36px 20px;
+            text-align: center;
+            background: var(--gray-bg);
+            transition: border-color 0.25s, background 0.25s;
+            cursor: pointer;
+        }
+
+        #dropZone.dragover {
+            border-color: var(--pink);
+            background: rgba(255, 45, 141, 0.04);
+        }
+
+        #dropZone.has-file {
+            border-color: #4ade80;
+            background: #f0fdf4;
+        }
+
+        #filePreview {
+            display: none;
+            margin-top: 16px;
+            padding: 10px 14px;
+            background: #f0fdf4;
+            border: 1px solid #4ade80;
+            border-radius: 8px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #filePreview.visible {
+            display: flex !important;
         }
     </style>
 
@@ -193,7 +230,6 @@
 
                 <div class="form-group">
                     <label>Select File Type</label>
-                    <%-- AutoPostBack and OnSelectedIndexChanged removed --%>
                     <asp:DropDownList ID="ddlFileType" runat="server" class="form-control">
                         <asp:ListItem Text="-- Select Category --" Value="" />
                         <asp:ListItem Text="Lecture Content"      Value="Lecture" />
@@ -205,12 +241,40 @@
                 </div>
             </div>
 
+            <%-- Plain HTML file input — no runat="server" to avoid the IIS Express crash --%>
             <div class="form-group">
                 <label>Upload Files</label>
-                <asp:FileUpload ID="FileUpload1" runat="server" class="form-control" />
+
+                <input type="file" id="FileUpload1" name="FileUpload1" style="display:none;"
+                    accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.jpg,.png,.zip,.txt" />
+
+                <div id="dropZone">
+                    <i class="ti ti-cloud-upload" style="font-size:2.5rem; color:var(--primary); margin-bottom:8px; display:block;"></i>
+                    <p style="margin:0 0 4px; font-weight:700; color:var(--primary); font-size:14px;">
+                        Drag &amp; drop your file here
+                    </p>
+                    <p style="font-size:12px; color:#aaa; margin:0 0 14px;">
+                        PDF, DOC, PPT, XLS, JPG, PNG, ZIP supported
+                    </p>
+                    <button type="button" id="btnBrowse" class="c-btn-submit"
+                            style="padding:8px 22px; font-size:12px;">
+                        <i class="ti ti-folder-open" style="margin-right:5px;"></i>Browse File
+                    </button>
+                    <div id="filePreview">
+                        <i class="ti ti-file-check" style="font-size:1.4rem; color:#16a34a;"></i>
+                        <div>
+                            <p id="fileName" style="margin:0; font-size:13px; font-weight:700; color:#15803d;"></p>
+                            <p id="fileSize" style="margin:0; font-size:11px; color:#86efac;"></p>
+                        </div>
+                        <button type="button" id="btnClearFile"
+                                style="margin-left:auto; background:none; border:none;
+                                       cursor:pointer; color:#16a34a; font-size:1.1rem;">
+                            <i class="ti ti-x"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <%-- Replaced asp:Panel with a plain div — JS controls visibility with no postback --%>
             <div id="divFileDestination">
                 <div class="form-group">
                     <label>File Destination</label>
@@ -265,50 +329,118 @@
 
     <script>
         (function () {
-            var fileTypeEl  = document.getElementById('<%= ddlFileType.ClientID %>');
+
+            // ── Destination filter ────────────────────────────────────────
+            var fileTypeEl = document.getElementById('<%= ddlFileType.ClientID %>');
             var destWrapper = document.getElementById('divFileDestination');
             var destEl      = document.getElementById('<%= ddlContentType.ClientID %>');
 
-            // Save all destination options (skip index 0 = placeholder) at page load
             var allOptions = Array.from(destEl.options).slice(1);
-
-            // Groups that need a destination sub-selection
             var hasDestination = ['Lecture', 'Tutorial', 'Workshop'];
 
             function filterDestination(selectedGroup) {
                 if (hasDestination.indexOf(selectedGroup) !== -1) {
-
-                    // Show the destination panel (CSS transition handles the animation)
                     destWrapper.classList.add('visible');
-
-                    // Clear current options (keep placeholder at index 0)
                     while (destEl.options.length > 1) destEl.remove(1);
-
-                    // Add only options that belong to the selected group
                     allOptions.forEach(function (opt) {
                         if (opt.getAttribute('data-group') === selectedGroup) {
                             destEl.add(opt.cloneNode(true));
                         }
                     });
-
-                    destEl.selectedIndex = 0; // reset to "-- Select Destination --"
-
+                    destEl.selectedIndex = 0;
                 } else {
-                    // Hide for PYQ, Assignment, or blank selection
                     destWrapper.classList.remove('visible');
-
-                    // Clear options so nothing stale is submitted
                     while (destEl.options.length > 1) destEl.remove(1);
                 }
             }
 
-            // Run on change
             fileTypeEl.addEventListener('change', function () {
                 filterDestination(this.value);
             });
-
-            // Also run on page load in case of postback that preserved a selection
             filterDestination(fileTypeEl.value);
+
+
+            // ── Drag & Drop File Upload ───────────────────────────────────
+            var dropZone = document.getElementById('dropZone');
+            var fileInput = document.getElementById('FileUpload1');
+            var filePreview = document.getElementById('filePreview');
+            var fileNameEl = document.getElementById('fileName');
+            var fileSizeEl = document.getElementById('fileSize');
+            var btnBrowse = document.getElementById('btnBrowse');
+            var btnClear = document.getElementById('btnClearFile');
+
+            function formatSize(bytes) {
+                if (bytes < 1024) return bytes + ' B';
+                if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+                return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+            }
+
+            function showFile(file) {
+                fileNameEl.textContent = file.name;
+                fileSizeEl.textContent = formatSize(file.size);
+                filePreview.classList.add('visible');
+                dropZone.classList.add('has-file');
+                dropZone.classList.remove('dragover');
+            }
+
+            function clearFile() {
+                fileInput.value = '';
+                filePreview.classList.remove('visible');
+                dropZone.classList.remove('has-file');
+                fileNameEl.textContent = '';
+                fileSizeEl.textContent = '';
+            }
+
+            btnBrowse.addEventListener('click', function (e) {
+                e.stopPropagation();
+                fileInput.click();
+            });
+
+            dropZone.addEventListener('click', function (e) {
+                if (e.target !== btnBrowse && e.target !== btnClear) {
+                    fileInput.click();
+                }
+            });
+
+            fileInput.addEventListener('change', function () {
+                if (this.files && this.files[0]) {
+                    showFile(this.files[0]);
+                }
+            });
+
+            btnClear.addEventListener('click', function (e) {
+                e.stopPropagation();
+                clearFile();
+            });
+
+            dropZone.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                dropZone.classList.add('dragover');
+            });
+
+            dropZone.addEventListener('dragleave', function (e) {
+                if (!dropZone.contains(e.relatedTarget)) {
+                    dropZone.classList.remove('dragover');
+                }
+            });
+
+            dropZone.addEventListener('drop', function (e) {
+                e.preventDefault();
+                dropZone.classList.remove('dragover');
+                var files = e.dataTransfer.files;
+                if (files && files[0]) {
+                    try {
+                        var dt = new DataTransfer();
+                        dt.items.add(files[0]);
+                        fileInput.files = dt.files;
+                        showFile(files[0]);
+                    } catch (err) {
+                        fileNameEl.textContent = files[0].name;
+                        filePreview.classList.add('visible');
+                    }
+                }
+            });
+
         })();
     </script>
 

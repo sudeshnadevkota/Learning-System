@@ -1141,43 +1141,43 @@
         </div>
       </div>
 
+      <%-- Filter chips (kept outside the panels so it stays visible no matter which panel is active) --%>
+      <div class="filter-bar">
+        <span class="filter-label">Filter by type:</span>
+        <div class="filter-chips">
+          
+          <button type="button" class="fchip" data-filter="Lecture" onclick="filterNotes(this,'Lecture')">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            Lecture Content
+          </button>
+          <button type="button" class="fchip" data-filter="Tutorial" onclick="filterNotes(this,'Tutorial')">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            Tutorial Content
+          </button>
+          <button type="button" class="fchip" data-filter="Workshop" onclick="filterNotes(this,'Workshop')">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+            Workshop Content
+          </button>
+            <button type="button" class="fchip" data-filter="Question" onclick="filterNotes(this, 'Question')">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    <circle cx="12" cy="14" r="1" />
+                </svg>
+                Past Questions
+            </button>
+
+            <button type="button" class="fchip" data-filter="Assignment" onclick="filterNotes(this, 'Assignment')">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+                Assignments
+            </button>
+            
+        </div>
+      </div>
+
       <%-- NOTES PANEL --%>
       <div id="panelNotes">
-
-        <%-- Filter chips --%>
-        <div class="filter-bar">
-          <span class="filter-label">Filter by type:</span>
-          <div class="filter-chips">
-            
-            <button type="button" class="fchip" data-filter="Lecture" onclick="filterNotes(this,'Lecture')">
-              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-              Lecture Content
-            </button>
-            <button type="button" class="fchip" data-filter="Tutorial" onclick="filterNotes(this,'Tutorial')">
-              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-              Tutorial Content
-            </button>
-            <button type="button" class="fchip" data-filter="Workshop" onclick="filterNotes(this,'Workshop')">
-              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-              Workshop Content
-            </button>
-              <button type="button" class="fchip" data-filter="Question" onclick="filterNotes(this, 'Past Year Question')">
-                  <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      <circle cx="12" cy="14" r="1" />
-                  </svg>
-                  Past Questions
-              </button>
-
-              <button type="button" class="fchip" data-filter="Assignment" onclick="filterNotes(this, 'Assignment')">
-                  <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                  </svg>
-                  Assignments
-              </button>
-              
-          </div>
-        </div>
 
          <div class="files-card" id="notesTable">
     <asp:GridView ID="GridViewNotes" runat="server" 
@@ -1189,12 +1189,12 @@
             
             <%-- 1. Dynamic Type Badge Column with Header --%>
             <asp:TemplateField HeaderText="Type">
-                <ItemTemplate>
-                    <span class="type-badge type-<%# Eval("FileType").ToString().ToLower().Split(' ')[0] %>">
-                        <%# Eval("FileType") %>
-                    </span>
-                </ItemTemplate>
-            </asp:TemplateField>
+    <ItemTemplate>
+        <span class="type-badge">
+            <%# Eval("FileCategory") %>
+        </span>
+    </ItemTemplate>
+</asp:TemplateField>
             
             <%-- 2. Bound Fields with Headers --%>
             <asp:BoundField DataField="Name" HeaderText="File Name" />
@@ -1235,7 +1235,7 @@
             <asp:TemplateField HeaderText="Type">
                 <ItemTemplate>
                     <span class="type-badge type-past">
-                        Past Paper
+                        Past question
                     </span>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -1549,59 +1549,67 @@
     function switchTab(tab) {
         var panelNotes = document.getElementById('panelNotes');
         var panelPapers = document.getElementById('panelPapers');
-        var tabNotes = document.getElementById('tabNotes');
-        var tabPapers = document.getElementById('tabPapers');
 
         if (tab === 'notes') {
             panelNotes.style.display = '';
             panelPapers.style.display = 'none';
-            if (tabNotes) tabNotes.classList.add('active');
-            if (tabPapers) tabPapers.classList.remove('active');
-        } else {
+        }
+        else {
             panelNotes.style.display = 'none';
             panelPapers.style.display = '';
-            if (tabPapers) tabPapers.classList.add('active');
-            if (tabNotes) tabNotes.classList.remove('active');
         }
     }
 
     function filterNotes(btn, filterType) {
         // 1. Manage Active Class
-        document.querySelectorAll('.fchip').forEach(function (c) {
-            c.classList.remove('active');
-        });
+        document.querySelectorAll('.fchip').forEach(function (c) { c.classList.remove('active'); });
         btn.classList.add('active');
 
-    // 2. Select rows from the GridView table
-    var rows = document.querySelectorAll('#notesTable table tr');
-    var visible = 0;
+        // 2. Select rows from BOTH tables
+        var rows = document.querySelectorAll('#panelNotes table tr, #panelPapers table tr');
+        var visible = 0;
+        var foundInNotes = false;
+        var foundInPapers = false;
 
         rows.forEach(function (row) {
-            if (row.querySelector('th')) return;
             var badge = row.querySelector('.type-badge');
             if (!badge) return;
 
-            var badgeText = badge.textContent.trim().toLowerCase();
-            if (filterType === 'all' || badgeText.includes(filterType.toLowerCase())) {
+            var badgeText = badge.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
+            var searchKey = filterType.toLowerCase();
+            var isMatch = false;
+
+            // Matching logic
+            if (searchKey === 'question') isMatch = badgeText.includes('question');
+            else if (searchKey === 'assignment') isMatch = badgeText.includes('assignment');
+            else isMatch = badgeText.includes(searchKey);
+
+            if (isMatch) {
                 row.style.display = '';
                 visible++;
+                // Track which table the match is in
+                if (row.closest('#panelNotes')) foundInNotes = true;
+                if (row.closest('#panelPapers')) foundInPapers = true;
             } else {
                 row.style.display = 'none';
             }
         });
 
-        // 3. Handle "No Results" state
-        var emptyEl = document.getElementById('filterEmpty');
-        var tableEl = document.getElementById('notesTable');
+        // 3. Auto-switch to the correct tab if necessary
+        if (foundInPapers && !foundInNotes) {
+            switchTab('papers');
+        } else if (foundInNotes) {
+            switchTab('notes');
+        }
 
-    if (visible === 0 && tableEl) {
-        tableEl.style.display = 'none';
-        if (emptyEl) emptyEl.style.display = 'flex';
-    } else if (tableEl) {
-        tableEl.style.display = '';
-        if (emptyEl) emptyEl.style.display = 'none';
+        // 4. Handle Empty State
+        var emptyEl = document.getElementById('filterEmpty');
+        if (visible === 0) {
+            if (emptyEl) emptyEl.style.display = 'flex';
+        } else {
+            if (emptyEl) emptyEl.style.display = 'none';
+        }
     }
-}
 
     function openSyllabus() {
         var modal = document.getElementById("sylModal");
@@ -1628,9 +1636,9 @@
         }
     });
 
-document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeSyllabus();
-});
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeSyllabus();
+    });
 </script>
 
 </asp:Content>
