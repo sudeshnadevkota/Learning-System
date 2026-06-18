@@ -1,7 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Bhm_Notes.note" %>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -428,247 +426,242 @@
     </form>
 
 <script>
-function isMobile() {
-    return window.innerWidth <= 900;
-}
+    function isMobile() {
+        return window.innerWidth <= 900;
+    }
 
-function toggleSidebar() {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var menuBar = document.getElementById('menu-bar');
-    var icon = document.getElementById('icon');
+    function toggleSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.getElementById('content');
+        var menuBar = document.getElementById('menu-bar');
+        var icon = document.getElementById('icon');
 
-    if (!sidebar || !content || !menuBar || !icon) return;
+        if (!sidebar || !content || !menuBar || !icon) return;
 
-    if (document.body.classList.contains('sidebar-open')) {
+        if (document.body.classList.contains('sidebar-open')) {
 
-        document.body.classList.remove('sidebar-open');
+            document.body.classList.remove('sidebar-open');
 
-        sidebar.style.width = '0';
-        content.style.marginLeft = '0';
-        content.style.width = '100%';
-        menuBar.style.left = '0.5rem';
-        icon.style.transform = 'rotate(0deg)';
-
-    } else {
-
-        document.body.classList.add('sidebar-open');
-
-        sidebar.style.width = '300px';
-
-        if (!isMobile()) {
-            content.style.marginLeft = '300px';
-            content.style.width = 'calc(100% - 300px)';
-            menuBar.style.left = '300px';
-        } else {
+            sidebar.style.width = '0';
             content.style.marginLeft = '0';
             content.style.width = '100%';
             menuBar.style.left = '0.5rem';
-        }
+            icon.style.transform = 'rotate(0deg)';
 
-        icon.style.transform = 'rotate(180deg)';
-    }
-}
+        } else {
 
-function closeSidebarOverlay() {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var icon = document.getElementById('icon');
+            document.body.classList.add('sidebar-open');
 
-    document.body.classList.remove('sidebar-open');
+            sidebar.style.width = '300px';
 
-    if (sidebar) {
-        sidebar.style.width = '0';
-    }
-
-    if (content) {
-        content.style.marginLeft = '0';
-        content.style.width = '100%';
-    }
-
-    if (icon) {
-        icon.style.transform = 'rotate(0deg)';
-    }
-}
-
-function toggleSubmenu(event, submenuId) {
-
-    if (event) {
-        event.preventDefault();
-    }
-
-    var submenu = document.getElementById(submenuId + '-submenu');
-    var icon = document.querySelector('.' + submenuId);
-
-    if (!submenu) return;
-
-    var parentLi = submenu.parentElement;
-
-    document.body.classList.add('sidebar-open');
-
-    var items = document.querySelectorAll('#sidebar > ul > li');
-
-    for (var i = 0; i < items.length; i++) {
-
-        var li = items[i];
-
-        if (li !== parentLi) {
-
-            li.classList.remove('active-sem');
-
-            var otherSubmenu = li.querySelector('.submenu');
-            var otherIcon = li.querySelector('.fas.fa-caret-down');
-
-            if (otherSubmenu) {
-                otherSubmenu.style.display = 'none';
+            if (!isMobile()) {
+                content.style.marginLeft = '300px';
+                content.style.width = 'calc(100% - 300px)';
+                menuBar.style.left = '300px';
+            } else {
+                content.style.marginLeft = '0';
+                content.style.width = '100%';
+                menuBar.style.left = '0.5rem';
             }
 
-            if (otherIcon) {
-                otherIcon.classList.remove('rotate');
+            icon.style.transform = 'rotate(180deg)';
+        }
+    }
+
+    function closeSidebarOverlay() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.getElementById('content');
+        var icon = document.getElementById('icon');
+
+        document.body.classList.remove('sidebar-open');
+
+        if (sidebar) {
+            sidebar.style.width = '0';
+        }
+
+        if (content) {
+            content.style.marginLeft = '0';
+            content.style.width = '100%';
+        }
+
+        if (icon) {
+            icon.style.transform = 'rotate(0deg)';
+        }
+    }
+
+    function toggleSubmenu(event, submenuId) {
+
+        if (event) {
+            event.preventDefault();
+        }
+
+        var submenu = document.getElementById(submenuId + '-submenu');
+        var icon = document.querySelector('.' + submenuId);
+
+        if (!submenu) return;
+
+        var parentLi = submenu.parentElement;
+
+        document.body.classList.add('sidebar-open');
+
+        var items = document.querySelectorAll('#sidebar > ul > li');
+
+        for (var i = 0; i < items.length; i++) {
+
+            var li = items[i];
+
+            if (li !== parentLi) {
+
+                li.classList.remove('active-sem');
+
+                var otherSubmenu = li.querySelector('.submenu');
+                var otherIcon = li.querySelector('.fas.fa-caret-down');
+
+                if (otherSubmenu) {
+                    otherSubmenu.style.display = 'none';
+                }
+
+                if (otherIcon) {
+                    otherIcon.classList.remove('rotate');
+                }
+            }
+        }
+
+        if (submenu.style.display === 'block') {
+
+            submenu.style.display = 'none';
+
+            if (icon) {
+                icon.classList.remove('rotate');
+            }
+
+            if (parentLi) {
+                parentLi.classList.remove('active-sem');
+            }
+
+        } else {
+
+            submenu.style.display = 'block';
+
+            if (icon) {
+                icon.classList.add('rotate');
+            }
+
+            if (parentLi) {
+                parentLi.classList.add('active-sem');
+            }
+
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            var menuBar = document.getElementById('menu-bar');
+            var mainIcon = document.getElementById('icon');
+
+            if (sidebar) {
+                sidebar.style.width = '300px';
+            }
+
+            if (content) {
+                content.style.marginLeft = '300px';
+                content.style.width = 'calc(100% - 300px)';
+            }
+
+            if (menuBar) {
+                menuBar.style.left = '300px';
+            }
+
+            if (mainIcon) {
+                mainIcon.style.transform = 'rotate(180deg)';
             }
         }
     }
 
-    if (submenu.style.display === 'block') {
-
-        submenu.style.display = 'none';
-
-        if (icon) {
-            icon.classList.remove('rotate');
-        }
-
-        if (parentLi) {
-            parentLi.classList.remove('active-sem');
-        }
-
-    } else {
-
-        submenu.style.display = 'block';
-
-        if (icon) {
-            icon.classList.add('rotate');
-        }
-
-        if (parentLi) {
-            parentLi.classList.add('active-sem');
-        }
+    window.onload = function () {
 
         var sidebar = document.getElementById('sidebar');
         var content = document.getElementById('content');
         var menuBar = document.getElementById('menu-bar');
-        var mainIcon = document.getElementById('icon');
+        var icon = document.getElementById('icon');
 
-        if (sidebar) {
-            sidebar.style.width = '300px';
-        }
+        if (!isMobile()) {
 
-        if (content) {
-            content.style.marginLeft = '300px';
-            content.style.width = 'calc(100% - 300px)';
-        }
+            document.body.classList.add('sidebar-open');
 
-        if (menuBar) {
-            menuBar.style.left = '300px';
-        }
-
-        if (mainIcon) {
-            mainIcon.style.transform = 'rotate(180deg)';
-        }
-    }
-}
-
-window.onload = function () {
-
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var menuBar = document.getElementById('menu-bar');
-    var icon = document.getElementById('icon');
-
-    if (!isMobile()) {
-
-        document.body.classList.add('sidebar-open');
-
-        if (sidebar) {
-            sidebar.style.width = '300px';
-        }
-
-        if (content) {
-            content.style.marginLeft = '300px';
-            content.style.width = 'calc(100% - 300px)';
-        }
-
-        if (menuBar) {
-            menuBar.style.left = '300px';
-        }
-
-        if (icon) {
-            icon.style.transform = 'rotate(180deg)';
-        }
-
-    } else {
-
-        if (menuBar) {
-            menuBar.style.left = '0.5rem';
-        }
-    }
-
-    var links = document.querySelectorAll('#sidebar .submenu ul li a');
-
-    var pathParts = window.location.pathname.split('/');
-    var currentPage = '';
-
-    if (pathParts.length > 0) {
-        currentPage = pathParts[pathParts.length - 1].toLowerCase();
-    }
-
-    for (var j = 0; j < links.length; j++) {
-
-        var link = links[j];
-        var hrefAttr = link.getAttribute('href');
-        var href = '';
-
-        if (hrefAttr) {
-            href = hrefAttr.toLowerCase();
-        }
-
-        if (href === currentPage) {
-
-            if (link.parentElement) {
-                link.parentElement.classList.add('active-subject');
+            if (sidebar) {
+                sidebar.style.width = '300px';
             }
 
-            var parentSubmenu = link.parentElement;
-
-            while (parentSubmenu &&
-                !parentSubmenu.classList.contains('submenu')) {
-                parentSubmenu = parentSubmenu.parentElement;
+            if (content) {
+                content.style.marginLeft = '300px';
+                content.style.width = 'calc(100% - 300px)';
             }
 
-            if (parentSubmenu) {
+            if (menuBar) {
+                menuBar.style.left = '300px';
+            }
 
-                parentSubmenu.style.display = 'block';
+            if (icon) {
+                icon.style.transform = 'rotate(180deg)';
+            }
 
-                var parentLi = parentSubmenu.parentElement;
+        } else {
 
-                if (parentLi) {
+            if (menuBar) {
+                menuBar.style.left = '0.5rem';
+            }
+        }
 
-                    parentLi.classList.add('active-sem');
+        var links = document.querySelectorAll('#sidebar .submenu ul li a');
 
-                    var caret = parentLi.querySelector('.fas.fa-caret-down');
+        var pathParts = window.location.pathname.split('/');
+        var currentPage = '';
 
-                    if (caret) {
-                        caret.classList.add('rotate');
+        if (pathParts.length > 0) {
+            currentPage = pathParts[pathParts.length - 1].toLowerCase();
+        }
+
+        for (var j = 0; j < links.length; j++) {
+
+            var link = links[j];
+            var hrefAttr = link.getAttribute('href');
+            var href = '';
+
+            if (hrefAttr) {
+                href = hrefAttr.toLowerCase();
+            }
+
+            if (href === currentPage) {
+
+                if (link.parentElement) {
+                    link.parentElement.classList.add('active-subject');
+                }
+
+                var parentSubmenu = link.parentElement;
+
+                while (parentSubmenu &&
+                    !parentSubmenu.classList.contains('submenu')) {
+                    parentSubmenu = parentSubmenu.parentElement;
+                }
+
+                if (parentSubmenu) {
+
+                    parentSubmenu.style.display = 'block';
+
+                    var parentLi = parentSubmenu.parentElement;
+
+                    if (parentLi) {
+
+                        parentLi.classList.add('active-sem');
+
+                        var caret = parentLi.querySelector('.fas.fa-caret-down');
+
+                        if (caret) {
+                            caret.classList.add('rotate');
+                        }
                     }
                 }
             }
         }
-    }
-};
+    };
 </script>
 </body>
 </html>
-
-
-
-
-
