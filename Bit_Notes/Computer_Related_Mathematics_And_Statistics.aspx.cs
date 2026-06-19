@@ -2,9 +2,9 @@
 
 namespace Learning_System.Bit_Notes
 {
-    public partial class Basic_Computer_Architecture : BasePage
+    public partial class Computer_Related_Mathematics_And_Statistics : BasePage
     {
-        protected override string TableName => "bit_1_BCA";
+        protected override string TableName => "bit_1_Math";
 
         protected void Page_Load(object sender, EventArgs e)
         {
