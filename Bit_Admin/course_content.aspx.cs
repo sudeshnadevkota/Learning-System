@@ -5,15 +5,30 @@ using System.IO;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+//using Learning_System;
 
 namespace Learning_System.Bit_Admin
 {
-    public partial class business_english : System.Web.UI.Page
+    public partial class course_content : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
 
+        protected string TableName;
+        protected string PageTitleText;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            string subject = Request.QueryString["subject"];
+
+            if (string.IsNullOrEmpty(subject) || !SubjectMap.Subjects.ContainsKey(subject))
+            {
+                Response.Redirect("~/Bit_Admin/Default.aspx");
+                return;
+            }
+
+            TableName = SubjectMap.Subjects[subject].Table;
+            PageTitleText = SubjectMap.Subjects[subject].Title;
+
             if (!IsPostBack) BindGrid();
         }
 
@@ -28,29 +43,27 @@ namespace Learning_System.Bit_Admin
                 return;
             }
 
-            // Use Request.Files instead of FileUpload server control
-            HttpPostedFile uploadedFile = Request.Files["FileUpload1"];
-
-            if (uploadedFile != null && uploadedFile.ContentLength > 0)
+            if (FileUpload1.HasFile)
             {
                 try
                 {
                     byte[] bytes;
-                    using (BinaryReader br = new BinaryReader(uploadedFile.InputStream))
+                    using (BinaryReader br = new BinaryReader(FileUpload1.PostedFile.InputStream))
                     {
-                        bytes = br.ReadBytes(uploadedFile.ContentLength);
+                        bytes = br.ReadBytes(FileUpload1.PostedFile.ContentLength);
                     }
 
                     using (SqlConnection con = new SqlConnection(strcon))
                     {
-                        string query = "INSERT INTO bit_1_BE (Topic, Name, ContentType, Data, FileCategory, UploadDate, FileType) " +
+                        string query = "INSERT INTO " + TableName +
+                                       " (Topic, Name, ContentType, Data, FileCategory, UploadDate, FileType) " +
                                        "VALUES (@Topic, @Name, @ContentType, @Data, @FileCategory, GETDATE(), @FileType)";
 
                         using (SqlCommand cmd = new SqlCommand(query, con))
                         {
                             cmd.Parameters.AddWithValue("@Topic", TextBox1.Text.Trim());
-                            cmd.Parameters.AddWithValue("@Name", Path.GetFileName(uploadedFile.FileName));
-                            cmd.Parameters.AddWithValue("@ContentType", uploadedFile.ContentType);
+                            cmd.Parameters.AddWithValue("@Name", Path.GetFileName(FileUpload1.PostedFile.FileName));
+                            cmd.Parameters.AddWithValue("@ContentType", FileUpload1.PostedFile.ContentType);
                             cmd.Parameters.AddWithValue("@Data", bytes);
                             cmd.Parameters.AddWithValue("@FileCategory", ddlFileType.SelectedItem.Text);
                             cmd.Parameters.AddWithValue("@FileType", needsDestination ? ddlContentType.SelectedValue : "N/A");
@@ -82,7 +95,7 @@ namespace Learning_System.Bit_Admin
 
                 using (SqlConnection con = new SqlConnection(strcon))
                 {
-                    string query = "SELECT Name, ContentType, Data FROM bit_1_BE WHERE id = @id";
+                    string query = "SELECT Name, ContentType, Data FROM " + TableName + " WHERE id = @id";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@id", id);
                     con.Open();
@@ -104,7 +117,7 @@ namespace Learning_System.Bit_Admin
             }
             catch (System.Threading.ThreadAbortException)
             {
-                // Expected after CompleteRequest()
+                // Expected when calling CompleteRequest()/Response.End()
             }
             catch (Exception ex)
             {
@@ -116,7 +129,7 @@ namespace Learning_System.Bit_Admin
         {
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                string query = "SELECT id, Topic, Name, ContentType, FileCategory, FileType FROM bit_1_BE";
+                string query = "SELECT id, Topic, Name, ContentType, FileCategory, FileType FROM " + TableName;
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     con.Open();
@@ -130,7 +143,7 @@ namespace Learning_System.Bit_Admin
         {
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                string sqlquery = "UPDATE bit_1_BE SET Topic = @Topic, Name = @Name, ContentType = @ContentType, " +
+                string sqlquery = "UPDATE " + TableName + " SET Topic = @Topic, Name = @Name, ContentType = @ContentType, " +
                                   "FileCategory = @FileCategory, FileType = @FileType WHERE id = @id";
 
                 using (SqlCommand cmd = new SqlCommand(sqlquery, con))
@@ -151,7 +164,7 @@ namespace Learning_System.Bit_Admin
         {
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                string sqlquery = "DELETE FROM bit_1_BE WHERE id = @id";
+                string sqlquery = "DELETE FROM " + TableName + " WHERE id = @id";
                 using (SqlCommand cmd = new SqlCommand(sqlquery, con))
                 {
                     cmd.Parameters.AddWithValue("@id", id);

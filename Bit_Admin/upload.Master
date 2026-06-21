@@ -390,11 +390,11 @@
                     <Items>
                         <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Bit_Admin/dash.aspx"></asp:MenuItem>
                         <asp:MenuItem Text="1st Semester" Value="1st Semester">
-                            <asp:MenuItem Text="Introduction to C++ Programming" Value="Introduction to C++ Programming" NavigateUrl="~/Bit_Admin/Introduction_to_C++_Programming.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Busines English" Value="Busines Eng" NavigateUrl="~/Bit_Admin/business_english.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Computer Related Mathematics and Statistics" Value="Computer_Related_Mathematics_and_Statistics" NavigateUrl="~/Bit_Admin/Computer_Related_Mathematics_and_Statistics.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Basic Computer Architecture" Value="Basic Computer Architecture" NavigateUrl="~/Bit_Admin/basic_computer_architecture.aspx"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Bit_Admin/Principles_of_Information_Technology.aspx" Text="Principles of Information Technology" Value="Principles of Information Technology"></asp:MenuItem>
+                            <asp:MenuItem Text="Basic Computer Architecture" Value="Basic Computer Architecture" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=BCA"></asp:MenuItem>
+                            <asp:MenuItem Text="Busines English" Value="Busines Eng" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=BE"></asp:MenuItem>
+                            <asp:MenuItem Text="Computer Related Mathematics and Statistics" Value="Computer_Related_Mathematics_and_Statistics" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=Math"></asp:MenuItem>
+                            <asp:MenuItem Text="Introduction to C++ Programming" Value="Introduction to C++ Programming" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=ICP"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Bit_Admin/course_content.aspx?subject=PIT" Text="Principles of Information Technology" Value="Principles of Information Technology"></asp:MenuItem>
                         </asp:MenuItem>
                         <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
                             <asp:MenuItem Text="Human Computer Interaction" Value="Human Computer Interaction" NavigateUrl="~/Bit_Admin/Human_Computer_Interaction.aspx"></asp:MenuItem>

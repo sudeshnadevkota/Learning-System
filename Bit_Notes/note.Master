@@ -298,11 +298,11 @@
                         </a>
                         <div id="first-submenu" class="submenu">
                             <ul>
-                                <li><a href="business_english.aspx">Business English</a></li>
-                                <li><a href="math_i.aspx">Principls of Information Technology </a></li>
-                                <li><a href="computer_network.aspx">Introduction to C++ Programming</a></li>
-                                <li><a href="c_programming.aspx">Computer Related Mathematics and Statistics</a></li>
-                                <li><a href="basic_computer_architecture.aspx">Basic Computer Architecture</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BE">Business English</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=PIT">Principle of Information Technology </a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=ICP">Introduction to C++ Programming</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=Math">Computer Related Mathematics and Statistics</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BCA">Basic Computer Architecture</a></li>
                             </ul>
                         </div>
                     </li>
