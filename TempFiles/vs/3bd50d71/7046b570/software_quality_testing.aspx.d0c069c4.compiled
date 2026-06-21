@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Mcs_Notes/Software_Quality_Testing.aspx" hash="fffffff9acec72d9" filehash="defdadce2caf7bcd" flags="110000" assembly="App_Web_ecw3q3fn" type="ASP.mcs_notes_software_quality_testing_aspx">
+    <filedeps>
+        <filedep name="/Mcs_Notes/note.Master" />
+        <filedep name="/Mcs_Notes/Software_Quality_Testing.aspx" />
+    </filedeps>
+</preserve>
