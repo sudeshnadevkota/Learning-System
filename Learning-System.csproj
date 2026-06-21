@@ -433,14 +433,13 @@
     <Content Include="Bit_Admin\wml_and_wap_programming.aspx" />
     <Content Include="Bit_Notes\advance_computer_network.aspx" />
     <Content Include="Bit_Notes\AI.aspx" />
-    <Content Include="Bit_Notes\Basic_Computer_Architecture.aspx" />
     <Content Include="Bit_Notes\bitstyle.css" />
-    <Content Include="Bit_Notes\business_english.aspx" />
+    <Content Include="Bit_Notes\course_content.aspx" />
     <Content Include="Bit_Notes\cloud_computing.aspx" />
     <Content Include="Bit_Notes\compiler_and_design_constructions.aspx" />
     <Content Include="Bit_Notes\computer_network.aspx" />
-    <Content Include="Bit_Notes\Computer_Related_Mathematics_And_Statistics.aspx" />
     <Content Include="Bit_Notes\Cryptography.aspx" />
+    <Content Include="Bit_Notes\Css\note.css" />
     <Content Include="Bit_Notes\cyber_security_law_and_policy.aspx" />
     <Content Include="Bit_Notes\c_programming.aspx" />
     <Content Include="Bit_Notes\dash.aspx" />
@@ -453,17 +452,14 @@
     <Content Include="Bit_Notes\industrial_training.aspx" />
     <Content Include="Bit_Notes\IndustryManagement.aspx" />
     <Content Include="Bit_Notes\internet_fundamental_and_applications.aspx" />
-    <Content Include="Bit_Notes\Introduction_To_C-Programming.aspx" />
     <Content Include="Bit_Notes\java_programming.aspx" />
     <Content Include="Bit_Notes\java_programming_4.aspx" />
     <Content Include="Bit_Notes\leadership_and_human_relations.aspx" />
     <Content Include="Bit_Notes\logo\logo.png" />
     <Content Include="Bit_Notes\ManagementInformationSystem.aspx" />
-    <Content Include="Bit_Notes\math_i.aspx" />
     <Content Include="Bit_Notes\mobile_computing.aspx" />
     <Content Include="Bit_Notes\multimedia_system.aspx" />
     <Content Include="Bit_Notes\operating_system.aspx" />
-    <Content Include="Bit_Notes\Principle_Of_Information_Technology.aspx" />
     <Content Include="Bit_Notes\project_work.aspx" />
     <Content Include="Bit_Notes\real_time_system.aspx" />
     <Content Include="Bit_Notes\relation_database_management_system.aspx" />
@@ -1237,6 +1233,11 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Bit_Notes\Syllabus\BCA_Syllabus.pdf" />
+    <Content Include="Bit_Notes\Syllabus\BE_Syllabus.pdf" />
+    <Content Include="Bit_Notes\Syllabus\ICP_Syllabus.pdf" />
+    <Content Include="Bit_Notes\Syllabus\PIT_Syllabus.pdf" />
+    <Content Include="Bit_Notes\Syllabus\Math_Syllabus.pdf" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <None Include="Scripts\jquery-3.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
@@ -3567,19 +3568,12 @@
     <Compile Include="Bit_Notes\AI.aspx.designer.cs">
       <DependentUpon>AI.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Notes\Basic_Computer_Architecture.aspx.cs">
-      <DependentUpon>Basic_Computer_Architecture.aspx</DependentUpon>
+    <Compile Include="Bit_Notes\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Notes\Basic_Computer_Architecture.aspx.designer.cs">
-      <DependentUpon>Basic_Computer_Architecture.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bit_Notes\business_english.aspx.cs">
-      <DependentUpon>business_english.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Notes\business_english.aspx.designer.cs">
-      <DependentUpon>business_english.aspx</DependentUpon>
+    <Compile Include="Bit_Notes\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Notes\cloud_computing.aspx.cs">
       <DependentUpon>cloud_computing.aspx</DependentUpon>
@@ -3601,13 +3595,6 @@
     </Compile>
     <Compile Include="Bit_Notes\computer_network.aspx.designer.cs">
       <DependentUpon>computer_network.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bit_Notes\Computer_Related_Mathematics_And_Statistics.aspx.cs">
-      <DependentUpon>Computer_Related_Mathematics_And_Statistics.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Notes\Computer_Related_Mathematics_And_Statistics.aspx.designer.cs">
-      <DependentUpon>Computer_Related_Mathematics_And_Statistics.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Notes\Cryptography.aspx.cs">
       <DependentUpon>Cryptography.aspx</DependentUpon>
@@ -3700,13 +3687,6 @@
     <Compile Include="Bit_Notes\internet_fundamental_and_applications.aspx.designer.cs">
       <DependentUpon>internet_fundamental_and_applications.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Notes\Introduction_To_C-Programming.aspx.cs">
-      <DependentUpon>Introduction_To_C-Programming.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Notes\Introduction_To_C-Programming.aspx.designer.cs">
-      <DependentUpon>Introduction_To_C-Programming.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Bit_Notes\java_programming.aspx.cs">
       <DependentUpon>java_programming.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3735,13 +3715,6 @@
     <Compile Include="Bit_Notes\ManagementInformationSystem.aspx.designer.cs">
       <DependentUpon>ManagementInformationSystem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Notes\math_i.aspx.cs">
-      <DependentUpon>math_i.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Notes\math_i.aspx.designer.cs">
-      <DependentUpon>math_i.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Bit_Notes\mobile_computing.aspx.cs">
       <DependentUpon>mobile_computing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3769,13 +3742,6 @@
     </Compile>
     <Compile Include="Bit_Notes\operating_system.aspx.designer.cs">
       <DependentUpon>operating_system.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bit_Notes\Principle_Of_Information_Technology.aspx.cs">
-      <DependentUpon>Principle_Of_Information_Technology.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Notes\Principle_Of_Information_Technology.aspx.designer.cs">
-      <DependentUpon>Principle_Of_Information_Technology.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Notes\project_work.aspx.cs">
       <DependentUpon>project_work.aspx</DependentUpon>
