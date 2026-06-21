@@ -11,7 +11,7 @@ namespace Learning_System
     {
         protected string constr = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
 
-        protected virtual string TableName => "";
+        protected string TableName { get; set; } = "";
 
         protected void BindData(GridView gvNotes, GridView gvPapers)
         {
