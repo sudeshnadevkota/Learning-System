@@ -389,6 +389,7 @@
     <Content Include="Bhm_Notes\revenue_management.aspx" />
     <Content Include="Bhm_Notes\statistics.aspx" />
     <Content Include="Bhm_Notes\tourist_behavioral_science.aspx" />
+    <Content Include="Bit_Admin\bulk_upload.aspx" />
     <Content Include="Bit_Admin\Data_Communication_and_Networks.aspx" />
     <Content Include="Bit_Admin\AI.aspx" />
     <Content Include="Bit_Admin\basic_computer_architecture.aspx" />
@@ -430,6 +431,7 @@
     <Content Include="Bit_Admin\system_analysis_and_design.aspx" />
     <Content Include="Bit_Admin\tcp_ip.aspx" />
     <Content Include="Bit_Admin\Technopreneurship.aspx" />
+    <Content Include="Bit_Admin\Syllabus.aspx" />
     <Content Include="Bit_Admin\web_technology%28Python%29.aspx" />
     <Content Include="Bit_Admin\wml_and_wap_programming.aspx" />
     <Content Include="Bit_Notes\advance_computer_network.aspx" />
@@ -3254,6 +3256,13 @@
     <Compile Include="Bhm_Notes\tourist_behavioral_science.aspx.designer.cs">
       <DependentUpon>tourist_behavioral_science.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Bit_Admin\bulk_upload.aspx.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bit_Admin\bulk_upload.aspx.designer.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bit_Admin\Data_Communication_and_Networks.aspx.cs">
       <DependentUpon>Data_Communication_and_Networks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3540,6 +3549,13 @@
     </Compile>
     <Compile Include="Bit_Admin\upload.Master.designer.cs">
       <DependentUpon>upload.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Bit_Admin\Syllabus.aspx.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bit_Admin\Syllabus.aspx.designer.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\web_technology%28Python%29.aspx.cs">
       <DependentUpon>web_technology%28Python%29.aspx</DependentUpon>

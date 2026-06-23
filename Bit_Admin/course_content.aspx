@@ -1,5 +1,4 @@
-﻿
-<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="course_content.aspx.cs" Inherits="Learning_System.Bit_Admin.course_content" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="course_content.aspx.cs" Inherits="Learning_System.Bit_Admin.course_content" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -11,23 +10,100 @@
             --primary: #0B1F66;
             --secondary: #081547;
             --pink: #FF2D8D;
+            --pink-light: rgba(255,45,141,0.08);
+            --pink-hover: #e0277c;
             --gray-bg: #fafbff;
             --border-color: rgba(11,31,102,0.08);
+            --text-muted: #6b7280;
+            --success: #16a34a;
+            --success-bg: #f0fdf4;
+            --success-border: #4ade80;
         }
 
+        /* ── Base ── */
         .c-wrap {
             font-family: 'Plus Jakarta Sans', sans-serif;
             padding: 1.5rem;
         }
 
+        /* ── Hero ── */
         .c-hero {
             background: linear-gradient(135deg, #0B1F66 0%, #1a3499 100%);
-            padding: 30px 32px;
+            padding: 28px 32px;
             border-radius: 16px;
             margin-bottom: 24px;
             color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
+        .c-hero h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .c-hero-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Hero action buttons */
+        .c-hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .c-hero-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.22);
+        }
+
+        .c-hero-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .c-hero-btn-syllabus {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            border: 1.5px solid rgba(255,255,255,0.35);
+            backdrop-filter: blur(4px);
+        }
+
+        .c-hero-btn-syllabus:hover {
+            background: rgba(255,255,255,0.25);
+            color: #fff;
+        }
+
+        .c-hero-btn-bulk {
+            background: var(--pink);
+            color: #fff;
+            box-shadow: 0 3px 12px rgba(255,45,141,0.35);
+        }
+
+        .c-hero-btn-bulk:hover {
+            background: var(--pink-hover);
+        }
+
+        /* ── Panel ── */
         .c-panel {
             background: #ffffff;
             border: 1px solid var(--border-color);
@@ -55,6 +131,7 @@
             background: var(--border-color);
         }
 
+        /* ── Form ── */
         .c-form-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -93,8 +170,10 @@
             font-size: 11px;
             color: red;
             margin-top: 5px;
+            display: block;
         }
 
+        /* ── Submit Button ── */
         .c-btn-submit {
             background: var(--pink);
             color: #fff;
@@ -104,8 +183,68 @@
             cursor: pointer;
             text-transform: uppercase;
             font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
         }
 
+        .c-btn-submit:hover {
+            background: var(--pink-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(255,45,141,0.35);
+        }
+
+        /* ── Drop Zone ── */
+        #dropZone {
+            border: 2px dashed rgba(11,31,102,0.2);
+            border-radius: 12px;
+            padding: 36px 20px;
+            text-align: center;
+            background: var(--gray-bg);
+            transition: border-color 0.25s, background 0.25s;
+            cursor: pointer;
+        }
+
+        #dropZone.dragover {
+            border-color: var(--pink);
+            background: var(--pink-light);
+        }
+
+        #dropZone.has-file {
+            border-color: var(--success-border);
+            background: var(--success-bg);
+        }
+
+        #filePreview {
+            display: none;
+            margin-top: 16px;
+            padding: 10px 14px;
+            background: var(--success-bg);
+            border: 1px solid var(--success-border);
+            border-radius: 8px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #filePreview.visible {
+            display: flex !important;
+        }
+
+        /* ── File Destination (hidden initially) ── */
+        #divFileDestination {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+        }
+
+        #divFileDestination.visible {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        /* ── Table ── */
         .c-table-container {
             overflow: hidden;
             border-radius: 12px;
@@ -158,61 +297,27 @@
         .table-modern a:hover {
             text-decoration: underline;
         }
-
-        #divFileDestination {
-            overflow: hidden;
-            max-height: 0;
-            opacity: 0;
-            transition: max-height 0.3s ease, opacity 0.3s ease;
-        }
-
-        #divFileDestination.visible {
-            max-height: 200px;
-            opacity: 1;
-        }
-
-        /* ── Drop Zone ── */
-        #dropZone {
-            border: 2px dashed rgba(11,31,102,0.2);
-            border-radius: 12px;
-            padding: 36px 20px;
-            text-align: center;
-            background: var(--gray-bg);
-            transition: border-color 0.25s, background 0.25s;
-            cursor: pointer;
-        }
-
-        #dropZone.dragover {
-            border-color: var(--pink);
-            background: rgba(255, 45, 141, 0.04);
-        }
-
-        #dropZone.has-file {
-            border-color: #4ade80;
-            background: #f0fdf4;
-        }
-
-        #filePreview {
-            display: none;
-            margin-top: 16px;
-            padding: 10px 14px;
-            background: #f0fdf4;
-            border: 1px solid #4ade80;
-            border-radius: 8px;
-            align-items: center;
-            gap: 10px;
-        }
-
-        #filePreview.visible {
-            display: flex !important;
-        }
     </style>
 
+
     <div class="c-wrap container-fluid">
+
+        <!-- Hero -->
         <div class="c-hero">
             <h3><i class="ti ti-vocabulary"></i> Course Content Management: <%= PageTitleText %></h3>
+            <div class="c-hero-actions">
+                <a href="syllabus.aspx?subject=<%= Request.QueryString["subject"] %>"
+                   class="c-hero-btn c-hero-btn-syllabus">
+                    <i class="ti ti-file-text"></i> Upload Syllabus
+                </a>
+                <a href="bulk_upload.aspx?subject=<%= Request.QueryString["subject"] %>"
+                   class="c-hero-btn c-hero-btn-bulk">
+                    <i class="ti ti-files"></i> Upload Bulk
+                </a>
+            </div>
         </div>
 
+        <!-- Upload Form Panel -->
         <div class="c-panel">
             <div class="c-panel-title">Upload Resource Form</div>
 
@@ -231,20 +336,19 @@
                     <label>Select File Type</label>
                     <asp:DropDownList ID="ddlFileType" runat="server" class="form-control">
                         <asp:ListItem Text="-- Select Category --" Value="" />
-                        <asp:ListItem Text="Lecture Content"      Value="Lecture" />
-                        <asp:ListItem Text="Tutorial Content"     Value="Tutorial" />
-                        <asp:ListItem Text="Workshop Content"     Value="Workshop" />
-                        <asp:ListItem Text="Past Year Question"   Value="PYQ" />
-                        <asp:ListItem Text="Assignment"           Value="Assignment" />
+                        <asp:ListItem Text="Lecture Content"    Value="Lecture" />
+                        <asp:ListItem Text="Tutorial Content"   Value="Tutorial" />
+                        <asp:ListItem Text="Workshop Content"   Value="Workshop" />
+                        <asp:ListItem Text="Past Year Question" Value="PYQ" />
+                        <asp:ListItem Text="Assignment"         Value="Assignment" />
                     </asp:DropDownList>
                 </div>
             </div>
 
-            <%-- Plain HTML file input — no runat="server" to avoid the IIS Express crash --%>
             <div class="form-group">
                 <label>Upload Files</label>
-
-                <asp:FileUpload ID="FileUpload1" runat="server" style="display:none;" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.jpg,.png,.zip,.txt" />
+                <asp:FileUpload ID="FileUpload1" runat="server" style="display:none;"
+                    accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.jpg,.png,.zip,.txt" />
 
                 <div id="dropZone">
                     <i class="ti ti-cloud-upload" style="font-size:2.5rem; color:var(--primary); margin-bottom:8px; display:block;"></i>
@@ -293,6 +397,7 @@
             <asp:Button ID="Button1" runat="server" class="c-btn-submit" Text="Submit Content" OnClick="Button1_Click" />
         </div>
 
+        <!-- Table Panel -->
         <div class="c-panel">
             <div class="c-panel-title">Uploaded Course Modules Database</div>
             <div class="c-table-container">
@@ -326,15 +431,15 @@
     </div>
 
     <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-            // ── Destination filter ────────────────────────────────────────
-            var fileTypeEl = document.getElementById('<%= ddlFileType.ClientID %>');
-            var destWrapper = document.getElementById('divFileDestination');
-            var destEl = document.getElementById('<%= ddlContentType.ClientID %>');
+        window.addEventListener('DOMContentLoaded', function () {
 
-            // Ensure elements exist before accessing properties
+            // ── Single file drop zone ─────────────────────────────────────
+            var fileTypeEl  = document.getElementById('<%= ddlFileType.ClientID %>');
+            var destWrapper = document.getElementById('divFileDestination');
+            var destEl      = document.getElementById('<%= ddlContentType.ClientID %>');
+
             if (fileTypeEl && destEl) {
-                var allOptions = Array.from(destEl.options).slice(1);
+                var allOptions    = Array.from(destEl.options).slice(1);
                 var hasDestination = ['Lecture', 'Tutorial', 'Workshop'];
 
                 function filterDestination(selectedGroup) {
@@ -353,94 +458,57 @@
                     }
                 }
 
-                fileTypeEl.addEventListener('change', function () {
-                    filterDestination(this.value);
-                });
+                fileTypeEl.addEventListener('change', function () { filterDestination(this.value); });
                 filterDestination(fileTypeEl.value);
             }
 
-            // ── Drag & Drop File Upload ───────────────────────────────────
-            var dropZone = document.getElementById('dropZone');
-            var fileInput = document.getElementById('<%= FileUpload1.ClientID %>');
+            var dropZone   = document.getElementById('dropZone');
+            var fileInput  = document.getElementById('<%= FileUpload1.ClientID %>');
             var filePreview = document.getElementById('filePreview');
             var fileNameEl = document.getElementById('fileName');
             var fileSizeEl = document.getElementById('fileSize');
             var btnBrowse = document.getElementById('btnBrowse');
             var btnClear = document.getElementById('btnClearFile');
 
-            // Guard clause to prevent errors if these elements are missing
+            function formatSize(bytes) {
+                if (bytes < 1024) return bytes + ' B';
+                if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+                return (bytes / 1048576).toFixed(2) + ' MB';
+            }
+
+            function showFile(file) {
+                if (fileNameEl) fileNameEl.textContent = file.name;
+                if (fileSizeEl) fileSizeEl.textContent = formatSize(file.size);
+                if (filePreview) filePreview.classList.add('visible');
+                dropZone.classList.add('has-file');
+                dropZone.classList.remove('dragover');
+            }
+
+            function clearFile() {
+                fileInput.value = '';
+                if (filePreview) filePreview.classList.remove('visible');
+                dropZone.classList.remove('has-file');
+                if (fileNameEl) fileNameEl.textContent = '';
+                if (fileSizeEl) fileSizeEl.textContent = '';
+            }
+
             if (dropZone && fileInput && btnBrowse && btnClear) {
-                function formatSize(bytes) {
-                    if (bytes < 1024) return bytes + ' B';
-                    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-                    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
-                }
-
-                function showFile(file) {
-                    if (fileNameEl) fileNameEl.textContent = file.name;
-                    if (fileSizeEl) fileSizeEl.textContent = formatSize(file.size);
-                    if (filePreview) filePreview.classList.add('visible');
-                    dropZone.classList.add('has-file');
-                    dropZone.classList.remove('dragover');
-                }
-
-                function clearFile() {
-                    fileInput.value = '';
-                    if (filePreview) filePreview.classList.remove('visible');
-                    dropZone.classList.remove('has-file');
-                    if (fileNameEl) fileNameEl.textContent = '';
-                    if (fileSizeEl) fileSizeEl.textContent = '';
-                }
-
-                btnBrowse.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    fileInput.click();
-                });
-
-                dropZone.addEventListener('click', function (e) {
-                    if (e.target !== btnBrowse && e.target !== btnClear) {
-                        fileInput.click();
-                    }
-                });
-
-                fileInput.addEventListener('change', function () {
-                    if (this.files && this.files[0]) {
-                        showFile(this.files[0]);
-                    }
-                });
-
-                btnClear.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    clearFile();
-                });
-
-                dropZone.addEventListener('dragover', function (e) {
-                    e.preventDefault();
-                    dropZone.classList.add('dragover');
-                });
-
-                dropZone.addEventListener('dragleave', function (e) {
-                    if (!dropZone.contains(e.relatedTarget)) {
-                        dropZone.classList.remove('dragover');
-                    }
-                });
-
+                btnBrowse.addEventListener('click', function (e) { e.stopPropagation(); fileInput.click(); });
+                dropZone.addEventListener('click', function (e) { if (e.target !== btnBrowse && e.target !== btnClear) fileInput.click(); });
+                fileInput.addEventListener('change', function () { if (this.files && this.files[0]) showFile(this.files[0]); });
+                btnClear.addEventListener('click', function (e) { e.stopPropagation(); clearFile(); });
+                dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('dragover'); });
+                dropZone.addEventListener('dragleave', function (e) { if (!dropZone.contains(e.relatedTarget)) dropZone.classList.remove('dragover'); });
                 dropZone.addEventListener('drop', function (e) {
-                    e.preventDefault();
-                    dropZone.classList.remove('dragover');
+                    e.preventDefault(); dropZone.classList.remove('dragover');
                     var files = e.dataTransfer.files;
                     if (files && files[0]) {
-                        try {
-                            var dt = new DataTransfer();
-                            dt.items.add(files[0]);
-                            fileInput.files = dt.files;
-                            showFile(files[0]);
-                        } catch (err) {
-                            showFile(files[0]);
-                        }
+                        try { var dt = new DataTransfer(); dt.items.add(files[0]); fileInput.files = dt.files; } catch (err) { }
+                        showFile(files[0]);
                     }
                 });
             }
+
         });
     </script>
 
