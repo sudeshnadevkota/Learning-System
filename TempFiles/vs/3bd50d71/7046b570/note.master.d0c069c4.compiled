@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Mcs_Notes/note.Master" hash="fffffff9acec72d9" filehash="ff89bff8037" flags="110000" assembly="App_Web_gsuqn1st" type="ASP.mcs_notes_note_master">
+    <filedeps>
+        <filedep name="/Mcs_Notes/note.Master" />
+    </filedeps>
+</preserve>

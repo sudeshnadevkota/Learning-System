@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Mcs_Notes/computing_technology_intelligence.aspx" hash="fffffff9acec72d9" filehash="b2ab4b4cd443b6a2" flags="110000" assembly="App_Web_ecw3q3fn" type="ASP.mcs_notes_computing_technology_intelligence_aspx">
+    <filedeps>
+        <filedep name="/Mcs_Notes/computing_technology_intelligence.aspx" />
+        <filedep name="/Mcs_Notes/note.Master" />
+    </filedeps>
+</preserve>

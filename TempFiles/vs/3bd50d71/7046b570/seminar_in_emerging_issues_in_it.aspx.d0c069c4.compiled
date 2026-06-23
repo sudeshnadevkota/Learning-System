@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Mcs_Notes/seminar_in_emerging_issues_in_IT.aspx" hash="fffffff9acec72d9" filehash="defd9eeab23a7cf8" flags="110000" assembly="App_Web_ecw3q3fn" type="ASP.mcs_notes_seminar_in_emerging_issues_in_it_aspx">
+    <filedeps>
+        <filedep name="/Mcs_Notes/note.Master" />
+        <filedep name="/Mcs_Notes/seminar_in_emerging_issues_in_IT.aspx" />
+    </filedeps>
+</preserve>

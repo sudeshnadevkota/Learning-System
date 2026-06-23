@@ -20,6 +20,22 @@ namespace Learning_System
                 { "PIT", new SubjectInfo { Table = "bit_1_PIT", Title = "Principle of Information Technology" } },
                 // Add more subjects below, same pattern:
                 // { "DSA", new SubjectInfo { Table = "bit_1_DSA", Title = "Data Structures and Algorithms" } },
+
+                //2nd semester subjects
+                { "HCI", new SubjectInfo { Table = "bit_2_HCI", Title = "Human Computer Interaction" } },
+                { "DM", new SubjectInfo { Table = "bit_2_DM", Title = "Discrete Mathematics" } },
+                { "DCN", new SubjectInfo { Table = "bit_2_DCN", Title = "Data Communication and Networks" } },
+                { "OOP", new SubjectInfo { Table = "bit_2_OOP", Title = "Object Oriented Programming" } },
+                { "OS", new SubjectInfo { Table = "bit_2_OS", Title = "Operating System" } },
+
+
+                //3rd semester subjects
+                { "DELD", new SubjectInfo { Table = "bit_3_DELD", Title = "Digital Electronics and Logic Design " } },
+                { "DSA", new SubjectInfo { Table = "bit_3_DSA", Title = "Data Structure & Algorithm " } },
+                { "IM", new SubjectInfo { Table = "bit_3_IM", Title = "Industrial Management" } },
+                { "WT", new SubjectInfo { Table = "bit_3_WT", Title = "Web Technology" } },
+                { "LA", new SubjectInfo { Table = "bit_3_LA", Title = "Linux Administration" } },
+                { "DMS", new SubjectInfo { Table = "bit_3_DMS", Title = "Database Management System" } },
             };
     }
 }
