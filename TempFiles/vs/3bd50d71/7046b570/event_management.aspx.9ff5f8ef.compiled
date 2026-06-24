@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bhm_Notes/event_management.aspx" hash="fffffff9acec72d9" filehash="b8a7639ef27ab459" flags="110000" assembly="App_Web_1c5zdpf0" type="ASP.bhm_notes_event_management_aspx">
+    <filedeps>
+        <filedep name="/Bhm_Notes/event_management.aspx" />
+        <filedep name="/Bhm_Notes/note.Master" />
+    </filedeps>
+</preserve>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bhm_Notes/beverage_study.aspx" hash="fffffff9acec72d9" filehash="cb9a173607ea202a" flags="110000" assembly="App_Web_1c5zdpf0" type="ASP.bhm_notes_beverage_study_aspx">
+    <filedeps>
+        <filedep name="/Bhm_Notes/beverage_study.aspx" />
+        <filedep name="/Bhm_Notes/note.Master" />
+    </filedeps>
+</preserve>

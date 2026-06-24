@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bhm_Notes/fundamental_of_computer_in_hotel_concept_and_application.aspx" hash="fffffff9acec72d9" filehash="3bf992a8a6073ec2" flags="110000" assembly="App_Web_1lit1a0a" type="ASP.bhm_notes_fundamental_of_computer_in_hotel_concept_and_application_aspx">
+    <filedeps>
+        <filedep name="/Bhm_Notes/fundamental_of_computer_in_hotel_concept_and_application.aspx" />
+        <filedep name="/Bhm_Notes/note.Master" />
+    </filedeps>
+</preserve>

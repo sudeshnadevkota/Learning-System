@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Mcs_Notes/Data_Analytics_Visualization.aspx" hash="fffffff9acec72d9" filehash="7c6e6646814894dd" flags="110000" assembly="App_Web_ecw3q3fn" type="ASP.mcs_notes_data_analytics_visualization_aspx">
+    <filedeps>
+        <filedep name="/Mcs_Notes/Data_Analytics_Visualization.aspx" />
+        <filedep name="/Mcs_Notes/note.Master" />
+    </filedeps>
+</preserve>

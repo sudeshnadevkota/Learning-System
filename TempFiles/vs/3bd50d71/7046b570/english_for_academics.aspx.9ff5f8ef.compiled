@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bhm_Notes/english_for_academics.aspx" hash="fffffff9acec72d9" filehash="e1b93e011d05276" flags="110000" assembly="App_Web_1lit1a0a" type="ASP.bhm_notes_english_for_academics_aspx">
+    <filedeps>
+        <filedep name="/Bhm_Notes/english_for_academics.aspx" />
+        <filedep name="/Bhm_Notes/note.Master" />
+    </filedeps>
+</preserve>

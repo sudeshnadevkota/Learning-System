@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Mcs_Notes/Cluod_Computing.aspx" hash="fffffff9acec72d9" filehash="90de02657d65edae" flags="110000" assembly="App_Web_ecw3q3fn" type="ASP.mcs_notes_cluod_computing_aspx">
+    <filedeps>
+        <filedep name="/Mcs_Notes/Cluod_Computing.aspx" />
+        <filedep name="/Mcs_Notes/note.Master" />
+    </filedeps>
+</preserve>

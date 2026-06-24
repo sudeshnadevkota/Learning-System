@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Bhm_Notes/note.Master" hash="fffffff9acec72d9" filehash="2b6d932de339" flags="110000" assembly="App_Web_121nzxzz" type="ASP.bhm_notes_note_master">
+    <filedeps>
+        <filedep name="/Bhm_Notes/note.Master" />
+    </filedeps>
+</preserve>

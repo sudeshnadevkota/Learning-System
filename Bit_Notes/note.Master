@@ -313,11 +313,11 @@
                         </a>
                         <div id="second-submenu" class="submenu">
                             <ul>
-                                <li><a href="internet_fundamental_and_applications.aspx">Human Computer Interaction</a></li>
-                                <li><a href="discrete_mathematics.aspx">Discrete Mathematics</a></li>
-                                <li><a href="java_programming.aspx">Data Communication and Networks</a></li>
-                                <li><a href="advance_computer_network.aspx">Object oriented programming</a></li>
-                                <li><a href="operating_system.aspx">Operating systems</a></li>
+                             <li><a href="/Bit_Notes/course_content.aspx?code=HCI">Human Computer Interaction</a></li>
+                             <li><a href="/Bit_Notes/course_content.aspx?code=DM">Discrete Mathematics</a></li>
+                             <li><a href="/Bit_Notes/course_content.aspx?code=DCN">Data Communication and Networks</a></li>
+                             <li><a href="/Bit_Notes/course_content.aspx?code=OOP">Object Oriented Programming</a></li>
+                             <li><a href="/Bit_Notes/course_content.aspx?code=OS">Operating System</a></li>
                             </ul>
                         </div>
                     </li>
@@ -326,13 +326,14 @@
                             <span class="submenu-toggle"><span class="sem-badge">3</span><span class="sem-name">Third Sem</span> <i class="fas fa-caret-down third"></i></span>
                         </a>
                         <div id="third-submenu" class="submenu">
-                            <ul>
-                                <li><a href="e_commerce.aspx">Digital Electronics and Logic Design</a></li>
-                                <li><a href="data_structure_and_algorithm.aspx">Data Structure & Algorithm</a></li>
-                                <li><a href="web_technology(python).aspx">Industrial Management</a></li>
-                                <li><a href="digital_logics.aspx">Web Technology</a></li>
-                                <li><a href="IndustryManagement.aspx">Linux Administration</a></li>
-                            </ul>
+                         <ul>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=DELD">Digital Electronics and Logic Design</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=DSA">Data Structure &amp; Algorithm</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=IM">Industrial Management</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=WT">Web Technology</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=LA">Linux Administration</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=DMS">Database Management System</a></li>
+                         </ul>
                         </div>
                     </li>
                     <li>
