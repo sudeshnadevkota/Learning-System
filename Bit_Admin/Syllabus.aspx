@@ -20,275 +20,106 @@
             --success-border: #4ade80;
         }
 
-        .c-wrap {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            padding: 1.5rem;
-        }
+        .c-wrap { font-family: 'Plus Jakarta Sans', sans-serif; padding: 1.5rem; }
 
         .c-hero {
             background: linear-gradient(135deg, #0B1F66 0%, #1a3499 100%);
-            padding: 28px 32px;
-            border-radius: 16px;
-            margin-bottom: 24px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
+            padding: 28px 32px; border-radius: 16px; margin-bottom: 24px; color: #fff;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 16px;
         }
 
-        .c-hero-text small {
-            display: block;
-            margin-top: 6px;
-            font-size: 12px;
-            opacity: 0.7;
-            font-weight: 400;
-        }
+        .c-hero-text small { display: block; margin-top: 6px; font-size: 12px; opacity: 0.7; font-weight: 400; }
 
         .c-back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 12px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            margin-bottom: 10px;
-            transition: color 0.15s ease;
+            display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600;
+            color: rgba(255,255,255,0.75); text-decoration: none; margin-bottom: 10px; transition: color 0.15s ease;
         }
+        .c-back-link:hover { color: #fff; }
 
-        .c-back-link:hover {
-            color: #fff;
-        }
+        .c-hero h3 { margin: 0; font-size: 1.25rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
 
-        .c-hero h3 {
-            margin: 0;
-            font-size: 1.25rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .c-hero-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+        .c-hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
         .c-hero-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 700;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            cursor: pointer;
-            border: none;
-            text-decoration: none;
-            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            display: inline-flex; align-items: center; gap: 7px; padding: 10px 20px; border-radius: 10px;
+            font-size: 13px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer;
+            border: none; text-decoration: none; transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
             letter-spacing: 0.3px;
         }
-
-        .c-hero-btn:hover {
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.22);
-        }
-
-        .c-hero-btn:active {
-            transform: translateY(0) scale(0.98);
-        }
+        .c-hero-btn:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 6px 20px rgba(0,0,0,0.22); }
+        .c-hero-btn:active { transform: translateY(0) scale(0.98); }
 
         .c-hero-btn-syllabus {
-            background: rgba(255,255,255,0.15);
-            color: #fff;
-            border: 1.5px solid rgba(255,255,255,0.35);
-            backdrop-filter: blur(4px);
+            background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.35); backdrop-filter: blur(4px);
         }
+        .c-hero-btn-syllabus:hover { background: rgba(255,255,255,0.25); color: #fff; }
 
-        .c-hero-btn-syllabus:hover {
-            background: rgba(255,255,255,0.25);
-            color: #fff;
-        }
-
-        .c-panel {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 24px;
-        }
+        .c-panel { background: #ffffff; border: 1px solid var(--border-color); border-radius: 14px; padding: 28px; margin-bottom: 24px; }
 
         .c-panel-title {
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 22px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 11px; letter-spacing: 1.5px; color: var(--primary); text-transform: uppercase;
+            font-weight: 700; margin-bottom: 22px; display: flex; align-items: center; gap: 8px;
         }
-
-        .c-panel-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border-color);
-        }
+        .c-panel-title::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
 
         .c-notice {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            background: rgba(11,31,102,0.04);
-            border: 1px solid rgba(11,31,102,0.1);
-            border-left: 3px solid var(--primary);
-            border-radius: 10px;
-            padding: 14px 16px;
-            margin-bottom: 22px;
-            font-size: 13px;
-            color: var(--primary);
+            display: flex; align-items: flex-start; gap: 12px; background: rgba(11,31,102,0.04);
+            border: 1px solid rgba(11,31,102,0.1); border-left: 3px solid var(--primary); border-radius: 10px;
+            padding: 14px 16px; margin-bottom: 22px; font-size: 13px; color: var(--primary);
         }
+        .c-notice i { flex-shrink: 0; font-size: 1.1rem; margin-top: 1px; }
 
-        .c-notice i {
-            flex-shrink: 0;
-            font-size: 1.1rem;
-            margin-top: 1px;
-        }
+        .form-group { position: relative; margin-bottom: 15px; }
+        .form-group label { font-size: 12px; font-weight: 600; color: var(--primary); margin-bottom: 8px; display: block; }
 
-        .form-group {
-            position: relative;
-            margin-bottom: 15px;
-        }
+        .c-val-msg { font-size: 11px; color: red; margin-top: 5px; display: block; }
 
-        .form-group label {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 8px;
-            display: block;
+        /* New: plain inputs for SubjectCode / CreditScore / TotalHours */
+        .c-input {
+            width: 100%; padding: 10px 14px; border: 1px solid var(--border-color); border-radius: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; color: #333; background: #fff;
+            box-sizing: border-box; transition: border-color 0.15s ease;
         }
+        .c-input:focus { outline: none; border-color: var(--primary); }
+        .c-input[readonly] { background: var(--gray-bg); color: var(--text-muted); cursor: not-allowed; }
 
-        .c-val-msg {
-            font-size: 11px;
-            color: red;
-            margin-top: 5px;
-            display: block;
-        }
+        .c-row-2 { display: flex; gap: 20px; flex-wrap: wrap; }
+        .c-row-2 > div { flex: 1; min-width: 200px; }
 
         .c-btn-submit {
-            background: var(--pink);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            padding: 11px 28px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            background: var(--pink); color: #fff; border: none; border-radius: 8px; padding: 11px 28px;
+            cursor: pointer; text-transform: uppercase; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px; letter-spacing: 0.5px; transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
         }
-
-        .c-btn-submit:hover {
-            background: var(--pink-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 14px rgba(255,45,141,0.35);
-        }
+        .c-btn-submit:hover { background: var(--pink-hover); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(255,45,141,0.35); }
 
         #dropZone {
-            border: 2px dashed rgba(11,31,102,0.2);
-            border-radius: 12px;
-            padding: 36px 20px;
-            text-align: center;
-            background: var(--gray-bg);
-            transition: border-color 0.25s, background 0.25s;
-            cursor: pointer;
+            border: 2px dashed rgba(11,31,102,0.2); border-radius: 12px; padding: 36px 20px; text-align: center;
+            background: var(--gray-bg); transition: border-color 0.25s, background 0.25s; cursor: pointer;
         }
-
-        #dropZone.dragover {
-            border-color: var(--pink);
-            background: var(--pink-light);
-        }
-
-        #dropZone.has-file {
-            border-color: var(--success-border);
-            background: var(--success-bg);
-        }
+        #dropZone.dragover { border-color: var(--pink); background: var(--pink-light); }
+        #dropZone.has-file { border-color: var(--success-border); background: var(--success-bg); }
 
         #filePreview {
-            display: none;
-            margin-top: 16px;
-            padding: 10px 14px;
-            background: var(--success-bg);
-            border: 1px solid var(--success-border);
-            border-radius: 8px;
-            align-items: center;
-            gap: 10px;
+            display: none; margin-top: 16px; padding: 10px 14px; background: var(--success-bg);
+            border: 1px solid var(--success-border); border-radius: 8px; align-items: center; gap: 10px;
         }
+        #filePreview.visible { display: flex !important; }
 
-        #filePreview.visible {
-            display: flex !important;
-        }
+        .c-table-container { overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); background: #ffffff; }
 
-        .c-table-container {
-            overflow: hidden;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            background: #ffffff;
-        }
-
-        .table-modern,
-        .table-modern th,
-        .table-modern td {
-            border-color: var(--border-color);
-        }
-
-        .table-modern {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
+        .table-modern, .table-modern th, .table-modern td { border-color: var(--border-color); }
+        .table-modern { width: 100%; border-collapse: collapse; font-size: 13px; }
         .table-modern th {
-            background: var(--gray-bg);
-            color: var(--primary);
-            font-weight: 700;
-            padding: 16px 20px;
-            text-align: left;
-            border-bottom: 2px solid var(--border-color);
+            background: var(--gray-bg); color: var(--primary); font-weight: 700; padding: 16px 20px;
+            text-align: left; border-bottom: 2px solid var(--border-color);
         }
-
-        .table-modern td {
-            padding: 14px 20px;
-            border-bottom: 1px solid var(--border-color);
-            color: #4a4a4a;
-        }
-
-        .table-modern tr:last-child td {
-            border-bottom: none;
-        }
-
-        .table-modern tr:hover {
-            background-color: #fcfcfd;
-        }
-
-        .table-modern a {
-            color: var(--pink);
-            text-decoration: none;
-            font-weight: 600;
-            margin-right: 10px;
-        }
-
-        .table-modern a:hover {
-            text-decoration: underline;
-        }
+        .table-modern td { padding: 14px 20px; border-bottom: 1px solid var(--border-color); color: #4a4a4a; }
+        .table-modern tr:last-child td { border-bottom: none; }
+        .table-modern tr:hover { background-color: #fcfcfd; }
+        .table-modern a { color: var(--pink); text-decoration: none; font-weight: 600; margin-right: 10px; }
+        .table-modern a:hover { text-decoration: underline; }
     </style>
 
     <div class="c-wrap container-fluid">
@@ -316,6 +147,24 @@
             <div class="c-notice">
                 <i class="ti ti-info-circle"></i>
                 <span>Upload the official syllabus PDF or document for this subject. This will be available to all enrolled students.</span>
+            </div>
+
+            <!-- Subject Code -->
+            <div class="form-group">
+                <label>Subject Code <span style="color:var(--pink);">*</span></label>
+                <asp:TextBox ID="txtSubjectCode" runat="server" CssClass="c-input" placeholder="e.g. BIT113" MaxLength="20"></asp:TextBox>
+            </div>
+
+            <!-- Credit Score + Total Hours (auto-calculated) -->
+            <div class="form-group c-row-2">
+                <div>
+                    <label>Credit Score <span style="color:var(--pink);">*</span></label>
+                    <asp:TextBox ID="txtCreditScore" runat="server" CssClass="c-input" placeholder="e.g. 3" TextMode="Number"></asp:TextBox>
+                </div>
+                <div>
+                    <label>Total Hours <small style="color:var(--text-muted); font-weight:400;">(Credit &times; 16, auto-calculated)</small></label>
+                    <asp:TextBox ID="txtTotalHours" runat="server" CssClass="c-input" ReadOnly="true" placeholder="0"></asp:TextBox>
+                </div>
             </div>
 
             <div class="form-group">
@@ -368,10 +217,9 @@
                     CellPadding="0"
                     OnRowDeleting="GridView1_RowDeleting1">
                     <Columns>
-                        <asp:BoundField DataField="DisplayCode" HeaderText="Course Code" />
-                        <asp:BoundField DataField="Credit"      HeaderText="Credit" />
-                        <asp:BoundField DataField="Hours"       HeaderText="Hours" />
-                        <asp:BoundField DataField="TopicCount"  HeaderText="Topics" />
+                        <asp:BoundField DataField="SubjectCode" HeaderText="Course Code" />
+                        <asp:BoundField DataField="CreditScore" HeaderText="Credit" />
+                        <asp:BoundField DataField="TotalHours"  HeaderText="Hours" />
                         <asp:BoundField DataField="FileName"    HeaderText="File Name" />
                         <asp:TemplateField HeaderText="Action">
                             <ItemTemplate>
@@ -399,6 +247,23 @@
             var fileSizeEl = document.getElementById('fileSize');
             var btnBrowse = document.getElementById('btnBrowse');
             var btnClear = document.getElementById('btnClearFile');
+
+            // Credit Score -> Total Hours live auto-calculation
+            var creditInput = document.getElementById('<%= txtCreditScore.ClientID %>');
+            var hoursInput  = document.getElementById('<%= txtTotalHours.ClientID %>');
+
+            function recalcHours() {
+                var credit = parseFloat(creditInput.value);
+                if (!isNaN(credit) && credit > 0) {
+                    hoursInput.value = (credit * 16).toString();
+                } else {
+                    hoursInput.value = '';
+                }
+            }
+
+            if (creditInput && hoursInput) {
+                creditInput.addEventListener('input', recalcHours);
+            }
 
             function formatSize(bytes) {
                 if (bytes < 1024) return bytes + ' B';

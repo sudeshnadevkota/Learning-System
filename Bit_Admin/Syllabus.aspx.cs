@@ -29,6 +29,7 @@ namespace Learning_System.Bit_Admin
             if (!IsPostBack)
             {
                 BindData();
+                LoadExistingMetadata();
             }
         }
 
@@ -36,12 +37,12 @@ namespace Learning_System.Bit_Admin
         {
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                string query = "SELECT Id, DisplayCode, Credit, Hours, TopicCount, FileName " +
-                               "FROM Syllabus WHERE SubjectCode = @SubjectCode";
+                string query = "SELECT Id, SubjectCode, CreditScore, TotalHours, FileName " +
+                               "FROM Syllabus WHERE SubjectName = @SubjectName";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@SubjectCode", subject);
+                    cmd.Parameters.AddWithValue("@SubjectName", subject);
                     con.Open();
                     GridView1.DataSource = cmd.ExecuteReader();
                     GridView1.DataBind();
@@ -49,63 +50,145 @@ namespace Learning_System.Bit_Admin
             }
         }
 
+        // Pre-fills the form with the existing SubjectCode/CreditScore/TotalHours
+        // for this subject, if a record already exists, so the admin can edit
+        // metadata without retyping everything.
+        private void LoadExistingMetadata()
+        {
+            using (SqlConnection con = new SqlConnection(strcon))
+            {
+                string query = "SELECT SubjectCode, CreditScore, TotalHours " +
+                               "FROM Syllabus WHERE SubjectName = @SubjectName";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@SubjectName", subject);
+                    con.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            txtSubjectCode.Text = dr["SubjectCode"] == DBNull.Value ? "" : dr["SubjectCode"].ToString();
+                            txtCreditScore.Text = dr["CreditScore"] == DBNull.Value ? "" : dr["CreditScore"].ToString();
+                            txtTotalHours.Text = dr["TotalHours"] == DBNull.Value ? "" : dr["TotalHours"].ToString();
+                        }
+                    }
+                }
+            }
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if (!FileUpload1.HasFile)
+            string subjectCode = txtSubjectCode.Text.Trim();
+
+            if (string.IsNullOrEmpty(subjectCode))
             {
-                lblMessage.Text = "Please select a file to upload.";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = "Please enter the Subject Code (e.g. BIT113).";
                 return;
             }
 
-            try
+            decimal creditScore;
+            if (!decimal.TryParse(txtCreditScore.Text.Trim(), out creditScore) || creditScore <= 0)
             {
-                byte[] bytes;
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = "Please enter a valid Credit Score.";
+                return;
+            }
+
+            // Authoritative calculation — never trust the client-side value
+            decimal totalHours = creditScore * 16;
+            txtTotalHours.Text = totalHours.ToString();
+
+            bool hasFile = FileUpload1.HasFile;
+            byte[] bytes = null;
+            string fileName = null;
+            string contentType = null;
+
+            if (hasFile)
+            {
                 using (BinaryReader br = new BinaryReader(FileUpload1.PostedFile.InputStream))
                 {
                     bytes = br.ReadBytes(FileUpload1.PostedFile.ContentLength);
                 }
+                fileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
+                contentType = FileUpload1.PostedFile.ContentType;
+            }
 
+            try
+            {
                 using (SqlConnection con = new SqlConnection(strcon))
                 {
                     con.Open();
 
-                    // The metadata row (DisplayCode/Credit/Hours/TopicCount) must already exist.
-                    string checkQuery = "SELECT COUNT(*) FROM Syllabus WHERE SubjectCode = @SubjectCode";
+                    string checkQuery = "SELECT COUNT(*) FROM Syllabus WHERE SubjectName = @SubjectName";
                     int count;
                     using (SqlCommand checkCmd = new SqlCommand(checkQuery, con))
                     {
-                        checkCmd.Parameters.AddWithValue("@SubjectCode", subject);
+                        checkCmd.Parameters.AddWithValue("@SubjectName", subject);
                         count = (int)checkCmd.ExecuteScalar();
                     }
 
                     if (count == 0)
                     {
-                        lblMessage.Text = "No syllabus record exists yet for " + PageTitleText +
-                                           ". Add a row with Credit/Hours/TopicCount to the Syllabus table first.";
-                        return;
+                        // No record yet for this subject — create it
+                        string insertQuery = "INSERT INTO Syllabus " +
+                            "(SubjectName, SubjectCode, CreditScore, TotalHours, FileName, ContentType, FileData, UploadedDate) " +
+                            "VALUES (@SubjectName, @SubjectCode, @CreditScore, @TotalHours, @FileName, @ContentType, @FileData, @UploadedDate)";
+
+                        using (SqlCommand cmd = new SqlCommand(insertQuery, con))
+                        {
+                            cmd.Parameters.AddWithValue("@SubjectName", subject);
+                            cmd.Parameters.AddWithValue("@SubjectCode", subjectCode);
+                            cmd.Parameters.AddWithValue("@CreditScore", creditScore);
+                            cmd.Parameters.AddWithValue("@TotalHours", totalHours);
+                            cmd.Parameters.AddWithValue("@FileName", (object)fileName ?? DBNull.Value);
+                            cmd.Parameters.AddWithValue("@ContentType", (object)contentType ?? DBNull.Value);
+                            cmd.Parameters.AddWithValue("@FileData", (object)bytes ?? DBNull.Value);
+                            cmd.Parameters.AddWithValue("@UploadedDate", hasFile ? (object)DateTime.Now : DBNull.Value);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
-
-                    string updateQuery = "UPDATE Syllabus SET FileName = @FileName, ContentType = @ContentType, " +
-                                          "FileData = @FileData, UploadedDate = GETDATE() WHERE SubjectCode = @SubjectCode";
-
-                    using (SqlCommand cmd = new SqlCommand(updateQuery, con))
+                    else
                     {
-                        cmd.Parameters.AddWithValue("@FileName", Path.GetFileName(FileUpload1.PostedFile.FileName));
-                        cmd.Parameters.AddWithValue("@ContentType", FileUpload1.PostedFile.ContentType);
-                        cmd.Parameters.AddWithValue("@FileData", bytes);
-                        cmd.Parameters.AddWithValue("@SubjectCode", subject);
-                        cmd.ExecuteNonQuery();
+                        // Record already exists — update metadata always,
+                        // only overwrite the file columns if a new file was selected
+                        string updateQuery = hasFile
+                            ? "UPDATE Syllabus SET SubjectCode = @SubjectCode, CreditScore = @CreditScore, TotalHours = @TotalHours, " +
+                              "FileName = @FileName, ContentType = @ContentType, FileData = @FileData, UploadedDate = GETDATE() " +
+                              "WHERE SubjectName = @SubjectName"
+                            : "UPDATE Syllabus SET SubjectCode = @SubjectCode, CreditScore = @CreditScore, TotalHours = @TotalHours " +
+                              "WHERE SubjectName = @SubjectName";
+
+                        using (SqlCommand cmd = new SqlCommand(updateQuery, con))
+                        {
+                            cmd.Parameters.AddWithValue("@SubjectCode", subjectCode);
+                            cmd.Parameters.AddWithValue("@CreditScore", creditScore);
+                            cmd.Parameters.AddWithValue("@TotalHours", totalHours);
+                            cmd.Parameters.AddWithValue("@SubjectName", subject);
+
+                            if (hasFile)
+                            {
+                                cmd.Parameters.AddWithValue("@FileName", fileName);
+                                cmd.Parameters.AddWithValue("@ContentType", contentType);
+                                cmd.Parameters.AddWithValue("@FileData", bytes);
+                            }
+
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
 
                 lblMessage.ForeColor = System.Drawing.Color.Green;
-                lblMessage.Text = "Syllabus uploaded successfully.";
+                lblMessage.Text = "Syllabus saved successfully.";
 
                 BindData();
             }
             catch (Exception ex)
             {
-                lblMessage.Text = "Upload failed: " + ex.Message;
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Text = "Save failed: " + ex.Message;
             }
         }
 
@@ -161,7 +244,7 @@ namespace Learning_System.Bit_Admin
 
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                // Clears file fields only — keeps Credit/Hours/TopicCount metadata intact
+                // Clears file fields only — keeps SubjectCode/CreditScore/TotalHours metadata intact
                 string query = "UPDATE Syllabus SET FileName = NULL, ContentType = NULL, FileData = NULL, UploadedDate = NULL WHERE Id = @Id";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {

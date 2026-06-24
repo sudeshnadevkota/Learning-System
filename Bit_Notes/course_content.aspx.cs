@@ -30,13 +30,12 @@ namespace Learning_System.Bit_Notes
         {
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string sql = @"SELECT DisplayCode,
-              Credit,
-              Hours,
-              TopicCount,
+                string sql = @"SELECT SubjectCode,
+              CreditScore,
+              TotalHours,
               FileName
        FROM Syllabus
-       WHERE SubjectCode = @Code";
+       WHERE SubjectName = @Code";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.Parameters.AddWithValue("@Code", code);
@@ -47,12 +46,11 @@ namespace Learning_System.Bit_Notes
                         {
                             litTitle.Text = fallbackTitle;
 
-                            litDisplayCode.Text = sdr["DisplayCode"].ToString();
-                            litCredits.Text = sdr["Credit"].ToString();
-                            litHours.Text = sdr["Hours"].ToString() + "h";
-                            litTopics.Text = sdr["TopicCount"].ToString();
+                            litDisplayCode.Text = sdr["SubjectCode"].ToString();
+                            litCredits.Text = sdr["CreditScore"].ToString();
+                            litHours.Text = sdr["TotalHours"].ToString() + "h";
 
-                            litSylTitle.Text = sdr["DisplayCode"].ToString() + " Syllabus";
+                            litSylTitle.Text = sdr["SubjectCode"].ToString() + " Syllabus";
 
                             // NEW — point the iframe at the streaming handler, only if a file actually exists
                             if (sdr["FileName"] != DBNull.Value)
@@ -67,7 +65,6 @@ namespace Learning_System.Bit_Notes
                             litDisplayCode.Text = "-";
                             litCredits.Text = "-";
                             litHours.Text = "-";
-                            litTopics.Text = "-";
                         }
                     }
                 }

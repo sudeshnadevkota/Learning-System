@@ -28,7 +28,7 @@ namespace Learning_System.Bit_Notes
 
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string sql = "SELECT FileName, ContentType, FileData FROM Syllabus WHERE SubjectCode = @Code";
+                string sql = "SELECT FileName, ContentType, FileData FROM Syllabus WHERE SubjectName = @Code";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.Parameters.AddWithValue("@Code", code);
