@@ -29,8 +29,6 @@ namespace Learning_System
                 { "OOP", new SubjectInfo { Table = "bit_2_OOP", Title = "Object Oriented Programming" } },
                 { "OS", new SubjectInfo { Table = "bit_2_OS", Title = "Operating System" } },
 
-
-
                 //3rd semester subjects
                 { "DELD", new SubjectInfo { Table = "bit_3_DELD", Title = "Digital Electronics and Logic Design " } },
                 { "DSA", new SubjectInfo { Table = "bit_3_DSA", Title = "Data Structure & Algorithm " } },
@@ -38,8 +36,6 @@ namespace Learning_System
                 { "WT", new SubjectInfo { Table = "bit_3_WT", Title = "Web Technology" } },
                 { "LA", new SubjectInfo { Table = "bit_3_LA", Title = "Linux Administration" } },
                 { "DMS", new SubjectInfo { Table = "bit_3_DMS", Title = "Database Management System" } },
-
-
 
             };
     }
