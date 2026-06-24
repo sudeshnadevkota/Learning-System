@@ -96,7 +96,7 @@
             <asp:TemplateField HeaderText="Type">
     <ItemTemplate>
         <span class="type-badge">
-            <%# Eval("FileCategory") %>
+            <%# Eval("FileType") %>
         </span>
     </ItemTemplate>
 </asp:TemplateField>

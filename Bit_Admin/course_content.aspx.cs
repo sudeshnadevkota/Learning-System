@@ -66,7 +66,10 @@ namespace Learning_System.Bit_Admin
                             cmd.Parameters.AddWithValue("@ContentType", FileUpload1.PostedFile.ContentType);
                             cmd.Parameters.AddWithValue("@Data", bytes);
                             cmd.Parameters.AddWithValue("@FileCategory", ddlFileType.SelectedItem.Text);
-                            cmd.Parameters.AddWithValue("@FileType", needsDestination ? ddlContentType.SelectedValue : "N/A");
+                            cmd.Parameters.AddWithValue("@FileType",
+    needsDestination
+        ? ddlContentType.SelectedValue
+        : ddlFileType.SelectedItem.Text);
 
                             con.Open();
                             cmd.ExecuteNonQuery();
