@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Learning_System
 {
@@ -11,7 +12,7 @@ namespace Learning_System
         }
 
         public static readonly Dictionary<string, SubjectInfo> Subjects =
-            new Dictionary<string, SubjectInfo>
+    new Dictionary<string, SubjectInfo>(StringComparer.OrdinalIgnoreCase)
             {
                 { "BE", new SubjectInfo { Table = "bit_1_BE", Title = "Business English" } },
                 { "ICP", new SubjectInfo { Table = "bit_1_ICP", Title = "Introduction to C++ Programming" } },
@@ -28,7 +29,7 @@ namespace Learning_System
                 { "OOP", new SubjectInfo { Table = "bit_2_OOP", Title = "Object Oriented Programming" } },
                 { "OS", new SubjectInfo { Table = "bit_2_OS", Title = "Operating System" } },
 
-<<<<<<< Updated upstream
+
 
                 //3rd semester subjects
                 { "DELD", new SubjectInfo { Table = "bit_3_DELD", Title = "Digital Electronics and Logic Design " } },
@@ -37,16 +38,9 @@ namespace Learning_System
                 { "WT", new SubjectInfo { Table = "bit_3_WT", Title = "Web Technology" } },
                 { "LA", new SubjectInfo { Table = "bit_3_LA", Title = "Linux Administration" } },
                 { "DMS", new SubjectInfo { Table = "bit_3_DMS", Title = "Database Management System" } },
-=======
-                //3rd semester subjects
-                { "DELD", new SubjectInfo { Table = "bit_3_DELD", Title = "Digital Electronics and Logic Design " } },
-                { "DSA", new SubjectInfo { Table = "bit_3_DSA", Title = "Data Structure & Algorithm " } },
-                { "IM", new SubjectInfo { Table = "bit_3_IM", Title = "Industrial Management " } },
-                { "WT", new SubjectInfo { Table = "bit_3_WT", Title = "Web Technology" } },
-                { "LA", new SubjectInfo { Table = "bit_3_LA", Title = "Linux Administration" } },
-                { "DMS", new SubjectInfo { Table = "bit_3_DMS", Title = "Database Management System" } },
 
->>>>>>> Stashed changes
+
+
             };
     }
 }

@@ -30,8 +30,13 @@ namespace Learning_System.Bit_Notes
         {
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string sql = "SELECT Title, DisplayCode, Credits, TotalHours, TopicsCount, SyllabusPdfPath " +
-                             "FROM Syllabus WHERE Code = @Code";
+                string sql = @"SELECT DisplayCode,
+              Credit,
+              Hours,
+              TopicCount,
+              FileName
+       FROM Syllabus
+       WHERE SubjectCode = @Code";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.Parameters.AddWithValue("@Code", code);
@@ -40,13 +45,20 @@ namespace Learning_System.Bit_Notes
                     {
                         if (sdr.Read())
                         {
-                            litTitle.Text = sdr["Title"].ToString();
+                            litTitle.Text = fallbackTitle;
+
                             litDisplayCode.Text = sdr["DisplayCode"].ToString();
-                            litCredits.Text = sdr["Credits"].ToString();
-                            litHours.Text = sdr["TotalHours"].ToString() + "h";
-                            litTopics.Text = sdr["TopicsCount"].ToString();
-                            sylPdfFrame.Src = ResolveUrl("~" + sdr["SyllabusPdfPath"].ToString()) + "#toolbar=0";
+                            litCredits.Text = sdr["Credit"].ToString();
+                            litHours.Text = sdr["Hours"].ToString() + "h";
+                            litTopics.Text = sdr["TopicCount"].ToString();
+
                             litSylTitle.Text = sdr["DisplayCode"].ToString() + " Syllabus";
+
+                            // NEW — point the iframe at the streaming handler, only if a file actually exists
+                            if (sdr["FileName"] != DBNull.Value)
+                            {
+                                sylPdfFrame.Attributes["src"] = ResolveUrl("~/Bit_Notes/SyllabusViewer.ashx?code=" + code);
+                            }
                         }
                         else
                         {

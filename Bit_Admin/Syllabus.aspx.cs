@@ -1,20 +1,30 @@
 ﻿using System;
-using System.Data;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.IO;
+using System.Web;
 using System.Web.UI.WebControls;
 
 namespace Learning_System.Bit_Admin
 {
     public partial class syllabus : System.Web.UI.Page
     {
-        // Expose the subject title to the .aspx markup
-        public string PageTitleText { get; private set; }
+        string strcon = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+
+        protected string PageTitleText;
+        private string subject;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // ── Resolve subject display name (same mapping as course_content) ──
-            string subject = Request.QueryString["subject"] ?? "";
-            PageTitleText = ResolveSubjectName(subject);
+            subject = Request.QueryString["subject"];
+
+            if (string.IsNullOrEmpty(subject) || !SubjectMap.Subjects.ContainsKey(subject))
+            {
+                Response.Redirect("~/Bit_Admin/Default.aspx");
+                return;
+            }
+
+            PageTitleText = SubjectMap.Subjects[subject].Title;
 
             if (!IsPostBack)
             {
@@ -22,63 +32,72 @@ namespace Learning_System.Bit_Admin
             }
         }
 
-        // ── Populate the GridView ─────────────────────────────────────────────
         private void BindData()
         {
-            // TODO: Replace with your actual DB call filtered by subject + "Syllabus" type.
-            // Example pattern (mirrors course_content.aspx.cs):
-            //
-            // string subject = Request.QueryString["subject"] ?? "";
-            // DataTable dt = YourDataAccess.GetSyllabus(subject);
-            // GridView1.DataSource = dt;
-            // GridView1.DataBind();
+            using (SqlConnection con = new SqlConnection(strcon))
+            {
+                string query = "SELECT Id, DisplayCode, Credit, Hours, TopicCount, FileName " +
+                               "FROM Syllabus WHERE SubjectCode = @SubjectCode";
 
-            // Placeholder: bind empty table so GridView renders without error
-            DataTable dt = new DataTable();
-            dt.Columns.Add("id", typeof(int));
-            dt.Columns.Add("Name", typeof(string));
-            dt.Columns.Add("ContentType", typeof(string));
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@SubjectCode", subject);
+                    con.Open();
+                    GridView1.DataSource = cmd.ExecuteReader();
+                    GridView1.DataBind();
+                }
+            }
         }
 
-        // ── Submit button ─────────────────────────────────────────────────────
         protected void Button1_Click(object sender, EventArgs e)
         {
-            // Validate file selection
             if (!FileUpload1.HasFile)
             {
                 lblMessage.Text = "Please select a file to upload.";
                 return;
             }
 
-            string fileType = ddlFileType.SelectedValue;
-            string contentType = ddlContentType.SelectedValue;
-            string subject = Request.QueryString["subject"] ?? "";
-
-            // Fixed topic for syllabus entries
-            string topic = PageTitleText + " Syllabus";
-
             try
             {
-                // ── Save the file (adjust upload folder path as needed) ──
-                string uploadsFolder = Server.MapPath("~/Uploads/Syllabus/");
-                if (!Directory.Exists(uploadsFolder))
-                    Directory.CreateDirectory(uploadsFolder);
+                byte[] bytes;
+                using (BinaryReader br = new BinaryReader(FileUpload1.PostedFile.InputStream))
+                {
+                    bytes = br.ReadBytes(FileUpload1.PostedFile.ContentLength);
+                }
 
-                string safeFileName = topic.Replace(" ", "_") +
-                                      "_" + DateTimeOffset.UtcNow.ToUnixTimeSeconds() +
-                                      Path.GetExtension(FileUpload1.FileName);
+                using (SqlConnection con = new SqlConnection(strcon))
+                {
+                    con.Open();
 
-                string savePath = Path.Combine(uploadsFolder, safeFileName);
-                FileUpload1.SaveAs(savePath);
+                    // The metadata row (DisplayCode/Credit/Hours/TopicCount) must already exist.
+                    string checkQuery = "SELECT COUNT(*) FROM Syllabus WHERE SubjectCode = @SubjectCode";
+                    int count;
+                    using (SqlCommand checkCmd = new SqlCommand(checkQuery, con))
+                    {
+                        checkCmd.Parameters.AddWithValue("@SubjectCode", subject);
+                        count = (int)checkCmd.ExecuteScalar();
+                    }
 
-                // ── Persist to DB (replace with your actual data-access call) ──
-                // Example:
-                // YourDataAccess.InsertContent(
-                //     topic, safeFileName, FileUpload1.PostedFile.ContentType, subject, contentType);
+                    if (count == 0)
+                    {
+                        lblMessage.Text = "No syllabus record exists yet for " + PageTitleText +
+                                           ". Add a row with Credit/Hours/TopicCount to the Syllabus table first.";
+                        return;
+                    }
 
-                lblMessage.Text = "";
+                    string updateQuery = "UPDATE Syllabus SET FileName = @FileName, ContentType = @ContentType, " +
+                                          "FileData = @FileData, UploadedDate = GETDATE() WHERE SubjectCode = @SubjectCode";
+
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@FileName", Path.GetFileName(FileUpload1.PostedFile.FileName));
+                        cmd.Parameters.AddWithValue("@ContentType", FileUpload1.PostedFile.ContentType);
+                        cmd.Parameters.AddWithValue("@FileData", bytes);
+                        cmd.Parameters.AddWithValue("@SubjectCode", subject);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
                 lblMessage.ForeColor = System.Drawing.Color.Green;
                 lblMessage.Text = "Syllabus uploaded successfully.";
 
@@ -90,46 +109,69 @@ namespace Learning_System.Bit_Admin
             }
         }
 
-        // ── GridView Delete ───────────────────────────────────────────────────
+        protected void lnkDownload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(((LinkButton)sender).CommandArgument);
+
+                using (SqlConnection con = new SqlConnection(strcon))
+                {
+                    string query = "SELECT FileName, ContentType, FileData FROM Syllabus WHERE Id = @Id";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", id);
+                        con.Open();
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                if (dr["FileData"] == DBNull.Value)
+                                {
+                                    lblMessage.Text = "No file has been uploaded for this subject yet.";
+                                    return;
+                                }
+
+                                byte[] bytes = (byte[])dr["FileData"];
+                                Response.Clear();
+                                Response.ContentType = dr["ContentType"].ToString();
+                                Response.AddHeader("content-disposition", "attachment;filename=\"" + dr["FileName"].ToString() + "\"");
+                                Response.BinaryWrite(bytes);
+                                Response.Flush();
+                                HttpContext.Current.ApplicationInstance.CompleteRequest();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (System.Threading.ThreadAbortException)
+            {
+                // Expected when calling CompleteRequest()
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = "Download failed: " + ex.Message;
+            }
+        }
+
         protected void GridView1_RowDeleting1(object sender, GridViewDeleteEventArgs e)
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
 
-            // TODO: YourDataAccess.DeleteContent(id);
-
-            BindData();
-        }
-
-        // ── GridView Edit ─────────────────────────────────────────────────────
-        protected void GridView1_RowEditing1(object sender, GridViewEditEventArgs e)
-        {
-            GridView1.EditIndex = e.NewEditIndex;
-            BindData();
-        }
-
-        // ── Download link ─────────────────────────────────────────────────────
-        protected void lnkDownload_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int id = Convert.ToInt32(btn.CommandArgument);
-
-            // TODO: retrieve file path by id and stream it:
-            // string filePath = YourDataAccess.GetFilePath(id);
-            // Response.TransmitFile(Server.MapPath(filePath));
-            // Response.End();
-        }
-
-        // ── Helper: subject code → display name ──────────────────────────────
-        private static string ResolveSubjectName(string code)
-        {
-            switch (code?.ToUpperInvariant())
+            using (SqlConnection con = new SqlConnection(strcon))
             {
-                case "BE": return "Business English";
-                case "MATH": return "Mathematics I";
-                case "IT": return "Introduction to IT";
-                // Add more mappings to match your course_content page
-                default: return string.IsNullOrWhiteSpace(code) ? "Subject" : code;
+                // Clears file fields only — keeps Credit/Hours/TopicCount metadata intact
+                string query = "UPDATE Syllabus SET FileName = NULL, ContentType = NULL, FileData = NULL, UploadedDate = NULL WHERE Id = @Id";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
             }
+
+            BindData();
         }
     }
 }
