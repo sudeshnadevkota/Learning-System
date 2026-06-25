@@ -397,6 +397,7 @@
     <Content Include="Bit_Admin\CloudComputing.aspx" />
     <Content Include="Bit_Admin\cloud_computing.aspx" />
     <Content Include="Bit_Admin\complier_and_design_constructions.aspx" />
+    <Content Include="Bit_Admin\NoticeManage.aspx" />
     <Content Include="Bit_Admin\Principles_of_Information_Technology.aspx" />
     <Content Include="Bit_Admin\cyber_security_law_and_policy.aspx" />
     <Content Include="Bit_Admin\cyptography.aspx" />
@@ -462,6 +463,8 @@
     <Content Include="Bit_Notes\ManagementInformationSystem.aspx" />
     <Content Include="Bit_Notes\mobile_computing.aspx" />
     <Content Include="Bit_Notes\multimedia_system.aspx" />
+    <Content Include="Bit_Notes\Notices.aspx" />
+    <Content Include="Bit_Notes\NoticeWidget.ascx" />
     <Content Include="Bit_Notes\operating_system.aspx" />
     <Content Include="Bit_Notes\project_work.aspx" />
     <Content Include="Bit_Notes\real_time_system.aspx" />
@@ -1242,6 +1245,7 @@
     <Content Include="Bit_Notes\Syllabus\PIT_Syllabus.pdf" />
     <Content Include="Bit_Notes\Syllabus\Math_Syllabus.pdf" />
     <Content Include="Bit_Notes\SyllabusViewer.ashx" />
+    <Content Include="Bit_Notes\NoticeViewer.ashx" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <None Include="Scripts\jquery-3.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
@@ -3313,6 +3317,13 @@
     <Compile Include="Bit_Admin\complier_and_design_constructions.aspx.designer.cs">
       <DependentUpon>complier_and_design_constructions.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Bit_Admin\NoticeManage.aspx.cs">
+      <DependentUpon>NoticeManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bit_Admin\NoticeManage.aspx.designer.cs">
+      <DependentUpon>NoticeManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bit_Admin\Principles_of_Information_Technology.aspx.cs">
       <DependentUpon>Principles_of_Information_Technology.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3753,6 +3764,21 @@
     </Compile>
     <Compile Include="Bit_Notes\note.Master.designer.cs">
       <DependentUpon>note.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Bit_Notes\NoticeRoles.cs" />
+    <Compile Include="Bit_Notes\Notices.aspx.cs">
+      <DependentUpon>Notices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bit_Notes\Notices.aspx.designer.cs">
+      <DependentUpon>Notices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bit_Notes\NoticeWidget.ascx.cs">
+      <DependentUpon>NoticeWidget.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bit_Notes\NoticeWidget.ascx.designer.cs">
+      <DependentUpon>NoticeWidget.ascx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Notes\operating_system.aspx.cs">
       <DependentUpon>operating_system.aspx</DependentUpon>
