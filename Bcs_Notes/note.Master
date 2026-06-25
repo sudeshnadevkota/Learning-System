@@ -247,13 +247,13 @@
                             <span class="submenu-toggle">First Sem <i class="fas fa-caret-down first"></i></span>
                         </a>
                         <div id="first-submenu" class="submenu">
-                            <ul>
-                                <li><a href="english.aspx">English</a></li>
-                                <li><a href="computer_network.aspx">Computer Network</a></li>
-                                <li><a href="discrete_math.aspx">Discrete Mathematics and Probability</a></li>
-                                <li><a href="computer_system.aspx">Computer System</a></li>
-                                <li><a href="principle_of_programming.aspx">Principle of Programming</a></li>
-                            </ul>
+                           <ul>
+                          <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_ENG">English</a></li>
+                         <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_CN">Computer Network</a></li>
+                        <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_POP">Principle of Programming</a></li>
+                        <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_DMP">Discrete Mathematics and Probability</a></li>
+                        <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_CS">Computer Systems</a></li>
+                        </ul>
                         </div>
                     </li>
 
@@ -263,12 +263,12 @@
                         </a>
                         <div id="second-submenu" class="submenu">
                             <ul>
-                                <li><a href="computer_ethics.aspx">Computer Ethics</a></li>
-                                <li><a href="data_communication_networking.aspx">Data Communication & Networking</a></li>
-                                <li><a href="system_analysis_and_design.aspx">Object Oriented Programming</a></li>
-                                <li><a href="Python.aspx">Computer Organization</a></li>
-                                <li><a href="operating_system.aspx">Operating System</a></li>
-                            </ul>
+                                  <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_CE">Computer Ethics</a></li>
+                                  <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_DCN">Data Communication & Networking</a></li>
+                                 <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_OOP">Object Oriented Programming</a></li>
+                                <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_OS">Operating Systems</a></li>
+                               <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_CO">Computer Organization</a></li>
+                          </ul>
                         </div>
                     </li>
 
@@ -278,11 +278,12 @@
                         </a>
                         <div id="third-submenu" class="submenu">
                             <ul>
-                                <li><a href="digital_logic.aspx">Software Engineering Fundamentals</a></li>
-                                <li><a href="windows_server_2016.aspx">Human Computer Interaction</a></li>
-                                <li><a href="cyber_security_law_and_policy.aspx">Applied Statistics</a></li>
-                                <li><a href="e_commerce.aspx">Microsoft Windows Server Administration</a></li>
-                                <li><a href="system_analysis_and_design.aspx">Cyber Security Leagal Issues & Policy Analysis</a></li>
+                                    <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_SEF">Software Engineering Fundamentals</a></li>
+                                   <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_HCI">Human Computer Interaction</a></li>
+                                  <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_AS">Applied Statistics</a></li>
+                                  <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_MWSA">Microsoft Windows Server Administration</a></li>
+                                 <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_CSLPA">Cyber Security Legal Issues & Policy Analysis</a></li>
+                                 <li><a href="/Bcs_Notes/course_content.aspx?code=BCS_CCNA">Cisco Certified Network Associate</a></li>
                             </ul>
                         </div>
                     </li>

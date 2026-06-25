@@ -225,9 +225,11 @@
     <Content Include="Bcs_Admin\advance_switching_tech_and_troubleshoot.aspx" />
     <Content Include="Bcs_Admin\AI.aspx" />
     <Content Include="Bcs_Admin\basic_computer_architecture.aspx" />
+    <Content Include="Bcs_Admin\bulk_upload.aspx" />
     <Content Include="Bcs_Admin\business_english.aspx" />
     <Content Include="Bcs_Admin\CluodComputing.aspx" />
     <Content Include="Bcs_Admin\computer_network.aspx" />
+    <Content Include="Bcs_Admin\course_content.aspx" />
     <Content Include="Bcs_Admin\cryptography.aspx" />
     <Content Include="Bcs_Admin\cyber_security_law_and_policy.aspx" />
     <Content Include="Bcs_Admin\cyber_security_law_and_policy_2.aspx" />
@@ -258,6 +260,7 @@
     <Content Include="Bcs_Admin\Python.aspx" />
     <Content Include="Bcs_Admin\security_in_computing.aspx" />
     <Content Include="Bcs_Admin\SoftwareProjectManagement.aspx" />
+    <Content Include="Bcs_Admin\Syllabus.aspx" />
     <Content Include="Bcs_Admin\system_analysis_and_design.aspx" />
     <Content Include="Bcs_Admin\system_software_administration.aspx" />
     <Content Include="Bcs_Admin\Technopreneurship.aspx" />
@@ -265,6 +268,8 @@
     <Content Include="Bcs_Admin\windows_server_2016.aspx" />
     <Content Include="Bcs_Admin\wireless_communications.aspx" />
     <Content Include="Bcs_Notes\advance_computer_architecture.aspx" />
+    <Content Include="Bcs_Notes\course_content.aspx" />
+    <Content Include="Bcs_Notes\Css\note.css" />
     <Content Include="Bcs_Notes\data_communication_networking.aspx" />
     <Content Include="Bcs_Notes\advance_database_management_system.aspx" />
     <Content Include="Bcs_Notes\advance_routing_technology%28WAN%29.aspx" />
@@ -2123,6 +2128,13 @@
     <Compile Include="Bcs_Admin\basic_computer_architecture.aspx.designer.cs">
       <DependentUpon>basic_computer_architecture.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Bcs_Admin\bulk_upload.aspx.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bcs_Admin\bulk_upload.aspx.designer.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bcs_Admin\business_english.aspx.cs">
       <DependentUpon>business_english.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2143,6 +2155,13 @@
     </Compile>
     <Compile Include="Bcs_Admin\computer_network.aspx.designer.cs">
       <DependentUpon>computer_network.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bcs_Admin\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bcs_Admin\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Admin\cryptography.aspx.cs">
       <DependentUpon>cryptography.aspx</DependentUpon>
@@ -2347,6 +2366,13 @@
     <Compile Include="Bcs_Admin\SoftwareProjectManagement.aspx.designer.cs">
       <DependentUpon>SoftwareProjectManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Bcs_Admin\Syllabus.aspx.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bcs_Admin\Syllabus.aspx.designer.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bcs_Admin\system_analysis_and_design.aspx.cs">
       <DependentUpon>system_analysis_and_design.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2402,6 +2428,13 @@
     </Compile>
     <Compile Include="Bcs_Notes\advance_computer_architecture.aspx.designer.cs">
       <DependentUpon>advance_computer_architecture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bcs_Notes\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bcs_Notes\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\data_communication_networking.aspx.cs">
       <DependentUpon>data_communication_networking.aspx</DependentUpon>
@@ -2466,6 +2499,7 @@
     <Compile Include="Bcs_Notes\computer_network.aspx.designer.cs">
       <DependentUpon>computer_network.aspx</DependentUpon>
     </Compile>
+    <None Include="Bcs_Notes\SyllabusViewer.ashx" />
     <Compile Include="Bcs_Notes\principle_of_programming.aspx.cs">
       <DependentUpon>principle_of_programming.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
