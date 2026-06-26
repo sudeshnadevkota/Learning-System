@@ -37,6 +37,30 @@ namespace Learning_System
                 { "LA", new SubjectInfo { Table = "bit_3_LA", Title = "Linux Administration" } },
                 { "DMS", new SubjectInfo { Table = "bit_3_DMS", Title = "Database Management System" } },
 
+                //BCS 
+                //1st semester subjects
+               // BCS - 1st Semester
+               { "BCS_ENG", new SubjectInfo { Table = "bcs_1_ENG", Title = "English" } },
+               { "BCS_CN", new SubjectInfo { Table = "bcs_1_CN", Title = "Computer Network" } },
+               { "BCS_POP", new SubjectInfo { Table = "bcs_1_POP", Title = "Principle of Programming" } },
+               { "BCS_DMP", new SubjectInfo { Table = "bcs_1_DMP", Title = "Discrete Mathematics and Probability" } },
+                { "BCS_CS", new SubjectInfo { Table = "bcs_1_CS", Title = "Computer Systems" } },
+ 
+               // BCS - 2nd Semester
+               { "BCS_CE", new SubjectInfo { Table = "bcs_2_CE", Title = "Computer Ethics" } },
+               { "BCS_DCN", new SubjectInfo { Table = "bcs_2_DCN", Title = "Data Communication & Networking" } },
+               { "BCS_OOP", new SubjectInfo { Table = "bcs_2_OOP", Title = "Object Oriented Programming" } },
+               { "BCS_OS", new SubjectInfo { Table = "bcs_2_OS", Title = "Operating Systems" } },
+               { "BCS_CO", new SubjectInfo { Table = "bcs_2_CO", Title = "Computer Organization" } },
+
+               // BCS - 3rd Semester
+              { "BCS_SEF", new SubjectInfo { Table = "bcs_3_SEF", Title = "Software Engineering Fundamentals" } },
+              { "BCS_HCI", new SubjectInfo { Table = "bcs_3_HCI", Title = "Human Computer Interaction" } },
+              { "BCS_AS", new SubjectInfo { Table = "bcs_3_AS", Title = "Applied Statistics" } },
+              { "BCS_MWSA", new SubjectInfo { Table = "bcs_3_MWSA", Title = "Microsoft Windows Server Administration" } },
+              { "BCS_CSLPA", new SubjectInfo { Table = "bcs_3_CSLPA", Title = "Cyber Security Legal Issues & Policy Analysis" } },
+              { "BCS_CCNA", new SubjectInfo { Table = "bcs_3_CCNA", Title = "Cisco Certified Network Associate" } },
+
             };
     }
 }

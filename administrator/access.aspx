@@ -18,7 +18,7 @@
                 <asp:BoundField DataField="contact" HeaderText="Contact" SortExpression="contact" />
                 <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username" />
                 <asp:BoundField DataField="status" HeaderText="Status" SortExpression="status" />
-                <asp:BoundField
+             
                 <asp:TemplateField HeaderText="Role">
                     <ItemTemplate>
                         <%# Eval("role") %>
