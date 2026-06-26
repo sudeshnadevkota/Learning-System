@@ -93,7 +93,7 @@
                         <ul class="navbar-nav mx-auto align-items-center">
                             <li class="nav-item"><a href="https://texasattendance.com/Admin/Dashboard.aspx" class="nav-link">Attendance</a></li>
                             <li class="nav-item"><a href="https://tcmitlearn.com/Login.aspx" class="nav-link">Certificate</a></li>
-                            <li class="nav-item"><a href="/" class="nav-link">Leave</a></li>
+                            <li class="nav-item"><a href="/" class="nav-link">V-Card</a></li>
                             <li class="nav-item"><a href="https://texasjobportal.com/default.aspx" class="nav-link">Jobs</a></li>
                             <li class="nav-item"><a href="/" class="nav-link">Notice Board</a></li>
                         </ul>

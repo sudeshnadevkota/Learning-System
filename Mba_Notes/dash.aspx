@@ -1259,18 +1259,18 @@
 </main>
 
 <script>
-const semesterData = [
-    { label: "First Sem", icon: "1️⃣", subjects: ["Managerial Economics", "Organizational Behavior", "Business Research Methods", "Financial Accounting", "Management Concepts"] },
-    { label: "Second Sem", icon: "2️⃣", subjects: ["Financial Management", "Marketing Management", "Strategic HRM", "Operations Management", "Business Statistics"] },
-    { label: "Third Sem", icon: "3️⃣", subjects: ["Strategic Management", "International Business", "Entrepreneurship & Innovation", "Corporate Governance", "Elective I"] },
-    { label: "Fourth Sem", icon: "4️⃣", subjects: ["MBA Dissertation", "Industry Internship", "Elective II", "Elective III"] },
-];
+    const semesterData = [
+        { label: "First Sem", icon: "1️⃣", subjects: ["Managerial Economics", "Organizational Behavior", "Business Research Methods", "Financial Accounting", "Management Concepts"] },
+        { label: "Second Sem", icon: "2️⃣", subjects: ["Financial Management", "Marketing Management", "Strategic HRM", "Operations Management", "Business Statistics"] },
+        { label: "Third Sem", icon: "3️⃣", subjects: ["Strategic Management", "International Business", "Entrepreneurship & Innovation", "Corporate Governance", "Elective I"] },
+        { label: "Fourth Sem", icon: "4️⃣", subjects: ["MBA Dissertation", "Industry Internship", "Elective II", "Elective III"] },
+    ];
 
-const menu = document.getElementById('semMenu');
-semesterData.forEach((sem, i) => {
-    const el = document.createElement('div');
-    el.className = 'sem-item' + (i === 0 ? ' open' : '');
-    el.innerHTML = `
+    const menu = document.getElementById('semMenu');
+    semesterData.forEach((sem, i) => {
+        const el = document.createElement('div');
+        el.className = 'sem-item' + (i === 0 ? ' open' : '');
+        el.innerHTML = `
       <div class="sem-header${i === 0 ? ' active' : ''}" onclick="toggleSem(this)">
         <div class="sem-icon">${sem.icon}</div>
         <span class="sem-label">${sem.label}</span>
@@ -1279,27 +1279,27 @@ semesterData.forEach((sem, i) => {
       <div class="sem-subjects">
         ${sem.subjects.map((s, j) => `<div class="subject-link${i === 0 && j === 0 ? ' active' : ''}" onclick="pickSubject(this)"><div class="subject-dot"></div>${s}</div>`).join('')}
       </div>`;
-    menu?.appendChild(el);
-});
+        menu?.appendChild(el);
+    });
 
-function toggleSem(el) {
-    el.parentElement.classList.toggle('open');
-}
+    function toggleSem(el) {
+        el.parentElement.classList.toggle('open');
+    }
 
-function pickSubject(el) {
-    document.querySelectorAll('.subject-link').forEach(l => l.classList.remove('active'));
-    el.classList.add('active');
-    if (window.innerWidth < 900) closeSidebar();
-}
+    function pickSubject(el) {
+        document.querySelectorAll('.subject-link').forEach(l => l.classList.remove('active'));
+        el.classList.add('active');
+        if (window.innerWidth < 900) closeSidebar();
+    }
 
-function scrollToCourses() {
-    document.getElementById('coursesSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+    function scrollToCourses() {
+        document.getElementById('coursesSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
-function closeSidebar() {
-    document.getElementById('sidebar')?.classList.remove('open');
-    document.getElementById('overlay')?.classList.remove('show');
-}
+    function closeSidebar() {
+        document.getElementById('sidebar')?.classList.remove('open');
+        document.getElementById('overlay')?.classList.remove('show');
+    }
 </script>
 
 </asp:Content>

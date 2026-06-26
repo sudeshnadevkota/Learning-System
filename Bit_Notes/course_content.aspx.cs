@@ -30,8 +30,12 @@ namespace Learning_System.Bit_Notes
         {
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string sql = "SELECT Title, DisplayCode, Credits, TotalHours, TopicsCount, SyllabusPdfPath " +
-                             "FROM Syllabus WHERE Code = @Code";
+                string sql = @"SELECT SubjectCode,
+              CreditScore,
+              TotalHours,
+              FileName
+       FROM Syllabus
+       WHERE SubjectName = @Code";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.Parameters.AddWithValue("@Code", code);
@@ -40,13 +44,19 @@ namespace Learning_System.Bit_Notes
                     {
                         if (sdr.Read())
                         {
-                            litTitle.Text = sdr["Title"].ToString();
-                            litDisplayCode.Text = sdr["DisplayCode"].ToString();
-                            litCredits.Text = sdr["Credits"].ToString();
+                            litTitle.Text = fallbackTitle;
+
+                            litDisplayCode.Text = sdr["SubjectCode"].ToString();
+                            litCredits.Text = sdr["CreditScore"].ToString();
                             litHours.Text = sdr["TotalHours"].ToString() + "h";
-                            litTopics.Text = sdr["TopicsCount"].ToString();
-                            sylPdfFrame.Src = ResolveUrl("~" + sdr["SyllabusPdfPath"].ToString()) + "#toolbar=0";
-                            litSylTitle.Text = sdr["DisplayCode"].ToString() + " Syllabus";
+
+                            litSylTitle.Text = sdr["SubjectCode"].ToString() + " Syllabus";
+
+                            // NEW — point the iframe at the streaming handler, only if a file actually exists
+                            if (sdr["FileName"] != DBNull.Value)
+                            {
+                                sylPdfFrame.Attributes["src"] = ResolveUrl("~/Bit_Notes/SyllabusViewer.ashx?code=" + code);
+                            }
                         }
                         else
                         {
@@ -55,7 +65,6 @@ namespace Learning_System.Bit_Notes
                             litDisplayCode.Text = "-";
                             litCredits.Text = "-";
                             litHours.Text = "-";
-                            litTopics.Text = "-";
                         }
                     }
                 }

@@ -252,7 +252,7 @@
                 <h5 class="card-title text-center">BBA</h5>
                 <a href="Bba_Notes/dash.aspx" class="btn btn-secondary mb-2">Study Materials</a>
             </div>
-                <div class="nima-card card">
+            <div class="nima-card card">
                 <img src="slide/BHM.png" class="card-img-top" />
                 <h5 class="card-title text-center">BHM</h5>
                 <a href="Bhm_Notes/dash.aspx" class="btn btn-secondary mb-2">Study Materials</a>

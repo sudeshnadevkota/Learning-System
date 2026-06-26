@@ -73,6 +73,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -388,6 +389,7 @@
     <Content Include="Bhm_Notes\revenue_management.aspx" />
     <Content Include="Bhm_Notes\statistics.aspx" />
     <Content Include="Bhm_Notes\tourist_behavioral_science.aspx" />
+    <Content Include="Bit_Admin\bulk_upload.aspx" />
     <Content Include="Bit_Admin\Data_Communication_and_Networks.aspx" />
     <Content Include="Bit_Admin\AI.aspx" />
     <Content Include="Bit_Admin\basic_computer_architecture.aspx" />
@@ -429,6 +431,7 @@
     <Content Include="Bit_Admin\system_analysis_and_design.aspx" />
     <Content Include="Bit_Admin\tcp_ip.aspx" />
     <Content Include="Bit_Admin\Technopreneurship.aspx" />
+    <Content Include="Bit_Admin\Syllabus.aspx" />
     <Content Include="Bit_Admin\web_technology%28Python%29.aspx" />
     <Content Include="Bit_Admin\wml_and_wap_programming.aspx" />
     <Content Include="Bit_Notes\advance_computer_network.aspx" />
@@ -1238,6 +1241,7 @@
     <Content Include="Bit_Notes\Syllabus\ICP_Syllabus.pdf" />
     <Content Include="Bit_Notes\Syllabus\PIT_Syllabus.pdf" />
     <Content Include="Bit_Notes\Syllabus\Math_Syllabus.pdf" />
+    <Content Include="Bit_Notes\SyllabusViewer.ashx" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <None Include="Scripts\jquery-3.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
@@ -3253,6 +3257,13 @@
     <Compile Include="Bhm_Notes\tourist_behavioral_science.aspx.designer.cs">
       <DependentUpon>tourist_behavioral_science.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Bit_Admin\bulk_upload.aspx.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bit_Admin\bulk_upload.aspx.designer.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bit_Admin\Data_Communication_and_Networks.aspx.cs">
       <DependentUpon>Data_Communication_and_Networks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3539,6 +3550,13 @@
     </Compile>
     <Compile Include="Bit_Admin\upload.Master.designer.cs">
       <DependentUpon>upload.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Bit_Admin\Syllabus.aspx.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bit_Admin\Syllabus.aspx.designer.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\web_technology%28Python%29.aspx.cs">
       <DependentUpon>web_technology%28Python%29.aspx</DependentUpon>

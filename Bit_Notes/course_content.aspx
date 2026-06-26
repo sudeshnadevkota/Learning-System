@@ -21,7 +21,6 @@
         <h1 class="hero-title hero-title-inline"><asp:Literal ID="litTitle" runat="server" /></h1>
 <div class="hero-stats hero-stats-inline">
   <div class="stat-item"><span class="stat-val"><asp:Literal ID="litDisplayCode" runat="server" /></span><span class="stat-lbl">Course Code</span></div>
-  <div class="stat-item"><span class="stat-val"><asp:Literal ID="litTopics" runat="server" /></span><span class="stat-lbl">Topics</span></div>
   <div class="stat-item"><span class="stat-val"><asp:Literal ID="litCredits" runat="server" /></span><span class="stat-lbl">Credits</span></div>
   <div class="stat-item"><span class="stat-val"><asp:Literal ID="litHours" runat="server" /></span><span class="stat-lbl">Total hrs</span></div>
 </div>
@@ -97,7 +96,7 @@
             <asp:TemplateField HeaderText="Type">
     <ItemTemplate>
         <span class="type-badge">
-            <%# Eval("FileCategory") %>
+            <%# Eval("FileType") %>
         </span>
     </ItemTemplate>
 </asp:TemplateField>
