@@ -7,39 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Learning_System.Bit_Admin
+namespace Learning_System.Mba_Admin
 {
 
 
-    public partial class Syllabus
+    public partial class bulk_upload
     {
 
         /// <summary>
-        /// txtSubjectCode control.
+        /// ddlFileType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSubjectCode;
-
-        /// <summary>
-        /// txtCreditScore control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreditScore;
-
-        /// <summary>
-        /// txtTotalHours control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotalHours;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFileType;
 
         /// <summary>
         /// FileUpload1 control.
@@ -49,6 +31,15 @@ namespace Learning_System.Bit_Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+
+        /// <summary>
+        /// ddlContentType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlContentType;
 
         /// <summary>
         /// lblMessage control.

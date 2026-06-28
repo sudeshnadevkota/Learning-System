@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Admin/upload.Master" AutoEventWireup="true" CodeBehind="Syllabus.aspx.cs" Inherits="Learning_System.Bit_Admin.Syllabus" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bhm_Admin/upload.Master" AutoEventWireup="true" CodeBehind="Syllabus.aspx.cs" Inherits="Learning_System.Bhm_Admin.Syllabus" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <style>
@@ -250,7 +249,7 @@
 
             // Credit Score -> Total Hours live auto-calculation
             var creditInput = document.getElementById('<%= txtCreditScore.ClientID %>');
-            var hoursInput  = document.getElementById('<%= txtTotalHours.ClientID %>');
+            var hoursInput = document.getElementById('<%= txtTotalHours.ClientID %>');
 
             function recalcHours() {
                 var credit = parseFloat(creditInput.value);
@@ -304,6 +303,6 @@
                 });
             }
         });
-    </script>
+</script>
 
 </asp:Content>

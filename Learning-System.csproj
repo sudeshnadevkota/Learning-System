@@ -322,6 +322,8 @@
     <Content Include="Bcs_Notes\wireless_communications.aspx" />
     <Content Include="Bhm_Admin\accounting_for_hospitality.aspx" />
     <Content Include="Bhm_Admin\beverage_study.aspx" />
+    <Content Include="Bhm_Admin\bulk_upload.aspx" />
+    <Content Include="Bhm_Admin\course_content.aspx" />
     <Content Include="Bhm_Admin\dash.aspx" />
     <Content Include="Bhm_Admin\english_for_academics.aspx" />
     <Content Include="Bhm_Admin\enterpreneurship.aspx" />
@@ -358,10 +360,13 @@
     <Content Include="Bhm_Admin\restaurant_business_operation.aspx" />
     <Content Include="Bhm_Admin\revenue_management.aspx" />
     <Content Include="Bhm_Admin\statistics.aspx" />
+    <Content Include="Bhm_Admin\Syllabus.aspx" />
     <Content Include="Bhm_Admin\tourist_behavioral_science.aspx" />
     <Content Include="Bhm_Notes\accounting_for_hospitality.aspx" />
     <Content Include="Bhm_Notes\beverage_study.aspx" />
     <Content Include="Bhm_Notes\bhmstyle.css" />
+    <Content Include="Bhm_Notes\course_content.aspx" />
+    <Content Include="Bhm_Notes\Css\note.css" />
     <Content Include="Bhm_Notes\dash.aspx" />
     <Content Include="Bhm_Notes\english_for_academics.aspx" />
     <Content Include="Bhm_Notes\entrepreneurship.aspx" />
@@ -515,6 +520,7 @@
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="Mba_Admin\banking_and_insurance.aspx" />
+    <Content Include="Mba_Admin\bulk_upload.aspx" />
     <Content Include="Mba_Admin\business_accounting_and_finance.aspx" />
     <Content Include="Mba_Admin\business_economics.aspx" />
     <Content Include="Mba_Admin\business_enviroment_analysis.aspx" />
@@ -522,6 +528,7 @@
     <Content Include="Mba_Admin\business_research_methodology.aspx" />
     <Content Include="Mba_Admin\conflict_management_and_negotiation_skills.aspx" />
     <Content Include="Mba_Admin\consumer_behaviour.aspx" />
+    <Content Include="Mba_Admin\course_content.aspx" />
     <Content Include="Mba_Admin\customer_relationship_management.aspx" />
     <Content Include="Mba_Admin\dash.aspx" />
     <Content Include="Mba_Admin\entrepreneurship_management.aspx" />
@@ -539,6 +546,7 @@
     <Content Include="Mba_Admin\retail_management.aspx" />
     <Content Include="Mba_Admin\sales_and_promotions_management.aspx" />
     <Content Include="Mba_Admin\strategic_management.aspx" />
+    <Content Include="Mba_Admin\Syllabus.aspx" />
     <Content Include="Mba_Notes\banking_and_insurance.aspx" />
     <Content Include="Mba_Notes\business_accounting_and_finance.aspx" />
     <Content Include="Mba_Notes\business_economics.aspx" />
@@ -547,6 +555,8 @@
     <Content Include="Mba_Notes\business_research_methodology.aspx" />
     <Content Include="Mba_Notes\conflict_management_and_negotiation_skills.aspx" />
     <Content Include="Mba_Notes\consumer_behaviour.aspx" />
+    <Content Include="Mba_Notes\course_content.aspx" />
+    <Content Include="Mba_Notes\Css\note.css" />
     <Content Include="Mba_Notes\customer_relationship_management.aspx" />
     <Content Include="Mba_Notes\dash.aspx" />
     <Content Include="Mba_Notes\entrepreneurship_management.aspx" />
@@ -1256,6 +1266,8 @@
     <Content Include="Bit_Notes\Syllabus\Math_Syllabus.pdf" />
     <Content Include="Bit_Notes\SyllabusViewer.ashx" />
     <Content Include="Bit_Notes\NoticeViewer.ashx" />
+    <Content Include="Bhm_Notes\SyllabusViewer.ashx" />
+    <Content Include="Mba_Notes\SyllabusViewer.ashx" />
     <Content Include="Bba_Notes\SyllabusViewer.ashx" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <None Include="Scripts\jquery-3.7.1-vsdoc.js" />
@@ -2797,6 +2809,20 @@
     <Compile Include="Bhm_Admin\beverage_study.aspx.designer.cs">
       <DependentUpon>beverage_study.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Bhm_Admin\bulk_upload.aspx.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bhm_Admin\bulk_upload.aspx.designer.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bhm_Admin\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bhm_Admin\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bhm_Admin\dash.aspx.cs">
       <DependentUpon>dash.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3042,6 +3068,13 @@
     <Compile Include="Bhm_Admin\statistics.aspx.designer.cs">
       <DependentUpon>statistics.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Bhm_Admin\Syllabus.aspx.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bhm_Admin\Syllabus.aspx.designer.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bhm_Admin\tourist_behavioral_science.aspx.cs">
       <DependentUpon>tourist_behavioral_science.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3069,6 +3102,13 @@
     </Compile>
     <Compile Include="Bhm_Notes\beverage_study.aspx.designer.cs">
       <DependentUpon>beverage_study.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bhm_Notes\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bhm_Notes\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bhm_Notes\dash.aspx.cs">
       <DependentUpon>dash.aspx</DependentUpon>
@@ -4006,6 +4046,13 @@
     <Compile Include="Mba_Admin\banking_and_insurance.aspx.designer.cs">
       <DependentUpon>banking_and_insurance.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mba_Admin\bulk_upload.aspx.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mba_Admin\bulk_upload.aspx.designer.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mba_Admin\business_accounting_and_finance.aspx.cs">
       <DependentUpon>business_accounting_and_finance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4054,6 +4101,13 @@
     </Compile>
     <Compile Include="Mba_Admin\consumer_behaviour.aspx.designer.cs">
       <DependentUpon>consumer_behaviour.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mba_Admin\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mba_Admin\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mba_Admin\customer_relationship_management.aspx.cs">
       <DependentUpon>customer_relationship_management.aspx</DependentUpon>
@@ -4167,6 +4221,13 @@
     <Compile Include="Mba_Admin\strategic_management.aspx.designer.cs">
       <DependentUpon>strategic_management.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mba_Admin\Syllabus.aspx.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mba_Admin\Syllabus.aspx.designer.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mba_Admin\upload.Master.cs">
       <DependentUpon>upload.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4229,6 +4290,13 @@
     </Compile>
     <Compile Include="Mba_Notes\consumer_behaviour.aspx.designer.cs">
       <DependentUpon>consumer_behaviour.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mba_Notes\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mba_Notes\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mba_Notes\customer_relationship_management.aspx.cs">
       <DependentUpon>customer_relationship_management.aspx</DependentUpon>

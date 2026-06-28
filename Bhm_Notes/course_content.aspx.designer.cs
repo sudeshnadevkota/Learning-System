@@ -7,74 +7,83 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Learning_System.Bit_Admin
+namespace Learning_System.Bhm_Notes
 {
 
 
-    public partial class Syllabus
+    public partial class course_content
     {
 
         /// <summary>
-        /// txtSubjectCode control.
+        /// litTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSubjectCode;
+        protected global::System.Web.UI.WebControls.Literal litTitle;
 
         /// <summary>
-        /// txtCreditScore control.
+        /// litDisplayCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreditScore;
+        protected global::System.Web.UI.WebControls.Literal litDisplayCode;
 
         /// <summary>
-        /// txtTotalHours control.
+        /// litCredits control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotalHours;
+        protected global::System.Web.UI.WebControls.Literal litCredits;
 
         /// <summary>
-        /// FileUpload1 control.
+        /// litHours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.Literal litHours;
 
         /// <summary>
-        /// lblMessage control.
+        /// GridViewNotes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
+        protected global::System.Web.UI.WebControls.GridView GridViewNotes;
 
         /// <summary>
-        /// Button1 control.
+        /// GridViewPapers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.GridView GridViewPapers;
 
         /// <summary>
-        /// GridView1 control.
+        /// litSylTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Literal litSylTitle;
+
+        /// <summary>
+        /// sylPdfFrame control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlIframe sylPdfFrame;
     }
 }

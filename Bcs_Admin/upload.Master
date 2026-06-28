@@ -198,12 +198,12 @@
                     StaticSelectedStyle-CssClass="nav-item" DynamicMenuStyle-CssClass="nav-item dropdown-menu" RenderingMode="List" role="menu" itemscope="itemscope"
                     Font-Bold="True" Font-Names="Corbel Light" Font-Size="Medium" ForeColor="White" StaticEnableDefaultPopOutImage="false">
 
-           
+
 
                     <DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
                     <DynamicSelectedStyle BackColor="#666666" />
                     <Items>
-                         <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Bcs_Admin/dash.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Bcs_Admin/dash.aspx"></asp:MenuItem>
                         <asp:MenuItem Text="1st Semester" Value="1st Semester">
                         <asp:MenuItem Text="Business English" Value="English" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=BCS_ENG"></asp:MenuItem>
                         <asp:MenuItem Text="Computer Network" Value="Computer Network" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CN"></asp:MenuItem>
@@ -228,7 +228,8 @@
              <asp:MenuItem Text="Digital Logic" Value="Applied Statistics" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=AS"></asp:MenuItem>
              <asp:MenuItem Text="Software Enigeering(including SAD Portion)" Value="Software Engineering Fundamentals" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=SEF"></asp:MenuItem>
              <asp:MenuItem Text="Cisco Certified Network Associate" Value="Cisco Certified Network Associate" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CCNA"></asp:MenuItem>
-           </asp:MenuItem>
+        
+                        </asp:MenuItem>
 
 
 

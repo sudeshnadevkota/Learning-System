@@ -86,6 +86,61 @@ namespace Learning_System
 
 
 
+              //BHM
+             // BHM - 1st Semester
+            { "BHM_FM", new SubjectInfo { Table = "bhm_1_FM", Title = "Fundamentals of Management" } },
+            { "BHM_FBM", new SubjectInfo { Table = "bhm_1_FBM", Title = "Food and Beverage Management" } },
+            { "BHM_FOK", new SubjectInfo { Table = "bhm_1_FOK", Title = "Fundamentals of Kitchen" } },
+            { "BHM_ENG_1", new SubjectInfo { Table = "bhm_1_EHG_1", Title = "English I" } },
+            { "BHM_IHTM", new SubjectInfo { Table = "bhm_1_IHTM", Title = "Introduction to Hospitality & Tourism Management" } },
+            { "BHM_FOM", new SubjectInfo { Table = "bhm_1_FOM", Title = "Front Office Management" } },
+            
+            // BHM - 2nd Semester
+            { "BHM_HKM", new SubjectInfo { Table = "bhm_2_HKM", Title = "Housekeeping Management" } },
+            { "BHM_HA", new SubjectInfo { Table = "bhm_2_HA", Title = "Hospitality Accounting" } },
+            { "BHM_HF", new SubjectInfo { Table = "bhm_2_HF", Title = "Hotel French" } },
+            { "BHM_ENG_2", new SubjectInfo { Table = "bhm_2_EHG_2", Title = "English II" } },
+            { "BHM_HHRM", new SubjectInfo { Table = "bhm_2_HHRM", Title = "Hospitality Human Resource Management" } },
+            { "BHM_FPO", new SubjectInfo { Table = "bhm_2_FPO", Title = "Food Production Operation" } },
+
+           // BHM - 3rd Semester,
+           { "BHM_HTD", new SubjectInfo { Table = "bhm_3_HTD", Title = "Hospitality Training & Development" } },
+           { "BHM_TT", new SubjectInfo { Table = "bhm_3_TT", Title = "Travel and Tour" } },
+           { "BHM_HSM", new SubjectInfo { Table = "bhm_3_HSM", Title = "Hospitality Service Management" } },
+           { "BHM_HM", new SubjectInfo { Table = "bhm_3_HM", Title = "Hospitality Marketing" } },
+           { "BHM_HRM", new SubjectInfo { Table = "bhm_3_HRM", Title = "Hospitality Revenue Management" } },
+           { "BHM_CSIH", new SubjectInfo { Table = "bhm_3_CSIH", Title = "Customer Service in Hospitality Industry" } },
+
+         //MBA 
+//1st Semester
+{ "ACC", new SubjectInfo { Table = "mba_1_ACC", Title = "Business Accounting & Finance" } },
+{ "ECO", new SubjectInfo { Table = "mba_1_ECO", Title = "Business Economics" } },
+{ "HRM", new SubjectInfo { Table = "mba_1_HRM", Title = "Human Resource Management" } },
+{ "MC", new SubjectInfo { Table = "mba_1_MC", Title = "Managerial Communications" } },
+{ "BEA", new SubjectInfo { Table = "mba_1_BEA", Title = "Business Environment Analysis" } },
+
+// 2nd Semester
+{ "RM", new SubjectInfo { Table = "mba_2_RM", Title = "Research Methodology" } },
+{ "OM", new SubjectInfo { Table = "mba_2_OM", Title = "Operation Management" } },
+{ "MM", new SubjectInfo { Table = "mba_2_MM", Title = "Marketing Management" } },
+{ "OB", new SubjectInfo { Table = "mba_2_OB", Title = "Organizational Behavior" } },
+
+// 3rd Semester
+{ "SM", new SubjectInfo { Table = "mba_3_SM", Title = "Strategic Management" } },
+{ "FM", new SubjectInfo { Table = "mba_3_FM", Title = "Financial Management" } },
+{ "EM", new SubjectInfo { Table = "mba_3_EM", Title = "Entrepreneurship Management" } },
+{ "SPM", new SubjectInfo { Table = "mba_3_SPM", Title = "Sales & Promotions Management" } },
+{ "IB", new SubjectInfo { Table = "mba_3_IB", Title = "International Business" } },
+{ "HRD", new SubjectInfo { Table = "mba_3_HRD", Title = "Human Resource Development & Leadership" } },
+
+// 4th Semester
+{ "BI", new SubjectInfo { Table = "mba_4_BI", Title = "Banking & Insurance" } },
+{ "CRM", new SubjectInfo { Table = "mba_4_CRM", Title = "Customer Relationship Management" } },
+{ "CMN", new SubjectInfo { Table = "mba_4_CMN", Title = "Conflict Management & Negotiation Skills" } },
+{ "MOD", new SubjectInfo { Table = "mba_4_MOD", Title = "Management of Data" } },
+{ "BEG", new SubjectInfo { Table = "mba_4_BEG", Title = "Business Ethics & Governance" } },
+{ "GRP", new SubjectInfo { Table = "mba_4_GRP", Title = "Graduate Research Project Paper" } },
+
             };
     }
 }

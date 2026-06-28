@@ -5,7 +5,7 @@ using System.IO;
 using System.Web;
 using System.Web.UI.WebControls;
 
-namespace Learning_System.Bit_Admin
+namespace Learning_System.Bhm_Admin
 {
     public partial class Syllabus : System.Web.UI.Page
     {
@@ -20,7 +20,7 @@ namespace Learning_System.Bit_Admin
 
             if (string.IsNullOrEmpty(subject) || !SubjectMap.Subjects.ContainsKey(subject))
             {
-                Response.Redirect("~/Bit_Admin/Default.aspx");
+                Response.Redirect("~/Bhm_Admin/Default.aspx");
                 return;
             }
 
