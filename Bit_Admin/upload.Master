@@ -457,60 +457,60 @@
           <DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
           <DynamicSelectedStyle BackColor="#1a3499" />
 
-          <Items>
-            <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Bit_Admin/dash.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="1st Semester" Value="1st Semester">
-              <asp:MenuItem Text="Basic Computer Architecture" Value="Basic Computer Architecture" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=BCA"></asp:MenuItem>
-              <asp:MenuItem Text="Busines English" Value="Busines Eng" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=BE"></asp:MenuItem>
-              <asp:MenuItem Text="Computer Related Mathematics and Statistics" Value="Computer_Related_Mathematics_and_Statistics" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=Math"></asp:MenuItem>
-              <asp:MenuItem Text="Introduction to C++ Programming" Value="Introduction to C++ Programming" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=ICP"></asp:MenuItem>
-              <asp:MenuItem NavigateUrl="~/Bit_Admin/course_content.aspx?subject=PIT" Text="Principles of Information Technology" Value="Principles of Information Technology"></asp:MenuItem>
-            </asp:MenuItem>
-            <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
-              <asp:MenuItem Text="Human Computer Interaction" Value="Human Computer Interaction" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=HCI"></asp:MenuItem>
-              <asp:MenuItem Text="Object Oriented Programming" Value="Object Oriented Programming" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=OOP"></asp:MenuItem>
-              <asp:MenuItem Text=" Discrete Math" Value="Discrete Math" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DM"></asp:MenuItem>
-              <asp:MenuItem Text="Data Communication and Networks" Value="Data Communication and Networks" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DCN"></asp:MenuItem>
-              <asp:MenuItem Text="Operating System" Value="Operating System" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=OS"></asp:MenuItem>
-            </asp:MenuItem>
-            <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
-              <asp:MenuItem Text="Web Technology" Value="Web Technology-Python" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=WT"></asp:MenuItem>
-              <asp:MenuItem Text="E-Commerce" Value="Linux Administration" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=LA"></asp:MenuItem>
-              <asp:MenuItem Text="Digital Electronics and Logic Design " Value="Digital Electronics and Logic Design " NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DELD"></asp:MenuItem>
-              <asp:MenuItem Text="Data_Structure_and_Algorithm" Value="Data Structure and Algorithm" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DSA"></asp:MenuItem>
-              <asp:MenuItem Text="Industrial_Management" Value="Industrial Management" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=IM"></asp:MenuItem>
-              <asp:MenuItem Text="Database_Management_System" Value="Database Management System" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DMS"></asp:MenuItem>
-            </asp:MenuItem>
-            <asp:MenuItem Text="4th Semester" Value="4th Semester">
-              <asp:MenuItem Text="Artificial Intelligence" Value="Artificial Intelligence" NavigateUrl="~/Bit_Admin/AI.aspx"></asp:MenuItem>
-              <asp:MenuItem Text="Compiler Design and Construction" Value="Compiler Design and Construction" NavigateUrl="~/Bit_Admin/complier_and_design_constructions.aspx"></asp:MenuItem>
-              <asp:MenuItem Text="Technopreneurship" Value="Technopreneurship" NavigateUrl="~/Bit_Admin/Technopreneurship.aspx"></asp:MenuItem>
-              <asp:MenuItem Text="Database Management System" Value="Database Management System" NavigateUrl="~/Bit_Admin/database_management_system.aspx"></asp:MenuItem>
-              <asp:MenuItem Text="System Analysis and Design" Value="System Analysis and Design" NavigateUrl="~/Bit_Admin/system_analysis_and_design.aspx"></asp:MenuItem>
-            </asp:MenuItem>
-            <asp:MenuItem Text="5th Semester" Value="5th Semester">
-              <asp:MenuItem Text="Software Engineering" Value="Software Engineering" NavigateUrl="~/Bit_Admin/software_engineering.aspx"></asp:MenuItem>
-              <asp:MenuItem Text="Cyber Security Law and Policy" Value="Cyber Security Law and Policy" NavigateUrl="~/Bit_Admin/cyber_security_law_and_policy.aspx"></asp:MenuItem>
-              <asp:MenuItem NavigateUrl="~/Bit_Admin/leadership_and_human_relations.aspx" Text="LR &amp; HR" Value="LR &amp; HR"></asp:MenuItem>
-              <asp:MenuItem Text="Multimedia System" Value="EPPT" NavigateUrl="~/Bit_Admin/multimedia_system.aspx"></asp:MenuItem>
-              <asp:MenuItem Text="cyptography" Value="Crytpo" NavigateUrl="~/Bit_Admin/cyptography.aspx"></asp:MenuItem>
-            </asp:MenuItem>
-            <asp:MenuItem Text="6th Semester" Value="6th Semester">
-              <asp:MenuItem Text="Mobile Computing" Value="Mobile Computing" NavigateUrl="~/Bit_Admin/mobile_computing.aspx"></asp:MenuItem>
-              <asp:MenuItem NavigateUrl="~/Bit_Admin/software_project_management.aspx" Text="Software Project Management" Value="Software Project Management"></asp:MenuItem>
-              <asp:MenuItem NavigateUrl="~/Bit_Admin/SocialValues&Ethics.aspx" Text="Social Values &amp; Ethics" Value="Social Values &amp; Ethics"></asp:MenuItem>
-              <asp:MenuItem NavigateUrl="~/Bit_Admin/ResearchMethodoly.aspx" Text="Research Methodoly" Value="Research Methodoly"></asp:MenuItem>
-            </asp:MenuItem>
-            <asp:MenuItem Text="7th Semester" Value="7th Semester">
-              <asp:MenuItem NavigateUrl="~/Bit_Admin/project_work.aspx" Text="Final Project Work" Value="Project Work"></asp:MenuItem>
-              <asp:MenuItem Text="Cloud Computing" Value="Cloud Computing" NavigateUrl="~/Bit_Admin/cloud_computing.aspx"></asp:MenuItem>
-              <asp:MenuItem Text="Management InforamtionSystem" Value="Management InforamtionSystem" NavigateUrl="~/Bit_Admin/ManagementInforamtionSystem.aspx"></asp:MenuItem>
-              <asp:MenuItem Text="SystemSoftware Administration" Value="SystemSoftware Administration" NavigateUrl="~/Bit_Admin/SystemSoftware_Administration.aspx"></asp:MenuItem>
-            </asp:MenuItem>
-            <asp:MenuItem Text="8th Semester" Value="8th Semester">
-              <asp:MenuItem Text="Industrial Training" Value="Industrial Training" NavigateUrl="~/Bit_Admin/industrial_training.aspx"></asp:MenuItem>
-            </asp:MenuItem>
-          </Items>
+                    <Items>
+                        <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Bit_Admin/dash.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="1st Semester" Value="1st Semester">
+                            <asp:MenuItem Text="Basic Computer Architecture" Value="Basic Computer Architecture" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=BCA"></asp:MenuItem>
+                            <asp:MenuItem Text="Busines English" Value="Busines Eng" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=BE"></asp:MenuItem>
+                            <asp:MenuItem Text="Computer Related Mathematics and Statistics" Value="Computer_Related_Mathematics_and_Statistics" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=Math"></asp:MenuItem>
+                            <asp:MenuItem Text="Introduction to C++ Programming" Value="Introduction to C++ Programming" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=ICP"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Bit_Admin/course_content.aspx?subject=PIT" Text="Principles of Information Technology" Value="Principles of Information Technology"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
+                       <asp:MenuItem Text="Human Computer Interaction" Value="Human Computer Interaction" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=HCI"></asp:MenuItem>
+                       <asp:MenuItem Text="Object Oriented Programming" Value="Object Oriented Programming" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=OOP"></asp:MenuItem>
+                       <asp:MenuItem Text=" Discrete Math" Value="Discrete Math" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DM"></asp:MenuItem>
+                       <asp:MenuItem Text="Data Communication and Networks" Value="Data Communication and Networks" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DCN"></asp:MenuItem>
+                       <asp:MenuItem Text="Operating System" Value="Operating System" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=OS"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
+                            <asp:MenuItem Text="Web Technology" Value="Web Technology-Python" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=WT"></asp:MenuItem>
+                            <asp:MenuItem Text="E-Commerce" Value="Linux Administration" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=LA"></asp:MenuItem>
+                            <asp:MenuItem Text="Digital Electronics and Logic Design " Value="Digital Electronics and Logic Design " NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DELD"></asp:MenuItem>
+                            <asp:MenuItem Text="Data_Structure_and_Algorithm" Value="Data Structure and Algorithm" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DSA"></asp:MenuItem>
+                            <asp:MenuItem Text="Industrial_Management" Value="Industrial Management" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=IM"></asp:MenuItem>
+                            <asp:MenuItem Text="Database_Management_System" Value="Database Management System" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DMS"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="4th Semester" Value="4th Semester">
+                            <asp:MenuItem Text="Artificial Intelligence" Value="Artificial Intelligence" NavigateUrl="~/Bit_Admin/AI.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Compiler Design and Construction" Value="Compiler Design and Construction" NavigateUrl="~/Bit_Admin/complier_and_design_constructions.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Technopreneurship" Value="Technopreneurship" NavigateUrl="~/Bit_Admin/Technopreneurship.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Database Management System" Value="Database Management System" NavigateUrl="~/Bit_Admin/database_management_system.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="System Analysis and Design" Value="System Analysis and Design" NavigateUrl="~/Bit_Admin/system_analysis_and_design.aspx"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="5th Semester" Value="5th Semester">
+                            <asp:MenuItem Text="Software Engineering" Value="Software Engineering" NavigateUrl="~/Bit_Admin/software_engineering.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Cyber Security Law and Policy" Value="Cyber Security Law and Policy" NavigateUrl="~/Bit_Admin/cyber_security_law_and_policy.aspx"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Bit_Admin/leadership_and_human_relations.aspx" Text="LR &amp; HR" Value="LR &amp; HR"></asp:MenuItem>
+                            <asp:MenuItem Text="Multimedia System" Value="EPPT" NavigateUrl="~/Bit_Admin/multimedia_system.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="cyptography" Value="Crytpo" NavigateUrl="~/Bit_Admin/cyptography.aspx"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="6th Semester" Value="6th Semester">
+                            <asp:MenuItem Text="Mobile Computing" Value="Mobile Computing" NavigateUrl="~/Bit_Admin/mobile_computing.aspx"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Bit_Admin/software_project_management.aspx" Text="Software Project Management" Value="Software Project Management"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Bit_Admin/SocialValues&Ethics.aspx" Text="Social Values &amp; Ethics" Value="Social Values &amp; Ethics"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Bit_Admin/ResearchMethodoly.aspx" Text="Research Methodoly" Value="Research Methodoly"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="7th Semester" Value="7th Semester">
+                            <asp:MenuItem NavigateUrl="~/Bit_Admin/project_work.aspx" Text="Final Project Work" Value="Project Work"></asp:MenuItem>
+                            <asp:MenuItem Text="Cloud Computing" Value="Cloud Computing" NavigateUrl="~/Bit_Admin/cloud_computing.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Management InforamtionSystem" Value="Management InforamtionSystem" NavigateUrl="~/Bit_Admin/ManagementInforamtionSystem.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="SystemSoftware Administration" Value="SystemSoftware Administration" NavigateUrl="~/Bit_Admin/SystemSoftware_Administration.aspx"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="8th Semester" Value="8th Semester">
+                            <asp:MenuItem Text="Industrial Training" Value="Industrial Training" NavigateUrl="~/Bit_Admin/industrial_training.aspx"></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
 
           <LevelMenuItemStyles>
             <asp:MenuItemStyle CssClass="dropdown-item" HorizontalPadding="15px" Height="50px" VerticalPadding="15px" />

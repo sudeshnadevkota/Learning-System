@@ -161,9 +161,6 @@
             transition: height 0.3s ease;
             padding-bottom: 220px;
         }
-
- 
-
     </style>
     <title>BHM ADMIN </title>
 </head>
@@ -204,34 +201,31 @@
                     <DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
                     <DynamicSelectedStyle BackColor="#666666" />
                     <Items>
-                        <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Bhm_Admin/dash.aspx"></asp:MenuItem>
                         <asp:MenuItem Text="1st Semester" Value="1st Semester">
-                            <asp:MenuItem Text="English For Academics" Value="English For Academics" NavigateUrl="~/Bhm_Admin/english_for_academics.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Food and Beverage Service Skill" Value="Food and Beverage Service Skill" NavigateUrl="~/Bhm_Admin/food_and_beverage_service_skill.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Front Office Operation" Value="Front Office Operation" NavigateUrl="~/Bhm_Admin/front_office_operation.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Fundamental of Computer in Hotel" Value="Fundamental of Computer in Hotel" NavigateUrl="~/Bhm_Admin/fundamental_of_computer_in_hotel(concept_and_application).aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Housekeeping Operation" Value="Housekeeping Operation" NavigateUrl="~/Bhm_Admin/housekeeping_operation.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Introduction to Hospitality and Tourism Management" Value="Introduction to Hospitality And Tourism Management" NavigateUrl="~/Bhm_Admin/introduction_to_hospitality_and_tourism_management.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Fundamentals of Management" Value="Fundamentals of Management" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_FM"></asp:MenuItem>
+                            <asp:MenuItem Text="Fundamentals of Kitchen" Value="Fundamentals of Kitchen" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_FOK"></asp:MenuItem>
+                            <asp:MenuItem Text="English I" Value="English I" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_ENG_1"></asp:MenuItem>
+                            <asp:MenuItem Text="Introduction to Hospitality & Tourism" Value="Introduction to Hospitality & Tourism Management" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_IHTM"></asp:MenuItem>
+                            <asp:MenuItem Text="Food & Beverage Management" Value="Food & Beverage Management" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_FBM"></asp:MenuItem>
+                            <asp:MenuItem Text="Front Office Management" Value="Front Office Management" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_FOM"></asp:MenuItem>
                         </asp:MenuItem>
-
 
                         <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
-                            <asp:MenuItem Text="Food and Beverage Service Operation" Value="Food and Beverage Service Operation" NavigateUrl="~/Bhm_Admin/food_and_beverage_service_operation.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Food Production Operations" Value="Food Production Operations" NavigateUrl="~/Bhm_Admin/food_production_operations.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Front Office Management" Value="Front Office Management" NavigateUrl="~/Bhm_Admin/front_office_management.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Fundamentals of Management" Value="Fundamentals of Management" NavigateUrl="~/Bhm_Admin/fundamentals_of_management.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Hospitality English" Value="Hospitality English" NavigateUrl="~/Bhm_Admin/hospitality_english.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Housekeeping Management" Value="Housekeeping Management" NavigateUrl="~/Bhm_Admin/housekepping_management.aspx"></asp:MenuItem>
-
+                            <asp:MenuItem Text="Housekeeping Management" Value="Housekeeping Management" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_HKM"></asp:MenuItem>
+                            <asp:MenuItem Text="Hospitality Accounting" Value="Hospitality Accounting" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_HA"></asp:MenuItem>
+                            <asp:MenuItem Text="Hospitality HR Management" Value="Hospitality Human Resource Management" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_HHRM"></asp:MenuItem>
+                            <asp:MenuItem Text="English II" Value="English II" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_ENG_2"></asp:MenuItem>
+                            <asp:MenuItem Text="Hotel French" Value="Hotel French" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_HF"></asp:MenuItem>
+                            <asp:MenuItem Text="Food Production Operation" Value="Food Production Operation" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_FPO"></asp:MenuItem>
                         </asp:MenuItem>
-                        <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
-                            <asp:MenuItem Text="Accounting For Hospitality" Value="Accounting For Hospitality" NavigateUrl="~/Bhm_Admin/accounting_for_hospitality.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Beverage Study" Value="Beverage Study" NavigateUrl="~/Bhm_Admin/beverage_study.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Food Production Management" Value="Food Production Management" NavigateUrl="~/Bhm_Admin/food_production_management.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Food Science and Nutrition" Value="Food Science and Nutrition" NavigateUrl="~/Bhm_Admin/food_science_and_nutrition.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Hospitality Human Resource Management" Value="Hospitality Human Resource Management" NavigateUrl="~/Bhm_Admin/hospitality_human_resource_management.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Hotel French" Value="Hotel French" NavigateUrl="~/Bhm_Admin/hotel_french.aspx"></asp:MenuItem>
 
+                        <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
+                            <asp:MenuItem Text="Hospitality Training & Development" Value="Hospitality Training & Development" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_HTD"></asp:MenuItem>
+                            <asp:MenuItem Text="Travel and Tour" Value="Travel and Tour" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_TT"></asp:MenuItem>
+                            <asp:MenuItem Text="Hospitality Service Management" Value="Hospitality Service Management" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_HSM"></asp:MenuItem>
+                            <asp:MenuItem Text="Hospitality Marketing" Value="Hospitality Marketing" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_HM"></asp:MenuItem>
+                            <asp:MenuItem Text="Hospitality Revenue Management" Value="Hospitality Revenue Management" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_HRM"></asp:MenuItem>
+                            <asp:MenuItem Text="Customer Service in Hospitality" Value="Customer Service in Hospitality Industry" NavigateUrl="~/Bhm_Admin/course_content.aspx?subject=BHM_CSIH"></asp:MenuItem>
                         </asp:MenuItem>
 
 
@@ -306,27 +300,26 @@
             </div>
 
         </div>
-        <div class="container-fluid mt-5" style="text-align:center; height:100px;  color:white; background-color: #002366 ">
-
+        <div class="container-fluid mt-5" style="text-align: center; height: 100px; color: white; background-color: #002366">
             Copyright @ texas lerning portal- 2021/22 
-            </div>
+        </div>
 
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var navbarToggler = document.querySelector('.navbar-toggler');
-                var navbar = document.getElementById('menu');
-                var collapse = document.querySelector('#navbarSupportedContent');
+document.addEventListener('DOMContentLoaded', function () {
+    var navbarToggler = document.querySelector('.navbar-toggler');
+    var navbar = document.getElementById('menu');
+    var collapse = document.querySelector('#navbarSupportedContent');
 
-                navbarToggler.addEventListener('click', function () {
-                    if (collapse.classList.contains('show')) {
-                        navbar.classList.remove('expanded');
-                    } else {
-                        navbar.classList.add('expanded');
-                    }
-                });
-            });
-        </script>
+    navbarToggler.addEventListener('click', function () {
+        if (collapse.classList.contains('show')) {
+            navbar.classList.remove('expanded');
+        } else {
+            navbar.classList.add('expanded');
+        }
+    });
+});
+</script>
     </form>
 
 </body>

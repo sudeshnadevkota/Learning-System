@@ -24,14 +24,11 @@ namespace Learning_System
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
 
-                // Update this filter to include Assignments in the first Grid
-                // Now it excludes ONLY Past Year Questions
                 DataView dvNotes = new DataView(dt);
                 dvNotes.RowFilter = "FileCategory <> 'Past Year Question'";
                 gvNotes.DataSource = dvNotes;
                 gvNotes.DataBind();
 
-                // Keep this for Past Year Questions
                 DataView dvPapers = new DataView(dt);
                 dvPapers.RowFilter = "FileCategory = 'Past Year Question'";
                 gvPapers.DataSource = dvPapers;
@@ -51,6 +48,7 @@ namespace Learning_System
                     {
                         cmd.Parameters.AddWithValue("@Id", id);
                         con.Open();
+
                         using (SqlDataReader sdr = cmd.ExecuteReader())
                         {
                             if (sdr.Read())

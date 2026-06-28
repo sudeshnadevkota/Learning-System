@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Mba_Notes.note" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,59 +32,68 @@
             border-right: 1px solid rgba(255,255,255,0.07);
         }
 
-        /* Scrollbar */
-        #sidebar::-webkit-scrollbar { width: 4px; }
-        #sidebar::-webkit-scrollbar-track { background: transparent; }
-        #sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+            /* Scrollbar */
+            #sidebar::-webkit-scrollbar {
+                width: 4px;
+            }
 
-        /* ── SEMESTERS label at top ── */
-        #sidebar::before {
-            content: "SEMESTERS";
-            display: block;
-            font-family: 'Sora', sans-serif;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,0.35);
-            padding: 18px 20px 10px;
-        }
+            #sidebar::-webkit-scrollbar-track {
+                background: transparent;
+            }
 
-        #sidebar ul {
-            padding: 0;
-            list-style: none;
-            margin: 0;
-        }
+            #sidebar::-webkit-scrollbar-thumb {
+                background: rgba(255,255,255,0.12);
+                border-radius: 4px;
+            }
 
-        #sidebar ul li {
-            padding: 0;
-        }
+            /* ── SEMESTERS label at top ── */
+            #sidebar::before {
+                content: "SEMESTERS";
+                display: block;
+                font-family: 'Sora', sans-serif;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 2px;
+                color: rgba(255,255,255,0.35);
+                padding: 18px 20px 10px;
+            }
 
-        /* ── Semester top-level link ── */
-        #sidebar > ul > li > a {
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            padding: 11px 16px;
-            font-family: 'Sora', sans-serif;
-            font-size: 13.5px;
-            font-weight: 600;
-            border-left: 3px solid transparent;
-            transition: background 0.2s, border-color 0.2s, color 0.2s;
-            gap: 10px;
-        }
+            #sidebar ul {
+                padding: 0;
+                list-style: none;
+                margin: 0;
+            }
 
-        #sidebar > ul > li > a:hover {
-            background: rgba(255,255,255,0.06);
-            color: #fff;
-        }
+                #sidebar ul li {
+                    padding: 0;
+                }
 
-        /* Active semester (when submenu is open) */
-        #sidebar > ul > li.active-sem > a {
-            border-left-color: #FF2D8D;
-            background: rgba(255,45,141,0.10);
-            color: #fff;
-        }
+            /* ── Semester top-level link ── */
+            #sidebar > ul > li > a {
+                color: rgba(255,255,255,0.75);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                padding: 11px 16px;
+                font-family: 'Sora', sans-serif;
+                font-size: 13.5px;
+                font-weight: 600;
+                border-left: 3px solid transparent;
+                transition: background 0.2s, border-color 0.2s, color 0.2s;
+                gap: 10px;
+            }
+
+                #sidebar > ul > li > a:hover {
+                    background: rgba(255,255,255,0.06);
+                    color: #fff;
+                }
+
+            /* Active semester (when submenu is open) */
+            #sidebar > ul > li.active-sem > a {
+                border-left-color: #FF2D8D;
+                background: rgba(255,45,141,0.10);
+                color: #fff;
+            }
 
         /* ── Numbered badge ── */
         .sem-badge {
@@ -116,7 +126,9 @@
             gap: 8px;
         }
 
-        .sem-name { flex: 1; }
+        .sem-name {
+            flex: 1;
+        }
 
         .fas.fa-caret-down {
             transition: transform 0.3s ease;
@@ -125,7 +137,9 @@
             margin-left: auto;
         }
 
-        .rotate { transform: rotate(180deg); }
+        .rotate {
+            transform: rotate(180deg);
+        }
 
         /* ── Submenu / subjects ── */
         #sidebar .submenu {
@@ -134,51 +148,53 @@
             background: rgba(0,0,0,0.15);
         }
 
-        #sidebar .submenu ul { padding: 0; }
+            #sidebar .submenu ul {
+                padding: 0;
+            }
 
-        #sidebar .submenu ul li a {
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            padding: 7px 16px 7px 36px;
-            font-size: 13px;
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 400;
-            transition: color 0.2s, background 0.2s;
-            position: relative;
-        }
+                #sidebar .submenu ul li a {
+                    color: rgba(255,255,255,0.5);
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 9px;
+                    padding: 7px 16px 7px 36px;
+                    font-size: 13px;
+                    font-family: 'DM Sans', sans-serif;
+                    font-weight: 400;
+                    transition: color 0.2s, background 0.2s;
+                    position: relative;
+                }
 
-        /* dot before each subject */
-        #sidebar .submenu ul li a::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.25);
-            flex-shrink: 0;
-            transition: background 0.2s;
-        }
+                    /* dot before each subject */
+                    #sidebar .submenu ul li a::before {
+                        content: "";
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background: rgba(255,255,255,0.25);
+                        flex-shrink: 0;
+                        transition: background 0.2s;
+                    }
 
-        #sidebar .submenu ul li a:hover {
-            color: rgba(255,255,255,0.85);
-            background: rgba(255,255,255,0.04);
-        }
+                    #sidebar .submenu ul li a:hover {
+                        color: rgba(255,255,255,0.85);
+                        background: rgba(255,255,255,0.04);
+                    }
 
-        #sidebar .submenu ul li a:hover::before {
-            background: rgba(255,255,255,0.6);
-        }
+                        #sidebar .submenu ul li a:hover::before {
+                            background: rgba(255,255,255,0.6);
+                        }
 
-        /* Active subject link */
-        #sidebar .submenu ul li.active-subject > a {
-            color: #FF2D8D;
-            font-weight: 500;
-        }
+                /* Active subject link */
+                #sidebar .submenu ul li.active-subject > a {
+                    color: #FF2D8D;
+                    font-weight: 500;
+                }
 
-        #sidebar .submenu ul li.active-subject > a::before {
-            background: #FF2D8D;
-        }
+                    #sidebar .submenu ul li.active-subject > a::before {
+                        background: #FF2D8D;
+                    }
 
         /* ══ CONTENT ══ */
         #content {
@@ -206,26 +222,30 @@
             z-index: 1000;
         }
 
-        #menu-bar button {
-            background: #e8ecf7 !important;
-            border: 1.5px solid #c5cde8 !important;
-            border-radius: 8px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            transition: background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px rgba(8,21,71,0.12);
-        }
+            #menu-bar button {
+                background: #e8ecf7 !important;
+                border: 1.5px solid #c5cde8 !important;
+                border-radius: 8px;
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                transition: background 0.2s, box-shadow 0.2s;
+                box-shadow: 0 2px 8px rgba(8,21,71,0.12);
+            }
 
-        #menu-bar button:hover {
-            background: #d0d8f0 !important;
-            box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
-        }
+                #menu-bar button:hover {
+                    background: #d0d8f0 !important;
+                    box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
+                }
 
-        #icon { color: #12183a !important; font-size: 15px; font-weight: 900; }
+        #icon {
+            color: #12183a !important;
+            font-size: 15px;
+            font-weight: 900;
+        }
 
         /* ══ MEDIA QUERIES ══ */
         @media (max-width: 900px) {
@@ -246,6 +266,7 @@
                 background: rgba(0,0,0,0.45);
                 z-index: 998;
             }
+
             .sidebar-open #sidebar-overlay {
                 display: block;
             }
@@ -264,8 +285,13 @@
         }
 
         @media (max-width: 576px) {
-            .sidebar-open #sidebar { width: 240px; }
-            #menu-bar { left: 0.3rem; }
+            .sidebar-open #sidebar {
+                width: 240px;
+            }
+
+            #menu-bar {
+                left: 0.3rem;
+            }
         }
     </style>
     <title>MBA Notes</title>
@@ -297,11 +323,11 @@
                         </a>
                         <div id="first-submenu" class="submenu">
                             <ul>
-                                <li><a href="business_accounting_and_finance.aspx">BA &amp; F</a></li>
-                                <li><a href="business_economics.aspx">B Economics</a></li>
-                                <li><a href="human_resource_management.aspx">HR Management</a></li>
-                                <li><a href="managerial_communication.aspx">Managerial Comm</a></li>
-                                <li><a href="business_environment_analysis.aspx">B Env Analysis</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=ACC">Business Accounting &amp; Finance</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=ECO">Business Economics</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=HRM">Human Resource Management</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=MC">Managerial Communications</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=BEA">Business Environment Analysis</a></li>
                             </ul>
                         </div>
                     </li>
@@ -312,11 +338,10 @@
                         </a>
                         <div id="second-submenu" class="submenu">
                             <ul>
-                                <li><a href="business_research_methodology.aspx">BE Methodology</a></li>
-                                <li><a href="operation_management.aspx">Operational Mgmt</a></li>
-                                <li><a href="marketing_management.aspx">Marketing Mgmt</a></li>
-                                <li><a href="organizational_behaviour.aspx">Organizational Beha</a></li>
-                                <li><a href="consumer_behaviour.aspx">Consumer Beha</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=RM">Research Methodology</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=OM">Operation Management</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=MM">Marketing Management</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=OB">Organizational Behavior</a></li>
                             </ul>
                         </div>
                     </li>
@@ -327,13 +352,12 @@
                         </a>
                         <div id="third-submenu" class="submenu">
                             <ul>
-                                <li><a href="strategic_management.aspx">Strategic Mgmt</a></li>
-                                <li><a href="retail_management.aspx">Retail Mgmt</a></li>
-                                <li><a href="financial_management.aspx">Financial Mgmt</a></li>
-                                <li><a href="entrepreneurship_management.aspx">Entrepreneur Mgmt</a></li>
-                                <li><a href="sales_and_promotions_management.aspx">S &amp; P Mgmt</a></li>
-                                <li><a href="international_business.aspx">Intl Business</a></li>
-                                <li><a href="internship_project_industry_based.aspx">IPIB</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=SM">Strategic Management</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=FM">Financial Management</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=EM">Entrepreneurship Management</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=SPM">Sales &amp; Promotions Management</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=IB">International Business</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=HRD">Human Resource Development &amp; Leadership</a></li>
                             </ul>
                         </div>
                     </li>
@@ -344,12 +368,12 @@
                         </a>
                         <div id="fourth-submenu" class="submenu">
                             <ul>
-                                <li><a href="banking_and_insurance.aspx">Banking &amp; Insurance</a></li>
-                                <li><a href="customer_relationship_management.aspx">CRM</a></li>
-                                <li><a href="conflict_management_and_negotiation_skills.aspx">CM &amp; NS</a></li>
-                                <li><a href="management_of_data.aspx">Mgmt of Data</a></li>
-                                <li><a href="business_ethics.aspx">B Ethics</a></li>
-                                <li><a href="graduate_research_project.aspx">GRP</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=BI">Banking &amp; Insurance</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=CRM">Customer Relationship Management</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=CMN">Conflict Management &amp; Negotiation Skills</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=MOD">Management of Data</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=BEG">Business Ethics &amp; Governance</a></li>
+                                <li><a href="/Mba_Notes/course_content.aspx?code=GRP">Graduate Research Project Paper</a></li>
                             </ul>
                         </div>
                     </li>
@@ -369,7 +393,7 @@
         </div>
     </form>
 
-<script>
+    <script>
 function isMobile() {
     return window.innerWidth <= 900;
 }
