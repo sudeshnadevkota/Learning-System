@@ -1,161 +1,178 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="upload.master.cs" Inherits="Learning_System.Bit_Admin.upload" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="upload.master.cs" Inherits="Learning_System.Bit_Admin.upload" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link href="mcsdash.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <link href="mcsdash.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
 
-    <style>
-        :root {
-            --primary: #0B1F66;
-            --secondary: #081547;
-            --pink: #FF2D8D;
-            --yellow: #F6B400;
-        }
+  <style>
+    :root {
+      --primary: #0B1F66;
+      --secondary: #081547;
+      --pink: #FF2D8D;
+      --yellow: #F6B400;
+    }
 
-        * { box-sizing: border-box; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f4f6fb; margin: 0; }
+    * {
+      box-sizing: border-box;
+    }
 
-        /* ══════════════════════════════
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #f4f6fb;
+      margin: 0;
+    }
+
+    /* ══════════════════════════════
            TOP NAVBAR (logo + title + logout)
         ══════════════════════════════ */
-        .top-navbar {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%;
-            height: 64px;
-            background: #fff;
-            border-bottom: 1px solid rgba(11,31,102,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1.5rem;
-            z-index: 1100;
-        }
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background: #fff;
+      border-bottom: 1px solid rgba(11,31,102,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      z-index: 1100;
+    }
 
-        .top-navbar-logo a {
-            display: flex;
-            align-items: center;
-        }
+    .top-navbar-logo a {
+      display: flex;
+      align-items: center;
+    }
 
-        .top-navbar-logo img {
-            width: 9rem;
-            height: 3.5rem;
-            object-fit: contain;
-        }
+    .top-navbar-logo img {
+      width: 9rem;
+      height: 3.5rem;
+      object-fit: contain;
+    }
 
-        .top-navbar-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #0B1F66;
-            letter-spacing: 0.5px;
-        }
+    .top-navbar-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0B1F66;
+      letter-spacing: 0.5px;
+    }
 
-        .top-navbar-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .top-navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .live-badge {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-            color: rgba(11,31,102,0.6);
-            background: rgba(11,31,102,0.05);
-            border: 1px solid rgba(11,31,102,0.1);
-            border-radius: 20px;
-            padding: 5px 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: rgba(11,31,102,0.6);
+      background: rgba(11,31,102,0.05);
+      border: 1px solid rgba(11,31,102,0.1);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
 
-        .live-dot {
-            width: 7px; height: 7px;
-            background: #4ade80;
-            border-radius: 50%;
-            animation: livepulse 1.5s infinite;
-        }
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: livepulse 1.5s infinite;
+    }
 
-        @keyframes livepulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    @keyframes livepulse {
+      0%,100% {
+        opacity: 1
+      }
 
-        /* Restyle the logout button */
-        .top-navbar-right .btn-primary {
-            font-size: 12px !important;
-            font-weight: 600 !important;
-            background: #FF2D8D !important;
-            border-color: #FF2D8D !important;
-            border-radius: 8px !important;
-            padding: 6px 16px !important;
-            letter-spacing: 0.5px;
-            transition: opacity .15s;
-        }
+      50% {
+        opacity: 0.3
+      }
+    }
 
-        .top-navbar-right .btn-primary:hover {
-            opacity: 0.88;
-        }
+    /* Restyle the logout button */
+    .top-navbar-right .btn-primary {
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      background: #FF2D8D !important;
+      border-color: #FF2D8D !important;
+      border-radius: 8px !important;
+      padding: 6px 16px !important;
+      letter-spacing: 0.5px;
+      transition: opacity .15s;
+    }
 
-        /* ══════════════════════════════
+      .top-navbar-right .btn-primary:hover {
+        opacity: 0.88;
+      }
+
+    /* ══════════════════════════════
            MENU NAVBAR (Dashboard + Semesters)
         ══════════════════════════════ */
-        #menu {
-            position: fixed;
-            top: 64px;
-            left: 0;
-            width: 100%;
-            height: auto;
-            min-height: 52px;
-            background: linear-gradient(90deg, #0B1F66, #1a3499);
-            z-index: 1050;
-            padding: 0 1.5rem;
-            border-bottom: 2px solid #FF2D8D;
-            display: flex;
-            align-items: center;
-        }
+    #menu {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 100%;
+      height: auto;
+      min-height: 52px;
+      background: linear-gradient(90deg, #0B1F66, #1a3499);
+      z-index: 1050;
+      padding: 0 1.5rem;
+      border-bottom: 2px solid #FF2D8D;
+      display: flex;
+      align-items: center;
+    }
 
-        /* Hamburger toggler */
-        #menu .navbar-toggler {
-            border: 1px solid rgba(255,255,255,0.3) !important;
-            border-radius: 8px;
-            padding: 5px 10px;
-        }
+      /* Hamburger toggler */
+      #menu .navbar-toggler {
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        border-radius: 8px;
+        padding: 5px 10px;
+      }
 
-        #menu .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255%2C255%2C255%2C0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
+      #menu .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255%2C255%2C255%2C0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
 
-        /* asp:Menu rendered as ul.navbar-nav */
-        #menu ul.navbar-nav,
-        #menu .navbar-nav {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 2px;
-        }
+      /* asp:Menu rendered as ul.navbar-nav */
+      #menu ul.navbar-nav,
+      #menu .navbar-nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 2px;
+      }
 
         #menu ul li,
         #menu .navbar-nav li {
-            position: relative;
+          position: relative;
         }
 
-        /* Top-level links */
-        #menu ul li a,
-        #menu .navbar-nav > li > a {
+          /* Top-level links */
+          #menu ul li a,
+          #menu .navbar-nav > li > a {
             display: flex;
             align-items: center;
             padding: 14px 16px;
@@ -167,327 +184,381 @@
             border-radius: 0;
             transition: color .15s, background .15s;
             white-space: nowrap;
-        }
+          }
 
-        #menu ul li a:hover,
-        #menu .navbar-nav > li > a:hover {
-            color: #fff !important;
-            background: rgba(255,45,141,0.18);
-        }
+            #menu ul li a:hover,
+            #menu .navbar-nav > li > a:hover {
+              color: #fff !important;
+              background: rgba(255,45,141,0.18);
+            }
 
-        /* Active / selected */
-        #menu ul li.active > a,
-        #menu ul li a.selected {
-            color: #FF2D8D !important;
-            border-bottom: 2px solid #FF2D8D;
-        }
+            /* Active / selected */
+            #menu ul li.active > a,
+            #menu ul li a.selected {
+              color: #FF2D8D !important;
+              border-bottom: 2px solid #FF2D8D;
+            }
 
-        /* ── Dropdown panel ── */
-        #menu ul ul,
-        #menu .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            min-width: 240px;
-            background: #0B1F66;
-            border: 1px solid rgba(255,255,255,0.08);
-            border-top: 2px solid #FF2D8D;
-            border-radius: 0 0 10px 10px;
-            padding: 6px 0;
-            z-index: 9999;
-            list-style: none;
-        }
+      /* ── Dropdown panel ── */
+      #menu ul ul,
+      #menu .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 240px;
+        background: #0B1F66;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-top: 2px solid #FF2D8D;
+        border-radius: 0 0 10px 10px;
+        padding: 6px 0;
+        z-index: 9999;
+        list-style: none;
+      }
 
-        #menu ul li:hover > ul,
-        #menu ul li:focus-within > ul {
-            display: block;
-        }
+      #menu ul li:hover > ul,
+      #menu ul li:focus-within > ul {
+        display: block;
+      }
 
-        /* Dropdown items */
-        #menu ul ul li a,
-        #menu .dropdown-menu .dropdown-item {
-            padding: 10px 18px !important;
-            font-size: 12.5px !important;
-            font-weight: 500 !important;
-            color: rgba(255,255,255,0.8) !important;
-            background: transparent !important;
-            border-radius: 0 !important;
-            display: block;
-            transition: background .15s, color .15s;
-            white-space: nowrap;
-        }
+      /* Dropdown items */
+      #menu ul ul li a,
+      #menu .dropdown-menu .dropdown-item {
+        padding: 10px 18px !important;
+        font-size: 12.5px !important;
+        font-weight: 500 !important;
+        color: rgba(255,255,255,0.8) !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        display: block;
+        transition: background .15s, color .15s;
+        white-space: nowrap;
+      }
 
         #menu ul ul li a:hover,
         #menu .dropdown-menu .dropdown-item:hover {
-            background: #FF2D8D !important;
-            color: #fff !important;
+          background: #FF2D8D !important;
+          color: #fff !important;
         }
 
-        /* ══════════════════════════════
+    /* ══════════════════════════════
            CONTENT AREA
         ══════════════════════════════ */
-        #content {
-            margin-top: 116px; /* 64px topbar + 52px menu */
-            width: 100%;
-            transition: margin-left 0.3s ease;
-        }
+    #content {
+      margin-top: 116px; /* 64px topbar + 52px menu */
+      width: 100%;
+      transition: margin-left 0.3s ease;
+    }
 
-        /* ══════════════════════════════
+    /* ══════════════════════════════
            SIDEBAR (kept for compatibility)
         ══════════════════════════════ */
-        #sidebar {
-            position: fixed;
-            top: 116px;
-            left: 0;
-            width: 0;
-            height: 100vh;
-            background-color: #0B1F66;
-            color: #fff;
-            overflow-x: hidden;
-            overflow-y: auto;
-            z-index: 999;
-            transition: width 0.3s ease;
+    #sidebar {
+      position: fixed;
+      top: 116px;
+      left: 0;
+      width: 0;
+      height: 100vh;
+      background-color: #0B1F66;
+      color: #fff;
+      overflow-x: hidden;
+      overflow-y: auto;
+      z-index: 999;
+      transition: width 0.3s ease;
+    }
+
+      #sidebar a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        padding: 0.5rem 1rem;
+      }
+
+        #sidebar a:hover {
+          background-color: rgba(255,45,141,0.2);
         }
 
-        #sidebar a { color: #fff; text-decoration: none; display: block; padding: 0.5rem 1rem; }
-        #sidebar a:hover { background-color: rgba(255,45,141,0.2); }
-        #sidebar ul { padding: 0; list-style: none; margin: 0; }
-        #sidebar ul li { padding: 0; }
-        #sidebar .submenu { display: none; padding-left: 1rem; }
+      #sidebar ul {
+        padding: 0;
+        list-style: none;
+        margin: 0;
+      }
 
-        .sidebar-open #sidebar { width: 30%; }
-        .sidebar-open #content { margin-left: 30%; }
-
-        .submenu-toggle { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .fas.fa-caret-down { transition: transform 0.3s ease; font-size: 1rem; }
-        .rotate { transform: rotate(180deg); }
-
-        #menu-bar {
-            padding-top: 6rem;
-            position: fixed;
-            left: 1rem;
-            z-index: 1000;
+        #sidebar ul li {
+          padding: 0;
         }
 
-        /* ══════════════════════════════
+      #sidebar .submenu {
+        display: none;
+        padding-left: 1rem;
+      }
+
+    .sidebar-open #sidebar {
+      width: 30%;
+    }
+
+    .sidebar-open #content {
+      margin-left: 30%;
+    }
+
+    .submenu-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .fas.fa-caret-down {
+      transition: transform 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .rotate {
+      transform: rotate(180deg);
+    }
+
+    #menu-bar {
+      padding-top: 6rem;
+      position: fixed;
+      left: 1rem;
+      z-index: 1000;
+    }
+
+    /* ══════════════════════════════
            FOOTER
         ══════════════════════════════ */
-        .bit-footer {
-            background: linear-gradient(90deg, #0B1F66, #081547);
-            color: rgba(255,255,255,0.6);
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-            margin-top: 3rem;
-            border-top: 2px solid #FF2D8D;
-        }
+    .bit-footer {
+      background: linear-gradient(90deg, #0B1F66, #081547);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      margin-top: 3rem;
+      border-top: 2px solid #FF2D8D;
+    }
 
-        /* ══════════════════════════════
+    /* ══════════════════════════════
            RESPONSIVE
         ══════════════════════════════ */
-        @media (max-width: 768px) {
-            .top-navbar-title { display: none; }
+    @media (max-width: 768px) {
+      .top-navbar-title {
+        display: none;
+      }
 
-            #menu {
-                flex-wrap: wrap;
-                height: auto;
-                padding: 8px 1rem;
-            }
+      #menu {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 8px 1rem;
+      }
 
-            #menu .collapse.navbar-collapse {
-                background: #081547;
-                border-radius: 0 0 10px 10px;
-                padding: 8px 0;
-                width: 100%;
-            }
-
-            #menu ul.navbar-nav,
-            #menu .navbar-nav {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            #menu ul ul,
-            #menu .dropdown-menu {
-                position: static;
-                border-radius: 0;
-                border: none;
-                border-left: 2px solid #FF2D8D;
-                margin-left: 1rem;
-                background: rgba(255,255,255,0.03);
-            }
-
-            #content { margin-top: 130px; }
-
-            .sidebar-open #sidebar { width: 60%; }
-            .sidebar-open #content { margin-left: 60%; width: 40%; }
+        #menu .collapse.navbar-collapse {
+          background: #081547;
+          border-radius: 0 0 10px 10px;
+          padding: 8px 0;
+          width: 100%;
         }
 
-        @media (max-width: 576px) {
-            .sidebar-open #sidebar { width: 75%; }
-            .sidebar-open #content { margin-left: 75%; width: 25%; }
+        #menu ul.navbar-nav,
+        #menu .navbar-nav {
+          flex-direction: column;
+          width: 100%;
         }
 
-        #menu.expanded {
-            transition: height 0.3s ease;
+        #menu ul ul,
+        #menu .dropdown-menu {
+          position: static;
+          border-radius: 0;
+          border: none;
+          border-left: 2px solid #FF2D8D;
+          margin-left: 1rem;
+          background: rgba(255,255,255,0.03);
         }
-    </style>
-    <title>BIT ADMIN</title>
+
+      #content {
+        margin-top: 130px;
+      }
+
+      .sidebar-open #sidebar {
+        width: 60%;
+      }
+
+      .sidebar-open #content {
+        margin-left: 60%;
+        width: 40%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .sidebar-open #sidebar {
+        width: 75%;
+      }
+
+      .sidebar-open #content {
+        margin-left: 75%;
+        width: 25%;
+      }
+    }
+
+    #menu.expanded {
+      transition: height 0.3s ease;
+    }
+  </style>
+  <title>BIT ADMIN</title>
 </head>
 <body>
-    <form id="form2" runat="server" enctype="multipart/form-data">
+  <form id="form2" runat="server" enctype="multipart/form-data">
 
-        <!-- ── TOP NAVBAR (logo + title + logout) ── -->
-        <nav class="top-navbar">
-            <div class="top-navbar-logo">
-                <a href="../../Default.aspx">
-                    <img src="logo/logo.png" alt="Logo">
-                </a>
-            </div>
+    <!-- ── TOP NAVBAR (logo + title + logout) ── -->
+    <nav class="top-navbar">
+      <div class="top-navbar-logo">
+        <a href="../../Default.aspx">
+          <img src="logo/logo.png" alt="Logo">
+        </a>
+      </div>
 
-            <div class="top-navbar-title d-none d-sm-block">
-                Texas Learning System
-            </div>
+      <div class="top-navbar-title d-none d-sm-block">
+        Texas Learning System
+      </div>
 
-            <div class="top-navbar-right">
-                <div class="live-badge">
-                    <span class="live-dot"></span> Live
-                </div>
-                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkOut_Click" CssClass="btn btn-primary">
+      <div class="top-navbar-right">
+        <div class="live-badge">
+          <span class="live-dot"></span>Live
+        </div>
+        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkOut_Click" CssClass="btn btn-primary">
                     <i class="ti ti-logout" style="font-size:14px; vertical-align:-1px; margin-right:4px;"></i> Logout
-                </asp:LinkButton>
-            </div>
-        </nav>
+        </asp:LinkButton>
+      </div>
+    </nav>
 
-        <!-- ── MENU NAVBAR (Dashboard + Semesters) ── -->
-        <div id="menu" class="navbar navbar-expand-md navbar-dark">
-            <button class="navbar-toggler" type="button"
-                data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <!-- ── MENU NAVBAR (Dashboard + Semesters) ── -->
+    <div id="menu" class="navbar navbar-expand-md navbar-dark">
+      <button class="navbar-toggler" type="button"
+        data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <asp:Menu ID="Menu1" runat="server"
-                    Orientation="Horizontal"
-                    CssClass="navbar-nav mr-auto"
-                    StaticMenuStyle-CssClass="nav-item"
-                    StaticSelectedStyle-CssClass="nav-item"
-                    DynamicMenuStyle-CssClass="nav-item dropdown-menu"
-                    RenderingMode="List"
-                    Font-Bold="True"
-                    Font-Names="Plus Jakarta Sans"
-                    Font-Size="Small"
-                    ForeColor="White"
-                    StaticEnableDefaultPopOutImage="false">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <asp:Menu ID="Menu1" runat="server"
+          Orientation="Horizontal"
+          CssClass="navbar-nav mr-auto"
+          StaticMenuStyle-CssClass="nav-item"
+          StaticSelectedStyle-CssClass="nav-item"
+          DynamicMenuStyle-CssClass="nav-item dropdown-menu"
+          RenderingMode="List"
+          Font-Bold="True"
+          Font-Names="Plus Jakarta Sans"
+          Font-Size="Small"
+          ForeColor="White"
+          StaticEnableDefaultPopOutImage="false">
 
-                    <DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
-                    <DynamicSelectedStyle BackColor="#1a3499" />
+          <DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
+          <DynamicSelectedStyle BackColor="#1a3499" />
 
-                    <Items>
-                        <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Bit_Admin/dash.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="1st Semester" Value="1st Semester">
-                            <asp:MenuItem Text="Basic Computer Architecture" Value="Basic Computer Architecture" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=BCA"></asp:MenuItem>
-                            <asp:MenuItem Text="Busines English" Value="Busines Eng" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=BE"></asp:MenuItem>
-                            <asp:MenuItem Text="Computer Related Mathematics and Statistics" Value="Computer_Related_Mathematics_and_Statistics" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=Math"></asp:MenuItem>
-                            <asp:MenuItem Text="Introduction to C++ Programming" Value="Introduction to C++ Programming" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=ICP"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Bit_Admin/course_content.aspx?subject=PIT" Text="Principles of Information Technology" Value="Principles of Information Technology"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
-                            <asp:MenuItem Text="Human Computer Interaction" Value="Human Computer Interaction" NavigateUrl="~/Bit_Admin/Human_Computer_Interaction.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Object Oriented Programming" Value="Object Oriented Programming" NavigateUrl="~/Bit_Admin/Object_Oriented_Programming.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text=" Discrete Math" Value="Discrete Math" NavigateUrl="~/Bit_Admin/discrete_mathematics.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Data Communication and Networks" Value="Data Communication and Networks" NavigateUrl="~/Bit_Admin/Data_Communication_and_Networks.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Operating System" Value="Operating System" NavigateUrl="~/Bit_Admin/operating_system.aspx"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
-                            <asp:MenuItem Text="Web Technology" Value="Web Technology-Python" NavigateUrl="~/Bit_Admin/web_technology(Python).aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="E-Commerce" Value="Linux Administration" NavigateUrl="~/Bit_Admin/Linux_Administration.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Digital Electronics and Logic Design " Value="Digital Electronics and Logic Design " NavigateUrl="~/Bit_Admin/Digital_Electronics_and_Logic_Design.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Data_Structure_and_Algorithm" Value="Data Structure and Algorithm" NavigateUrl="~/Bit_Admin/data_structure_and_algorithm.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Industrial_Management" Value="Industrial Management" NavigateUrl="~/Bit_Admin/Industrial_Management.aspx"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="4th Semester" Value="4th Semester">
-                            <asp:MenuItem Text="Artificial Intelligence" Value="Artificial Intelligence" NavigateUrl="~/Bit_Admin/AI.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Compiler Design and Construction" Value="Compiler Design and Construction" NavigateUrl="~/Bit_Admin/complier_and_design_constructions.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Technopreneurship" Value="Technopreneurship" NavigateUrl="~/Bit_Admin/Technopreneurship.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Database Management System" Value="Database Management System" NavigateUrl="~/Bit_Admin/database_management_system.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="System Analysis and Design" Value="System Analysis and Design" NavigateUrl="~/Bit_Admin/system_analysis_and_design.aspx"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="5th Semester" Value="5th Semester">
-                            <asp:MenuItem Text="Software Engineering" Value="Software Engineering" NavigateUrl="~/Bit_Admin/software_engineering.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Cyber Security Law and Policy" Value="Cyber Security Law and Policy" NavigateUrl="~/Bit_Admin/cyber_security_law_and_policy.aspx"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Bit_Admin/leadership_and_human_relations.aspx" Text="LR &amp; HR" Value="LR &amp; HR"></asp:MenuItem>
-                            <asp:MenuItem Text="Multimedia System" Value="EPPT" NavigateUrl="~/Bit_Admin/multimedia_system.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="cyptography" Value="Crytpo" NavigateUrl="~/Bit_Admin/cyptography.aspx"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="6th Semester" Value="6th Semester">
-                            <asp:MenuItem Text="Mobile Computing" Value="Mobile Computing" NavigateUrl="~/Bit_Admin/mobile_computing.aspx"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Bit_Admin/software_project_management.aspx" Text="Software Project Management" Value="Software Project Management"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Bit_Admin/SocialValues&Ethics.aspx" Text="Social Values &amp; Ethics" Value="Social Values &amp; Ethics"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Bit_Admin/ResearchMethodoly.aspx" Text="Research Methodoly" Value="Research Methodoly"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="7th Semester" Value="7th Semester">
-                            <asp:MenuItem NavigateUrl="~/Bit_Admin/project_work.aspx" Text="Final Project Work" Value="Project Work"></asp:MenuItem>
-                            <asp:MenuItem Text="Cloud Computing" Value="Cloud Computing" NavigateUrl="~/Bit_Admin/cloud_computing.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Management InforamtionSystem" Value="Management InforamtionSystem" NavigateUrl="~/Bit_Admin/ManagementInforamtionSystem.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="SystemSoftware Administration" Value="SystemSoftware Administration" NavigateUrl="~/Bit_Admin/SystemSoftware_Administration.aspx"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="8th Semester" Value="8th Semester">
-                            <asp:MenuItem Text="Industrial Training" Value="Industrial Training" NavigateUrl="~/Bit_Admin/industrial_training.aspx"></asp:MenuItem>
-                        </asp:MenuItem>
-                    </Items>
+          <Items>
+            <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Bit_Admin/dash.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="1st Semester" Value="1st Semester">
+              <asp:MenuItem Text="Basic Computer Architecture" Value="Basic Computer Architecture" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=BCA"></asp:MenuItem>
+              <asp:MenuItem Text="Busines English" Value="Busines Eng" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=BE"></asp:MenuItem>
+              <asp:MenuItem Text="Computer Related Mathematics and Statistics" Value="Computer_Related_Mathematics_and_Statistics" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=Math"></asp:MenuItem>
+              <asp:MenuItem Text="Introduction to C++ Programming" Value="Introduction to C++ Programming" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=ICP"></asp:MenuItem>
+              <asp:MenuItem NavigateUrl="~/Bit_Admin/course_content.aspx?subject=PIT" Text="Principles of Information Technology" Value="Principles of Information Technology"></asp:MenuItem>
+            </asp:MenuItem>
+            <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
+              <asp:MenuItem Text="Human Computer Interaction" Value="Human Computer Interaction" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=HCI"></asp:MenuItem>
+              <asp:MenuItem Text="Object Oriented Programming" Value="Object Oriented Programming" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=OOP"></asp:MenuItem>
+              <asp:MenuItem Text=" Discrete Math" Value="Discrete Math" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DM"></asp:MenuItem>
+              <asp:MenuItem Text="Data Communication and Networks" Value="Data Communication and Networks" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DCN"></asp:MenuItem>
+              <asp:MenuItem Text="Operating System" Value="Operating System" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=OS"></asp:MenuItem>
+            </asp:MenuItem>
+            <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
+              <asp:MenuItem Text="Web Technology" Value="Web Technology-Python" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=WT"></asp:MenuItem>
+              <asp:MenuItem Text="E-Commerce" Value="Linux Administration" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=LA"></asp:MenuItem>
+              <asp:MenuItem Text="Digital Electronics and Logic Design " Value="Digital Electronics and Logic Design " NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DELD"></asp:MenuItem>
+              <asp:MenuItem Text="Data_Structure_and_Algorithm" Value="Data Structure and Algorithm" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DSA"></asp:MenuItem>
+              <asp:MenuItem Text="Industrial_Management" Value="Industrial Management" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=IM"></asp:MenuItem>
+              <asp:MenuItem Text="Database_Management_System" Value="Database Management System" NavigateUrl="~/Bit_Admin/course_content.aspx?subject=DMS"></asp:MenuItem>
+            </asp:MenuItem>
+            <asp:MenuItem Text="4th Semester" Value="4th Semester">
+              <asp:MenuItem Text="Artificial Intelligence" Value="Artificial Intelligence" NavigateUrl="~/Bit_Admin/AI.aspx"></asp:MenuItem>
+              <asp:MenuItem Text="Compiler Design and Construction" Value="Compiler Design and Construction" NavigateUrl="~/Bit_Admin/complier_and_design_constructions.aspx"></asp:MenuItem>
+              <asp:MenuItem Text="Technopreneurship" Value="Technopreneurship" NavigateUrl="~/Bit_Admin/Technopreneurship.aspx"></asp:MenuItem>
+              <asp:MenuItem Text="Database Management System" Value="Database Management System" NavigateUrl="~/Bit_Admin/database_management_system.aspx"></asp:MenuItem>
+              <asp:MenuItem Text="System Analysis and Design" Value="System Analysis and Design" NavigateUrl="~/Bit_Admin/system_analysis_and_design.aspx"></asp:MenuItem>
+            </asp:MenuItem>
+            <asp:MenuItem Text="5th Semester" Value="5th Semester">
+              <asp:MenuItem Text="Software Engineering" Value="Software Engineering" NavigateUrl="~/Bit_Admin/software_engineering.aspx"></asp:MenuItem>
+              <asp:MenuItem Text="Cyber Security Law and Policy" Value="Cyber Security Law and Policy" NavigateUrl="~/Bit_Admin/cyber_security_law_and_policy.aspx"></asp:MenuItem>
+              <asp:MenuItem NavigateUrl="~/Bit_Admin/leadership_and_human_relations.aspx" Text="LR &amp; HR" Value="LR &amp; HR"></asp:MenuItem>
+              <asp:MenuItem Text="Multimedia System" Value="EPPT" NavigateUrl="~/Bit_Admin/multimedia_system.aspx"></asp:MenuItem>
+              <asp:MenuItem Text="cyptography" Value="Crytpo" NavigateUrl="~/Bit_Admin/cyptography.aspx"></asp:MenuItem>
+            </asp:MenuItem>
+            <asp:MenuItem Text="6th Semester" Value="6th Semester">
+              <asp:MenuItem Text="Mobile Computing" Value="Mobile Computing" NavigateUrl="~/Bit_Admin/mobile_computing.aspx"></asp:MenuItem>
+              <asp:MenuItem NavigateUrl="~/Bit_Admin/software_project_management.aspx" Text="Software Project Management" Value="Software Project Management"></asp:MenuItem>
+              <asp:MenuItem NavigateUrl="~/Bit_Admin/SocialValues&Ethics.aspx" Text="Social Values &amp; Ethics" Value="Social Values &amp; Ethics"></asp:MenuItem>
+              <asp:MenuItem NavigateUrl="~/Bit_Admin/ResearchMethodoly.aspx" Text="Research Methodoly" Value="Research Methodoly"></asp:MenuItem>
+            </asp:MenuItem>
+            <asp:MenuItem Text="7th Semester" Value="7th Semester">
+              <asp:MenuItem NavigateUrl="~/Bit_Admin/project_work.aspx" Text="Final Project Work" Value="Project Work"></asp:MenuItem>
+              <asp:MenuItem Text="Cloud Computing" Value="Cloud Computing" NavigateUrl="~/Bit_Admin/cloud_computing.aspx"></asp:MenuItem>
+              <asp:MenuItem Text="Management InforamtionSystem" Value="Management InforamtionSystem" NavigateUrl="~/Bit_Admin/ManagementInforamtionSystem.aspx"></asp:MenuItem>
+              <asp:MenuItem Text="SystemSoftware Administration" Value="SystemSoftware Administration" NavigateUrl="~/Bit_Admin/SystemSoftware_Administration.aspx"></asp:MenuItem>
+            </asp:MenuItem>
+            <asp:MenuItem Text="8th Semester" Value="8th Semester">
+              <asp:MenuItem Text="Industrial Training" Value="Industrial Training" NavigateUrl="~/Bit_Admin/industrial_training.aspx"></asp:MenuItem>
+            </asp:MenuItem>
+          </Items>
 
-                    <LevelMenuItemStyles>
-                        <asp:MenuItemStyle CssClass="dropdown-item" HorizontalPadding="15px" Height="50px" VerticalPadding="15px" />
-                    </LevelMenuItemStyles>
-                    <LevelSelectedStyles>
-                        <asp:MenuItemStyle CssClass="nav-item active" Font-Underline="False" />
-                    </LevelSelectedStyles>
-                    <StaticHoverStyle Font-Underline="false" ForeColor="#FF2D8D" BackColor="Transparent" Font-Bold="True" />
-                    <StaticMenuStyle CssClass="nav-item"></StaticMenuStyle>
-                    <StaticSelectedStyle Font-Bold="true" />
-                    <DynamicHoverStyle BackColor="#FF2D8D" ForeColor="White" />
-                    <DynamicMenuItemStyle CssClass="dropdown-item" BackColor="#0B1F66" BorderStyle="None" />
-                </asp:Menu>
-            </div>
-        </div>
+          <LevelMenuItemStyles>
+            <asp:MenuItemStyle CssClass="dropdown-item" HorizontalPadding="15px" Height="50px" VerticalPadding="15px" />
+          </LevelMenuItemStyles>
+          <LevelSelectedStyles>
+            <asp:MenuItemStyle CssClass="nav-item active" Font-Underline="False" />
+          </LevelSelectedStyles>
+          <StaticHoverStyle Font-Underline="false" ForeColor="#FF2D8D" BackColor="Transparent" Font-Bold="True" />
+          <StaticMenuStyle CssClass="nav-item"></StaticMenuStyle>
+          <StaticSelectedStyle Font-Bold="true" />
+          <DynamicHoverStyle BackColor="#FF2D8D" ForeColor="White" />
+          <DynamicMenuItemStyle CssClass="dropdown-item" BackColor="#0B1F66" BorderStyle="None" />
+        </asp:Menu>
+      </div>
+    </div>
 
-        <!-- ── CONTENT ── -->
-        <div class="d-flex justify-content-center align-items-center">
-            <div id="content" style="margin-top: 116px; width: 100%;">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
-            </div>
-        </div>
+    <!-- ── CONTENT ── -->
+    <div class="d-flex justify-content-center align-items-center">
+      <div id="content" style="margin-top: 116px; width: 100%;">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+      </div>
+    </div>
 
-        <!-- ── FOOTER ── -->
-        <div class="bit-footer">
-            <i class="ti ti-copyright" style="font-size:13px; vertical-align:-1px;"></i>
-            Texas Learning Portal &nbsp;·&nbsp; 2021/22
-        </div>
+    <!-- ── FOOTER ── -->
+    <div class="bit-footer">
+      <i class="ti ti-copyright" style="font-size: 13px; vertical-align: -1px;"></i>
+      Texas Learning Portal &nbsp;·&nbsp; 2021/22
+    </div>
 
-        <script>
-document.addEventListener('DOMContentLoaded', function () {
-    var navbarToggler = document.querySelector('.navbar-toggler');
-    var navbar = document.getElementById('menu');
-    var collapse = document.querySelector('#navbarSupportedContent');
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var navbarToggler = document.querySelector('.navbar-toggler');
+        var navbar = document.getElementById('menu');
+        var collapse = document.querySelector('#navbarSupportedContent');
 
-    if (navbarToggler) {
-        navbarToggler.addEventListener('click', function () {
+        if (navbarToggler) {
+          navbarToggler.addEventListener('click', function () {
             if (collapse.classList.contains('show')) {
-                navbar.classList.remove('expanded');
+              navbar.classList.remove('expanded');
             } else {
-                navbar.classList.add('expanded');
+              navbar.classList.add('expanded');
             }
-        });
-    }
-});
-</script>
+          });
+        }
+      });
+    </script>
 
-    </form>
+  </form>
 </body>
 </html>
