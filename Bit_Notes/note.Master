@@ -313,19 +313,16 @@
                         </a>
                         <div id="second-submenu" class="submenu">
                             <ul>
-<<<<<<< Updated upstream
+
                              <li><a href="/Bit_Notes/course_content.aspx?code=HCI">Human Computer Interaction</a></li>
                              <li><a href="/Bit_Notes/course_content.aspx?code=DM">Discrete Mathematics</a></li>
                              <li><a href="/Bit_Notes/course_content.aspx?code=DCN">Data Communication and Networks</a></li>
                              <li><a href="/Bit_Notes/course_content.aspx?code=OOP">Object Oriented Programming</a></li>
                              <li><a href="/Bit_Notes/course_content.aspx?code=OS">Operating System</a></li>
-=======
-                                <li><a href="/Bit_Notes/course_content.aspx?code=HCI">Human Computer Interaction</a></li>
-                                <li><a href="/Bit_Notes/course_content.aspx?code=DM">Discrete Mathematics</a></li>
-                                <li><a href="/Bit_Notes/course_content.aspx?code=DCN">Data Communication and Networks</a></li>
-                                <li><a href="/Bit_Notes/course_content.aspx?code=OOP">Object Oriented Programming</a></li>
-                                <li><a href="/Bit_Notes/course_content.aspx?code=OS">Operating System</a></li>
->>>>>>> Stashed changes
+
+
+                                
+
                             </ul>
                         </div>
                     </li>
@@ -334,7 +331,7 @@
                             <span class="submenu-toggle"><span class="sem-badge">3</span><span class="sem-name">Third Sem</span> <i class="fas fa-caret-down third"></i></span>
                         </a>
                         <div id="third-submenu" class="submenu">
-<<<<<<< Updated upstream
+
                          <ul>
                          <li><a href="/Bit_Notes/course_content.aspx?code=DELD">Digital Electronics and Logic Design</a></li>
                          <li><a href="/Bit_Notes/course_content.aspx?code=DSA">Data Structure &amp; Algorithm</a></li>
@@ -342,15 +339,18 @@
                          <li><a href="/Bit_Notes/course_content.aspx?code=WT">Web Technology</a></li>
                          <li><a href="/Bit_Notes/course_content.aspx?code=LA">Linux Administration</a></li>
                          <li><a href="/Bit_Notes/course_content.aspx?code=DMS">Database Management System</a></li>
-=======
-                            <ul>
-                                <li><a href="/Bit_Notes/course_content.aspx?code=DELD">Digital Electronics and Logic Design</a></li>
-                                <li><a href="/Bit_Notes/course_content.aspx?code=DSA">Data Structure &amp; Algorithm</a></li>
-                                <li><a href="/Bit_Notes/course_content.aspx?code=IM">Industrial Management</a></li>
-                                <li><a href="/Bit_Notes/course_content.aspx?code=WT">Web Technology</a></li>
-                                <li><a href="/Bit_Notes/course_content.aspx?code=LA">Linux Administration</a></li>
-                                <li><a href="/Bit_Notes/course_content.aspx?code=DMS">Database Management System</a></li>
->>>>>>> Stashed changes
+
+
+                         <ul>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=DELD">Digital Electronics and Logic Design</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=DSA">Data Structure &amp; Algorithm</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=IM">Industrial Management</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=WT">Web Technology</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=LA">Linux Administration</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=DMS">Database Management System</a></li>
+
+                           
+
                          </ul>
                         </div>
                     </li>
