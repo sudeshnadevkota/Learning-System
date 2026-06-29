@@ -33,13 +33,22 @@ namespace Learning_System.Admin
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
 
         /// <summary>
-        /// txtExpiry control.
+        /// ddlClass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExpiry;
+        protected global::System.Web.UI.WebControls.DropDownList ddlClass;
+
+        /// <summary>
+        /// ddlSemester control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSemester;
 
         /// <summary>
         /// txtDescription control.
@@ -51,33 +60,6 @@ namespace Learning_System.Admin
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
 
         /// <summary>
-        /// txtPostedByName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPostedByName;
-
-        /// <summary>
-        /// ddlRole control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlRole;
-
-        /// <summary>
-        /// txtCustomRole control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustomRole;
-
-        /// <summary>
         /// fileAttachment control.
         /// </summary>
         /// <remarks>
@@ -87,13 +69,13 @@ namespace Learning_System.Admin
         protected global::System.Web.UI.WebControls.FileUpload fileAttachment;
 
         /// <summary>
-        /// chkPinned control.
+        /// txtExpiry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkPinned;
+        protected global::System.Web.UI.WebControls.TextBox txtExpiry;
 
         /// <summary>
         /// btnSave control.

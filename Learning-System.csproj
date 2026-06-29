@@ -264,11 +264,7 @@
     <Content Include="Bcs_Admin\web_designing.aspx" />
     <Content Include="Bcs_Admin\windows_server_2016.aspx" />
     <Content Include="Bcs_Admin\wireless_communications.aspx" />
-    <Content Include="Bcs_Notes\advance_computer_architecture.aspx" />
     <Content Include="Bcs_Notes\data_communication_networking.aspx" />
-    <Content Include="Bcs_Notes\advance_database_management_system.aspx" />
-    <Content Include="Bcs_Notes\advance_routing_technology%28WAN%29.aspx" />
-    <Content Include="Bcs_Notes\advance_switching_tech_and_trroubleshoot.aspx" />
     <Content Include="Bcs_Notes\computer_ethics.aspx" />
     <Content Include="Bcs_Notes\basic_computer_architecture.aspx" />
     <Content Include="Bcs_Notes\english.aspx" />
@@ -1246,6 +1242,7 @@
     <Content Include="Bit_Notes\Syllabus\Math_Syllabus.pdf" />
     <Content Include="Bit_Notes\SyllabusViewer.ashx" />
     <Content Include="Bit_Notes\NoticeViewer.ashx" />
+    <Content Include="App_Code\Handler1.ashx" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <None Include="Scripts\jquery-3.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
@@ -1446,6 +1443,10 @@
     </Compile>
     <Compile Include="App_Code\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Content Include="App_Code\IISHandler1.cs" />
+    <Compile Include="App_Code\Handler1.ashx.cs">
+      <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bba_Admin\bachelor_thesis_on_internship_fin.aspx.cs">
@@ -2400,40 +2401,12 @@
     <Compile Include="Bcs_Admin\wireless_communications.aspx.designer.cs">
       <DependentUpon>wireless_communications.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\advance_computer_architecture.aspx.cs">
-      <DependentUpon>advance_computer_architecture.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_computer_architecture.aspx.designer.cs">
-      <DependentUpon>advance_computer_architecture.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Bcs_Notes\data_communication_networking.aspx.cs">
       <DependentUpon>data_communication_networking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Bcs_Notes\data_communication_networking.aspx.designer.cs">
       <DependentUpon>data_communication_networking.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_database_management_system.aspx.cs">
-      <DependentUpon>advance_database_management_system.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_database_management_system.aspx.designer.cs">
-      <DependentUpon>advance_database_management_system.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_routing_technology%28WAN%29.aspx.cs">
-      <DependentUpon>advance_routing_technology%28WAN%29.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_routing_technology%28WAN%29.aspx.designer.cs">
-      <DependentUpon>advance_routing_technology%28WAN%29.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_switching_tech_and_trroubleshoot.aspx.cs">
-      <DependentUpon>advance_switching_tech_and_trroubleshoot.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_switching_tech_and_trroubleshoot.aspx.designer.cs">
-      <DependentUpon>advance_switching_tech_and_trroubleshoot.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\computer_ethics.aspx.cs">
       <DependentUpon>computer_ethics.aspx</DependentUpon>

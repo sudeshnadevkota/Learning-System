@@ -17,7 +17,7 @@ namespace Learning_System.Bit_Notes
         {
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string sql = @"SELECT Id, Title, Description, PostedByName, PostedByRole,
+                string sql = @"SELECT NoticeId, Title, Description, PostedByName, PostedByRole,
                                       PostedDate, AttachmentName, AttachmentType, IsPinned
                                FROM Notice
                                WHERE IsActive = 1 AND (ExpiryDate IS NULL OR ExpiryDate >= GETDATE())

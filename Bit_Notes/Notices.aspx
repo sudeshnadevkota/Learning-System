@@ -26,7 +26,7 @@
                data-posted-role='<%# HttpUtility.HtmlAttributeEncode(Eval("PostedByRole").ToString()) %>'
                data-posted-date='<%# Eval("PostedDate", "{0:MMM dd, yyyy}") %>'
                data-description='<%# HttpUtility.HtmlAttributeEncode(Eval("Description").ToString()) %>'
-               data-attachment-url='<%# Eval("AttachmentName") != DBNull.Value ? ResolveUrl("~/Bit_Notes/NoticeViewer.ashx?id=" + Eval("Id")) : "" %>'
+               data-attachment-url='<%# Eval("AttachmentName") != DBNull.Value ? ResolveUrl("~/Bit_Notes/NoticeViewer.ashx?id=" + Eval("NoticeId")) : "" %>'
                data-attachment-type='<%# Eval("AttachmentType") %>'
                onclick="openNoticeModal(this)">
 
