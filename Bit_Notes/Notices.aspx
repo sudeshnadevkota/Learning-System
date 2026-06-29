@@ -14,7 +14,7 @@
           Back to Home
         </a>
       </div>
-      <h1 class="hero-title-inline">Notices</h1>
+      <h1 class="hero-title-inline">Notices — <asp:Literal ID="litClassName" runat="server" /></h1>
     </div>
 
     <div id="noticeList" class="fade-up d2">
@@ -26,7 +26,7 @@
                data-posted-role='<%# HttpUtility.HtmlAttributeEncode(Eval("PostedByRole").ToString()) %>'
                data-posted-date='<%# Eval("PostedDate", "{0:MMM dd, yyyy}") %>'
                data-description='<%# HttpUtility.HtmlAttributeEncode(Eval("Description").ToString()) %>'
-               data-attachment-url='<%# Eval("AttachmentName") != DBNull.Value ? ResolveUrl("~/Bit_Notes/NoticeViewer.ashx?id=" + Eval("Id")) : "" %>'
+               data-attachment-url='<%# Eval("AttachmentName") != DBNull.Value ? ResolveUrl("~/Bit_Notes/NoticeViewer.ashx?id=" + Eval("NoticeId")) : "" %>'
                data-attachment-type='<%# Eval("AttachmentType") %>'
                onclick="openNoticeModal(this)">
 

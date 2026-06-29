@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Bit_Notes.note" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Bit_Notes.note" %>
 
 <!DOCTYPE html>
 <html>

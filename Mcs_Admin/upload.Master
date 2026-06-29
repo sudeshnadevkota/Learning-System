@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="upload.master.cs" Inherits="Learning_System.Mcs_Admin.upload" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="upload.master.cs" Inherits="Learning_System.Mcs_Admin.upload" %>
 
 
 <!DOCTYPE html>
@@ -214,34 +214,33 @@
                 <Items>
                     <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Mcs_Admin/dash.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="1st Semester" Value="1st Semester">
-                        <asp:MenuItem Text="Object Orinted Programming" Value="C Programming" NavigateUrl="~/Mcs_Admin/object_oriented_programming.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Design and Analysis Algorithm" Value="Internet Fundamental" NavigateUrl="~/Mcs_Admin/desgin_and_analysis_Algorithm.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Managerial Communication" Value="Busines Eng" NavigateUrl="~/Mcs_Admin/Managerial_communication.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Open Source Technology" Value="Mathematics 1" NavigateUrl="~/Mcs_Admin/opensource_technology.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Telecommunication Systems" Value="Basic Computer Architecture" NavigateUrl="~/Mcs_Admin/telecommunication_systems.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Object Orinted Programming" Value="C Programming" NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_OOP"></asp:MenuItem>
+                        <asp:MenuItem Text="Algorithms And Complexity" Value="Algorithms And Complexity" NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_AC"></asp:MenuItem>
+                        <asp:MenuItem Text="High Performance Network" Value="High Performance Network" NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_HPN"></asp:MenuItem>
+                        <asp:MenuItem Text="Internet Programming and Web Design" Value="Internet Programming and Web Design" NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_IPWD"></asp:MenuItem>
+                      
                     </asp:MenuItem>
                     <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
-                        <asp:MenuItem Text="Data Warehousing and Big Data" Value="C++ Programming" NavigateUrl="~/Mcs_Admin/data_warehousing_and_bigdata.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Data Analytics Visualization" Value="Data Analytics Visualization" NavigateUrl="~/Mcs_Admin/Data_Analytics_Visualization.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Cyber Security" Value="Digital Logic" NavigateUrl="~/Mcs_Admin/cyber_security.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Artificial Intelligence" Value="System Analysis and Design" NavigateUrl="~/Mcs_Admin/AI.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Digital Marketing" Value="LS &amp; HR" NavigateUrl="~/Mcs_Admin/digital_marketing.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Telecommunication Systems" Value="Telecommunication Systems" NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_TS"></asp:MenuItem>
+                        <asp:MenuItem Text="Information Security" Value="Information Security" NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_IS"></asp:MenuItem>
+                        <asp:MenuItem Text="Advanced Java" Value="Advanced Java" NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_AJ"></asp:MenuItem>
+                        <asp:MenuItem Text="Artificial Intelligence" Value="System Analysis and Design" NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_AI"></asp:MenuItem>
                     </asp:MenuItem>
-                    <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
-                        
 
-                        <asp:MenuItem Text="Technopreneurship" Value="Technopreneurship" NavigateUrl="~/Mcs_Admin/Technopreneurship.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Digital forensics" Value="Database Management System"  NavigateUrl="~/Mcs_Admin/digital_forensics.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Cluod Computing" Value="Cluod Computing"  NavigateUrl="~/Mcs_Admin/Cloud_Computing.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Software Project Management" Value="Software Project Management"  NavigateUrl="~/Mcs_Admin/Software_Project_Management.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Software Quality Testing" Value="Software Quality Testing"  NavigateUrl="~/Mcs_Admin/Software_Quality_Testing.aspx"></asp:MenuItem>
+
+                    <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
+  
+                        <asp:MenuItem Text="Advanced Database" Value="Advanced Database" NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_ADB"></asp:MenuItem>
+                        <asp:MenuItem Text="Research Methodology" Value="Research Methodology"  NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_RM"></asp:MenuItem>
+                        <asp:MenuItem Text="Cloud Computing" Value="Cloud Computing"  NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_CC"></asp:MenuItem>
+                        <asp:MenuItem Text="Advanced AI With Expert System" Value="Advanced AI With Expert System"  NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_AAIES"></asp:MenuItem>
+                       
                     </asp:MenuItem>
 
 
                     <asp:MenuItem Text="4th Semester" Value="4th Semester">
-                        <asp:MenuItem Text="Project paper" Value="Project paper"  NavigateUrl="~/Mcs_Admin/project_paper.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Research Methodology-Operation Research" Value="RDBMS"  NavigateUrl="~/Mcs_Admin/research_methodology_Operation_research.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Seminar in Emerging Issue in IT" Value="Java Programming"  NavigateUrl="~/Mcs_Admin/seminar_in_emerging_issues_in_IT.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Project paper" Value="Project paper"  NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_PP"></asp:MenuItem>
+                        <asp:MenuItem Text="Seminar in Emerging Issues in IT" Value="RDBMS"  NavigateUrl="~/Mcs_Admin/course_content.aspx?subject=MCS_SEIIT"></asp:MenuItem>
                     </asp:MenuItem>
 
 

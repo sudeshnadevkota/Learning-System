@@ -24,7 +24,7 @@ namespace Learning_System.Bit_Notes
 
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string sql = "SELECT AttachmentName, AttachmentType, AttachmentData FROM Notice WHERE Id = @Id AND IsActive = 1";
+                string sql = "SELECT AttachmentName, AttachmentType, AttachmentData FROM Notice WHERE NoticeId = @Id AND IsActive = 1";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.Parameters.AddWithValue("@Id", id);

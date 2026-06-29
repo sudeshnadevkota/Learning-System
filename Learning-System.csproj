@@ -1,5 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\EntityFramework.6.5.2\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.5.2\build\EntityFramework.props')" />
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -61,19 +60,12 @@
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.5.2\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.5.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -130,6 +122,7 @@
     <Content Include="Bba_Admin\bachelor_thesis_on_internship_fin.aspx" />
     <Content Include="Bba_Admin\bachelor_thesis_on_internship_mar.aspx" />
     <Content Include="Bba_Admin\banking_and_insurance%28fin%29.aspx" />
+    <Content Include="Bba_Admin\bulk_upload.aspx" />
     <Content Include="Bba_Admin\business_communications.aspx" />
     <Content Include="Bba_Admin\business_english_I.aspx" />
     <Content Include="Bba_Admin\business_english_II.aspx" />
@@ -141,6 +134,7 @@
     <Content Include="Bba_Admin\business_research_methods.aspx" />
     <Content Include="Bba_Admin\company_law.aspx" />
     <Content Include="Bba_Admin\consumer_behavior.aspx" />
+    <Content Include="Bba_Admin\course_content.aspx" />
     <Content Include="Bba_Admin\dash.aspx" />
     <Content Include="Bba_Admin\ecommerce.aspx" />
     <Content Include="Bba_Admin\enterpreneurship.aspx" />
@@ -171,6 +165,7 @@
     <Content Include="Bba_Admin\retail_management.aspx" />
     <Content Include="Bba_Admin\sociology.aspx" />
     <Content Include="Bba_Admin\strategic_management.aspx" />
+    <Content Include="Bba_Admin\Syllabus.aspx" />
     <Content Include="Bba_Admin\taxation_and_auditing%28fin%29.aspx" />
     <Content Include="Bba_Notes\bachelor%27s_thesis_on internship%28finc%29.aspx" />
     <Content Include="Bba_Notes\bachelor%27s_thesis_on_internship%28market%29.aspx" />
@@ -187,6 +182,8 @@
     <Content Include="Bba_Notes\business_research_methods.aspx" />
     <Content Include="Bba_Notes\company_law.aspx" />
     <Content Include="Bba_Notes\consumer_behavior.aspx" />
+    <Content Include="Bba_Notes\course_content.aspx" />
+    <Content Include="Bba_Notes\Css\note.css" />
     <Content Include="Bba_Notes\dash.aspx" />
     <Content Include="Bba_Notes\entrepreneurship.aspx" />
     <Content Include="Bba_Notes\event_management.aspx" />
@@ -271,9 +268,6 @@
     <Content Include="Bcs_Notes\course_content.aspx" />
     <Content Include="Bcs_Notes\Css\note.css" />
     <Content Include="Bcs_Notes\data_communication_networking.aspx" />
-    <Content Include="Bcs_Notes\advance_database_management_system.aspx" />
-    <Content Include="Bcs_Notes\advance_routing_technology%28WAN%29.aspx" />
-    <Content Include="Bcs_Notes\advance_switching_tech_and_trroubleshoot.aspx" />
     <Content Include="Bcs_Notes\computer_ethics.aspx" />
     <Content Include="Bcs_Notes\basic_computer_architecture.aspx" />
     <Content Include="Bcs_Notes\english.aspx" />
@@ -317,6 +311,8 @@
     <Content Include="Bcs_Notes\wireless_communications.aspx" />
     <Content Include="Bhm_Admin\accounting_for_hospitality.aspx" />
     <Content Include="Bhm_Admin\beverage_study.aspx" />
+    <Content Include="Bhm_Admin\bulk_upload.aspx" />
+    <Content Include="Bhm_Admin\course_content.aspx" />
     <Content Include="Bhm_Admin\dash.aspx" />
     <Content Include="Bhm_Admin\english_for_academics.aspx" />
     <Content Include="Bhm_Admin\enterpreneurship.aspx" />
@@ -353,10 +349,13 @@
     <Content Include="Bhm_Admin\restaurant_business_operation.aspx" />
     <Content Include="Bhm_Admin\revenue_management.aspx" />
     <Content Include="Bhm_Admin\statistics.aspx" />
+    <Content Include="Bhm_Admin\Syllabus.aspx" />
     <Content Include="Bhm_Admin\tourist_behavioral_science.aspx" />
     <Content Include="Bhm_Notes\accounting_for_hospitality.aspx" />
     <Content Include="Bhm_Notes\beverage_study.aspx" />
     <Content Include="Bhm_Notes\bhmstyle.css" />
+    <Content Include="Bhm_Notes\course_content.aspx" />
+    <Content Include="Bhm_Notes\Css\note.css" />
     <Content Include="Bhm_Notes\dash.aspx" />
     <Content Include="Bhm_Notes\english_for_academics.aspx" />
     <Content Include="Bhm_Notes\entrepreneurship.aspx" />
@@ -510,6 +509,7 @@
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="Mba_Admin\banking_and_insurance.aspx" />
+    <Content Include="Mba_Admin\bulk_upload.aspx" />
     <Content Include="Mba_Admin\business_accounting_and_finance.aspx" />
     <Content Include="Mba_Admin\business_economics.aspx" />
     <Content Include="Mba_Admin\business_enviroment_analysis.aspx" />
@@ -517,6 +517,7 @@
     <Content Include="Mba_Admin\business_research_methodology.aspx" />
     <Content Include="Mba_Admin\conflict_management_and_negotiation_skills.aspx" />
     <Content Include="Mba_Admin\consumer_behaviour.aspx" />
+    <Content Include="Mba_Admin\course_content.aspx" />
     <Content Include="Mba_Admin\customer_relationship_management.aspx" />
     <Content Include="Mba_Admin\dash.aspx" />
     <Content Include="Mba_Admin\entrepreneurship_management.aspx" />
@@ -534,6 +535,7 @@
     <Content Include="Mba_Admin\retail_management.aspx" />
     <Content Include="Mba_Admin\sales_and_promotions_management.aspx" />
     <Content Include="Mba_Admin\strategic_management.aspx" />
+    <Content Include="Mba_Admin\Syllabus.aspx" />
     <Content Include="Mba_Notes\banking_and_insurance.aspx" />
     <Content Include="Mba_Notes\business_accounting_and_finance.aspx" />
     <Content Include="Mba_Notes\business_economics.aspx" />
@@ -542,6 +544,8 @@
     <Content Include="Mba_Notes\business_research_methodology.aspx" />
     <Content Include="Mba_Notes\conflict_management_and_negotiation_skills.aspx" />
     <Content Include="Mba_Notes\consumer_behaviour.aspx" />
+    <Content Include="Mba_Notes\course_content.aspx" />
+    <Content Include="Mba_Notes\Css\note.css" />
     <Content Include="Mba_Notes\customer_relationship_management.aspx" />
     <Content Include="Mba_Notes\dash.aspx" />
     <Content Include="Mba_Notes\entrepreneurship_management.aspx" />
@@ -563,6 +567,7 @@
     <Content Include="Mcs_Admin\AI.aspx" />
     <Content Include="Mcs_Admin\Cloud_Computing.aspx" />
     <Content Include="Mcs_Admin\computing_technology_intelligence.aspx" />
+    <Content Include="Mcs_Admin\course_content.aspx" />
     <Content Include="Mcs_Admin\cyber_security.aspx" />
     <Content Include="Mcs_Admin\dash.aspx" />
     <Content Include="Mcs_Admin\Data_Analytics_Visualization.aspx" />
@@ -588,6 +593,8 @@
     <Content Include="Mcs_Notes\artificial_intelligence.aspx" />
     <Content Include="Mcs_Notes\Cluod_Computing.aspx" />
     <Content Include="Mcs_Notes\computing_technology_intelligence.aspx" />
+    <Content Include="Mcs_Notes\course_content.aspx" />
+    <Content Include="Mcs_Notes\Css\note.css" />
     <Content Include="Mcs_Notes\cyber_security.aspx" />
     <Content Include="Mcs_Notes\dash.aspx" />
     <Content Include="Mcs_Notes\Data_Analytics_Visualization.aspx" />
@@ -1251,6 +1258,9 @@
     <Content Include="Bit_Notes\Syllabus\Math_Syllabus.pdf" />
     <Content Include="Bit_Notes\SyllabusViewer.ashx" />
     <Content Include="Bit_Notes\NoticeViewer.ashx" />
+    <Content Include="Bhm_Notes\SyllabusViewer.ashx" />
+    <Content Include="Mba_Notes\SyllabusViewer.ashx" />
+    <Content Include="Bba_Notes\SyllabusViewer.ashx" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <None Include="Scripts\jquery-3.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
@@ -1452,6 +1462,10 @@
     <Compile Include="App_Code\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Content Include="App_Code\IISHandler1.cs" />
+    <Compile Include="App_Code\Handler1.ashx.cs">
+      <DependentUpon>Handler1.ashx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bba_Admin\bachelor_thesis_on_internship_fin.aspx.cs">
       <DependentUpon>bachelor_thesis_on_internship_fin.aspx</DependentUpon>
@@ -1473,6 +1487,13 @@
     </Compile>
     <Compile Include="Bba_Admin\banking_and_insurance%28fin%29.aspx.designer.cs">
       <DependentUpon>banking_and_insurance%28fin%29.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bba_Admin\bulk_upload.aspx.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bba_Admin\bulk_upload.aspx.designer.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bba_Admin\business_communications.aspx.cs">
       <DependentUpon>business_communications.aspx</DependentUpon>
@@ -1550,6 +1571,13 @@
     </Compile>
     <Compile Include="Bba_Admin\consumer_behavior.aspx.designer.cs">
       <DependentUpon>consumer_behavior.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bba_Admin\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bba_Admin\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bba_Admin\dash.aspx.cs">
       <DependentUpon>dash.aspx</DependentUpon>
@@ -1754,6 +1782,13 @@
     <Compile Include="Bba_Admin\strategic_management.aspx.designer.cs">
       <DependentUpon>strategic_management.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Bba_Admin\Syllabus.aspx.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bba_Admin\Syllabus.aspx.designer.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bba_Admin\taxation_and_auditing%28fin%29.aspx.cs">
       <DependentUpon>taxation_and_auditing%28fin%29.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1865,6 +1900,13 @@
     </Compile>
     <Compile Include="Bba_Notes\consumer_behavior.aspx.designer.cs">
       <DependentUpon>consumer_behavior.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bba_Notes\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bba_Notes\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bba_Notes\dash.aspx.cs">
       <DependentUpon>dash.aspx</DependentUpon>
@@ -2447,27 +2489,6 @@
     <Compile Include="Bcs_Notes\data_communication_networking.aspx.designer.cs">
       <DependentUpon>data_communication_networking.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bcs_Notes\advance_database_management_system.aspx.cs">
-      <DependentUpon>advance_database_management_system.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_database_management_system.aspx.designer.cs">
-      <DependentUpon>advance_database_management_system.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_routing_technology%28WAN%29.aspx.cs">
-      <DependentUpon>advance_routing_technology%28WAN%29.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_routing_technology%28WAN%29.aspx.designer.cs">
-      <DependentUpon>advance_routing_technology%28WAN%29.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_switching_tech_and_trroubleshoot.aspx.cs">
-      <DependentUpon>advance_switching_tech_and_trroubleshoot.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_switching_tech_and_trroubleshoot.aspx.designer.cs">
-      <DependentUpon>advance_switching_tech_and_trroubleshoot.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Bcs_Notes\computer_ethics.aspx.cs">
       <DependentUpon>computer_ethics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2763,6 +2784,20 @@
     <Compile Include="Bhm_Admin\beverage_study.aspx.designer.cs">
       <DependentUpon>beverage_study.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Bhm_Admin\bulk_upload.aspx.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bhm_Admin\bulk_upload.aspx.designer.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bhm_Admin\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bhm_Admin\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bhm_Admin\dash.aspx.cs">
       <DependentUpon>dash.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3008,6 +3043,13 @@
     <Compile Include="Bhm_Admin\statistics.aspx.designer.cs">
       <DependentUpon>statistics.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Bhm_Admin\Syllabus.aspx.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bhm_Admin\Syllabus.aspx.designer.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bhm_Admin\tourist_behavioral_science.aspx.cs">
       <DependentUpon>tourist_behavioral_science.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3035,6 +3077,13 @@
     </Compile>
     <Compile Include="Bhm_Notes\beverage_study.aspx.designer.cs">
       <DependentUpon>beverage_study.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bhm_Notes\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bhm_Notes\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bhm_Notes\dash.aspx.cs">
       <DependentUpon>dash.aspx</DependentUpon>
@@ -3972,6 +4021,13 @@
     <Compile Include="Mba_Admin\banking_and_insurance.aspx.designer.cs">
       <DependentUpon>banking_and_insurance.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mba_Admin\bulk_upload.aspx.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mba_Admin\bulk_upload.aspx.designer.cs">
+      <DependentUpon>bulk_upload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mba_Admin\business_accounting_and_finance.aspx.cs">
       <DependentUpon>business_accounting_and_finance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4020,6 +4076,13 @@
     </Compile>
     <Compile Include="Mba_Admin\consumer_behaviour.aspx.designer.cs">
       <DependentUpon>consumer_behaviour.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mba_Admin\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mba_Admin\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mba_Admin\customer_relationship_management.aspx.cs">
       <DependentUpon>customer_relationship_management.aspx</DependentUpon>
@@ -4133,6 +4196,13 @@
     <Compile Include="Mba_Admin\strategic_management.aspx.designer.cs">
       <DependentUpon>strategic_management.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mba_Admin\Syllabus.aspx.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mba_Admin\Syllabus.aspx.designer.cs">
+      <DependentUpon>Syllabus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mba_Admin\upload.Master.cs">
       <DependentUpon>upload.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4195,6 +4265,13 @@
     </Compile>
     <Compile Include="Mba_Notes\consumer_behaviour.aspx.designer.cs">
       <DependentUpon>consumer_behaviour.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mba_Notes\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mba_Notes\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mba_Notes\customer_relationship_management.aspx.cs">
       <DependentUpon>customer_relationship_management.aspx</DependentUpon>
@@ -4335,6 +4412,13 @@
     </Compile>
     <Compile Include="Mcs_Admin\computing_technology_intelligence.aspx.designer.cs">
       <DependentUpon>computing_technology_intelligence.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mcs_Admin\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mcs_Admin\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mcs_Admin\cyber_security.aspx.cs">
       <DependentUpon>cyber_security.aspx</DependentUpon>
@@ -4510,6 +4594,13 @@
     </Compile>
     <Compile Include="Mcs_Notes\computing_technology_intelligence.aspx.designer.cs">
       <DependentUpon>computing_technology_intelligence.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mcs_Notes\course_content.aspx.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mcs_Notes\course_content.aspx.designer.cs">
+      <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mcs_Notes\cyber_security.aspx.cs">
       <DependentUpon>cyber_security.aspx</DependentUpon>
@@ -9022,7 +9113,6 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -9085,14 +9175,11 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\EntityFramework.6.5.2\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.2\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('packages\EntityFramework.6.5.2\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.2\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
   </Target>
-  <Import Project="packages\EntityFramework.6.5.2\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.5.2\build\EntityFramework.targets')" />
-  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
 </Project>

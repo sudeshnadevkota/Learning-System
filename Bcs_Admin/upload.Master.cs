@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-using System.Data;
-using System.Data.SqlClient;
-using System.Configuration;
 using System.Web.Security;
 
 namespace Learning_System.Bcs_Admin
@@ -16,10 +7,10 @@ namespace Learning_System.Bcs_Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
-        protected void Linklogout_Click(object sender, EventArgs e)
+        // Change the name here to match exactly what is in your .Master file
+        protected void LinkOut_Click(object sender, EventArgs e)
         {
             Session.Abandon();
             Session.Clear();

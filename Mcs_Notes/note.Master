@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Mcs_Notes.note" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Mcs_Notes.note" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -289,11 +289,11 @@
                         </a>
                         <div id="first-submenu" class="submenu">
                             <ul>
-                                <li><a href="object_oriented_programming.aspx">OOP</a></li>
-                                <li><a href="design_and_analysis__algorithms.aspx">DAA</a></li>
-                                <li><a href="managerial_communication.aspx">Managerial Communication</a></li>
-                                <li><a href="open_source_technology.aspx">OST</a></li>
-                                <li><a href="telecommunication_system.aspx">TS</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_OOP">OOP</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_AC">Algorithms And Complexity</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_HPN">High Performance Network</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_IPWD">Internet Programming and Web Design</a></li>
+                               
                             </ul>
                         </div>
                     </li>
@@ -304,11 +304,11 @@
                         </a>
                         <div id="second-submenu" class="submenu">
                             <ul>
-                                <li><a href="data_warehousing_and_bigdata.aspx">DWH</a></li>
-                                <li><a href="Data_Analytics_Visualization.aspx">DAV</a></li>
-                                <li><a href="cyber_security.aspx">Cyber Security</a></li>
-                                <li><a href="artificial_intelligence.aspx">AI</a></li>
-                                <li><a href="digital_marketing.aspx">DM</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_TS">Telecommunication Systems</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_IS">Information Security</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_AJ">Advanced Java</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_AI">Artificial Intelligence</a></li>
+                               
                             </ul>
                         </div>
                     </li>
@@ -319,11 +319,11 @@
                         </a>
                         <div id="third-submenu" class="submenu">
                             <ul>
-                                <li><a href="digital_forensics.aspx">DF</a></li>
-                                <li><a href="Technopreneurship.aspx">Tech</a></li>
-                                <li><a href="Cluod_Computing.aspx">Cloud Com</a></li>
-                                <li><a href="Software_Project_Management.aspx">SPM</a></li>
-                                <li><a href="Software_Quality_Testing.aspx">SQT</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_ADB">Advanced Database</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_RM">Research Methodology</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_CC">Cloud Computing</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_AAIES">Advanced AI With Expert System</a></li>
+                             
                             </ul>
                         </div>
                     </li>
@@ -334,9 +334,9 @@
                         </a>
                         <div id="fourth-submenu" class="submenu">
                             <ul>
-                                <li><a href="project_paper.aspx">RP</a></li>
-                                <li><a href="research_methodology_operation_research.aspx">RM</a></li>
-                                <li><a href="seminar_in_emerging_issues_in_IT.aspx">Seminar</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_PP">Project Paper</a></li>
+                                <li><a href="/Mcs_Notes/course_content.aspx?code=MCS_SEIIT">Seminar in Emerging Issues in IT</a></li>
+                       
                             </ul>
                         </div>
                     </li>

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Learning_System.Bit_Admin
 {
-    public partial class syllabus : System.Web.UI.Page
+    public partial class Syllabus : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
 

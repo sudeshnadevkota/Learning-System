@@ -32,59 +32,68 @@
             border-right: 1px solid rgba(255,255,255,0.07);
         }
 
-        /* Scrollbar */
-        #sidebar::-webkit-scrollbar { width: 4px; }
-        #sidebar::-webkit-scrollbar-track { background: transparent; }
-        #sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+            /* Scrollbar */
+            #sidebar::-webkit-scrollbar {
+                width: 4px;
+            }
 
-        /* ── SEMESTERS label at top ── */
-        #sidebar::before {
-            content: "SEMESTERS";
-            display: block;
-            font-family: 'Sora', sans-serif;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,0.35);
-            padding: 18px 20px 10px;
-        }
+            #sidebar::-webkit-scrollbar-track {
+                background: transparent;
+            }
 
-        #sidebar ul {
-            padding: 0;
-            list-style: none;
-            margin: 0;
-        }
+            #sidebar::-webkit-scrollbar-thumb {
+                background: rgba(255,255,255,0.12);
+                border-radius: 4px;
+            }
 
-        #sidebar ul li {
-            padding: 0;
-        }
+            /* ── SEMESTERS label at top ── */
+            #sidebar::before {
+                content: "SEMESTERS";
+                display: block;
+                font-family: 'Sora', sans-serif;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 2px;
+                color: rgba(255,255,255,0.35);
+                padding: 18px 20px 10px;
+            }
 
-        /* ── Semester top-level link ── */
-        #sidebar > ul > li > a {
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            padding: 11px 16px;
-            font-family: 'Sora', sans-serif;
-            font-size: 13.5px;
-            font-weight: 600;
-            border-left: 3px solid transparent;
-            transition: background 0.2s, border-color 0.2s, color 0.2s;
-            gap: 10px;
-        }
+            #sidebar ul {
+                padding: 0;
+                list-style: none;
+                margin: 0;
+            }
 
-        #sidebar > ul > li > a:hover {
-            background: rgba(255,255,255,0.06);
-            color: #fff;
-        }
+                #sidebar ul li {
+                    padding: 0;
+                }
 
-        /* Active semester (when submenu is open) */
-        #sidebar > ul > li.active-sem > a {
-            border-left-color: #FF2D8D;
-            background: rgba(255,45,141,0.10);
-            color: #fff;
-        }
+            /* ── Semester top-level link ── */
+            #sidebar > ul > li > a {
+                color: rgba(255,255,255,0.75);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                padding: 11px 16px;
+                font-family: 'Sora', sans-serif;
+                font-size: 13.5px;
+                font-weight: 600;
+                border-left: 3px solid transparent;
+                transition: background 0.2s, border-color 0.2s, color 0.2s;
+                gap: 10px;
+            }
+
+                #sidebar > ul > li > a:hover {
+                    background: rgba(255,255,255,0.06);
+                    color: #fff;
+                }
+
+            /* Active semester (when submenu is open) */
+            #sidebar > ul > li.active-sem > a {
+                border-left-color: #FF2D8D;
+                background: rgba(255,45,141,0.10);
+                color: #fff;
+            }
 
         /* ── Numbered badge ── */
         .sem-badge {
@@ -117,7 +126,9 @@
             gap: 8px;
         }
 
-        .sem-name { flex: 1; }
+        .sem-name {
+            flex: 1;
+        }
 
         .fas.fa-caret-down {
             transition: transform 0.3s ease;
@@ -126,7 +137,9 @@
             margin-left: auto;
         }
 
-        .rotate { transform: rotate(180deg); }
+        .rotate {
+            transform: rotate(180deg);
+        }
 
         /* ── Submenu / subjects ── */
         #sidebar .submenu {
@@ -135,51 +148,53 @@
             background: rgba(0,0,0,0.15);
         }
 
-        #sidebar .submenu ul { padding: 0; }
+            #sidebar .submenu ul {
+                padding: 0;
+            }
 
-        #sidebar .submenu ul li a {
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            padding: 7px 16px 7px 36px;
-            font-size: 13px;
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 400;
-            transition: color 0.2s, background 0.2s;
-            position: relative;
-        }
+                #sidebar .submenu ul li a {
+                    color: rgba(255,255,255,0.5);
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 9px;
+                    padding: 7px 16px 7px 36px;
+                    font-size: 13px;
+                    font-family: 'DM Sans', sans-serif;
+                    font-weight: 400;
+                    transition: color 0.2s, background 0.2s;
+                    position: relative;
+                }
 
-        /* dot before each subject */
-        #sidebar .submenu ul li a::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.25);
-            flex-shrink: 0;
-            transition: background 0.2s;
-        }
+                    /* dot before each subject */
+                    #sidebar .submenu ul li a::before {
+                        content: "";
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background: rgba(255,255,255,0.25);
+                        flex-shrink: 0;
+                        transition: background 0.2s;
+                    }
 
-        #sidebar .submenu ul li a:hover {
-            color: rgba(255,255,255,0.85);
-            background: rgba(255,255,255,0.04);
-        }
+                    #sidebar .submenu ul li a:hover {
+                        color: rgba(255,255,255,0.85);
+                        background: rgba(255,255,255,0.04);
+                    }
 
-        #sidebar .submenu ul li a:hover::before {
-            background: rgba(255,255,255,0.6);
-        }
+                        #sidebar .submenu ul li a:hover::before {
+                            background: rgba(255,255,255,0.6);
+                        }
 
-        /* Active subject link */
-        #sidebar .submenu ul li.active-subject > a {
-            color: #FF2D8D;
-            font-weight: 500;
-        }
+                /* Active subject link */
+                #sidebar .submenu ul li.active-subject > a {
+                    color: #FF2D8D;
+                    font-weight: 500;
+                }
 
-        #sidebar .submenu ul li.active-subject > a::before {
-            background: #FF2D8D;
-        }
+                    #sidebar .submenu ul li.active-subject > a::before {
+                        background: #FF2D8D;
+                    }
 
         /* ══ CONTENT ══ */
         #content {
@@ -207,26 +222,30 @@
             z-index: 1000;
         }
 
-        #menu-bar button {
-            background: #e8ecf7 !important;
-            border: 1.5px solid #c5cde8 !important;
-            border-radius: 8px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            transition: background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px rgba(8,21,71,0.12);
-        }
+            #menu-bar button {
+                background: #e8ecf7 !important;
+                border: 1.5px solid #c5cde8 !important;
+                border-radius: 8px;
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                transition: background 0.2s, box-shadow 0.2s;
+                box-shadow: 0 2px 8px rgba(8,21,71,0.12);
+            }
 
-        #menu-bar button:hover {
-            background: #d0d8f0 !important;
-            box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
-        }
+                #menu-bar button:hover {
+                    background: #d0d8f0 !important;
+                    box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
+                }
 
-        #icon { color: #12183a !important; font-size: 15px; font-weight: 900; }
+        #icon {
+            color: #12183a !important;
+            font-size: 15px;
+            font-weight: 900;
+        }
 
         /* ══ MEDIA QUERIES ══ */
         @media (max-width: 900px) {
@@ -247,6 +266,7 @@
                 background: rgba(0,0,0,0.45);
                 z-index: 998;
             }
+
             .sidebar-open #sidebar-overlay {
                 display: block;
             }
@@ -265,8 +285,13 @@
         }
 
         @media (max-width: 576px) {
-            .sidebar-open #sidebar { width: 240px; }
-            #menu-bar { left: 0.3rem; }
+            .sidebar-open #sidebar {
+                width: 240px;
+            }
+
+            #menu-bar {
+                left: 0.3rem;
+            }
         }
     </style>
     <title>BHM notes</title>
@@ -274,7 +299,7 @@
 <body>
     <form id="form2" runat="server">
         <div id="sidebar-overlay" onclick="closeSidebarOverlay()"></div>
-        
+
         <nav class="navbar navbar-expand-lg d-flex shad align-items-center justify-content-between flex-wrap navbar-light bg-light shadow bg-body rounded"
             style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1rem;">
             <div class="d-flex align-items-center" style="flex: 1; justify-content: center;">
@@ -298,12 +323,12 @@
                         </a>
                         <div id="first-submenu" class="submenu">
                             <ul>
-                                <li><a href="introduction_to_hospitality_and_tourism_management.aspx">IHTM </a></li>
-                                <li><a href="housekeeping_operation.aspx">HO</a></li>
-                                <li><a href="front_office_operation.aspx">FOO</a></li>
-                                <li><a href="food_and_beverage_service_skill.aspx">FBSS </a></li>
-                                <li><a href="fundamental_of_computer_in_hotel_concept_and_application.aspx">FCH</a></li>
-                                <li><a href="english_for_academics.aspx">EA</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_FM">Fundamentals of Management</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_FOK">Fundamentals of Kitchen</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_ENG_1">English I</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_IHTM">Introduction to Hospitality & Tourism</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_FBM">Food & Beverage Management</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_FOM">Front Office Management</a></li>
                             </ul>
                         </div>
                     </li>
@@ -314,12 +339,12 @@
                         </a>
                         <div id="second-submenu" class="submenu">
                             <ul>
-                                <li><a href="front_office_management.aspx">FOM</a></li>
-                                <li><a href="housekeeping_management.aspx">HM</a></li>
-                                <li><a href="food_production_operation.aspx">FPO</a></li>
-                                <li><a href="food_and_beverage_service_operation.aspx">FBSO</a></li>
-                                <li><a href="hospitality_english.aspx">Hospitality English</a></li>
-                                <li><a href="fundamentals_of_management.aspx">FM</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_HKM">Housekeeping Management</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_HA">Hospitality Accounting</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_HHRM">Hospitality HR Management</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_ENG_2">English II</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_HF">Hotel French</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_FPO">Food Production Operation</a></li>
                             </ul>
                         </div>
                     </li>
@@ -330,12 +355,12 @@
                         </a>
                         <div id="third-submenu" class="submenu">
                             <ul>
-                                <li><a href="food_science_and_nutrition.aspx">FSM</a></li>
-                                <li><a href="accounting_for_hospitality.aspx">AH</a></li>
-                                <li><a href="foodd_production_management.aspx">FPM</a></li>
-                                <li><a href="beverage_study.aspx">Beverage Study</a></li>
-                                <li><a href="hospitality_human_resource_management.aspx">HHRM</a></li>
-                                <li><a href="hotel_french.aspx">Hotel French</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_HTD">Hospitality Training & Development</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_TT">Travel and Tour</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_HSM">Hospitality Service Management</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_HM">Hospitality Marketing</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_HRM">Hospitality Revenue Management</a></li>
+                                <li><a href="/Bhm_Notes/course_content.aspx?code=BHM_CSIH">Customer Service in Hospitality</a></li>
                             </ul>
                         </div>
                     </li>
@@ -425,243 +450,243 @@
         </div>
     </form>
 
-<script>
-    function isMobile() {
-        return window.innerWidth <= 900;
-    }
+    <script>
+function isMobile() {
+    return window.innerWidth <= 900;
+}
 
-    function toggleSidebar() {
-        var sidebar = document.getElementById('sidebar');
-        var content = document.getElementById('content');
-        var menuBar = document.getElementById('menu-bar');
-        var icon = document.getElementById('icon');
+function toggleSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    var content = document.getElementById('content');
+    var menuBar = document.getElementById('menu-bar');
+    var icon = document.getElementById('icon');
 
-        if (!sidebar || !content || !menuBar || !icon) return;
+    if (!sidebar || !content || !menuBar || !icon) return;
 
-        if (document.body.classList.contains('sidebar-open')) {
-
-            document.body.classList.remove('sidebar-open');
-
-            sidebar.style.width = '0';
-            content.style.marginLeft = '0';
-            content.style.width = '100%';
-            menuBar.style.left = '0.5rem';
-            icon.style.transform = 'rotate(0deg)';
-
-        } else {
-
-            document.body.classList.add('sidebar-open');
-
-            sidebar.style.width = '300px';
-
-            if (!isMobile()) {
-                content.style.marginLeft = '300px';
-                content.style.width = 'calc(100% - 300px)';
-                menuBar.style.left = '300px';
-            } else {
-                content.style.marginLeft = '0';
-                content.style.width = '100%';
-                menuBar.style.left = '0.5rem';
-            }
-
-            icon.style.transform = 'rotate(180deg)';
-        }
-    }
-
-    function closeSidebarOverlay() {
-        var sidebar = document.getElementById('sidebar');
-        var content = document.getElementById('content');
-        var icon = document.getElementById('icon');
+    if (document.body.classList.contains('sidebar-open')) {
 
         document.body.classList.remove('sidebar-open');
 
-        if (sidebar) {
-            sidebar.style.width = '0';
-        }
+        sidebar.style.width = '0';
+        content.style.marginLeft = '0';
+        content.style.width = '100%';
+        menuBar.style.left = '0.5rem';
+        icon.style.transform = 'rotate(0deg)';
 
-        if (content) {
-            content.style.marginLeft = '0';
-            content.style.width = '100%';
-        }
-
-        if (icon) {
-            icon.style.transform = 'rotate(0deg)';
-        }
-    }
-
-    function toggleSubmenu(event, submenuId) {
-
-        if (event) {
-            event.preventDefault();
-        }
-
-        var submenu = document.getElementById(submenuId + '-submenu');
-        var icon = document.querySelector('.' + submenuId);
-
-        if (!submenu) return;
-
-        var parentLi = submenu.parentElement;
+    } else {
 
         document.body.classList.add('sidebar-open');
 
-        var items = document.querySelectorAll('#sidebar > ul > li');
+        sidebar.style.width = '300px';
 
-        for (var i = 0; i < items.length; i++) {
-
-            var li = items[i];
-
-            if (li !== parentLi) {
-
-                li.classList.remove('active-sem');
-
-                var otherSubmenu = li.querySelector('.submenu');
-                var otherIcon = li.querySelector('.fas.fa-caret-down');
-
-                if (otherSubmenu) {
-                    otherSubmenu.style.display = 'none';
-                }
-
-                if (otherIcon) {
-                    otherIcon.classList.remove('rotate');
-                }
-            }
+        if (!isMobile()) {
+            content.style.marginLeft = '300px';
+            content.style.width = 'calc(100% - 300px)';
+            menuBar.style.left = '300px';
+        } else {
+            content.style.marginLeft = '0';
+            content.style.width = '100%';
+            menuBar.style.left = '0.5rem';
         }
 
-        if (submenu.style.display === 'block') {
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
 
-            submenu.style.display = 'none';
+function closeSidebarOverlay() {
+    var sidebar = document.getElementById('sidebar');
+    var content = document.getElementById('content');
+    var icon = document.getElementById('icon');
 
-            if (icon) {
-                icon.classList.remove('rotate');
+    document.body.classList.remove('sidebar-open');
+
+    if (sidebar) {
+        sidebar.style.width = '0';
+    }
+
+    if (content) {
+        content.style.marginLeft = '0';
+        content.style.width = '100%';
+    }
+
+    if (icon) {
+        icon.style.transform = 'rotate(0deg)';
+    }
+}
+
+function toggleSubmenu(event, submenuId) {
+
+    if (event) {
+        event.preventDefault();
+    }
+
+    var submenu = document.getElementById(submenuId + '-submenu');
+    var icon = document.querySelector('.' + submenuId);
+
+    if (!submenu) return;
+
+    var parentLi = submenu.parentElement;
+
+    document.body.classList.add('sidebar-open');
+
+    var items = document.querySelectorAll('#sidebar > ul > li');
+
+    for (var i = 0; i < items.length; i++) {
+
+        var li = items[i];
+
+        if (li !== parentLi) {
+
+            li.classList.remove('active-sem');
+
+            var otherSubmenu = li.querySelector('.submenu');
+            var otherIcon = li.querySelector('.fas.fa-caret-down');
+
+            if (otherSubmenu) {
+                otherSubmenu.style.display = 'none';
             }
 
-            if (parentLi) {
-                parentLi.classList.remove('active-sem');
-            }
-
-        } else {
-
-            submenu.style.display = 'block';
-
-            if (icon) {
-                icon.classList.add('rotate');
-            }
-
-            if (parentLi) {
-                parentLi.classList.add('active-sem');
-            }
-
-            var sidebar = document.getElementById('sidebar');
-            var content = document.getElementById('content');
-            var menuBar = document.getElementById('menu-bar');
-            var mainIcon = document.getElementById('icon');
-
-            if (sidebar) {
-                sidebar.style.width = '300px';
-            }
-
-            if (content) {
-                content.style.marginLeft = '300px';
-                content.style.width = 'calc(100% - 300px)';
-            }
-
-            if (menuBar) {
-                menuBar.style.left = '300px';
-            }
-
-            if (mainIcon) {
-                mainIcon.style.transform = 'rotate(180deg)';
+            if (otherIcon) {
+                otherIcon.classList.remove('rotate');
             }
         }
     }
 
-    window.onload = function () {
+    if (submenu.style.display === 'block') {
+
+        submenu.style.display = 'none';
+
+        if (icon) {
+            icon.classList.remove('rotate');
+        }
+
+        if (parentLi) {
+            parentLi.classList.remove('active-sem');
+        }
+
+    } else {
+
+        submenu.style.display = 'block';
+
+        if (icon) {
+            icon.classList.add('rotate');
+        }
+
+        if (parentLi) {
+            parentLi.classList.add('active-sem');
+        }
 
         var sidebar = document.getElementById('sidebar');
         var content = document.getElementById('content');
         var menuBar = document.getElementById('menu-bar');
-        var icon = document.getElementById('icon');
+        var mainIcon = document.getElementById('icon');
 
-        if (!isMobile()) {
-
-            document.body.classList.add('sidebar-open');
-
-            if (sidebar) {
-                sidebar.style.width = '300px';
-            }
-
-            if (content) {
-                content.style.marginLeft = '300px';
-                content.style.width = 'calc(100% - 300px)';
-            }
-
-            if (menuBar) {
-                menuBar.style.left = '300px';
-            }
-
-            if (icon) {
-                icon.style.transform = 'rotate(180deg)';
-            }
-
-        } else {
-
-            if (menuBar) {
-                menuBar.style.left = '0.5rem';
-            }
+        if (sidebar) {
+            sidebar.style.width = '300px';
         }
 
-        var links = document.querySelectorAll('#sidebar .submenu ul li a');
-
-        var pathParts = window.location.pathname.split('/');
-        var currentPage = '';
-
-        if (pathParts.length > 0) {
-            currentPage = pathParts[pathParts.length - 1].toLowerCase();
+        if (content) {
+            content.style.marginLeft = '300px';
+            content.style.width = 'calc(100% - 300px)';
         }
 
-        for (var j = 0; j < links.length; j++) {
+        if (menuBar) {
+            menuBar.style.left = '300px';
+        }
 
-            var link = links[j];
-            var hrefAttr = link.getAttribute('href');
-            var href = '';
+        if (mainIcon) {
+            mainIcon.style.transform = 'rotate(180deg)';
+        }
+    }
+}
 
-            if (hrefAttr) {
-                href = hrefAttr.toLowerCase();
+window.onload = function () {
+
+    var sidebar = document.getElementById('sidebar');
+    var content = document.getElementById('content');
+    var menuBar = document.getElementById('menu-bar');
+    var icon = document.getElementById('icon');
+
+    if (!isMobile()) {
+
+        document.body.classList.add('sidebar-open');
+
+        if (sidebar) {
+            sidebar.style.width = '300px';
+        }
+
+        if (content) {
+            content.style.marginLeft = '300px';
+            content.style.width = 'calc(100% - 300px)';
+        }
+
+        if (menuBar) {
+            menuBar.style.left = '300px';
+        }
+
+        if (icon) {
+            icon.style.transform = 'rotate(180deg)';
+        }
+
+    } else {
+
+        if (menuBar) {
+            menuBar.style.left = '0.5rem';
+        }
+    }
+
+    var links = document.querySelectorAll('#sidebar .submenu ul li a');
+
+    var pathParts = window.location.pathname.split('/');
+    var currentPage = '';
+
+    if (pathParts.length > 0) {
+        currentPage = pathParts[pathParts.length - 1].toLowerCase();
+    }
+
+    for (var j = 0; j < links.length; j++) {
+
+        var link = links[j];
+        var hrefAttr = link.getAttribute('href');
+        var href = '';
+
+        if (hrefAttr) {
+            href = hrefAttr.toLowerCase();
+        }
+
+        if (href === currentPage) {
+
+            if (link.parentElement) {
+                link.parentElement.classList.add('active-subject');
             }
 
-            if (href === currentPage) {
+            var parentSubmenu = link.parentElement;
 
-                if (link.parentElement) {
-                    link.parentElement.classList.add('active-subject');
-                }
+            while (parentSubmenu &&
+                !parentSubmenu.classList.contains('submenu')) {
+                parentSubmenu = parentSubmenu.parentElement;
+            }
 
-                var parentSubmenu = link.parentElement;
+            if (parentSubmenu) {
 
-                while (parentSubmenu &&
-                    !parentSubmenu.classList.contains('submenu')) {
-                    parentSubmenu = parentSubmenu.parentElement;
-                }
+                parentSubmenu.style.display = 'block';
 
-                if (parentSubmenu) {
+                var parentLi = parentSubmenu.parentElement;
 
-                    parentSubmenu.style.display = 'block';
+                if (parentLi) {
 
-                    var parentLi = parentSubmenu.parentElement;
+                    parentLi.classList.add('active-sem');
 
-                    if (parentLi) {
+                    var caret = parentLi.querySelector('.fas.fa-caret-down');
 
-                        parentLi.classList.add('active-sem');
-
-                        var caret = parentLi.querySelector('.fas.fa-caret-down');
-
-                        if (caret) {
-                            caret.classList.add('rotate');
-                        }
+                    if (caret) {
+                        caret.classList.add('rotate');
                     }
                 }
             }
         }
-    };
+    }
+};
 </script>
 </body>
 </html>

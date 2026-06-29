@@ -1,5 +1,4 @@
-﻿using Learning_System.Bit_Notes;
-using System;
+﻿using System;
 using System.Data.SqlClient;
 using System.IO;
 
@@ -14,17 +13,7 @@ namespace Learning_System.Admin
         {
             if (!IsPostBack)
             {
-                BindRoleDropdown();
                 BindGrid();
-            }
-        }
-
-        private void BindRoleDropdown()
-        {
-            ddlRole.Items.Clear();
-            foreach (var role in NoticeRoles.Roles)
-            {
-                ddlRole.Items.Add(new System.Web.UI.WebControls.ListItem(role, role));
             }
         }
 
@@ -32,7 +21,7 @@ namespace Learning_System.Admin
         {
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string sql = "SELECT Id, Title, PostedByName, PostedByRole, PostedDate, IsPinned, IsActive FROM Notice ORDER BY IsPinned DESC, PostedDate DESC";
+                string sql = "SELECT NoticeId, Title, PostedByName, PostedByRole, PostedDate, IsActive FROM Notice ORDER BY PostedDate DESC";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     con.Open();
@@ -42,99 +31,163 @@ namespace Learning_System.Admin
             }
         }
 
+        // Looks up the poster's display name and role from the Login table
+        // using the FK relationship (Notice.PostedByUserId -> Login.UserId).
+        private void GetPostedByInfo(SqlConnection con, int userId, out string name, out string role)
+        {
+            name = "";
+            role = "";
+            string sql = "SELECT FullName, Role FROM Login WHERE UserId = @UserId";
+            using (SqlCommand cmd = new SqlCommand(sql, con))
+            {
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                using (SqlDataReader sdr = cmd.ExecuteReader())
+                {
+                    if (sdr.Read())
+                    {
+                        name = sdr["FullName"].ToString();
+                        role = sdr["Role"].ToString();
+                    }
+                }
+            }
+        }
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string title = txtTitle.Text.Trim();
-            string description = txtDescription.Text.Trim();
-            string postedByName = txtPostedByName.Text.Trim();
-            string postedByRole = ddlRole.SelectedValue == "Other" ? txtCustomRole.Text.Trim() : ddlRole.SelectedValue;
-            bool isPinned = chkPinned.Checked;
-            DateTime? expiry = string.IsNullOrEmpty(txtExpiry.Text) ? (DateTime?)null : DateTime.Parse(txtExpiry.Text);
-
-            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(postedByName) || string.IsNullOrEmpty(postedByRole))
+            if (Session["UserId"] == null)
             {
-                lblMessage.Text = "Please fill in Title, Description, Posted By Name and Role.";
-                lblMessage.Style["color"] = "#dc2626";
+                lblMessage.Text = "Session UserId is null.";
+                lblMessage.Style["color"] = "red";
                 return;
             }
 
-            byte[] fileBytes = null;
-            string fileName = null;
-            string fileType = null;
 
-            if (fileAttachment.HasFile)
+            int currentUserId = Convert.ToInt32(Session["UserId"]);
+
+            string title = txtTitle.Text.Trim();
+            string description = txtDescription.Text.Trim();
+            string className = ddlClass.SelectedValue;
+
+            // ddlSemester's options are injected client-side by the updateSemesters()
+            // JS function, so the server-side control never has them in its Items
+            // collection. ddlSemester.SelectedValue would always read back empty —
+            // we read the raw posted form value instead, which the browser sends
+            // correctly regardless of how the <option> got into the <select>.
+            string semester = Request.Form[ddlSemester.UniqueID];
+
+            DateTime? expiry = null;
+            DateTime parsedExpiry;
+            if (!string.IsNullOrWhiteSpace(txtExpiry.Text) && DateTime.TryParse(txtExpiry.Text, out parsedExpiry))
+                expiry = parsedExpiry;
+
+            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(description) ||
+                string.IsNullOrWhiteSpace(className) || string.IsNullOrWhiteSpace(semester))
+            {
+                lblMessage.Text = "Please fill in all required fields.";
+                lblMessage.Style["color"] = "red";
+                return;
+            }
+
+            // Optional file upload
+            string fileName = null, fileType = null;
+            byte[] fileBytes = null;
+            bool hasNewFile = fileAttachment.HasFile;
+
+            if (hasNewFile)
             {
                 string ext = Path.GetExtension(fileAttachment.FileName).ToLowerInvariant();
                 if (Array.IndexOf(AllowedExtensions, ext) < 0)
                 {
-                    lblMessage.Text = "Only PDF, JPG, or PNG attachments are allowed.";
-                    lblMessage.Style["color"] = "#dc2626";
+                    lblMessage.Text = "Only PDF, JPG, JPEG, or PNG files are allowed.";
+                    lblMessage.Style["color"] = "red";
                     return;
                 }
                 if (fileAttachment.PostedFile.ContentLength > MaxFileSizeBytes)
                 {
-                    lblMessage.Text = "Attachment must be smaller than 8 MB.";
-                    lblMessage.Style["color"] = "#dc2626";
+                    lblMessage.Text = "File size must be under 8 MB.";
+                    lblMessage.Style["color"] = "red";
                     return;
                 }
 
-                fileBytes = fileAttachment.FileBytes;
                 fileName = Path.GetFileName(fileAttachment.FileName);
                 fileType = fileAttachment.PostedFile.ContentType;
+                using (var ms = new MemoryStream())
+                {
+                    fileAttachment.PostedFile.InputStream.CopyTo(ms);
+                    fileBytes = ms.ToArray();
+                }
             }
+
+            bool isEdit = !string.IsNullOrEmpty(hidNoticeId.Value);
 
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
 
-                if (string.IsNullOrEmpty(hidNoticeId.Value))
+                if (isEdit)
                 {
-                    // INSERT
-                    string sql = @"INSERT INTO Notice
-                        (Title, Description, PostedByName, PostedByRole, ExpiryDate, AttachmentName, AttachmentType, AttachmentData, IsPinned, IsActive)
-                        VALUES (@Title, @Description, @PostedByName, @PostedByRole, @ExpiryDate, @AttachmentName, @AttachmentType, @AttachmentData, @IsPinned, 1)";
+                    int noticeId = Convert.ToInt32(hidNoticeId.Value);
+
+                    // PostedByUserId / PostedByName / PostedByRole are never touched
+                    // on edit — the original poster's attribution stays intact even
+                    // if a different admin edits the notice later.
+                    string sql = hasNewFile
+                        ? @"UPDATE Notice SET Title=@Title, Description=@Description, Class=@Class, Semester=@Semester,
+                        ExpiryDate=@ExpiryDate,
+                        AttachmentName=@AttachmentName, AttachmentType=@AttachmentType, AttachmentData=@AttachmentData
+                    WHERE NoticeId=@NoticeId"
+                        : @"UPDATE Notice SET Title=@Title, Description=@Description, Class=@Class, Semester=@Semester,
+                        ExpiryDate=@ExpiryDate
+                    WHERE NoticeId=@NoticeId";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        AddCommonParams(cmd, title, description, postedByName, postedByRole, expiry, fileName, fileType, fileBytes, isPinned);
+                        cmd.Parameters.AddWithValue("@Class", className);
+                        cmd.Parameters.AddWithValue("@Semester", semester);
+                        cmd.Parameters.AddWithValue("@NoticeId", noticeId);
+                        AddCommonParams(cmd, title, description, expiry, fileName, fileType, fileBytes, includeAttachmentOnlyIfPresent: true);
                         cmd.ExecuteNonQuery();
                     }
                 }
                 else
                 {
-                    // UPDATE — only touch attachment columns if a new file was uploaded
-                    string sql = @"UPDATE Notice SET
-                        Title = @Title, Description = @Description,
-                        PostedByName = @PostedByName, PostedByRole = @PostedByRole, ExpiryDate = @ExpiryDate,
-                        IsPinned = @IsPinned" +
-                        (fileBytes != null ? ", AttachmentName = @AttachmentName, AttachmentType = @AttachmentType, AttachmentData = @AttachmentData" : "") +
-                        " WHERE Id = @Id";
+                    // PostedDate and IsPinned are intentionally left out of the
+                    // column list below — the table's own DEFAULT constraints
+                    // (GETDATE() and 0) fill them in automatically.
+                    string postedByName, postedByRole;
+                    GetPostedByInfo(con, currentUserId, out postedByName, out postedByRole);
+
+                    string sql = @"INSERT INTO Notice
+                    (PostedByUserId, PostedByName, PostedByRole, Title, Description, Class, Semester, Section, ExpiryDate, AttachmentName, AttachmentType, AttachmentData)
+                VALUES
+                    (@UserId, @PostedByName, @PostedByRole, @Title, @Description, @Class, @Semester, @Section, @ExpiryDate, @AttachmentName, @AttachmentType, @AttachmentData)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        AddCommonParams(cmd, title, description, postedByName, postedByRole, expiry, fileName, fileType, fileBytes, isPinned, includeAttachmentOnlyIfPresent: true);
-                        cmd.Parameters.AddWithValue("@Id", int.Parse(hidNoticeId.Value));
+                        cmd.Parameters.AddWithValue("@UserId", currentUserId);
+                        cmd.Parameters.AddWithValue("@PostedByName", postedByName);
+                        cmd.Parameters.AddWithValue("@PostedByRole", postedByRole);
+                        cmd.Parameters.AddWithValue("@Class", className);
+                        cmd.Parameters.AddWithValue("@Semester", semester);
+                        cmd.Parameters.AddWithValue("@Section", ""); // no Section control in the form yet
+                        AddCommonParams(cmd, title, description, expiry, fileName, fileType, fileBytes);
                         cmd.ExecuteNonQuery();
                     }
                 }
             }
 
             lblMessage.Text = "Notice saved successfully.";
-            lblMessage.Style["color"] = "#059669";
+            lblMessage.Style["color"] = "#16a34a";
             ClearForm();
             BindGrid();
         }
 
-        private void AddCommonParams(SqlCommand cmd, string title, string description,
-            string postedByName, string postedByRole, DateTime? expiry,
-            string fileName, string fileType, byte[] fileBytes, bool isPinned, bool includeAttachmentOnlyIfPresent = false)
+        private void AddCommonParams(SqlCommand cmd, string title, string description, DateTime? expiry,
+            string fileName, string fileType, byte[] fileBytes, bool includeAttachmentOnlyIfPresent = false)
         {
             cmd.Parameters.AddWithValue("@Title", title);
             cmd.Parameters.AddWithValue("@Description", description);
-            cmd.Parameters.AddWithValue("@PostedByName", postedByName);
-            cmd.Parameters.AddWithValue("@PostedByRole", postedByRole);
             cmd.Parameters.AddWithValue("@ExpiryDate", expiry.HasValue ? (object)expiry.Value : DBNull.Value);
-            cmd.Parameters.AddWithValue("@IsPinned", isPinned);
 
             if (!includeAttachmentOnlyIfPresent || fileBytes != null)
             {
@@ -160,7 +213,7 @@ namespace Learning_System.Admin
 
                 case "DeleteNotice":
                     using (SqlConnection con = new SqlConnection(constr))
-                    using (SqlCommand cmd = new SqlCommand("DELETE FROM Notice WHERE Id = @Id", con))
+                    using (SqlCommand cmd = new SqlCommand("DELETE FROM Notice WHERE NoticeId = @Id", con))
                     {
                         cmd.Parameters.AddWithValue("@Id", id);
                         con.Open();
@@ -171,7 +224,7 @@ namespace Learning_System.Admin
 
                 case "ToggleActive":
                     using (SqlConnection con = new SqlConnection(constr))
-                    using (SqlCommand cmd = new SqlCommand("UPDATE Notice SET IsActive = ~IsActive WHERE Id = @Id", con))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE Notice SET IsActive = ~IsActive WHERE NoticeId = @Id", con))
                     {
                         cmd.Parameters.AddWithValue("@Id", id);
                         con.Open();
@@ -186,7 +239,7 @@ namespace Learning_System.Admin
         {
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string sql = "SELECT * FROM Notice WHERE Id = @Id";
+                string sql = "SELECT * FROM Notice WHERE NoticeId = @Id";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.Parameters.AddWithValue("@Id", id);
@@ -198,21 +251,6 @@ namespace Learning_System.Admin
                             hidNoticeId.Value = id.ToString();
                             txtTitle.Text = sdr["Title"].ToString();
                             txtDescription.Text = sdr["Description"].ToString();
-                            txtPostedByName.Text = sdr["PostedByName"].ToString();
-
-                            string role = sdr["PostedByRole"].ToString();
-                            if (NoticeRoles.Roles.Contains(role))
-                            {
-                                ddlRole.SelectedValue = role;
-                            }
-                            else
-                            {
-                                ddlRole.SelectedValue = "Other";
-                                txtCustomRole.Text = role;
-                                txtCustomRole.Style["display"] = "block";
-                            }
-
-                            chkPinned.Checked = Convert.ToBoolean(sdr["IsPinned"]);
                             txtExpiry.Text = sdr["ExpiryDate"] != DBNull.Value
                                 ? Convert.ToDateTime(sdr["ExpiryDate"]).ToString("yyyy-MM-dd")
                                 : "";
@@ -232,11 +270,7 @@ namespace Learning_System.Admin
             hidNoticeId.Value = "";
             txtTitle.Text = "";
             txtDescription.Text = "";
-            txtPostedByName.Text = "";
-            txtCustomRole.Text = "";
             txtExpiry.Text = "";
-            chkPinned.Checked = false;
-            ddlRole.SelectedIndex = 0;
         }
     }
 }

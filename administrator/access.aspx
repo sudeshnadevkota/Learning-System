@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/administrator/administrator_master.Master" AutoEventWireup="true" CodeBehind="access.aspx.cs" Inherits="Learning_System.administrator.access" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/administrator/administrator_master.Master" AutoEventWireup="true" CodeBehind="access.aspx.cs" Inherits="Learning_System.administrator.access" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container" style="padding-top: 20px; padding-bottom: 20px;">

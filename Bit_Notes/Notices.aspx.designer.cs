@@ -15,6 +15,15 @@ namespace Learning_System.Bit_Notes
     {
 
         /// <summary>
+        /// litClassName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litClassName;
+
+        /// <summary>
         /// rptNotices control.
         /// </summary>
         /// <remarks>
