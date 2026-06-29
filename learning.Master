@@ -95,7 +95,7 @@
                             <li class="nav-item"><a href="https://tcmitlearn.com/Login.aspx" class="nav-link">Certificate</a></li>
                             <li class="nav-item"><a href="/" class="nav-link">V-Card</a></li>
                             <li class="nav-item"><a href="https://texasjobportal.com/default.aspx" class="nav-link">Jobs</a></li>
-                            <li class="nav-item"><a href="/" class="nav-link">Notice Board</a></li>
+                            <li class="nav-item"><a href="https://localhost:44301/Bit_Notes/Notices.aspx" class="nav-link">Notice Board</a></li>
                         </ul>
 
                         <div class="d-flex align-items-center mt-3 mt-lg-0">

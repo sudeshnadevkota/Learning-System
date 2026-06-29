@@ -14,7 +14,7 @@
           Back to Home
         </a>
       </div>
-      <h1 class="hero-title-inline">Notices</h1>
+      <h1 class="hero-title-inline">Notices — <asp:Literal ID="litClassName" runat="server" /></h1>
     </div>
 
     <div id="noticeList" class="fade-up d2">
