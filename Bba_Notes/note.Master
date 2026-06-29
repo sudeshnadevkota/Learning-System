@@ -1,5 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Bba_Notes.note" %>
-
+﻿﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Bba_Notes.note" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link href="mcsdash.css" rel="stylesheet" />
+
     <style>
         /* ── Google Font ── */
         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap');
@@ -32,12 +32,10 @@
             border-right: 1px solid rgba(255,255,255,0.07);
         }
 
-        /* Scrollbar */
         #sidebar::-webkit-scrollbar { width: 4px; }
         #sidebar::-webkit-scrollbar-track { background: transparent; }
         #sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
 
-        /* ── SEMESTERS label at top ── */
         #sidebar::before {
             content: "SEMESTERS";
             display: block;
@@ -47,6 +45,7 @@
             letter-spacing: 2px;
             color: rgba(255,255,255,0.35);
             padding: 18px 20px 10px;
+            white-space: nowrap;
         }
 
         #sidebar ul {
@@ -55,9 +54,7 @@
             margin: 0;
         }
 
-        #sidebar ul li { padding: 0; }
-
-        /* ── Semester top-level link ── */
+        /* Semester top-level link */
         #sidebar > ul > li > a {
             color: rgba(255,255,255,0.75);
             text-decoration: none;
@@ -70,6 +67,7 @@
             border-left: 3px solid transparent;
             transition: background 0.2s, border-color 0.2s, color 0.2s;
             gap: 10px;
+            white-space: nowrap;
         }
 
         #sidebar > ul > li > a:hover {
@@ -83,29 +81,6 @@
             color: #fff;
         }
 
-        /* ── Numbered badge ── */
-        .sem-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            border-radius: 7px;
-            background: rgba(255,255,255,0.12);
-            font-size: 11px;
-            font-weight: 700;
-            font-family: 'Sora', sans-serif;
-            color: rgba(255,255,255,0.7);
-            flex-shrink: 0;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        #sidebar > ul > li.active-sem .sem-badge {
-            background: #FF2D8D;
-            color: #fff;
-        }
-
-        /* ── Chevron ── */
         .submenu-toggle {
             display: flex;
             align-items: center;
@@ -113,8 +88,6 @@
             width: 100%;
             gap: 8px;
         }
-
-        .sem-name { flex: 1; }
 
         .fas.fa-caret-down {
             transition: transform 0.3s ease;
@@ -125,14 +98,12 @@
 
         .rotate { transform: rotate(180deg); }
 
-        /* ── Submenu ── */
+        /* Submenu */
         #sidebar .submenu {
             display: none;
             padding: 4px 0 8px 0;
             background: rgba(0,0,0,0.15);
         }
-
-        #sidebar .submenu ul { padding: 0; }
 
         #sidebar .submenu ul li a {
             color: rgba(255,255,255,0.5);
@@ -145,6 +116,7 @@
             font-family: 'DM Sans', sans-serif;
             font-weight: 400;
             transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
             position: relative;
         }
 
@@ -155,7 +127,6 @@
             border-radius: 50%;
             background: rgba(255,255,255,0.25);
             flex-shrink: 0;
-            transition: background 0.2s;
         }
 
         #sidebar .submenu ul li a:hover {
@@ -176,63 +147,60 @@
             background: #FF2D8D;
         }
 
-        /* ══ CONTENT ══ */
+        /* Content Area Setup */
         #content {
             margin-top: 5rem;
             margin-left: 0;
             width: 100%;
-            transition: margin-left 0.3s ease;
+            padding: 20px;
+            transition: margin-left 0.3s ease, width 0.3s ease;
         }
 
-        /* ══ OPEN STATE ══ */
-        .sidebar-open #sidebar { width: 300px; }
+        /* Pure CSS Sidebar Transitions */
+        .sidebar-open #sidebar { width: 260px; }
+        .sidebar-open #content { margin-left: 260px; width: calc(100% - 260px); }
+        .sidebar-open #menu-bar { left: 260px; }
+        .sidebar-open #icon { transform: rotate(180deg); }
 
-        .sidebar-open #content {
-            margin-left: 300px;
-            width: calc(100% - 300px);
-        }
-
-        /* ══ TOGGLE BUTTON ══ */
+        /* Menu Toggle Bar Placement */
         #menu-bar {
             padding-top: 6rem;
             position: fixed;
-            left: 10rem;
+            left: 0.5rem;
             z-index: 1000;
+            transition: left 0.3s ease;
         }
 
         #menu-bar button {
-            background: #e8ecf7 !important;
-            border: 1.5px solid #c5cde8 !important;
+            background: rgba(0,0,0,0.08) !important;
+            border: 1px solid rgba(0,0,0,0.12) !important;
             border-radius: 8px;
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
-            transition: background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px rgba(8,21,71,0.12);
         }
 
         #menu-bar button:hover {
-            background: #d0d8f0 !important;
-            box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
+            background: rgba(0,0,0,0.15) !important;
         }
 
-        #icon { color: #12183a !important; font-size: 15px; font-weight: 900; }
+        #icon { color: #000 !important; font-size: 13px; transition: transform 0.3s ease; }
 
-        /* ══ MEDIA QUERIES ══ */
+        /* Responsive Viewports Management */
         @media (max-width: 900px) {
             .sidebar-open #sidebar {
-                width: 300px;
+                width: 260px;
                 box-shadow: 4px 0 24px rgba(0,0,0,0.4);
             }
-
             .sidebar-open #content {
                 margin-left: 0 !important;
                 width: 100% !important;
             }
-
+            .sidebar-open #menu-bar {
+                left: 260px !important;
+            }
             #sidebar-overlay {
                 display: none;
                 position: fixed;
@@ -240,28 +208,19 @@
                 background: rgba(0,0,0,0.45);
                 z-index: 998;
             }
-
             .sidebar-open #sidebar-overlay { display: block; }
-
-            #content {
-                width: 100% !important;
-                margin-left: 0 !important;
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
-            }
-
-            #menu-bar {
-                left: 0.5rem;
-                padding-top: 5.6rem;
-            }
+            #content { padding-left: 0.75rem; padding-right: 0.75rem; }
+            #menu-bar { left: 0.5rem; padding-top: 5.6rem; }
         }
 
         @media (max-width: 576px) {
             .sidebar-open #sidebar { width: 240px; }
+            .sidebar-open #menu-bar { left: 240px !important; }
             #menu-bar { left: 0.3rem; }
         }
     </style>
-    <title>BBA Notes</title>
+
+    <title>BCS Notes</title>
 </head>
 <body>
     <form id="form2" runat="server">
@@ -277,8 +236,7 @@
             <div class="d-flex align-items-center justify-content-center" style="flex: 1;">
                 <h3 style="font-size: 2rem; font-weight: bold; color: #002366; margin: 0;">BBA NOTES</h3>
             </div>
-            <div class="d-none d-md-flex align-items-center" style="flex: 1; justify-content: flex-end;">
-            </div>
+            <div class="d-none d-md-flex align-items-center" style="flex: 1; justify-content: flex-end;"></div>
         </nav>
 
         <div class="d-flex">
@@ -286,52 +244,53 @@
                 <ul>
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'first')">
-                            <span class="submenu-toggle"><span class="sem-badge">1</span><span class="sem-name">First Sem</span> <i class="fas fa-caret-down first"></i></span>
+                            <span class="submenu-toggle">First Sem <i class="fas fa-caret-down first"></i></span>
                         </a>
                         <div id="first-submenu" class="submenu">
-                            <ul>
-                                <li><a href="business_english_I.aspx">BE I</a></li>
-                                <li><a href="principles_of_management.aspx">P Mgmt</a></li>
-                                <li><a href="microeconomics.aspx">Microeconomics</a></li>
-                                <li><a href="introduction_to_accounting.aspx">Intro To Accounting</a></li>
-                                <li><a href="fundamental_of_computer_principles_and_programming.aspx">FCP &amp; P</a></li>
-                            </ul>
+                           <ul>
+                               <li><a href="/Bba_Notes/course_content.aspx?code=BBA_ENG_I">English I</a></li>
+                               <li><a href="/Bba_Notes/course_content.aspx?code=BBA_EPP">English for Professional Purposes</a></li>
+                               <li><a href="/Bba_Notes/course_content.aspx?code=BBA_POM">Principles of Management</a></li>
+                               <li><a href="/Bba_Notes/course_content.aspx?code=BBA_IA">Introduction to Accounting</a></li>
+                               <li><a href="/Bba_Notes/course_content.aspx?code=BBA_FCPP">Fundamental Computer Principles & Programming</a></li>
+                        </ul>
                         </div>
                     </li>
 
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'second')">
-                            <span class="submenu-toggle"><span class="sem-badge">2</span><span class="sem-name">Second Sem</span> <i class="fas fa-caret-down second"></i></span>
+                            <span class="submenu-toggle">Second Sem <i class="fas fa-caret-down second"></i></span>
                         </a>
                         <div id="second-submenu" class="submenu">
                             <ul>
-                                <li><a href="human_resources_management.aspx">HR Mgmt</a></li>
-                                <li><a href="principles_of_marketing.aspx">P of Marketing</a></li>
-                                <li><a href="internet_fundamental_and_applications.aspx">IFA</a></li>
-                                <li><a href="macroeconomics.aspx">Macroeconomics</a></li>
-                                <li><a href="business_english_II.aspx">BE II</a></li>
-                            </ul>
+                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_HRM">Human Resource Management</a></li>
+                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_POF">Principles of Marketing</a></li>
+                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_IFA">Internet Fundamentals & Applications</a></li>
+                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_E">Entrepreneurship</a></li>
+                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_ENG_II">English II</a></li>
+                          </ul>
                         </div>
                     </li>
 
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'third')">
-                            <span class="submenu-toggle"><span class="sem-badge">3</span><span class="sem-name">Third Sem</span> <i class="fas fa-caret-down third"></i></span>
+                            <span class="submenu-toggle">Third Sem <i class="fas fa-caret-down third"></i></span>
                         </a>
                         <div id="third-submenu" class="submenu">
                             <ul>
-                                <li><a href="business_organization.aspx">B Organization</a></li>
-                                <li><a href="quantitative_methods_statistics.aspx">QM</a></li>
-                                <li><a href="business_communication.aspx">B Communication</a></li>
-                                <li><a href="product_and_operation_management.aspx">P &amp; O Mgmt</a></li>
-                                <li><a href="entrepreneurship.aspx">Entrepreneurship</a></li>
+                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_S">Sociology</a></li>
+                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_BO">Business Organizationa></li>
+                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_BL">Business Law</a></li>
+                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_HRLS">Human Relations and Leadership Skills</a></li>
+                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_M">Microeconomics</a></li>
+                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_PM">Project Management</a></li>
                             </ul>
                         </div>
                     </li>
 
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'fourth')">
-                            <span class="submenu-toggle"><span class="sem-badge">4</span><span class="sem-name">Fourth Sem</span> <i class="fas fa-caret-down fourth"></i></span>
+                            <span class="submenu-toggle">Fourth Sem <i class="fas fa-caret-down fourth"></i></span>
                         </a>
                         <div id="fourth-submenu" class="submenu">
                             <ul>
@@ -346,7 +305,7 @@
 
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'fifth')">
-                            <span class="submenu-toggle"><span class="sem-badge">5</span><span class="sem-name">Fifth Sem</span> <i class="fas fa-caret-down fifth"></i></span>
+                            <span class="submenu-toggle">Fifth Sem <i class="fas fa-caret-down fifth"></i></span>
                         </a>
                         <div id="fifth-submenu" class="submenu">
                             <ul>
@@ -361,7 +320,7 @@
 
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'sixth')">
-                            <span class="submenu-toggle"><span class="sem-badge">6</span><span class="sem-name">Sixth Sem</span> <i class="fas fa-caret-down sixth"></i></span>
+                            <span class="submenu-toggle">Sixth Sem <i class="fas fa-caret-down sixth"></i></span>
                         </a>
                         <div id="sixth-submenu" class="submenu">
                             <ul>
@@ -376,7 +335,7 @@
 
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'seventh')">
-                            <span class="submenu-toggle"><span class="sem-badge">7</span><span class="sem-name">Seventh Sem</span> <i class="fas fa-caret-down seventh"></i></span>
+                            <span class="submenu-toggle">Seventh Sem <i class="fas fa-caret-down seventh"></i></span>
                         </a>
                         <div id="seventh-submenu" class="submenu">
                             <ul>
@@ -389,170 +348,146 @@
                         </div>
                     </li>
 
-                   
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'eighth')">
+                            <span class="submenu-toggle">Eighth Sem <i class="fas fa-caret-down eighth"></i></span>
+                        </a>
+                        <div id="eighth-submenu" class="submenu">
+                            <ul>
+                                <li><a href="industrial_training.aspx">Industry Training</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
 
             <div id="menu-bar">
-                <button type="button" onclick="toggleSidebar()" class="btn" style="background: none;">
-                    <i class="fa fa-arrow-right" aria-hidden="true" style="color: black;" id="icon"></i>
+                <button type="button" onclick="toggleSidebar()" class="btn">
+                    <i class="fa fa-arrow-right" aria-hidden="true" id="icon"></i>
                 </button>
             </div>
 
-            <div id="content" style="padding-top: 1%; width: 90%; margin-left: 5%;">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
+            <div id="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
             </div>
         </div>
     </form>
 
-<script>
-function isMobile() {
-    return window.innerWidth <= 900;
-}
-
-function toggleSidebar() {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var menuBar = document.getElementById('menu-bar');
-    var icon = document.getElementById('icon');
-
-    if (!sidebar || !content || !menuBar || !icon) return;
-
-    if (document.body.classList.contains('sidebar-open')) {
-        document.body.classList.remove('sidebar-open');
-        sidebar.style.width = '0';
-        content.style.marginLeft = '0';
-        content.style.width = '100%';
-        menuBar.style.left = '0.5rem';
-        icon.style.transform = 'rotate(0deg)';
-    } else {
-        document.body.classList.add('sidebar-open');
-        sidebar.style.width = '300px';
-        if (!isMobile()) {
-            content.style.marginLeft = '300px';
-            content.style.width = 'calc(100% - 300px)';
-            menuBar.style.left = '300px';
-        } else {
-            content.style.marginLeft = '0';
-            content.style.width = '100%';
-            menuBar.style.left = '0.5rem';
+    <script>
+        /** @returns {boolean} */
+        function isMobile() {
+            return typeof window !== 'undefined' && window.innerWidth <= 900;
         }
-        icon.style.transform = 'rotate(180deg)';
-    }
-}
 
-function closeSidebarOverlay() {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var icon = document.getElementById('icon');
-
-    document.body.classList.remove('sidebar-open');
-    if (sidebar) sidebar.style.width = '0';
-    if (content) {
-        content.style.marginLeft = '0';
-        content.style.width = '100%';
-    }
-    if (icon) icon.style.transform = 'rotate(0deg)';
-}
-
-function toggleSubmenu(event, submenuId) {
-    if (event) event.preventDefault();
-
-    var submenu = document.getElementById(submenuId + '-submenu');
-    var icon = document.querySelector('.' + submenuId);
-
-    if (!submenu) return;
-
-    var parentLi = submenu.parentElement;
-
-    document.body.classList.add('sidebar-open');
-
-    var items = document.querySelectorAll('#sidebar > ul > li');
-    for (var i = 0; i < items.length; i++) {
-        var li = items[i];
-        if (li !== parentLi) {
-            li.classList.remove('active-sem');
-            var otherSubmenu = li.querySelector('.submenu');
-            var otherIcon = li.querySelector('.fas.fa-caret-down');
-            if (otherSubmenu) otherSubmenu.style.display = 'none';
-            if (otherIcon) otherIcon.classList.remove('rotate');
+        /** @returns {void} */
+        function toggleSidebar() {
+            if (document.body) {
+                document.body.classList.toggle('sidebar-open');
+            }
         }
-    }
 
-    if (submenu.style.display === 'block') {
-        submenu.style.display = 'none';
-        if (icon) icon.classList.remove('rotate');
-        if (parentLi) parentLi.classList.remove('active-sem');
-    } else {
-        submenu.style.display = 'block';
-        if (icon) icon.classList.add('rotate');
-        if (parentLi) parentLi.classList.add('active-sem');
-
-        var sidebar = document.getElementById('sidebar');
-        var content = document.getElementById('content');
-        var menuBar = document.getElementById('menu-bar');
-        var mainIcon = document.getElementById('icon');
-
-        if (sidebar) sidebar.style.width = '300px';
-        if (content) {
-            content.style.marginLeft = '300px';
-            content.style.width = 'calc(100% - 300px)';
+        /** @returns {void} */
+        function closeSidebarOverlay() {
+            if (document.body) {
+                document.body.classList.remove('sidebar-open');
+            }
         }
-        if (menuBar) menuBar.style.left = '300px';
-        if (mainIcon) mainIcon.style.transform = 'rotate(180deg)';
-    }
-}
 
-window.onload = function () {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var menuBar = document.getElementById('menu-bar');
-    var icon = document.getElementById('icon');
-
-    if (!isMobile()) {
-        document.body.classList.add('sidebar-open');
-        if (sidebar) sidebar.style.width = '300px';
-        if (content) {
-            content.style.marginLeft = '300px';
-            content.style.width = 'calc(100% - 300px)';
-        }
-        if (menuBar) menuBar.style.left = '300px';
-        if (icon) icon.style.transform = 'rotate(180deg)';
-    } else {
-        if (menuBar) menuBar.style.left = '0.5rem';
-    }
-
-    var links = document.querySelectorAll('#sidebar .submenu ul li a');
-    var pathParts = window.location.pathname.split('/');
-    var currentPage = pathParts.length > 0 ? pathParts[pathParts.length - 1].toLowerCase() : '';
-
-    for (var j = 0; j < links.length; j++) {
-        var link = links[j];
-        var hrefAttr = link.getAttribute('href');
-        var href = hrefAttr ? hrefAttr.toLowerCase() : '';
-
-        if (href === currentPage) {
-            if (link.parentElement) link.parentElement.classList.add('active-subject');
-
-            var parentSubmenu = link.parentElement;
-            while (parentSubmenu && !parentSubmenu.classList.contains('submenu')) {
-                parentSubmenu = parentSubmenu.parentElement;
+        /** * @param {Event} event 
+         * @param {string} submenuId 
+         */
+        function toggleSubmenu(event, submenuId) {
+            if (event && typeof event.preventDefault === 'function') {
+                event.preventDefault();
             }
 
-            if (parentSubmenu) {
-                parentSubmenu.style.display = 'block';
-                var parentLi = parentSubmenu.parentElement;
-                if (parentLi) {
+            var submenu = document.getElementById(submenuId + '-submenu');
+            if (!submenu) return;
+
+            var parentLi = submenu.parentElement;
+            if (!parentLi) return;
+
+            var caretIcon = parentLi.querySelector('.fas.fa-caret-down');
+
+            if (isMobile() && document.body) {
+                document.body.classList.add('sidebar-open');
+            }
+
+            // Accordion: Shut alternative expanded items securely
+            var allItems = document.querySelectorAll('#sidebar > ul > li');
+            allItems.forEach(function (item) {
+                var li = item;
+                if (li !== parentLi) {
+                    li.classList.remove('active-sem');
+                    var otherSubmenu = li.querySelector('.submenu');
+                    var otherIcon = li.querySelector('.fas.fa-caret-down');
+
+                    if (otherSubmenu instanceof HTMLElement) {
+                        otherSubmenu.style.display = 'none';
+                    }
+                    if (otherIcon) {
+                        otherIcon.classList.remove('rotate');
+                    }
+                }
+            });
+
+            // Toggle selected panel target display definitions securely
+            if (submenu instanceof HTMLElement) {
+                if (submenu.style.display === 'block') {
+                    submenu.style.display = 'none';
+                    parentLi.classList.remove('active-sem');
+                    if (caretIcon) caretIcon.classList.remove('rotate');
+                } else {
+                    submenu.style.display = 'block';
                     parentLi.classList.add('active-sem');
-                    var caret = parentLi.querySelector('.fas.fa-caret-down');
-                    if (caret) caret.classList.add('rotate');
+                    if (caretIcon) caretIcon.classList.add('rotate');
                 }
             }
         }
-    }
-};
-</script>
+
+        // Initialize active tracking states on DOM completion
+        window.addEventListener('DOMContentLoaded', function () {
+            if (!isMobile() && document.body) {
+                document.body.classList.add('sidebar-open');
+            }
+
+            var currentPath = window.location.pathname.split('/').pop();
+            if (!currentPath) return;
+
+            var currentPage = currentPath.toLowerCase();
+            if (currentPage === "" || currentPage === "default.aspx") {
+                return;
+            }
+
+            var links = document.querySelectorAll('#sidebar .submenu ul li a');
+
+            links.forEach(function (element) {
+                var link = element;
+                var linkHref = link.getAttribute('href');
+                if (!linkHref) return;
+
+                if (linkHref.toLowerCase() === currentPage) {
+                    var parentLi = link.parentElement;
+                    if (parentLi) {
+                        parentLi.classList.add('active-subject');
+                    }
+
+                    var parentSubmenu = link.closest('.submenu');
+                    if (parentSubmenu instanceof HTMLElement) {
+                        parentSubmenu.style.display = 'block';
+
+                        var topLi = parentSubmenu.parentElement;
+                        if (topLi) {
+                            topLi.classList.add('active-sem');
+                            var caret = topLi.querySelector('.fas.fa-caret-down');
+                            if (caret instanceof HTMLElement) {
+                                caret.classList.add('rotate');
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-

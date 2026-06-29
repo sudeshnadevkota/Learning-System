@@ -11,7 +11,7 @@ namespace Learning_System.Bit_Admin
 {
 
 
-    public partial class syllabus
+    public partial class Syllabus
     {
 
         /// <summary>

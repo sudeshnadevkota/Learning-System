@@ -162,9 +162,6 @@
             transition: height 0.3s ease;
             padding-bottom: 220px;
         }
-
- 
-
     </style>
     <title>MBA ADMIN </title>
 </head>
@@ -185,7 +182,7 @@
             </div>
             <!-- Logout Button Section -->
             <div class="d-flex align-items-center" style="flex: 1; justify-content: flex-end;">
-                        <asp:LinkButton ID="Linklogin" runat="server" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" OnClick="Linklogout_Click" >Logout</asp:LinkButton> 
+                <asp:LinkButton ID="Linklogin" runat="server" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" OnClick="Linklogout_Click">Logout</asp:LinkButton>
 
             </div>
         </nav>
@@ -199,75 +196,64 @@
 
             <!-- Navbar Menu Items -->
             <div class="collapse navbar-collapse bg-black" id="navbarSupportedContent">
-                         <asp:Menu ID="Menu1" runat="server" Orientation="horizontal" CssClass="navbar-nav mr-auto" StaticMenuStyle-CssClass="nav-item" 
-            StaticSelectedStyle-CssClass="nav-item" DynamicMenuStyle-CssClass="nav-item dropdown-menu" RenderingMode="List" role="menu" itemscope="itemscope" 
-            Font-Bold="True" Font-Names="Corbel Light" Font-Size="Medium" ForeColor="White" StaticEnableDefaultPopOutImage="false" >
+                <asp:Menu ID="Menu1" runat="server" Orientation="horizontal" CssClass="navbar-nav mr-auto" StaticMenuStyle-CssClass="nav-item"
+                    StaticSelectedStyle-CssClass="nav-item" DynamicMenuStyle-CssClass="nav-item dropdown-menu" RenderingMode="List" role="menu" itemscope="itemscope"
+                    Font-Bold="True" Font-Names="Corbel Light" Font-Size="Medium" ForeColor="White" StaticEnableDefaultPopOutImage="false">
 
-<DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
-                <DynamicSelectedStyle BackColor="#666666" />
-                <Items>
-                    <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Mba_Admin/dash.aspx"></asp:MenuItem>
-                    <asp:MenuItem Text="1st Semester" Value="1st Semester">
-                        <asp:MenuItem Text="Business Accounting Finance" Value="Business Accounting Finance" NavigateUrl="~/Mba_Admin/business_accounting_and_finance.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Business Economics" Value="Business Economics" NavigateUrl="~/Mba_Admin/business_economics.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Business Environment Analysis" Value="Business Environment Analysis" NavigateUrl="~/Mba_Admin/business_enviroment_analysis.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Human Resource Management" Value="Human Resource Management" NavigateUrl="~/Mba_Admin/human_resource_management.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Managerial Communications" Value="Managerial Communications" NavigateUrl="~/Mba_Admin/managerial_communications.aspx"></asp:MenuItem>
-                    </asp:MenuItem>
+                    <DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
+                    <DynamicSelectedStyle BackColor="#666666" />
+                    <Items>
+                        <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Mba_Admin/dash.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="1st Semester" Value="1st Semester">
+                            <asp:MenuItem Text="Business Accounting & Finance" Value="Business Accounting & Finance" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=ACC"></asp:MenuItem>
+                            <asp:MenuItem Text="Business Economics" Value="Business Economics" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=ECO"></asp:MenuItem>
+                            <asp:MenuItem Text="Human Resource Management" Value="Human Resource Management" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=HRM"></asp:MenuItem>
+                            <asp:MenuItem Text="Managerial Communications" Value="Managerial Communications" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=MC"></asp:MenuItem>
+                            <asp:MenuItem Text="Business Environment Analysis" Value="Business Environment Analysis" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=BEA"></asp:MenuItem>
+                        </asp:MenuItem>
 
+                        <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
+                            <asp:MenuItem Text="Research Methodology" Value="Research Methodology" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=RM"></asp:MenuItem>
+                            <asp:MenuItem Text="Operation Management" Value="Operation Management" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=OM"></asp:MenuItem>
+                            <asp:MenuItem Text="Marketing Management" Value="Marketing Management" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=MM"></asp:MenuItem>
+                            <asp:MenuItem Text="Organizational Behavior" Value="Organizational Behavior" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=OB"></asp:MenuItem>
+                        </asp:MenuItem>
 
-                    <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
-                        <asp:MenuItem Text="Business Research Methodology" Value="Business Research Methodology" NavigateUrl="~/Mba_Admin/business_research_methodology.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Consumer Behaviour" Value="Consumer Behavoiur" NavigateUrl="~/Mba_Admin/consumer_behaviour.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Marketing Management" Value="Marketing Management" NavigateUrl="~/Mba_Admin/marketing_management.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Operation Management" Value="Operation Management" NavigateUrl="~/Mba_Admin/operation_management.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Organizational Behaviour" Value="Organizational Behaviour" NavigateUrl="~/Mba_Admin/organisational_behaviour.aspx"></asp:MenuItem>
-                        
+                        <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
+                            <asp:MenuItem Text="Strategic Management" Value="Strategic Management" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=SM"></asp:MenuItem>
+                            <asp:MenuItem Text="Financial Management" Value="Financial Management" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=FM"></asp:MenuItem>
+                            <asp:MenuItem Text="Entrepreneurship Management" Value="Entrepreneurship Management" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=EM"></asp:MenuItem>
+                            <asp:MenuItem Text="Sales & Promotions Management" Value="Sales & Promotions Management" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=SPM"></asp:MenuItem>
+                            <asp:MenuItem Text="International Business" Value="International Business" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=IB"></asp:MenuItem>
+                            <asp:MenuItem Text="Human Resource Development & Leadership" Value="Human Resource Development & Leadership" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=HRD"></asp:MenuItem>
+                        </asp:MenuItem>
 
-
-                    </asp:MenuItem>
-                    <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
-                        <asp:MenuItem Text="Enterpreneurship Management" Value="Enterpreneurship Management" NavigateUrl="~/Mba_Admin/entrepreneurship_management.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Financial Management" Value="Financial Management"  NavigateUrl="~/Mba_Admin/financial_management.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="International Business" Value="International Business"  NavigateUrl="~/Mba_Admin/international_business.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Internship Project" Value="Internship Project"  NavigateUrl="~/Mba_Admin/internship_project(industry_based).aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Retail Management" Value="Retail Management"  NavigateUrl="~/Mba_Admin/retail_management.aspx"></asp:MenuItem>
-                         <asp:MenuItem Text="Sales And Promotions Management" Value="Sales And Promotions Management"  NavigateUrl="~/Mba_Admin/sales_and_promotions_management.aspx"></asp:MenuItem>
-                         <asp:MenuItem Text="Strategic Management" Value="Strategic Management"  NavigateUrl="~/Mba_Admin/strategic_management.aspx"></asp:MenuItem>
-
-                    </asp:MenuItem>
-
-
-                    <asp:MenuItem Text="4th Semester" Value="4th Semester">
-                        <asp:MenuItem Text="Banking Insurance" Value="Banking Insurance"  NavigateUrl="~/Mba_Admin/banking_and_insurance.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Business Ethics" Value="Business Ethics"  NavigateUrl="~/Mba_Admin/business_ethics.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Conflict Management Negotiation Skills" Value="Conflicts Management Negotiation Skills"  NavigateUrl="~/Mba_Admin/conflict_management_and_negotiation_skills.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Customer Relationship Management" Value="Customer Relationship Management"  NavigateUrl="~/Mba_Admin/customer_relationship_management.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Graduate Research Project" Value="Graduate Research Project"  NavigateUrl="~/Mba_Admin/graduate_research_project.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Management OF Data" Value="Management OF Data"  NavigateUrl="~/Mba_Admin/management_of_data.aspx"></asp:MenuItem>
-                    </asp:MenuItem>
+                        <asp:MenuItem Text="4th Semester" Value="4th Semester">
+                            <asp:MenuItem Text="Banking & Insurance" Value="Banking & Insurance" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=BI"></asp:MenuItem>
+                            <asp:MenuItem Text="Customer Relationship Management" Value="Customer Relationship Management" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=CRM"></asp:MenuItem>
+                            <asp:MenuItem Text="Conflict Management & Negotiation Skills" Value="Conflict Management & Negotiation Skills" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=CMN"></asp:MenuItem>
+                            <asp:MenuItem Text="Management of Data" Value="Management of Data" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=MOD"></asp:MenuItem>
+                            <asp:MenuItem Text="Business Ethics & Governance" Value="Business Ethics & Governance" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=BEG"></asp:MenuItem>
+                            <asp:MenuItem Text="Graduate Research Project Paper" Value="Graduate Research Project Paper" NavigateUrl="~/Mba_Admin/course_content.aspx?subject=GRP"></asp:MenuItem>
+                        </asp:MenuItem>
 
 
-                   
+                    </Items>
 
-                    
+                    <LevelMenuItemStyles>
+                        <asp:MenuItemStyle CssClass="dropdown-item" HorizontalPadding="15px" Height="50px" VerticalPadding="15px" />
+                    </LevelMenuItemStyles>
+                    <LevelSelectedStyles>
+                        <asp:MenuItemStyle CssClass="nav-item active" Font-Underline="False" />
+                    </LevelSelectedStyles>
+                    <StaticHoverStyle Font-Underline="true" ForeColor="#f21f82" BackColor="#002366" Font-Bold="True" Font-Size="Large" />
 
-                </Items>
+                    <StaticMenuStyle CssClass="nav-item"></StaticMenuStyle>
 
-                <LevelMenuItemStyles>
-                    <asp:MenuItemStyle CssClass="dropdown-item" HorizontalPadding="15px" Height="50px" VerticalPadding="15px" />
-                </LevelMenuItemStyles>
-                <LevelSelectedStyles>
-                    <asp:MenuItemStyle CssClass="nav-item active" Font-Underline="False" />
-                </LevelSelectedStyles>
-                <StaticHoverStyle Font-Underline="true" ForeColor="#f21f82" BackColor="#002366" Font-Bold="True" Font-Size="Large" />
-
-<StaticMenuStyle CssClass="nav-item"></StaticMenuStyle>
-
-                <StaticSelectedStyle Font-Bold="true"   />
-            <DynamicHoverStyle BackColor="#F21F82" />
-            <DynamicMenuItemStyle CssClass="dropdown-item" BackColor="#002366" BorderStyle="None" />
-        </asp:Menu>
+                    <StaticSelectedStyle Font-Bold="true" />
+                    <DynamicHoverStyle BackColor="#F21F82" />
+                    <DynamicMenuItemStyle CssClass="dropdown-item" BackColor="#002366" BorderStyle="None" />
+                </asp:Menu>
             </div>
         </div>
 
@@ -282,26 +268,25 @@
             </div>
 
         </div>
-        <div class="container-fluid mt-5" style="text-align:center; height:100px;  color:white; background-color: #002366 ">
-
+        <div class="container-fluid mt-5" style="text-align: center; height: 100px; color: white; background-color: #002366">
             Copyright @ texas lerning portal- 2021/22 
-            </div>
+        </div>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var navbarToggler = document.querySelector('.navbar-toggler');
-                var navbar = document.getElementById('menu');
-                var collapse = document.querySelector('#navbarSupportedContent');
+document.addEventListener('DOMContentLoaded', function () {
+    var navbarToggler = document.querySelector('.navbar-toggler');
+    var navbar = document.getElementById('menu');
+    var collapse = document.querySelector('#navbarSupportedContent');
 
-                navbarToggler.addEventListener('click', function () {
-                    if (collapse.classList.contains('show')) {
-                        navbar.classList.remove('expanded');
-                    } else {
-                        navbar.classList.add('expanded');
-                    }
-                });
-            });
-        </script>
+    navbarToggler.addEventListener('click', function () {
+        if (collapse.classList.contains('show')) {
+            navbar.classList.remove('expanded');
+        } else {
+            navbar.classList.add('expanded');
+        }
+    });
+});
+</script>
     </form>
 
 </body>

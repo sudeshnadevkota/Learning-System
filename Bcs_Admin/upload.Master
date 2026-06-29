@@ -198,44 +198,39 @@
                     StaticSelectedStyle-CssClass="nav-item" DynamicMenuStyle-CssClass="nav-item dropdown-menu" RenderingMode="List" role="menu" itemscope="itemscope"
                     Font-Bold="True" Font-Names="Corbel Light" Font-Size="Medium" ForeColor="White" StaticEnableDefaultPopOutImage="false">
 
-           
+
 
                     <DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
                     <DynamicSelectedStyle BackColor="#666666" />
                     <Items>
                         <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Bcs_Admin/dash.aspx"></asp:MenuItem>
                         <asp:MenuItem Text="1st Semester" Value="1st Semester">
-                            <asp:MenuItem Text="Business English" Value="Business English" NavigateUrl="~/Bcs_Admin/business_english.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Computer Network" Value="Computer Network" NavigateUrl="~/Bcs_Admin/computer_network.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="C programming" Value="C prgramming" NavigateUrl="~/Bcs_Admin/C_programming.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Discrete Math" Value="Discrete Math" NavigateUrl="~/Bcs_Admin/discrete_math.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Basic Computer Architecture" Value="Basic Computer Architecture" NavigateUrl="~/Bcs_Admin/basic_computer_architecture.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Business English" Value="English" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=BCS_ENG"></asp:MenuItem>
+                        <asp:MenuItem Text="Computer Network" Value="Computer Network" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CN"></asp:MenuItem>
+                        <asp:MenuItem Text="C programming" Value="Principle of Programming" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=POP"></asp:MenuItem>
+                        <asp:MenuItem Text="Discrete Math" Value="Discrete Mathematics and Probability" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=DMP"></asp:MenuItem>
+                       <asp:MenuItem Text="Basic Computer Architecture" Value="Computer Systems" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CS"></asp:MenuItem>
+                   </asp:MenuItem>
+
+                  <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
+                 <asp:MenuItem Text="Security in Computing" Value="Computer Ethics" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CE"></asp:MenuItem>
+                 <asp:MenuItem Text="Advance Computer Network" Value="Data Communication & Networking" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=DCN"></asp:MenuItem>
+                <asp:MenuItem Text="Python" Value="Object Oriented Programming" NavigateUrl="~/course_content.aspx?subject=OOP"></asp:MenuItem>
+               <asp:MenuItem Text="Advance Computer Architecture" Value="Computer Organization" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CO"></asp:MenuItem>
+               <asp:MenuItem Text="Operating System" Value="Operating Systems" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=OS"></asp:MenuItem>
+              </asp:MenuItem>
+
+             <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
+
+             <asp:MenuItem Text="Cyber Security Law and Policy" Value="Cyber Security Leagal Issues & Policy Analysis" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CSLPA"></asp:MenuItem>
+             <asp:MenuItem Text="E-Commerce" Value="Human Computer Interaction" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=HCI"></asp:MenuItem>
+             <asp:MenuItem Text="Wnidows Server 2016" Value="Microsoft Windows Server Administration" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=MWSA"></asp:MenuItem>
+             <asp:MenuItem Text="Digital Logic" Value="Applied Statistics" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=AS"></asp:MenuItem>
+             <asp:MenuItem Text="Software Enigeering(including SAD Portion)" Value="Software Engineering Fundamentals" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=SEF"></asp:MenuItem>
+             <asp:MenuItem Text="Cisco Certified Network Associate" Value="Cisco Certified Network Associate" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CCNA"></asp:MenuItem>
+        
                         </asp:MenuItem>
 
-
-
-
-
-                        <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
-                            <asp:MenuItem Text="Security in Computing" Value="Security in Computing" NavigateUrl="~/Bcs_Admin/security_in_computing.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Advance Computer Network" Value="Advance Computer Network" NavigateUrl="~/Bcs_Admin/advance_computer_network.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Python" Value="Python" NavigateUrl="~/Bcs_Admin/Python.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Advance Computer Architecture" Value="Advance Computer Architecture" NavigateUrl="~/Bcs_Admin/advance_computer_architecture.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Operating System" Value="Operating Systemn" NavigateUrl="~/Bcs_Admin/operating_system.aspx"></asp:MenuItem>
-
-                        </asp:MenuItem>
-
-                        <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
-                            <asp:MenuItem Text="Cyber Security Law and Policy" Value="Cyber Security Law and Policy" NavigateUrl="~/Bcs_Admin/cyber_security_law_and_policy.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="E-Commerce" Value="E-Commerce" NavigateUrl="~/Bcs_Admin/e_commerce.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Wnidows Server 2016" Value="Wnidows Server 2016" NavigateUrl="~/Bcs_Admin/windows_server_2016.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Digital Logic" Value="Digital Logic" NavigateUrl="~/Bcs_Admin/digital_logic.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Software Enigeering(including SAD Portion)" Value="System Analysis and Design" NavigateUrl="~/Bcs_Admin/system_analysis_and_design.aspx"></asp:MenuItem>
-
-
-
-
-                        </asp:MenuItem>
 
 
                         <asp:MenuItem Text="4th Semester" Value="4th Semester">
