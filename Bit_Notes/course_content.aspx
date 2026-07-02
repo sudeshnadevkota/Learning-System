@@ -36,19 +36,11 @@
 
     <!-- ══ NOTES / PAST PAPERS TABS ══ -->
     <div class="fade-up d2">
-      <div class="section-head">
-        <div class="content-tabs">
-          <button type="button" class="ctab-btn active" id="tabNotes" onclick="resetNotes()">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-             Notes
-          </button>
-          
-        </div>
-      </div>
+    
 
       <%-- Filter chips (kept outside the panels so it stays visible no matter which panel is active) --%>
       <div class="filter-bar">
-        <span class="filter-label">Filter by type:</span>
+      
         <div class="filter-chips">
           
           <button type="button" class="fchip" data-filter="Lecture" onclick="filterNotes(this,'Lecture')">
@@ -194,13 +186,7 @@
         }
     });
 
-    function resetNotes() {
-        var lectureBtn = document.querySelector('.fchip[data-filter="Lecture"]');
-
-        if (lectureBtn) {
-            filterNotes(lectureBtn, 'Lecture');
-        }
-    }
+   
 
     function switchTab(tab) {
         var panelNotes = document.getElementById('panelNotes');
