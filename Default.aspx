@@ -16,7 +16,7 @@
         body {
             background: var(--light) !important;
             font-family: 'Segoe UI', sans-serif;
-            overflow :hidden;
+            
         }
 
         .hero-section {
