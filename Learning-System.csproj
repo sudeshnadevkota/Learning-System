@@ -264,7 +264,6 @@
     <Content Include="Bcs_Admin\web_designing.aspx" />
     <Content Include="Bcs_Admin\windows_server_2016.aspx" />
     <Content Include="Bcs_Admin\wireless_communications.aspx" />
-    <Content Include="Bcs_Notes\advance_computer_architecture.aspx" />
     <Content Include="Bcs_Notes\course_content.aspx" />
     <Content Include="Bcs_Notes\Css\note.css" />
     <Content Include="Bcs_Notes\data_communication_networking.aspx" />
@@ -1261,6 +1260,7 @@
     <Content Include="Bhm_Notes\SyllabusViewer.ashx" />
     <Content Include="Mba_Notes\SyllabusViewer.ashx" />
     <Content Include="Bba_Notes\SyllabusViewer.ashx" />
+    <None Include="packages.config" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <None Include="Scripts\jquery-3.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
@@ -2467,13 +2467,6 @@
     </Compile>
     <Compile Include="Bcs_Admin\wireless_communications.aspx.designer.cs">
       <DependentUpon>wireless_communications.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_computer_architecture.aspx.cs">
-      <DependentUpon>advance_computer_architecture.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Notes\advance_computer_architecture.aspx.designer.cs">
-      <DependentUpon>advance_computer_architecture.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bcs_Notes\course_content.aspx.cs">
       <DependentUpon>course_content.aspx</DependentUpon>
