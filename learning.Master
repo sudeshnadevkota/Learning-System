@@ -25,6 +25,7 @@
             backdrop-filter: blur(10px);
             padding: 12px 0 !important;
             border-bottom: 1px solid rgba(0,0,0,0.05);
+            z-index: 1030 !important;
         }
 
         .navbar-nav .nav-link {
@@ -65,46 +66,152 @@
 
         /* Main Content Spacing */
         .main-content { padding-top: 80px; flex: 1; }
-    </style>
-</head>
 
-<body>
+        /* --- MOBILE SIDEBAR CLEANUP (Breaks nothing on Desktop) --- */
+        @media (max-width: 991px) {
+            .sidebar.offcanvas {
+                z-index: 2000 !important;
+                background-color: #FFFFFF !important;
+                visibility: visible !important;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15) !important;
+                /* Fixed layout structural collapse by using explicit width instead of restricted max-height */
+                width: 290px !important;
+                height: 100vh !important;
+            }
+
+            .offcanvas-backdrop {
+                z-index: 1990 !important;
+            }
+
+            .offcanvas-header {
+                padding: 18px 20px !important;
+                background-color: #FAFBFF;
+            }
+
+            .offcanvas-title {
+                color: #0B1F66 !important; /* Replace #0B1F66 with any hex color code you want */
+            }
+            .offcanvas-body {
+                padding: 20px !important;
+                display: block !important;
+            }
+
+            /* Format mobile nav items cleanly */
+            .offcanvas-body .navbar-nav {
+                display: flex !important;
+                flex-direction: column !important; 
+                align-items: flex-start !important; 
+                width: 100% !important;
+            }
+
+            .offcanvas-body .nav-item {
+                display: block !important;
+                width: 100% !important;
+                margin-bottom: 8px !important;
+            }
+
+            .offcanvas-body .nav-link {
+                font-size: 15px !important;
+                font-weight: 600 !important;
+                color: #28346f !important;
+                display: flex !important;
+                align-items: center;
+                width: 100% !important;
+                padding: 12px 14px !important;
+                background-color: #F8FAFC; /* Light button card background background for discoverability */
+                border-radius: 8px;
+                transition: all 0.2s ease;
+            }
+
+            /* Make links highlight beautifully when touched */
+            .offcanvas-body .nav-link:hover, .offcanvas-body .nav-link:active {
+                background-color: #E7ECFF !important;
+                color: #0B1F66 !important;
+            }
+            
+            /* Icon formatting inside mobile menu */
+            .offcanvas-body .nav-link i {
+                color: #F6B400; /* Warm gold accent for icons */
+                width: 24px;
+                font-size: 16px;
+            }
+        }
+
+        /* Responsive structural adjustments for narrow smartphone viewports */
+        @media (max-width: 576px) {
+            .navbar-brand img {
+                width: 105px !important;
+            }
+
+            .login-btn {
+                padding: 6px 14px !important;
+                font-size: 12px !important;
+            }
+
+            .navbar .container {
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+            }
+        }
+    </style></head><body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
 
         <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
-            <div class="container">
+            <div class="container d-flex align-items-center justify-content-between">
+                
                 <a class="navbar-brand" href="Default.aspx">
                     <img src="slide/logo.png" alt="logo" width="140" />
                 </a>
                 
-                <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" 
-                        data-bs-target="#offcanvasNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
                 <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
                     <div class="offcanvas-header border-bottom">
-                        <h5 class="offcanvas-title text-primary">Texas Portal</h5>
+                        <h6 class="offcanvas-title text-primary"><i class="fas fa-university me-2"></i>Texas Learning Portal</h6>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
                     </div>
                     
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav mx-auto align-items-center">
-                            <li class="nav-item"><a href="https://texasattendance.com/Admin/Dashboard.aspx" class="nav-link">Attendance</a></li>
-                            <li class="nav-item"><a href="https://tcmitlearn.com/Login.aspx" class="nav-link">Certificate</a></li>
-                            <li class="nav-item"><a href="https://texasleave.com/" class="nav-link">V-Card</a></li>
-                            <li class="nav-item"><a href="https://texasjobportal.com/default.aspx" class="nav-link">Jobs</a></li>
-                            <li class="nav-item"><a href="https://localhost:44301/Bit_Notes/Notices.aspx" class="nav-link">Notice Board</a></li>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="https://texasattendance.com/Admin/Dashboard.aspx" class="nav-link">
+                                    <i class="fas fa-calendar-check d-lg-none me-2"></i>Attendance
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://tcmitlearn.com/Login.aspx" class="nav-link">
+                                    <i class="fas fa-certificate d-lg-none me-2"></i>Certificate
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://texasleave.com/" class="nav-link">
+                                    <i class="fas fa-id-card d-lg-none me-2"></i>V-Card
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://texasjobportal.com/default.aspx" class="nav-link">
+                                    <i class="fas fa-briefcase d-lg-none me-2"></i>Jobs
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://localhost:44301/Bit_Notes/Notices.aspx" class="nav-link">
+                                    <i class="fas fa-bell d-lg-none me-2"></i>Notice Board
+                                </a>
+                            </li>
                         </ul>
-
-                        <div class="d-flex align-items-center mt-3 mt-lg-0">
-                            <asp:LinkButton ID="Linklogin" runat="server" CssClass="btn login-btn" OnClick="Linklogin_Click">
-                                Login <i class="fas fa-sign-in-alt ms-2"></i>
-                            </asp:LinkButton>
-                        </div>
                     </div>
                 </div>
+
+                <div class="d-flex align-items-center gap-2">
+                    <asp:LinkButton ID="Linklogin" runat="server" CssClass="btn login-btn" OnClick="Linklogin_Click">
+                        Login <i class="fas fa-sign-in-alt ms-2"></i>
+                    </asp:LinkButton>
+
+                    <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" 
+                            data-bs-target="#offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+
             </div>
         </nav>
 
@@ -115,6 +222,4 @@
         <footer>
             <p>&copy; 2026 Texas College of Management and IT. All rights reserved.</p>
         </footer>
-    </form>
-</body>
-</html>
+    </form></body></html>
