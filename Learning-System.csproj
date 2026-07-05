@@ -133,14 +133,6 @@
     <Content Include="Bcs_Admin\dash.aspx" />
     <Content Include="Bcs_Admin\logo\logo.png" />
     <Content Include="Bcs_Admin\Syllabus.aspx" />
-
-    <Content Include="Bcs_Admin\system_analysis_and_design.aspx" />
-    <Content Include="Bcs_Admin\system_software_administration.aspx" />
-    <Content Include="Bcs_Admin\Technopreneurship.aspx" />
-    <Content Include="Bcs_Admin\web_designing.aspx" />
-    <Content Include="Bcs_Admin\windows_server_2016.aspx" />
-    <Content Include="Bcs_Admin\wireless_communications.aspx" />
-
     <Content Include="Bcs_Notes\course_content.aspx" />
     <Content Include="Bcs_Notes\Css\note.css" />
     <Content Include="Bcs_Notes\dash.aspx" />
@@ -528,30 +520,6 @@
     <Compile Include="Bcs_Admin\upload.Master.designer.cs">
       <DependentUpon>upload.Master</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="Bcs_Admin\web_designing.aspx.cs">
-      <DependentUpon>web_designing.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Admin\web_designing.aspx.designer.cs">
-      <DependentUpon>web_designing.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Admin\windows_server_2016.aspx.cs">
-      <DependentUpon>windows_server_2016.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Admin\windows_server_2016.aspx.designer.cs">
-      <DependentUpon>windows_server_2016.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Admin\wireless_communications.aspx.cs">
-      <DependentUpon>wireless_communications.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Admin\wireless_communications.aspx.designer.cs">
-      <DependentUpon>wireless_communications.aspx</DependentUpon>
-    </Compile>
-=======
->>>>>>> bcee66fbb36b1dbffcfcbf9b5c18cc4e6b064228
     <Compile Include="Bcs_Notes\course_content.aspx.cs">
       <DependentUpon>course_content.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
