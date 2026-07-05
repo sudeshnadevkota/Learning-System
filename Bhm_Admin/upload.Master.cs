@@ -4,7 +4,7 @@ using System.Web.UI;
 
 namespace Learning_System.Bhm_Admin
 {
-    public partial class upload : MasterPage
+    public partial class bhm_admin_upload_master : MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

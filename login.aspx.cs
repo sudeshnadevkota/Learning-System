@@ -147,5 +147,9 @@ namespace Learning_System
                 }
             }
         }
+        protected void BackHomeButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx"); // change to your actual home page path
+        }
     }
 }
