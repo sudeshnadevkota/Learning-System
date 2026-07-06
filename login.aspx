@@ -265,9 +265,9 @@
 <div class="lp-wrap">
   <div class="lp-shell">
 
-      <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lp-back-home-link" OnClick="BackHomeButton_Click">
+     <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lp-back-home-link" OnClick="BackHomeButton_Click">
     <span class="lp-back-arrow">&larr;</span> Back to Home
-  </asp:LinkButton>
+</asp:LinkButton>
 
     <!-- LEFT — BRANDING PANEL -->
     <div class="lp-brand-panel">
@@ -289,7 +289,7 @@
     <!-- RIGHT — LOGIN PANEL -->
     <div class="lp-login-panel">
 
-      <div class="lp-signin-label">Sign In</div>
+      <div class="lp-signin-label">Login</div>
       <div class="lp-signin-sub">Enter your credentials to access your account</div>
 
       <!-- Username -->
