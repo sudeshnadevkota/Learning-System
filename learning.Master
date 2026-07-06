@@ -94,6 +94,7 @@
             .offcanvas-body {
                 padding: 20px !important;
                 display: block !important;
+                
             }
 
             /* Format mobile nav items cleanly */
@@ -135,7 +136,22 @@
                 width: 24px;
                 font-size: 16px;
             }
+
+
         }
+        @media (min-width: 992px) {
+    .navbar-expand-lg .offcanvas {
+        display: flex !important;
+        flex-grow: 1;
+        align-items: center !important;
+        justify-content: center !important;
+        background-color: transparent !important;
+        visibility: visible !important;
+        position: static !important;
+        border: none !important;
+        width: auto !important;
+    }
+}
 
         /* Responsive structural adjustments for narrow smartphone viewports */
         @media (max-width: 576px) {
