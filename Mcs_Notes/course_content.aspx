@@ -7,7 +7,7 @@
 <main class="main">
   <div class="main-inner">
 
-    <!-- Hero Card -->
+       <!-- Hero Card -->
     <div class="hero-card hero-card-compact fade-up d1">
 
       <div class="hero-tag">
@@ -36,19 +36,11 @@
 
     <!-- ══ NOTES / PAST PAPERS TABS ══ -->
     <div class="fade-up d2">
-      <div class="section-head">
-        <div class="content-tabs">
-          <button type="button" class="ctab-btn active" id="tabNotes" onclick="resetNotes()">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-             Notes
-          </button>
-          
-        </div>
-      </div>
+    
 
       <%-- Filter chips (kept outside the panels so it stays visible no matter which panel is active) --%>
       <div class="filter-bar">
-        <span class="filter-label">Filter by type:</span>
+      
         <div class="filter-chips">
           
           <button type="button" class="fchip" data-filter="Lecture" onclick="filterNotes(this,'Lecture')">
@@ -187,114 +179,108 @@
 </div>
 
 <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-        var lectureBtn = document.querySelector('.fchip[data-filter="Lecture"]');
-        if (lectureBtn) {
-            filterNotes(lectureBtn, 'Lecture');
-        }
-    });
-
-    function resetNotes() {
-        var lectureBtn = document.querySelector('.fchip[data-filter="Lecture"]');
-
-        if (lectureBtn) {
-            filterNotes(lectureBtn, 'Lecture');
-        }
+document.addEventListener("DOMContentLoaded", function () {
+    var lectureBtn = document.querySelector('.fchip[data-filter="Lecture"]');
+    if (lectureBtn) {
+        filterNotes(lectureBtn, 'Lecture');
     }
+});
 
-    function switchTab(tab) {
-        var panelNotes = document.getElementById('panelNotes');
-        var panelPapers = document.getElementById('panelPapers');
 
-        if (tab === 'notes') {
-            panelNotes.style.display = '';
-            panelPapers.style.display = 'none';
-        }
-        else {
-            panelNotes.style.display = 'none';
-            panelPapers.style.display = '';
-        }
+
+function switchTab(tab) {
+    var panelNotes = document.getElementById('panelNotes');
+    var panelPapers = document.getElementById('panelPapers');
+
+    if (tab === 'notes') {
+        panelNotes.style.display = '';
+        panelPapers.style.display = 'none';
     }
+    else {
+        panelNotes.style.display = 'none';
+        panelPapers.style.display = '';
+    }
+}
 
-    function filterNotes(btn, filterType) {
-        // 1. Manage Active Class
-        document.querySelectorAll('.fchip').forEach(function (c) { c.classList.remove('active'); });
-        btn.classList.add('active');
+function filterNotes(btn, filterType) {
+    // 1. Manage Active Class
+    document.querySelectorAll('.fchip').forEach(function (c) { c.classList.remove('active'); });
+    btn.classList.add('active');
 
-        // 2. Select rows from BOTH tables
-        var rows = document.querySelectorAll('#panelNotes table tr, #panelPapers table tr');
-        var visible = 0;
-        var foundInNotes = false;
-        var foundInPapers = false;
+    // 2. Select rows from BOTH tables
+    var rows = document.querySelectorAll('#panelNotes table tr, #panelPapers table tr');
+    var visible = 0;
+    var foundInNotes = false;
+    var foundInPapers = false;
 
-        rows.forEach(function (row) {
-            var badge = row.querySelector('.type-badge');
-            if (!badge) return;
+    rows.forEach(function (row) {
+        var badge = row.querySelector('.type-badge');
+        if (!badge) return;
 
-            var badgeText = badge.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
-            var searchKey = filterType.toLowerCase();
-            var isMatch = false;
+        var badgeText = badge.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
+        var searchKey = filterType.toLowerCase();
+        var isMatch = false;
 
-            // Matching logic
-            if (searchKey === 'question') isMatch = badgeText.includes('question');
-            else if (searchKey === 'assignment') isMatch = badgeText.includes('assignment');
-            else isMatch = badgeText.includes(searchKey);
+        // Matching logic
+        if (searchKey === 'question') isMatch = badgeText.includes('question');
+        else if (searchKey === 'assignment') isMatch = badgeText.includes('assignment');
+        else isMatch = badgeText.includes(searchKey);
 
-            if (isMatch) {
-                row.style.display = '';
-                visible++;
-                // Track which table the match is in
-                if (row.closest('#panelNotes')) foundInNotes = true;
-                if (row.closest('#panelPapers')) foundInPapers = true;
-            } else {
-                row.style.display = 'none';
-            }
-        });
-
-        // 3. Auto-switch to the correct tab if necessary
-        if (foundInPapers && !foundInNotes) {
-            switchTab('papers');
-        } else if (foundInNotes) {
-            switchTab('notes');
-        }
-
-        // 4. Handle Empty State
-        var emptyEl = document.getElementById('filterEmpty');
-        if (visible === 0) {
-            if (emptyEl) emptyEl.style.display = 'flex';
+        if (isMatch) {
+            row.style.display = '';
+            visible++;
+            // Track which table the match is in
+            if (row.closest('#panelNotes')) foundInNotes = true;
+            if (row.closest('#panelPapers')) foundInPapers = true;
         } else {
-            if (emptyEl) emptyEl.style.display = 'none';
-        }
-    }
-
-    function openSyllabus() {
-        var modal = document.getElementById("sylModal");
-        if (modal) {
-            modal.classList.add("open");
-            document.body.style.overflow = "hidden";
-        }
-    }
-
-    function closeSyllabus() {
-        var modal = document.getElementById("sylModal");
-        if (modal) {
-            modal.classList.remove("open");
-            document.body.style.overflow = "";
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var modal = document.getElementById("sylModal");
-        if (modal) {
-            modal.addEventListener("click", function (e) {
-                if (e.target === this) closeSyllabus();
-            });
+            row.style.display = 'none';
         }
     });
 
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") closeSyllabus();
-    });
+    // 3. Auto-switch to the correct tab if necessary
+    if (foundInPapers && !foundInNotes) {
+        switchTab('papers');
+    } else if (foundInNotes) {
+        switchTab('notes');
+    }
+
+    // 4. Handle Empty State
+    var emptyEl = document.getElementById('filterEmpty');
+    if (visible === 0) {
+        if (emptyEl) emptyEl.style.display = 'flex';
+    } else {
+        if (emptyEl) emptyEl.style.display = 'none';
+    }
+}
+
+function openSyllabus() {
+    var modal = document.getElementById("sylModal");
+    if (modal) {
+        modal.classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function closeSyllabus() {
+    var modal = document.getElementById("sylModal");
+    if (modal) {
+        modal.classList.remove("open");
+        document.body.style.overflow = "";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    var modal = document.getElementById("sylModal");
+    if (modal) {
+        modal.addEventListener("click", function (e) {
+            if (e.target === this) closeSyllabus();
+        });
+    }
+});
+
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeSyllabus();
+});
 </script>
 
 </asp:Content>

@@ -179,108 +179,108 @@
 </div>
 
 <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-        var lectureBtn = document.querySelector('.fchip[data-filter="Lecture"]');
-        if (lectureBtn) {
-            filterNotes(lectureBtn, 'Lecture');
-        }
-    });
-
-   
-
-    function switchTab(tab) {
-        var panelNotes = document.getElementById('panelNotes');
-        var panelPapers = document.getElementById('panelPapers');
-
-        if (tab === 'notes') {
-            panelNotes.style.display = '';
-            panelPapers.style.display = 'none';
-        }
-        else {
-            panelNotes.style.display = 'none';
-            panelPapers.style.display = '';
-        }
+document.addEventListener("DOMContentLoaded", function () {
+    var lectureBtn = document.querySelector('.fchip[data-filter="Lecture"]');
+    if (lectureBtn) {
+        filterNotes(lectureBtn, 'Lecture');
     }
+});
 
-    function filterNotes(btn, filterType) {
-        // 1. Manage Active Class
-        document.querySelectorAll('.fchip').forEach(function (c) { c.classList.remove('active'); });
-        btn.classList.add('active');
 
-        // 2. Select rows from BOTH tables
-        var rows = document.querySelectorAll('#panelNotes table tr, #panelPapers table tr');
-        var visible = 0;
-        var foundInNotes = false;
-        var foundInPapers = false;
 
-        rows.forEach(function (row) {
-            var badge = row.querySelector('.type-badge');
-            if (!badge) return;
+function switchTab(tab) {
+    var panelNotes = document.getElementById('panelNotes');
+    var panelPapers = document.getElementById('panelPapers');
 
-            var badgeText = badge.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
-            var searchKey = filterType.toLowerCase();
-            var isMatch = false;
+    if (tab === 'notes') {
+        panelNotes.style.display = '';
+        panelPapers.style.display = 'none';
+    }
+    else {
+        panelNotes.style.display = 'none';
+        panelPapers.style.display = '';
+    }
+}
 
-            // Matching logic
-            if (searchKey === 'question') isMatch = badgeText.includes('question');
-            else if (searchKey === 'assignment') isMatch = badgeText.includes('assignment');
-            else isMatch = badgeText.includes(searchKey);
+function filterNotes(btn, filterType) {
+    // 1. Manage Active Class
+    document.querySelectorAll('.fchip').forEach(function (c) { c.classList.remove('active'); });
+    btn.classList.add('active');
 
-            if (isMatch) {
-                row.style.display = '';
-                visible++;
-                // Track which table the match is in
-                if (row.closest('#panelNotes')) foundInNotes = true;
-                if (row.closest('#panelPapers')) foundInPapers = true;
-            } else {
-                row.style.display = 'none';
-            }
-        });
+    // 2. Select rows from BOTH tables
+    var rows = document.querySelectorAll('#panelNotes table tr, #panelPapers table tr');
+    var visible = 0;
+    var foundInNotes = false;
+    var foundInPapers = false;
 
-        // 3. Auto-switch to the correct tab if necessary
-        if (foundInPapers && !foundInNotes) {
-            switchTab('papers');
-        } else if (foundInNotes) {
-            switchTab('notes');
-        }
+    rows.forEach(function (row) {
+        var badge = row.querySelector('.type-badge');
+        if (!badge) return;
 
-        // 4. Handle Empty State
-        var emptyEl = document.getElementById('filterEmpty');
-        if (visible === 0) {
-            if (emptyEl) emptyEl.style.display = 'flex';
+        var badgeText = badge.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
+        var searchKey = filterType.toLowerCase();
+        var isMatch = false;
+
+        // Matching logic
+        if (searchKey === 'question') isMatch = badgeText.includes('question');
+        else if (searchKey === 'assignment') isMatch = badgeText.includes('assignment');
+        else isMatch = badgeText.includes(searchKey);
+
+        if (isMatch) {
+            row.style.display = '';
+            visible++;
+            // Track which table the match is in
+            if (row.closest('#panelNotes')) foundInNotes = true;
+            if (row.closest('#panelPapers')) foundInPapers = true;
         } else {
-            if (emptyEl) emptyEl.style.display = 'none';
-        }
-    }
-
-    function openSyllabus() {
-        var modal = document.getElementById("sylModal");
-        if (modal) {
-            modal.classList.add("open");
-            document.body.style.overflow = "hidden";
-        }
-    }
-
-    function closeSyllabus() {
-        var modal = document.getElementById("sylModal");
-        if (modal) {
-            modal.classList.remove("open");
-            document.body.style.overflow = "";
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var modal = document.getElementById("sylModal");
-        if (modal) {
-            modal.addEventListener("click", function (e) {
-                if (e.target === this) closeSyllabus();
-            });
+            row.style.display = 'none';
         }
     });
 
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") closeSyllabus();
-    });
+    // 3. Auto-switch to the correct tab if necessary
+    if (foundInPapers && !foundInNotes) {
+        switchTab('papers');
+    } else if (foundInNotes) {
+        switchTab('notes');
+    }
+
+    // 4. Handle Empty State
+    var emptyEl = document.getElementById('filterEmpty');
+    if (visible === 0) {
+        if (emptyEl) emptyEl.style.display = 'flex';
+    } else {
+        if (emptyEl) emptyEl.style.display = 'none';
+    }
+}
+
+function openSyllabus() {
+    var modal = document.getElementById("sylModal");
+    if (modal) {
+        modal.classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function closeSyllabus() {
+    var modal = document.getElementById("sylModal");
+    if (modal) {
+        modal.classList.remove("open");
+        document.body.style.overflow = "";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    var modal = document.getElementById("sylModal");
+    if (modal) {
+        modal.addEventListener("click", function (e) {
+            if (e.target === this) closeSyllabus();
+        });
+    }
+});
+
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeSyllabus();
+});
 </script>
 
 </asp:Content>
