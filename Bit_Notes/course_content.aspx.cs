@@ -11,10 +11,7 @@ namespace Learning_System.Bit_Notes
         {
 
 
-            if (Session["ProfileId"] == null)
-            {
-                Response.Redirect("~/login.aspx");
-            }
+           
             string code = Request.QueryString["code"];
             if (string.IsNullOrEmpty(code) || !SubjectMap.Subjects.TryGetValue(code, out SubjectMap.SubjectInfo subject))
             {
