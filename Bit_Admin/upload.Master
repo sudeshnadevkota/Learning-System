@@ -425,7 +425,7 @@
         <div class="live-badge">
           <span class="live-dot"></span>Live
         </div>
-        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkOut_Click" CssClass="btn btn-primary">
+        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkOut_Click" CausesValidation="False" CssClass="btn btn-primary">
                     <i class="ti ti-logout" style="font-size:14px; vertical-align:-1px; margin-right:4px;"></i> Logout
         </asp:LinkButton>
       </div>

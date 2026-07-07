@@ -371,6 +371,74 @@
         .table-modern a:hover {
             text-decoration: underline;
         }
+
+        /* ── Table horizontal scroll (mobile-safe, desktop unaffected) ── */
+        .c-table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+            .c-table-container::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            .c-table-container::-webkit-scrollbar-track {
+                background: var(--gray-bg);
+            }
+
+            .c-table-container::-webkit-scrollbar-thumb {
+                background: var(--pink);
+                border-radius: 8px;
+            }
+
+        /* ── Mobile-only refinements (desktop layout/content unchanged) ── */
+        @media (max-width: 767.98px) {
+            .c-wrap {
+                padding: 1rem;
+            }
+
+            .c-hero {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                border-radius: 14px;
+                gap: 16px;
+            }
+
+                .c-hero h3 {
+                    font-size: 1.05rem;
+                    line-height: 1.45;
+                    gap: 8px;
+                    align-items: flex-start;
+                }
+
+                    .c-hero h3 i {
+                        font-size: 1.1rem;
+                        margin-top: 3px;
+                        flex-shrink: 0;
+                    }
+
+            .c-hero-actions {
+                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .c-hero-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 18px;
+            }
+
+            .c-panel {
+                padding: 20px;
+                border-radius: 12px;
+            }
+
+            .table-modern {
+                min-width: 640px;
+            }
+        }
     </style>
 
     <div class="c-wrap container-fluid">
