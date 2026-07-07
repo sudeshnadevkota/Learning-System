@@ -15,15 +15,13 @@ namespace Learning_System
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            // Status.SelectedValue is one of: "students" / "Staff" / "Admin"
             string userType = Status.SelectedValue;
 
             if (string.IsNullOrWhiteSpace(userType))
             {
-                return; // RequiredFieldValidator already covers this on the client, guard server-side too
+                return;
             }
 
-            // Map the dropdown value to the Role stored in Login/UserProfile
             string role = userType == "students" ? "Student"
                         : userType == "Staff" ? "Staff"
                         : "Admin";
@@ -35,68 +33,62 @@ namespace Learning_System
 
                 try
                 {
-                    // 1. Insert into Login, get the new UserId
-                    int newUserId;
-                    string loginQuery = @"INSERT INTO Login (Username, Password, Role, CreatedDate)
-                                           OUTPUT INSERTED.UserId
-                                           VALUES (@Username, @Password, @Role, GETDATE())";
-
-                    using (SqlCommand cmd = new SqlCommand(loginQuery, con, transaction))
-                    {
-                        cmd.Parameters.AddWithValue("@Username", username.Text.Trim());
-
-                        // TODO: replace with your existing password hashing method
-                        // (whatever Login.aspx.cs / your original register.aspx.cs uses)
-                        cmd.Parameters.AddWithValue("@Password", Password.Text);
-
-                        cmd.Parameters.AddWithValue("@Role", role);
-                        newUserId = (int)cmd.ExecuteScalar();
-                    }
-
-                    // 2. Insert into UserProfile (base/master table — common fields)
+                    // 1. Insert directly into UserProfile — Username/Password now live here,
+                    //    no more separate Login table or two-step insert
                     int newProfileId;
                     string profileQuery = @"INSERT INTO UserProfile
-                                (UserId, FullName, Email, ContactNumber, DOB, Address, Role, RegisteredDate, Status)
+                                (FullName, Email, ContactNumber, DOB, Gender, Address, Role, ProfilePhoto, Username, Password, RegisteredDate, Status)
                                 OUTPUT INSERTED.ProfileId
                                 VALUES
-                                (@UserId, @FullName, @Email, @ContactNumber, @DOB, @Address, @Role, GETDATE(), 1)";
+                                (@FullName, @Email, @ContactNumber, @DOB, @Gender, @Address, @Role, @ProfilePhoto, @Username, @Password, GETDATE(), 1)";
 
                     using (SqlCommand cmd = new SqlCommand(profileQuery, con, transaction))
                     {
-                        cmd.Parameters.AddWithValue("@UserId", newUserId);
                         cmd.Parameters.AddWithValue("@FullName", Full_name.Text.Trim());
                         cmd.Parameters.AddWithValue("@Email", Email.Text.Trim());
                         cmd.Parameters.AddWithValue("@ContactNumber", Contact.Text.Trim());
                         cmd.Parameters.AddWithValue("@DOB", Convert.ToDateTime(Dob.Text));
-                        // NOTE: your form has no Address field yet — add an Address TextBox
-                        // if you want it captured, otherwise this stores an empty string
+                        cmd.Parameters.AddWithValue("@Gender", Gender.SelectedValue);
                         cmd.Parameters.AddWithValue("@Address", "");
                         cmd.Parameters.AddWithValue("@Role", role);
+                        cmd.Parameters.AddWithValue("@Username", username.Text.Trim());
+
+                        // TODO: replace with your existing password hashing method
+                        cmd.Parameters.AddWithValue("@Password", Password.Text);
+
+                        SqlParameter photoParam = cmd.Parameters.Add("@ProfilePhoto", SqlDbType.VarBinary, -1);
+                        photoParam.Value = ProfilePhotoUpload.HasFile
+                            ? (object)ProfilePhotoUpload.FileBytes
+                            : DBNull.Value;
+
                         newProfileId = (int)cmd.ExecuteScalar();
                     }
 
-                    // 3. Insert into the role-specific table
+                    // 2. Insert into the role-specific table (unchanged, still keyed on ProfileId)
                     if (role == "Student")
                     {
-                        string q = @"INSERT INTO StudentProfile (ProfileId, Semester, SubjectName)
-                                     VALUES (@ProfileId, @Semester, @SubjectName)";
+                        string q = @"INSERT INTO StudentProfile (ProfileId, Semester, SubjectName, RollNumber)
+                                     VALUES (@ProfileId, @Semester, @SubjectName, @RollNumber)";
                         using (SqlCommand cmd = new SqlCommand(q, con, transaction))
                         {
                             cmd.Parameters.AddWithValue("@ProfileId", newProfileId);
                             cmd.Parameters.AddWithValue("@Semester", Convert.ToInt32(Semester.SelectedValue));
                             cmd.Parameters.AddWithValue("@SubjectName", Faculty.SelectedValue);
+                            cmd.Parameters.AddWithValue("@RollNumber",
+                                string.IsNullOrWhiteSpace(LCID.Text) ? (object)DBNull.Value : LCID.Text.Trim());
                             cmd.ExecuteNonQuery();
                         }
                     }
                     else if (role == "Staff")
                     {
-                        string q = @"INSERT INTO TeacherProfile (ProfileId, Designation, Department)
-                                     VALUES (@ProfileId, @Designation, @Department)";
+                        string q = @"INSERT INTO TeacherProfile (ProfileId, Designation, Department, SubjectsHandled)
+                                     VALUES (@ProfileId, @Designation, @Department, @SubjectsHandled)";
                         using (SqlCommand cmd = new SqlCommand(q, con, transaction))
                         {
                             cmd.Parameters.AddWithValue("@ProfileId", newProfileId);
                             cmd.Parameters.AddWithValue("@Designation", string.IsNullOrWhiteSpace(Designation.Text) ? (object)DBNull.Value : Designation.Text.Trim());
                             cmd.Parameters.AddWithValue("@Department", string.IsNullOrWhiteSpace(StaffDepartment.Text) ? (object)DBNull.Value : StaffDepartment.Text.Trim());
+                            cmd.Parameters.AddWithValue("@SubjectsHandled", string.IsNullOrWhiteSpace(SubjectsHandled.Text) ? (object)DBNull.Value : SubjectsHandled.Text.Trim());
                             cmd.ExecuteNonQuery();
                         }
                     }
@@ -116,12 +108,29 @@ namespace Learning_System
                     transaction.Commit();
                     Response.Redirect("Login.aspx?registered=true");
                 }
+                catch (SqlException sqlEx) when (sqlEx.Number == 2627 || sqlEx.Number == 2601)
+                {
+                    SafeRollback(transaction);
+                    lblError.Text = "That email or username is already registered. Please use a different one.";
+                }
                 catch (Exception ex)
                 {
-                    transaction.Rollback();
-                    // Surface the error however your other pages do (e.g. a Label control)
-                    // lblError.Text = "Registration failed: " + ex.Message;
+                    SafeRollback(transaction);
+                    lblError.Text = "Registration failed: " + ex.Message;
                 }
+            }
+        }
+
+        private void SafeRollback(SqlTransaction transaction)
+        {
+            try
+            {
+                if (transaction.Connection != null)
+                    transaction.Rollback();
+            }
+            catch
+            {
+                // transaction was already completed/rolled back by SQL Server — ignore
             }
         }
     }

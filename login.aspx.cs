@@ -1,5 +1,4 @@
-﻿using Learning_System.students;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -13,127 +12,81 @@ namespace Learning_System
     public partial class login : System.Web.UI.Page
     {
         string connString = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["ProfileId"] == null)
+            {
+                Response.Write("Session is EMPTY - not set!");
+            }
+            else
+            {
+                Response.Write("Session ProfileId = " + Session["ProfileId"] + ", Username = " + Session["Username"]);
+            }
         }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             string username = Username.Text;
             string password = Password.Text;
+
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                string query = @"SELECT Role, UserId, Username
-                 FROM Login
-                 WHERE Username = @Username
-                 AND Password = @Password";
+                string query = @"SELECT U.ProfileId, U.UserName, U.Role, A.AccessLevel
+                                 FROM UserProfile U
+                                 LEFT JOIN AdminProfile A ON U.ProfileId = A.ProfileId
+                                 WHERE U.UserName = @Username
+                                 AND U.Password = @Password";
+
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Username", username);
                 cmd.Parameters.AddWithValue("@Password", password);
+
                 try
                 {
                     conn.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
+
                     if (reader.HasRows)
                     {
                         reader.Read();
-                        string status = reader["role"].ToString();
-                        string userId = reader["UserId"].ToString();
-                        string name = reader["Username"].ToString();
-                        if (status == "superadmin")
+                        string status = reader["Role"].ToString();
+
+                        Session["ProfileId"] = Convert.ToInt32(reader["ProfileId"]);
+                        Session["Username"] = reader["UserName"].ToString();
+
+                        if (status == "Student")
                         {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Administrator//default_administrator.aspx");
+                            Response.Redirect("~/Bit_Notes/dash.aspx");
                         }
-                        else if (status == "students")
+                        else if (status == "Staff")
                         {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/students//default_student.aspx");
+                            Response.Redirect("~/Staff/default_staff.aspx");
                         }
-                        else if (status == "verification")
+                        else if (status == "Admin")
                         {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/verification//verification_default.aspx");
+                            Session["AccessLevel"] = reader["AccessLevel"] == DBNull.Value ? null : reader["AccessLevel"].ToString();
+
+                            if (Session["AccessLevel"]?.ToString() == "SuperAdmin") Response.Redirect("~/Administrator/default_administrator.aspx");
+                            else if (Session["AccessLevel"]?.ToString() == "Moderator") Response.Redirect("~/Moderator/default_moderator.aspx");
+                            else Response.Redirect("~/MainAdmin/main_admin.aspx");
                         }
-                        else if (status == "Bit_Admin")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Bit_Admin/dash.aspx");
-                        }
-                        else if (status == "Bhm_Admin")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Bhm_Admin/dash.aspx");
-                        }
-                        else if (status == "Mcs_Admin")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Mcs_Admin/dash.aspx");
-                        }
-                        else if (status == "Bba_Admin")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Bba_Admin/dash.aspx");
-                        }
-                        else if (status == "Mba_Admin")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Mba_Admin/dash.aspx");
-                        }
-                        else if (status == "Bcs_Admin")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Bcs_Admin/dash.aspx");
-                        }
-                        else if (status == "pyq_Bit")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Past_Year_Paper_Admin/Bit_Admin/dash.aspx");
-                        }
-                        else if (status == "pyq_Bcs")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Past_Year_Paper_Admin/BCS_Admin/dash.aspx");
-                        }
-                        else if (status == "pyq_Mba")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Past_Year_Paper_Admin/MBA_Admin/dash.aspx");
-                        }
-                        else if (status == "pyq_Mcs")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Past_Year_Paper_Admin/MCS_Admin/dash.aspx");
-                        }
-                        else if (status == "pyq_bhm")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Past_Year_Paper_Admin/BHM_Admin/dash.aspx");
-                        }
-                        else if (status == "pyq_BBA")
-                        {
-                            Session["UserId"] = Convert.ToInt32(reader["UserId"]);
-                            Session["Username"] = reader["Username"].ToString();
-                            Response.Redirect("~/Past_Year_Paper_Admin/BBA_Admin/dash.aspx");
-                        }
-                        else
-                        {
-                            Label1.Text = "Your account role is invalid. Please contact support.";
-                        }
+                        else if (status == "SuperAdmin") Response.Redirect("~/Administrator/default_administrator.aspx");
+                        else if (status == "students") Response.Redirect("~/students/default_student.aspx");
+                        else if (status == "verification") Response.Redirect("~/verification/verification_default.aspx");
+                        else if (status == "Bit_Admin") Response.Redirect("~/Bit_Admin/dash.aspx");
+                        else if (status == "Bhm_Admin") Response.Redirect("~/Bhm_Admin/dash.aspx");
+                        else if (status == "Mcs_Admin") Response.Redirect("~/Mcs_Admin/dash.aspx");
+                        else if (status == "Bba_Admin") Response.Redirect("~/Bba_Admin/dash.aspx");
+                        else if (status == "Mba_Admin") Response.Redirect("~/Mba_Admin/dash.aspx");
+                        else if (status == "Bcs_Admin") Response.Redirect("~/Bcs_Admin/dash.aspx");
+                        else if (status == "pyq_Bit") Response.Redirect("~/Past_Year_Paper_Admin/Bit_Admin/dash.aspx");
+                        else if (status == "pyq_Bcs") Response.Redirect("~/Past_Year_Paper_Admin/BCS_Admin/dash.aspx");
+                        else if (status == "pyq_Mba") Response.Redirect("~/Past_Year_Paper_Admin/MBA_Admin/dash.aspx");
+                        else if (status == "pyq_Mcs") Response.Redirect("~/Past_Year_Paper_Admin/MCS_Admin/dash.aspx");
+                        else if (status == "pyq_bhm") Response.Redirect("~/Past_Year_Paper_Admin/BHM_Admin/dash.aspx");
+                        else if (status == "pyq_BBA") Response.Redirect("~/Past_Year_Paper_Admin/BBA_Admin/dash.aspx");
+                        else Label1.Text = "Your account role is invalid. Please contact support.";
                     }
                     else
                     {
@@ -147,9 +100,10 @@ namespace Learning_System
                 }
             }
         }
+
         protected void BackHomeButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Default.aspx"); // change to your actual home page path
+            Response.Redirect("~/Default.aspx");
         }
     }
 }
