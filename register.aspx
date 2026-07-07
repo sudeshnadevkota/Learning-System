@@ -230,6 +230,11 @@
             padding-right: 22px;
         }
 
+        input[type="file"].lp-form-control {
+            padding: 10px 12px 10px 0;
+            font-size: 13.5px;
+        }
+
         .lp-error-text {
             display: block;
             margin-top: 6px;
@@ -387,6 +392,30 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Enter your password*" ControlToValidate="Password" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
 
+                    <!-- Gender -->
+                    <div class="lp-field">
+                        <label class="lp-field-label" for="<%= Gender.ClientID %>">Gender</label>
+                        <div class="lp-input-wrap">
+                            <span class="lp-input-icon"><i class="bi bi-person-vcard-fill"></i></span>
+                            <asp:DropDownList CssClass="lp-form-control" ID="Gender" runat="server">
+                                <asp:ListItem Text="Select" Value=""></asp:ListItem>
+                                <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
+                                <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
+                                <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Select gender*" ControlToValidate="Gender" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </div>
+
+                    <!-- Profile Photo -->
+                    <div class="lp-field">
+                        <label class="lp-field-label" for="<%= ProfilePhotoUpload.ClientID %>">Profile Photo</label>
+                        <div class="lp-input-wrap">
+                            <span class="lp-input-icon"><i class="bi bi-camera-fill"></i></span>
+                            <asp:FileUpload CssClass="lp-form-control" ID="ProfilePhotoUpload" runat="server" />
+                        </div>
+                    </div>
+
                     <!-- User Type -->
                     <div class="lp-field">
                         <label class="lp-field-label" for="<%= Status.ClientID %>">User Type</label>
@@ -437,6 +466,15 @@
                         </div>
                     </div>
 
+                    <!-- Student: LCID (replaces the unused "Roll Number" column label) -->
+                    <div class="lp-field" id="studentDiv3" style="display: none;">
+                        <label class="lp-field-label" for="<%= LCID.ClientID %>">LCID</label>
+                        <div class="lp-input-wrap">
+                            <span class="lp-input-icon"><i class="bi bi-card-text"></i></span>
+                            <asp:TextBox CssClass="lp-form-control" ID="LCID" runat="server" placeholder="LCID"></asp:TextBox>
+                        </div>
+                    </div>
+
                     <!-- ══ STAFF FIELDS (conditionally shown) ══ -->
                     <div class="lp-field" id="staffDiv1" style="display: none;">
                         <label class="lp-field-label" for="<%= Designation.ClientID %>">Designation</label>
@@ -451,6 +489,15 @@
                         <div class="lp-input-wrap">
                             <span class="lp-input-icon"><i class="bi bi-diagram-3-fill"></i></span>
                             <asp:TextBox CssClass="lp-form-control" ID="StaffDepartment" runat="server" placeholder="Department"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <!-- Staff: Subjects Handled -->
+                    <div class="lp-field" id="staffDiv3" style="display: none;">
+                        <label class="lp-field-label" for="<%= SubjectsHandled.ClientID %>">Subjects Handled</label>
+                        <div class="lp-input-wrap">
+                            <span class="lp-input-icon"><i class="bi bi-journal-text"></i></span>
+                            <asp:TextBox CssClass="lp-form-control" ID="SubjectsHandled" runat="server" placeholder="e.g. DBMS, Networking"></asp:TextBox>
                         </div>
                     </div>
 
@@ -479,6 +526,7 @@
 
                 <div class="lp-reg-btn-row">
                     <asp:Button CssClass="lp-reg-btn" ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
+                    <asp:Label ID="lblError" runat="server" CssClass="lp-error-text" Text=""></asp:Label>
                 </div>
 
                 <div class="lp-reg-login-row">
@@ -496,8 +544,10 @@
 
             var studentDiv1 = document.getElementById("studentDiv1");
             var studentDiv2 = document.getElementById("studentDiv2");
+            var studentDiv3 = document.getElementById("studentDiv3");
             var staffDiv1 = document.getElementById("staffDiv1");
             var staffDiv2 = document.getElementById("staffDiv2");
+            var staffDiv3 = document.getElementById("staffDiv3");
             var adminDiv1 = document.getElementById("adminDiv1");
             var adminDiv2 = document.getElementById("adminDiv2");
 
@@ -507,8 +557,10 @@
             // hide everything first
             studentDiv1.style.display = "none";
             studentDiv2.style.display = "none";
+            studentDiv3.style.display = "none";
             staffDiv1.style.display = "none";
             staffDiv2.style.display = "none";
+            staffDiv3.style.display = "none";
             adminDiv1.style.display = "none";
             adminDiv2.style.display = "none";
 
@@ -518,16 +570,21 @@
             if (status === "students") {
                 studentDiv1.style.display = "block";
                 studentDiv2.style.display = "block";
+                studentDiv3.style.display = "block";
                 facultyDropdown.setAttribute("required", "true");
                 semesterDropdown.setAttribute("required", "true");
             } else if (status === "Staff") {
                 staffDiv1.style.display = "block";
                 staffDiv2.style.display = "block";
+                staffDiv3.style.display = "block";
             } else if (status === "Admin") {
                 adminDiv1.style.display = "block";
                 adminDiv2.style.display = "block";
             }
         }
+
+        // re-sync visibility on every page load, including postbacks
+        window.addEventListener("DOMContentLoaded", toggleRoleFields);
     </script>
 
 </asp:Content>

@@ -217,7 +217,7 @@
             }
 
             .nima-card {
-                width: 10rem !important;
+                width: 100% !important;
             }
         }
     </style>

@@ -218,15 +218,31 @@
                 </div>
 
                 <div class="d-flex align-items-center gap-2">
-                    <asp:LinkButton ID="Linklogin" runat="server" CssClass="btn login-btn" OnClick="Linklogin_Click">
-                        Login <i class="fas fa-sign-in-alt ms-2"></i>
-                    </asp:LinkButton>
+    <asp:LinkButton ID="Linklogin" runat="server" CssClass="btn login-btn" OnClick="Linklogin_Click">
+        Login <i class="fas fa-sign-in-alt ms-2"></i>
+    </asp:LinkButton>
 
-                    <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" 
-                            data-bs-target="#offcanvasNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
+    <div id="UserDropdown" runat="server" class="dropdown" Visible="false">
+        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <asp:Image ID="ProfileImage" runat="server" 
+                style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #0B1F66;" />
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end shadow">
+            <li><a class="dropdown-item" href="Profile.aspx"><i class="fas fa-user me-2"></i>Display Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <asp:LinkButton ID="BtnLogout" runat="server" CssClass="dropdown-item text-danger" OnClick="BtnLogout_Click">
+                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                </asp:LinkButton>
+            </li>
+        </ul>
+    </div>
+
+    <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" 
+            data-bs-target="#offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
 
             </div>
         </nav>
