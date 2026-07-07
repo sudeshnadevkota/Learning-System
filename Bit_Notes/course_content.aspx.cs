@@ -16,7 +16,6 @@ namespace Learning_System.Bit_Notes
                 Response.Redirect("~/login.aspx");
             }
             string code = Request.QueryString["code"];
-
             if (string.IsNullOrEmpty(code) || !SubjectMap.Subjects.TryGetValue(code, out SubjectMap.SubjectInfo subject))
             {
                 Response.Redirect("~/Bit_Notes/dash.aspx");
@@ -25,10 +24,26 @@ namespace Learning_System.Bit_Notes
 
             TableName = subject.Table;
 
+            // Check login for the MaterialsPanel
+            if (Session["ProfileId"] == null)
+            {
+                MaterialsPanel.Visible = false;
+                pnlLoginPrompt.Visible = true; // Show the new panel with the button
+            }
+            else
+            {
+                MaterialsPanel.Visible = true;
+                pnlLoginPrompt.Visible = false;
+            }
+
             if (!IsPostBack)
             {
                 LoadSyllabusInfo(code, subject.Title);
-                BindData(GridViewNotes, GridViewPapers);
+                // Only bind data if user is logged in to save resources
+                if (Session["ProfileId"] != null)
+                {
+                    BindData(GridViewNotes, GridViewPapers);
+                }
             }
         }
 
