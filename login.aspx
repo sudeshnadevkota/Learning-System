@@ -1,6 +1,13 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/learning.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Learning_System.login" %>
+﻿<%@ Page Title="Login" Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Learning_System.login" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Login - Texas College</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap Icons (needed for bi-person-fill / bi-lock-fill / bi-eye icons) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
 
 <style>
 /* ─────────────────────────────────────────
@@ -26,14 +33,13 @@
 
 /* ── OUTER WRAPPER — icon wallpaper background ── */
 .lp-wrap {
-  width: 100%;
-  min-height: 80vh;
+  width: 100vw;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px 12px;
   position: relative;
-  overflow: hidden;
+  overflow : hidden;
   background-color: #f5efe6;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cg fill='none' stroke='%232B397D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.20'%3E%3Cg transform='translate(14,18) scale(1.35)'%3E%3Cpath d='M12 3L1 9l11 6 9-4.91V17'/%3E%3Cpath d='M5 12v5c0 0 2.5 3 7 3s7-3 7-3v-5'/%3E%3C/g%3E%3Cg transform='translate(116,18) scale(1.35)'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cline x1='3' y1='9' x2='21' y2='9'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cpolyline points='9,14 11,16 15,12'/%3E%3C/g%3E%3Cg transform='translate(14,118) scale(1.35)'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpolyline points='12,7 12,12 15,15'/%3E%3C/g%3E%3Cg transform='translate(116,118) scale(1.35)'%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3Cpath d='M4,20 C4,16 7.6,13 12,13 C16.4,13 20,16 20,20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
     radial-gradient(ellipse at 12% 15%, rgba(210,140,60,.22) 0%, transparent 50%),
@@ -261,75 +267,78 @@
   .lp-back-home-link { top: 14px; left: 16px; font-size: 13px; }
 }
 </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="lp-wrap">
+          <div class="lp-shell">
 
-<div class="lp-wrap">
-  <div class="lp-shell">
+              <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lp-back-home-link" OnClick="BackHomeButton_Click">
+            <span class="lp-back-arrow">&larr;</span> Back to Home
+          </asp:LinkButton>
 
-      <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lp-back-home-link" OnClick="BackHomeButton_Click">
-    <span class="lp-back-arrow">&larr;</span> Back to Home
-  </asp:LinkButton>
+            <!-- LEFT — BRANDING PANEL -->
+            <div class="lp-brand-panel">
+              <div class="lp-brand-inner">
+                <div class="lp-brand-logo-row">
+                  <div class="lp-brand-logo-box">
+                  <img src="administrator/images/logo.png" alt="Texas College Logo" />
+                  </div>
+                  <div>
+                    <div class="lp-brand-college-name">Texas College</div>
+                    <div class="lp-brand-college-sub">Learning Portal</div>
+                  </div>
+                </div>
+                <div class="lp-brand-accent-bar"></div>
+                <div class="lp-brand-tagline">Learn. Track. Succeed.</div>
+              </div>
+            </div>
 
-    <!-- LEFT — BRANDING PANEL -->
-    <div class="lp-brand-panel">
-      <div class="lp-brand-inner">
-        <div class="lp-brand-logo-row">
-          <div class="lp-brand-logo-box">
-          <img src="administrator/images/logo.png" alt="Texas College Logo" />
+            <!-- RIGHT — LOGIN PANEL -->
+            <div class="lp-login-panel">
+
+              <div class="lp-signin-label">Sign In</div>
+              <div class="lp-signin-sub">Enter your credentials to access your account</div>
+
+              <!-- Username -->
+              <div class="lp-field">
+                <label class="lp-field-label" for="<%= Username.ClientID %>">Username</label>
+                <div class="lp-input-wrap">
+                  <span class="lp-input-icon" aria-hidden="true"><i class="bi bi-person-fill"></i></span>
+                  <asp:TextBox ID="Username" runat="server" CssClass="lp-form-control" required="true"
+                      placeholder="Enter number or email" aria-label="Username"></asp:TextBox>
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="lp-field">
+                <div class="lp-label-row">
+                  <label class="lp-field-label" for="<%= Password.ClientID %>">Password</label>
+                  <a href="#" class="lp-forgot-link">Forgot Password</a>
+                </div>
+                <div class="lp-input-wrap">
+                  <span class="lp-input-icon" aria-hidden="true"><i class="bi bi-lock-fill"></i></span>
+                  <asp:TextBox ID="Password" runat="server" CssClass="lp-form-control" TextMode="Password"
+                      required="true" placeholder="Enter Password" aria-label="Password"></asp:TextBox>
+                  <span id="togglePassword" class="lp-toggle-pw" role="button" tabindex="0" aria-label="Show or hide password">
+                    <i class="bi bi-eye-slash-fill"></i>
+                  </span>
+                </div>
+                <asp:Label ID="Label1" runat="server" CssClass="lp-error-text"></asp:Label>
+              </div>
+
+              <!-- Login button -->
+              <asp:Button ID="Button1" runat="server" Text="Login" CssClass="lp-login-btn" OnClick="Button1_Click" />
+
+
+              <div class="lp-signup-row">
+                Don't have an account? <a href="register.aspx">Sign up</a>
+              </div>
+
+            </div>
           </div>
-          <div>
-            <div class="lp-brand-college-name">Texas College</div>
-            <div class="lp-brand-college-sub">Learning Portal</div>
-          </div>
         </div>
-        <div class="lp-brand-accent-bar"></div>
-        <div class="lp-brand-tagline">Learn. Track. Succeed.</div>
-      </div>
-    </div>
-
-    <!-- RIGHT — LOGIN PANEL -->
-    <div class="lp-login-panel">
-
-      <div class="lp-signin-label">Sign In</div>
-      <div class="lp-signin-sub">Enter your credentials to access your account</div>
-
-      <!-- Username -->
-      <div class="lp-field">
-        <label class="lp-field-label" for="<%= Username.ClientID %>">Username</label>
-        <div class="lp-input-wrap">
-          <span class="lp-input-icon" aria-hidden="true"><i class="bi bi-person-fill"></i></span>
-          <asp:TextBox ID="Username" runat="server" CssClass="lp-form-control" required="true"
-              placeholder="Enter number or email" aria-label="Username"></asp:TextBox>
-        </div>
-      </div>
-
-      <!-- Password -->
-      <div class="lp-field">
-        <div class="lp-label-row">
-          <label class="lp-field-label" for="<%= Password.ClientID %>">Password</label>
-          <a href="#" class="lp-forgot-link">Forgot Password</a>
-        </div>
-        <div class="lp-input-wrap">
-          <span class="lp-input-icon" aria-hidden="true"><i class="bi bi-lock-fill"></i></span>
-          <asp:TextBox ID="Password" runat="server" CssClass="lp-form-control" TextMode="Password"
-              required="true" placeholder="Enter Password" aria-label="Password"></asp:TextBox>
-          <span id="togglePassword" class="lp-toggle-pw" role="button" tabindex="0" aria-label="Show or hide password">
-            <i class="bi bi-eye-slash-fill"></i>
-          </span>
-        </div>
-        <asp:Label ID="Label1" runat="server" CssClass="lp-error-text"></asp:Label>
-      </div>
-
-      <!-- Login button -->
-      <asp:Button ID="Button1" runat="server" Text="Login" CssClass="lp-login-btn" OnClick="Button1_Click" />
-
-
-      <div class="lp-signup-row">
-        Don't have an account? <a href="register.aspx">Sign up</a>
-      </div>
-
-    </div>
-  </div>
-</div>
+    </form>
 
 <script>
     document.getElementById("togglePassword").addEventListener("click", function () {
@@ -347,5 +356,5 @@
         }
     });
 </script>
-
-</asp:Content>
+</body>
+</html>
