@@ -6,7 +6,7 @@
 
 <main class="main">
   <div class="main-inner">
-
+      
     <!-- Hero Card -->
     <div class="hero-card hero-card-compact fade-up d1">
 
@@ -33,6 +33,11 @@
         </button>
       </div>
     </div>
+      <asp:Panel ID="pnlLoginPrompt" runat="server" Visible="false" CssClass="text-center mt-5">
+        <h4 class="mb-3">Please log in to view course files, assignments, and past questions.</h4>
+        <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="~/login.aspx" CssClass="btn btn-primary btn-lg">Go to Login Page</asp:HyperLink>
+    </asp:Panel>
+      <asp:Panel ID="MaterialsPanel" runat="server">
 
     <!-- ══ NOTES / PAST PAPERS TABS ══ -->
     <div class="fade-up d2">
@@ -40,6 +45,7 @@
 
       <%-- Filter chips (kept outside the panels so it stays visible no matter which panel is active) --%>
       <div class="filter-bar">
+
       
         <div class="filter-chips">
           
@@ -155,6 +161,9 @@
     </asp:GridView>
 </div>
 </div>
+          </asp:Panel>
+
+    <asp:Label ID="lblAccessDenied" runat="server" Text="Please log in to view course materials." Visible="false" CssClass="text-center mt-5" />
   </div>
 </main>
 

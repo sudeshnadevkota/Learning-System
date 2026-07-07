@@ -51,6 +51,33 @@ namespace Learning_System.Bit_Notes
         protected global::System.Web.UI.WebControls.Literal litHours;
 
         /// <summary>
+        /// pnlLoginPrompt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlLoginPrompt;
+
+        /// <summary>
+        /// lnkLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkLogin;
+
+        /// <summary>
+        /// MaterialsPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel MaterialsPanel;
+
+        /// <summary>
         /// GridViewNotes control.
         /// </summary>
         /// <remarks>
@@ -67,6 +94,15 @@ namespace Learning_System.Bit_Notes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewPapers;
+
+        /// <summary>
+        /// lblAccessDenied control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAccessDenied;
 
         /// <summary>
         /// litSylTitle control.
