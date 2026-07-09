@@ -1,5 +1,4 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="learning.master.cs" Inherits="Learning_System.learning" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
@@ -26,6 +25,7 @@
             padding: 12px 0 !important;
             border-bottom: 1px solid rgba(0,0,0,0.05);
             z-index: 1030 !important;
+            
         }
 
         .navbar-nav .nav-link {
@@ -54,6 +54,20 @@
             box-shadow: 0 8px 20px rgba(11, 31, 102, 0.35) !important;
         }
 
+        /* Mobile-Specific Login Button Styling Adjustment */
+        .login-btn-mobile {
+            background: linear-gradient(135deg, #0B1F66, #1e2754) !important;
+            border: none !important;
+            color: white !important;
+            padding: 12px 20px !important;
+            border-radius: 8px !important; /* Block format fits mobile menus better */
+            font-weight: 600 !important;
+            text-align: center;
+            display: block;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(11, 31, 102, 0.15) !important;
+        }
+
         /* Footer */
         footer {
             background-color: #081547 !important;
@@ -74,7 +88,6 @@
                 background-color: #FFFFFF !important;
                 visibility: visible !important;
                 box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15) !important;
-                /* Fixed layout structural collapse by using explicit width instead of restricted max-height */
                 width: 290px !important;
                 height: 100vh !important;
             }
@@ -89,8 +102,10 @@
             }
 
             .offcanvas-title {
-                color: #0B1F66 !important; /* Replace #0B1F66 with any hex color code you want */
+                color: #0B1F66 !important;
             }
+            
+            /* Changed to Flex Layout to automatically push bottom items downwards */
             .offcanvas-body {
                 padding: 20px !important;
                 display: block !important;
@@ -119,20 +134,18 @@
                 align-items: center;
                 width: 100% !important;
                 padding: 12px 14px !important;
-                background-color: #F8FAFC; /* Light button card background background for discoverability */
+                background-color: #F8FAFC; 
                 border-radius: 8px;
                 transition: all 0.2s ease;
             }
 
-            /* Make links highlight beautifully when touched */
             .offcanvas-body .nav-link:hover, .offcanvas-body .nav-link:active {
                 background-color: #E7ECFF !important;
                 color: #0B1F66 !important;
             }
             
-            /* Icon formatting inside mobile menu */
             .offcanvas-body .nav-link i {
-                color: #F6B400; /* Warm gold accent for icons */
+                color: #F6B400; 
                 width: 24px;
                 font-size: 16px;
             }
@@ -159,17 +172,14 @@
                 width: 105px !important;
             }
 
-            .login-btn {
-                padding: 6px 14px !important;
-                font-size: 12px !important;
-            }
-
             .navbar .container {
                 padding-left: 12px !important;
                 padding-right: 12px !important;
             }
         }
-    </style></head><body>
+    </style>
+</head>
+<body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
 
@@ -187,7 +197,7 @@
                     </div>
                     
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav ms-auto me-auto">
                             <li class="nav-item">
                                 <a href="https://texasattendance.com/Admin/Dashboard.aspx" class="nav-link">
                                     <i class="fas fa-calendar-check d-lg-none me-2"></i>Attendance
@@ -214,6 +224,12 @@
                                 </a>
                             </li>
                         </ul>
+
+                        <div class="mt-auto pt-3 d-lg-none w-100">
+                            <asp:LinkButton ID="LinkloginMobile" runat="server" CssClass="login-btn-mobile" OnClick="Linklogin_Click">
+                                Login <i class="fas fa-sign-in-alt ms-2"></i>
+                            </asp:LinkButton>
+                        </div>
                     </div>
                 </div>
 
@@ -254,4 +270,6 @@
         <footer>
             <p>&copy; 2026 Texas College of Management and IT. All rights reserved.</p>
         </footer>
-    </form></body></html>
+    </form>
+</body>
+</html>

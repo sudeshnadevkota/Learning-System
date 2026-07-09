@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Bhm_Notes.note" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Bhm_Notes.note" %>
 
 <!DOCTYPE html>
 <html>
@@ -285,12 +285,16 @@
         }
 
         @media (max-width: 576px) {
-            .sidebar-open #sidebar {
-                width: 240px;
+            .sidebar-open #sidebar { width: 240px; }
+            #menu-bar { left: 0.3rem; }
+            
+            .mobile-brand-text {
+                font-size: 1.4rem !important;
             }
-
-            #menu-bar {
-                left: 0.3rem;
+            /* Fixed: Force full containment and prevent text breaks on tiny viewports */
+            .mobile-header-text {
+                font-size: 1.2rem !important;
+                white-space: nowrap !important;
             }
         }
     </style>
@@ -300,19 +304,19 @@
     <form id="form2" runat="server">
         <div id="sidebar-overlay" onclick="closeSidebarOverlay()"></div>
 
-        <nav class="navbar navbar-expand-lg d-flex shad align-items-center justify-content-between flex-wrap navbar-light bg-light shadow bg-body rounded"
-            style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1rem;">
-            <div class="d-flex align-items-center" style="flex: 1; justify-content: center;">
-                <a href="../../Default.aspx">
-                    <img src="logo/logo.png" alt="Logo" width="150">
-                </a>
-            </div>
-            <div class="d-flex align-items-center justify-content-center" style="flex: 1;">
-                <h3 style="font-size: 2rem; font-weight: bold; color: #002366; margin: 0;">BHM NOTES</h3>
-            </div>
-            <div class="d-none d-md-flex align-items-center" style="flex: 1; justify-content: flex-end;">
-            </div>
-        </nav>
+        <nav class="navbar navbar-light bg-light shadow"
+  style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1.25rem; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; box-sizing: border-box;">
+
+  <div style="display: flex; align-items: center; margin: 0; padding: 0;">
+    <a href="../../Default.aspx" style="display: flex; align-items: center;">
+      <img src="logo/logo.png" alt="Logo" style="width: auto; max-width: 120px; height: auto; max-height: 3.2rem; display: block;">
+    </a>
+  </div>
+
+  <div style="display: flex; align-items: center; margin: 0; padding: 0; text-align: right;">
+    <h3 class="mobile-header-text" style="font-weight: bold; color: #002366; margin: 0; font-size: 1.6rem; letter-spacing: 0.5px; white-space: nowrap !important; display: inline-block;">BHM NOTES</h3>
+  </div>
+</nav>
 
         <div class="d-flex">
             <div id="sidebar">

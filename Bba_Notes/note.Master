@@ -1,377 +1,434 @@
-﻿﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Bba_Notes.note" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Bba_Notes.note" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link href="mcsdash.css" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <link href="mcsdash.css" rel="stylesheet" />
 
-    <style>
-        /* ── Google Font ── */
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap');
+  <style>
+    /* ── Google Font ── */
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap');
 
-        /* ══ SIDEBAR ══ */
-        #sidebar {
-            position: fixed;
-            top: 5rem;
-            left: 0;
-            width: 0;
-            height: calc(100vh - 5rem);
-            background-color: #12183a;
-            color: #fff;
-            overflow-x: hidden;
-            overflow-y: auto;
-            z-index: 999;
-            transition: width 0.3s ease;
-            font-family: 'DM Sans', sans-serif;
-            border-right: 1px solid rgba(255,255,255,0.07);
-        }
+    /* ══ SIDEBAR ══ */
+    #sidebar {
+      position: fixed;
+      top: 5rem;
+      left: 0;
+      width: 0;
+      height: calc(100vh - 5rem);
+      background-color: #12183a;
+      color: #fff;
+      overflow-x: hidden;
+      overflow-y: auto;
+      z-index: 999;
+      transition: width 0.3s ease;
+      font-family: 'DM Sans', sans-serif;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
 
-        #sidebar::-webkit-scrollbar { width: 4px; }
-        #sidebar::-webkit-scrollbar-track { background: transparent; }
-        #sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+      #sidebar::-webkit-scrollbar {
+        width: 4px;
+      }
 
-        #sidebar::before {
-            content: "SEMESTERS";
-            display: block;
-            font-family: 'Sora', sans-serif;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,0.35);
-            padding: 18px 20px 10px;
-            white-space: nowrap;
-        }
+      #sidebar::-webkit-scrollbar-track {
+        background: transparent;
+      }
 
-        #sidebar ul {
-            padding: 0;
-            list-style: none;
-            margin: 0;
-        }
+      #sidebar::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.12);
+        border-radius: 4px;
+      }
 
-        /* Semester top-level link */
-        #sidebar > ul > li > a {
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            padding: 11px 16px;
-            font-family: 'Sora', sans-serif;
-            font-size: 13.5px;
-            font-weight: 600;
-            border-left: 3px solid transparent;
-            transition: background 0.2s, border-color 0.2s, color 0.2s;
-            gap: 10px;
-            white-space: nowrap;
-        }
+      #sidebar::before {
+        content: "SEMESTERS";
+        display: block;
+        font-family: 'Sora', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: rgba(255,255,255,0.35);
+        padding: 18px 20px 10px;
+        white-space: nowrap;
+      }
+
+      #sidebar ul {
+        padding: 0;
+        list-style: none;
+        margin: 0;
+      }
+
+      /* Semester top-level link */
+      #sidebar > ul > li > a {
+        color: rgba(255,255,255,0.75);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 11px 16px;
+        font-family: 'Sora', sans-serif;
+        font-size: 13.5px;
+        font-weight: 600;
+        border-left: 3px solid transparent;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+        gap: 10px;
+        white-space: nowrap;
+      }
 
         #sidebar > ul > li > a:hover {
-            background: rgba(255,255,255,0.06);
-            color: #fff;
+          background: rgba(255,255,255,0.06);
+          color: #fff;
         }
 
-        #sidebar > ul > li.active-sem > a {
-            border-left-color: #FF2D8D;
-            background: rgba(255,45,141,0.10);
-            color: #fff;
-        }
+      #sidebar > ul > li.active-sem > a {
+        border-left-color: #FF2D8D;
+        background: rgba(255,45,141,0.10);
+        color: #fff;
+      }
 
-        .submenu-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            gap: 8px;
-        }
+    .submenu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 8px;
+    }
 
-        .fas.fa-caret-down {
-            transition: transform 0.3s ease;
-            font-size: 11px;
-            opacity: 0.5;
-            margin-left: auto;
-        }
+    .fas.fa-caret-down {
+      transition: transform 0.3s ease;
+      font-size: 11px;
+      opacity: 0.5;
+      margin-left: auto;
+    }
 
-        .rotate { transform: rotate(180deg); }
+    .rotate {
+      transform: rotate(180deg);
+    }
 
-        /* Submenu */
-        #sidebar .submenu {
-            display: none;
-            padding: 4px 0 8px 0;
-            background: rgba(0,0,0,0.15);
-        }
+    /* Submenu */
+    #sidebar .submenu {
+      display: none;
+      padding: 4px 0 8px 0;
+      background: rgba(0,0,0,0.15);
+    }
 
-        #sidebar .submenu ul li a {
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            padding: 7px 16px 7px 36px;
-            font-size: 13px;
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 400;
-            transition: color 0.2s, background 0.2s;
-            white-space: nowrap;
-            position: relative;
-        }
+      #sidebar .submenu ul li a {
+        color: rgba(255,255,255,0.5);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 7px 16px 7px 36px;
+        font-size: 13px;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 400;
+        transition: color 0.2s, background 0.2s;
+        white-space: nowrap;
+        position: relative;
+      }
 
         #sidebar .submenu ul li a::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.25);
-            flex-shrink: 0;
+          content: "";
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.25);
+          flex-shrink: 0;
         }
 
         #sidebar .submenu ul li a:hover {
-            color: rgba(255,255,255,0.85);
-            background: rgba(255,255,255,0.04);
+          color: rgba(255,255,255,0.85);
+          background: rgba(255,255,255,0.04);
         }
 
-        #sidebar .submenu ul li a:hover::before {
+          #sidebar .submenu ul li a:hover::before {
             background: rgba(255,255,255,0.6);
-        }
+          }
 
-        #sidebar .submenu ul li.active-subject > a {
-            color: #FF2D8D;
-            font-weight: 500;
-        }
+      #sidebar .submenu ul li.active-subject > a {
+        color: #FF2D8D;
+        font-weight: 500;
+      }
 
         #sidebar .submenu ul li.active-subject > a::before {
-            background: #FF2D8D;
+          background: #FF2D8D;
         }
 
-        /* Content Area Setup */
-        #content {
-            margin-top: 5rem;
-            margin-left: 0;
-            width: 100%;
-            padding: 20px;
-            transition: margin-left 0.3s ease, width 0.3s ease;
-        }
+    /* Content Area Setup */
+    #content {
+      margin-top: 5rem;
+      margin-left: 0;
+      width: 100%;
+      padding: 20px;
+      transition: margin-left 0.3s ease, width 0.3s ease;
+    }
 
-        /* Pure CSS Sidebar Transitions */
-        .sidebar-open #sidebar { width: 260px; }
-        .sidebar-open #content { margin-left: 260px; width: calc(100% - 260px); }
-        .sidebar-open #menu-bar { left: 260px; }
-        .sidebar-open #icon { transform: rotate(180deg); }
+    /* Pure CSS Sidebar Transitions */
+    .sidebar-open #sidebar {
+      width: 260px;
+    }
 
-        /* Menu Toggle Bar Placement */
-        #menu-bar {
-            padding-top: 6rem;
-            position: fixed;
-            left: 0.5rem;
-            z-index: 1000;
-            transition: left 0.3s ease;
-        }
+    .sidebar-open #content {
+      margin-left: 260px;
+      width: calc(100% - 260px);
+    }
 
-        #menu-bar button {
-            background: rgba(0,0,0,0.08) !important;
-            border: 1px solid rgba(0,0,0,0.12) !important;
-            border-radius: 8px;
-            width: 34px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .sidebar-open #menu-bar {
+      left: 260px;
+    }
+
+    .sidebar-open #icon {
+      transform: rotate(180deg);
+    }
+
+    /* Menu Toggle Bar Placement */
+    #menu-bar {
+      padding-top: 6rem;
+      position: fixed;
+      left: 0.5rem;
+      z-index: 1000;
+      transition: left 0.3s ease;
+    }
+
+      #menu-bar button {
+        background: rgba(0,0,0,0.08) !important;
+        border: 1px solid rgba(0,0,0,0.12) !important;
+        border-radius: 8px;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
         #menu-bar button:hover {
-            background: rgba(0,0,0,0.15) !important;
+          background: rgba(0,0,0,0.15) !important;
         }
 
-        #icon { color: #000 !important; font-size: 13px; transition: transform 0.3s ease; }
+    #icon {
+      color: #000 !important;
+      font-size: 13px;
+      transition: transform 0.3s ease;
+    }
 
-        /* Responsive Viewports Management */
-        @media (max-width: 900px) {
-            .sidebar-open #sidebar {
-                width: 260px;
-                box-shadow: 4px 0 24px rgba(0,0,0,0.4);
-            }
-            .sidebar-open #content {
-                margin-left: 0 !important;
-                width: 100% !important;
-            }
-            .sidebar-open #menu-bar {
-                left: 260px !important;
-            }
-            #sidebar-overlay {
-                display: none;
-                position: fixed;
-                inset: 0;
-                background: rgba(0,0,0,0.45);
-                z-index: 998;
-            }
-            .sidebar-open #sidebar-overlay { display: block; }
-            #content { padding-left: 0.75rem; padding-right: 0.75rem; }
-            #menu-bar { left: 0.5rem; padding-top: 5.6rem; }
-        }
+    /* Responsive Viewports Management */
+    @media (max-width: 900px) {
+      .sidebar-open #sidebar {
+        width: 260px;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+      }
 
-        @media (max-width: 576px) {
-            .sidebar-open #sidebar { width: 240px; }
-            .sidebar-open #menu-bar { left: 240px !important; }
-            #menu-bar { left: 0.3rem; }
-        }
-    </style>
+      .sidebar-open #content {
+        margin-left: 0 !important;
+        width: 100% !important;
+      }
 
-    <title>BCS Notes</title>
+      .sidebar-open #menu-bar {
+        left: 260px !important;
+      }
+
+      #sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.45);
+        z-index: 998;
+      }
+
+      .sidebar-open #sidebar-overlay {
+        display: block;
+      }
+
+      #content {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+
+      #menu-bar {
+        left: 0.5rem;
+        padding-top: 5.6rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .sidebar-open #sidebar {
+        width: 240px;
+      }
+
+      #menu-bar {
+        left: 0.3rem;
+      }
+
+      .mobile-brand-text {
+        font-size: 1.4rem !important;
+      }
+      /* Fixed: Force full containment and prevent text breaks on tiny viewports */
+      .mobile-header-text {
+        font-size: 1.2rem !important;
+        white-space: nowrap !important;
+      }
+    }
+  </style>
+
+  <title>BBA Notes</title>
 </head>
 <body>
-    <form id="form2" runat="server">
-        <div id="sidebar-overlay" onclick="closeSidebarOverlay()"></div>
+  <form id="form2" runat="server">
+    <div id="sidebar-overlay" onclick="closeSidebarOverlay()"></div>
 
-        <nav class="navbar navbar-expand-lg d-flex shad align-items-center justify-content-between flex-wrap navbar-light bg-light shadow bg-body rounded"
-            style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1rem;">
-            <div class="d-flex align-items-center" style="flex: 1; justify-content: center;">
-                <a href="../../Default.aspx">
-                    <img src="logo/logo.png" alt="Logo" width="150">
-                </a>
+
+    <nav class="navbar navbar-light bg-light shadow"
+      style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1.25rem; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; box-sizing: border-box;">
+
+      <div style="display: flex; align-items: center; margin: 0; padding: 0;">
+        <a href="../../Default.aspx" style="display: flex; align-items: center;">
+          <img src="logo/logo.png" alt="Logo" style="width: auto; max-width: 120px; height: auto; max-height: 3.2rem; display: block;">
+        </a>
+      </div>
+
+      <div style="display: flex; align-items: center; margin: 0; padding: 0; text-align: right;">
+        <h3 class="mobile-header-text" style="font-weight: bold; color: #002366; margin: 0; font-size: 1.6rem; letter-spacing: 0.5px; white-space: nowrap !important; display: inline-block;">BBA NOTES</h3>
+      </div>
+    </nav>
+
+    <div class="d-flex">
+      <div id="sidebar">
+        <ul>
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'first')">
+              <span class="submenu-toggle">First Sem <i class="fas fa-caret-down first"></i></span>
+            </a>
+            <div id="first-submenu" class="submenu">
+              <ul>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_ENG_I">English I</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_EPP">English for Professional Purposes</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_POM">Principles of Management</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_IA">Introduction to Accounting</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_FCPP">Fundamental Computer Principles & Programming</a></li>
+              </ul>
             </div>
-            <div class="d-flex align-items-center justify-content-center" style="flex: 1;">
-                <h3 style="font-size: 2rem; font-weight: bold; color: #002366; margin: 0;">BBA NOTES</h3>
+          </li>
+
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'second')">
+              <span class="submenu-toggle">Second Sem <i class="fas fa-caret-down second"></i></span>
+            </a>
+            <div id="second-submenu" class="submenu">
+              <ul>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_HRM">Human Resource Management</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_POF">Principles of Marketing</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_IFA">Internet Fundamentals & Applications</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_E">Entrepreneurship</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_ENG_II">English II</a></li>
+              </ul>
             </div>
-            <div class="d-none d-md-flex align-items-center" style="flex: 1; justify-content: flex-end;"></div>
-        </nav>
+          </li>
 
-        <div class="d-flex">
-            <div id="sidebar">
-                <ul>
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'first')">
-                            <span class="submenu-toggle">First Sem <i class="fas fa-caret-down first"></i></span>
-                        </a>
-                        <div id="first-submenu" class="submenu">
-                           <ul>
-                               <li><a href="/Bba_Notes/course_content.aspx?code=BBA_ENG_I">English I</a></li>
-                               <li><a href="/Bba_Notes/course_content.aspx?code=BBA_EPP">English for Professional Purposes</a></li>
-                               <li><a href="/Bba_Notes/course_content.aspx?code=BBA_POM">Principles of Management</a></li>
-                               <li><a href="/Bba_Notes/course_content.aspx?code=BBA_IA">Introduction to Accounting</a></li>
-                               <li><a href="/Bba_Notes/course_content.aspx?code=BBA_FCPP">Fundamental Computer Principles & Programming</a></li>
-                        </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'second')">
-                            <span class="submenu-toggle">Second Sem <i class="fas fa-caret-down second"></i></span>
-                        </a>
-                        <div id="second-submenu" class="submenu">
-                            <ul>
-                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_HRM">Human Resource Management</a></li>
-                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_POF">Principles of Marketing</a></li>
-                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_IFA">Internet Fundamentals & Applications</a></li>
-                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_E">Entrepreneurship</a></li>
-                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_ENG_II">English II</a></li>
-                          </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'third')">
-                            <span class="submenu-toggle">Third Sem <i class="fas fa-caret-down third"></i></span>
-                        </a>
-                        <div id="third-submenu" class="submenu">
-                            <ul>
-                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_S">Sociology</a></li>
-                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_BO">Business Organizationa></li>
-                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_BL">Business Law</a></li>
-                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_HRLS">Human Relations and Leadership Skills</a></li>
-                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_M">Microeconomics</a></li>
-                                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_PM">Project Management</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'fourth')">
-                            <span class="submenu-toggle">Fourth Sem <i class="fas fa-caret-down fourth"></i></span>
-                        </a>
-                        <div id="fourth-submenu" class="submenu">
-                            <ul>
-                                <li><a href="business_law.aspx">Business Law</a></li>
-                                <li><a href="project_management.aspx">PM</a></li>
-                                <li><a href="introduction_to_financial_accounting.aspx">Intro To FA</a></li>
-                                <li><a href="company_law.aspx">Company Law</a></li>
-                                <li><a href="psychology.aspx">Psychology</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'fifth')">
-                            <span class="submenu-toggle">Fifth Sem <i class="fas fa-caret-down fifth"></i></span>
-                        </a>
-                        <div id="fifth-submenu" class="submenu">
-                            <ul>
-                                <li><a href="international_business_management.aspx">Intl BM</a></li>
-                                <li><a href="marketing_management.aspx">Marketing Mgmt</a></li>
-                                <li><a href="business_ethics.aspx">B Ethics</a></li>
-                                <li><a href="sociology.aspx">Sociology</a></li>
-                                <li><a href="management_information_system.aspx">MIS</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'sixth')">
-                            <span class="submenu-toggle">Sixth Sem <i class="fas fa-caret-down sixth"></i></span>
-                        </a>
-                        <div id="sixth-submenu" class="submenu">
-                            <ul>
-                                <li><a href="e_commerce.aspx">E-Commerce</a></li>
-                                <li><a href="organizational_behavior.aspx">Org Behavior</a></li>
-                                <li><a href="consumer_behavior.aspx">Con Behavior</a></li>
-                                <li><a href="strategic_management.aspx">Strategic Mgmt</a></li>
-                                <li><a href="innovation_management_for_global_competitiveness.aspx">IMGC</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'seventh')">
-                            <span class="submenu-toggle">Seventh Sem <i class="fas fa-caret-down seventh"></i></span>
-                        </a>
-                        <div id="seventh-submenu" class="submenu">
-                            <ul>
-                                <li><a href="retail_management.aspx">Retail Mgmt</a></li>
-                                <li><a href="event_management.aspx">Event Mgmt</a></li>
-                                <li><a href="business_environment.aspx">B Environment</a></li>
-                                <li><a href="business_research_methods.aspx">BR Methods</a></li>
-                                <li><a href="business_finance.aspx">B Finance</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'eighth')">
-                            <span class="submenu-toggle">Eighth Sem <i class="fas fa-caret-down eighth"></i></span>
-                        </a>
-                        <div id="eighth-submenu" class="submenu">
-                            <ul>
-                                <li><a href="industrial_training.aspx">Industry Training</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'third')">
+              <span class="submenu-toggle">Third Sem <i class="fas fa-caret-down third"></i></span>
+            </a>
+            <div id="third-submenu" class="submenu">
+              <ul>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_S">Sociology</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_BO">Business Organizationa></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_BL">Business Law</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_HRLS">Human Relations and Leadership Skills</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_M">Microeconomics</a></li>
+                <li><a href="/Bba_Notes/course_content.aspx?code=BBA_PM">Project Management</a></li>
+              </ul>
             </div>
+          </li>
 
-            <div id="menu-bar">
-                <button type="button" onclick="toggleSidebar()" class="btn">
-                    <i class="fa fa-arrow-right" aria-hidden="true" id="icon"></i>
-                </button>
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'fourth')">
+              <span class="submenu-toggle">Fourth Sem <i class="fas fa-caret-down fourth"></i></span>
+            </a>
+            <div id="fourth-submenu" class="submenu">
+              <ul>
+                <li><a href="business_law.aspx">Business Law</a></li>
+                <li><a href="project_management.aspx">PM</a></li>
+                <li><a href="introduction_to_financial_accounting.aspx">Intro To FA</a></li>
+                <li><a href="company_law.aspx">Company Law</a></li>
+                <li><a href="psychology.aspx">Psychology</a></li>
+              </ul>
             </div>
+          </li>
 
-            <div id="content">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'fifth')">
+              <span class="submenu-toggle">Fifth Sem <i class="fas fa-caret-down fifth"></i></span>
+            </a>
+            <div id="fifth-submenu" class="submenu">
+              <ul>
+                <li><a href="international_business_management.aspx">Intl BM</a></li>
+                <li><a href="marketing_management.aspx">Marketing Mgmt</a></li>
+                <li><a href="business_ethics.aspx">B Ethics</a></li>
+                <li><a href="sociology.aspx">Sociology</a></li>
+                <li><a href="management_information_system.aspx">MIS</a></li>
+              </ul>
             </div>
-        </div>
-    </form>
+          </li>
+
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'sixth')">
+              <span class="submenu-toggle">Sixth Sem <i class="fas fa-caret-down sixth"></i></span>
+            </a>
+            <div id="sixth-submenu" class="submenu">
+              <ul>
+                <li><a href="e_commerce.aspx">E-Commerce</a></li>
+                <li><a href="organizational_behavior.aspx">Org Behavior</a></li>
+                <li><a href="consumer_behavior.aspx">Con Behavior</a></li>
+                <li><a href="strategic_management.aspx">Strategic Mgmt</a></li>
+                <li><a href="innovation_management_for_global_competitiveness.aspx">IMGC</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'seventh')">
+              <span class="submenu-toggle">Seventh Sem <i class="fas fa-caret-down seventh"></i></span>
+            </a>
+            <div id="seventh-submenu" class="submenu">
+              <ul>
+                <li><a href="retail_management.aspx">Retail Mgmt</a></li>
+                <li><a href="event_management.aspx">Event Mgmt</a></li>
+                <li><a href="business_environment.aspx">B Environment</a></li>
+                <li><a href="business_research_methods.aspx">BR Methods</a></li>
+                <li><a href="business_finance.aspx">B Finance</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'eighth')">
+              <span class="submenu-toggle">Eighth Sem <i class="fas fa-caret-down eighth"></i></span>
+            </a>
+            <div id="eighth-submenu" class="submenu">
+              <ul>
+                <li><a href="industrial_training.aspx">Industry Training</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div id="menu-bar">
+        <button type="button" onclick="toggleSidebar()" class="btn">
+          <i class="fa fa-arrow-right" aria-hidden="true" id="icon"></i>
+        </button>
+      </div>
+
+      <div id="content">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+      </div>
+    </div>
+  </form>
 
     <script>
 function isMobile() {
