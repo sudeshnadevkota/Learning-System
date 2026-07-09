@@ -1,6 +1,7 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Mcs_Admin/upload.Master" AutoEventWireup="true" CodeBehind="dash.aspx.cs" Inherits="Learning_System.Mcs_Admin.dash" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <style>
+
+<style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
     @import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css');
 
@@ -36,24 +37,10 @@
     .d-section { font-size: 11px; letter-spacing: 2px; color: #0B1F66; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
     .d-section::after { content: ''; flex: 1; height: 1px; background: rgba(11,31,102,0.08); }
 
-    /* ── SYSTEM METRICS PANEL (REPLACED QUICK ACCESS) ── */
-    .d-metrics-panel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
-    .d-metric-box { border-radius: 14px; border: 1px solid rgba(11,31,102,0.06); background: #ffffff; padding: 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 12px rgba(11,31,102,0.01); }
-    .d-metric-icon-wrap { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-    .d-metric-icon-wrap.m-pink { background: rgba(255,45,141,0.08); color: #FF2D8D; }
-    .d-metric-icon-wrap.m-blue { background: rgba(11,31,102,0.06); color: #0B1F66; }
-    .d-metric-icon-wrap.m-yellow { background: rgba(246,180,0,0.1); color: #D49B00; }
-    .d-metric-info { display: flex; flex-direction: column; gap: 2px; }
-    .d-metric-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(11,31,102,0.45); font-weight: 600; }
-    .d-metric-count { font-size: 20px; font-weight: 700; color: #0B1F66; line-height: 1.2; }
-
-    /* ── MODULE CARDS ── */
     .d-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
-
     .d-card { border-radius: 14px; padding: 22px 20px; position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s; border: none; }
     .d-card:hover { transform: translateY(-4px); }
 
-    /* PINK card */
     .d-card.card-pink { background: linear-gradient(145deg, #FF2D8D, #ff6aae); }
     .d-card.card-pink .d-card-top-bar { background: rgba(255,255,255,0.25); }
     .d-card.card-pink .d-card-icon-inner { background: rgba(255,255,255,0.2); }
@@ -65,7 +52,6 @@
     .d-card.card-pink .d-go:hover { background: rgba(255,255,255,0.88); }
     .d-card.card-pink .d-badge-status { color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.15); }
 
-    /* BLUE card */
     .d-card.card-blue { background: linear-gradient(145deg, #0B1F66, #1a3499); }
     .d-card.card-blue .d-card-top-bar { background: rgba(255,255,255,0.15); }
     .d-card.card-blue .d-card-icon-inner { background: rgba(255,255,255,0.12); }
@@ -77,7 +63,6 @@
     .d-card.card-blue .d-go:hover { background: rgba(255,255,255,0.88); }
     .d-card.card-blue .d-badge-status { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.12); }
 
-    /* YELLOW card */
     .d-card.card-yellow { background: linear-gradient(145deg, #F6C84B, #fad96e); }
     .d-card.card-yellow .d-card-top-bar { background: rgba(255,255,255,0.3); }
     .d-card.card-yellow .d-card-icon-inner { background: rgba(255,255,255,0.3); }
@@ -89,7 +74,6 @@
     .d-card.card-yellow .d-go:hover { background: rgba(255,255,255,0.9); }
     .d-card.card-yellow .d-badge-status { color: rgba(80,50,0,0.6); background: rgba(255,255,255,0.25); }
 
-    /* Shared card internals */
     .d-card-top-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 14px 14px 0 0; }
     .d-card-icon { margin-bottom: 16px; }
     .d-card-icon-inner { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; }
@@ -102,7 +86,6 @@
     .d-go i { font-size: 13px; }
     .d-badge-status { font-size: 10px; font-weight: 700; border-radius: 6px; padding: 3px 10px; letter-spacing: 0.5px; }
 
-    /* ── FEATURE BOX ── */
     .d-feature { border-radius: 14px; border: 1px solid rgba(11,31,102,0.08); background: #fff; overflow: hidden; margin-bottom: 8px; }
     .d-feature-head { background: linear-gradient(90deg, #0B1F66, #1a3499); padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; }
     .d-feature-head-left { display: flex; align-items: center; gap: 10px; }
@@ -120,14 +103,13 @@
     .d-btn-ghost { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: rgba(11,31,102,0.4); background: transparent; border: none; padding: 9px 6px; text-decoration: none; cursor: pointer; }
     .d-btn-ghost:hover { color: rgba(11,31,102,0.7); text-decoration: none; }
 
-    @media (max-width: 992px) { .d-metrics-panel { grid-template-columns: 1fr; } }
+    @media (max-width: 992px) { .d-cards { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) { .d-cards { grid-template-columns: 1fr; } }
     @media (max-width: 640px) { .d-hero h1 { font-size: 18px; } .d-hero { padding: 24px 20px 20px; } }
 </style>
 
 <div class="d-wrap container-fluid" style="padding: 1.5rem;">
 
-    <%-- HERO --%>
     <div class="d-hero">
         <div class="d-hero-ring1"></div>
         <div class="d-hero-ring2"></div>
@@ -136,7 +118,7 @@
             <i class="ti ti-layout-dashboard" style="font-size:12px;"></i> Admin Dashboard
         </div>
         <h1>Welcome to MCS Upload Section</h1>
-        <p class="d-hero-sub">Manage and publish your e-learning content from one place</p>
+        <p class="d-hero-sub">Manage and publish your e-learning content for Computer Science faculty</p>
         <div class="d-hero-stats">
             <div class="d-hstat">
                 <span class="d-hstat-val">8</span>
@@ -144,7 +126,7 @@
             </div>
             <div class="d-hstat-sep"></div>
             <div class="d-hstat">
-                <span class="d-hstat-val">32</span>
+                <span class="d-hstat-val">36</span>
                 <span class="d-hstat-label">Subjects</span>
             </div>
             <div class="d-hstat-sep"></div>
@@ -155,43 +137,37 @@
         </div>
     </div>
 
-
-
-    <%-- MODULE CARDS — Pink · Blue · Yellow --%>
     <div class="d-section">E-Learning Modules</div>
     <div class="d-cards">
 
-        <%-- PINK --%>
         <div class="d-card card-pink">
             <div class="d-card-top-bar"></div>
             <div class="d-card-icon">
-                <div class="d-card-icon-inner"><i class="ti ti-device-desktop"></i></div>
+                <div class="d-card-icon-inner"><i class="ti ti-cpu"></i></div>
             </div>
             <div class="d-card-kicker">Module 01</div>
             <div class="d-card-title">Elearning Features</div>
-            <p class="d-card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <p class="d-card-text">Manage your primary features and core settings for MCS faculty.</p>
             <div class="d-card-foot">
                 <a href="#" class="d-go"><i class="ti ti-arrow-right"></i> Go More</a>
                 <span class="d-badge-status">Active</span>
             </div>
         </div>
 
-        <%-- BLUE --%>
         <div class="d-card card-blue">
             <div class="d-card-top-bar"></div>
             <div class="d-card-icon">
-                <div class="d-card-icon-inner"><i class="ti ti-bulb"></i></div>
+                <div class="d-card-icon-inner"><i class="ti ti-code"></i></div>
             </div>
             <div class="d-card-kicker">Module 02</div>
-            <div class="d-card-title">Elearning Needs of Day</div>
-            <p class="d-card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <div class="d-card-title">Elearning Needs</div>
+            <p class="d-card-text">Update daily requirements and student resources for computer science courses.</p>
             <div class="d-card-foot">
                 <a href="#" class="d-go"><i class="ti ti-arrow-right"></i> Go More</a>
                 <span class="d-badge-status">Active</span>
             </div>
         </div>
 
-        <%-- YELLOW --%>
         <div class="d-card card-yellow">
             <div class="d-card-top-bar"></div>
             <div class="d-card-icon">
@@ -199,7 +175,7 @@
             </div>
             <div class="d-card-kicker">Featured</div>
             <div class="d-card-title">Special E-Learning</div>
-            <p class="d-card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <p class="d-card-text">This week's highlighted module for MCS students.</p>
             <div class="d-card-foot">
                 <a href="#" class="d-go"><i class="ti ti-arrow-right"></i> Go More</a>
                 <span class="d-badge-status">Active</span>
@@ -208,7 +184,6 @@
 
     </div>
 
-    <%-- SPECIAL FEATURED --%>
     <div class="d-section">Featured</div>
     <div class="d-feature">
         <div class="d-feature-head">
@@ -219,11 +194,11 @@
             <span class="d-feature-head-badge">Highlighted</span>
         </div>
         <div class="d-feature-body">
-            <div class="d-feature-title">Special E-Learning</div>
+            <div class="d-feature-title">Special E-Learning Content</div>
             <p class="d-feature-text">
                 A learning system based on formalized teaching but with the help of electronic resources is known as E-learning.
                 E-learning refers to a learning system that we can obtain through the internet using an electronic device. We also call it online learning or online education.
-                The 'E' in E-learning stands for 'Electronic.' Hence, the original term 'electronic learning.'
+                This is your highlighted module for the week — tailored for MCS students in Computer Science faculty.
             </p>
             <div class="d-feature-actions">
                 <a href="#" class="d-btn-pink"><i class="ti ti-arrow-right"></i> Go More</a>
@@ -234,4 +209,5 @@
     </div>
 
 </div>
+
 </asp:Content>

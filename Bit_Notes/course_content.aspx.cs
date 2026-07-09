@@ -9,6 +9,9 @@ namespace Learning_System.Bit_Notes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+           
             string code = Request.QueryString["code"];
             if (string.IsNullOrEmpty(code) || !SubjectMap.Subjects.TryGetValue(code, out SubjectMap.SubjectInfo subject))
             {

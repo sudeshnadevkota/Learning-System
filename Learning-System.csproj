@@ -450,6 +450,9 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Content Include="App_Code\IISHandler1.cs" />
+    <Compile Include="App_Code\Handler1.ashx.cs">
+      <DependentUpon>Handler1.ashx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bba_Admin\bulk_upload.aspx.cs">
       <DependentUpon>bulk_upload.aspx</DependentUpon>

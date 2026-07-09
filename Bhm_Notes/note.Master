@@ -564,6 +564,8 @@ function toggleSubmenu(event, submenuId) {
             parentLi.classList.remove('active-sem');
         }
 
+        sessionStorage.removeItem('openSubmenu');
+
     } else {
 
         submenu.style.display = 'block';
@@ -597,10 +599,33 @@ function toggleSubmenu(event, submenuId) {
         if (mainIcon) {
             mainIcon.style.transform = 'rotate(180deg)';
         }
+
+        // remember which semester panel is open so it survives a real page navigation
+        sessionStorage.setItem('openSubmenu', submenuId);
     }
 }
 
-window.onload = function () {
+function openSubmenuById(submenuId) {
+
+    var submenu = document.getElementById(submenuId + '-submenu');
+    var icon = document.querySelector('.' + submenuId);
+
+    if (!submenu) return;
+
+    var parentLi = submenu.parentElement;
+
+    submenu.style.display = 'block';
+
+    if (icon) {
+        icon.classList.add('rotate');
+    }
+
+    if (parentLi) {
+        parentLi.classList.add('active-sem');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
 
     var sidebar = document.getElementById('sidebar');
     var content = document.getElementById('content');
@@ -609,6 +634,11 @@ window.onload = function () {
 
     if (!isMobile()) {
 
+        // Briefly disable the width/margin transition so applying the open
+        // layout below doesn't visibly animate (no blink), while still
+        // using inline styles so it's guaranteed to win over any
+        // page-specific CSS on the content page.
+        document.body.classList.add('no-transition');
         document.body.classList.add('sidebar-open');
 
         if (sidebar) {
@@ -628,33 +658,39 @@ window.onload = function () {
             icon.style.transform = 'rotate(180deg)';
         }
 
-    } else {
+        // Re-enable transitions on the next frame so manual toggling
+        // (the arrow button, submenu clicks) still animates normally.
+        requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+                document.body.classList.remove('no-transition');
+            });
+        });
 
+    } else {
         if (menuBar) {
             menuBar.style.left = '0.5rem';
         }
     }
 
+    // ── Match the current page (path + query string) against sidebar links ──
     var links = document.querySelectorAll('#sidebar .submenu ul li a');
 
-    var pathParts = window.location.pathname.split('/');
-    var currentPage = '';
+    var currentUrl = new URL(window.location.href);
+    var currentFull = (currentUrl.pathname + currentUrl.search).toLowerCase();
 
-    if (pathParts.length > 0) {
-        currentPage = pathParts[pathParts.length - 1].toLowerCase();
-    }
+    var matchedSubmenuId = null;
 
     for (var j = 0; j < links.length; j++) {
 
         var link = links[j];
         var hrefAttr = link.getAttribute('href');
-        var href = '';
 
-        if (hrefAttr) {
-            href = hrefAttr.toLowerCase();
-        }
+        if (!hrefAttr) continue;
 
-        if (href === currentPage) {
+        var linkUrl = new URL(hrefAttr, window.location.origin);
+        var linkFull = (linkUrl.pathname + linkUrl.search).toLowerCase();
+
+        if (linkFull === currentFull) {
 
             if (link.parentElement) {
                 link.parentElement.classList.add('active-subject');
@@ -682,11 +718,24 @@ window.onload = function () {
                     if (caret) {
                         caret.classList.add('rotate');
                     }
+
+                    matchedSubmenuId = parentSubmenu.id.replace('-submenu', '');
                 }
             }
         }
     }
-};
+
+    // remember whichever submenu is now open (from URL match)
+    if (matchedSubmenuId) {
+        sessionStorage.setItem('openSubmenu', matchedSubmenuId);
+    } else {
+        // fall back to whatever the user last opened manually
+        var savedSubmenu = sessionStorage.getItem('openSubmenu');
+        if (savedSubmenu) {
+            openSubmenuById(savedSubmenu);
+        }
+    }
+});
 </script>
 </body>
 </html>

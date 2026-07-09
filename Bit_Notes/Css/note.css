@@ -2085,3 +2085,108 @@ body {
     font-size: 12.5px;
     color: var(--text-light);
 }
+/* ============================================================
+   MOBILE-ONLY OVERRIDES for course_content.aspx
+   Scoped entirely inside max-width media queries so nothing here
+   can ever apply to desktop widths — existing desktop rules
+   above in this file stay completely untouched.
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    /* ---- Hero: existing rules already collapse .hero-row at 860px
+         and grid .hero-stats-inline at 480px. Just tighten a bit
+         more so "View Syllabus" doesn't feel cramped. ---- */
+    .hero-card-compact {
+        padding: 18px 18px !important;
+    }
+
+    .hero-btns {
+        width: 100%;
+    }
+
+    .btn-view-syl {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* ---- Filter chips: convert from wrapping pile into a single
+         horizontally scrollable row, mobile only. ---- */
+    .filter-bar {
+        position: relative;
+    }
+
+    .filter-chips {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+
+        .filter-chips::-webkit-scrollbar {
+            display: none;
+        }
+
+    .fchip {
+        flex: 0 0 auto;
+    }
+
+    .filter-bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 4px;
+        width: 26px;
+        background: linear-gradient(to right, rgba(240,243,252,0), rgba(240,243,252,0.95));
+        pointer-events: none;
+    }
+
+    /* ---- Files table (.table-bordered inside .files-card): had no
+         mobile handling at all, causing Download/Topic to clip. ---- */
+    .files-card {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+    }
+
+        .files-card .table-bordered {
+            min-width: 640px;
+        }
+
+            .files-card .table-bordered th,
+            .files-card .table-bordered td {
+                white-space: nowrap;
+            }
+
+                .files-card .table-bordered th:nth-child(2),
+                .files-card .table-bordered td:nth-child(2) {
+                    max-width: 180px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+    .mobile-scroll-hint {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11.5px;
+        color: var(--text-secondary);
+        margin: 2px 2px 8px;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-scroll-hint {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .files-card .table-bordered th:nth-child(2),
+    .files-card .table-bordered td:nth-child(2) {
+        max-width: 130px;
+    }
+}

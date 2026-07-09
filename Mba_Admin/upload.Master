@@ -285,7 +285,7 @@
             </div>
             <!-- Logout Button Section -->
             <div class="d-flex align-items-center" style="flex: 1; justify-content: flex-end;">
-                <asp:LinkButton ID="Linklogin" runat="server" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" OnClick="Linklogout_Click">Logout</asp:LinkButton>
+                <asp:LinkButton ID="Linklogin" runat="server" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" OnClick="Linklogout_Click" CausesValidation="False">Logout</asp:LinkButton>
 
             </div>
         </nav>
