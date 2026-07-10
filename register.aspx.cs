@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -99,7 +99,7 @@ namespace Learning_System
                 }
                 catch (Exception ex)
                 {
-                    transaction.Rollback();
+                    //transaction.Rollback();
                     lblError.Text = "Registration failed: " + ex.Message;
                 }
             }
