@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Bhm_Notes/note.Master" AutoEventWireup="true" CodeBehind="dash.aspx.cs" Inherits="Learning_System.Bhm_Notes.dash" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Bhm_Notes/note.Master" AutoEventWireup="true" CodeBehind="dash.aspx.cs" Inherits="Learning_System.Bhm_Notes.dash" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <style>
   :root {
@@ -343,27 +343,107 @@
   .overlay { display: none; position: fixed; inset: 0; background: rgba(8,21,71,0.4); z-index: 140; backdrop-filter: blur(4px); }
   .overlay.show { display: block; }
 
-  /* ══ RESPONSIVE ══ */
-  @media (max-width: 1100px) { .why-grid { grid-template-columns: repeat(2, 1fr); } .affil-banner { flex-wrap: wrap; gap: 20px; } .affil-divider { display: none; } }
-  @media (max-width: 900px) {
-    :root { --sidebar-w: 0px; }
-    .sidebar { left: -265px; width: 265px; }
-    .sidebar.open { left: 0; }
-    .main { margin-left: 0; width: 100%; }
-    .header-logo { width: auto; border-right: none; }
-    .hero-banner { grid-template-columns: 1fr; }
-    .hero-visual { display: none; }
-    .why-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 600px) { .main-inner { padding: 20px 16px; } .hero-content { padding: 28px 24px; } .hero-title { font-size: 24px; } .affil-banner { padding: 20px 20px; } }
 
-  /* ── Master Page overrides ── */
-  header { display: none !important; }
-  .sidebar { display: none !important; }
-  .overlay { display: none !important; }
-  body { padding-top: 0 !important; background: var(--bg) !important; }
-  .main { margin-left: 0 !important; padding-top: 0 !important; width: 100% !important; }
-  .main-inner { padding: 24px 32px !important; }
+  /* ══ RESPONSIVE ══ */
+@media (max-width: 1100px) {
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .affil-banner { flex-wrap: wrap; gap: 20px; }
+  .affil-divider { display: none; }
+  .about-section { grid-template-columns: 1fr; }
+  .about-right { position: static; }
+  .poster-card { max-width: 360px; }
+}
+
+@media (max-width: 900px) {
+  :root { --sidebar-w: 0px; }
+  .sidebar { left: -265px; width: 265px; }
+  .sidebar.open { left: 0; }
+  .main { margin-left: 0; width: 100%; }
+  .header-logo { width: auto; border-right: none; }
+  .sidebar-toggle { display: flex; }
+  
+  /* FIXED: Remove rigid height bounds when hero stacks vertically */
+  .hero-banner { 
+    grid-template-columns: 1fr; 
+    min-height: auto !important; 
+    height: auto !important; 
+  }
+  .hero-visual { display: none; }
+  .course-cards { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .main-inner { padding: 20px 16px !important; }
+  
+  /* FIXED: Allow hero wrapper and fonts to scale naturally */
+  .hero-content { 
+    padding: 28px 24px !important; 
+    height: auto !important;
+    min-height: auto !important;
+  }
+  .hero-title { 
+    font-size: 22px !important; 
+    line-height: 1.3 !important;
+    white-space: normal !important;
+  }
+  
+  .affil-banner { padding: 20px 20px; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+
+  /* FIXED: Mobile constraints for the sidebar poster elements */
+  .poster-inner {
+    min-height: auto !important; 
+    height: auto !important;
+    padding: 24px 16px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .poster-main-title {
+    font-size: 20px !important;       
+    line-height: 1.2 !important;
+    margin-bottom: 6px !important;
+    white-space: normal !important;    
+  }
+  .poster-degree-title {
+    font-size: 24px !important; 
+    line-height: 1.1 !important;
+  }
+  .poster-why-box {
+    max-width: 100% !important;       
+    margin: 12px 0 !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    padding: 10px 12px !important;
+  }
+  .poster-admission {
+    position: static !important; 
+    text-align: left !important;  
+    margin: 10px 0 !important;
+  }
+  .pa-open { font-size: 15px !important; }
+  .poster-student { display: none !important; }
+}
+
+/* ── Master Page Overrides ── */
+header { display: none !important; }
+.sidebar { display: none !important; }
+.overlay { display: none !important; }
+body { padding-top: 0 !important; background: var(--bg) !important; }
+.main { margin-left: 0 !important; padding-top: 0 !important; width: 100% !important; }
+
+@media (max-width: 991px) {
+  .d-flex { display: block !important; }
+  #content {
+    width: 100% !important;
+    margin-left: 0 !important; 
+    padding: 15px !important;
+  }
+  .main-inner {
+    width: 100% !important;
+    padding: 15px !important;
+  }
+}
 </style>
 
 <main class="main">

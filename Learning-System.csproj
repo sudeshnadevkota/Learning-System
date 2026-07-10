@@ -116,7 +116,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccessDenied.aspx" />
     <Content Include="administrator\access.aspx" />
+    <Content Include="administrator\AppointUser.aspx" />
     <Content Include="administrator\default_administrator.aspx" />
     <Content Include="administrator\images\logo.png" />
     <Content Include="Bba_Admin\bulk_upload.aspx" />
@@ -409,6 +411,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessDenied.aspx.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccessDenied.aspx.designer.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+    </Compile>
     <Compile Include="administrator\access.aspx.cs">
       <DependentUpon>access.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -422,6 +431,13 @@
     </Compile>
     <Compile Include="administrator\administrator_master.Master.designer.cs">
       <DependentUpon>administrator_master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="administrator\AppointUser.aspx.cs">
+      <DependentUpon>AppointUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="administrator\AppointUser.aspx.designer.cs">
+      <DependentUpon>AppointUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="administrator\default_administrator.aspx.cs">
       <DependentUpon>default_administrator.aspx</DependentUpon>
@@ -717,6 +733,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PermissionHelper.cs" />
     <Compile Include="learning.Master.cs">
       <DependentUpon>learning.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Learning_System
 {
@@ -15,31 +10,38 @@ namespace Learning_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["ProfileId"] == null)
-            {
-                Response.Write("Session is EMPTY - not set!");
-            }
-            else
-            {
-                Response.Write("Session ProfileId = " + Session["ProfileId"] + ", Username = " + Session["Username"]);
-            }
+            // debug Response.Write removed — this was printing raw text on every page load
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string username = Username.Text;
+            string username = Username.Text.Trim();
             string password = Password.Text;
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                string query = @"SELECT U.ProfileId, U.UserName, U.Role, A.AccessLevel
-                                 FROM UserProfile U
-                                 LEFT JOIN AdminProfile A ON U.ProfileId = A.ProfileId
-                                 WHERE U.UserName = @Username
-                                 AND U.Password = @Password";
+                // Joins AdminProfile and TeacherProfile so we get AccessLevel/DepartmentId
+                // in one round trip, and Department twice (once per possible department source)
+                // so we can read the department CODE (e.g. "BIT") for redirect routing.
+                string query = @"SELECT U.ProfileId, U.UserName, U.Role,
+                                         A.AccessLevel, A.DepartmentId AS AdminDeptId,
+                                         T.DepartmentId AS TeacherDeptId,
+                                         DA.DepartmentCode AS AdminDeptCode,
+                                         DT.DepartmentCode AS TeacherDeptCode
+                                  FROM UserProfile U
+                                  LEFT JOIN AdminProfile   A  ON U.ProfileId = A.ProfileId
+                                  LEFT JOIN TeacherProfile T  ON U.ProfileId = T.ProfileId
+                                  LEFT JOIN Department      DA ON A.DepartmentId = DA.DepartmentId
+                                  LEFT JOIN Department      DT ON T.DepartmentId = DT.DepartmentId
+                                  WHERE U.UserName = @Username
+                                    AND U.Password = @Password
+                                    AND U.IsActive = 1";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Username", username);
+
+                // TODO: replace with your existing password hashing method —
+                // this still compares plaintext, matching the rest of the project for now
                 cmd.Parameters.AddWithValue("@Password", password);
 
                 try
@@ -50,43 +52,75 @@ namespace Learning_System
                     if (reader.HasRows)
                     {
                         reader.Read();
-                        string status = reader["Role"].ToString();
 
+                        string role = reader["Role"].ToString(); // 'Student' / 'Teacher' / 'Admin'
+                        string accessLevel = reader["AccessLevel"] == DBNull.Value ? null : reader["AccessLevel"].ToString();
+
+                        // Pull whichever DepartmentId/Code actually applies to this role
+                        int? departmentId = null;
+                        string departmentCode = null;
+
+                        if (role == "Teacher" && reader["TeacherDeptId"] != DBNull.Value)
+                        {
+                            departmentId = Convert.ToInt32(reader["TeacherDeptId"]);
+                            departmentCode = reader["TeacherDeptCode"].ToString();
+                        }
+                        else if (role == "Admin" && reader["AdminDeptId"] != DBNull.Value)
+                        {
+                            departmentId = Convert.ToInt32(reader["AdminDeptId"]);
+                            departmentCode = reader["AdminDeptCode"].ToString();
+                        }
+
+                        // ── These are the session values PermissionHelper.cs relies on ──
                         Session["ProfileId"] = Convert.ToInt32(reader["ProfileId"]);
                         Session["Username"] = reader["UserName"].ToString();
+                        Session["Role"] = role;
+                        Session["AccessLevel"] = accessLevel;          // null unless Role == "Admin"
+                        Session["DepartmentId"] = departmentId;         // null for Student/MainAdmin/SuperAdmin
 
-                        if (status == "Student")
+                        reader.Close();
+
+                        // ── Redirect based on Role + AccessLevel ──
+                        if (role == "Student")
                         {
-                            Response.Redirect("~/Bit_Notes/dash.aspx");
+                            Response.Redirect("~/Bit_Notes/dash.aspx"); // TODO: route by departmentCode once per-department student dashboards exist
                         }
-                        else if (status == "Staff")
+                        else if (role == "Teacher")
                         {
                             Response.Redirect("~/Staff/default_staff.aspx");
                         }
-                        else if (status == "Admin")
+                        else if (role == "Admin")
                         {
-                            Session["AccessLevel"] = reader["AccessLevel"] == DBNull.Value ? null : reader["AccessLevel"].ToString();
-
-                            if (Session["AccessLevel"]?.ToString() == "SuperAdmin") Response.Redirect("~/Administrator/default_administrator.aspx");
-                            else if (Session["AccessLevel"]?.ToString() == "Moderator") Response.Redirect("~/Moderator/default_moderator.aspx");
-                            else Response.Redirect("~/Bit_Admin/dash.aspx");
+                            if (accessLevel == "MainAdmin")
+                            {
+                                Response.Redirect("~/MainAdmin/main_admin.aspx");
+                            }
+                            else if (accessLevel == "SuperAdmin")
+                            {
+                                Response.Redirect("~/Administrator/default_administrator.aspx");
+                            }
+                            else if (accessLevel == "DepartmentAdmin")
+                            {
+                                // Routes dynamically by department code, e.g. ~/Bit_Admin/dash.aspx
+                                if (!string.IsNullOrEmpty(departmentCode))
+                                {
+                                    string folderName = char.ToUpper(departmentCode[0]) + departmentCode.Substring(1).ToLower() + "_Admin";
+                                    Response.Redirect("~/" + folderName + "/dash.aspx");
+                                }
+                                else
+                                {
+                                    Label1.Text = "Your admin account has no department assigned. Contact MainAdmin.";
+                                }
+                            }
+                            else
+                            {
+                                Label1.Text = "Your account role is invalid. Please contact support.";
+                            }
                         }
-                        else if (status == "SuperAdmin") Response.Redirect("~/Administrator/default_administrator.aspx");
-                        else if (status == "students") Response.Redirect("~/students/default_student.aspx");
-                        else if (status == "verification") Response.Redirect("~/verification/verification_default.aspx");
-                        else if (status == "Bit_Admin") Response.Redirect("~/Bit_Admin/dash.aspx");
-                        else if (status == "Bhm_Admin") Response.Redirect("~/Bhm_Admin/dash.aspx");
-                        else if (status == "Mcs_Admin") Response.Redirect("~/Mcs_Admin/dash.aspx");
-                        else if (status == "Bba_Admin") Response.Redirect("~/Bba_Admin/dash.aspx");
-                        else if (status == "Mba_Admin") Response.Redirect("~/Mba_Admin/dash.aspx");
-                        else if (status == "Bcs_Admin") Response.Redirect("~/Bcs_Admin/dash.aspx");
-                        else if (status == "pyq_Bit") Response.Redirect("~/Past_Year_Paper_Admin/Bit_Admin/dash.aspx");
-                        else if (status == "pyq_Bcs") Response.Redirect("~/Past_Year_Paper_Admin/BCS_Admin/dash.aspx");
-                        else if (status == "pyq_Mba") Response.Redirect("~/Past_Year_Paper_Admin/MBA_Admin/dash.aspx");
-                        else if (status == "pyq_Mcs") Response.Redirect("~/Past_Year_Paper_Admin/MCS_Admin/dash.aspx");
-                        else if (status == "pyq_bhm") Response.Redirect("~/Past_Year_Paper_Admin/BHM_Admin/dash.aspx");
-                        else if (status == "pyq_BBA") Response.Redirect("~/Past_Year_Paper_Admin/BBA_Admin/dash.aspx");
-                        else Label1.Text = "Your account role is invalid. Please contact support.";
+                        else
+                        {
+                            Label1.Text = "Your account role is invalid. Please contact support.";
+                        }
                     }
                     else
                     {

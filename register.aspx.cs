@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Learning_System
 {
@@ -15,16 +16,7 @@ namespace Learning_System
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string userType = Status.SelectedValue;
-
-            if (string.IsNullOrWhiteSpace(userType))
-            {
-                return;
-            }
-
-            string role = userType == "students" ? "Student"
-                        : userType == "Staff" ? "Staff"
-                        : "Admin";
+            if (!Page.IsValid) return;
 
             using (SqlConnection con = new SqlConnection(constr))
             {
@@ -33,104 +25,83 @@ namespace Learning_System
 
                 try
                 {
-                    // 1. Insert directly into UserProfile — Username/Password now live here,
-                    //    no more separate Login table or two-step insert
+                    // 1. Look up DepartmentId from the chosen Faculty code (BIT, BCS, etc.)
+                    int departmentId;
+                    string deptQuery = "SELECT DepartmentId FROM Department WHERE DepartmentCode = @Code";
+                    using (SqlCommand cmd = new SqlCommand(deptQuery, con, transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@Code", Faculty.SelectedValue);
+                        object result = cmd.ExecuteScalar();
+                        if (result == null)
+                        {
+                            throw new Exception("Selected faculty is not a recognized department.");
+                        }
+                        departmentId = (int)result;
+                    }
+
+                    // 2. Read profile photo bytes (if uploaded)
+                    byte[] photoBytes = null;
+                    if (ProfilePhotoUpload.HasFile)
+                    {
+                        using (var ms = new MemoryStream())
+                        {
+                            ProfilePhotoUpload.PostedFile.InputStream.CopyTo(ms);
+                            photoBytes = ms.ToArray();
+                        }
+                    }
+
+                    // 3. Insert into UserProfile (consolidated auth + profile table)
                     int newProfileId;
                     string profileQuery = @"INSERT INTO UserProfile
-                                (FullName, Email, ContactNumber, DOB, Gender, Address, Role, ProfilePhoto, Username, Password, RegisteredDate, Status)
+                                (FullName, UserName, Password, Email, ContactNumber, DOB, Gender, Address,
+                                 Role, ProfilePhoto, RegisteredDate, ApprovalStatus, IsActive)
                                 OUTPUT INSERTED.ProfileId
                                 VALUES
-                                (@FullName, @Email, @ContactNumber, @DOB, @Gender, @Address, @Role, @ProfilePhoto, @Username, @Password, GETDATE(), 1)";
+                                (@FullName, @UserName, @Password, @Email, @ContactNumber, @DOB, @Gender, @Address,
+                                 'Student', @ProfilePhoto, GETDATE(), 'Approved', 1)";
 
                     using (SqlCommand cmd = new SqlCommand(profileQuery, con, transaction))
                     {
                         cmd.Parameters.AddWithValue("@FullName", Full_name.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Email", Email.Text.Trim());
-                        cmd.Parameters.AddWithValue("@ContactNumber", Contact.Text.Trim());
-                        cmd.Parameters.AddWithValue("@DOB", Convert.ToDateTime(Dob.Text));
-                        cmd.Parameters.AddWithValue("@Gender", Gender.SelectedValue);
-                        cmd.Parameters.AddWithValue("@Address", "");
-                        cmd.Parameters.AddWithValue("@Role", role);
-                        cmd.Parameters.AddWithValue("@Username", username.Text.Trim());
+                        cmd.Parameters.AddWithValue("@UserName", username.Text.Trim());
 
                         // TODO: replace with your existing password hashing method
                         cmd.Parameters.AddWithValue("@Password", Password.Text);
 
+                        cmd.Parameters.AddWithValue("@Email", Email.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ContactNumber", Contact.Text.Trim());
+                        cmd.Parameters.AddWithValue("@DOB", Convert.ToDateTime(Dob.Text));
+                        cmd.Parameters.AddWithValue("@Gender", Gender.SelectedValue);
+
+                        // NOTE: form has no Address field yet — stored empty until one is added
+                        cmd.Parameters.AddWithValue("@Address", "");
+
                         SqlParameter photoParam = cmd.Parameters.Add("@ProfilePhoto", SqlDbType.VarBinary, -1);
-                        photoParam.Value = ProfilePhotoUpload.HasFile
-                            ? (object)ProfilePhotoUpload.FileBytes
-                            : DBNull.Value;
+                        photoParam.Value = (object)photoBytes ?? DBNull.Value;
 
                         newProfileId = (int)cmd.ExecuteScalar();
                     }
 
-                    // 2. Insert into the role-specific table (unchanged, still keyed on ProfileId)
-                    if (role == "Student")
+                    // 4. Insert into StudentProfile
+                    string studentQuery = @"INSERT INTO StudentProfile (ProfileId, Semester, DepartmentId, RollNumber)
+                                             VALUES (@ProfileId, @Semester, @DepartmentId, @RollNumber)";
+                    using (SqlCommand cmd = new SqlCommand(studentQuery, con, transaction))
                     {
-                        string q = @"INSERT INTO StudentProfile (ProfileId, Semester, SubjectName, RollNumber)
-                                     VALUES (@ProfileId, @Semester, @SubjectName, @RollNumber)";
-                        using (SqlCommand cmd = new SqlCommand(q, con, transaction))
-                        {
-                            cmd.Parameters.AddWithValue("@ProfileId", newProfileId);
-                            cmd.Parameters.AddWithValue("@Semester", Convert.ToInt32(Semester.SelectedValue));
-                            cmd.Parameters.AddWithValue("@SubjectName", Faculty.SelectedValue);
-                            cmd.Parameters.AddWithValue("@RollNumber",
-                                string.IsNullOrWhiteSpace(LCID.Text) ? (object)DBNull.Value : LCID.Text.Trim());
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                    else if (role == "Staff")
-                    {
-                        string q = @"INSERT INTO TeacherProfile (ProfileId, Designation, Department, SubjectsHandled)
-                                     VALUES (@ProfileId, @Designation, @Department, @SubjectsHandled)";
-                        using (SqlCommand cmd = new SqlCommand(q, con, transaction))
-                        {
-                            cmd.Parameters.AddWithValue("@ProfileId", newProfileId);
-                            cmd.Parameters.AddWithValue("@Designation", string.IsNullOrWhiteSpace(Designation.Text) ? (object)DBNull.Value : Designation.Text.Trim());
-                            cmd.Parameters.AddWithValue("@Department", string.IsNullOrWhiteSpace(StaffDepartment.Text) ? (object)DBNull.Value : StaffDepartment.Text.Trim());
-                            cmd.Parameters.AddWithValue("@SubjectsHandled", string.IsNullOrWhiteSpace(SubjectsHandled.Text) ? (object)DBNull.Value : SubjectsHandled.Text.Trim());
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                    else // Admin
-                    {
-                        string q = @"INSERT INTO AdminProfile (ProfileId, AccessLevel, Department)
-                                     VALUES (@ProfileId, @AccessLevel, @Department)";
-                        using (SqlCommand cmd = new SqlCommand(q, con, transaction))
-                        {
-                            cmd.Parameters.AddWithValue("@ProfileId", newProfileId);
-                            cmd.Parameters.AddWithValue("@AccessLevel", AccessLevel.SelectedValue);
-                            cmd.Parameters.AddWithValue("@Department", string.IsNullOrWhiteSpace(AdminDepartment.Text) ? (object)DBNull.Value : AdminDepartment.Text.Trim());
-                            cmd.ExecuteNonQuery();
-                        }
+                        cmd.Parameters.AddWithValue("@ProfileId", newProfileId);
+                        cmd.Parameters.AddWithValue("@Semester", Convert.ToInt32(Semester.SelectedValue));
+                        cmd.Parameters.AddWithValue("@DepartmentId", departmentId);
+                        cmd.Parameters.AddWithValue("@RollNumber", string.IsNullOrWhiteSpace(LCID.Text) ? (object)DBNull.Value : LCID.Text.Trim());
+                        cmd.ExecuteNonQuery();
                     }
 
                     transaction.Commit();
                     Response.Redirect("Login.aspx?registered=true");
                 }
-                catch (SqlException sqlEx) when (sqlEx.Number == 2627 || sqlEx.Number == 2601)
-                {
-                    SafeRollback(transaction);
-                    lblError.Text = "That email or username is already registered. Please use a different one.";
-                }
                 catch (Exception ex)
                 {
-                    SafeRollback(transaction);
+                    //transaction.Rollback();
                     lblError.Text = "Registration failed: " + ex.Message;
                 }
-            }
-        }
-
-        private void SafeRollback(SqlTransaction transaction)
-        {
-            try
-            {
-                if (transaction.Connection != null)
-                    transaction.Rollback();
-            }
-            catch
-            {
-                // transaction was already completed/rolled back by SQL Server — ignore
             }
         }
     }

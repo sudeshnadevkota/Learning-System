@@ -1,412 +1,416 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Mba_Notes.note" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="note.master.cs" Inherits="Learning_System.Mba_Notes.note" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link href="mcsdash.css" rel="stylesheet" />
-    <style>
-        /* ── Google Font ── */
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap');
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <link href="mcsdash.css" rel="stylesheet" />
+  <style>
+    /* ── Google Font ── */
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap');
 
-        /* ══ SIDEBAR ══ */
-        #sidebar {
-            position: fixed;
-            top: 5rem;
-            left: 0;
-            width: 0;
-            height: calc(100vh - 5rem);
-            background-color: #12183a;
-            color: #fff;
-            overflow-x: hidden;
-            overflow-y: auto;
-            z-index: 999;
-            transition: width 0.3s ease;
-            font-family: 'DM Sans', sans-serif;
-            border-right: 1px solid rgba(255,255,255,0.07);
+    /* ══ SIDEBAR ══ */
+    #sidebar {
+      position: fixed;
+      top: 5rem;
+      left: 0;
+      width: 0;
+      height: calc(100vh - 5rem);
+      background-color: #12183a;
+      color: #fff;
+      overflow-x: hidden;
+      overflow-y: auto;
+      z-index: 999;
+      transition: width 0.3s ease;
+      font-family: 'DM Sans', sans-serif;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+
+      /* Scrollbar */
+      #sidebar::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      #sidebar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      #sidebar::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.12);
+        border-radius: 4px;
+      }
+
+      /* ── SEMESTERS label at top ── */
+      #sidebar::before {
+        content: "SEMESTERS";
+        display: block;
+        font-family: 'Sora', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: rgba(255,255,255,0.35);
+        padding: 18px 20px 10px;
+      }
+
+      #sidebar ul {
+        padding: 0;
+        list-style: none;
+        margin: 0;
+      }
+
+        #sidebar ul li {
+          padding: 0;
         }
 
-            /* Scrollbar */
-            #sidebar::-webkit-scrollbar {
-                width: 4px;
-            }
+      /* ── Semester top-level link ── */
+      #sidebar > ul > li > a {
+        color: rgba(255,255,255,0.75);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 11px 16px;
+        font-family: 'Sora', sans-serif;
+        font-size: 13.5px;
+        font-weight: 600;
+        border-left: 3px solid transparent;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+        gap: 10px;
+      }
 
-            #sidebar::-webkit-scrollbar-track {
-                background: transparent;
-            }
+        #sidebar > ul > li > a:hover {
+          background: rgba(255,255,255,0.06);
+          color: #fff;
+        }
 
-            #sidebar::-webkit-scrollbar-thumb {
-                background: rgba(255,255,255,0.12);
-                border-radius: 4px;
-            }
+      /* Active semester (when submenu is open) */
+      #sidebar > ul > li.active-sem > a {
+        border-left-color: #FF2D8D;
+        background: rgba(255,45,141,0.10);
+        color: #fff;
+      }
 
-            /* ── SEMESTERS label at top ── */
-            #sidebar::before {
-                content: "SEMESTERS";
-                display: block;
-                font-family: 'Sora', sans-serif;
-                font-size: 10px;
-                font-weight: 700;
-                letter-spacing: 2px;
-                color: rgba(255,255,255,0.35);
-                padding: 18px 20px 10px;
-            }
+    /* ── Numbered badge ── */
+    .sem-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 7px;
+      background: rgba(255,255,255,0.12);
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Sora', sans-serif;
+      color: rgba(255,255,255,0.7);
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
 
-            #sidebar ul {
-                padding: 0;
-                list-style: none;
-                margin: 0;
-            }
+    #sidebar > ul > li.active-sem .sem-badge {
+      background: #FF2D8D;
+      color: #fff;
+    }
 
-                #sidebar ul li {
-                    padding: 0;
-                }
+    /* ── Chevron icon ── */
+    .submenu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 8px;
+    }
 
-            /* ── Semester top-level link ── */
-            #sidebar > ul > li > a {
-                color: rgba(255,255,255,0.75);
-                text-decoration: none;
-                display: flex;
-                align-items: center;
-                padding: 11px 16px;
-                font-family: 'Sora', sans-serif;
-                font-size: 13.5px;
-                font-weight: 600;
-                border-left: 3px solid transparent;
-                transition: background 0.2s, border-color 0.2s, color 0.2s;
-                gap: 10px;
-            }
+    .sem-name {
+      flex: 1;
+    }
 
-                #sidebar > ul > li > a:hover {
-                    background: rgba(255,255,255,0.06);
-                    color: #fff;
-                }
+    .fas.fa-caret-down {
+      transition: transform 0.3s ease;
+      font-size: 11px;
+      opacity: 0.5;
+      margin-left: auto;
+    }
 
-            /* Active semester (when submenu is open) */
-            #sidebar > ul > li.active-sem > a {
-                border-left-color: #FF2D8D;
-                background: rgba(255,45,141,0.10);
-                color: #fff;
-            }
+    .rotate {
+      transform: rotate(180deg);
+    }
 
-        /* ── Numbered badge ── */
-        .sem-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            border-radius: 7px;
-            background: rgba(255,255,255,0.12);
-            font-size: 11px;
-            font-weight: 700;
-            font-family: 'Sora', sans-serif;
-            color: rgba(255,255,255,0.7);
+    /* ── Submenu / subjects ── */
+    #sidebar .submenu {
+      display: none;
+      padding: 4px 0 8px 0;
+      background: rgba(0,0,0,0.15);
+    }
+
+      #sidebar .submenu ul {
+        padding: 0;
+      }
+
+        #sidebar .submenu ul li a {
+          color: rgba(255,255,255,0.5);
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          padding: 7px 16px 7px 36px;
+          font-size: 13px;
+          font-family: 'DM Sans', sans-serif;
+          font-weight: 400;
+          transition: color 0.2s, background 0.2s;
+          position: relative;
+        }
+
+          /* dot before each subject */
+          #sidebar .submenu ul li a::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
             flex-shrink: 0;
-            transition: background 0.2s, color 0.2s;
+            transition: background 0.2s;
+          }
+
+          #sidebar .submenu ul li a:hover {
+            color: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.04);
+          }
+
+            #sidebar .submenu ul li a:hover::before {
+              background: rgba(255,255,255,0.6);
+            }
+
+        /* Active subject link */
+        #sidebar .submenu ul li.active-subject > a {
+          color: #FF2D8D;
+          font-weight: 500;
         }
 
-        #sidebar > ul > li.active-sem .sem-badge {
+          #sidebar .submenu ul li.active-subject > a::before {
             background: #FF2D8D;
-            color: #fff;
+          }
+
+    /* ══ CONTENT ══ */
+    #content {
+      margin-top: 5rem;
+      margin-left: 0;
+      width: 100%;
+      transition: margin-left 0.3s ease;
+    }
+
+    /* ══ OPEN STATE ══ */
+    .sidebar-open #sidebar {
+      width: 300px;
+    }
+
+    .sidebar-open #content {
+      margin-left: 300px;
+      width: calc(100% - 300px);
+    }
+
+    /* ══ MENU BAR TOGGLE BUTTON ══ */
+    #menu-bar {
+      padding-top: 6rem;
+      position: fixed;
+      left: 10rem;
+      z-index: 1000;
+    }
+
+      #menu-bar button {
+        background: #e8ecf7 !important;
+        border: 1.5px solid #c5cde8 !important;
+        border-radius: 8px;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        transition: background 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 8px rgba(8,21,71,0.12);
+      }
+
+        #menu-bar button:hover {
+          background: #d0d8f0 !important;
+          box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
         }
 
-        /* ── Chevron icon ── */
-        .submenu-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            gap: 8px;
-        }
+    #icon {
+      color: #12183a !important;
+      font-size: 15px;
+      font-weight: 900;
+    }
 
-        .sem-name {
-            flex: 1;
-        }
+    /* ══ MEDIA QUERIES ══ */
+    @media (max-width: 900px) {
+      .sidebar-open #sidebar {
+        width: 300px;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+      }
 
-        .fas.fa-caret-down {
-            transition: transform 0.3s ease;
-            font-size: 11px;
-            opacity: 0.5;
-            margin-left: auto;
-        }
+      .sidebar-open #content {
+        margin-left: 0 !important;
+        width: 100% !important;
+      }
 
-        .rotate {
-            transform: rotate(180deg);
-        }
+      #sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.45);
+        z-index: 998;
+      }
 
-        /* ── Submenu / subjects ── */
-        #sidebar .submenu {
-            display: none;
-            padding: 4px 0 8px 0;
-            background: rgba(0,0,0,0.15);
-        }
+      .sidebar-open #sidebar-overlay {
+        display: block;
+      }
 
-            #sidebar .submenu ul {
-                padding: 0;
-            }
+      #content {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
 
-                #sidebar .submenu ul li a {
-                    color: rgba(255,255,255,0.5);
-                    text-decoration: none;
-                    display: flex;
-                    align-items: center;
-                    gap: 9px;
-                    padding: 7px 16px 7px 36px;
-                    font-size: 13px;
-                    font-family: 'DM Sans', sans-serif;
-                    font-weight: 400;
-                    transition: color 0.2s, background 0.2s;
-                    position: relative;
-                }
+      #menu-bar {
+        left: 0.5rem;
+        padding-top: 5.6rem;
+      }
+    }
 
-                    /* dot before each subject */
-                    #sidebar .submenu ul li a::before {
-                        content: "";
-                        width: 6px;
-                        height: 6px;
-                        border-radius: 50%;
-                        background: rgba(255,255,255,0.25);
-                        flex-shrink: 0;
-                        transition: background 0.2s;
-                    }
-
-                    #sidebar .submenu ul li a:hover {
-                        color: rgba(255,255,255,0.85);
-                        background: rgba(255,255,255,0.04);
-                    }
-
-                        #sidebar .submenu ul li a:hover::before {
-                            background: rgba(255,255,255,0.6);
-                        }
-
-                /* Active subject link */
-                #sidebar .submenu ul li.active-subject > a {
-                    color: #FF2D8D;
-                    font-weight: 500;
-                }
-
-                    #sidebar .submenu ul li.active-subject > a::before {
-                        background: #FF2D8D;
-                    }
-
-        /* ══ CONTENT ══ */
-        #content {
-            margin-top: 5rem;
-            margin-left: 0;
-            width: 100%;
-            transition: margin-left 0.3s ease;
-        }
-
-        /* ══ OPEN STATE ══ */
-        .sidebar-open #sidebar {
-            width: 300px;
-        }
-
-        .sidebar-open #content {
-            margin-left: 300px;
-            width: calc(100% - 300px);
-        }
-
-        /* ══ MENU BAR TOGGLE BUTTON ══ */
-        #menu-bar {
-            padding-top: 6rem;
-            position: fixed;
-            left: 10rem;
-            z-index: 1000;
-        }
-
-            #menu-bar button {
-                background: #e8ecf7 !important;
-                border: 1.5px solid #c5cde8 !important;
-                border-radius: 8px;
-                width: 36px;
-                height: 36px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0;
-                transition: background 0.2s, box-shadow 0.2s;
-                box-shadow: 0 2px 8px rgba(8,21,71,0.12);
-            }
-
-                #menu-bar button:hover {
-                    background: #d0d8f0 !important;
-                    box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
-                }
-
-        #icon {
-            color: #12183a !important;
-            font-size: 15px;
-            font-weight: 900;
-        }
-
-        /* ══ MEDIA QUERIES ══ */
-        @media (max-width: 900px) {
-            .sidebar-open #sidebar {
-                width: 300px;
-                box-shadow: 4px 0 24px rgba(0,0,0,0.4);
-            }
-
-            .sidebar-open #content {
-                margin-left: 0 !important;
-                width: 100% !important;
-            }
-
-            #sidebar-overlay {
-                display: none;
-                position: fixed;
-                inset: 0;
-                background: rgba(0,0,0,0.45);
-                z-index: 998;
-            }
-
-            .sidebar-open #sidebar-overlay {
-                display: block;
-            }
-
-            #content {
-                width: 100% !important;
-                margin-left: 0 !important;
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
-            }
-
-            #menu-bar {
-                left: 0.5rem;
-                padding-top: 5.6rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .sidebar-open #sidebar {
-                width: 240px;
-            }
-
-            #menu-bar {
-                left: 0.3rem;
-            }
-        }
-    </style>
-    <title>MBA Notes</title>
+@media (max-width: 576px) {
+    .sidebar-open #sidebar { width: 240px; }
+    #menu-bar { left: 0.3rem; }
+    
+    .mobile-brand-text {
+        font-size: 1.4rem !important;
+    }
+    /* Fixed: Force full containment and prevent text breaks on tiny viewports */
+    .mobile-header-text {
+        font-size: 1.2rem !important;
+        white-space: nowrap !important;
+    }
+}
+  </style>
+  <title>MBA Notes</title>
 </head>
 <body>
-    <form id="form2" runat="server">
-        <div id="sidebar-overlay" onclick="closeSidebarOverlay()"></div>
+  <form id="form2" runat="server">
+    <div id="sidebar-overlay" onclick="closeSidebarOverlay()"></div>
 
-        <nav class="navbar navbar-expand-lg d-flex shad align-items-center justify-content-between flex-wrap navbar-light bg-light shadow bg-body rounded"
-            style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1rem;">
-            <div class="d-flex align-items-center" style="flex: 1; justify-content: center;">
-                <a href="../../Default.aspx">
-                    <img src="logo/logo.png" alt="Logo" width="150">
-                </a>
+    <nav class="navbar navbar-light bg-light shadow"
+      style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1.25rem; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; box-sizing: border-box;">
+
+      <div style="display: flex; align-items: center; margin: 0; padding: 0;">
+        <a href="../../Default.aspx" style="display: flex; align-items: center;">
+          <img src="logo/logo.png" alt="Logo" style="width: auto; max-width: 120px; height: auto; max-height: 3.2rem; display: block;">
+        </a>
+      </div>
+
+      <div style="display: flex; align-items: center; margin: 0; padding: 0; text-align: right;">
+        <h3 class="mobile-header-text" style="font-weight: bold; color: #002366; margin: 0; font-size: 1.6rem; letter-spacing: 0.5px; white-space: nowrap !important; display: inline-block;">MBA NOTES</h3>
+      </div>
+    </nav>
+
+    <div class="d-flex">
+      <div id="sidebar">
+        <ul>
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'first')">
+              <span class="submenu-toggle"><span class="sem-badge">1</span><span class="sem-name">First Sem</span> <i class="fas fa-caret-down first"></i></span>
+            </a>
+            <div id="first-submenu" class="submenu">
+              <ul>
+                <li><a href="/Mba_Notes/course_content.aspx?code=ACC">Business Accounting &amp; Finance</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=ECO">Business Economics</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=HRM">Human Resource Management</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=MC">Managerial Communications</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=BEA">Business Environment Analysis</a></li>
+              </ul>
             </div>
-            <div class="d-flex align-items-center justify-content-center" style="flex: 1;">
-                <h3 style="font-size: 2rem; font-weight: bold; color: #002366; margin: 0;">MBA NOTES</h3>
+          </li>
+
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'second')">
+              <span class="submenu-toggle"><span class="sem-badge">2</span><span class="sem-name">Second Sem</span> <i class="fas fa-caret-down second"></i></span>
+            </a>
+            <div id="second-submenu" class="submenu">
+              <ul>
+                <li><a href="/Mba_Notes/course_content.aspx?code=RM">Research Methodology</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=OM">Operation Management</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=MM">Marketing Management</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=OB">Organizational Behavior</a></li>
+              </ul>
             </div>
-            <div class="d-none d-md-flex align-items-center" style="flex: 1; justify-content: flex-end;">
+          </li>
+
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'third')">
+              <span class="submenu-toggle"><span class="sem-badge">3</span><span class="sem-name">Third Sem</span> <i class="fas fa-caret-down third"></i></span>
+            </a>
+            <div id="third-submenu" class="submenu">
+              <ul>
+                <li><a href="/Mba_Notes/course_content.aspx?code=SM">Strategic Management</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=FM">Financial Management</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=EM">Entrepreneurship Management</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=SPM">Sales &amp; Promotions Management</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=IB">International Business</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=HRD">Human Resource Development &amp; Leadership</a></li>
+              </ul>
             </div>
-        </nav>
+          </li>
 
-        <div class="d-flex">
-            <div id="sidebar">
-                <ul>
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'first')">
-                            <span class="submenu-toggle"><span class="sem-badge">1</span><span class="sem-name">First Sem</span> <i class="fas fa-caret-down first"></i></span>
-                        </a>
-                        <div id="first-submenu" class="submenu">
-                            <ul>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=ACC">Business Accounting &amp; Finance</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=ECO">Business Economics</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=HRM">Human Resource Management</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=MC">Managerial Communications</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=BEA">Business Environment Analysis</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'second')">
-                            <span class="submenu-toggle"><span class="sem-badge">2</span><span class="sem-name">Second Sem</span> <i class="fas fa-caret-down second"></i></span>
-                        </a>
-                        <div id="second-submenu" class="submenu">
-                            <ul>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=RM">Research Methodology</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=OM">Operation Management</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=MM">Marketing Management</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=OB">Organizational Behavior</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'third')">
-                            <span class="submenu-toggle"><span class="sem-badge">3</span><span class="sem-name">Third Sem</span> <i class="fas fa-caret-down third"></i></span>
-                        </a>
-                        <div id="third-submenu" class="submenu">
-                            <ul>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=SM">Strategic Management</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=FM">Financial Management</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=EM">Entrepreneurship Management</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=SPM">Sales &amp; Promotions Management</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=IB">International Business</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=HRD">Human Resource Development &amp; Leadership</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#" onclick="toggleSubmenu(event, 'fourth')">
-                            <span class="submenu-toggle"><span class="sem-badge">4</span><span class="sem-name">Fourth Sem</span> <i class="fas fa-caret-down fourth"></i></span>
-                        </a>
-                        <div id="fourth-submenu" class="submenu">
-                            <ul>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=BI">Banking &amp; Insurance</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=CRM">Customer Relationship Management</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=CMN">Conflict Management &amp; Negotiation Skills</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=MOD">Management of Data</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=BEG">Business Ethics &amp; Governance</a></li>
-                                <li><a href="/Mba_Notes/course_content.aspx?code=GRP">Graduate Research Project Paper</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+          <li>
+            <a href="#" onclick="toggleSubmenu(event, 'fourth')">
+              <span class="submenu-toggle"><span class="sem-badge">4</span><span class="sem-name">Fourth Sem</span> <i class="fas fa-caret-down fourth"></i></span>
+            </a>
+            <div id="fourth-submenu" class="submenu">
+              <ul>
+                <li><a href="/Mba_Notes/course_content.aspx?code=BI">Banking &amp; Insurance</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=CRM">Customer Relationship Management</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=CMN">Conflict Management &amp; Negotiation Skills</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=MOD">Management of Data</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=BEG">Business Ethics &amp; Governance</a></li>
+                <li><a href="/Mba_Notes/course_content.aspx?code=GRP">Graduate Research Project Paper</a></li>
+              </ul>
             </div>
+          </li>
+        </ul>
+      </div>
 
-            <div id="menu-bar">
-                <button type="button" onclick="toggleSidebar()" class="btn" style="background: none;">
-                    <i class="fa fa-arrow-right" aria-hidden="true" style="color: black;" id="icon"></i>
-                </button>
-            </div>
+      <div id="menu-bar">
+        <button type="button" onclick="toggleSidebar()" class="btn" style="background: none;">
+          <i class="fa fa-arrow-right" aria-hidden="true" style="color: black;" id="icon"></i>
+        </button>
+      </div>
 
-            <div id="content" style="padding-top: 1%; width: 90%; margin-left: 5%;">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
-            </div>
-        </div>
-    </form>
+      <div id="content" style="padding-top: 1%; width: 90%; margin-left: 5%;">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+      </div>
+    </div>
+  </form>
 
-    <script>
-function isMobile() {
-    return window.innerWidth <= 900;
-}
+  <script>
+    function isMobile() {
+      return window.innerWidth <= 900;
+    }
 
-function toggleSidebar() {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var menuBar = document.getElementById('menu-bar');
-    var icon = document.getElementById('icon');
+    function toggleSidebar() {
+      var sidebar = document.getElementById('sidebar');
+      var content = document.getElementById('content');
+      var menuBar = document.getElementById('menu-bar');
+      var icon = document.getElementById('icon');
 
-    if (!sidebar || !content || !menuBar || !icon) return;
+      if (!sidebar || !content || !menuBar || !icon) return;
 
-    if (document.body.classList.contains('sidebar-open')) {
+      if (document.body.classList.contains('sidebar-open')) {
 
         document.body.classList.remove('sidebar-open');
 
@@ -416,44 +420,139 @@ function toggleSidebar() {
         menuBar.style.left = '0.5rem';
         icon.style.transform = 'rotate(0deg)';
 
-    } else {
+      } else {
 
         document.body.classList.add('sidebar-open');
 
         sidebar.style.width = '300px';
 
         if (!isMobile()) {
-            content.style.marginLeft = '300px';
-            content.style.width = 'calc(100% - 300px)';
-            menuBar.style.left = '300px';
+          content.style.marginLeft = '300px';
+          content.style.width = 'calc(100% - 300px)';
+          menuBar.style.left = '300px';
         } else {
-            content.style.marginLeft = '0';
-            content.style.width = '100%';
-            menuBar.style.left = '0.5rem';
+          content.style.marginLeft = '0';
+          content.style.width = '100%';
+          menuBar.style.left = '0.5rem';
         }
 
         icon.style.transform = 'rotate(180deg)';
+      }
     }
-}
 
-function closeSidebarOverlay() {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var icon = document.getElementById('icon');
+    function closeSidebarOverlay() {
+      var sidebar = document.getElementById('sidebar');
+      var content = document.getElementById('content');
+      var icon = document.getElementById('icon');
 
-    document.body.classList.remove('sidebar-open');
+      document.body.classList.remove('sidebar-open');
 
-    if (sidebar) sidebar.style.width = '0';
+    if (sidebar) {
+        sidebar.style.width = '0';
+    }
+
     if (content) {
         content.style.marginLeft = '0';
         content.style.width = '100%';
     }
-    if (icon) icon.style.transform = 'rotate(0deg)';
+
+    if (icon) {
+        icon.style.transform = 'rotate(0deg)';
+    }
 }
 
-function toggleSubmenu(event, submenuId) {
+    function toggleSubmenu(event, submenuId) {
 
-    if (event) event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
+
+      var submenu = document.getElementById(submenuId + '-submenu');
+      var icon = document.querySelector('.' + submenuId);
+
+      if (!submenu) return;
+
+      var parentLi = submenu.parentElement;
+
+      document.body.classList.add('sidebar-open');
+
+      var items = document.querySelectorAll('#sidebar > ul > li');
+
+    for (var i = 0; i < items.length; i++) {
+
+        var li = items[i];
+
+        if (li !== parentLi) {
+
+            li.classList.remove('active-sem');
+
+            var otherSubmenu = li.querySelector('.submenu');
+            var otherIcon = li.querySelector('.fas.fa-caret-down');
+
+            if (otherSubmenu) {
+                otherSubmenu.style.display = 'none';
+            }
+
+            if (otherIcon) {
+                otherIcon.classList.remove('rotate');
+            }
+        }
+      }
+
+      if (submenu.style.display === 'block') {
+
+        submenu.style.display = 'none';
+
+        if (icon) {
+            icon.classList.remove('rotate');
+        }
+
+        if (parentLi) {
+            parentLi.classList.remove('active-sem');
+        }
+
+        sessionStorage.removeItem('openSubmenu');
+
+      } else {
+
+        submenu.style.display = 'block';
+
+        if (icon) {
+            icon.classList.add('rotate');
+        }
+
+        if (parentLi) {
+            parentLi.classList.add('active-sem');
+        }
+
+        var sidebar = document.getElementById('sidebar');
+        var content = document.getElementById('content');
+        var menuBar = document.getElementById('menu-bar');
+        var mainIcon = document.getElementById('icon');
+
+        if (sidebar) {
+            sidebar.style.width = '300px';
+        }
+
+        if (content) {
+          content.style.marginLeft = '300px';
+          content.style.width = 'calc(100% - 300px)';
+        }
+
+        if (menuBar) {
+            menuBar.style.left = '300px';
+        }
+
+        if (mainIcon) {
+            mainIcon.style.transform = 'rotate(180deg)';
+        }
+
+        // remember which semester panel is open so it survives a real page navigation
+        sessionStorage.setItem('openSubmenu', submenuId);
+    }
+}
+
+function openSubmenuById(submenuId) {
 
     var submenu = document.getElementById(submenuId + '-submenu');
     var icon = document.querySelector('.' + submenuId);
@@ -462,120 +561,131 @@ function toggleSubmenu(event, submenuId) {
 
     var parentLi = submenu.parentElement;
 
-    document.body.classList.add('sidebar-open');
+    submenu.style.display = 'block';
 
-    var items = document.querySelectorAll('#sidebar > ul > li');
-
-    for (var i = 0; i < items.length; i++) {
-        var li = items[i];
-        if (li !== parentLi) {
-            li.classList.remove('active-sem');
-            var otherSubmenu = li.querySelector('.submenu');
-            var otherIcon = li.querySelector('.fas.fa-caret-down');
-            if (otherSubmenu) otherSubmenu.style.display = 'none';
-            if (otherIcon) otherIcon.classList.remove('rotate');
-        }
+    if (icon) {
+        icon.classList.add('rotate');
     }
 
-    if (submenu.style.display === 'block') {
-
-        submenu.style.display = 'none';
-        if (icon) icon.classList.remove('rotate');
-        if (parentLi) parentLi.classList.remove('active-sem');
-
-    } else {
-
-        submenu.style.display = 'block';
-        if (icon) icon.classList.add('rotate');
-        if (parentLi) parentLi.classList.add('active-sem');
-
-        var sidebar = document.getElementById('sidebar');
-        var content = document.getElementById('content');
-        var menuBar = document.getElementById('menu-bar');
-        var mainIcon = document.getElementById('icon');
-
-        if (sidebar) sidebar.style.width = '300px';
-
-        if (content) {
-            content.style.marginLeft = '300px';
-            content.style.width = 'calc(100% - 300px)';
-        }
-
-        if (menuBar) menuBar.style.left = '300px';
-        if (mainIcon) mainIcon.style.transform = 'rotate(180deg)';
+    if (parentLi) {
+        parentLi.classList.add('active-sem');
     }
 }
 
-window.onload = function () {
+document.addEventListener('DOMContentLoaded', function () {
 
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var menuBar = document.getElementById('menu-bar');
-    var icon = document.getElementById('icon');
+      var sidebar = document.getElementById('sidebar');
+      var content = document.getElementById('content');
+      var menuBar = document.getElementById('menu-bar');
+      var icon = document.getElementById('icon');
 
-    if (!isMobile()) {
+      if (!isMobile()) {
 
+        // Briefly disable the width/margin transition so applying the open
+        // layout below doesn't visibly animate (no blink), while still
+        // using inline styles so it's guaranteed to win over any
+        // page-specific CSS on the content page.
+        document.body.classList.add('no-transition');
         document.body.classList.add('sidebar-open');
 
-        if (sidebar) sidebar.style.width = '300px';
-        if (content) {
-            content.style.marginLeft = '300px';
-            content.style.width = 'calc(100% - 300px)';
+        if (sidebar) {
+            sidebar.style.width = '300px';
         }
-        if (menuBar) menuBar.style.left = '300px';
-        if (icon) icon.style.transform = 'rotate(180deg)';
+
+        if (content) {
+          content.style.marginLeft = '300px';
+          content.style.width = 'calc(100% - 300px)';
+        }
+
+        if (menuBar) {
+            menuBar.style.left = '300px';
+        }
+
+        if (icon) {
+            icon.style.transform = 'rotate(180deg)';
+        }
+
+        // Re-enable transitions on the next frame so manual toggling
+        // (the arrow button, submenu clicks) still animates normally.
+        requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+                document.body.classList.remove('no-transition');
+            });
+        });
 
     } else {
-
-        if (menuBar) menuBar.style.left = '0.5rem';
+        if (menuBar) {
+            menuBar.style.left = '0.5rem';
+        }
     }
 
+    // ── Match the current page (path + query string) against sidebar links ──
     var links = document.querySelectorAll('#sidebar .submenu ul li a');
 
-    var pathParts = window.location.pathname.split('/');
-    var currentPage = '';
+    var currentUrl = new URL(window.location.href);
+    var currentFull = (currentUrl.pathname + currentUrl.search).toLowerCase();
 
-    if (pathParts.length > 0) {
-        currentPage = pathParts[pathParts.length - 1].toLowerCase();
-    }
+    var matchedSubmenuId = null;
 
-    for (var j = 0; j < links.length; j++) {
+      for (var j = 0; j < links.length; j++) {
 
         var link = links[j];
         var hrefAttr = link.getAttribute('href');
-        var href = hrefAttr ? hrefAttr.toLowerCase() : '';
 
-        if (href === currentPage) {
+        if (!hrefAttr) continue;
 
-            if (link.parentElement) link.parentElement.classList.add('active-subject');
+        var linkUrl = new URL(hrefAttr, window.location.origin);
+        var linkFull = (linkUrl.pathname + linkUrl.search).toLowerCase();
 
-            var parentSubmenu = link.parentElement;
+        if (linkFull === currentFull) {
 
-            while (parentSubmenu && !parentSubmenu.classList.contains('submenu')) {
+            if (link.parentElement) {
+                link.parentElement.classList.add('active-subject');
+            }
+
+          var parentSubmenu = link.parentElement;
+
+            while (parentSubmenu &&
+                !parentSubmenu.classList.contains('submenu')) {
                 parentSubmenu = parentSubmenu.parentElement;
             }
 
-            if (parentSubmenu) {
+          if (parentSubmenu) {
 
-                parentSubmenu.style.display = 'block';
+            parentSubmenu.style.display = 'block';
 
-                var parentLi = parentSubmenu.parentElement;
+            var parentLi = parentSubmenu.parentElement;
 
-                if (parentLi) {
+            if (parentLi) {
 
-                    parentLi.classList.add('active-sem');
+              parentLi.classList.add('active-sem');
 
                     var caret = parentLi.querySelector('.fas.fa-caret-down');
-                    if (caret) caret.classList.add('rotate');
+
+                    if (caret) {
+                        caret.classList.add('rotate');
+                    }
+
+                    matchedSubmenuId = parentSubmenu.id.replace('-submenu', '');
                 }
             }
         }
     }
-};
+
+    // remember whichever submenu is now open (from URL match)
+    if (matchedSubmenuId) {
+        sessionStorage.setItem('openSubmenu', matchedSubmenuId);
+    } else {
+        // fall back to whatever the user last opened manually
+        var savedSubmenu = sessionStorage.getItem('openSubmenu');
+        if (savedSubmenu) {
+            openSubmenuById(savedSubmenu);
+        }
+    }
+});
 </script>
 </body>
 </html>
-
 
 
 

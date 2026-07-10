@@ -7,7 +7,7 @@
 <main class="main">
   <div class="main-inner">
 
-    <!-- Hero Card -->
+        <!-- Hero Card -->
     <div class="hero-card hero-card-compact fade-up d1">
 
       <div class="hero-tag">
@@ -33,22 +33,19 @@
         </button>
       </div>
     </div>
+   <asp:Panel ID="pnlLoginPrompt" runat="server" Visible="false" CssClass="text-center mt-5">
+      <h4 class="mb-3">Please log in to view course files, assignments, and past questions.</h4>
+      <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="~/login.aspx" CssClass="btn btn-primary btn-lg">Go to Login Page</asp:HyperLink>
+  </asp:Panel>
+    <asp:Panel ID="MaterialsPanel" runat="server">
 
-    <!-- ══ NOTES / PAST PAPERS TABS ══ -->
-    <div class="fade-up d2">
-      <div class="section-head">
-        <div class="content-tabs">
-          <button type="button" class="ctab-btn active" id="tabNotes" onclick="resetNotes()">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-             Notes
-          </button>
-          
-        </div>
-      </div>
+  <!-- ══ NOTES / PAST PAPERS TABS ══ -->
+  <div class="fade-up d2">
+    
 
       <%-- Filter chips (kept outside the panels so it stays visible no matter which panel is active) --%>
       <div class="filter-bar">
-        <span class="filter-label">Filter by type:</span>
+      
         <div class="filter-chips">
           
           <button type="button" class="fchip" data-filter="Lecture" onclick="filterNotes(this,'Lecture')">
@@ -163,10 +160,13 @@
     </asp:GridView>
 </div>
 </div>
+          </asp:Panel>
+
+    <asp:Label ID="lblAccessDenied" runat="server" Text="Please log in to view course materials." Visible="false" CssClass="text-center mt-5" />
   </div>
 </main>
 
-<!-- ══ SYLLABUS MODAL ══ -->
+
 <!-- ══ SYLLABUS MODAL ══ -->
 <div class="syl-modal-bg" id="sylModal">
   <div class="syl-modal">
@@ -194,13 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-function resetNotes() {
-    var lectureBtn = document.querySelector('.fchip[data-filter="Lecture"]');
 
-    if (lectureBtn) {
-        filterNotes(lectureBtn, 'Lecture');
-    }
-}
 
 function switchTab(tab) {
     var panelNotes = document.getElementById('panelNotes');

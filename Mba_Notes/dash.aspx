@@ -1,4 +1,4 @@
-﻿
+
 <%@ Page Title="" Language="C#" MasterPageFile="~/Mba_Notes/note.Master" AutoEventWireup="true" CodeBehind="dash.aspx.cs" Inherits="Learning_System.Mba_Notes.dash" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -448,6 +448,7 @@
     transition: var(--ease);
     cursor: pointer;
     position: relative;
+
   }
   .course-card:hover {
     border-color: var(--pink);
@@ -709,9 +710,11 @@
     color: #374151;
     line-height: 1.75;
     margin-bottom: 14px;
+    text-align: left;
+
   }
-  .about-para strong { color: var(--primary); font-weight: 700; }
-  .about-para:last-of-type { margin-bottom: 24px; }
+.about-para strong { color: var(--primary); font-weight: 700; }
+.about-para:last-of-type { margin-bottom: 24px; }
 
   .about-highlights {
     display: flex; flex-direction: column; gap: 12px;
@@ -942,6 +945,8 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+
+
   /* overlay */
   .overlay {
     display: none; position: fixed; inset: 0;
@@ -978,6 +983,9 @@
     .affil-banner { padding: 20px 20px; }
     .stats-row { grid-template-columns: 1fr 1fr; }
   }
+
+
+
 
   /* ── Master Page overrides: neutralise standalone layout ── */
   header { display: none !important; }
