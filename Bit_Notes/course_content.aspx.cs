@@ -9,9 +9,6 @@ namespace Learning_System.Bit_Notes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-           
             string code = Request.QueryString["code"];
             if (string.IsNullOrEmpty(code) || !SubjectMap.Subjects.TryGetValue(code, out SubjectMap.SubjectInfo subject))
             {
@@ -21,23 +18,50 @@ namespace Learning_System.Bit_Notes
 
             TableName = subject.Table;
 
-            // Check login for the MaterialsPanel
             if (Session["ProfileId"] == null)
             {
+                // Not logged in at all
                 MaterialsPanel.Visible = false;
-                pnlLoginPrompt.Visible = true; // Show the new panel with the button
+                pnlDeptDenied.Visible = false;
+                pnlLoginPrompt.Visible = true;
+
+                lnkLogin.NavigateUrl = "~/login.aspx?ReturnUrl=" + Server.UrlEncode(Request.Url.PathAndQuery);
             }
             else
             {
-                MaterialsPanel.Visible = true;
-                pnlLoginPrompt.Visible = false;
+                // NEW — logged in, but check DepartmentCode matches this subject's department
+                string userDeptCode = Session["DepartmentCode"] as string;
+
+                bool hasAccess = !string.IsNullOrEmpty(userDeptCode)
+                                  && !string.IsNullOrEmpty(subject.DepartmentCode)
+                                  && string.Equals(userDeptCode, subject.DepartmentCode, StringComparison.OrdinalIgnoreCase);
+
+                if (hasAccess)
+                {
+                    MaterialsPanel.Visible = true;
+                    pnlLoginPrompt.Visible = false;
+                    pnlDeptDenied.Visible = false;
+                }
+                else
+                {
+                    MaterialsPanel.Visible = false;
+                    pnlLoginPrompt.Visible = false;
+                    pnlDeptDenied.Visible = true; // NEW — "your department doesn't have access" message
+                }
             }
 
             if (!IsPostBack)
             {
                 LoadSyllabusInfo(code, subject.Title);
-                // Only bind data if user is logged in to save resources
-                if (Session["ProfileId"] != null)
+
+                // Only bind grid data if user is logged in AND has department access
+                string userDeptCode = Session["DepartmentCode"] as string;
+                bool hasAccess = Session["ProfileId"] != null
+                                  && !string.IsNullOrEmpty(userDeptCode)
+                                  && !string.IsNullOrEmpty(subject.DepartmentCode)
+                                  && string.Equals(userDeptCode, subject.DepartmentCode, StringComparison.OrdinalIgnoreCase);
+
+                if (hasAccess)
                 {
                     BindData(GridViewNotes, GridViewPapers);
                 }
@@ -48,12 +72,9 @@ namespace Learning_System.Bit_Notes
         {
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string sql = @"SELECT SubjectCode,
-              CreditScore,
-              TotalHours,
-              FileName
-       FROM Syllabus
-       WHERE SubjectName = @Code";
+                string sql = @"SELECT SubjectCode, CreditScore, TotalHours, FileName
+                                FROM Syllabus
+                                WHERE SubjectName = @Code";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.Parameters.AddWithValue("@Code", code);
@@ -63,14 +84,11 @@ namespace Learning_System.Bit_Notes
                         if (sdr.Read())
                         {
                             litTitle.Text = fallbackTitle;
-
                             litDisplayCode.Text = sdr["SubjectCode"].ToString();
                             litCredits.Text = sdr["CreditScore"].ToString();
                             litHours.Text = sdr["TotalHours"].ToString() + "h";
-
                             litSylTitle.Text = sdr["SubjectCode"].ToString() + " Syllabus";
 
-                            // NEW — point the iframe at the streaming handler, only if a file actually exists
                             if (sdr["FileName"] != DBNull.Value)
                             {
                                 sylPdfFrame.Attributes["src"] = ResolveUrl("~/Bit_Notes/SyllabusViewer.ashx?code=" + code);
@@ -78,7 +96,6 @@ namespace Learning_System.Bit_Notes
                         }
                         else
                         {
-                            // No Syllabus row yet for this subject — fall back to SubjectMap title, blank stats
                             litTitle.Text = fallbackTitle;
                             litDisplayCode.Text = "-";
                             litCredits.Text = "-";

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace Learning_System
 {
@@ -10,7 +11,6 @@ namespace Learning_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // debug Response.Write removed — this was printing raw text on every page load
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -20,28 +20,28 @@ namespace Learning_System
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                // Joins AdminProfile and TeacherProfile so we get AccessLevel/DepartmentId
-                // in one round trip, and Department twice (once per possible department source)
-                // so we can read the department CODE (e.g. "BIT") for redirect routing.
+                // NEW — added StudentProfile + its Department join so Students
+                // get a DepartmentCode too, same as Teacher/Admin already had.
                 string query = @"SELECT U.ProfileId, U.UserName, U.Role,
                                          A.AccessLevel, A.DepartmentId AS AdminDeptId,
                                          T.DepartmentId AS TeacherDeptId,
+                                         S.DepartmentId AS StudentDeptId,
                                          DA.DepartmentCode AS AdminDeptCode,
-                                         DT.DepartmentCode AS TeacherDeptCode
+                                         DT.DepartmentCode AS TeacherDeptCode,
+                                         DS.DepartmentCode AS StudentDeptCode
                                   FROM UserProfile U
                                   LEFT JOIN AdminProfile   A  ON U.ProfileId = A.ProfileId
                                   LEFT JOIN TeacherProfile T  ON U.ProfileId = T.ProfileId
+                                  LEFT JOIN StudentProfile S  ON U.ProfileId = S.ProfileId
                                   LEFT JOIN Department      DA ON A.DepartmentId = DA.DepartmentId
                                   LEFT JOIN Department      DT ON T.DepartmentId = DT.DepartmentId
+                                  LEFT JOIN Department      DS ON S.DepartmentId = DS.DepartmentId
                                   WHERE U.UserName = @Username
                                     AND U.Password = @Password
                                     AND U.IsActive = 1";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Username", username);
-
-                // TODO: replace with your existing password hashing method —
-                // this still compares plaintext, matching the rest of the project for now
                 cmd.Parameters.AddWithValue("@Password", password);
 
                 try
@@ -53,10 +53,9 @@ namespace Learning_System
                     {
                         reader.Read();
 
-                        string role = reader["Role"].ToString(); // 'Student' / 'Teacher' / 'Admin'
+                        string role = reader["Role"].ToString();
                         string accessLevel = reader["AccessLevel"] == DBNull.Value ? null : reader["AccessLevel"].ToString();
 
-                        // Pull whichever DepartmentId/Code actually applies to this role
                         int? departmentId = null;
                         string departmentCode = null;
 
@@ -70,20 +69,32 @@ namespace Learning_System
                             departmentId = Convert.ToInt32(reader["AdminDeptId"]);
                             departmentCode = reader["AdminDeptCode"].ToString();
                         }
+                        // NEW — Student branch
+                        else if (role == "Student" && reader["StudentDeptId"] != DBNull.Value)
+                        {
+                            departmentId = Convert.ToInt32(reader["StudentDeptId"]);
+                            departmentCode = reader["StudentDeptCode"].ToString();
+                        }
 
-                        // ── These are the session values PermissionHelper.cs relies on ──
                         Session["ProfileId"] = Convert.ToInt32(reader["ProfileId"]);
                         Session["Username"] = reader["UserName"].ToString();
                         Session["Role"] = role;
-                        Session["AccessLevel"] = accessLevel;          // null unless Role == "Admin"
-                        Session["DepartmentId"] = departmentId;         // null for Student/MainAdmin/SuperAdmin
+                        Session["AccessLevel"] = accessLevel;
+                        Session["DepartmentId"] = departmentId;
+                        Session["DepartmentCode"] = departmentCode;
 
                         reader.Close();
 
-                        // ── Redirect based on Role + AccessLevel ──
+                        string returnUrl = Request.QueryString["ReturnUrl"];
+                        if (!string.IsNullOrEmpty(returnUrl) && IsLocalUrl(returnUrl))
+                        {
+                            Response.Redirect(returnUrl);
+                            return;
+                        }
+
                         if (role == "Student")
                         {
-                            Response.Redirect("~/Bit_Notes/dash.aspx"); // TODO: route by departmentCode once per-department student dashboards exist
+                            Response.Redirect("~/Bit_Notes/dash.aspx");
                         }
                         else if (role == "Teacher")
                         {
@@ -101,7 +112,6 @@ namespace Learning_System
                             }
                             else if (accessLevel == "DepartmentAdmin")
                             {
-                                // Routes dynamically by department code, e.g. ~/Bit_Admin/dash.aspx
                                 if (!string.IsNullOrEmpty(departmentCode))
                                 {
                                     string folderName = char.ToUpper(departmentCode[0]) + departmentCode.Substring(1).ToLower() + "_Admin";
@@ -133,6 +143,13 @@ namespace Learning_System
                     Label1.ForeColor = System.Drawing.Color.Red;
                 }
             }
+        }
+
+        private bool IsLocalUrl(string url)
+        {
+            return !string.IsNullOrEmpty(url)
+                && ((url[0] == '/' && (url.Length == 1 || (url[1] != '/' && url[1] != '\\')))
+                    || (url.Length > 1 && url[0] == '~' && url[1] == '/'));
         }
 
         protected void BackHomeButton_Click(object sender, EventArgs e)

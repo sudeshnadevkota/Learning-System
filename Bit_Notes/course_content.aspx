@@ -37,6 +37,9 @@
         <h4 class="mb-3">Please log in to view course files, assignments, and past questions.</h4>
         <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="~/login.aspx" CssClass="btn btn-primary btn-lg">Go to Login Page</asp:HyperLink>
     </asp:Panel>
+      <asp:Panel ID="pnlDeptDenied" runat="server" Visible="false" CssClass="text-center mt-5">
+    <h4 class="mb-3">Your department does not have access to this course's notes.</h4>
+</asp:Panel>
       <asp:Panel ID="MaterialsPanel" runat="server">
 
     <!-- ══ NOTES / PAST PAPERS TABS ══ -->
