@@ -386,21 +386,6 @@
 
                     <!-- Faculty / Department -->
                     <div class="lp-field">
-                        <label class="lp-field-label" for="<%= Status.ClientID %>">User Type</label>
-                        <div class="lp-input-wrap">
-                            <span class="lp-input-icon"><i class="bi bi-mortarboard-fill"></i></span>
-                            <asp:DropDownList CssClass="lp-form-control" ID="Status" runat="server" required="true" onchange="toggleRoleFields()">
-                                <asp:ListItem Text="Select" Value=""></asp:ListItem>
-                                <asp:ListItem Text="Students" Value="students"></asp:ListItem>
-                                <asp:ListItem Text="Staff" Value="Staff"></asp:ListItem>
-                                <asp:ListItem Text="Admin" Value="Admin"></asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Select user type*" ControlToValidate="Status" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
-                    </div>
-
-                    <!-- ══ STUDENT FIELDS (conditionally shown) ══ -->
-                    <div class="lp-field" id="studentDiv1" style="display: none;">
                         <label class="lp-field-label" for="<%= Faculty.ClientID %>">Faculty</label>
                         <div class="lp-input-wrap">
                             <span class="lp-input-icon"><i class="bi bi-building-fill"></i></span>
@@ -417,7 +402,8 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Select your faculty*" ControlToValidate="Faculty" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
 
-                    <div class="lp-field" id="studentDiv2" style="display: none;">
+                    <!-- Semester -->
+                    <div class="lp-field">
                         <label class="lp-field-label" for="<%= Semester.ClientID %>">Semester</label>
                         <div class="lp-input-wrap">
                             <span class="lp-input-icon"><i class="bi bi-journal-bookmark-fill"></i></span>
@@ -433,6 +419,7 @@
                                 <asp:ListItem Text="8" Value="8"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="Select your semester*" ControlToValidate="Semester" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
 
                     <!-- LCID -->
@@ -459,54 +446,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function toggleRoleFields() {
-            var status = document.getElementById('<%= Status.ClientID %>').value;
-
-            var studentDiv1 = document.getElementById("studentDiv1");
-            var studentDiv2 = document.getElementById("studentDiv2");
-            var studentDiv3 = document.getElementById("studentDiv3");
-            var staffDiv1 = document.getElementById("staffDiv1");
-            var staffDiv2 = document.getElementById("staffDiv2");
-            var staffDiv3 = document.getElementById("staffDiv3");
-            var adminDiv1 = document.getElementById("adminDiv1");
-            var adminDiv2 = document.getElementById("adminDiv2");
-
-            var facultyDropdown = document.getElementById('<%= Faculty.ClientID %>');
-    var semesterDropdown = document.getElementById('<%= Semester.ClientID %>');
-
-    // hide everything first
-    studentDiv1.style.display = "none";
-    studentDiv2.style.display = "none";
-    studentDiv3.style.display = "none";
-    staffDiv1.style.display = "none";
-    staffDiv2.style.display = "none";
-    staffDiv3.style.display = "none";
-    adminDiv1.style.display = "none";
-    adminDiv2.style.display = "none";
-
-    facultyDropdown.removeAttribute("required");
-    semesterDropdown.removeAttribute("required");
-
-    if (status === "students") {
-        studentDiv1.style.display = "block";
-        studentDiv2.style.display = "block";
-        studentDiv3.style.display = "block";
-        facultyDropdown.setAttribute("required", "true");
-        semesterDropdown.setAttribute("required", "true");
-    } else if (status === "Staff") {
-        staffDiv1.style.display = "block";
-        staffDiv2.style.display = "block";
-        staffDiv3.style.display = "block";
-    } else if (status === "Admin") {
-        adminDiv1.style.display = "block";
-        adminDiv2.style.display = "block";
-    }
-}
-
-// re-sync visibility on every page load, including postbacks
-window.addEventListener("DOMContentLoaded", toggleRoleFields);
-</script>
 
 </asp:Content>
