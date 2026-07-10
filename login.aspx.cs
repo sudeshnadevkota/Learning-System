@@ -20,12 +20,12 @@ namespace Learning_System
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                // NEW — added StudentProfile + its Department join so Students
-                // get a DepartmentCode too, same as Teacher/Admin already had.
+                // NEW — added S.Semester so Students get their current semester in session too.
                 string query = @"SELECT U.ProfileId, U.UserName, U.Role,
                                          A.AccessLevel, A.DepartmentId AS AdminDeptId,
                                          T.DepartmentId AS TeacherDeptId,
                                          S.DepartmentId AS StudentDeptId,
+                                         S.Semester AS StudentSemester,
                                          DA.DepartmentCode AS AdminDeptCode,
                                          DT.DepartmentCode AS TeacherDeptCode,
                                          DS.DepartmentCode AS StudentDeptCode
@@ -58,6 +58,7 @@ namespace Learning_System
 
                         int? departmentId = null;
                         string departmentCode = null;
+                        int? semester = null; // NEW
 
                         if (role == "Teacher" && reader["TeacherDeptId"] != DBNull.Value)
                         {
@@ -69,11 +70,16 @@ namespace Learning_System
                             departmentId = Convert.ToInt32(reader["AdminDeptId"]);
                             departmentCode = reader["AdminDeptCode"].ToString();
                         }
-                        // NEW — Student branch
                         else if (role == "Student" && reader["StudentDeptId"] != DBNull.Value)
                         {
                             departmentId = Convert.ToInt32(reader["StudentDeptId"]);
                             departmentCode = reader["StudentDeptCode"].ToString();
+
+                            // NEW — only students have a semester
+                            if (reader["StudentSemester"] != DBNull.Value)
+                            {
+                                semester = Convert.ToInt32(reader["StudentSemester"]);
+                            }
                         }
 
                         Session["ProfileId"] = Convert.ToInt32(reader["ProfileId"]);
@@ -82,6 +88,7 @@ namespace Learning_System
                         Session["AccessLevel"] = accessLevel;
                         Session["DepartmentId"] = departmentId;
                         Session["DepartmentCode"] = departmentCode;
+                        Session["Semester"] = semester; // int? — null for Teacher/Admin, populated for Student
 
                         reader.Close();
 

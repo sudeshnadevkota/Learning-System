@@ -9,7 +9,8 @@ namespace Learning_System
         {
             public string Table { get; set; }
             public string Title { get; set; }
-            public string DepartmentCode { get; set; } // NEW
+            public string DepartmentCode { get; set; }
+            public int Semester { get; set; } // NEW — derived from Table, e.g. "bit_3_DSA" -> 3
         }
 
         public static readonly Dictionary<string, SubjectInfo> Subjects =
@@ -155,5 +156,28 @@ namespace Learning_System
                 { "MCS_PP", new SubjectInfo { Table = "mcs_4_PP", Title = "Project Paper", DepartmentCode = "MCS" } },
                 { "MCS_SEIIT", new SubjectInfo { Table = "mcs_4_SEIIT", Title = "Seminar in Emerging Issues in IT", DepartmentCode = "MCS" } },
             };
+
+        // NEW — derives Semester for every entry from its Table name (e.g. "bit_3_DSA" -> 3)
+        // Runs once when Subjects is first accessed.
+        static SubjectMap()
+        {
+            foreach (var kvp in Subjects)
+            {
+                var info = kvp.Value;
+                var parts = info.Table.Split('_');
+                if (parts.Length >= 2 && int.TryParse(parts[1], out int sem))
+                {
+                    info.Semester = sem;
+                }
+                else
+                {
+                    // Table didn't follow the "<dept>_<sem>_<code>" pattern — flag it loudly
+                    // instead of silently defaulting, so a bad entry can't slip students into
+                    // content they shouldn't see (or lock them out of content they should).
+                    throw new InvalidOperationException(
+                        $"SubjectMap: could not parse semester from Table \"{info.Table}\" for key \"{kvp.Key}\".");
+                }
+            }
+        }
     }
 }
