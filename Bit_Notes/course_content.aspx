@@ -168,7 +168,6 @@
 </main>
 
 <!-- ══ SYLLABUS MODAL ══ -->
-<!-- ══ SYLLABUS MODAL ══ -->
 <div class="syl-modal-bg" id="sylModal">
   <div class="syl-modal">
 
