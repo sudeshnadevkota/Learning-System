@@ -69,7 +69,7 @@ namespace Learning_System
 
                             if (Session["AccessLevel"]?.ToString() == "SuperAdmin") Response.Redirect("~/Administrator/default_administrator.aspx");
                             else if (Session["AccessLevel"]?.ToString() == "Moderator") Response.Redirect("~/Moderator/default_moderator.aspx");
-                            else Response.Redirect("~/MainAdmin/main_admin.aspx");
+                            else Response.Redirect("~/Bit_Admin/dash.aspx");
                         }
                         else if (status == "SuperAdmin") Response.Redirect("~/Administrator/default_administrator.aspx");
                         else if (status == "students") Response.Redirect("~/students/default_student.aspx");

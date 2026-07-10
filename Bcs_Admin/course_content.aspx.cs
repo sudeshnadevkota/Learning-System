@@ -143,20 +143,18 @@ namespace Learning_System.Bcs_Admin
             }
         }
 
-        private void update(int id, string topic, string name, string content, string category, string type)
+        private void update(int id, string topic, string name, string content)
         {
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                string sqlquery = "UPDATE " + TableName + " SET Topic = @Topic, Name = @Name, ContentType = @ContentType, " +
-                                  "FileCategory = @FileCategory, FileType = @FileType WHERE id = @id";
+                string sqlquery = "UPDATE " + TableName +
+                                   " SET Topic = @Topic, Name = @Name, ContentType = @ContentType WHERE id = @id";
 
                 using (SqlCommand cmd = new SqlCommand(sqlquery, con))
                 {
                     cmd.Parameters.AddWithValue("@Topic", topic);
                     cmd.Parameters.AddWithValue("@Name", name);
                     cmd.Parameters.AddWithValue("@ContentType", content);
-                    cmd.Parameters.AddWithValue("@FileCategory", category);
-                    cmd.Parameters.AddWithValue("@FileType", type);
                     cmd.Parameters.AddWithValue("@id", id);
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -181,14 +179,13 @@ namespace Learning_System.Bcs_Admin
         protected void GridView1_RowUpdating1(object sender, GridViewUpdateEventArgs e)
         {
             int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
-            update(
-                id,
-                ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox2")).Text,
-                ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox3")).Text,
-                ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox4")).Text,
-                ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox5")).Text,
-                ((TextBox)GridView1.Rows[e.RowIndex].FindControl("TextBox6")).Text
-            );
+
+            string topic = e.NewValues["Topic"].ToString();
+            string name = e.NewValues["Name"].ToString();
+            string content = e.NewValues["ContentType"].ToString();
+
+            update(id, topic, name, content);
+
             GridView1.EditIndex = -1;
             BindGrid();
         }

@@ -328,7 +328,8 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                         ErrorMessage="Enter topic name*"
                         ControlToValidate="TextBox1"
-                        CssClass="c-val-msg">
+                        CssClass="c-val-msg"
+                        ValidationGroup="UploadForm">
                     </asp:RequiredFieldValidator>
                 </div>
 
@@ -394,7 +395,7 @@
 
             <asp:Label ID="lblMessage" runat="server" CssClass="c-val-msg"></asp:Label>
             <br /><br />
-            <asp:Button ID="Button1" runat="server" class="c-btn-submit" Text="Submit Content" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" runat="server" class="c-btn-submit" Text="Submit Content" OnClick="Button1_Click" ValidationGroup="UploadForm"/>
         </div>
 
         <!-- Table Panel -->
@@ -409,7 +410,9 @@
                     BorderWidth="0"
                     CellPadding="0"
                     OnRowDeleting="GridView1_RowDeleting1"
-                    OnRowEditing="GridView1_RowEditing1">
+                    OnRowEditing="GridView1_RowEditing1"
+                    OnRowUpdating="GridView1_RowUpdating1"
+                    OnRowCancelingEdit="GridView1_RowCancelingEdit1">
                     <Columns>
                         <asp:BoundField DataField="Topic"       HeaderText="Topic" />
                         <asp:BoundField DataField="Name"        HeaderText="Name" />
@@ -423,7 +426,7 @@
                                 </asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
+                        <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" CausesValidation="false"/>
                     </Columns>
                 </asp:GridView>
             </div>
