@@ -1,4 +1,4 @@
-﻿git <%@ Page Title="" Language="C#" MasterPageFile="~/learning.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="Learning_System.Profile" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/learning.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="Learning_System.Profile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,7 +54,6 @@
             position: relative;
             display: flex;
             align-items: center;
-            justify-content: space-between;
         }
 
         .profile-banner::after {
@@ -80,17 +79,6 @@
             margin: 4px 0 0;
             font-size: 0.88rem;
             font-weight: 400;
-        }
-
-        .profile-banner-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.10);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
         }
 
         /* ---------- Body layout ---------- */
@@ -381,12 +369,6 @@
                         <h2>My Profile</h2>
                         <p>Manage your personal information and photo</p>
                     </div>
-                    <div class="profile-banner-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                            <circle cx="12" cy="7" r="4" />
-                        </svg>
-                    </div>
                 </div>
 
                 <div class="profile-body">
@@ -405,9 +387,9 @@
                                 </div>
                                 <asp:FileUpload ID="fileUpload" runat="server" CssClass="file-upload-hidden" onchange="this.form.submit();" />
 
-                                <asp:Label ID="lblDisplayName" runat="server" CssClass="id-name" Text="Dorji Sherpa" />
-                                <asp:Label ID="lblEmail" runat="server" CssClass="id-email" Text="dorjisherpa@gmail.com" />
-                                <asp:Label ID="lblStudentId" runat="server" CssClass="id-student" Text="Student ID: LC00017003701" />
+                                <asp:Label ID="lblDisplayName" runat="server" CssClass="id-name" />
+                                <asp:Label ID="lblEmail" runat="server" CssClass="id-email" />
+                                <asp:Label ID="lblStudentId" runat="server" CssClass="id-student" />
                             </div>
                         </div>
 
@@ -436,7 +418,16 @@
                                 </div>
                             </div>
 
-                           
+                            <div class="form-row">
+                                <div class="mb-3">
+                                    <label>Parent's Name</label>
+                                    <asp:TextBox ID="txtParentName" runat="server" CssClass="form-control" placeholder="Enter parent's name" />
+                                </div>
+                                <div class="mb-3">
+                                    <label>Parent's Contact Number</label>
+                                    <asp:TextBox ID="txtParentContact" runat="server" CssClass="form-control" placeholder="Enter parent's contact number" />
+                                </div>
+                            </div>
 
                             <div class="form-row">
                                 <div class="mb-3">

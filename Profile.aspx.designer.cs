@@ -96,6 +96,24 @@ namespace Learning_System
         protected global::System.Web.UI.WebControls.TextBox txtDOB;
 
         /// <summary>
+        /// txtParentName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtParentName;
+
+        /// <summary>
+        /// txtParentContact control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtParentContact;
+
+        /// <summary>
         /// txtLCID control.
         /// </summary>
         /// <remarks>

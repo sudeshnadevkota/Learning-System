@@ -3,7 +3,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    git 
+
 <link rel="stylesheet" type="text/css" href="<%= ResolveUrl("~/Bit_Notes/Css/note.css") %>" />
 
 <style>

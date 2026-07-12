@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/learning.Master" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="Learning_System.register" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <style>
@@ -19,7 +20,6 @@
                 box-sizing: border-box;
             }
 
-        /* ── OUTER WRAPPER — same wallpaper background as login ── */
         .lp-reg-wrap {
             width: 100%;
             min-height: 80vh;
@@ -64,20 +64,11 @@
             }
 
         @keyframes lpRegOrb {
-            0% {
-                transform: translate(0,0) scale(1);
-            }
-
-            50% {
-                transform: translate(30px,-38px) scale(1.08);
-            }
-
-            100% {
-                transform: translate(-18px,24px) scale(.95);
-            }
+            0% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(30px,-38px) scale(1.08); }
+            100% { transform: translate(-18px,24px) scale(.95); }
         }
 
-        /* ── CARD ── */
         .lp-reg-card {
             width: 100%;
             max-width: 820px;
@@ -91,15 +82,8 @@
         }
 
         @keyframes lpRegFadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px) scale(.97);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(24px) scale(.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .lp-reg-card::before {
@@ -112,7 +96,6 @@
             background: linear-gradient(90deg, var(--lp-primary) 0%, var(--lp-violet) 50%, #7c6ef5 100%);
         }
 
-        /* ── HEADER ── */
         .lp-reg-header {
             background: linear-gradient(160deg, rgba(20,30,72,.95) 0%, rgba(35,48,108,.90) 50%, rgba(55,72,148,.92) 100%);
             padding: 34px 44px;
@@ -154,7 +137,6 @@
             margin-top: 3px;
         }
 
-        /* ── BODY ── */
         .lp-reg-body {
             padding: 40px 44px 36px;
         }
@@ -243,7 +225,6 @@
             font-weight: 600;
         }
 
-        /* ── SUBMIT BUTTON ── */
         .lp-reg-btn-row {
             display: flex;
             justify-content: center;
@@ -296,22 +277,10 @@
             }
 
         @media (max-width: 700px) {
-            .lp-reg-header {
-                padding: 26px 28px;
-            }
-
-            .lp-reg-body {
-                padding: 30px 26px 28px;
-            }
-
-            .lp-reg-grid {
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
-
-            .lp-reg-title {
-                font-size: 20px;
-            }
+            .lp-reg-header { padding: 26px 28px; }
+            .lp-reg-body { padding: 30px 26px 28px; }
+            .lp-reg-grid { grid-template-columns: 1fr; gap: 18px; }
+            .lp-reg-title { font-size: 20px; }
         }
     </style>
 
@@ -324,7 +293,7 @@
                 </div>
                 <div>
                     <div class="lp-reg-title">Create Your Account</div>
-                    <div class="lp-reg-subtitle">Texas College &mdash; Learning Portal</div>
+                    <div class="lp-reg-subtitle">Texas College &mdash; Learning Portal (Student Registration)</div>
                 </div>
             </div>
 
@@ -416,7 +385,7 @@
                         </div>
                     </div>
 
-                    <!-- User Type -->
+                    <!-- Faculty / Department -->
                     <div class="lp-field">
                         <label class="lp-field-label" for="<%= Faculty.ClientID %>">Faculty</label>
                         <div class="lp-input-wrap">
@@ -431,6 +400,7 @@
                                 <asp:ListItem Text="MCS" Value="MCS"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Select your faculty*" ControlToValidate="Faculty" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
 
                     <!-- Semester -->
@@ -453,59 +423,12 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="Select your semester*" ControlToValidate="Semester" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
 
-                    <!-- Student: LCID (replaces the unused "Roll Number" column label) -->
-                    <div class="lp-field" id="studentDiv3" style="display: none;">
+                    <!-- LCID -->
+                    <div class="lp-field">
                         <label class="lp-field-label" for="<%= LCID.ClientID %>">LCID</label>
                         <div class="lp-input-wrap">
                             <span class="lp-input-icon"><i class="bi bi-card-text"></i></span>
                             <asp:TextBox CssClass="lp-form-control" ID="LCID" runat="server" placeholder="LCID"></asp:TextBox>
-                        </div>
-                    </div>
-
-                    <!-- ══ STAFF FIELDS (conditionally shown) ══ -->
-                    <div class="lp-field" id="staffDiv1" style="display: none;">
-                        <label class="lp-field-label" for="<%= Designation.ClientID %>">Designation</label>
-                        <div class="lp-input-wrap">
-                            <span class="lp-input-icon"><i class="bi bi-award-fill"></i></span>
-                            <asp:TextBox CssClass="lp-form-control" ID="Designation" runat="server" placeholder="e.g. Lecturer, HOD"></asp:TextBox>
-                        </div>
-                    </div>
-
-                    <div class="lp-field" id="staffDiv2" style="display: none;">
-                        <label class="lp-field-label" for="<%= StaffDepartment.ClientID %>">Department</label>
-                        <div class="lp-input-wrap">
-                            <span class="lp-input-icon"><i class="bi bi-diagram-3-fill"></i></span>
-                            <asp:TextBox CssClass="lp-form-control" ID="StaffDepartment" runat="server" placeholder="Department"></asp:TextBox>
-                        </div>
-                    </div>
-
-                    <!-- Staff: Subjects Handled -->
-                    <div class="lp-field" id="staffDiv3" style="display: none;">
-                        <label class="lp-field-label" for="<%= SubjectsHandled.ClientID %>">Subjects Handled</label>
-                        <div class="lp-input-wrap">
-                            <span class="lp-input-icon"><i class="bi bi-journal-text"></i></span>
-                            <asp:TextBox CssClass="lp-form-control" ID="SubjectsHandled" runat="server" placeholder="e.g. DBMS, Networking"></asp:TextBox>
-                        </div>
-                    </div>
-
-                    <!-- ══ ADMIN FIELDS (conditionally shown) ══ -->
-                    <div class="lp-field" id="adminDiv1" style="display: none;">
-                        <label class="lp-field-label" for="<%= AccessLevel.ClientID %>">Access Level</label>
-                        <div class="lp-input-wrap">
-                            <span class="lp-input-icon"><i class="bi bi-shield-lock-fill"></i></span>
-                            <asp:DropDownList CssClass="lp-form-control" ID="AccessLevel" runat="server">
-                                <asp:ListItem Text="Standard" Value="Standard"></asp:ListItem>
-                                <asp:ListItem Text="SuperAdmin" Value="SuperAdmin"></asp:ListItem>
-                                <asp:ListItem Text="Moderator" Value="Moderator"></asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-
-                    <div class="lp-field" id="adminDiv2" style="display: none;">
-                        <label class="lp-field-label" for="<%= AdminDepartment.ClientID %>">Department (optional)</label>
-                        <div class="lp-input-wrap">
-                            <span class="lp-input-icon"><i class="bi bi-diagram-3-fill"></i></span>
-                            <asp:TextBox CssClass="lp-form-control" ID="AdminDepartment" runat="server" placeholder="Department"></asp:TextBox>
                         </div>
                     </div>
 
