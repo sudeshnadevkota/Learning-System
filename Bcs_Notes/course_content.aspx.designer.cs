@@ -123,6 +123,15 @@ namespace Learning_System.Bcs_Notes
         protected global::System.Web.UI.WebControls.Literal litSylTitle;
 
         /// <summary>
+        /// sylPdfFrame control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlIframe sylPdfFrame;
+
+        /// <summary>
         /// hidSylUrl control.
         /// </summary>
         /// <remarks>

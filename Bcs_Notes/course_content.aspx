@@ -402,6 +402,7 @@
 
 <iframe
     id="sylPdfFrame"
+    runat="server"
     width="100%"
     height="700">
 </iframe>
@@ -490,35 +491,35 @@ function filterNotes(btn, filterType) {
         var frame = document.getElementById("sylPdfFrame");
         var hidUrl = document.getElementById("<%= hidSylUrl.ClientID %>");
 
-    if (frame && hidUrl && hidUrl.value && frame.getAttribute("src") !== hidUrl.value) {
-        frame.src = hidUrl.value;
+        if (frame && hidUrl && hidUrl.value && frame.getAttribute("src") !== hidUrl.value) {
+            frame.src = hidUrl.value;
+        }
+        if (modal) {
+            modal.classList.add("open");
+            document.body.style.overflow = "hidden";
+        }
     }
-    if (modal) {
-        modal.classList.add("open");
-        document.body.style.overflow = "hidden";
-    }
-}
 
-function closeSyllabus() {
-    var modal = document.getElementById("sylModal");
-    if (modal) {
-        modal.classList.remove("open");
-        document.body.style.overflow = "";
+    function closeSyllabus() {
+        var modal = document.getElementById("sylModal");
+        if (modal) {
+            modal.classList.remove("open");
+            document.body.style.overflow = "";
+        }
     }
-}
 
-document.addEventListener("DOMContentLoaded", function () {
-    var modal = document.getElementById("sylModal");
-    if (modal) {
-        modal.addEventListener("click", function (e) {
-            if (e.target === this) closeSyllabus();
-        });
-    }
-});
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById("sylModal");
+        if (modal) {
+            modal.addEventListener("click", function (e) {
+                if (e.target === this) closeSyllabus();
+            });
+        }
+    });
 
-document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeSyllabus();
-});
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeSyllabus();
+    });
 </script>
 
 </asp:Content>

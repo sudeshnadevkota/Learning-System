@@ -432,6 +432,16 @@
                                 <li><a href="/Bit_Notes/course_content.aspx?code=DMS">Database Management System</a></li>
                             </ul>
 
+                         <ul>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=DELD">Digital Electronics and Logic Design</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=DSA">Data Structure &amp; Algorithm</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=IM">Industrial Management</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=WT">Web Technology</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=LA">Linux Administration</a></li>
+                         <li><a href="/Bit_Notes/course_content.aspx?code=DMS">Database Management System</a></li>
+
+                           
+
                          </ul>
                         </div>
                     </li>
@@ -530,7 +540,7 @@ function toggleSidebar() {
     var menuBar = document.getElementById('menu-bar');
     var icon = document.getElementById('icon');
 
-    if (!sidebar || !content || !menuBar || !icon) return;
+        if (!sidebar || !content || !menuBar || !icon) return;
 
     if (document.body.classList.contains('sidebar-open')) {
         document.body.classList.remove('sidebar-open');
@@ -570,12 +580,12 @@ function closeSidebarOverlay() {
 function toggleSubmenu(event, submenuId) {
     if (event) event.preventDefault();
 
-    var submenu = document.getElementById(submenuId + '-submenu');
-    var icon = document.querySelector('.' + submenuId);
-    if (!submenu) return;
+        var submenu = document.getElementById(submenuId + '-submenu');
+        var icon = document.querySelector('.' + submenuId);
+        if (!submenu) return;
 
-    var parentLi = submenu.parentElement;
-    document.body.classList.add('sidebar-open');
+        var parentLi = submenu.parentElement;
+        document.body.classList.add('sidebar-open');
 
     var items = document.querySelectorAll('#sidebar > ul > li');
     for (var i = 0; i < items.length; i++) {
@@ -648,10 +658,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (menuBar) menuBar.style.left = '0.5rem';
     }
 
-    var links = document.querySelectorAll('#sidebar .submenu ul li a');
-    var currentUrl = new URL(window.location.href);
-    var currentFull = (currentUrl.pathname + currentUrl.search).toLowerCase();
-    var matchedSubmenuId = null;
+        var links = document.querySelectorAll('#sidebar .submenu ul li a');
+        var currentUrl = new URL(window.location.href);
+        var currentFull = (currentUrl.pathname + currentUrl.search).toLowerCase();
+        var matchedSubmenuId = null;
 
     for (var j = 0; j < links.length; j++) {
         var link = links[j];
