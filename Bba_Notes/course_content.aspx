@@ -402,10 +402,10 @@
 
 <iframe
     id="sylPdfFrame"
-    runat="server"
     width="100%"
     height="700">
 </iframe>
+<asp:HiddenField ID="hidSylUrl" runat="server" />
 
   </div>
 </div>
@@ -485,8 +485,14 @@ function filterNotes(btn, filterType) {
     }
 }
 
-function openSyllabus() {
-    var modal = document.getElementById("sylModal");
+    function openSyllabus() {
+        var modal = document.getElementById("sylModal");
+        var frame = document.getElementById("sylPdfFrame");
+        var hidUrl = document.getElementById("<%= hidSylUrl.ClientID %>");
+
+    if (frame && hidUrl && hidUrl.value && frame.getAttribute("src") !== hidUrl.value) {
+        frame.src = hidUrl.value;
+    }
     if (modal) {
         modal.classList.add("open");
         document.body.style.overflow = "hidden";

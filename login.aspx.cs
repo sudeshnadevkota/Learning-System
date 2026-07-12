@@ -101,7 +101,7 @@ namespace Learning_System
 
                         if (role == "Student")
                         {
-                            Response.Redirect("~/Bit_Notes/dash.aspx");
+                            Response.Redirect("~/default.aspx");
                         }
                         else if (role == "Teacher")
                         {
