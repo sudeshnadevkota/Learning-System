@@ -158,6 +158,7 @@
     <Content Include="Bit_Notes\Css\note.css" />
     <Content Include="Bit_Notes\dash.aspx" />
     <Content Include="Bit_Notes\logo\logo.png" />
+    <Content Include="Bit_Notes\logo\sidebar-removebg-preview.png" />
     <Content Include="Bit_Notes\Notices.aspx" />
     <Content Include="Bit_Notes\NoticeWidget.ascx" />
     <Content Include="Blog\blog1.aspx" />
@@ -183,6 +184,7 @@
     <Content Include="img\6 semester-BIT.png" />
     <Content Include="img\back.png" />
     <Content Include="img\Capture.PNG" />
+    <Content Include="img\sidebar-removebg-preview.png" />
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="MainAdmin\main_admin.aspx" />

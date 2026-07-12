@@ -4,10 +4,192 @@
 
 <link rel="stylesheet" type="text/css" href="<%= ResolveUrl("~/Bcs_Notes/Css/note.css") %>" />
 
+<style>
+    /* ===== Status Banner (shared base for login + dept-denied) ===== */
+    .status-banner-wrapper {
+        display: block !important;
+        width: 100% !important;
+        margin: 24px 0 40px 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .status-banner-wrapper .status-banner-card {
+        border-radius: 20px !important;
+        padding: 44px 56px !important;
+        width: 100% !important;
+        text-align: left !important;
+        position: relative !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 32px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .status-banner-wrapper .status-banner-left {
+        display: flex !important;
+        align-items: center !important;
+        gap: 22px !important;
+        position: relative !important;
+        z-index: 1 !important;
+        flex: 1 1 380px !important;
+        min-width: 0 !important;
+    }
+
+    .status-banner-wrapper .status-icon-badge {
+        flex: none !important;
+        width: 60px !important;
+        height: 60px !important;
+        border-radius: 16px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .status-banner-wrapper .status-banner-text {
+        min-width: 0 !important;
+    }
+
+    .status-banner-wrapper .status-banner-title {
+        color: #ffffff !important;
+        font-size: 21px !important;
+        font-weight: 700 !important;
+        margin: 0 0 6px 0 !important;
+        letter-spacing: 0.2px !important;
+    }
+
+    .status-banner-wrapper .status-banner-subtext {
+        color: rgba(255, 255, 255, 0.62) !important;
+        font-size: 14.5px !important;
+        line-height: 1.55 !important;
+        margin: 0 !important;
+        max-width: 460px !important;
+    }
+
+    /* ===== Login prompt (pink accent) ===== */
+    .login-prompt-wrapper .status-banner-card {
+        background: linear-gradient(135deg, #10154a 0%, #161b56 45%, #0b0e33 100%) !important;
+        border: 1px solid rgba(236, 35, 119, 0.25) !important;
+        box-shadow: 0 20px 50px rgba(6, 8, 34, 0.4), 0 0 0 1px rgba(255,255,255,0.03) inset !important;
+    }
+
+    .login-prompt-wrapper .status-banner-card::before {
+        content: "" !important;
+        position: absolute !important;
+        top: -80px !important;
+        right: 120px !important;
+        width: 260px !important;
+        height: 260px !important;
+        background: radial-gradient(circle, rgba(236, 35, 119, 0.22) 0%, transparent 70%) !important;
+        pointer-events: none !important;
+    }
+
+    .login-prompt-wrapper .status-banner-card::after {
+        content: "" !important;
+        position: absolute !important;
+        bottom: -100px !important;
+        left: -60px !important;
+        width: 220px !important;
+        height: 220px !important;
+        background: radial-gradient(circle, rgba(80, 90, 220, 0.18) 0%, transparent 70%) !important;
+        pointer-events: none !important;
+    }
+
+    .login-prompt-wrapper .status-icon-badge {
+        background: linear-gradient(135deg, #ec2377, #ff5fa2) !important;
+        box-shadow: 0 8px 22px rgba(236, 35, 119, 0.4) !important;
+    }
+
+    a.btn-login-elegant {
+        flex: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        background: linear-gradient(135deg, #ec2377, #ff5fa2) !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        font-size: 15px !important;
+        padding: 15px 34px !important;
+        border-radius: 12px !important;
+        text-decoration: none !important;
+        box-shadow: 0 10px 25px rgba(236, 35, 119, 0.35) !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        border: none !important;
+        position: relative !important;
+        z-index: 1 !important;
+        white-space: nowrap !important;
+    }
+
+    a.btn-login-elegant:hover,
+    a.btn-login-elegant:focus,
+    a.btn-login-elegant:active {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 30px rgba(236, 35, 119, 0.5) !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+
+    a.btn-login-elegant svg {
+        transition: transform 0.2s ease !important;
+    }
+
+    a.btn-login-elegant:hover svg {
+        transform: translateX(3px) !important;
+    }
+
+    /* ===== Department denied (amber accent) ===== */
+    .dept-denied-wrapper .status-banner-card {
+        background: linear-gradient(135deg, #1a1530 0%, #241a3a 45%, #150f28 100%) !important;
+        border: 1px solid rgba(245, 158, 11, 0.25) !important;
+        box-shadow: 0 20px 50px rgba(10, 6, 20, 0.4), 0 0 0 1px rgba(255,255,255,0.03) inset !important;
+    }
+
+    .dept-denied-wrapper .status-banner-card::before {
+        content: "" !important;
+        position: absolute !important;
+        top: -80px !important;
+        right: 120px !important;
+        width: 260px !important;
+        height: 260px !important;
+        background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, transparent 70%) !important;
+        pointer-events: none !important;
+    }
+
+    .dept-denied-wrapper .status-banner-card::after {
+        content: "" !important;
+        position: absolute !important;
+        bottom: -100px !important;
+        left: -60px !important;
+        width: 220px !important;
+        height: 220px !important;
+        background: radial-gradient(circle, rgba(236, 35, 119, 0.14) 0%, transparent 70%) !important;
+        pointer-events: none !important;
+    }
+
+    .dept-denied-wrapper .status-icon-badge {
+        background: linear-gradient(135deg, #f59e0b, #fbbf24) !important;
+        box-shadow: 0 8px 22px rgba(245, 158, 11, 0.35) !important;
+    }
+
+    @media (max-width: 640px) {
+        .status-banner-wrapper .status-banner-card {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            padding: 32px 28px !important;
+        }
+        a.btn-login-elegant {
+            width: 100% !important;
+            justify-content: center !important;
+        }
+    }
+</style>
+
 <main class="main">
   <div class="main-inner">
-
-        <!-- Hero Card -->
+      
+    <!-- Hero Card -->
     <div class="hero-card hero-card-compact fade-up d1">
 
       <div class="hero-tag">
@@ -33,18 +215,61 @@
         </button>
       </div>
     </div>
-   <asp:Panel ID="pnlLoginPrompt" runat="server" Visible="false" CssClass="text-center mt-5">
-      <h4 class="mb-3">Please log in to view course files, assignments, and past questions.</h4>
-      <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="~/login.aspx" CssClass="btn btn-primary btn-lg">Go to Login Page</asp:HyperLink>
-  </asp:Panel>
-    <asp:Panel ID="MaterialsPanel" runat="server">
 
-  <!-- ══ NOTES / PAST PAPERS TABS ══ -->
-  <div class="fade-up d2">
+    <asp:Panel ID="pnlLoginPrompt" runat="server" Visible="false" CssClass="status-banner-wrapper login-prompt-wrapper">
+        <div class="status-banner-card">
+            <div class="status-banner-left">
+                <div class="status-icon-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </div>
+                <div class="status-banner-text">
+                    <h4 class="status-banner-title">Members Only</h4>
+                    <p class="status-banner-subtext">
+                        Please log in to view course files, assignments, and past questions.
+                    </p>
+                </div>
+            </div>
+            <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="~/login.aspx" CssClass="btn-login-elegant">
+                <span>Go to Login Page</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </asp:HyperLink>
+        </div>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlDeptDenied" runat="server" Visible="false" CssClass="status-banner-wrapper dept-denied-wrapper">
+        <div class="status-banner-card">
+            <div class="status-banner-left">
+                <div class="status-icon-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                    </svg>
+                </div>
+                <div class="status-banner-text">
+                    <h4 class="status-banner-title">Access Restricted</h4>
+                    <p class="status-banner-subtext">
+                        Your department does not have access to this course's notes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </asp:Panel>
+
+      <asp:Panel ID="MaterialsPanel" runat="server">
+
+    <!-- ══ NOTES / PAST PAPERS TABS ══ -->
+    <div class="fade-up d2">
     
 
       <%-- Filter chips (kept outside the panels so it stays visible no matter which panel is active) --%>
       <div class="filter-bar">
+
       
         <div class="filter-chips">
           
@@ -166,7 +391,6 @@
   </div>
 </main>
 
-
 <!-- ══ SYLLABUS MODAL ══ -->
 <div class="syl-modal-bg" id="sylModal">
   <div class="syl-modal">
@@ -178,10 +402,10 @@
 
 <iframe
     id="sylPdfFrame"
-    runat="server"
     width="100%"
     height="700">
 </iframe>
+<asp:HiddenField ID="hidSylUrl" runat="server" />
 
   </div>
 </div>
@@ -261,8 +485,14 @@ function filterNotes(btn, filterType) {
     }
 }
 
-function openSyllabus() {
-    var modal = document.getElementById("sylModal");
+    function openSyllabus() {
+        var modal = document.getElementById("sylModal");
+        var frame = document.getElementById("sylPdfFrame");
+        var hidUrl = document.getElementById("<%= hidSylUrl.ClientID %>");
+
+    if (frame && hidUrl && hidUrl.value && frame.getAttribute("src") !== hidUrl.value) {
+        frame.src = hidUrl.value;
+    }
     if (modal) {
         modal.classList.add("open");
         document.body.style.overflow = "hidden";

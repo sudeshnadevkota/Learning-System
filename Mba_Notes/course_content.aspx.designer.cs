@@ -69,6 +69,15 @@ namespace Learning_System.Mba_Notes
         protected global::System.Web.UI.WebControls.HyperLink lnkLogin;
 
         /// <summary>
+        /// pnlDeptDenied control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDeptDenied;
+
+        /// <summary>
         /// MaterialsPanel control.
         /// </summary>
         /// <remarks>
@@ -114,12 +123,12 @@ namespace Learning_System.Mba_Notes
         protected global::System.Web.UI.WebControls.Literal litSylTitle;
 
         /// <summary>
-        /// sylPdfFrame control.
+        /// hidSylUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlIframe sylPdfFrame;
+        protected global::System.Web.UI.WebControls.HiddenField hidSylUrl;
     }
 }

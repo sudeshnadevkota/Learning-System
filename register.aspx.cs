@@ -99,7 +99,7 @@ namespace Learning_System
                 }
                 catch (Exception ex)
                 {
-                    transaction.Rollback();
+
                     lblError.Text = "Registration failed: " + ex.Message;
                 }
             }

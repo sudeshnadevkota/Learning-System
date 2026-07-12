@@ -22,89 +22,134 @@
             left: 0;
             width: 0;
             height: calc(100vh - 5rem);
-            background-color: #12183a;
+            background: linear-gradient(135deg, #0B1F66, #081547);
             color: #fff;
             overflow-x: hidden;
             overflow-y: auto;
             z-index: 999;
             transition: width 0.3s ease;
             font-family: 'DM Sans', sans-serif;
-            border-right: 1px solid rgba(255,255,255,0.07);
+            border-right: 1px solid rgba(124,58,237,0.20);
         }
 
-        /* Scrollbar */
-        #sidebar::-webkit-scrollbar { width: 4px; }
-        #sidebar::-webkit-scrollbar-track { background: transparent; }
-        #sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+            /* Scrollbar */
+            #sidebar::-webkit-scrollbar {
+                width: 4px;
+            }
 
-        /* ── SEMESTERS label at top ── */
-        #sidebar::before {
-            content: "SEMESTERS";
-            display: block;
-            font-family: 'Sora', sans-serif;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,0.35);
-            padding: 18px 20px 10px;
-        }
+            #sidebar::-webkit-scrollbar-track {
+                background: transparent;
+            }
 
-        #sidebar ul {
-            padding: 0;
-            list-style: none;
-            margin: 0;
-        }
+            #sidebar::-webkit-scrollbar-thumb {
+                background: rgba(124,58,237,0.30);
+                border-radius: 20px;
+            }
 
-        #sidebar ul li {
-            padding: 0;
-        }
+            /* Watermark logo at bottom of sidebar */
+            #sidebar::after {
+                content: '';
+                position: absolute;
+                bottom: -30px;
+                left: -70px;
+                width: 400px;
+                height: 400px;
+                background: url('logo/sidebar-removebg-preview.png') no-repeat center/contain;
+                opacity: 0.25;
+                pointer-events: none;
+                z-index: 0;
+            }
 
-        /* ── Semester top-level link ── */
-        #sidebar > ul > li > a {
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            padding: 11px 16px;
-            font-family: 'Sora', sans-serif;
-            font-size: 13.5px;
-            font-weight: 600;
-            border-left: 3px solid transparent;
-            transition: background 0.2s, border-color 0.2s, color 0.2s;
-            gap: 10px;
-        }
+            /* ── SEMESTERS label at top ── */
+            #sidebar::before {
+                content: "SEMESTERS";
+                display: block;
+                font-family: 'Sora', sans-serif;
+                font-size: 10px;
+                font-weight: 800;
+                letter-spacing: 2px;
+                color: rgba(255,255,255,0.35);
+                padding: 18px 20px 10px;
+                position: relative;
+                z-index: 1;
+            }
 
-        #sidebar > ul > li > a:hover {
-            background: rgba(255,255,255,0.06);
-            color: #fff;
-        }
+            #sidebar ul {
+                padding: 0;
+                list-style: none;
+                margin: 0;
+            }
 
-        /* Active semester (when submenu is open) */
-        #sidebar > ul > li.active-sem > a {
-            border-left-color: #FF2D8D;
-            background: rgba(255,45,141,0.10);
-            color: #fff;
-        }
+            #sidebar > ul {
+                padding: 6px 10px 20px;
+                position: relative;
+                z-index: 1;
+            }
+
+            #sidebar ul li {
+                padding: 0;
+                margin-bottom: 2px;
+            }
+
+            /* ── Semester top-level link ── */
+            #sidebar > ul > li > a {
+                color: rgba(255,255,255,0.85);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                padding: 10px 12px;
+                border-radius: 9px;
+                font-family: 'Sora', sans-serif;
+                font-size: 13.5px;
+                font-weight: 600;
+                position: relative;
+                transition: background 0.18s, color 0.18s;
+                gap: 10px;
+            }
+
+                #sidebar > ul > li > a:hover {
+                    background: rgba(124,58,237,0.18);
+                    color: #fff;
+                }
+
+            /* Active semester (when submenu is open) */
+            #sidebar > ul > li.active-sem > a {
+                background: rgba(30,58,138,0.55);
+                color: #fff;
+                font-weight: 700;
+                box-shadow: 0 3px 12px rgba(124,58,237,0.22);
+            }
+
+                #sidebar > ul > li.active-sem > a::before {
+                    content: "";
+                    position: absolute;
+                    left: -6px;
+                    top: 25%;
+                    bottom: 25%;
+                    width: 3px;
+                    border-radius: 2px;
+                    background: #7c3aed;
+                }
 
         /* ── Numbered badge ── */
         .sem-badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 22px;
-            height: 22px;
-            border-radius: 7px;
+            width: 20px;
+            height: 20px;
+            border-radius: 6px;
             background: rgba(255,255,255,0.12);
             font-size: 11px;
             font-weight: 700;
             font-family: 'Sora', sans-serif;
             color: rgba(255,255,255,0.7);
             flex-shrink: 0;
-            transition: background 0.2s, color 0.2s;
+            transition: background 0.18s, color 0.18s;
         }
 
         #sidebar > ul > li.active-sem .sem-badge {
-            background: #FF2D8D;
+            background: #7c3aed;
             color: #fff;
         }
 
@@ -117,7 +162,9 @@
             gap: 8px;
         }
 
-        .sem-name { flex: 1; }
+        .sem-name {
+            flex: 1;
+        }
 
         .fas.fa-caret-down {
             transition: transform 0.3s ease;
@@ -126,60 +173,66 @@
             margin-left: auto;
         }
 
-        .rotate { transform: rotate(180deg); }
+        .rotate {
+            transform: rotate(180deg);
+        }
 
         /* ── Submenu / subjects ── */
         #sidebar .submenu {
             display: none;
-            padding: 4px 0 8px 0;
-            background: rgba(0,0,0,0.15);
+            padding: 2px 0 6px 0;
         }
 
-        #sidebar .submenu ul { padding: 0; }
+            #sidebar .submenu ul {
+                padding: 0;
+            }
 
-        #sidebar .submenu ul li a {
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            padding: 7px 16px 7px 36px;
-            font-size: 13px;
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 400;
-            transition: color 0.2s, background 0.2s;
-            position: relative;
-        }
+                #sidebar .submenu ul li a {
+                    color: rgba(255,255,255,0.55);
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 9px;
+                    padding: 8px 12px 8px 40px;
+                    margin-bottom: 1px;
+                    border-radius: 8px;
+                    font-size: 12.5px;
+                    font-family: 'DM Sans', sans-serif;
+                    font-weight: 400;
+                    transition: color 0.18s, background 0.18s;
+                    position: relative;
+                }
 
-        /* dot before each subject */
-        #sidebar .submenu ul li a::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.25);
-            flex-shrink: 0;
-            transition: background 0.2s;
-        }
+                    /* dot before each subject */
+                    #sidebar .submenu ul li a::before {
+                        content: "";
+                        width: 5px;
+                        height: 5px;
+                        border-radius: 50%;
+                        background: rgba(255,255,255,0.25);
+                        flex-shrink: 0;
+                        transition: background 0.18s;
+                    }
 
-        #sidebar .submenu ul li a:hover {
-            color: rgba(255,255,255,0.85);
-            background: rgba(255,255,255,0.04);
-        }
+                    #sidebar .submenu ul li a:hover {
+                        color: #fff;
+                        background: rgba(124,58,237,0.14);
+                    }
 
-        #sidebar .submenu ul li a:hover::before {
-            background: rgba(255,255,255,0.6);
-        }
+                        #sidebar .submenu ul li a:hover::before {
+                            background: rgba(255,255,255,0.7);
+                        }
 
-        /* Active subject link */
-        #sidebar .submenu ul li.active-subject > a {
-            color: #FF2D8D;
-            font-weight: 500;
-        }
+                /* Active subject link */
+                #sidebar .submenu ul li.active-subject > a {
+                    color: #fff;
+                    font-weight: 600;
+                    background: rgba(124,58,237,0.22);
+                }
 
-        #sidebar .submenu ul li.active-subject > a::before {
-            background: #FF2D8D;
-        }
+                    #sidebar .submenu ul li.active-subject > a::before {
+                        background: #7c3aed;
+                    }
 
         /* ══ CONTENT ══ */
         #content {
@@ -200,10 +253,22 @@
         }
 
         @media (min-width: 901px) {
-            #sidebar { width: 300px; }
-            #content { margin-left: 300px; width: calc(100% - 300px); }
-            #menu-bar { left: 300px; }
-            #icon { transform: rotate(180deg); }
+            #sidebar {
+                width: 300px;
+            }
+
+            #content {
+                margin-left: 300px;
+                width: calc(100% - 300px);
+            }
+
+            #menu-bar {
+                left: 300px;
+            }
+
+            #icon {
+                transform: rotate(180deg);
+            }
         }
 
         .no-transition #sidebar,
@@ -219,26 +284,30 @@
             z-index: 1000;
         }
 
-        #menu-bar button {
-            background: #e8ecf7 !important;
-            border: 1.5px solid #c5cde8 !important;
-            border-radius: 8px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            transition: background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px rgba(8,21,71,0.12);
-        }
+            #menu-bar button {
+                background: #e8ecf7 !important;
+                border: 1.5px solid #c5cde8 !important;
+                border-radius: 8px;
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                transition: background 0.2s, box-shadow 0.2s;
+                box-shadow: 0 2px 8px rgba(8,21,71,0.12);
+            }
 
-        #menu-bar button:hover {
-            background: #d0d8f0 !important;
-            box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
-        }
+                #menu-bar button:hover {
+                    background: #d0d8f0 !important;
+                    box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
+                }
 
-        #icon { color: #12183a !important; font-size: 15px; font-weight: 900; }
+        #icon {
+            color: #12183a !important;
+            font-size: 15px;
+            font-weight: 900;
+        }
 
         /* ══ MEDIA QUERIES ══ */
         @media (max-width: 900px) {
@@ -259,6 +328,7 @@
                 background: rgba(0,0,0,0.45);
                 z-index: 998;
             }
+
             .sidebar-open #sidebar-overlay {
                 display: block;
             }
@@ -277,9 +347,14 @@
         }
 
         @media (max-width: 576px) {
-            .sidebar-open #sidebar { width: 240px; }
-            #menu-bar { left: 0.3rem; }
-            
+            .sidebar-open #sidebar {
+                width: 240px;
+            }
+
+            #menu-bar {
+                left: 0.3rem;
+            }
+
             .mobile-brand-text {
                 font-size: 1.4rem !important;
             }
@@ -298,13 +373,13 @@
 
         <nav class="navbar navbar-light bg-light shadow"
             style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1.25rem; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; box-sizing: border-box;">
-            
+
             <div style="display: flex; align-items: center; margin: 0; padding: 0;">
                 <a href="../../Default.aspx" style="display: flex; align-items: center;">
                     <img src="logo/logo.png" alt="Logo" style="width: auto; max-width: 120px; height: auto; max-height: 3.2rem; display: block;">
                 </a>
             </div>
-            
+
             <div style="display: flex; align-items: center; margin: 0; padding: 0; text-align: right;">
                 <h3 class="mobile-header-text" style="font-weight: bold; color: #002366; margin: 0; font-size: 1.6rem; letter-spacing: 0.5px; white-space: nowrap !important; display: inline-block;">BIT NOTES</h3>
             </div>
@@ -348,14 +423,14 @@
                         </a>
                         <div id="third-submenu" class="submenu">
 
-                         <ul>
-                         <li><a href="/Bit_Notes/course_content.aspx?code=DELD">Digital Electronics and Logic Design</a></li>
-                         <li><a href="/Bit_Notes/course_content.aspx?code=DSA">Data Structure &amp; Algorithm</a></li>
-                         <li><a href="/Bit_Notes/course_content.aspx?code=IM">Industrial Management</a></li>
-                         <li><a href="/Bit_Notes/course_content.aspx?code=WT">Web Technology</a></li>
-                         <li><a href="/Bit_Notes/course_content.aspx?code=LA">Linux Administration</a></li>
-                         <li><a href="/Bit_Notes/course_content.aspx?code=DMS">Database Management System</a></li>
-                         </ul>
+                            <ul>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=DELD">Digital Electronics and Logic Design</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=DSA">Data Structure &amp; Algorithm</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=IM">Industrial Management</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=WT">Web Technology</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=LA">Linux Administration</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=DMS">Database Management System</a></li>
+                            </ul>
 
                          </ul>
                         </div>
@@ -444,12 +519,12 @@
         </div>
     </form>
 
-<script>
-  function isMobile() {
+    <script>
+function isMobile() {
     return window.innerWidth <= 900;
-  }
+}
 
-  function toggleSidebar() {
+function toggleSidebar() {
     var sidebar = document.getElementById('sidebar');
     var content = document.getElementById('content');
     var menuBar = document.getElementById('menu-bar');
@@ -458,30 +533,30 @@
     if (!sidebar || !content || !menuBar || !icon) return;
 
     if (document.body.classList.contains('sidebar-open')) {
-      document.body.classList.remove('sidebar-open');
-      sidebar.style.width = '0';
-      content.style.marginLeft = '0';
-      content.style.width = '100%';
-      menuBar.style.left = '0.5rem';
-      icon.style.transform = 'rotate(0deg)';
-    } else {
-      document.body.classList.add('sidebar-open');
-      sidebar.style.width = '300px';
-
-      if (!isMobile()) {
-        content.style.marginLeft = '300px';
-        content.style.width = 'calc(100% - 300px)';
-        menuBar.style.left = '300px';
-      } else {
+        document.body.classList.remove('sidebar-open');
+        sidebar.style.width = '0';
         content.style.marginLeft = '0';
         content.style.width = '100%';
         menuBar.style.left = '0.5rem';
-      }
-      icon.style.transform = 'rotate(180deg)';
-    }
-  }
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        document.body.classList.add('sidebar-open');
+        sidebar.style.width = '300px';
 
-  function closeSidebarOverlay() {
+        if (!isMobile()) {
+            content.style.marginLeft = '300px';
+            content.style.width = 'calc(100% - 300px)';
+            menuBar.style.left = '300px';
+        } else {
+            content.style.marginLeft = '0';
+            content.style.width = '100%';
+            menuBar.style.left = '0.5rem';
+        }
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+
+function closeSidebarOverlay() {
     var sidebar = document.getElementById('sidebar');
     var content = document.getElementById('content');
     var icon = document.getElementById('icon');
@@ -490,9 +565,9 @@
     if (sidebar) sidebar.style.width = '0';
     if (content) { content.style.marginLeft = '0'; content.style.width = '100%'; }
     if (icon) icon.style.transform = 'rotate(0deg)';
-  }
+}
 
-  function toggleSubmenu(event, submenuId) {
+function toggleSubmenu(event, submenuId) {
     if (event) event.preventDefault();
 
     var submenu = document.getElementById(submenuId + '-submenu');
@@ -504,41 +579,41 @@
 
     var items = document.querySelectorAll('#sidebar > ul > li');
     for (var i = 0; i < items.length; i++) {
-      var li = items[i];
-      if (li !== parentLi) {
-        li.classList.remove('active-sem');
-        var otherSubmenu = li.querySelector('.submenu');
-        var otherIcon = li.querySelector('.fas.fa-caret-down');
-        if (otherSubmenu) otherSubmenu.style.display = 'none';
-        if (otherIcon) otherIcon.classList.remove('rotate');
-      }
+        var li = items[i];
+        if (li !== parentLi) {
+            li.classList.remove('active-sem');
+            var otherSubmenu = li.querySelector('.submenu');
+            var otherIcon = li.querySelector('.fas.fa-caret-down');
+            if (otherSubmenu) otherSubmenu.style.display = 'none';
+            if (otherIcon) otherIcon.classList.remove('rotate');
+        }
     }
 
     if (submenu.style.display === 'block') {
-      submenu.style.display = 'none';
-      if (icon) icon.classList.remove('rotate');
-      if (parentLi) parentLi.classList.remove('active-sem');
-      sessionStorage.removeItem('openSubmenu');
+        submenu.style.display = 'none';
+        if (icon) icon.classList.remove('rotate');
+        if (parentLi) parentLi.classList.remove('active-sem');
+        sessionStorage.removeItem('openSubmenu');
     } else {
-      submenu.style.display = 'block';
-      if (icon) icon.classList.add('rotate');
-      if (parentLi) parentLi.classList.add('active-sem');
+        submenu.style.display = 'block';
+        if (icon) icon.classList.add('rotate');
+        if (parentLi) parentLi.classList.add('active-sem');
 
-      var sidebar = document.getElementById('sidebar');
-      var content = document.getElementById('content');
-      var menuBar = document.getElementById('menu-bar');
-      var mainIcon = document.getElementById('icon');
+        var sidebar = document.getElementById('sidebar');
+        var content = document.getElementById('content');
+        var menuBar = document.getElementById('menu-bar');
+        var mainIcon = document.getElementById('icon');
 
-      if (sidebar) sidebar.style.width = '300px';
-      if (content) { content.style.marginLeft = '300px'; content.style.width = 'calc(100% - 300px)'; }
-      if (menuBar) menuBar.style.left = '300px';
-      if (mainIcon) mainIcon.style.transform = 'rotate(180deg)';
+        if (sidebar) sidebar.style.width = '300px';
+        if (content) { content.style.marginLeft = '300px'; content.style.width = 'calc(100% - 300px)'; }
+        if (menuBar) menuBar.style.left = '300px';
+        if (mainIcon) mainIcon.style.transform = 'rotate(180deg)';
 
-      sessionStorage.setItem('openSubmenu', submenuId);
+        sessionStorage.setItem('openSubmenu', submenuId);
     }
-  }
+}
 
-  function openSubmenuById(submenuId) {
+function openSubmenuById(submenuId) {
     var submenu = document.getElementById(submenuId + '-submenu');
     var icon = document.querySelector('.' + submenuId);
     if (!submenu) return;
@@ -547,30 +622,30 @@
     submenu.style.display = 'block';
     if (icon) icon.classList.add('rotate');
     if (parentLi) parentLi.classList.add('active-sem');
-  }
+}
 
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     var sidebar = document.getElementById('sidebar');
     var content = document.getElementById('content');
     var menuBar = document.getElementById('menu-bar');
     var icon = document.getElementById('icon');
 
     if (!isMobile()) {
-      document.body.classList.add('no-transition');
-      document.body.classList.add('sidebar-open');
+        document.body.classList.add('no-transition');
+        document.body.classList.add('sidebar-open');
 
-      if (sidebar) sidebar.style.width = '300px';
-      if (content) { content.style.marginLeft = '300px'; content.style.width = 'calc(100% - 300px)'; }
-      if (menuBar) menuBar.style.left = '300px';
-      if (icon) icon.style.transform = 'rotate(180deg)';
+        if (sidebar) sidebar.style.width = '300px';
+        if (content) { content.style.marginLeft = '300px'; content.style.width = 'calc(100% - 300px)'; }
+        if (menuBar) menuBar.style.left = '300px';
+        if (icon) icon.style.transform = 'rotate(180deg)';
 
-      requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          document.body.classList.remove('no-transition');
+            requestAnimationFrame(function () {
+                document.body.classList.remove('no-transition');
+            });
         });
-      });
     } else {
-      if (menuBar) menuBar.style.left = '0.5rem';
+        if (menuBar) menuBar.style.left = '0.5rem';
     }
 
     var links = document.querySelectorAll('#sidebar .submenu ul li a');
@@ -579,41 +654,41 @@
     var matchedSubmenuId = null;
 
     for (var j = 0; j < links.length; j++) {
-      var link = links[j];
-      var hrefAttr = link.getAttribute('href');
-      if (!hrefAttr) continue;
+        var link = links[j];
+        var hrefAttr = link.getAttribute('href');
+        if (!hrefAttr) continue;
 
-      var linkUrl = new URL(hrefAttr, window.location.origin);
-      var linkFull = (linkUrl.pathname + linkUrl.search).toLowerCase();
+        var linkUrl = new URL(hrefAttr, window.location.origin);
+        var linkFull = (linkUrl.pathname + linkUrl.search).toLowerCase();
 
-      if (linkFull === currentFull) {
-        if (link.parentElement) link.parentElement.classList.add('active-subject');
-        var parentSubmenu = link.parentElement;
+        if (linkFull === currentFull) {
+            if (link.parentElement) link.parentElement.classList.add('active-subject');
+            var parentSubmenu = link.parentElement;
 
-        while (parentSubmenu && !parentSubmenu.classList.contains('submenu')) {
-          parentSubmenu = parentSubmenu.parentElement;
+            while (parentSubmenu && !parentSubmenu.classList.contains('submenu')) {
+                parentSubmenu = parentSubmenu.parentElement;
+            }
+
+            if (parentSubmenu) {
+                parentSubmenu.style.display = 'block';
+                var parentLi = parentSubmenu.parentElement;
+                if (parentLi) {
+                    parentLi.classList.add('active-sem');
+                    var caret = parentLi.querySelector('.fas.fa-caret-down');
+                    if (caret) caret.classList.add('rotate');
+                    matchedSubmenuId = parentSubmenu.id.replace('-submenu', '');
+                }
+            }
         }
-
-        if (parentSubmenu) {
-          parentSubmenu.style.display = 'block';
-          var parentLi = parentSubmenu.parentElement;
-          if (parentLi) {
-            parentLi.classList.add('active-sem');
-            var caret = parentLi.querySelector('.fas.fa-caret-down');
-            if (caret) caret.classList.add('rotate');
-            matchedSubmenuId = parentSubmenu.id.replace('-submenu', '');
-          }
-        }
-      }
     }
 
     if (matchedSubmenuId) {
-      sessionStorage.setItem('openSubmenu', matchedSubmenuId);
+        sessionStorage.setItem('openSubmenu', matchedSubmenuId);
     } else {
-      var savedSubmenu = sessionStorage.getItem('openSubmenu');
-      if (savedSubmenu) openSubmenuById(savedSubmenu);
+        var savedSubmenu = sessionStorage.getItem('openSubmenu');
+        if (savedSubmenu) openSubmenuById(savedSubmenu);
     }
-  });
+});
 </script>
 </body>
 </html>

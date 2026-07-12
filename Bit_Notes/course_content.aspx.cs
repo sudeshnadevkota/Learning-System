@@ -18,6 +18,8 @@ namespace Learning_System.Bit_Notes
 
             TableName = subject.Table;
 
+            bool hasAccess = CheckAccess(subject);
+
             if (Session["ProfileId"] == null)
             {
                 // Not logged in at all
@@ -29,13 +31,6 @@ namespace Learning_System.Bit_Notes
             }
             else
             {
-                // NEW — logged in, but check DepartmentCode matches this subject's department
-                string userDeptCode = Session["DepartmentCode"] as string;
-
-                bool hasAccess = !string.IsNullOrEmpty(userDeptCode)
-                                  && !string.IsNullOrEmpty(subject.DepartmentCode)
-                                  && string.Equals(userDeptCode, subject.DepartmentCode, StringComparison.OrdinalIgnoreCase);
-
                 if (hasAccess)
                 {
                     MaterialsPanel.Visible = true;
@@ -46,7 +41,7 @@ namespace Learning_System.Bit_Notes
                 {
                     MaterialsPanel.Visible = false;
                     pnlLoginPrompt.Visible = false;
-                    pnlDeptDenied.Visible = true; // NEW — "your department doesn't have access" message
+                    pnlDeptDenied.Visible = true; // covers both dept mismatch AND semester not reached yet
                 }
             }
 
@@ -54,18 +49,34 @@ namespace Learning_System.Bit_Notes
             {
                 LoadSyllabusInfo(code, subject.Title);
 
-                // Only bind grid data if user is logged in AND has department access
-                string userDeptCode = Session["DepartmentCode"] as string;
-                bool hasAccess = Session["ProfileId"] != null
-                                  && !string.IsNullOrEmpty(userDeptCode)
-                                  && !string.IsNullOrEmpty(subject.DepartmentCode)
-                                  && string.Equals(userDeptCode, subject.DepartmentCode, StringComparison.OrdinalIgnoreCase);
-
                 if (hasAccess)
                 {
                     BindData(GridViewNotes, GridViewPapers);
                 }
             }
+        }
+
+        // Logged in + same department + subject's semester is current or already passed
+        private bool CheckAccess(SubjectMap.SubjectInfo subject)
+        {
+            if (Session["ProfileId"] == null)
+                return false;
+
+            string userDeptCode = Session["DepartmentCode"] as string;
+            bool deptMatch = !string.IsNullOrEmpty(userDeptCode)
+                              && !string.IsNullOrEmpty(subject.DepartmentCode)
+                              && string.Equals(userDeptCode, subject.DepartmentCode, StringComparison.OrdinalIgnoreCase);
+
+            if (!deptMatch)
+                return false;
+
+            int userSemester;
+            if (!int.TryParse(Session["Semester"]?.ToString(), out userSemester))
+                return false;
+
+            // subject.Semester <= userSemester means:
+            // 4th semester student can access semester 1, 2, 3, 4 but not 5
+            return subject.Semester <= userSemester;
         }
 
         private void LoadSyllabusInfo(string code, string fallbackTitle)
