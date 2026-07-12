@@ -212,29 +212,31 @@
 }
 .lp-toggle-pw:hover { color: var(--lp-primary); }
 
+
 /* Back to home button */
 .lp-back-home-link {
   position: absolute;
-  top: 20px;
-  left: 24px;
+  top: 8px;
+  right: 20px;
+  width: auto;
+  height: auto;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  font-weight: 700;
-  color: rgba(255,255,255,.85);
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1;
+  color: #b0bbc8;
+  background: none;
+  border-radius: 0;
   text-decoration: none;
   z-index: 2;
   transition: color var(--lp-transition), transform var(--lp-transition);
 }
 .lp-back-home-link:hover {
-  color: #fff;
-  transform: translateX(-2px);
-  text-decoration: underline;
-}
-.lp-back-arrow {
-  font-size: 15px;
-  line-height: 1;
+  color: #1e2a5e;
+  transform: scale(1.1);
+  text-decoration: none;
 }
 
 
@@ -265,7 +267,7 @@
   .lp-brand-panel { padding: 52px 32px 30px; }
   .lp-brand-accent-bar, .lp-brand-tagline { display: none; }
   .lp-login-panel { flex: none; padding: 34px 30px; }
-  .lp-back-home-link { top: 14px; left: 16px; font-size: 13px; }
+  .lp-back-home-link { top: 14px; right: 14px; }
 }
 </style>
 </head>
@@ -274,9 +276,9 @@
         <div class="lp-wrap">
           <div class="lp-shell">
 
-              <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lp-back-home-link" OnClick="BackHomeButton_Click">
-            <span class="lp-back-arrow">&larr;</span> Back to Home
-          </asp:LinkButton>
+              <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lp-back-home-link" OnClick="BackHomeButton_Click" ToolTip="Back to Home">
+    &times;
+</asp:LinkButton>
 
             <!-- LEFT — BRANDING PANEL -->
             <div class="lp-brand-panel">

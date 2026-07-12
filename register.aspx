@@ -95,6 +95,34 @@
             background: linear-gradient(90deg, var(--lp-primary) 0%, var(--lp-violet) 50%, #7c6ef5 100%);
         }
 
+        .lp-reg-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1;
+  color: #b0bbc8;
+  background: none;
+  border-radius: 0;
+  text-decoration: none;
+  z-index: 2;
+  transition: color var(--lp-transition), transform var(--lp-transition);
+}
+.lp-reg-close-btn:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  text-decoration: none;
+}
+@media (max-width: 700px) {
+  .lp-reg-close-btn { top: 8px; right: 14px; }
+}
+
         .lp-reg-header {
             background: linear-gradient(160deg, rgba(20,30,72,.95) 0%, rgba(35,48,108,.90) 50%, rgba(55,72,148,.92) 100%);
             padding: 34px 44px;
@@ -285,6 +313,11 @@
 
     <div class="lp-reg-wrap">
         <div class="lp-reg-card">
+           
+
+    <asp:HyperLink ID="HyperLinkClose" runat="server" CssClass="lp-reg-close-btn" NavigateUrl="~/Login.aspx" ToolTip="Back to Login">&times;</asp:HyperLink>
+
+    
 
             <div class="lp-reg-header">
                 <div class="lp-reg-logo-box">
