@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Notes/note.Master" AutoEventWireup="true" CodeBehind="dash.aspx.cs" Inherits="Learning_System.Bit_Notes.dash" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Bit_Notes/note.Master" AutoEventWireup="true" CodeBehind="dash.aspx.cs" Inherits="Learning_System.Bit_Notes.dash" ResponseEncoding="utf-8" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -11,6 +11,8 @@
       --pink-glow: rgba(255,45,141,0.22);
       --pink-soft: rgba(255,45,141,0.1);
       --bg: #f0f3fc;
+
+
       --bg-card: #ffffff;
       --text-primary: #0B1F66;
       --text-secondary: #5a6a99;
