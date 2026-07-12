@@ -15,6 +15,15 @@ namespace Learning_System
     {
 
         /// <summary>
+        /// HyperLinkClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLinkClose;
+
+        /// <summary>
         /// Full_name control.
         /// </summary>
         /// <remarks>
