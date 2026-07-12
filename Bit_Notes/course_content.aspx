@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="Business English - BIT Notes" Language="C#" MasterPageFile="~/Bit_Notes/note.Master" AutoEventWireup="true" CodeBehind="course_content.aspx.cs" Inherits="Learning_System.Bit_Notes.course_content" %>
 
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <link rel="stylesheet" type="text/css" href="<%= ResolveUrl("~/Bit_Notes/Css/note.css") %>" />
