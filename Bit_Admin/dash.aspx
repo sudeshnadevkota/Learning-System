@@ -37,7 +37,7 @@
     .d-section { font-size: 11px; letter-spacing: 2px; color: #0B1F66; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
     .d-section::after { content: ''; flex: 1; height: 1px; background: rgba(11,31,102,0.08); }
 
-    /* ── SYSTEM METRICS PANEL (REPLACED QUICK ACCESS) ── */
+    /* ── SYSTEM METRICS PANEL ── */
     .d-metrics-panel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
     .d-metric-box { border-radius: 14px; border: 1px solid rgba(11,31,102,0.06); background: #ffffff; padding: 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 12px rgba(11,31,102,0.01); }
     .d-metric-icon-wrap { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
@@ -54,7 +54,6 @@
     .d-card { border-radius: 14px; padding: 22px 20px; position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s; border: none; }
     .d-card:hover { transform: translateY(-4px); }
 
-    /* PINK card */
     .d-card.card-pink { background: linear-gradient(145deg, #FF2D8D, #ff6aae); }
     .d-card.card-pink .d-card-top-bar { background: rgba(255,255,255,0.25); }
     .d-card.card-pink .d-card-icon-inner { background: rgba(255,255,255,0.2); }
@@ -66,7 +65,6 @@
     .d-card.card-pink .d-go:hover { background: rgba(255,255,255,0.88); }
     .d-card.card-pink .d-badge-status { color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.15); }
 
-    /* BLUE card */
     .d-card.card-blue { background: linear-gradient(145deg, #0B1F66, #1a3499); }
     .d-card.card-blue .d-card-top-bar { background: rgba(255,255,255,0.15); }
     .d-card.card-blue .d-card-icon-inner { background: rgba(255,255,255,0.12); }
@@ -78,7 +76,6 @@
     .d-card.card-blue .d-go:hover { background: rgba(255,255,255,0.88); }
     .d-card.card-blue .d-badge-status { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.12); }
 
-    /* YELLOW card */
     .d-card.card-yellow { background: linear-gradient(145deg, #F6C84B, #fad96e); }
     .d-card.card-yellow .d-card-top-bar { background: rgba(255,255,255,0.3); }
     .d-card.card-yellow .d-card-icon-inner { background: rgba(255,255,255,0.3); }
@@ -90,7 +87,6 @@
     .d-card.card-yellow .d-go:hover { background: rgba(255,255,255,0.9); }
     .d-card.card-yellow .d-badge-status { color: rgba(80,50,0,0.6); background: rgba(255,255,255,0.25); }
 
-    /* Shared card internals */
     .d-card-top-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 14px 14px 0 0; }
     .d-card-icon { margin-bottom: 16px; }
     .d-card-icon-inner { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; }
@@ -120,6 +116,19 @@
     .d-btn-navy:hover { background: rgba(11,31,102,0.05); text-decoration: none; color: #0B1F66; }
     .d-btn-ghost { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: rgba(11,31,102,0.4); background: transparent; border: none; padding: 9px 6px; text-decoration: none; cursor: pointer; }
     .d-btn-ghost:hover { color: rgba(11,31,102,0.7); text-decoration: none; }
+
+    /* ── ROSTER TABLE ── */
+    .d-feature-body table.table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .d-feature-body table.table th {
+        text-align: left; padding: 12px 14px; color: rgba(11,31,102,0.5);
+        font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+        border-bottom: 2px solid rgba(11,31,102,0.06); font-weight: 700;
+    }
+    .d-feature-body table.table td {
+        padding: 12px 14px; border-bottom: 1px solid rgba(11,31,102,0.06); color: #333;
+    }
+    .d-feature-body table.table tr:last-child td { border-bottom: none; }
+    .d-feature-body table.table tr:hover td { background: rgba(11,31,102,0.015); }
 
     @media (max-width: 992px) { .d-metrics-panel { grid-template-columns: 1fr; } }
     @media (max-width: 768px) { .d-cards { grid-template-columns: 1fr; } }
@@ -156,13 +165,10 @@
         </div>
     </div>
 
-
-
     <%-- MODULE CARDS — Pink · Blue · Yellow --%>
     <div class="d-section">E-Learning Modules</div>
     <div class="d-cards">
 
-        <%-- PINK --%>
         <div class="d-card card-pink">
             <div class="d-card-top-bar"></div>
             <div class="d-card-icon">
@@ -177,7 +183,6 @@
             </div>
         </div>
 
-        <%-- BLUE --%>
         <div class="d-card card-blue">
             <div class="d-card-top-bar"></div>
             <div class="d-card-icon">
@@ -192,7 +197,6 @@
             </div>
         </div>
 
-        <%-- YELLOW --%>
         <div class="d-card card-yellow">
             <div class="d-card-top-bar"></div>
             <div class="d-card-icon">
@@ -207,6 +211,104 @@
             </div>
         </div>
 
+    </div>
+
+    <%-- DEPARTMENT ROSTER — Staff + Student management --%>
+    <div class="d-section">Department Roster</div>
+
+    <div class="d-metrics-panel">
+        <asp:Panel ID="pnlStaffCountBox" runat="server" CssClass="d-metric-box">
+            <div class="d-metric-icon-wrap m-blue"><i class="ti ti-user-check"></i></div>
+            <div class="d-metric-info">
+                <span class="d-metric-title">Staff</span>
+                <span class="d-metric-count"><asp:Literal ID="litStaffCount" runat="server">0</asp:Literal></span>
+            </div>
+        </asp:Panel>
+        <div class="d-metric-box">
+            <div class="d-metric-icon-wrap m-pink"><i class="ti ti-users"></i></div>
+            <div class="d-metric-info">
+                <span class="d-metric-title">Students</span>
+                <span class="d-metric-count"><asp:Literal ID="litStudentCount" runat="server">0</asp:Literal></span>
+            </div>
+        </div>
+    </div>
+
+    <%-- Staff roster — visible/bound for DepartmentAdmin only, removed server-side for Staff --%>
+    <asp:Panel ID="pnlStaffRoster" runat="server" CssClass="d-feature">
+        <div class="d-feature-head">
+            <div class="d-feature-head-left">
+                <i class="ti ti-user-cog"></i>
+                <span class="d-feature-head-title">Staff</span>
+            </div>
+        </div>
+        <div class="d-feature-body">
+            <asp:GridView ID="gvStaff" runat="server"
+                AutoGenerateColumns="False"
+                DataKeyNames="ProfileId,IsActive"
+                CssClass="table"
+                GridLines="None"
+                OnRowCommand="gvStaff_RowCommand"
+                EmptyDataText="No staff in your department yet.">
+                <Columns>
+                    <asp:BoundField DataField="FullName" HeaderText="Name" />
+                    <asp:BoundField DataField="UserName" HeaderText="Username" />
+                    <asp:TemplateField HeaderText="Status">
+                        <ItemTemplate><%# (bool)Eval("IsActive") ? "Active" : "Suspended" %></ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Actions">
+                        <ItemTemplate>
+                            <asp:LinkButton runat="server" CommandName="ToggleSuspend" CssClass="d-btn-ghost"
+                                OnClientClick='<%# "return confirm(\x27" + (((bool)Eval("IsActive")) ? "Suspend this staff member?" : "Reinstate this staff member?") + "\x27);" %>'>
+                                <%# (bool)Eval("IsActive") ? "Suspend" : "Reinstate" %>
+                            </asp:LinkButton>
+                            <asp:LinkButton runat="server" CommandName="Delete" CssClass="d-btn-ghost"
+                                OnClientClick="return confirm('Permanently remove this staff member? This cannot be undone.');">
+                                Remove
+                            </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
+    </asp:Panel>
+
+    <%-- Student roster — visible to both DepartmentAdmin and Staff --%>
+    <div class="d-feature">
+        <div class="d-feature-head">
+            <div class="d-feature-head-left">
+                <i class="ti ti-users"></i>
+                <span class="d-feature-head-title">Students</span>
+            </div>
+        </div>
+        <div class="d-feature-body">
+            <asp:GridView ID="gvStudents" runat="server"
+                AutoGenerateColumns="False"
+                DataKeyNames="ProfileId,IsActive"
+                CssClass="table"
+                GridLines="None"
+                OnRowCommand="gvStudents_RowCommand"
+                EmptyDataText="No students in your department yet.">
+                <Columns>
+                    <asp:BoundField DataField="FullName" HeaderText="Name" />
+                    <asp:BoundField DataField="UserName" HeaderText="Username" />
+                    <asp:TemplateField HeaderText="Status">
+                        <ItemTemplate><%# (bool)Eval("IsActive") ? "Active" : "Suspended" %></ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Actions">
+                        <ItemTemplate>
+                            <asp:LinkButton runat="server" CommandName="ToggleSuspend" CssClass="d-btn-ghost"
+                                OnClientClick='<%# "return confirm(\x27" + (((bool)Eval("IsActive")) ? "Suspend this student?" : "Reinstate this student?") + "\x27);" %>'>
+                                <%# (bool)Eval("IsActive") ? "Suspend" : "Reinstate" %>
+                            </asp:LinkButton>
+                            <asp:LinkButton runat="server" CommandName="Delete" CssClass="d-btn-ghost"
+                                OnClientClick="return confirm('Permanently remove this student? This cannot be undone.');">
+                                Remove
+                            </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
     </div>
 
     <%-- SPECIAL FEATURED --%>

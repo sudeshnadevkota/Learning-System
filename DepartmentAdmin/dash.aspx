@@ -1,9 +1,9 @@
-﻿<%@ Page Title="Main Admin" Language="C#" AutoEventWireup="true" CodeFile="main_admin.aspx.cs" Inherits="Learning_System.MainAdmin.main_admin" %>
+﻿<%@ Page Title="Department Admin" Language="C#" AutoEventWireup="true" CodeBehind="dash.aspx.cs" Inherits="Learning_System.DepartmentAdmin.dash" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Main Admin Dashboard</title>
+    <title>Department Admin Dashboard</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -114,10 +114,21 @@
 
         .c-hero-btn-pink:hover { background: var(--pink-hover); color: #fff; }
 
+        /* ── Badge ── */
+        .dept-badge {
+            background: var(--pink);
+            color: #white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
         /* ── Stat Cards ── */
         .c-stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
             margin-bottom: 24px;
         }
@@ -228,28 +239,6 @@
         .table-modern tr:last-child td { border-bottom: none; }
         .table-modern tr:hover { background-color: #fcfcfd; }
 
-        .table-modern a {
-            color: var(--pink);
-            text-decoration: none;
-            font-weight: 600;
-            margin-right: 10px;
-            font-size: 12.5px;
-        }
-
-        .table-modern a:hover { text-decoration: underline; }
-
-        .table-modern a.danger { color: var(--danger); }
-
-        .role-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
-            background: var(--pink-light);
-            color: var(--pink);
-        }
-
         /* ── Quick Actions ── */
         .c-quick-grid {
             display: grid;
@@ -280,156 +269,81 @@
         }
 
         .c-quick-link i { font-size: 1.3rem; color: var(--pink); }
-
-        .empty-note {
-            padding: 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 13px;
-        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="c-wrap">
 
-            <!-- Hero -->
             <div class="c-hero">
                 <div>
-                    <h3><i class="ti ti-crown"></i> Main Admin Dashboard</h3>
-                    <p>Logged in as <strong><%= Session["Username"] %></strong> &middot; Full system access</p>
+                    <h3>
+                        <i class="ti ti-building-community"></i> 
+                        <asp:Literal ID="litDeptTitle" runat="server">Department</asp:Literal> Administration Portal
+                    </h3>
+                    <p>Logged in as <strong><%= Session["Username"] %></strong> &middot; Department-bounded access control rule active</p>
                 </div>
                 <div class="c-hero-actions">
-                    <a href="/administrator/AppointUser.aspx" class="c-hero-btn c-hero-btn-outline">
-    <i class="ti ti-user-plus"></i> Appoint User
-</a>
-                    <a href="logout.aspx" class="c-hero-btn c-hero-btn-pink">
+                    <a href="../logout.aspx" class="c-hero-btn c-hero-btn-pink">
                         <i class="ti ti-logout"></i> Logout
                     </a>
                 </div>
             </div>
 
-            <!-- Stat Cards -->
             <div class="c-stats-grid">
                 <div class="c-stat-card">
-                    <div class="c-stat-icon blue"><i class="ti ti-building"></i></div>
-                    <div>
-                        <div class="c-stat-value"><asp:Literal ID="litDeptCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Departments</div>
-                    </div>
-                </div>
-                <div class="c-stat-card">
-                    <div class="c-stat-icon"><i class="ti ti-shield-star"></i></div>
-                    <div>
-                        <div class="c-stat-value"><asp:Literal ID="litSuperAdminCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Super Admins</div>
-                    </div>
-                </div>
-                <div class="c-stat-card">
-                    <div class="c-stat-icon blue"><i class="ti ti-user-cog"></i></div>
-                    <div>
-                        <div class="c-stat-value"><asp:Literal ID="litDeptAdminCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Dept Admins</div>
-                    </div>
-                </div>
-                <div class="c-stat-card">
-                    <div class="c-stat-icon"><i class="ti ti-user-check"></i></div>
+                    <div class="c-stat-icon blue"><i class="ti ti-user-check"></i></div>
                     <div>
                         <div class="c-stat-value"><asp:Literal ID="litStaffCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Staff</div>
+                        <div class="c-stat-label">Department Staff</div>
                     </div>
                 </div>
                 <div class="c-stat-card">
-                    <div class="c-stat-icon blue"><i class="ti ti-users"></i></div>
+                    <div class="c-stat-icon"><i class="ti ti-users"></i></div>
                     <div>
                         <div class="c-stat-value"><asp:Literal ID="litStudentCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Students</div>
+                        <div class="c-stat-label">Enrolled Students</div>
                     </div>
                 </div>
                 <div class="c-stat-card">
-                    <div class="c-stat-icon"><i class="ti ti-book-2"></i></div>
+                    <div class="c-stat-icon blue"><i class="ti ti-speakerphone"></i></div>
                     <div>
-                        <div class="c-stat-value"><asp:Literal ID="litSubjectCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Subjects</div>
+                        <div class="c-stat-value"><asp:Literal ID="litNoticeCount" runat="server">0</asp:Literal></div>
+                        <div class="c-stat-label">Department Notices</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Admin Hierarchy -->
             <div class="c-panel">
                 <div class="c-panel-header">
-                    <div class="c-panel-title"><i class="ti ti-hierarchy-3"></i> Super Admin Management</div>
-                   <a href="/administrator/AppointUser.aspx?role=SuperAdmin" class="c-hero-btn c-hero-btn-pink" style="padding:8px 18px;font-size:12px;">
-    <i class="ti ti-plus"></i> Appoint SuperAdmin
-</a>
+                    <div class="c-panel-title"><i class="ti ti-users-group"></i> Active Student Roster</div>
                 </div>
                 <div class="c-table-container">
-                    <asp:GridView ID="gvSuperAdmins" runat="server"
+                    <asp:GridView ID="gvStudents" runat="server"
                         AutoGenerateColumns="False"
                         class="table-modern"
                         GridLines="None" BorderWidth="0" CellPadding="0"
-                        EmptyDataText="No SuperAdmins appointed yet.">
+                        EmptyDataText="No students registered under your department.">
                         <Columns>
                             <asp:BoundField DataField="FullName" HeaderText="Name" />
-                            <asp:BoundField DataField="Email" HeaderText="Email" />
-                            <asp:TemplateField HeaderText="Role">
-                                <ItemTemplate><span class="role-badge">SuperAdmin</span></ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Action">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lnkSuspend" runat="server" Text="Suspend"
-    CommandArgument='<%# Eval("AdminProfileId") %>'
-    OnClick="lnkSuspend_Click"></asp:LinkButton>
-<asp:LinkButton ID="lnkRemove" runat="server" Text="Remove" CssClass="danger"
-    CommandArgument='<%# Eval("AdminProfileId") %>'
-    OnClick="lnkRemove_Click"
-    OnClientClick="return confirm('Remove this SuperAdmin? This cannot be undone.');"></asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            <asp:BoundField DataField="UserName" HeaderText="Username/Roll" />
+                            <asp:BoundField DataField="Semester" HeaderText="Semester" />
+                            <asp:BoundField DataField="Email" HeaderText="Email Address" />
                         </Columns>
                     </asp:GridView>
                 </div>
             </div>
 
-            <!-- Department Overview -->
             <div class="c-panel">
                 <div class="c-panel-header">
-                    <div class="c-panel-title"><i class="ti ti-building-community"></i> Department Overview</div>
-                </div>
-                <div class="c-table-container">
-                    <asp:GridView ID="gvDepartments" runat="server"
-                        AutoGenerateColumns="False"
-                        class="table-modern"
-                        GridLines="None" BorderWidth="0" CellPadding="0"
-                        EmptyDataText="No departments found.">
-                        <Columns>
-                            <asp:BoundField DataField="DepartmentName" HeaderText="Department" />
-                            <asp:BoundField DataField="DepartmentCode" HeaderText="Code" />
-                            <asp:BoundField DataField="DeptAdminCount" HeaderText="Dept Admins" />
-                            <asp:BoundField DataField="StaffCount" HeaderText="Staff" />
-                            <asp:BoundField DataField="StudentCount" HeaderText="Students" />
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="c-panel">
-                <div class="c-panel-header">
-                    <div class="c-panel-title"><i class="ti ti-bolt"></i> Quick Actions</div>
+                    <div class="c-panel-title"><i class="ti ti-bolt"></i> Department Actions</div>
                 </div>
                 <div class="c-quick-grid">
-                    <a href="AppointUser.aspx" class="c-quick-link">
-                        <i class="ti ti-user-plus"></i> Appoint User
+                    <a href="../AppointUser.aspx" class="c-quick-link">
+                        <i class="ti ti-user-plus"></i> Add Faculty / Staff
                     </a>
-                    <a href="../Bit_Admin/NoticeManage.aspx" class="c-quick-link">
-                        <i class="ti ti-speakerphone"></i> Manage Notices
-                    </a>
-                    <a href="ManageDepartments.aspx" class="c-quick-link">
-                        <i class="ti ti-building"></i> Manage Departments
-                    </a>
-                    <a href="AuditLog.aspx" class="c-quick-link">
-                        <i class="ti ti-history"></i> Audit Log
+                    <a href="../NoticeManage.aspx" class="c-quick-link">
+                        <i class="ti ti-speakerphone"></i> Push Department Notice
                     </a>
                 </div>
             </div>

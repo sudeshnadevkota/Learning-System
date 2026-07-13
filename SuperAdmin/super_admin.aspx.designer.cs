@@ -7,21 +7,39 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Learning_System.Bit_Admin
+namespace Learning_System.SuperAdmin
 {
 
 
-    public partial class dash
+    public partial class super_admin
     {
 
         /// <summary>
-        /// pnlStaffCountBox control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlStaffCountBox;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// litDeptCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litDeptCount;
+
+        /// <summary>
+        /// litDeptAdminCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litDeptAdminCount;
 
         /// <summary>
         /// litStaffCount control.
@@ -42,30 +60,21 @@ namespace Learning_System.Bit_Admin
         protected global::System.Web.UI.WebControls.Literal litStudentCount;
 
         /// <summary>
-        /// pnlStaffRoster control.
+        /// litSubjectCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlStaffRoster;
+        protected global::System.Web.UI.WebControls.Literal litSubjectCount;
 
         /// <summary>
-        /// gvStaff control.
+        /// gvDepartments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvStaff;
-
-        /// <summary>
-        /// gvStudents control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvStudents;
+        protected global::System.Web.UI.WebControls.GridView gvDepartments;
     }
 }
