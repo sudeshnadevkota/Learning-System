@@ -157,7 +157,7 @@
   .sem-header.active .sem-icon { background: rgba(255,45,141,0.28); }
 
   .sem-label { flex: 1; }
-  .sem-chevron { transition: var(--ease); opacity: 0.45; flex-shrink: 0; }
+  .sem-chevron { transition: var(--ease); opacity: 1; flex-shrink: 0; }
   .sem-item.open .sem-chevron { transform: rotate(180deg); opacity: 1; color: var(--pink); }
 
   .sem-subjects { display: none; padding: 3px 0 3px 16px; }
@@ -402,10 +402,7 @@
             <div class="hms-val">126</div>
             <div class="hms-lbl">Credit Hours</div>
           </div>
-          <div class="hms-item">
-            <div class="hms-val">1000<span>+</span></div>
-            <div class="hms-lbl">Graduates</div>
-          </div>
+
         </div>
 
       </div>

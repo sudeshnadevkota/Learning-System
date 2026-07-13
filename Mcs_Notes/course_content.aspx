@@ -183,6 +183,20 @@
             width: 100% !important;
             justify-content: center !important;
         }
+            /* Fix for mobile horizontal sliding on filter buttons */
+        .filter-chips {
+            display: flex !important;
+            overflow-x: auto !important;
+            white-space: nowrap !important;
+            flex-wrap: nowrap !important;
+            -webkit-overflow-scrolling: touch !important; /* Smooth scrolling on iOS */
+            padding-bottom: 8px !important; /* Extra spacing so scrollbars don't clip the buttons */
+        }
+
+        /* Optional: Hide the scrollbar visual track for a cleaner appearance */
+        .filter-chips::-webkit-scrollbar {
+            display: none !important;
+        }
     }
 </style>
 

@@ -25,7 +25,6 @@
             padding: 12px 0 !important;
             border-bottom: 1px solid rgba(0,0,0,0.05);
             z-index: 1030 !important;
-            
         }
 
         .navbar-nav .nav-link {
@@ -60,12 +59,13 @@
             border: none !important;
             color: white !important;
             padding: 12px 20px !important;
-            border-radius: 8px !important; /* Block format fits mobile menus better */
+            border-radius: 8px !important;
             font-weight: 600 !important;
             text-align: center;
             display: block;
             width: 100%;
             box-shadow: 0 4px 15px rgba(11, 31, 102, 0.15) !important;
+            text-decoration: none;
         }
 
         /* Footer */
@@ -81,7 +81,7 @@
         /* Main Content Spacing */
         .main-content { padding-top: 80px; flex: 1; }
 
-        /* --- MOBILE SIDEBAR CLEANUP (Breaks nothing on Desktop) --- */
+        /* --- MOBILE SIDEBAR CLEANUP --- */
         @media (max-width: 991px) {
             .sidebar.offcanvas {
                 z-index: 2000 !important;
@@ -105,11 +105,9 @@
                 color: #0B1F66 !important;
             }
             
-            /* Changed to Flex Layout to automatically push bottom items downwards */
             .offcanvas-body {
                 padding: 20px !important;
                 display: block !important;
-                
             }
 
             /* Format mobile nav items cleanly */
@@ -149,22 +147,21 @@
                 width: 24px;
                 font-size: 16px;
             }
-
-
         }
+
         @media (min-width: 992px) {
-    .navbar-expand-lg .offcanvas {
-        display: flex !important;
-        flex-grow: 1;
-        align-items: center !important;
-        justify-content: center !important;
-        background-color: transparent !important;
-        visibility: visible !important;
-        position: static !important;
-        border: none !important;
-        width: auto !important;
-    }
-}
+            .navbar-expand-lg .offcanvas {
+                display: flex !important;
+                flex-grow: 1;
+                align-items: center !important;
+                justify-content: center !important;
+                background-color: transparent !important;
+                visibility: visible !important;
+                position: static !important;
+                border: none !important;
+                width: auto !important;
+            }
+        }
 
         /* Responsive structural adjustments for narrow smartphone viewports */
         @media (max-width: 576px) {
@@ -344,7 +341,7 @@
                             </li>
                         </ul>
 
-                        <div class="mt-auto pt-3 d-lg-none w-100">
+                        <div class="mt-4 d-lg-none w-100">
                             <asp:LinkButton ID="LinkloginMobile" runat="server" CssClass="login-btn-mobile" OnClick="Linklogin_Click">
                                 Login <i class="fas fa-sign-in-alt ms-2"></i>
                             </asp:LinkButton>
@@ -353,9 +350,9 @@
                 </div>
 
                 <div class="d-flex align-items-center gap-2">
-    <asp:LinkButton ID="Linklogin" runat="server" CssClass="btn login-btn" OnClick="Linklogin_Click">
-        Login <i class="fas fa-sign-in-alt ms-2"></i>
-    </asp:LinkButton>
+                    <asp:LinkButton ID="Linklogin" runat="server" CssClass="btn login-btn d-none d-lg-inline-block" OnClick="Linklogin_Click">
+                        Login <i class="fas fa-sign-in-alt ms-2"></i>
+                    </asp:LinkButton>
 
     <div id="UserDropdown" runat="server" class="dropdown" Visible="false">
         <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -373,11 +370,11 @@
         </ul>
     </div>
 
-    <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" 
-            data-bs-target="#offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
+                    <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" 
+                            data-bs-target="#offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
 
             </div>
         </nav>
