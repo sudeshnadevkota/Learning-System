@@ -1,4 +1,4 @@
-﻿<%@ Page Title=" Fundamentals of Management - BHM Notes" Language="C#" MasterPageFile="~/Bhm_Notes/note.Master" AutoEventWireup="true" CodeBehind="course_content.aspx.cs" Inherits="Learning_System.Bhm_Notes.course_content" %>
+<%@ Page Title=" Fundamentals of Management - BHM Notes" Language="C#" MasterPageFile="~/Bhm_Notes/note.Master" AutoEventWireup="true" CodeBehind="course_content.aspx.cs" Inherits="Learning_System.Bhm_Notes.course_content" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -183,6 +183,20 @@
         a.btn-login-elegant {
             width: 100% !important;
             justify-content: center !important;
+        }
+            /* Fix for mobile horizontal sliding on filter buttons */
+        .filter-chips {
+            display: flex !important;
+            overflow-x: auto !important;
+            white-space: nowrap !important;
+            flex-wrap: nowrap !important;
+            -webkit-overflow-scrolling: touch !important; /* Smooth scrolling on iOS */
+            padding-bottom: 8px !important; /* Extra spacing so scrollbars don't clip the buttons */
+        }
+
+        /* Optional: Hide the scrollbar visual track for a cleaner appearance */
+        .filter-chips::-webkit-scrollbar {
+            display: none !important;
         }
     }
 </style>

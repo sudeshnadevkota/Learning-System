@@ -477,10 +477,7 @@ body { padding-top: 0 !important; background: var(--bg) !important; }
             <div class="hms-val">120</div>
             <div class="hms-lbl">Credit Hours</div>
           </div>
-          <div class="hms-item">
-            <div class="hms-val">1000<span>+</span></div>
-            <div class="hms-lbl">Graduates</div>
-          </div>
+      
         </div>
 
       </div>

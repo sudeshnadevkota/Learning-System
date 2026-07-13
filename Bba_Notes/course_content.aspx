@@ -1,4 +1,4 @@
-﻿<%@ Page Title="English I - BBA Notes" Language="C#" MasterPageFile="~/Bba_Notes/note.Master" AutoEventWireup="true" CodeBehind="course_content.aspx.cs" Inherits="Learning_System.Bba_Notes.course_content" %>
+<%@ Page Title="English I - BBA Notes" Language="C#" MasterPageFile="~/Bba_Notes/note.Master" AutoEventWireup="true" CodeBehind="course_content.aspx.cs" Inherits="Learning_System.Bba_Notes.course_content" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -173,6 +173,8 @@
         box-shadow: 0 8px 22px rgba(245, 158, 11, 0.35) !important;
     }
 
+
+
     @media (max-width: 640px) {
         .status-banner-wrapper .status-banner-card {
             flex-direction: column !important;
@@ -183,6 +185,20 @@
             width: 100% !important;
             justify-content: center !important;
         }
+            /* Fix for mobile horizontal sliding on filter buttons */
+      .filter-chips {
+          display: flex !important;
+          overflow-x: auto !important;
+          white-space: nowrap !important;
+          flex-wrap: nowrap !important;
+          -webkit-overflow-scrolling: touch !important; /* Smooth scrolling on iOS */
+          padding-bottom: 8px !important; /* Extra spacing so scrollbars don't clip the buttons */
+      }
+
+      /* Optional: Hide the scrollbar visual track for a cleaner appearance */
+      .filter-chips::-webkit-scrollbar {
+          display: none !important;
+      }
     }
 </style>
 
