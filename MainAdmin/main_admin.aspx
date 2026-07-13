@@ -422,7 +422,7 @@
                     <a href="AppointUser.aspx" class="c-quick-link">
                         <i class="ti ti-user-plus"></i> Appoint User
                     </a>
-                    <a href="../Bit_Admin/NoticeManage.aspx" class="c-quick-link">
+                    <a href="/NoticeManage.aspx" class="c-quick-link">
                         <i class="ti ti-speakerphone"></i> Manage Notices
                     </a>
                     <a href="ManageDepartments.aspx" class="c-quick-link">
