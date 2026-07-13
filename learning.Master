@@ -177,6 +177,125 @@
                 padding-right: 12px !important;
             }
         }
+
+        /* ==========================================================
+           PROFILE DROPDOWN — REDESIGN ONLY
+           (Scoped to #UserDropdown so nothing else on the page is touched)
+           ========================================================== */
+
+        /* Avatar trigger: subtle premium hover feedback */
+        #UserDropdown .dropdown-toggle {
+            display: inline-block;
+            line-height: 0;
+            border-radius: 50%;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        #UserDropdown .dropdown-toggle img {
+            transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        #UserDropdown .dropdown-toggle:hover img,
+        #UserDropdown .dropdown-toggle:focus img {
+            border-color: #F6B400 !important;
+            box-shadow: 0 0 0 4px rgba(246, 180, 0, 0.15);
+            transform: translateY(-1px);
+        }
+
+        #UserDropdown .dropdown-toggle::after {
+            vertical-align: middle;
+            margin-left: 6px;
+            color: #28346f;
+        }
+
+        /* Dropdown panel */
+        #UserDropdown .dropdown-menu {
+            min-width: 230px;
+            padding: 10px;
+            margin-top: 12px !important;
+            border: 1px solid rgba(11, 31, 102, 0.08);
+            border-radius: 16px;
+            background: #FFFFFF;
+            box-shadow: 0 12px 32px rgba(11, 31, 102, 0.14), 0 2px 8px rgba(11, 31, 102, 0.06);
+            animation: userDropdownReveal 0.22s ease;
+        }
+
+        @keyframes userDropdownReveal {
+            from {
+                opacity: 0;
+                transform: translateY(-6px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Menu items */
+        #UserDropdown .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14.5px;
+            color: #28346f;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+        }
+
+        #UserDropdown .dropdown-item i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            font-size: 13px;
+            margin-right: 0;
+            background: #EEF1FF;
+            color: #0B1F66;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        #UserDropdown .dropdown-item:hover,
+        #UserDropdown .dropdown-item:focus {
+            background-color: #F1F4FF;
+            color: #0B1F66;
+            transform: translateX(2px);
+        }
+
+        #UserDropdown .dropdown-item:hover i {
+            background: #0B1F66;
+            color: #FFFFFF;
+        }
+
+        /* Logout item gets its own accent so it reads as a distinct action */
+        #UserDropdown .dropdown-item.text-danger {
+            color: #d63357 !important;
+        }
+
+        #UserDropdown .dropdown-item.text-danger i {
+            background: #FDEBF0;
+            color: #d63357;
+        }
+
+        #UserDropdown .dropdown-item.text-danger:hover,
+        #UserDropdown .dropdown-item.text-danger:focus {
+            background-color: #FDEBF0;
+            color: #d63357 !important;
+        }
+
+        #UserDropdown .dropdown-item.text-danger:hover i {
+            background: #d63357;
+            color: #FFFFFF;
+        }
+
+        /* Divider */
+        #UserDropdown .dropdown-divider {
+            margin: 8px 6px;
+            border-top: 1px solid rgba(11, 31, 102, 0.08);
+        }
     </style>
 </head>
 <body>
@@ -244,11 +363,11 @@
                 style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #0B1F66;" />
         </a>
         <ul class="dropdown-menu dropdown-menu-end shadow">
-            <li><a class="dropdown-item" href="Profile.aspx"><i class="fas fa-user me-2"></i>Display Profile</a></li>
+            <li><a class="dropdown-item" href="Profile.aspx"><i class="fas fa-user"></i>Display Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
                 <asp:LinkButton ID="BtnLogout" runat="server" CssClass="dropdown-item text-danger" OnClick="BtnLogout_Click">
-                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                    <i class="fas fa-sign-out-alt"></i>Logout
                 </asp:LinkButton>
             </li>
         </ul>
