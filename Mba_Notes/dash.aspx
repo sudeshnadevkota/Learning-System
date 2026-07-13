@@ -280,6 +280,39 @@
   .about-left { background: white; border-radius: 22px; border: 1.5px solid var(--border); padding: 36px 38px 32px; box-shadow: var(--shadow-sm); }
   .about-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; color: var(--pink); font-family: 'Sora', sans-serif; margin-bottom: 10px; }
   .about-heading { font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 20px; }
+  .about-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 0;
+}
+
+    .about-bullets li {
+        position: relative;
+        padding-left: 26px;
+        font-size: 14px;
+        color: #374151;
+        line-height: 1.6;
+    }
+
+        .about-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 8px;
+            height: 8px;
+            border-radius: 3px;
+            background: var(--pink);
+        }
+
+        .about-bullets li strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
   .about-heading span { color: #16a34a; }
   .about-para { font-size: 14px; color: #374151; line-height: 1.75; margin-bottom: 14px; }
   .about-para strong { color: var(--primary); font-weight: 700; }
