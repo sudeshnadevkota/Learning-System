@@ -28,52 +28,77 @@
     --ease: 0.28s cubic-bezier(0.4,0,0.2,1);
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-  ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: rgba(11,31,102,0.15); border-radius: 4px; }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
 
-  /* ══ HEADER ══ */
-  header {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    height: var(--header-h);
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center;
-    padding: 0 28px 0 0;
-    box-shadow: 0 2px 24px rgba(8,21,71,0.07);
-  }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
 
-  .header-logo {
-    width: var(--sidebar-w);
-    display: flex; align-items: center; justify-content: center;
-    padding: 0 20px;
-    border-right: 1px solid var(--border);
-    height: 100%;
-    flex-shrink: 0;
-    gap: 10px;
-  }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(11,31,102,0.15);
+            border-radius: 4px;
+        }
 
-  .logo-mark {
-    width: 36px; height: 36px;
-    background: linear-gradient(135deg, var(--primary), var(--pink));
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Sora', sans-serif;
-    font-weight: 800; font-size: 14px; color: white;
-    flex-shrink: 0;
-  }
+        /* ══ HEADER ══ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            height: var(--header-h);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 28px 0 0;
+            box-shadow: 0 2px 24px rgba(8,21,71,0.07);
+        }
+
+        .header-logo {
+            width: var(--sidebar-w);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            border-right: 1px solid var(--border);
+            height: 100%;
+            flex-shrink: 0;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--pink));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            color: white;
+            flex-shrink: 0;
+        }
 
   .logo-text { display: flex; flex-direction: column; }
   .logo-text strong { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 800; color: var(--primary); line-height: 1.1; }
@@ -107,7 +132,9 @@
   .search-bar input { border: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: var(--text-primary); outline: none; width: 100%; }
   .search-bar input::placeholder { color: var(--text-light); }
 
-  .header-actions { display: flex; align-items: center; gap: 8px; }
+                .search-bar input::placeholder {
+                    color: var(--text-light);
+                }
 
   .icon-btn {
     width: 38px; height: 38px; border-radius: 10px;
@@ -140,7 +167,9 @@
 
   .sidebar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; color: rgba(255,255,255,0.28); padding: 4px 12px 10px; margin-top: 4px; }
 
-  .sem-item { margin-bottom: 1px; }
+        .sem-item {
+            margin-bottom: 1px;
+        }
 
   .sem-header {
     display: flex; align-items: center; gap: 10px; padding: 9px 12px;
@@ -155,12 +184,13 @@
   .sem-icon { width: 26px; height: 26px; background: rgba(255,255,255,0.07); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; transition: var(--ease); }
   .sem-header.active .sem-icon { background: rgba(255,45,141,0.28); }
 
-  .sem-label { flex: 1; }
-  .sem-chevron { transition: var(--ease); opacity: 0.45; flex-shrink: 0; }
-  .sem-item.open .sem-chevron { transform: rotate(180deg); opacity: 1; color: var(--pink); }
+        .sem-header.active .sem-icon {
+            background: rgba(255,45,141,0.28);
+        }
 
-  .sem-subjects { display: none; padding: 3px 0 3px 16px; }
-  .sem-item.open .sem-subjects { display: block; }
+        .sem-label {
+            flex: 1;
+        }
 
   .subject-link {
     display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 8px;
@@ -181,9 +211,13 @@
   .ctab.active { background: var(--pink); color: white; border-color: transparent; box-shadow: 0 3px 12px rgba(255,45,141,0.4); }
   .ctab:not(.active):hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
 
-  /* ══ MAIN ══ */
-  .main { margin-left: var(--sidebar-w); padding-top: var(--header-h); min-height: 100vh; width: calc(100% - var(--sidebar-w)); }
-  .main-inner { padding: 30px 36px; width: 100%; }
+        /* ══ MAIN ══ */
+        .main {
+            margin-left: var(--sidebar-w);
+            padding-top: var(--header-h);
+            min-height: 100vh;
+            width: calc(100% - var(--sidebar-w));
+        }
 
   /* ══ HERO BANNER ══ */
   .hero-banner {
@@ -286,7 +320,11 @@
   .about-para:last-of-type { margin-bottom: 24px; }
 
 
-  .about-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+        .about-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
 
   /* ══ POSTER ══ */
   .about-right { position: sticky; top: calc(var(--header-h) + 20px); }
@@ -331,11 +369,19 @@
   .poster-footer { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 4px; position: relative; z-index: 2; }
   .pf-item { font-size: 9.5px; color: rgba(255,255,255,0.5); margin-bottom: 3px; }
 
-  @media (max-width: 1100px) {
-    .about-section { grid-template-columns: 1fr; }
-    .about-right { position: static; }
-    .poster-card { max-width: 360px; }
-  }
+        @media (max-width: 1100px) {
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+
+            .about-right {
+                position: static;
+            }
+
+            .poster-card {
+                max-width: 360px;
+            }
+        }
 
   /* ══ FADE ANIMATIONS ══ */
   .fade-up { opacity: 0; transform: translateY(22px); animation: fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) forwards; }
@@ -449,23 +495,23 @@ body { padding-top: 0 !important; background: var(--bg) !important; }
 }
 </style>
 
-<main class="main">
-  <div class="main-inner">
+    <main class="main">
+        <div class="main-inner">
 
-    <!-- HERO BANNER -->
-    <div class="hero-banner fade-up d1">
-      <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-      </div>
+            <!-- HERO BANNER -->
+            <div class="hero-banner fade-up d1">
+                <div class="hero-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
 
-      <div class="hero-content">
+                <div class="hero-content">
 
-        <div class="hero-title">
-          Code with Purpose,<br>
-          <span class="highlight">Innovate with Precision</span>
-        </div>
+                    <div class="hero-title">
+                        Code with Purpose,<br>
+                        <span class="highlight">Innovate with Precision</span>
+                    </div>
 
         <div class="hero-mini-stats">
           <div class="hms-item">
@@ -483,261 +529,267 @@ body { padding-top: 0 !important; background: var(--bg) !important; }
 
         </div>
 
-      </div>
-
-      <!-- ILLUSTRATION PANEL -->
-      <div class="hero-visual">
-        <div class="hero-illustration">
-          <div class="ilu-glow"></div>
-
-          <!-- MCS Tech/Developer SVG Illustration -->
-          <svg class="student-fig" viewBox="0 0 240 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- desk/table -->
-            <rect x="10" y="230" width="220" height="10" rx="4" fill="#1a2e6e" opacity="0.5"/>
-            <!-- laptop base -->
-            <rect x="50" y="205" width="140" height="26" rx="6" fill="#374151"/>
-            <!-- laptop screen -->
-            <rect x="58" y="140" width="124" height="68" rx="6" fill="#1e293b"/>
-            <rect x="62" y="144" width="116" height="60" rx="4" fill="#0f172a"/>
-            <!-- code lines on screen -->
-            <rect x="68" y="152" width="40" height="3" rx="1.5" fill="#00c8ff" opacity="0.9"/>
-            <rect x="72" y="159" width="60" height="3" rx="1.5" fill="#a78bfa" opacity="0.8"/>
-            <rect x="72" y="166" width="30" height="3" rx="1.5" fill="#34d399" opacity="0.8"/>
-            <rect x="106" y="166" width="20" height="3" rx="1.5" fill="#f87171" opacity="0.8"/>
-            <rect x="72" y="173" width="50" height="3" rx="1.5" fill="#fbbf24" opacity="0.8"/>
-            <rect x="68" y="180" width="40" height="3" rx="1.5" fill="#00c8ff" opacity="0.9"/>
-            <rect x="72" y="187" width="35" height="3" rx="1.5" fill="#a78bfa" opacity="0.8"/>
-            <!-- cursor blink -->
-            <rect x="130" y="187" width="2" height="10" rx="1" fill="white" opacity="0.85"/>
-            <!-- hinge -->
-            <rect x="110" y="207" width="20" height="4" rx="2" fill="#4b5563"/>
-            <!-- neck -->
-            <rect x="108" y="115" width="24" height="28" rx="8" fill="#f5c5a3"/>
-            <!-- head -->
-            <ellipse cx="120" cy="93" rx="46" ry="48" fill="#f5c5a3"/>
-            <!-- hair -->
-            <path d="M74 82 Q76 40 120 38 Q164 40 166 82 Q155 58 120 56 Q85 58 74 82Z" fill="#1a0a00"/>
-            <ellipse cx="120" cy="44" rx="40" ry="15" fill="#1a0a00"/>
-            <!-- eyes -->
-            <ellipse cx="108" cy="97" rx="6" ry="7" fill="white"/>
-            <ellipse cx="132" cy="97" rx="6" ry="7" fill="white"/>
-            <ellipse cx="109" cy="98" rx="3.5" ry="4" fill="#1a0a0a"/>
-            <ellipse cx="133" cy="98" rx="3.5" ry="4" fill="#1a0a0a"/>
-            <ellipse cx="110" cy="97" rx="1.5" ry="2" fill="white"/>
-            <ellipse cx="134" cy="97" rx="1.5" ry="2" fill="white"/>
-            <!-- smile -->
-            <path d="M112 112 Q120 119 128 112" stroke="#c27a5a" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- eyebrows -->
-            <path d="M102 90 Q108 87 114 89" stroke="#1a0a00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M126 89 Q132 87 138 90" stroke="#1a0a00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <!-- glasses -->
-            <rect x="100" y="91" width="16" height="11" rx="4" fill="none" stroke="#374151" stroke-width="1.8"/>
-            <rect x="124" y="91" width="16" height="11" rx="4" fill="none" stroke="#374151" stroke-width="1.8"/>
-            <line x1="116" y1="96" x2="124" y2="96" stroke="#374151" stroke-width="1.5"/>
-            <line x1="84"  y1="95" x2="100" y2="95" stroke="#374151" stroke-width="1.5"/>
-            <line x1="140" y1="95" x2="154" y2="95" stroke="#374151" stroke-width="1.5"/>
-            <!-- hoodie/tshirt body -->
-            <rect x="68" y="140" width="84" height="90" rx="14" fill="#1e3a8a"/>
-            <!-- hoodie pocket -->
-            <rect x="96" y="185" width="48" height="28" rx="8" fill="#162e75"/>
-            <!-- arms -->
-            <rect x="32" y="143" width="40" height="80" rx="14" fill="#1e3a8a"/>
-            <rect x="168" y="143" width="40" height="80" rx="14" fill="#1e3a8a"/>
-            <!-- hands on keyboard -->
-            <ellipse cx="52"  cy="228" rx="18" ry="10" fill="#f5c5a3"/>
-            <ellipse cx="188" cy="228" rx="18" ry="10" fill="#f5c5a3"/>
-          </svg>
-
-          <!-- Floating badges -->
-          <div class="ilu-badge ib-1">
-            <div class="ib-icon blue">🎓</div>
-            <div class="ib-txt">
-              <strong>MQA Accredited</strong>
-              <span>Internationally recognised</span>
-            </div>
-          </div>
-
-          <div class="ilu-badge ib-2">
-            <div class="ib-icon pink">💻</div>
-            <div class="ib-txt">
-              <strong>Project-Based Learning</strong>
-              <span>Real-world tech builds</span>
-            </div>
-          </div>
-
-          <div class="ilu-badge ib-3">
-            <div class="ib-icon green">🚀</div>
-            <div class="ib-txt">
-              <strong>92% Placement</strong>
-              <span>2024 cohort</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ABOUT THE PROGRAM: two-column prose + poster -->
-    <div class="about-section fade-up d2" id="coursesSection">
-      <div class="about-left">
-        <div class="about-label">About the Program</div>
-        <h2 class="about-heading">Nepal's Premier <span>MCS Degree</span></h2>
-
-        <p class="about-para">
-          The <strong>Master of Computer Science (MCS)</strong> at Texas College of Management and IT (TCMIT) is a 2-year, 4-semester postgraduate program affiliated with <strong>Lincoln University College, Malaysia</strong>. Designed for aspiring software engineers, researchers, and tech leaders, the program integrates advanced algorithms, artificial intelligence, software engineering, database systems, and cybersecurity. With a strong emphasis on hands-on project development, industry internships, and research, students graduate as globally competitive computing professionals ready to drive digital innovation.
-        </p>
-        <p class="about-para">
-          The MCS curriculum at Texas College is structured to build deep technical expertise semester by semester. The first semester establishes strong foundations in <strong>Advanced Algorithms, Discrete Mathematics, Computer Architecture, and Research Methodology</strong>. The second semester advances into <strong>Artificial Intelligence, Database Management Systems, Software Engineering, and Computer Networks</strong>, equipping students with both theoretical depth and applied skills.
-        </p>
-        <p class="about-para">
-          The third and fourth semesters focus on advanced topics and specialization. Students engage with <strong>Machine Learning, Cybersecurity, Cloud Computing, and Distributed Systems</strong>. The program culminates in a comprehensive <strong>MCS Thesis/Project and Industry Internship</strong>, giving students direct exposure to Nepal's growing IT sector and global technology environments. Elective tracks in AI/ML, Cybersecurity, and Software Engineering allow students to tailor their MCS to match their career ambitions.
-        </p>
-
-        <div class="about-btns">
-        </div>
-      </div>
-
-      <div class="about-right">
-        <div class="poster-wrap">
-          <div class="poster-card">
-            <div class="poster-inner">
-              <div class="poster-logos">
-                <div class="poster-logo-tx">
-                  <div class="tx-text-wrap">
-                    <span class="tx-name">Texas</span>
-                    <span class="tx-sub">College of Management &amp; IT</span>
-                  </div>
                 </div>
-                <div class="poster-logo-luc">
-                  <div class="luc-seal">LUC</div>
-                  <span class="luc-name">LINCOLN<br>UNIVERSITY<br>COLLEGE</span>
+
+                <!-- ILLUSTRATION PANEL -->
+                <div class="hero-visual">
+                    <div class="hero-illustration">
+                        <div class="ilu-glow"></div>
+
+                        <!-- MCS Tech/Developer SVG Illustration -->
+                        <svg class="student-fig" viewBox="0 0 240 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- desk/table -->
+                            <rect x="10" y="230" width="220" height="10" rx="4" fill="#1a2e6e" opacity="0.5" />
+                            <!-- laptop base -->
+                            <rect x="50" y="205" width="140" height="26" rx="6" fill="#374151" />
+                            <!-- laptop screen -->
+                            <rect x="58" y="140" width="124" height="68" rx="6" fill="#1e293b" />
+                            <rect x="62" y="144" width="116" height="60" rx="4" fill="#0f172a" />
+                            <!-- code lines on screen -->
+                            <rect x="68" y="152" width="40" height="3" rx="1.5" fill="#00c8ff" opacity="0.9" />
+                            <rect x="72" y="159" width="60" height="3" rx="1.5" fill="#a78bfa" opacity="0.8" />
+                            <rect x="72" y="166" width="30" height="3" rx="1.5" fill="#34d399" opacity="0.8" />
+                            <rect x="106" y="166" width="20" height="3" rx="1.5" fill="#f87171" opacity="0.8" />
+                            <rect x="72" y="173" width="50" height="3" rx="1.5" fill="#fbbf24" opacity="0.8" />
+                            <rect x="68" y="180" width="40" height="3" rx="1.5" fill="#00c8ff" opacity="0.9" />
+                            <rect x="72" y="187" width="35" height="3" rx="1.5" fill="#a78bfa" opacity="0.8" />
+                            <!-- cursor blink -->
+                            <rect x="130" y="187" width="2" height="10" rx="1" fill="white" opacity="0.85" />
+                            <!-- hinge -->
+                            <rect x="110" y="207" width="20" height="4" rx="2" fill="#4b5563" />
+                            <!-- neck -->
+                            <rect x="108" y="115" width="24" height="28" rx="8" fill="#f5c5a3" />
+                            <!-- head -->
+                            <ellipse cx="120" cy="93" rx="46" ry="48" fill="#f5c5a3" />
+                            <!-- hair -->
+                            <path d="M74 82 Q76 40 120 38 Q164 40 166 82 Q155 58 120 56 Q85 58 74 82Z" fill="#1a0a00" />
+                            <ellipse cx="120" cy="44" rx="40" ry="15" fill="#1a0a00" />
+                            <!-- eyes -->
+                            <ellipse cx="108" cy="97" rx="6" ry="7" fill="white" />
+                            <ellipse cx="132" cy="97" rx="6" ry="7" fill="white" />
+                            <ellipse cx="109" cy="98" rx="3.5" ry="4" fill="#1a0a0a" />
+                            <ellipse cx="133" cy="98" rx="3.5" ry="4" fill="#1a0a0a" />
+                            <ellipse cx="110" cy="97" rx="1.5" ry="2" fill="white" />
+                            <ellipse cx="134" cy="97" rx="1.5" ry="2" fill="white" />
+                            <!-- smile -->
+                            <path d="M112 112 Q120 119 128 112" stroke="#c27a5a" stroke-width="2" fill="none" stroke-linecap="round" />
+                            <!-- eyebrows -->
+                            <path d="M102 90 Q108 87 114 89" stroke="#1a0a00" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                            <path d="M126 89 Q132 87 138 90" stroke="#1a0a00" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                            <!-- glasses -->
+                            <rect x="100" y="91" width="16" height="11" rx="4" fill="none" stroke="#374151" stroke-width="1.8" />
+                            <rect x="124" y="91" width="16" height="11" rx="4" fill="none" stroke="#374151" stroke-width="1.8" />
+                            <line x1="116" y1="96" x2="124" y2="96" stroke="#374151" stroke-width="1.5" />
+                            <line x1="84" y1="95" x2="100" y2="95" stroke="#374151" stroke-width="1.5" />
+                            <line x1="140" y1="95" x2="154" y2="95" stroke="#374151" stroke-width="1.5" />
+                            <!-- hoodie/tshirt body -->
+                            <rect x="68" y="140" width="84" height="90" rx="14" fill="#1e3a8a" />
+                            <!-- hoodie pocket -->
+                            <rect x="96" y="185" width="48" height="28" rx="8" fill="#162e75" />
+                            <!-- arms -->
+                            <rect x="32" y="143" width="40" height="80" rx="14" fill="#1e3a8a" />
+                            <rect x="168" y="143" width="40" height="80" rx="14" fill="#1e3a8a" />
+                            <!-- hands on keyboard -->
+                            <ellipse cx="52" cy="228" rx="18" ry="10" fill="#f5c5a3" />
+                            <ellipse cx="188" cy="228" rx="18" ry="10" fill="#f5c5a3" />
+                        </svg>
+
+                        <!-- Floating badges -->
+                        <div class="ilu-badge ib-1">
+                            <div class="ib-icon blue">🎓</div>
+                            <div class="ib-txt">
+                                <strong>MQA Accredited</strong>
+                                <span>Internationally recognised</span>
+                            </div>
+                        </div>
+
+                        <div class="ilu-badge ib-2">
+                            <div class="ib-icon pink">💻</div>
+                            <div class="ib-txt">
+                                <strong>Project-Based Learning</strong>
+                                <span>Real-world tech builds</span>
+                            </div>
+                        </div>
+
+                        <div class="ilu-badge ib-3">
+                            <div class="ib-icon green">🚀</div>
+                            <div class="ib-txt">
+                                <strong>92% Placement</strong>
+                                <span>2024 cohort</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-
-              <div class="poster-tagline">CODE WITH PURPOSE</div>
-              <div class="poster-main-title">INNOVATE<br>WITH PRECISION</div>
-              <div class="poster-degree-row">
-                <div class="poster-degree-title">MCS</div>
-              </div>
-              <div class="poster-degree-sub">Master of Computer<br><strong>Science</strong></div>
-
-              <div class="poster-why-box">
-                <div class="pwb-title">Discover <span>MCS</span> at Texas</div>
-                <div class="pwb-item">▶ Project &amp; Research-Based Learning</div>
-                <div class="pwb-item">▶ AI, ML &amp; Data Science Tracks</div>
-                <div class="pwb-item">▶ Industry Internship Program</div>
-                <div class="pwb-item">▶ Cybersecurity &amp; Cloud Labs</div>
-                <div class="pwb-item">▶ Thesis &amp; Publication Support</div>
-              </div>
-
-              <div class="poster-admission">
-                <div class="pa-open">ADMISSION<br>OPEN 2026</div>
-              </div>
-
-              <div class="poster-student">
-                <!-- MCS Developer Figure SVG -->
-                <svg viewBox="0 0 160 270" fill="none" xmlns="http://www.w3.org/2000/svg" width="155" height="270">
-                  <!-- desk -->
-                  <rect x="0" y="235" width="160" height="8" rx="3" fill="#1a2e6e" opacity="0.5"/>
-                  <!-- laptop base -->
-                  <rect x="22" y="212" width="116" height="22" rx="5" fill="#374151"/>
-                  <!-- laptop screen -->
-                  <rect x="28" y="152" width="104" height="62" rx="5" fill="#1e293b"/>
-                  <rect x="32" y="156" width="96" height="54" rx="3" fill="#0f172a"/>
-                  <!-- code lines -->
-                  <rect x="38" y="163" width="32" height="3" rx="1.5" fill="#00c8ff" opacity="0.9"/>
-                  <rect x="42" y="170" width="48" height="3" rx="1.5" fill="#a78bfa" opacity="0.8"/>
-                  <rect x="42" y="177" width="24" height="3" rx="1.5" fill="#34d399" opacity="0.8"/>
-                  <rect x="70" y="177" width="16" height="3" rx="1.5" fill="#f87171" opacity="0.8"/>
-                  <rect x="42" y="184" width="40" height="3" rx="1.5" fill="#fbbf24" opacity="0.8"/>
-                  <rect x="38" y="191" width="30" height="3" rx="1.5" fill="#00c8ff" opacity="0.9"/>
-                  <!-- cursor -->
-                  <rect x="100" y="191" width="2" height="8" rx="1" fill="white" opacity="0.8"/>
-                  <!-- hinge -->
-                  <rect x="72" y="213" width="16" height="4" rx="2" fill="#4b5563"/>
-                  <!-- neck -->
-                  <rect x="72" y="103" width="16" height="52" rx="7" fill="#f5c5a3"/>
-                  <!-- head -->
-                  <ellipse cx="80" cy="82" rx="36" ry="40" fill="#f5c5a3"/>
-                  <!-- hair -->
-                  <path d="M44 72 Q46 34 80 32 Q114 34 116 72 Q106 50 80 52 Q54 50 44 72Z" fill="#1a0a00"/>
-                  <ellipse cx="80" cy="40" rx="32" ry="14" fill="#1a0a00"/>
-                  <!-- eyes -->
-                  <ellipse cx="68" cy="86" rx="5.5" ry="6.5" fill="white"/>
-                  <ellipse cx="92" cy="86" rx="5.5" ry="6.5" fill="white"/>
-                  <ellipse cx="69" cy="87" rx="3.2" ry="3.8" fill="#1a0a0a"/>
-                  <ellipse cx="93" cy="87" rx="3.2" ry="3.8" fill="#1a0a0a"/>
-                  <ellipse cx="70" cy="86" rx="1.3" ry="1.6" fill="white"/>
-                  <ellipse cx="94" cy="86" rx="1.3" ry="1.6" fill="white"/>
-                  <!-- glasses -->
-                  <rect x="60" y="82" width="13" height="9" rx="3" fill="none" stroke="#374151" stroke-width="1.5"/>
-                  <rect x="87" y="82" width="13" height="9" rx="3" fill="none" stroke="#374151" stroke-width="1.5"/>
-                  <line x1="73" y1="86" x2="87" y2="86" stroke="#374151" stroke-width="1.2"/>
-                  <line x1="46" y1="86" x2="60" y2="86" stroke="#374151" stroke-width="1.2"/>
-                  <line x1="100" y1="86" x2="114" y2="86" stroke="#374151" stroke-width="1.2"/>
-                  <!-- smile -->
-                  <path d="M73 100 Q80 107 87 100" stroke="#c27a5a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-                  <!-- eyebrows -->
-                  <path d="M62 78 Q68 75 74 77" stroke="#1a0a00" stroke-width="2" fill="none" stroke-linecap="round"/>
-                  <path d="M86 77 Q92 75 98 78" stroke="#1a0a00" stroke-width="2" fill="none" stroke-linecap="round"/>
-                  <!-- hoodie -->
-                  <rect x="38" y="150" width="84" height="88" rx="12" fill="#1e3a8a"/>
-                  <!-- pocket -->
-                  <rect x="56" y="196" width="48" height="26" rx="8" fill="#162e75"/>
-                  <!-- arms -->
-                  <rect x="10" y="153" width="32" height="72" rx="12" fill="#1e3a8a"/>
-                  <rect x="118" y="153" width="32" height="72" rx="12" fill="#1e3a8a"/>
-                  <!-- hands on keyboard -->
-                  <ellipse cx="26"  cy="228" rx="15" ry="9" fill="#f5c5a3"/>
-                  <ellipse cx="134" cy="228" rx="15" ry="9" fill="#f5c5a3"/>
-                </svg>
-              </div>
-
-              <div class="poster-footer">
-                <div class="pf-item">📍 Sifal, Chabahil, Kathmandu</div>
-                <div class="pf-item">📞 01-4589134 | 9801644458</div>
-                <div class="pf-item">🌐 www.texascollege.edu.np</div>
-              </div>
             </div>
-          </div>
-          <div class="poster-glow"></div>
-        </div>
-      </div>
-    </div>
 
-    <!-- AFFILIATION BANNER -->
-    <div class="affil-banner fade-up d4">
-      <div class="affil-left">
-        <div class="affil-label">Affiliated with</div>
-        <div class="affil-name">Lincoln University <span>College</span></div>
-        <div class="affil-sub">Petaling Jaya, Malaysia · Est. 2002</div>
-      </div>
+            <!-- ABOUT THE PROGRAM: two-column prose + poster -->
+            <div class="about-section fade-up d2" id="coursesSection">
+                <div class="about-left">
+                    <div class="about-label">About the Program</div>
+                    <h2 class="about-heading">Nepal's Premier <span>MCS Degree</span></h2>
 
-      <div class="affil-divider"></div>
+                    <p class="about-para">
+                        The <strong>Master of Computer Science (MCS)</strong> at Texas College of Management and IT (TCMIT), affiliated with <strong>Lincoln University College, Malaysia</strong>, is a 2-year, 4-semester postgraduate program that blends advanced computing theory with hands-on project development, research, and industry internships.
+                    </p>
+                    <ul class="about-bullets">
+                        <li><strong>Semester 1:</strong> Advanced Algorithms, Discrete Mathematics, Computer Architecture & Research Methodology.</li>
+                        <li><strong>Semester 2:</strong> Artificial Intelligence, Database Management Systems, Software Engineering & Computer Networks.</li>
+                        <li><strong>Semester 3:</strong> Machine Learning, Cybersecurity & Cloud Computing.</li>
+                        <li><strong>Semester 4:</strong> Distributed Systems, MCS Thesis/Project & Industry Internship.</li>
+                        <li><strong>Elective Tracks:</strong> AI/ML, Cybersecurity & Software Engineering.</li>
+                        <li><strong>Industry Exposure:</strong> Research Projects & Tech Internships.</li>
+                        <li><strong>Global Focus:</strong> Global Technology Environments.</li>
+                        <li><strong>Career Outcome:</strong> Globally Competitive Computing Professionals.</li>
+                    </ul>
 
-      <div class="affil-pills">
-        <div class="apill"><span class="apill-icon">✅</span> MQA Accredited</div>
-        <div class="apill"><span class="apill-icon">🎓</span> TU Equivalent</div>
-        <div class="apill"><span class="apill-icon">📜</span> MoE Approved</div>
-        <div class="apill"><span class="apill-icon">🌏</span> Globally Recognised</div>
-        <div class="apill"><span class="apill-icon">🏆</span> Top-ranked College</div>
-      </div>
+                    <div class="about-btns">
+                    </div>
+                </div>
 
-      <div class="affil-right">
-        <a href="https://www.lincoln.edu.my" target="_blank" rel="noopener noreferrer" class="btn-learn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
-          Learn More
+                <div class="about-right">
+                    <div class="poster-wrap">
+                        <div class="poster-card">
+                            <div class="poster-inner">
+                                <div class="poster-logos">
+                                    <div class="poster-logo-tx">
+                                        <div class="tx-text-wrap">
+                                            <span class="tx-name">Texas</span>
+                                            <span class="tx-sub">College of Management &amp; IT</span>
+                                        </div>
+                                    </div>
+                                    <div class="poster-logo-luc">
+                                        <div class="luc-seal">LUC</div>
+                                        <span class="luc-name">LINCOLN<br>
+                                            UNIVERSITY<br>
+                                            COLLEGE</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="poster-degree-row">
+                                    <div class="poster-degree-title">MCS</div>
+                                </div>
+                                <div class="poster-degree-sub">Master of Computer<br>
+                                    <strong>Science</strong></div>
+
+                                <div class="poster-why-box">
+                                    <div class="pwb-title">Discover <span>MCS</span> at Texas</div>
+                                    <div class="pwb-item">▶ Project &amp; Research-Based Learning</div>
+                                    <div class="pwb-item">▶ AI, ML &amp; Data Science Tracks</div>
+                                    <div class="pwb-item">▶ Industry Internship Program</div>
+                                    <div class="pwb-item">▶ Cybersecurity &amp; Cloud Labs</div>
+                                    <div class="pwb-item">▶ Thesis &amp; Publication Support</div>
+                                </div>
+
+                                <div class="poster-admission">
+                                    <div class="pa-open">ADMISSION<br>
+                                        OPEN 2026</div>
+                                </div>
+
+                                <div class="poster-student">
+                                    <!-- MCS Developer Figure SVG -->
+                                    <svg viewBox="0 0 160 270" fill="none" xmlns="http://www.w3.org/2000/svg" width="155" height="270">
+                                        <!-- desk -->
+                                        <rect x="0" y="235" width="160" height="8" rx="3" fill="#1a2e6e" opacity="0.5" />
+                                        <!-- laptop base -->
+                                        <rect x="22" y="212" width="116" height="22" rx="5" fill="#374151" />
+                                        <!-- laptop screen -->
+                                        <rect x="28" y="152" width="104" height="62" rx="5" fill="#1e293b" />
+                                        <rect x="32" y="156" width="96" height="54" rx="3" fill="#0f172a" />
+                                        <!-- code lines -->
+                                        <rect x="38" y="163" width="32" height="3" rx="1.5" fill="#00c8ff" opacity="0.9" />
+                                        <rect x="42" y="170" width="48" height="3" rx="1.5" fill="#a78bfa" opacity="0.8" />
+                                        <rect x="42" y="177" width="24" height="3" rx="1.5" fill="#34d399" opacity="0.8" />
+                                        <rect x="70" y="177" width="16" height="3" rx="1.5" fill="#f87171" opacity="0.8" />
+                                        <rect x="42" y="184" width="40" height="3" rx="1.5" fill="#fbbf24" opacity="0.8" />
+                                        <rect x="38" y="191" width="30" height="3" rx="1.5" fill="#00c8ff" opacity="0.9" />
+                                        <!-- cursor -->
+                                        <rect x="100" y="191" width="2" height="8" rx="1" fill="white" opacity="0.8" />
+                                        <!-- hinge -->
+                                        <rect x="72" y="213" width="16" height="4" rx="2" fill="#4b5563" />
+                                        <!-- neck -->
+                                        <rect x="72" y="103" width="16" height="52" rx="7" fill="#f5c5a3" />
+                                        <!-- head -->
+                                        <ellipse cx="80" cy="82" rx="36" ry="40" fill="#f5c5a3" />
+                                        <!-- hair -->
+                                        <path d="M44 72 Q46 34 80 32 Q114 34 116 72 Q106 50 80 52 Q54 50 44 72Z" fill="#1a0a00" />
+                                        <ellipse cx="80" cy="40" rx="32" ry="14" fill="#1a0a00" />
+                                        <!-- eyes -->
+                                        <ellipse cx="68" cy="86" rx="5.5" ry="6.5" fill="white" />
+                                        <ellipse cx="92" cy="86" rx="5.5" ry="6.5" fill="white" />
+                                        <ellipse cx="69" cy="87" rx="3.2" ry="3.8" fill="#1a0a0a" />
+                                        <ellipse cx="93" cy="87" rx="3.2" ry="3.8" fill="#1a0a0a" />
+                                        <ellipse cx="70" cy="86" rx="1.3" ry="1.6" fill="white" />
+                                        <ellipse cx="94" cy="86" rx="1.3" ry="1.6" fill="white" />
+                                        <!-- glasses -->
+                                        <rect x="60" y="82" width="13" height="9" rx="3" fill="none" stroke="#374151" stroke-width="1.5" />
+                                        <rect x="87" y="82" width="13" height="9" rx="3" fill="none" stroke="#374151" stroke-width="1.5" />
+                                        <line x1="73" y1="86" x2="87" y2="86" stroke="#374151" stroke-width="1.2" />
+                                        <line x1="46" y1="86" x2="60" y2="86" stroke="#374151" stroke-width="1.2" />
+                                        <line x1="100" y1="86" x2="114" y2="86" stroke="#374151" stroke-width="1.2" />
+                                        <!-- smile -->
+                                        <path d="M73 100 Q80 107 87 100" stroke="#c27a5a" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                                        <!-- eyebrows -->
+                                        <path d="M62 78 Q68 75 74 77" stroke="#1a0a00" stroke-width="2" fill="none" stroke-linecap="round" />
+                                        <path d="M86 77 Q92 75 98 78" stroke="#1a0a00" stroke-width="2" fill="none" stroke-linecap="round" />
+                                        <!-- hoodie -->
+                                        <rect x="38" y="150" width="84" height="88" rx="12" fill="#1e3a8a" />
+                                        <!-- pocket -->
+                                        <rect x="56" y="196" width="48" height="26" rx="8" fill="#162e75" />
+                                        <!-- arms -->
+                                        <rect x="10" y="153" width="32" height="72" rx="12" fill="#1e3a8a" />
+                                        <rect x="118" y="153" width="32" height="72" rx="12" fill="#1e3a8a" />
+                                        <!-- hands on keyboard -->
+                                        <ellipse cx="26" cy="228" rx="15" ry="9" fill="#f5c5a3" />
+                                        <ellipse cx="134" cy="228" rx="15" ry="9" fill="#f5c5a3" />
+                                    </svg>
+                                </div>
+
+                                <div class="poster-footer">
+                                    <div class="pf-item">📍 Sifal, Chabahil, Kathmandu</div>
+                                    <div class="pf-item">📞 01-4589134 | 9801644458</div>
+                                    <div class="pf-item">🌐 www.texascollege.edu.np</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="poster-glow"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AFFILIATION BANNER -->
+            <div class="affil-banner fade-up d4">
+                <div class="affil-left">
+                    <div class="affil-label">Affiliated with</div>
+                    <div class="affil-name">Lincoln University <span>College</span></div>
+                    <div class="affil-sub">Petaling Jaya, Malaysia · Est. 2002</div>
+                </div>
+
+                <div class="affil-divider"></div>
+
+                <div class="affil-pills">
+                    <div class="apill"><span class="apill-icon">✅</span> MQA Accredited</div>
+                    <div class="apill"><span class="apill-icon">🎓</span> TU Equivalent</div>
+                    <div class="apill"><span class="apill-icon">📜</span> MoE Approved</div>
+                    <div class="apill"><span class="apill-icon">🌏</span> Globally Recognised</div>
+                    <div class="apill"><span class="apill-icon">🏆</span> Top-ranked College</div>
+                </div>
+
+                <div class="affil-right">
+                    <a href="https://www.lincoln.edu.my" target="_blank" rel="noopener noreferrer" class="btn-learn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">Learn More
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-            <polyline points="15 3 21 3 21 9"/>
-            <line x1="10" y1="14" x2="21" y2="3"/>
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
           </svg>
-        </a>
-      </div>
-    </div>
+                    </a>
+                </div>
+            </div>
 
-  </div>
-</main>
+        </div>
+    </main>
 
-<script>
+    <script>
 const semesterData = [
     { label: "First Sem", icon: "1️⃣", subjects: ["Advanced Algorithms", "Discrete Mathematics", "Computer Architecture", "Research Methodology", "Programming Paradigms"] },
     { label: "Second Sem", icon: "2️⃣", subjects: ["Artificial Intelligence", "Database Management Systems", "Software Engineering", "Computer Networks", "Statistical Methods"] },

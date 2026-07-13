@@ -578,24 +578,28 @@ body { padding-top: 0 !important; background: var(--bg) !important; }
     </div>
 
     <!-- ABOUT THE PROGRAM: two-column prose + poster -->
-    <div class="about-section fade-up d2" id="coursesSection">
-      <div class="about-left">
-        <div class="about-label">About the Program</div>
-        <h2 class="about-heading">Nepal's Premier <span>MBA Degree</span></h2>
+  <div class="about-section fade-up d2" id="coursesSection">
+  <div class="about-left">
+    <div class="about-label">About the Program</div>
+    <h2 class="about-heading">Nepal's Premier <span>MBA Degree</span></h2>
 
-        <p class="about-para">
-          The <strong>Master of Business Administration (MBA)</strong> at Texas College of Management and IT (TCMIT) is a 2-year, 4-semester postgraduate program affiliated with <strong>Lincoln University College, Malaysia</strong>. Designed for aspiring leaders and working professionals, the program integrates strategic management, financial analysis, marketing intelligence, human resource leadership, and entrepreneurship. With a strong emphasis on real-world case studies, executive guest lectures, and industry projects, students graduate as decisive, globally competitive business professionals.
-        </p>
-        <p class="about-para">
-          The MBA curriculum at Texas College is structured to build expertise semester by semester. The first semester establishes strong foundations in <strong>Managerial Economics, Organizational Behavior, and Business Research Methods</strong>. The second semester advances into <strong>Financial Management, Marketing Management, and Strategic Human Resource Management</strong>, equipping students with the analytical tools needed for leadership roles.
-        </p>
-        <p class="about-para">
-          The third and fourth semesters focus on applied strategy and specialization. Students engage with <strong>Strategic Management, International Business, Entrepreneurship & Innovation, and Operations Management</strong>. The program culminates in a comprehensive <strong>MBA Dissertation and Industry Internship</strong>, giving students direct exposure to Nepal's growing corporate sector and international business environments. Elective tracks in Finance, Marketing, and HRM allow students to tailor their MBA to match their career ambitions.
-        </p>
+    <p class="about-para">
+        The <strong>Master of Business Administration (MBA)</strong> at Texas College of Management and IT (TCMIT), affiliated with <strong>Lincoln University College, Malaysia</strong>, is a 2-year, 4-semester postgraduate program that blends strategic management theory with real-world case studies, executive lectures, and industry projects.
+    </p>
+    <ul class="about-bullets">
+        <li><strong>Semester 1:</strong> Managerial Economics, Organizational Behavior & Business Research Methods.</li>
+        <li><strong>Semester 2:</strong> Financial Management, Marketing Management & Strategic HR Management.</li>
+        <li><strong>Semester 3:</strong> Strategic Management, International Business & Entrepreneurship.</li>
+        <li><strong>Semester 4:</strong> Operations Management, MBA Dissertation & Industry Internship.</li>
+        <li><strong>Elective Tracks:</strong> Finance, Marketing & Human Resource Management.</li>
+        <li><strong>Industry Exposure:</strong> Executive Guest Lectures & Corporate Case Studies.</li>
+        <li><strong>Global Focus:</strong> International Business Environments.</li>
+        <li><strong>Career Outcome:</strong> Decisive, Globally Competitive Business Leaders.</li>
+    </ul>
 
-        <div class="about-btns">
-        </div>
-      </div>
+    <div class="about-btns">
+    </div>
+  </div>
 
       <div class="about-right">
         <div class="poster-wrap">
@@ -614,8 +618,7 @@ body { padding-top: 0 !important; background: var(--bg) !important; }
                 </div>
               </div>
 
-              <div class="poster-tagline">LEAD WITH STRATEGY</div>
-              <div class="poster-main-title">DRIVE<br>WITH VISION</div>
+             
               <div class="poster-degree-row">
                 <div class="poster-degree-title">MBA</div>
               </div>
