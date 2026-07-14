@@ -42,6 +42,15 @@ namespace Learning_System.Bit_Admin
         protected global::System.Web.UI.WebControls.Literal litStudentCount;
 
         /// <summary>
+        /// pnlAdminControls control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAdminControls;
+
+        /// <summary>
         /// pnlStaffRoster control.
         /// </summary>
         /// <remarks>

@@ -165,53 +165,7 @@
         </div>
     </div>
 
-    <%-- MODULE CARDS — Pink · Blue · Yellow --%>
-    <div class="d-section">E-Learning Modules</div>
-    <div class="d-cards">
-
-        <div class="d-card card-pink">
-            <div class="d-card-top-bar"></div>
-            <div class="d-card-icon">
-                <div class="d-card-icon-inner"><i class="ti ti-device-desktop"></i></div>
-            </div>
-            <div class="d-card-kicker">Module 01</div>
-            <div class="d-card-title">Elearning Features</div>
-            <p class="d-card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <div class="d-card-foot">
-                <a href="#" class="d-go"><i class="ti ti-arrow-right"></i> Go More</a>
-                <span class="d-badge-status">Active</span>
-            </div>
-        </div>
-
-        <div class="d-card card-blue">
-            <div class="d-card-top-bar"></div>
-            <div class="d-card-icon">
-                <div class="d-card-icon-inner"><i class="ti ti-bulb"></i></div>
-            </div>
-            <div class="d-card-kicker">Module 02</div>
-            <div class="d-card-title">Elearning Needs of Day</div>
-            <p class="d-card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <div class="d-card-foot">
-                <a href="#" class="d-go"><i class="ti ti-arrow-right"></i> Go More</a>
-                <span class="d-badge-status">Active</span>
-            </div>
-        </div>
-
-        <div class="d-card card-yellow">
-            <div class="d-card-top-bar"></div>
-            <div class="d-card-icon">
-                <div class="d-card-icon-inner"><i class="ti ti-star"></i></div>
-            </div>
-            <div class="d-card-kicker">Featured</div>
-            <div class="d-card-title">Special E-Learning</div>
-            <p class="d-card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <div class="d-card-foot">
-                <a href="#" class="d-go"><i class="ti ti-arrow-right"></i> Go More</a>
-                <span class="d-badge-status">Active</span>
-            </div>
-        </div>
-
-    </div>
+    
 
     <%-- DEPARTMENT ROSTER — Staff + Student management --%>
     <div class="d-section">Department Roster</div>
@@ -232,6 +186,146 @@
             </div>
         </div>
     </div>
+
+    <asp:Panel ID="pnlAdminControls" runat="server">
+    <div class="d-section">Administrative Controls</div>
+
+<div class="d-cards">
+
+    <div class="d-card card-blue">
+        <div class="d-card-top-bar"></div>
+        <div class="d-card-icon">
+            <div class="d-card-icon-inner">
+                <i class="ti ti-user-plus"></i>
+            </div>
+        </div>
+
+        <div class="d-card-kicker">Administration</div>
+        <div class="d-card-title">Register Staff</div>
+        <div class="d-card-text">
+            Register new teachers and staff members for this department.
+        </div>
+
+        <div class="d-card-foot">
+            <a href="RegisterStaff.aspx" class="d-go">
+                Open <i class="ti ti-arrow-right"></i>
+            </a>
+            <span class="d-badge-status">Admin</span>
+        </div>
+    </div>
+
+    <div class="d-card card-pink">
+        <div class="d-card-top-bar"></div>
+        <div class="d-card-icon">
+            <div class="d-card-icon-inner">
+                <i class="ti ti-users-plus"></i>
+            </div>
+        </div>
+
+        <div class="d-card-kicker">Administration</div>
+        <div class="d-card-title">Register Student</div>
+        <div class="d-card-text">
+            Add and manage student registrations within your department.
+        </div>
+
+        <div class="d-card-foot">
+            <a href="RegisterStudent.aspx" class="d-go">
+                Open <i class="ti ti-arrow-right"></i>
+            </a>
+            <span class="d-badge-status">Admin</span>
+        </div>
+    </div>
+
+    <div class="d-card card-yellow">
+        <div class="d-card-top-bar"></div>
+        <div class="d-card-icon">
+            <div class="d-card-icon-inner">
+                <i class="ti ti-user-cog"></i>
+            </div>
+        </div>
+
+        <div class="d-card-kicker">Administration</div>
+        <div class="d-card-title">Manage Teachers</div>
+        <div class="d-card-text">
+            Manage teacher accounts and department assignments.
+        </div>
+
+        <div class="d-card-foot">
+            <a href="ManageTeachers.aspx" class="d-go">
+                Open <i class="ti ti-arrow-right"></i>
+            </a>
+            <span class="d-badge-status">Admin</span>
+        </div>
+    </div>
+
+    <div class="d-card card-blue">
+        <div class="d-card-top-bar"></div>
+        <div class="d-card-icon">
+            <div class="d-card-icon-inner">
+                <i class="ti ti-speakerphone"></i>
+            </div>
+        </div>
+
+        <div class="d-card-kicker">Communication</div>
+        <div class="d-card-title">Notices</div>
+        <div class="d-card-text">
+            Publish notices and announcements for students and teachers.
+        </div>
+
+        <div class="d-card-foot">
+            <a href="NoticeManage.aspx" class="d-go">
+                Open <i class="ti ti-arrow-right"></i>
+            </a>
+            <span class="d-badge-status">Admin</span>
+        </div>
+    </div>
+
+    <div class="d-card card-pink">
+        <div class="d-card-top-bar"></div>
+        <div class="d-card-icon">
+            <div class="d-card-icon-inner">
+                <i class="ti ti-chart-bar"></i>
+            </div>
+        </div>
+
+        <div class="d-card-kicker">Analytics</div>
+        <div class="d-card-title">Reports</div>
+        <div class="d-card-text">
+            View department reports, student statistics and activity.
+        </div>
+
+        <div class="d-card-foot">
+            <a href="Reports.aspx" class="d-go">
+                Open <i class="ti ti-arrow-right"></i>
+            </a>
+            <span class="d-badge-status">Admin</span>
+        </div>
+    </div>
+
+    <div class="d-card card-yellow">
+        <div class="d-card-top-bar"></div>
+        <div class="d-card-icon">
+            <div class="d-card-icon-inner">
+                <i class="ti ti-settings"></i>
+            </div>
+        </div>
+
+        <div class="d-card-kicker">System</div>
+        <div class="d-card-title">Department Settings</div>
+        <div class="d-card-text">
+            Configure department information and system preferences.
+        </div>
+
+        <div class="d-card-foot">
+            <a href="DepartmentSettings.aspx" class="d-go">
+                Open <i class="ti ti-arrow-right"></i>
+            </a>
+            <span class="d-badge-status">Admin</span>
+        </div>
+    </div>
+
+</div>
+</asp:Panel>
 
     <%-- Staff roster — visible/bound for DepartmentAdmin only, removed server-side for Staff --%>
     <asp:Panel ID="pnlStaffRoster" runat="server" CssClass="d-feature">
@@ -311,30 +405,7 @@
         </div>
     </div>
 
-    <%-- SPECIAL FEATURED --%>
-    <div class="d-section">Featured</div>
-    <div class="d-feature">
-        <div class="d-feature-head">
-            <div class="d-feature-head-left">
-                <i class="ti ti-star"></i>
-                <span class="d-feature-head-title">Special Featured</span>
-            </div>
-            <span class="d-feature-head-badge">Highlighted</span>
-        </div>
-        <div class="d-feature-body">
-            <div class="d-feature-title">Special E-Learning</div>
-            <p class="d-feature-text">
-                A learning system based on formalized teaching but with the help of electronic resources is known as E-learning.
-                E-learning refers to a learning system that we can obtain through the internet using an electronic device. We also call it online learning or online education.
-                The 'E' in E-learning stands for 'Electronic.' Hence, the original term 'electronic learning.'
-            </p>
-            <div class="d-feature-actions">
-                <a href="#" class="d-btn-pink"><i class="ti ti-arrow-right"></i> Go More</a>
-                <a href="#" class="d-btn-navy"><i class="ti ti-book"></i> Learn More</a>
-                <a href="#" class="d-btn-ghost"><i class="ti ti-share"></i> Share</a>
-            </div>
-        </div>
-    </div>
+   
 
 </div>
 

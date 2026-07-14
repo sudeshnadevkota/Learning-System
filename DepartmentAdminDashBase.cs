@@ -20,6 +20,10 @@ namespace Learning_System
         protected abstract GridView GvStudents { get; }
         protected abstract Panel PnlStaffRoster { get; }
 
+        protected abstract Panel PnlAdminControls { get; }
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // Staff (Role="Teacher", AccessLevel=null) and DepartmentAdmin
@@ -48,6 +52,7 @@ namespace Learning_System
             // Removed server-side, not just hidden by CSS — Staff gets nothing to
             // tamper with client-side, since the panel and its GridView are never bound.
             PnlStaffRoster.Visible = IsDeptAdmin;
+            PnlAdminControls.Visible = IsDeptAdmin;
 
             if (!IsPostBack)
             {
@@ -90,7 +95,13 @@ namespace Learning_System
             if (e.CommandName == "ToggleSuspend")
                 DepartmentDataService.SetActive(constr, profileId, !isActive);
             else if (e.CommandName == "Delete")
+            {
+                if (!IsDeptAdmin)
+                    return;
+
                 DepartmentDataService.Delete(constr, "TeacherProfile", profileId);
+
+            }
 
             BindStaff();
             BindStats();

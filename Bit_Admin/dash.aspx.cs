@@ -9,5 +9,7 @@ namespace Learning_System.Bit_Admin
         protected override GridView GvStaff => gvStaff;
         protected override GridView GvStudents => gvStudents;
         protected override Panel PnlStaffRoster => pnlStaffRoster;
+
+        protected override Panel PnlAdminControls => pnlAdminControls;
     }
 }
