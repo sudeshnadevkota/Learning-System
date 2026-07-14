@@ -115,7 +115,7 @@ namespace Learning_System
                             }
                             else if (accessLevel == "SuperAdmin")
                             {
-                                Response.Redirect("~/Administrator/default_administrator.aspx");
+                                Response.Redirect("~/SuperAdmin/super_admin.aspx");
                             }
                             else if (accessLevel == "DepartmentAdmin")
                             {
@@ -127,6 +127,18 @@ namespace Learning_System
                                 else
                                 {
                                     Label1.Text = "Your admin account has no department assigned. Contact MainAdmin.";
+                                }
+                            }
+                            else if (role == "Teacher")
+                            {
+                                if (!string.IsNullOrEmpty(departmentCode))
+                                {
+                                    string folderName = char.ToUpper(departmentCode[0]) + departmentCode.Substring(1).ToLower() + "_Admin";
+                                    Response.Redirect("~/" + folderName + "/dash.aspx");
+                                }
+                                else
+                                {
+                                    Label1.Text = "Your staff account has no department assigned. Contact DepartmentAdmin.";
                                 }
                             }
                             else

@@ -234,67 +234,78 @@
                         background: #7c3aed;
                     }
 
-        /* ══ CONTENT ══ */
+        /* ══ CONTENT AREA Setup ══ */
         #content {
             margin-top: 5rem;
             margin-left: 0;
             width: 100%;
-            transition: margin-left 0.3s ease;
+            padding: 20px;
+            transition: margin-left 0.3s ease, width 0.3s ease;
         }
 
-        /* ══ OPEN STATE ══ */
+        /* Transitions Framework */
         .sidebar-open #sidebar {
-            width: 300px;
+            width: 260px;
         }
 
         .sidebar-open #content {
-            margin-left: 300px;
-            width: calc(100% - 300px);
+            margin-left: 260px;
+            width: calc(100% - 260px);
         }
 
-        /* ══ MENU BAR TOGGLE BUTTON ══ */
+        .sidebar-open #menu-bar {
+            left: 260px;
+        }
+
+        .sidebar-open #icon {
+            transform: rotate(180deg);
+        }
+
+        /* ══ MENU TOGGLE BAR PLACEMENT ══ */
         #menu-bar {
-            padding-top: 6rem;
             position: fixed;
-            left: 10rem;
+            top: 5.6rem;
+            left: 0.5rem;
             z-index: 1000;
+            transition: left 0.3s ease;
         }
 
             #menu-bar button {
-                background: #e8ecf7 !important;
-                border: 1.5px solid #c5cde8 !important;
-                border-radius: 8px;
-                width: 36px;
-                height: 36px;
+                background: #ffffff !important;
+                border: 1px solid #e2e8f0 !important;
+                border-radius: 6px;
+                width: 32px;
+                height: 32px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                padding: 0;
-                transition: background 0.2s, box-shadow 0.2s;
-                box-shadow: 0 2px 8px rgba(8,21,71,0.12);
+                box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             }
 
                 #menu-bar button:hover {
-                    background: #d0d8f0 !important;
-                    box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
+                    background: #f8fafc !important;
                 }
 
         #icon {
-            color: #12183a !important;
-            font-size: 15px;
-            font-weight: 900;
+            color: #334155 !important;
+            font-size: 12px;
+            transition: transform 0.3s ease;
         }
 
-        /* ══ MEDIA QUERIES ══ */
+        /* Responsive Viewports Management */
         @media (max-width: 900px) {
             .sidebar-open #sidebar {
-                width: 300px;
+                width: 260px;
                 box-shadow: 4px 0 24px rgba(0,0,0,0.4);
             }
 
             .sidebar-open #content {
                 margin-left: 0 !important;
                 width: 100% !important;
+            }
+
+            .sidebar-open #menu-bar {
+                left: 268px !important; /* Pushes the floating arrow box outside sidebar borders */
             }
 
             #sidebar-overlay {
@@ -310,21 +321,23 @@
             }
 
             #content {
-                width: 100% !important;
-                margin-left: 0 !important;
                 padding-left: 0.75rem;
                 padding-right: 0.75rem;
             }
 
             #menu-bar {
                 left: 0.5rem;
-                padding-top: 5.6rem;
+                top: 5.6rem;
             }
         }
 
         @media (max-width: 576px) {
             .sidebar-open #sidebar {
                 width: 240px;
+            }
+
+            .sidebar-open #menu-bar {
+                left: 248px !important;
             }
 
             #menu-bar {
@@ -334,7 +347,7 @@
             .mobile-brand-text {
                 font-size: 1.4rem !important;
             }
-            /* Fixed: Force full containment and prevent text breaks on tiny viewports */
+
             .mobile-header-text {
                 font-size: 1.2rem !important;
                 white-space: nowrap !important;
@@ -352,13 +365,15 @@
 
             <div style="display: flex; align-items: center; margin: 0; padding: 0;">
                 <a href="../../Default.aspx" style="display: flex; align-items: center;">
-                    <img src="logo/logo.png" alt="Logo" style="width: auto; max-width: 120px; height: auto; max-height: 3.2rem; display: block;">
+                    <img src="../slide/view logo.png" alt="Logo" style="width: auto; max-width: 120px; height: auto; max-height: 3.2rem; display: block;">
                 </a>
             </div>
 
-            <div style="display: flex; align-items: center; margin: 0; padding: 0; text-align: right;">
+            <div class="d-flex align-items-center justify-content-end justify-content-lg-center flex-grow-1" style="margin: 0; padding: 0; text-align: right;">
                 <h3 class="mobile-header-text" style="font-weight: bold; color: #002366; margin: 0; font-size: 1.6rem; letter-spacing: 0.5px; white-space: nowrap !important; display: inline-block;">MBA NOTES</h3>
             </div>
+
+            <div class="d-none d-lg-block" style="width: 120px;"></div>
         </nav>
 
         <div class="d-flex">
@@ -366,7 +381,8 @@
                 <ul>
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'first')">
-                            <span class="submenu-toggle"><span class="sem-badge">1</span><span class="sem-name">First Sem</span> <i class="fas fa-caret-down first"></i></span>
+                            <span class="sem-badge">1</span>
+                            <span class="submenu-toggle"><span class="sem-name">First Sem</span> <i class="fas fa-caret-down first"></i></span>
                         </a>
                         <div id="first-submenu" class="submenu">
                             <ul>
@@ -381,7 +397,8 @@
 
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'second')">
-                            <span class="submenu-toggle"><span class="sem-badge">2</span><span class="sem-name">Second Sem</span> <i class="fas fa-caret-down second"></i></span>
+                            <span class="sem-badge">2</span>
+                            <span class="submenu-toggle"><span class="sem-name">Second Sem</span> <i class="fas fa-caret-down second"></i></span>
                         </a>
                         <div id="second-submenu" class="submenu">
                             <ul>
@@ -395,7 +412,8 @@
 
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'third')">
-                            <span class="submenu-toggle"><span class="sem-badge">3</span><span class="sem-name">Third Sem</span> <i class="fas fa-caret-down third"></i></span>
+                            <span class="sem-badge">3</span>
+                            <span class="submenu-toggle"><span class="sem-name">Third Sem</span> <i class="fas fa-caret-down third"></i></span>
                         </a>
                         <div id="third-submenu" class="submenu">
                             <ul>
@@ -411,7 +429,8 @@
 
                     <li>
                         <a href="#" onclick="toggleSubmenu(event, 'fourth')">
-                            <span class="submenu-toggle"><span class="sem-badge">4</span><span class="sem-name">Fourth Sem</span> <i class="fas fa-caret-down fourth"></i></span>
+                            <span class="sem-badge">4</span>
+                            <span class="submenu-toggle"><span class="sem-name">Fourth Sem</span> <i class="fas fa-caret-down fourth"></i></span>
                         </a>
                         <div id="fourth-submenu" class="submenu">
                             <ul>
@@ -428,312 +447,218 @@
             </div>
 
             <div id="menu-bar">
-                <button type="button" onclick="toggleSidebar()" class="btn" style="background: none;">
-                    <i class="fa fa-arrow-right" aria-hidden="true" style="color: black;" id="icon"></i>
+                <button type="button" onclick="toggleSidebar()" class="btn">
+                    <i class="fa fa-arrow-right" aria-hidden="true" id="icon"></i>
                 </button>
             </div>
 
-            <div id="content" style="padding-top: 1%; width: 90%; margin-left: 5%;">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
+            <div id="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
             </div>
         </div>
     </form>
 
     <script>
-function isMobile() {
-    return window.innerWidth <= 900;
-}
+      function isMobile() {
+        return window.innerWidth <= 900;
+      }
 
-function toggleSidebar() {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var menuBar = document.getElementById('menu-bar');
-    var icon = document.getElementById('icon');
-
-    if (!sidebar || !content || !menuBar || !icon) return;
-
-    if (document.body.classList.contains('sidebar-open')) {
-
-        document.body.classList.remove('sidebar-open');
-
-        sidebar.style.width = '0';
-        content.style.marginLeft = '0';
-        content.style.width = '100%';
-        menuBar.style.left = '0.5rem';
-        icon.style.transform = 'rotate(0deg)';
-
-    } else {
-
-        document.body.classList.add('sidebar-open');
-
-        sidebar.style.width = '300px';
-
-        if (!isMobile()) {
-            content.style.marginLeft = '300px';
-            content.style.width = 'calc(100% - 300px)';
-            menuBar.style.left = '300px';
-        } else {
-            content.style.marginLeft = '0';
-            content.style.width = '100%';
-            menuBar.style.left = '0.5rem';
-        }
-
-        icon.style.transform = 'rotate(180deg)';
-    }
-}
-
-function closeSidebarOverlay() {
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var icon = document.getElementById('icon');
-
-    document.body.classList.remove('sidebar-open');
-
-    if (sidebar) {
-        sidebar.style.width = '0';
-    }
-
-    if (content) {
-        content.style.marginLeft = '0';
-        content.style.width = '100%';
-    }
-
-    if (icon) {
-        icon.style.transform = 'rotate(0deg)';
-    }
-}
-
-function toggleSubmenu(event, submenuId) {
-
-    if (event) {
-        event.preventDefault();
-    }
-
-    var submenu = document.getElementById(submenuId + '-submenu');
-    var icon = document.querySelector('.' + submenuId);
-
-    if (!submenu) return;
-
-    var parentLi = submenu.parentElement;
-
-    document.body.classList.add('sidebar-open');
-
-    var items = document.querySelectorAll('#sidebar > ul > li');
-
-    for (var i = 0; i < items.length; i++) {
-
-        var li = items[i];
-
-        if (li !== parentLi) {
-
-            li.classList.remove('active-sem');
-
-            var otherSubmenu = li.querySelector('.submenu');
-            var otherIcon = li.querySelector('.fas.fa-caret-down');
-
-            if (otherSubmenu) {
-                otherSubmenu.style.display = 'none';
-            }
-
-            if (otherIcon) {
-                otherIcon.classList.remove('rotate');
-            }
-        }
-    }
-
-    if (submenu.style.display === 'block') {
-
-        submenu.style.display = 'none';
-
-        if (icon) {
-            icon.classList.remove('rotate');
-        }
-
-        if (parentLi) {
-            parentLi.classList.remove('active-sem');
-        }
-
-        sessionStorage.removeItem('openSubmenu');
-
-    } else {
-
-        submenu.style.display = 'block';
-
-        if (icon) {
-            icon.classList.add('rotate');
-        }
-
-        if (parentLi) {
-            parentLi.classList.add('active-sem');
-        }
-
+      function toggleSidebar() {
         var sidebar = document.getElementById('sidebar');
         var content = document.getElementById('content');
         var menuBar = document.getElementById('menu-bar');
-        var mainIcon = document.getElementById('icon');
+        var icon = document.getElementById('icon');
 
-        if (sidebar) {
-            sidebar.style.width = '300px';
+        if (!sidebar || !content || !menuBar || !icon) return;
+
+        var sidebarWidth = isMobile() ? (window.innerWidth <= 576 ? '240px' : '260px') : '300px';
+        var menuBarLeft = isMobile() ? (window.innerWidth <= 576 ? '248px' : '268px') : '300px';
+
+        if (document.body.classList.contains('sidebar-open')) {
+          document.body.classList.remove('sidebar-open');
+          sidebar.style.width = '0';
+          content.style.marginLeft = '0';
+          content.style.width = '100%';
+          menuBar.style.left = isMobile() ? (window.innerWidth <= 576 ? '0.3rem' : '0.5rem') : '0.5rem';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          document.body.classList.add('sidebar-open');
+          sidebar.style.width = sidebarWidth;
+
+          if (!isMobile()) {
+            content.style.marginLeft = sidebarWidth;
+            content.style.width = 'calc(100% - ' + sidebarWidth + ')';
+            menuBar.style.left = menuBarLeft;
+          } else {
+            content.style.marginLeft = '0';
+            content.style.width = '100%';
+            menuBar.style.left = menuBarLeft;
+          }
+          icon.style.transform = 'rotate(180deg)';
         }
+      }
 
+      function closeSidebarOverlay() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.getElementById('content');
+        var menuBar = document.getElementById('menu-bar');
+        var icon = document.getElementById('icon');
+
+        document.body.classList.remove('sidebar-open');
+
+        if (sidebar) sidebar.style.width = '0';
         if (content) {
-            content.style.marginLeft = '300px';
-            content.style.width = 'calc(100% - 300px)';
+          content.style.marginLeft = '0';
+          content.style.width = '100%';
         }
-
         if (menuBar) {
-            menuBar.style.left = '300px';
+          menuBar.style.left = isMobile() ? (window.innerWidth <= 576 ? '0.3rem' : '0.5rem') : '0.5rem';
         }
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      }
 
-        if (mainIcon) {
-            mainIcon.style.transform = 'rotate(180deg)';
-        }
+      function toggleSubmenu(event, submenuId) {
+        if (event) event.preventDefault();
 
-        // remember which semester panel is open so it survives a real page navigation
-        sessionStorage.setItem('openSubmenu', submenuId);
-    }
-}
+        var submenu = document.getElementById(submenuId + '-submenu');
+        var icon = document.querySelector('.' + submenuId);
 
-function openSubmenuById(submenuId) {
+        if (!submenu) return;
 
-    var submenu = document.getElementById(submenuId + '-submenu');
-    var icon = document.querySelector('.' + submenuId);
-
-    if (!submenu) return;
-
-    var parentLi = submenu.parentElement;
-
-    submenu.style.display = 'block';
-
-    if (icon) {
-        icon.classList.add('rotate');
-    }
-
-    if (parentLi) {
-        parentLi.classList.add('active-sem');
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-
-    var sidebar = document.getElementById('sidebar');
-    var content = document.getElementById('content');
-    var menuBar = document.getElementById('menu-bar');
-    var icon = document.getElementById('icon');
-
-    if (!isMobile()) {
-
-        // Briefly disable the width/margin transition so applying the open
-        // layout below doesn't visibly animate (no blink), while still
-        // using inline styles so it's guaranteed to win over any
-        // page-specific CSS on the content page.
-        document.body.classList.add('no-transition');
+        var parentLi = submenu.parentElement;
         document.body.classList.add('sidebar-open');
 
-        if (sidebar) {
-            sidebar.style.width = '300px';
+        var items = document.querySelectorAll('#sidebar > ul > li');
+
+        for (var i = 0; i < items.length; i++) {
+          var li = items[i];
+          if (li !== parentLi) {
+            li.classList.remove('active-sem');
+            var otherSubmenu = li.querySelector('.submenu');
+            var otherIcon = li.querySelector('.fas.fa-caret-down');
+
+            if (otherSubmenu) otherSubmenu.style.display = 'none';
+            if (otherIcon) otherIcon.classList.remove('rotate');
+          }
         }
 
-        if (content) {
+        if (submenu.style.display === 'block') {
+          submenu.style.display = 'none';
+          if (icon) icon.classList.remove('rotate');
+          if (parentLi) parentLi.classList.remove('active-sem');
+          sessionStorage.removeItem('openSubmenu');
+        } else {
+          submenu.style.display = 'block';
+          if (icon) icon.classList.add('rotate');
+          if (parentLi) parentLi.classList.add('active-sem');
+
+          var sidebar = document.getElementById('sidebar');
+          var content = document.getElementById('content');
+          var menuBar = document.getElementById('menu-bar');
+          var mainIcon = document.getElementById('icon');
+
+          var sidebarWidth = isMobile() ? (window.innerWidth <= 576 ? '240px' : '260px') : '300px';
+          var menuBarLeft = isMobile() ? (window.innerWidth <= 576 ? '248px' : '268px') : '300px';
+
+          if (sidebar) sidebar.style.width = sidebarWidth;
+          if (content && !isMobile()) {
+            content.style.marginLeft = sidebarWidth;
+            content.style.width = 'calc(100% - ' + sidebarWidth + ')';
+          }
+          if (menuBar) menuBar.style.left = menuBarLeft;
+          if (mainIcon) mainIcon.style.transform = 'rotate(180deg)';
+
+          sessionStorage.setItem('openSubmenu', submenuId);
+        }
+      }
+
+      function openSubmenuById(submenuId) {
+        var submenu = document.getElementById(submenuId + '-submenu');
+        var icon = document.querySelector('.' + submenuId);
+
+        if (!submenu) return;
+
+        var parentLi = submenu.parentElement;
+        submenu.style.display = 'block';
+
+        if (icon) icon.classList.add('rotate');
+        if (parentLi) parentLi.classList.add('active-sem');
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.getElementById('content');
+        var menuBar = document.getElementById('menu-bar');
+        var icon = document.getElementById('icon');
+
+        if (!isMobile()) {
+          document.body.classList.add('no-transition');
+          document.body.classList.add('sidebar-open');
+
+          if (sidebar) sidebar.style.width = '300px';
+          if (content) {
             content.style.marginLeft = '300px';
             content.style.width = 'calc(100% - 300px)';
-        }
+          }
+          if (menuBar) menuBar.style.left = '300px';
+          if (icon) icon.style.transform = 'rotate(180deg)';
 
-        if (menuBar) {
-            menuBar.style.left = '300px';
-        }
-
-        if (icon) {
-            icon.style.transform = 'rotate(180deg)';
-        }
-
-        // Re-enable transitions on the next frame so manual toggling
-        // (the arrow button, submenu clicks) still animates normally.
-        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
             requestAnimationFrame(function () {
-                document.body.classList.remove('no-transition');
+              document.body.classList.remove('no-transition');
             });
-        });
-
-    } else {
-        if (menuBar) {
-            menuBar.style.left = '0.5rem';
+          });
+        } else {
+          if (menuBar) menuBar.style.left = isMobile() ? (window.innerWidth <= 576 ? '0.3rem' : '0.5rem') : '0.5rem';
         }
-    }
 
-    // ── Match the current page (path + query string) against sidebar links ──
-    var links = document.querySelectorAll('#sidebar .submenu ul li a');
+        var links = document.querySelectorAll('#sidebar .submenu ul li a');
+        var currentUrl = new URL(window.location.href);
+        var currentFull = (currentUrl.pathname + currentUrl.search).toLowerCase();
+        var matchedSubmenuId = null;
 
-    var currentUrl = new URL(window.location.href);
-    var currentFull = (currentUrl.pathname + currentUrl.search).toLowerCase();
+        for (var j = 0; j < links.length; j++) {
+          var link = links[j];
+          var hrefAttr = link.getAttribute('href');
 
-    var matchedSubmenuId = null;
+          if (!hrefAttr) continue;
 
-    for (var j = 0; j < links.length; j++) {
+          var linkUrl = new URL(hrefAttr, window.location.origin);
+          var linkFull = (linkUrl.pathname + linkUrl.search).toLowerCase();
 
-        var link = links[j];
-        var hrefAttr = link.getAttribute('href');
-
-        if (!hrefAttr) continue;
-
-        var linkUrl = new URL(hrefAttr, window.location.origin);
-        var linkFull = (linkUrl.pathname + linkUrl.search).toLowerCase();
-
-        if (linkFull === currentFull) {
-
+          if (linkFull === currentFull) {
             if (link.parentElement) {
-                link.parentElement.classList.add('active-subject');
+              link.parentElement.classList.add('active-subject');
             }
 
             var parentSubmenu = link.parentElement;
-
-            while (parentSubmenu &&
-                !parentSubmenu.classList.contains('submenu')) {
-                parentSubmenu = parentSubmenu.parentElement;
+            while (parentSubmenu && !parentSubmenu.classList.contains('submenu')) {
+              parentSubmenu = parentSubmenu.parentElement;
             }
 
             if (parentSubmenu) {
+              parentSubmenu.style.display = 'block';
+              var parentLi = parentSubmenu.parentElement;
 
-                parentSubmenu.style.display = 'block';
-
-                var parentLi = parentSubmenu.parentElement;
-
-                if (parentLi) {
-
-                    parentLi.classList.add('active-sem');
-
-                    var caret = parentLi.querySelector('.fas.fa-caret-down');
-
-                    if (caret) {
-                        caret.classList.add('rotate');
-                    }
-
-                    matchedSubmenuId = parentSubmenu.id.replace('-submenu', '');
-                }
+              if (parentLi) {
+                parentLi.classList.add('active-sem');
+                var caret = parentLi.querySelector('.fas.fa-caret-down');
+                if (caret) caret.classList.add('rotate');
+                matchedSubmenuId = parentSubmenu.id.replace('-submenu', '');
+              }
             }
+          }
         }
-    }
 
-    // remember whichever submenu is now open (from URL match)
-    if (matchedSubmenuId) {
-        sessionStorage.setItem('openSubmenu', matchedSubmenuId);
-    } else {
-        // fall back to whatever the user last opened manually
-        var savedSubmenu = sessionStorage.getItem('openSubmenu');
-        if (savedSubmenu) {
+        if (matchedSubmenuId) {
+          sessionStorage.setItem('openSubmenu', matchedSubmenuId);
+        } else {
+          var savedSubmenu = sessionStorage.getItem('openSubmenu');
+          if (savedSubmenu) {
             openSubmenuById(savedSubmenu);
+          }
         }
-    }
-});
-</script>
+      });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-

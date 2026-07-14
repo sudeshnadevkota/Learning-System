@@ -1104,6 +1104,39 @@
     line-height: 1.2;
     margin-bottom: 20px;
   }
+  .about-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 0;
+}
+
+    .about-bullets li {
+        position: relative;
+        padding-left: 26px;
+        font-size: 14px;
+        color: #374151;
+        line-height: 1.6;
+    }
+
+        .about-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 8px;
+            height: 8px;
+            border-radius: 3px;
+            background: var(--pink);
+        }
+
+        .about-bullets li strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
 
   .about-heading span {
     color: #16a34a;
@@ -1796,23 +1829,26 @@
       <!-- ABOUT THE PROGRAM: two-column prose + poster -->
       <div class="about-section fade-up d2" id="coursesSection">
         <div class="about-left">
-          <div class="about-label">About the Program</div>
-          <h2 class="about-heading">Nepal's Premier <span>BIT Degree</span></h2>
+    <div class="about-label">About the Program</div>
+    <h2 class="about-heading">Nepal's Premier <span>BIT Degree</span></h2>
 
-          <p class="about-para">
-            The <strong>Bachelor of Information Technology (BIT)</strong> at Texas College of Management and IT (TCMIT) is a 4-year, 8-semester program affiliated with <strong>Lincoln University College, Malaysia</strong>. Designed to blend technical theory with practical execution, the program covers software development, networking, databases, cloud computing, AI, and DevOps. With modern facilities like our IoT & Robotics labs, VFX Studio, and Incubation Center, students gain hands-on experience through project work and industry training to graduate completely career-ready
-          </p>
-          <p class="about-para">
-            To ensure our students are industry-ready from day one, Texas College integrates structured, After-Class Professional Classes directly into the academic timeline. Students will kickstart their first semester with foundational web design in <strong>HTML/CSS alongside hands-on IoT & Robotics engineering</strong>. Moving into the second semester, they will begin building dynamic applications using React and Node.js, which seamlessly scales into your third and fourth semesters with<strong> Advanced React, Node.js with Express, and Python Django</strong>. By the fifth semester and leading up to graduation, they will master the full MERN Stack to handle enterprise-level architectures.
-          </p>
-          <p class="about-para">
-            Alongside this core development track, students' journey includes specialized industry certifications to make you globally competitive. You will dive into professional<strong> Cisco Training and UI/UX / Multimedia design workshops, build cross-platform mobile apps with React Native, and master Cybersecurity Essentials</strong>. Finally, students will achieve production-ready expertise in Cloud Foundations and Cloud Architecting running on Linux 9.0. This progressive curriculum aligns beautifully with the semester-by-semester navigation, giving prospective students a clear, exciting view of their technical future.
-          </p>
+<p class="about-para">
+    The <strong>Bachelor of Information Technology (BIT)</strong> at Texas College of Management and IT (TCMIT), affiliated with <strong>Lincoln University College, Malaysia</strong>, equips students with in-demand IT skills through hands-on learning, modern labs, and real-world projects.
+</p>
+<ul class="about-bullets">
+    <li><strong>Semester 1:</strong> HTML/CSS, IoT & Robotics.</li>
+    <li><strong>Semester 2:</strong> React & Node.js.</li>
+    <li><strong>Semesters 3–4:</strong> Advanced React, Express & Django.</li>
+    <li><strong>Semester 5+:</strong> Full MERN Stack development.</li>
+    <li><strong>Certifications:</strong> Cisco, UI/UX & Multimedia.</li>
+    <li><strong>Mobile Apps:</strong> React Native.</li>
+    <li><strong>Cybersecurity:</strong> Security Essentials.</li>
+    <li><strong>Cloud:</strong> Linux & Cloud Architecting.</li>
+</ul>
 
-
-          <div class="about-btns">
-          </div>
-        </div>
+    <div class="about-btns">
+    </div>
+</div>
 
         <div class="about-right">
           <div class="poster-wrap">
@@ -1834,9 +1870,7 @@
                   </div>
                 </div>
 
-                <div class="poster-tagline">SHAPE THE FUTURE</div>
-                <div class="poster-main-title">WITH<br>
-                  TECHNOLOGY</div>
+                
                 <div class="poster-degree-row">
                   <div class="poster-degree-title">BIT</div>
                 </div>
@@ -1939,22 +1973,22 @@
   </main>
 
   <script>
-    const semesterData = [
-      { label: "First Sem", icon: "1️⃣", subjects: ["Discrete Maths", "C Programming", "Digital Logic", "Physics", "English"] },
-      { label: "Second Sem", icon: "2️⃣", subjects: ["Data Structures", "OOP (Java)", "Calculus", "Statistics", "Microprocessor"] },
-      { label: "Third Sem", icon: "3️⃣", subjects: ["DBMS", "Computer Networks", "OS", "Web Tech", "Numerical Methods"] },
-      { label: "Fourth Sem", icon: "4️⃣", subjects: ["Software Engineering", "AI", "Computer Graphics", "Theory of Computation", "Management Info Sys"] },
-      { label: "Fifth Sem", icon: "5️⃣", subjects: ["Advanced Java", "Cloud Computing", "Mobile App Dev", "Information Security", "Project Mgmt"] },
-      { label: "Sixth Sem", icon: "6️⃣", subjects: ["Machine Learning", "Big Data", "DevOps", "IoT", "Research Methods"] },
-      { label: "Seventh Sem", icon: "7️⃣", subjects: ["Capstone Project", "Internship", "Elective I", "Elective II", "Advanced Topics"] },
-      { label: "Eighth Sem", icon: "8️⃣", subjects: ["Final Project", "Dissertation", "Viva Voce", "Elective III"] },
-    ];
+const semesterData = [
+    { label: "First Sem", icon: "1️⃣", subjects: ["Discrete Maths", "C Programming", "Digital Logic", "Physics", "English"] },
+    { label: "Second Sem", icon: "2️⃣", subjects: ["Data Structures", "OOP (Java)", "Calculus", "Statistics", "Microprocessor"] },
+    { label: "Third Sem", icon: "3️⃣", subjects: ["DBMS", "Computer Networks", "OS", "Web Tech", "Numerical Methods"] },
+    { label: "Fourth Sem", icon: "4️⃣", subjects: ["Software Engineering", "AI", "Computer Graphics", "Theory of Computation", "Management Info Sys"] },
+    { label: "Fifth Sem", icon: "5️⃣", subjects: ["Advanced Java", "Cloud Computing", "Mobile App Dev", "Information Security", "Project Mgmt"] },
+    { label: "Sixth Sem", icon: "6️⃣", subjects: ["Machine Learning", "Big Data", "DevOps", "IoT", "Research Methods"] },
+    { label: "Seventh Sem", icon: "7️⃣", subjects: ["Capstone Project", "Internship", "Elective I", "Elective II", "Advanced Topics"] },
+    { label: "Eighth Sem", icon: "8️⃣", subjects: ["Final Project", "Dissertation", "Viva Voce", "Elective III"] },
+];
 
-    const menu = document.getElementById('semMenu');
-    semesterData.forEach((sem, i) => {
-      const el = document.createElement('div');
-      el.className = 'sem-item' + (i === 0 ? ' open' : '');
-      el.innerHTML = `
+const menu = document.getElementById('semMenu');
+semesterData.forEach((sem, i) => {
+    const el = document.createElement('div');
+    el.className = 'sem-item' + (i === 0 ? ' open' : '');
+    el.innerHTML = `
       <div class="sem-header${i === 0 ? ' active' : ''}" onclick="toggleSem(this)">
         <div class="sem-icon">${sem.icon}</div>
         <span class="sem-label">${sem.label}</span>
@@ -1963,32 +1997,32 @@
       <div class="sem-subjects">
         ${sem.subjects.map((s, j) => `<div class="subject-link${i === 0 && j === 0 ? ' active' : ''}" onclick="pickSubject(this)"><div class="subject-dot"></div>${s}</div>`).join('')}
       </div>`;
-      menu?.appendChild(el);
-    });
+    menu?.appendChild(el);
+});
 
-    function toggleSem(el: any) {
-      el.parentElement.classList.toggle('open');
-    }
+function toggleSem(el: any) {
+    el.parentElement.classList.toggle('open');
+}
 
-    function pickSubject(el: any) {
-      document.querySelectorAll('.subject-link').forEach(l => l.classList.remove('active'));
-      el.classList.add('active');
-      if (window.innerWidth < 900) closeSidebar();
-    }
+function pickSubject(el: any) {
+    document.querySelectorAll('.subject-link').forEach(l => l.classList.remove('active'));
+    el.classList.add('active');
+    if (window.innerWidth < 900) closeSidebar();
+}
 
-    function scrollToCourses() {
-      document.getElementById('coursesSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+function scrollToCourses() {
+    document.getElementById('coursesSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
-    // function toggleSidebar() {
-    //     document.getElementById('sidebar').classList.toggle('open');
-    //     document.getElementById('overlay').classList.toggle('show');
-    // }
+// function toggleSidebar() {
+//     document.getElementById('sidebar').classList.toggle('open');
+//     document.getElementById('overlay').classList.toggle('show');
+// }
 
-    function closeSidebar() {
-      document.getElementById('sidebar')?.classList.remove('open');
-      document.getElementById('overlay')?.classList.remove('show');
-    }
-  </script >
+function closeSidebar() {
+    document.getElementById('sidebar')?.classList.remove('open');
+    document.getElementById('overlay')?.classList.remove('show');
+}
+</script >
 
-</asp:Content >
+    </asp:Content >

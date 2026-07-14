@@ -150,7 +150,8 @@
     <Content Include="Bhm_Notes\logo\logo.png" />
     <Content Include="Bit_Admin\bulk_upload.aspx" />
     <Content Include="Bit_Admin\course_content.aspx" />
-    <Content Include="Bit_Admin\NoticeManage.aspx" />
+    <Content Include="DepartmentAdmin\dash.aspx" />
+    <Content Include="NoticeManage.aspx" />
     <Content Include="Bit_Admin\dash.aspx" />
     <Content Include="Bit_Admin\logo\logo.png" />
     <Content Include="Bit_Admin\Syllabus.aspx" />
@@ -159,8 +160,8 @@
     <Content Include="Bit_Notes\dash.aspx" />
     <Content Include="Bit_Notes\logo\logo.png" />
     <Content Include="Bit_Notes\logo\sidebar-removebg-preview.png" />
-    <Content Include="Bit_Notes\Notices.aspx" />
-    <Content Include="Bit_Notes\NoticeWidget.ascx" />
+    <Content Include="Notices.aspx" />
+    <Content Include="NoticeWidget.ascx" />
     <Content Include="Blog\blog1.aspx" />
     <Content Include="Blog\dash.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -236,7 +237,7 @@
     <Content Include="Bit_Notes\Syllabus\PIT_Syllabus.pdf" />
     <Content Include="Bit_Notes\Syllabus\Math_Syllabus.pdf" />
     <Content Include="Bit_Notes\SyllabusViewer.ashx" />
-    <Content Include="Bit_Notes\NoticeViewer.ashx" />
+    <Content Include="NoticeViewer.ashx" />
     <Content Include="Bhm_Notes\SyllabusViewer.ashx" />
     <Content Include="Mba_Notes\SyllabusViewer.ashx" />
     <Content Include="Bba_Notes\SyllabusViewer.ashx" />
@@ -343,6 +344,7 @@
     <Content Include="slide\facedetection.png" />
     <Content Include="slide\fs.jpg" />
     <Content Include="slide\haik.jpg" />
+    <Content Include="slide\images-removebg-preview.png" />
     <Content Include="slide\info.png" />
     <Content Include="slide\job.png" />
     <Content Include="slide\learn.png" />
@@ -351,7 +353,6 @@
     <Content Include="slide\learn4.jfif" />
     <Content Include="slide\leave.png" />
     <Content Include="slide\lgo.png" />
-    <Content Include="slide\logo.png" />
     <Content Include="slide\manoj.png" />
     <Content Include="slide\mba.png" />
     <Content Include="slide\mba5.jpg" />
@@ -382,6 +383,7 @@
     <Content Include="Mba_Notes\note.Master" />
     <Content Include="Bba_Notes\note.Master" />
     <Content Include="Bcs_Notes\note.Master" />
+    <Content Include="slide\view logo.png" />
     <Content Include="slide\zidan.png" />
     <Content Include="Staff\default_staff.aspx" />
     <Content Include="students\abcd.aspx" />
@@ -390,6 +392,7 @@
     <Content Include="students\module_details.aspx" />
     <Content Include="students\ViewFile.aspx" />
     <Content Include="style.css" />
+    <Content Include="SuperAdmin\super_admin.aspx" />
     <Content Include="TextFile1.txt" />
     <Content Include="TreeLineImages\dash.gif" />
     <Content Include="TreeLineImages\dashminus.gif" />
@@ -639,11 +642,22 @@
     <Compile Include="Bit_Admin\course_content.aspx.designer.cs">
       <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Admin\NoticeManage.aspx.cs">
+    <Compile Include="DepartmentAdminDashBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DepartmentAdmin\dash.aspx.cs">
+      <DependentUpon>dash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DepartmentAdmin\dash.aspx.designer.cs">
+      <DependentUpon>dash.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentDataService.cs" />
+    <Compile Include="NoticeManage.aspx.cs">
       <DependentUpon>NoticeManage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Admin\NoticeManage.aspx.designer.cs">
+    <Compile Include="NoticeManage.aspx.designer.cs">
       <DependentUpon>NoticeManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bit_Admin\dash.aspx.cs">
@@ -688,19 +702,19 @@
     <Compile Include="Bit_Notes\note.Master.designer.cs">
       <DependentUpon>note.Master</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Notes\NoticeRoles.cs" />
-    <Compile Include="Bit_Notes\Notices.aspx.cs">
+    <Compile Include="NoticeRoles.cs" />
+    <Compile Include="Notices.aspx.cs">
       <DependentUpon>Notices.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Notes\Notices.aspx.designer.cs">
+    <Compile Include="Notices.aspx.designer.cs">
       <DependentUpon>Notices.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bit_Notes\NoticeWidget.ascx.cs">
+    <Compile Include="NoticeWidget.ascx.cs">
       <DependentUpon>NoticeWidget.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bit_Notes\NoticeWidget.ascx.designer.cs">
+    <Compile Include="NoticeWidget.ascx.designer.cs">
       <DependentUpon>NoticeWidget.ascx</DependentUpon>
     </Compile>
     <Compile Include="Blog\blog1.aspx.cs">
@@ -735,7 +749,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\PermissionHelper.cs" />
+    <Compile Include="PermissionHelper.cs" />
     <Compile Include="learning.Master.cs">
       <DependentUpon>learning.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -969,6 +983,13 @@
     <Compile Include="students\ViewFile.aspx.designer.cs">
       <DependentUpon>ViewFile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SuperAdmin\super_admin.aspx.cs">
+      <DependentUpon>super_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperAdmin\super_admin.aspx.designer.cs">
+      <DependentUpon>super_admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="verification\approvestudents.aspx.cs">
       <DependentUpon>approvestudents.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1045,6 +1066,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Helpers\" />
     <Folder Include="photo\" />
     <Folder Include="Uploded_datas\" />
     <Folder Include="Views\Home\" />

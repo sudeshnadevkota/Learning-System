@@ -1,9 +1,9 @@
-﻿<%@ Page Title="Main Admin" Language="C#" AutoEventWireup="true" CodeFile="main_admin.aspx.cs" Inherits="Learning_System.MainAdmin.main_admin" %>
+﻿<%@ Page Title="Super Admin" Language="C#" AutoEventWireup="true" CodeBehind="super_admin.aspx.cs" Inherits="Learning_System.SuperAdmin.super_admin" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Main Admin Dashboard</title>
+    <title>Super Admin Dashboard</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -228,28 +228,6 @@
         .table-modern tr:last-child td { border-bottom: none; }
         .table-modern tr:hover { background-color: #fcfcfd; }
 
-        .table-modern a {
-            color: var(--pink);
-            text-decoration: none;
-            font-weight: 600;
-            margin-right: 10px;
-            font-size: 12.5px;
-        }
-
-        .table-modern a:hover { text-decoration: underline; }
-
-        .table-modern a.danger { color: var(--danger); }
-
-        .role-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
-            background: var(--pink-light);
-            color: var(--pink);
-        }
-
         /* ── Quick Actions ── */
         .c-quick-grid {
             display: grid;
@@ -280,13 +258,6 @@
         }
 
         .c-quick-link i { font-size: 1.3rem; color: var(--pink); }
-
-        .empty-note {
-            padding: 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 13px;
-        }
     </style>
 </head>
 <body>
@@ -296,14 +267,14 @@
             <!-- Hero -->
             <div class="c-hero">
                 <div>
-                    <h3><i class="ti ti-crown"></i> Main Admin Dashboard</h3>
-                    <p>Logged in as <strong><%= Session["Username"] %></strong> &middot; Full system access</p>
+                    <h3><i class="ti ti-shield-star"></i> Super Admin Dashboard</h3>
+                    <p>Logged in as <strong><%= Session["Username"] %></strong> &middot; System-wide access</p>
                 </div>
                 <div class="c-hero-actions">
-                    <a href="/administrator/AppointUser.aspx" class="c-hero-btn c-hero-btn-outline">
-    <i class="ti ti-user-plus"></i> Appoint User
-</a>
-                    <a href="logout.aspx" class="c-hero-btn c-hero-btn-pink">
+                    <a href="../AppointUser.aspx" class="c-hero-btn c-hero-btn-outline">
+                        <i class="ti ti-user-plus"></i> Appoint User
+                    </a>
+                    <a href="../logout.aspx" class="c-hero-btn c-hero-btn-pink">
                         <i class="ti ti-logout"></i> Logout
                     </a>
                 </div>
@@ -319,75 +290,32 @@
                     </div>
                 </div>
                 <div class="c-stat-card">
-                    <div class="c-stat-icon"><i class="ti ti-shield-star"></i></div>
-                    <div>
-                        <div class="c-stat-value"><asp:Literal ID="litSuperAdminCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Super Admins</div>
-                    </div>
-                </div>
-                <div class="c-stat-card">
-                    <div class="c-stat-icon blue"><i class="ti ti-user-cog"></i></div>
+                    <div class="c-stat-icon"><i class="ti ti-user-cog"></i></div>
                     <div>
                         <div class="c-stat-value"><asp:Literal ID="litDeptAdminCount" runat="server">0</asp:Literal></div>
                         <div class="c-stat-label">Dept Admins</div>
                     </div>
                 </div>
                 <div class="c-stat-card">
-                    <div class="c-stat-icon"><i class="ti ti-user-check"></i></div>
+                    <div class="c-stat-icon blue"><i class="ti ti-user-check"></i></div>
                     <div>
                         <div class="c-stat-value"><asp:Literal ID="litStaffCount" runat="server">0</asp:Literal></div>
                         <div class="c-stat-label">Staff</div>
                     </div>
                 </div>
                 <div class="c-stat-card">
-                    <div class="c-stat-icon blue"><i class="ti ti-users"></i></div>
+                    <div class="c-stat-icon"><i class="ti ti-users"></i></div>
                     <div>
                         <div class="c-stat-value"><asp:Literal ID="litStudentCount" runat="server">0</asp:Literal></div>
                         <div class="c-stat-label">Students</div>
                     </div>
                 </div>
                 <div class="c-stat-card">
-                    <div class="c-stat-icon"><i class="ti ti-book-2"></i></div>
+                    <div class="c-stat-icon blue"><i class="ti ti-book-2"></i></div>
                     <div>
                         <div class="c-stat-value"><asp:Literal ID="litSubjectCount" runat="server">0</asp:Literal></div>
                         <div class="c-stat-label">Subjects</div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Admin Hierarchy -->
-            <div class="c-panel">
-                <div class="c-panel-header">
-                    <div class="c-panel-title"><i class="ti ti-hierarchy-3"></i> Super Admin Management</div>
-                   <a href="/administrator/AppointUser.aspx?role=SuperAdmin" class="c-hero-btn c-hero-btn-pink" style="padding:8px 18px;font-size:12px;">
-    <i class="ti ti-plus"></i> Appoint SuperAdmin
-</a>
-                </div>
-                <div class="c-table-container">
-                    <asp:GridView ID="gvSuperAdmins" runat="server"
-                        AutoGenerateColumns="False"
-                        class="table-modern"
-                        GridLines="None" BorderWidth="0" CellPadding="0"
-                        EmptyDataText="No SuperAdmins appointed yet.">
-                        <Columns>
-                            <asp:BoundField DataField="FullName" HeaderText="Name" />
-                            <asp:BoundField DataField="Email" HeaderText="Email" />
-                            <asp:TemplateField HeaderText="Role">
-                                <ItemTemplate><span class="role-badge">SuperAdmin</span></ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Action">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lnkSuspend" runat="server" Text="Suspend"
-    CommandArgument='<%# Eval("AdminProfileId") %>'
-    OnClick="lnkSuspend_Click"></asp:LinkButton>
-<asp:LinkButton ID="lnkRemove" runat="server" Text="Remove" CssClass="danger"
-    CommandArgument='<%# Eval("AdminProfileId") %>'
-    OnClick="lnkRemove_Click"
-    OnClientClick="return confirm('Remove this SuperAdmin? This cannot be undone.');"></asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>
                 </div>
             </div>
 
@@ -419,17 +347,11 @@
                     <div class="c-panel-title"><i class="ti ti-bolt"></i> Quick Actions</div>
                 </div>
                 <div class="c-quick-grid">
-                    <a href="AppointUser.aspx" class="c-quick-link">
+                    <a href="../AppointUser.aspx" class="c-quick-link">
                         <i class="ti ti-user-plus"></i> Appoint User
                     </a>
-                    <a href="/NoticeManage.aspx" class="c-quick-link">
+                    <a href="../NoticeManage.aspx" class="c-quick-link">
                         <i class="ti ti-speakerphone"></i> Manage Notices
-                    </a>
-                    <a href="ManageDepartments.aspx" class="c-quick-link">
-                        <i class="ti ti-building"></i> Manage Departments
-                    </a>
-                    <a href="AuditLog.aspx" class="c-quick-link">
-                        <i class="ti ti-history"></i> Audit Log
                     </a>
                 </div>
             </div>

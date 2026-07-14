@@ -280,6 +280,39 @@
   .about-left { background: white; border-radius: 22px; border: 1.5px solid var(--border); padding: 36px 38px 32px; box-shadow: var(--shadow-sm); }
   .about-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; color: var(--pink); font-family: 'Sora', sans-serif; margin-bottom: 10px; }
   .about-heading { font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 20px; }
+  .about-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 0;
+}
+
+    .about-bullets li {
+        position: relative;
+        padding-left: 26px;
+        font-size: 14px;
+        color: #374151;
+        line-height: 1.6;
+    }
+
+        .about-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 8px;
+            height: 8px;
+            border-radius: 3px;
+            background: var(--pink);
+        }
+
+        .about-bullets li strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
   .about-heading span { color: #16a34a; }
   .about-para { font-size: 14px; color: #374151; line-height: 1.75; margin-bottom: 14px; }
   .about-para strong { color: var(--primary); font-weight: 700; }
@@ -578,24 +611,28 @@ body { padding-top: 0 !important; background: var(--bg) !important; }
     </div>
 
     <!-- ABOUT THE PROGRAM: two-column prose + poster -->
-    <div class="about-section fade-up d2" id="coursesSection">
-      <div class="about-left">
-        <div class="about-label">About the Program</div>
-        <h2 class="about-heading">Nepal's Premier <span>MBA Degree</span></h2>
+  <div class="about-section fade-up d2" id="coursesSection">
+  <div class="about-left">
+    <div class="about-label">About the Program</div>
+    <h2 class="about-heading">Nepal's Premier <span>MBA Degree</span></h2>
 
-        <p class="about-para">
-          The <strong>Master of Business Administration (MBA)</strong> at Texas College of Management and IT (TCMIT) is a 2-year, 4-semester postgraduate program affiliated with <strong>Lincoln University College, Malaysia</strong>. Designed for aspiring leaders and working professionals, the program integrates strategic management, financial analysis, marketing intelligence, human resource leadership, and entrepreneurship. With a strong emphasis on real-world case studies, executive guest lectures, and industry projects, students graduate as decisive, globally competitive business professionals.
-        </p>
-        <p class="about-para">
-          The MBA curriculum at Texas College is structured to build expertise semester by semester. The first semester establishes strong foundations in <strong>Managerial Economics, Organizational Behavior, and Business Research Methods</strong>. The second semester advances into <strong>Financial Management, Marketing Management, and Strategic Human Resource Management</strong>, equipping students with the analytical tools needed for leadership roles.
-        </p>
-        <p class="about-para">
-          The third and fourth semesters focus on applied strategy and specialization. Students engage with <strong>Strategic Management, International Business, Entrepreneurship & Innovation, and Operations Management</strong>. The program culminates in a comprehensive <strong>MBA Dissertation and Industry Internship</strong>, giving students direct exposure to Nepal's growing corporate sector and international business environments. Elective tracks in Finance, Marketing, and HRM allow students to tailor their MBA to match their career ambitions.
-        </p>
+    <p class="about-para">
+        The <strong>Master of Business Administration (MBA)</strong> at Texas College of Management and IT (TCMIT), affiliated with <strong>Lincoln University College, Malaysia</strong>, is a 2-year, 4-semester postgraduate program that blends strategic management theory with real-world case studies, executive lectures, and industry projects.
+    </p>
+    <ul class="about-bullets">
+        <li><strong>Semester 1:</strong> Managerial Economics, Organizational Behavior & Business Research Methods.</li>
+        <li><strong>Semester 2:</strong> Financial Management, Marketing Management & Strategic HR Management.</li>
+        <li><strong>Semester 3:</strong> Strategic Management, International Business & Entrepreneurship.</li>
+        <li><strong>Semester 4:</strong> Operations Management, MBA Dissertation & Industry Internship.</li>
+        <li><strong>Elective Tracks:</strong> Finance, Marketing & Human Resource Management.</li>
+        <li><strong>Industry Exposure:</strong> Executive Guest Lectures & Corporate Case Studies.</li>
+        <li><strong>Global Focus:</strong> International Business Environments.</li>
+        <li><strong>Career Outcome:</strong> Decisive, Globally Competitive Business Leaders.</li>
+    </ul>
 
-        <div class="about-btns">
-        </div>
-      </div>
+    <div class="about-btns">
+    </div>
+  </div>
 
       <div class="about-right">
         <div class="poster-wrap">
@@ -614,8 +651,7 @@ body { padding-top: 0 !important; background: var(--bg) !important; }
                 </div>
               </div>
 
-              <div class="poster-tagline">LEAD WITH STRATEGY</div>
-              <div class="poster-main-title">DRIVE<br>WITH VISION</div>
+             
               <div class="poster-degree-row">
                 <div class="poster-degree-title">MBA</div>
               </div>

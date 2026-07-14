@@ -306,7 +306,7 @@
             <div class="container d-flex align-items-center justify-content-between">
                 
                 <a class="navbar-brand" href="Default.aspx">
-                    <img src="slide/logo.png" alt="logo" width="140" />
+                    <img src="slide/view logo.png" alt="logo" width="140" />
                 </a>
                 
                 <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
@@ -338,7 +338,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="https://localhost:44301/Bit_Notes/Notices.aspx" class="nav-link">
+                                <a href="<%= ResolveUrl("~/notices.aspx?class=" + Server.UrlEncode(Session["DepartmentCode"]?.ToString())) %>" class="nav-link">
                                     <i class="fas fa-bell d-lg-none me-2"></i>Notice Board
                                 </a>
                             </li>

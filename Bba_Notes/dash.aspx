@@ -1,77 +1,103 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Bba_Notes/note.Master" AutoEventWireup="true" CodeBehind="dash.aspx.cs" Inherits="Learning_System.Bba_Notes.dash" ResponseEncoding="utf-8" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<style>
-  :root {
-    --primary: #0B1F66;
-    --secondary: #081547;
-    --pink: #FF2D8D;
-    --pink-dark: #d4206e;
-    --pink-glow: rgba(255,45,141,0.22);
-    --pink-soft: rgba(255,45,141,0.1);
-    --bg: #f0f3fc;
-    --bg-card: #ffffff;
-    --text-primary: #0B1F66;
-    --text-secondary: #5a6a99;
-    --text-light: #a0aec8;
-    --border: rgba(11,31,102,0.1);
-    --border-pink: rgba(255,45,141,0.18);
-    --shadow-sm: 0 2px 12px rgba(8,21,71,0.07);
-    --shadow-md: 0 8px 32px rgba(8,21,71,0.13);
-    --shadow-lg: 0 20px 60px rgba(8,21,71,0.2);
-    --radius: 18px;
-    --radius-sm: 10px;
-    --sidebar-w: 265px;
-    --header-h: 68px;
-    --ease: 0.28s cubic-bezier(0.4,0,0.2,1);
-  }
+    <style>
+        :root {
+            --primary: #0B1F66;
+            --secondary: #081547;
+            --pink: #FF2D8D;
+            --pink-dark: #d4206e;
+            --pink-glow: rgba(255,45,141,0.22);
+            --pink-soft: rgba(255,45,141,0.1);
+            --bg: #f0f3fc;
+            --bg-card: #ffffff;
+            --text-primary: #0B1F66;
+            --text-secondary: #5a6a99;
+            --text-light: #a0aec8;
+            --border: rgba(11,31,102,0.1);
+            --border-pink: rgba(255,45,141,0.18);
+            --shadow-sm: 0 2px 12px rgba(8,21,71,0.07);
+            --shadow-md: 0 8px 32px rgba(8,21,71,0.13);
+            --shadow-lg: 0 20px 60px rgba(8,21,71,0.2);
+            --radius: 18px;
+            --radius-sm: 10px;
+            --sidebar-w: 265px;
+            --header-h: 68px;
+            --ease: 0.28s cubic-bezier(0.4,0,0.2,1);
+        }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-  ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: rgba(11,31,102,0.15); border-radius: 4px; }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
 
-  /* ══ HEADER ══ */
-  header {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    height: var(--header-h);
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center;
-    padding: 0 28px 0 0;
-    box-shadow: 0 2px 24px rgba(8,21,71,0.07);
-  }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
 
-  .header-logo {
-    width: var(--sidebar-w);
-    display: flex; align-items: center; justify-content: center;
-    padding: 0 20px;
-    border-right: 1px solid var(--border);
-    height: 100%;
-    flex-shrink: 0;
-    gap: 10px;
-  }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(11,31,102,0.15);
+            border-radius: 4px;
+        }
 
-  .logo-mark {
-    width: 36px; height: 36px;
-    background: linear-gradient(135deg, var(--primary), var(--pink));
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Sora', sans-serif;
-    font-weight: 800; font-size: 14px; color: white;
-    flex-shrink: 0;
-  }
+        /* ══ HEADER ══ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            height: var(--header-h);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 28px 0 0;
+            box-shadow: 0 2px 24px rgba(8,21,71,0.07);
+        }
+
+        .header-logo {
+            width: var(--sidebar-w);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            border-right: 1px solid var(--border);
+            height: 100%;
+            flex-shrink: 0;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--pink));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            color: white;
+            flex-shrink: 0;
+        }
 
   .logo-text { display: flex; flex-direction: column; }
   .logo-text strong { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 800; color: var(--primary); line-height: 1.1; }
@@ -105,7 +131,9 @@
   .search-bar input { border: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: var(--text-primary); outline: none; width: 100%; }
   .search-bar input::placeholder { color: var(--text-light); }
 
-  .header-actions { display: flex; align-items: center; gap: 8px; }
+                .search-bar input::placeholder {
+                    color: var(--text-light);
+                }
 
   .icon-btn {
     width: 38px; height: 38px; border-radius: 10px;
@@ -138,7 +166,9 @@
 
   .sidebar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; color: rgba(255,255,255,0.28); padding: 4px 12px 10px; margin-top: 4px; }
 
-  .sem-item { margin-bottom: 1px; }
+        .sem-item {
+            margin-bottom: 1px;
+        }
 
   .sem-header {
     display: flex; align-items: center; gap: 10px; padding: 9px 12px;
@@ -157,8 +187,9 @@
   .sem-chevron { transition: var(--ease); opacity: 1; flex-shrink: 0; }
   .sem-item.open .sem-chevron { transform: rotate(180deg); opacity: 1; color: var(--pink); }
 
-  .sem-subjects { display: none; padding: 3px 0 3px 16px; }
-  .sem-item.open .sem-subjects { display: block; }
+        .sem-label {
+            flex: 1;
+        }
 
   .subject-link {
     display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 8px;
@@ -179,9 +210,13 @@
   .ctab.active { background: var(--pink); color: white; border-color: transparent; box-shadow: 0 3px 12px rgba(255,45,141,0.4); }
   .ctab:not(.active):hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
 
-  /* ══ MAIN ══ */
-  .main { margin-left: var(--sidebar-w); padding-top: var(--header-h); min-height: 100vh; width: calc(100% - var(--sidebar-w)); }
-  .main-inner { padding: 30px 36px; width: 100%; }
+        /* ══ MAIN ══ */
+        .main {
+            margin-left: var(--sidebar-w);
+            padding-top: var(--header-h);
+            min-height: 100vh;
+            width: calc(100% - var(--sidebar-w));
+        }
 
   /* ══ HERO BANNER ══ */
   .hero-banner {
@@ -277,7 +312,41 @@
 
   .about-left { background: white; border-radius: 22px; border: 1.5px solid var(--border); padding: 36px 38px 32px; box-shadow: var(--shadow-sm); }
   .about-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; color: var(--pink); font-family: 'Sora', sans-serif; margin-bottom: 10px; }
+
   .about-heading { font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 20px; }
+  .about-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 0;
+}
+
+    .about-bullets li {
+        position: relative;
+        padding-left: 26px;
+        font-size: 14px;
+        color: #374151;
+        line-height: 1.6;
+    }
+
+        .about-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 8px;
+            height: 8px;
+            border-radius: 3px;
+            background: var(--pink);
+        }
+
+        .about-bullets li strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
   .about-heading span { color: #16a34a; }
   .about-para { font-size: 14px; color: #374151; line-height: 1.75; margin-bottom: 14px; }
   .about-para strong { color: var(--primary); font-weight: 700; }
@@ -329,11 +398,19 @@
   .poster-footer { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 4px; position: relative; z-index: 2; }
   .pf-item { font-size: 9.5px; color: rgba(255,255,255,0.5); margin-bottom: 3px; }
 
-  @media (max-width: 1100px) {
-    .about-section { grid-template-columns: 1fr; }
-    .about-right { position: static; }
-    .poster-card { max-width: 360px; }
-  }
+        @media (max-width: 1100px) {
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+
+            .about-right {
+                position: static;
+            }
+
+            .poster-card {
+                max-width: 360px;
+            }
+        }
 
   /* ══ FADE ANIMATIONS ══ */
   .fade-up { opacity: 0; transform: translateY(22px); animation: fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) forwards; }
@@ -447,23 +524,23 @@ body { padding-top: 0 !important; background: var(--bg) !important; }
 }
 </style>
 
-<main class="main">
-  <div class="main-inner">
+    <main class="main">
+        <div class="main-inner">
 
-    <!-- HERO BANNER -->
-    <div class="hero-banner fade-up d1">
-      <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-      </div>
+            <!-- HERO BANNER -->
+            <div class="hero-banner fade-up d1">
+                <div class="hero-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
 
-      <div class="hero-content">
+                <div class="hero-content">
 
-        <div class="hero-title">
-          Lead Business with<br>
-          <span class="highlight">Vision &amp; Strategy</span>
-        </div>
+                    <div class="hero-title">
+                        Lead Business with<br>
+                        <span class="highlight">Vision &amp; Strategy</span>
+                    </div>
 
         <div class="hero-mini-stats">
           <div class="hms-item">
@@ -481,230 +558,231 @@ body { padding-top: 0 !important; background: var(--bg) !important; }
 
         </div>
 
-      </div>
-
-      <!-- ILLUSTRATION PANEL -->
-      <div class="hero-visual">
-        <div class="hero-illustration">
-          <div class="ilu-glow"></div>
-
-          <!-- SVG Student Illustration (BBA — business / chart theme) -->
-          <svg class="student-fig" viewBox="0 0 240 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- body / blazer -->
-            <rect x="68" y="155" width="104" height="125" rx="14" fill="#1a2e6e"/>
-            <rect x="108" y="155" width="24" height="80" rx="4" fill="#0B1F66"/>
-            <!-- tie -->
-            <polygon points="120,162 115,190 120,196 125,190" fill="#FF2D8D"/>
-            <!-- shirt collar -->
-            <polygon points="108,155 120,175 132,155 118,160" fill="white" opacity="0.9"/>
-            <polygon points="132,155 120,175 108,155 122,160" fill="#e0e4f0" opacity="0.9"/>
-            <!-- arms -->
-            <rect x="38" y="158" width="36" height="92" rx="14" fill="#1a2e6e"/>
-            <rect x="166" y="158" width="36" height="92" rx="14" fill="#1a2e6e"/>
-            <!-- hands -->
-            <ellipse cx="56" cy="256" rx="16" ry="12" fill="#f5c5a3"/>
-            <ellipse cx="184" cy="253" rx="16" ry="12" fill="#f5c5a3"/>
-            <!-- briefcase in right hand -->
-            <rect x="188" y="208" width="42" height="32" rx="5" fill="#F5C542"/>
-            <rect x="198" y="204" width="22" height="6" rx="3" fill="#d4a800" stroke="#d4a800" stroke-width="1"/>
-            <line x1="209" y1="208" x2="209" y2="240" stroke="#d4a800" stroke-width="2"/>
-            <line x1="188" y1="220" x2="230" y2="220" stroke="#d4a800" stroke-width="1.5"/>
-            <!-- bar chart on clipboard (left hand) -->
-            <rect x="28" y="196" width="50" height="62" rx="5" fill="white" opacity="0.95"/>
-            <rect x="32" y="198" width="42" height="4" rx="2" fill="#e5e7eb"/>
-            <!-- bars -->
-            <rect x="36" y="238" width="8" height="16" rx="2" fill="#0B1F66"/>
-            <rect x="48" y="228" width="8" height="26" rx="2" fill="#FF2D8D"/>
-            <rect x="60" y="220" width="8" height="34" rx="2" fill="#F5C542"/>
-            <!-- trend line -->
-            <polyline points="36,245 52,232 68,218" stroke="#16a34a" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- neck -->
-            <rect x="108" y="132" width="24" height="28" rx="8" fill="#f5c5a3"/>
-            <!-- head -->
-            <ellipse cx="120" cy="110" rx="46" ry="50" fill="#f5c5a3"/>
-            <!-- hair -->
-            <path d="M74 96 Q76 52 120 50 Q164 52 166 96 Q155 72 120 70 Q85 72 74 96Z" fill="#2d1a08"/>
-            <ellipse cx="120" cy="55" rx="20" ry="14" fill="#2d1a08"/>
-            <!-- facial features -->
-            <ellipse cx="108" cy="114" rx="6" ry="7" fill="white"/>
-            <ellipse cx="132" cy="114" rx="6" ry="7" fill="white"/>
-            <ellipse cx="109" cy="115" rx="3.5" ry="4" fill="#1a0a0a"/>
-            <ellipse cx="133" cy="115" rx="3.5" ry="4" fill="#1a0a0a"/>
-            <ellipse cx="110" cy="114" rx="1.5" ry="2" fill="white"/>
-            <ellipse cx="134" cy="114" rx="1.5" ry="2" fill="white"/>
-            <path d="M112 128 Q120 135 128 128" stroke="#c27a5a" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M102 107 Q108 104 114 106" stroke="#2d1a08" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M126 106 Q132 104 138 107" stroke="#2d1a08" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          </svg>
-
-          <!-- Floating badges — BBA specific -->
-          <div class="ilu-badge ib-1">
-            <div class="ib-icon blue">📊</div>
-            <div class="ib-txt">
-              <strong>Business Analytics Lab</strong>
-              <span>Data-driven decisions</span>
-            </div>
-          </div>
-
-          <div class="ilu-badge ib-2">
-            <div class="ib-icon pink">🤝</div>
-            <div class="ib-txt">
-              <strong>Industry Mentorship</strong>
-              <span>CEOs &amp; entrepreneurs</span>
-            </div>
-          </div>
-
-          <div class="ilu-badge ib-3">
-            <div class="ib-icon green">💼</div>
-            <div class="ib-txt">
-              <strong>92% Placement</strong>
-              <span>2024 cohort</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ABOUT THE PROGRAM -->
-    <div class="about-section fade-up d2" id="coursesSection">
-      <div class="about-left">
-        <div class="about-label">About the Program</div>
-        <h2 class="about-heading">Nepal's Premier <span>BBA Degree</span></h2>
-
-        <p class="about-para">
-          The <strong>Bachelor of Business Administration (BBA)</strong> at Texas College of Management and IT (TCMIT) is a 4-year, 8-semester program affiliated with <strong>Lincoln University College, Malaysia</strong>.
-          Designed to blend management theory with practical business execution, the program covers marketing, finance, human resource management, entrepreneurship, business analytics, and digital transformation.
-          With modern facilities including a Business Simulation Lab, Incubation Center, and e-Library, students gain hands-on experience through live projects and industry internships to graduate completely career-ready.
-        </p>
-        <p class="about-para">
-          To ensure graduates are industry-ready from day one, <strong>Texas College integrates structured After-Class Professional Classes</strong> directly into the academic timeline.
-          With dedicated Business Analytics and ERP labs, an active Incubation Center, and a state-of-the-art e-library, students gain hands-on experience navigating real-world business challenges.
-          <strong>Industry training, live project work, and globally recognised management certifications</strong> ensure graduates thrive in business leadership roles in Nepal and around the world.
-        </p>
-        <p class="about-para">
-          Alongside the core management track, the student journey includes specialised professional certifications to build global competitiveness.
-          Students explore<strong> financial modelling workshops, digital marketing and branding strategy, build entrepreneurial</strong> ventures through the Incubation Center, and master data analytics using industry tools.
-   
-        </p>
-
-        <div class="about-btns"></div>
-      </div>
-
-      <div class="about-right">
-        <div class="poster-wrap">
-          <div class="poster-card">
-            <div class="poster-inner">
-              <div class="poster-logos">
-                <div class="poster-logo-tx">
-                  <div class="tx-text-wrap">
-                    <span class="tx-name">Texas</span>
-                    <span class="tx-sub">College of Management &amp; IT</span>
-                  </div>
                 </div>
-                <div class="poster-logo-luc">
-                  <div class="luc-seal">LUC</div>
-                  <span class="luc-name">LINCOLN<br>UNIVERSITY<br>COLLEGE</span>
+
+                <!-- ILLUSTRATION PANEL -->
+                <div class="hero-visual">
+                    <div class="hero-illustration">
+                        <div class="ilu-glow"></div>
+
+                        <!-- SVG Student Illustration (BBA — business / chart theme) -->
+                        <svg class="student-fig" viewBox="0 0 240 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- body / blazer -->
+                            <rect x="68" y="155" width="104" height="125" rx="14" fill="#1a2e6e" />
+                            <rect x="108" y="155" width="24" height="80" rx="4" fill="#0B1F66" />
+                            <!-- tie -->
+                            <polygon points="120,162 115,190 120,196 125,190" fill="#FF2D8D" />
+                            <!-- shirt collar -->
+                            <polygon points="108,155 120,175 132,155 118,160" fill="white" opacity="0.9" />
+                            <polygon points="132,155 120,175 108,155 122,160" fill="#e0e4f0" opacity="0.9" />
+                            <!-- arms -->
+                            <rect x="38" y="158" width="36" height="92" rx="14" fill="#1a2e6e" />
+                            <rect x="166" y="158" width="36" height="92" rx="14" fill="#1a2e6e" />
+                            <!-- hands -->
+                            <ellipse cx="56" cy="256" rx="16" ry="12" fill="#f5c5a3" />
+                            <ellipse cx="184" cy="253" rx="16" ry="12" fill="#f5c5a3" />
+                            <!-- briefcase in right hand -->
+                            <rect x="188" y="208" width="42" height="32" rx="5" fill="#F5C542" />
+                            <rect x="198" y="204" width="22" height="6" rx="3" fill="#d4a800" stroke="#d4a800" stroke-width="1" />
+                            <line x1="209" y1="208" x2="209" y2="240" stroke="#d4a800" stroke-width="2" />
+                            <line x1="188" y1="220" x2="230" y2="220" stroke="#d4a800" stroke-width="1.5" />
+                            <!-- bar chart on clipboard (left hand) -->
+                            <rect x="28" y="196" width="50" height="62" rx="5" fill="white" opacity="0.95" />
+                            <rect x="32" y="198" width="42" height="4" rx="2" fill="#e5e7eb" />
+                            <!-- bars -->
+                            <rect x="36" y="238" width="8" height="16" rx="2" fill="#0B1F66" />
+                            <rect x="48" y="228" width="8" height="26" rx="2" fill="#FF2D8D" />
+                            <rect x="60" y="220" width="8" height="34" rx="2" fill="#F5C542" />
+                            <!-- trend line -->
+                            <polyline points="36,245 52,232 68,218" stroke="#16a34a" stroke-width="2" fill="none" stroke-linecap="round" />
+                            <!-- neck -->
+                            <rect x="108" y="132" width="24" height="28" rx="8" fill="#f5c5a3" />
+                            <!-- head -->
+                            <ellipse cx="120" cy="110" rx="46" ry="50" fill="#f5c5a3" />
+                            <!-- hair -->
+                            <path d="M74 96 Q76 52 120 50 Q164 52 166 96 Q155 72 120 70 Q85 72 74 96Z" fill="#2d1a08" />
+                            <ellipse cx="120" cy="55" rx="20" ry="14" fill="#2d1a08" />
+                            <!-- facial features -->
+                            <ellipse cx="108" cy="114" rx="6" ry="7" fill="white" />
+                            <ellipse cx="132" cy="114" rx="6" ry="7" fill="white" />
+                            <ellipse cx="109" cy="115" rx="3.5" ry="4" fill="#1a0a0a" />
+                            <ellipse cx="133" cy="115" rx="3.5" ry="4" fill="#1a0a0a" />
+                            <ellipse cx="110" cy="114" rx="1.5" ry="2" fill="white" />
+                            <ellipse cx="134" cy="114" rx="1.5" ry="2" fill="white" />
+                            <path d="M112 128 Q120 135 128 128" stroke="#c27a5a" stroke-width="2" fill="none" stroke-linecap="round" />
+                            <path d="M102 107 Q108 104 114 106" stroke="#2d1a08" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                            <path d="M126 106 Q132 104 138 107" stroke="#2d1a08" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                        </svg>
+
+                        <!-- Floating badges — BBA specific -->
+                        <div class="ilu-badge ib-1">
+                            <div class="ib-icon blue">📊</div>
+                            <div class="ib-txt">
+                                <strong>Business Analytics Lab</strong>
+                                <span>Data-driven decisions</span>
+                            </div>
+                        </div>
+
+                        <div class="ilu-badge ib-2">
+                            <div class="ib-icon pink">🤝</div>
+                            <div class="ib-txt">
+                                <strong>Industry Mentorship</strong>
+                                <span>CEOs &amp; entrepreneurs</span>
+                            </div>
+                        </div>
+
+                        <div class="ilu-badge ib-3">
+                            <div class="ib-icon green">💼</div>
+                            <div class="ib-txt">
+                                <strong>92% Placement</strong>
+                                <span>2024 cohort</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-
-              <div class="poster-tagline">LEAD BUSINESS WITH VISION</div>
-              <div class="poster-main-title">WITH<br>BUSINESS ADMIN</div>
-              <div class="poster-degree-row">
-                <div class="poster-degree-title">BBA</div>
-              </div>
-              <div class="poster-degree-sub">Bachelor of (Hons.) in<br><strong>Business Administration</strong></div>
-
-              <div class="poster-why-box">
-                <div class="pwb-title">Discover <span>BBA</span>at Texas</div>
-                <div class="pwb-item">▶ Business Simulation Lab</div>
-                <div class="pwb-item">▶ ERP &amp; Analytics Studio</div>
-                <div class="pwb-item">▶ Incubation Center</div>
-                <div class="pwb-item">▶ Resourceful Library &amp; ebrary</div>
-                <div class="pwb-item">▶ Industry Mentorship Cell</div>
-              </div>
-
-              <div class="poster-admission">
-                <div class="pa-open">ADMISSION<br>OPEN 2026</div>
-              </div>
-
-              <!-- Poster student SVG (BBA — holding briefcase) -->
-              <div class="poster-student">
-                <svg viewBox="0 0 160 270" fill="none" xmlns="http://www.w3.org/2000/svg" width="155" height="270">
-                  <rect x="38" y="125" width="84" height="145" rx="12" fill="#1e3a8a"/>
-                  <rect x="72" y="125" width="16" height="70" rx="3" fill="#1a2e6e"/>
-                  <polygon points="80,131 76,155 80,160 84,155" fill="#FF2D8D"/>
-                  <polygon points="72,125 80,142 88,125 79,129" fill="white" opacity="0.85"/>
-                  <rect x="16" y="128" width="28" height="84" rx="12" fill="#1e3a8a"/>
-                  <rect x="116" y="128" width="28" height="84" rx="12" fill="#1e3a8a"/>
-                  <ellipse cx="30" cy="218" rx="13" ry="10" fill="#f5c5a3"/>
-                  <ellipse cx="130" cy="216" rx="13" ry="10" fill="#f5c5a3"/>
-                  <!-- briefcase -->
-                  <rect x="118" y="180" width="34" height="26" rx="4" fill="#F5C542"/>
-                  <rect x="126" y="176" width="18" height="5" rx="2.5" fill="#d4a800"/>
-                  <line x1="135" y1="180" x2="135" y2="206" stroke="#d4a800" stroke-width="1.5"/>
-                  <line x1="118" y1="190" x2="152" y2="190" stroke="#d4a800" stroke-width="1.2"/>
-                  <rect x="72" y="103" width="16" height="26" rx="7" fill="#f5c5a3"/>
-                  <ellipse cx="80" cy="82" rx="36" ry="40" fill="#f5c5a3"/>
-                  <path d="M44 72 Q46 34 80 32 Q114 34 116 72 Q106 50 80 52 Q54 50 44 72Z" fill="#2d1a08"/>
-                  <ellipse cx="80" cy="36" rx="18" ry="12" fill="#2d1a08"/>
-                  <ellipse cx="68" cy="86" rx="5.5" ry="6.5" fill="white"/>
-                  <ellipse cx="92" cy="86" rx="5.5" ry="6.5" fill="white"/>
-                  <ellipse cx="69" cy="87" rx="3.2" ry="3.8" fill="#1a0a0a"/>
-                  <ellipse cx="93" cy="87" rx="3.2" ry="3.8" fill="#1a0a0a"/>
-                  <ellipse cx="70" cy="86" rx="1.3" ry="1.6" fill="white"/>
-                  <ellipse cx="94" cy="86" rx="1.3" ry="1.6" fill="white"/>
-                  <path d="M73 100 Q80 107 87 100" stroke="#c27a5a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-                  <path d="M62 78 Q68 75 74 77" stroke="#2d1a08" stroke-width="2" fill="none" stroke-linecap="round"/>
-                  <path d="M86 77 Q92 75 98 78" stroke="#2d1a08" stroke-width="2" fill="none" stroke-linecap="round"/>
-                </svg>
-              </div>
-
-              <div class="poster-footer">
-                <div class="pf-item">📍 Sifal, Chabahil, Kathmandu</div>
-                <div class="pf-item">📞 01-4589134 | 9801644458</div>
-                <div class="pf-item">🌐 www.texascollege.edu.np</div>
-              </div>
             </div>
-          </div>
-          <div class="poster-glow"></div>
-        </div>
-      </div>
-    </div>
 
-    <!-- AFFILIATION BANNER -->
-    <div class="affil-banner fade-up d4">
-      <div class="affil-left">
-        <div class="affil-label">Affiliated with</div>
-        <div class="affil-name">Lincoln University <span>College</span></div>
-        <div class="affil-sub">Petaling Jaya, Malaysia · Est. 2002</div>
-      </div>
+            <!-- ABOUT THE PROGRAM -->
+            <div class="about-section fade-up d2" id="coursesSection">
+                <div class="about-left">
+                    <div class="about-label">About the Program</div>
+                    <h2 class="about-heading">Nepal's Premier <span>BBA Degree</span></h2>
 
-      <div class="affil-divider"></div>
+                    <p class="about-para">
+                        The <strong>Bachelor of Business Administration (BBA)</strong> at Texas College of Management and IT (TCMIT), affiliated with <strong>Lincoln University College, Malaysia</strong>, is a 4-year, 8-semester program that blends management theory with practical business execution through modern labs, live projects, and industry internships.
+                    </p>
+                    <ul class="about-bullets">
+                        <li><strong>Semester 1–2:</strong> Principles of Management, Business Communication & Accounting.</li>
+                        <li><strong>Semester 3–4:</strong> Marketing, Finance & Human Resource Management.</li>
+                        <li><strong>Semester 5:</strong> Business Analytics & Digital Transformation.</li>
+                        <li><strong>Semester 6:</strong> Entrepreneurship & Incubation Center Projects.</li>
+                        <li><strong>Certifications:</strong> Financial Modelling, Digital Marketing & Branding Strategy.</li>
+                        <li><strong>Practical Labs:</strong> Business Simulation Lab & ERP Systems.</li>
+                        <li><strong>Industry Exposure:</strong> Live Projects & Internships.</li>
+                        <li><strong>Resources:</strong> e-Library & Global Management Certifications.</li>
+                    </ul>
 
-      <div class="affil-pills">
-        <div class="apill"><span class="apill-icon">✅</span> MQA Accredited</div>
-        <div class="apill"><span class="apill-icon">🎓</span> TU Equivalent</div>
-        <div class="apill"><span class="apill-icon">📜</span> MoE Approved</div>
-        <div class="apill"><span class="apill-icon">🌏</span> Globally Recognised</div>
-        <div class="apill"><span class="apill-icon">🏆</span> Top-ranked College</div>
-      </div>
+                    <div class="about-btns">
+                    </div>
+                </div>
 
-      <div class="affil-right">
-        <a href="https://www.lincoln.edu.my" target="_blank" rel="noopener noreferrer" class="btn-learn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
-          Learn More
+                <div class="about-right">
+                    <div class="poster-wrap">
+                        <div class="poster-card">
+                            <div class="poster-inner">
+                                <div class="poster-logos">
+                                    <div class="poster-logo-tx">
+                                        <div class="tx-text-wrap">
+                                            <span class="tx-name">Texas</span>
+                                            <span class="tx-sub">College of Management &amp; IT</span>
+                                        </div>
+                                    </div>
+                                    <div class="poster-logo-luc">
+                                        <div class="luc-seal">LUC</div>
+                                        <span class="luc-name">LINCOLN<br>
+                                            UNIVERSITY<br>
+                                            COLLEGE</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="poster-degree-row">
+                                    <div class="poster-degree-title">BBA</div>
+                                </div>
+                                <div class="poster-degree-sub">Bachelor of (Hons.) in<br>
+                                    <strong>Business Administration</strong></div>
+
+                                <div class="poster-why-box">
+                                    <div class="pwb-title">Discover <span>BBA</span>at Texas</div>
+                                    <div class="pwb-item">▶ Business Simulation Lab</div>
+                                    <div class="pwb-item">▶ ERP &amp; Analytics Studio</div>
+                                    <div class="pwb-item">▶ Incubation Center</div>
+                                    <div class="pwb-item">▶ Resourceful Library &amp; ebrary</div>
+                                    <div class="pwb-item">▶ Industry Mentorship Cell</div>
+                                </div>
+
+                                <div class="poster-admission">
+                                    <div class="pa-open">ADMISSION<br>
+                                        OPEN 2026</div>
+                                </div>
+
+                                <!-- Poster student SVG (BBA — holding briefcase) -->
+                                <div class="poster-student">
+                                    <svg viewBox="0 0 160 270" fill="none" xmlns="http://www.w3.org/2000/svg" width="155" height="270">
+                                        <rect x="38" y="125" width="84" height="145" rx="12" fill="#1e3a8a" />
+                                        <rect x="72" y="125" width="16" height="70" rx="3" fill="#1a2e6e" />
+                                        <polygon points="80,131 76,155 80,160 84,155" fill="#FF2D8D" />
+                                        <polygon points="72,125 80,142 88,125 79,129" fill="white" opacity="0.85" />
+                                        <rect x="16" y="128" width="28" height="84" rx="12" fill="#1e3a8a" />
+                                        <rect x="116" y="128" width="28" height="84" rx="12" fill="#1e3a8a" />
+                                        <ellipse cx="30" cy="218" rx="13" ry="10" fill="#f5c5a3" />
+                                        <ellipse cx="130" cy="216" rx="13" ry="10" fill="#f5c5a3" />
+                                        <!-- briefcase -->
+                                        <rect x="118" y="180" width="34" height="26" rx="4" fill="#F5C542" />
+                                        <rect x="126" y="176" width="18" height="5" rx="2.5" fill="#d4a800" />
+                                        <line x1="135" y1="180" x2="135" y2="206" stroke="#d4a800" stroke-width="1.5" />
+                                        <line x1="118" y1="190" x2="152" y2="190" stroke="#d4a800" stroke-width="1.2" />
+                                        <rect x="72" y="103" width="16" height="26" rx="7" fill="#f5c5a3" />
+                                        <ellipse cx="80" cy="82" rx="36" ry="40" fill="#f5c5a3" />
+                                        <path d="M44 72 Q46 34 80 32 Q114 34 116 72 Q106 50 80 52 Q54 50 44 72Z" fill="#2d1a08" />
+                                        <ellipse cx="80" cy="36" rx="18" ry="12" fill="#2d1a08" />
+                                        <ellipse cx="68" cy="86" rx="5.5" ry="6.5" fill="white" />
+                                        <ellipse cx="92" cy="86" rx="5.5" ry="6.5" fill="white" />
+                                        <ellipse cx="69" cy="87" rx="3.2" ry="3.8" fill="#1a0a0a" />
+                                        <ellipse cx="93" cy="87" rx="3.2" ry="3.8" fill="#1a0a0a" />
+                                        <ellipse cx="70" cy="86" rx="1.3" ry="1.6" fill="white" />
+                                        <ellipse cx="94" cy="86" rx="1.3" ry="1.6" fill="white" />
+                                        <path d="M73 100 Q80 107 87 100" stroke="#c27a5a" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                                        <path d="M62 78 Q68 75 74 77" stroke="#2d1a08" stroke-width="2" fill="none" stroke-linecap="round" />
+                                        <path d="M86 77 Q92 75 98 78" stroke="#2d1a08" stroke-width="2" fill="none" stroke-linecap="round" />
+                                    </svg>
+                                </div>
+
+                                <div class="poster-footer">
+                                    <div class="pf-item">📍 Sifal, Chabahil, Kathmandu</div>
+                                    <div class="pf-item">📞 01-4589134 | 9801644458</div>
+                                    <div class="pf-item">🌐 www.texascollege.edu.np</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="poster-glow"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AFFILIATION BANNER -->
+            <div class="affil-banner fade-up d4">
+                <div class="affil-left">
+                    <div class="affil-label">Affiliated with</div>
+                    <div class="affil-name">Lincoln University <span>College</span></div>
+                    <div class="affil-sub">Petaling Jaya, Malaysia · Est. 2002</div>
+                </div>
+
+                <div class="affil-divider"></div>
+
+                <div class="affil-pills">
+                    <div class="apill"><span class="apill-icon">✅</span> MQA Accredited</div>
+                    <div class="apill"><span class="apill-icon">🎓</span> TU Equivalent</div>
+                    <div class="apill"><span class="apill-icon">📜</span> MoE Approved</div>
+                    <div class="apill"><span class="apill-icon">🌏</span> Globally Recognised</div>
+                    <div class="apill"><span class="apill-icon">🏆</span> Top-ranked College</div>
+                </div>
+
+                <div class="affil-right">
+                    <a href="https://www.lincoln.edu.my" target="_blank" rel="noopener noreferrer" class="btn-learn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">Learn More
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-            <polyline points="15 3 21 3 21 9"/>
-            <line x1="10" y1="14" x2="21" y2="3"/>
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
           </svg>
-        </a>
-      </div>
-    </div>
+                    </a>
+                </div>
+            </div>
 
-  </div>
-</main>
+        </div>
+    </main>
 
-<script>
+    <script>
 const semesterData = [
     { label: "First Sem", icon: "1️⃣", subjects: ["Business English", "Principles of Management", "Microeconomics", "Mathematics for Business", "Computer Applications"] },
     { label: "Second Sem", icon: "2️⃣", subjects: ["Macroeconomics", "Business Communication", "Financial Accounting", "Organizational Behaviour", "Statistics for Business"] },

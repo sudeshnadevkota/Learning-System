@@ -16,6 +16,8 @@ namespace Learning_System.administrator
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            PermissionHelper.RequireAccessLevel(this, "MainAdmin"); // or whatever levels should manage this table
+
             if (!IsPostBack)
             {
                 BindRegister();
@@ -48,8 +50,27 @@ namespace Learning_System.administrator
             int id = Convert.ToInt32(register.DataKeys[e.RowIndex].Value);
             GridViewRow row = register.Rows[e.RowIndex];
             DropDownList ddlrole = (DropDownList)row.FindControl("ddlrole");
-
             string role = ddlrole.SelectedValue;
+
+            // Only MainAdmin may assign "superadmin" — adjust to your actual policy
+            string myAccessLevel = PermissionHelper.GetAccessLevel(Session);
+            if (role == "superadmin" && myAccessLevel != "MainAdmin")
+            {
+                // bail out, log it, show an error — don't silently proceed
+                register.EditIndex = -1;
+                BindRegister();
+                return;
+            }
+
+            // Prevent an admin from changing their own role via this grid
+            int myProfileId = PermissionHelper.GetProfileId(Session);
+            if (id == myProfileId)
+            {
+                register.EditIndex = -1;
+                BindRegister();
+                return;
+            }
+
             string query = "UPDATE login_ SET role = @role WHERE id = @id";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

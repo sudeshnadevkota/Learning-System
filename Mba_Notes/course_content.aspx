@@ -141,7 +141,7 @@
 
     /* ===== Department denied (amber accent) ===== */
     .dept-denied-wrapper .status-banner-card {
-        background: linear-gradient(135deg, #1a1530 0%, #241a3a 45%, #150f28 100%) !important;
+        background: linear-gradient(135deg, #10154a 0%, #161b56 45%, #0b0e33 100%) !important;
         border: 1px solid rgba(245, 158, 11, 0.25) !important;
         box-shadow: 0 20px 50px rgba(10, 6, 20, 0.4), 0 0 0 1px rgba(255,255,255,0.03) inset !important;
     }

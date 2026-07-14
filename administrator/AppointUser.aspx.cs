@@ -19,6 +19,19 @@ namespace Learning_System
             {
                 BindRoleDropdown();
                 BindDepartmentDropdown();
+
+                // Pre-select role from query string if it's a valid, appointable option
+                // for the currently logged-in user's access level.
+                // Safe by design: FindByValue only matches roles BindRoleDropdown already
+                // filtered via PermissionHelper.GetAppointableRoles(), so a DepartmentAdmin
+                // hitting ?role=SuperAdmin directly simply finds nothing and nothing changes.
+                string requestedRole = Request.QueryString["role"];
+                if (!string.IsNullOrEmpty(requestedRole) &&
+                    ddlRoleToAppoint.Items.FindByValue(requestedRole) != null)
+                {
+                    ddlRoleToAppoint.SelectedValue = requestedRole;
+                }
+
                 ddlRoleToAppoint_SelectedIndexChanged(null, null);
             }
         }
