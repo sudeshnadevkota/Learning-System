@@ -18,6 +18,13 @@ namespace Learning_System
         {
             if (!Page.IsValid) return;
 
+            // Server-side safety net in case client-side validation is bypassed
+            if (Password.Text != ConfirmPassword.Text)
+            {
+                lblError.Text = "Passwords do not match.";
+                return;
+            }
+
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -73,7 +80,7 @@ namespace Learning_System
                         cmd.Parameters.AddWithValue("@DOB", Convert.ToDateTime(Dob.Text));
                         cmd.Parameters.AddWithValue("@Gender", Gender.SelectedValue);
 
-                        // NOTE: form has no Address field yet — stored empty until one is added
+                        // NOTE: form has no separate street/city Address field yet — stored empty
                         cmd.Parameters.AddWithValue("@Address", "");
 
                         SqlParameter photoParam = cmd.Parameters.Add("@ProfilePhoto", SqlDbType.VarBinary, -1);
@@ -83,14 +90,23 @@ namespace Learning_System
                     }
 
                     // 4. Insert into StudentProfile
-                    string studentQuery = @"INSERT INTO StudentProfile (ProfileId, Semester, DepartmentId, RollNumber)
-                                             VALUES (@ProfileId, @Semester, @DepartmentId, @RollNumber)";
+                    string studentQuery = @"INSERT INTO StudentProfile
+                                (ProfileId, Semester, DepartmentId, RollNumber,
+                                 ParentName, ParentContact, ParentEmail, Province)
+                                VALUES
+                                (@ProfileId, @Semester, @DepartmentId, @RollNumber,
+                                 @ParentName, @ParentContact, @ParentEmail, @Province)";
+
                     using (SqlCommand cmd = new SqlCommand(studentQuery, con, transaction))
                     {
                         cmd.Parameters.AddWithValue("@ProfileId", newProfileId);
                         cmd.Parameters.AddWithValue("@Semester", Convert.ToInt32(Semester.SelectedValue));
                         cmd.Parameters.AddWithValue("@DepartmentId", departmentId);
                         cmd.Parameters.AddWithValue("@RollNumber", string.IsNullOrWhiteSpace(LCID.Text) ? (object)DBNull.Value : LCID.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ParentName", ParentName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ParentContact", ParentContact.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ParentEmail", ParentEmail.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Province", Province.SelectedValue);
                         cmd.ExecuteNonQuery();
                     }
 
@@ -99,7 +115,7 @@ namespace Learning_System
                 }
                 catch (Exception ex)
                 {
-
+                    transaction.Rollback();
                     lblError.Text = "Registration failed: " + ex.Message;
                 }
             }

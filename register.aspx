@@ -71,9 +71,17 @@
             }
 
         @keyframes lpRegOrb {
-            0% { transform: translate(0,0) scale(1); }
-            50% { transform: translate(30px,-38px) scale(1.08); }
-            100% { transform: translate(-18px,24px) scale(.95); }
+            0% {
+                transform: translate(0,0) scale(1);
+            }
+
+            50% {
+                transform: translate(30px,-38px) scale(1.08);
+            }
+
+            100% {
+                transform: translate(-18px,24px) scale(.95);
+            }
         }
 
         .lp-reg-card {
@@ -89,8 +97,15 @@
         }
 
         @keyframes lpRegFadeUp {
-            from { opacity: 0; transform: translateY(24px) scale(.97); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .lp-reg-card::before {
@@ -312,10 +327,22 @@
             }
 
         @media (max-width: 700px) {
-            .lp-reg-header { padding: 26px 28px; }
-            .lp-reg-body { padding: 30px 26px 28px; }
-            .lp-reg-grid { grid-template-columns: 1fr; gap: 18px; }
-            .lp-reg-title { font-size: 20px; }
+            .lp-reg-header {
+                padding: 26px 28px;
+            }
+
+            .lp-reg-body {
+                padding: 30px 26px 28px;
+            }
+
+            .lp-reg-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .lp-reg-title {
+                font-size: 20px;
+            }
         }
     </style>
 </head>

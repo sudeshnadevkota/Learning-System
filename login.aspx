@@ -240,8 +240,12 @@
 }
 
 
-.lp-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+
 .lp-forgot-link { font-size: 14px; font-weight: 600; color: var(--lp-primary); text-decoration: none; }
+.lp-forgot-row {
+  text-align: right;
+  margin-top: 8px;
+}
 .lp-forgot-link:hover { color: var(--lp-violet); text-decoration: underline; }
 
 .lp-error-text { display: block; margin-top: 6px; font-size: 13px; color: var(--lp-danger); font-weight: 600; }
@@ -313,12 +317,9 @@
                 </div>
               </div>
 
-              <!-- Password -->
+        <!-- Password -->
               <div class="lp-field">
-                <div class="lp-label-row">
-                  <label class="lp-field-label" for="<%= Password.ClientID %>">Password</label>
-                  <a href="#" class="lp-forgot-link">Forgot Password</a>
-                </div>
+                <label class="lp-field-label" for="<%= Password.ClientID %>">Password</label>
                 <div class="lp-input-wrap">
                   <span class="lp-input-icon" aria-hidden="true"><i class="bi bi-lock-fill"></i></span>
                   <asp:TextBox ID="Password" runat="server" CssClass="lp-form-control" TextMode="Password"
@@ -327,8 +328,13 @@
                     <i class="bi bi-eye-slash-fill"></i>
                   </span>
                 </div>
+                <div class="lp-forgot-row">
+                  <a href="#" class="lp-forgot-link">Forgot Password</a>
+                </div>
                 <asp:Label ID="Label1" runat="server" CssClass="lp-error-text"></asp:Label>
               </div>
+
+
 
               <!-- Login button -->
               <asp:Button ID="Button1" runat="server" Text="Login" CssClass="lp-login-btn" OnClick="Button1_Click" />
