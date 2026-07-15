@@ -303,7 +303,7 @@
             <div class="container d-flex align-items-center justify-content-between">
                 
                 <a class="navbar-brand" href="Default.aspx">
-                    <img src="slide/logo.png" alt="logo" width="140" />
+                    <img src="slide/view logo.png" alt="logo" width="140" />
                 </a>
                 
                 <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">

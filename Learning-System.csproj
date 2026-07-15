@@ -344,6 +344,7 @@
     <Content Include="slide\facedetection.png" />
     <Content Include="slide\fs.jpg" />
     <Content Include="slide\haik.jpg" />
+    <Content Include="slide\images-removebg-preview.png" />
     <Content Include="slide\info.png" />
     <Content Include="slide\job.png" />
     <Content Include="slide\learn.png" />
@@ -352,7 +353,6 @@
     <Content Include="slide\learn4.jfif" />
     <Content Include="slide\leave.png" />
     <Content Include="slide\lgo.png" />
-    <Content Include="slide\logo.png" />
     <Content Include="slide\manoj.png" />
     <Content Include="slide\mba.png" />
     <Content Include="slide\mba5.jpg" />
@@ -383,6 +383,7 @@
     <Content Include="Mba_Notes\note.Master" />
     <Content Include="Bba_Notes\note.Master" />
     <Content Include="Bcs_Notes\note.Master" />
+    <Content Include="slide\view logo.png" />
     <Content Include="slide\zidan.png" />
     <Content Include="Staff\default_staff.aspx" />
     <Content Include="students\abcd.aspx" />
