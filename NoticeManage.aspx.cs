@@ -11,6 +11,8 @@ namespace Learning_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
             PermissionHelper.RequireAccessLevel(this, "MainAdmin", "SuperAdmin", "DepartmentAdmin");
 
             if (!IsPostBack)

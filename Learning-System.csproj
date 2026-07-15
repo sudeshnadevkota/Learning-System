@@ -151,7 +151,6 @@
     <Content Include="Bit_Admin\bulk_upload.aspx" />
     <Content Include="Bit_Admin\course_content.aspx" />
     <Content Include="DepartmentAdmin\dash.aspx" />
-    <Content Include="NoticeManage.aspx" />
     <Content Include="Bit_Admin\dash.aspx" />
     <Content Include="Bit_Admin\logo\logo.png" />
     <Content Include="Bit_Admin\Syllabus.aspx" />
@@ -160,6 +159,7 @@
     <Content Include="Bit_Notes\dash.aspx" />
     <Content Include="Bit_Notes\logo\logo.png" />
     <Content Include="Bit_Notes\logo\sidebar-removebg-preview.png" />
+    <Content Include="NoticeManage.aspx" />
     <Content Include="Notices.aspx" />
     <Content Include="NoticeWidget.ascx" />
     <Content Include="Blog\blog1.aspx" />
@@ -653,13 +653,6 @@
       <DependentUpon>dash.aspx</DependentUpon>
     </Compile>
     <Compile Include="DepartmentDataService.cs" />
-    <Compile Include="NoticeManage.aspx.cs">
-      <DependentUpon>NoticeManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NoticeManage.aspx.designer.cs">
-      <DependentUpon>NoticeManage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Bit_Admin\dash.aspx.cs">
       <DependentUpon>dash.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -701,6 +694,13 @@
     </Compile>
     <Compile Include="Bit_Notes\note.Master.designer.cs">
       <DependentUpon>note.Master</DependentUpon>
+    </Compile>
+    <Compile Include="NoticeManage.aspx.cs">
+      <DependentUpon>NoticeManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoticeManage.aspx.designer.cs">
+      <DependentUpon>NoticeManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="NoticeRoles.cs" />
     <Compile Include="Notices.aspx.cs">
