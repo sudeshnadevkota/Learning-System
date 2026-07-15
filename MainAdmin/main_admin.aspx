@@ -303,9 +303,9 @@
                     <a href="/administrator/AppointUser.aspx" class="c-hero-btn c-hero-btn-outline">
     <i class="ti ti-user-plus"></i> Appoint User
 </a>
-                    <a href="logout.aspx" class="c-hero-btn c-hero-btn-pink">
+                    <asp:HyperLink runat="server" NavigateUrl="~/logout.aspx" CssClass="c-hero-btn c-hero-btn-pink">
                         <i class="ti ti-logout"></i> Logout
-                    </a>
+                    </asp:HyperLink>
                 </div>
             </div>
 
