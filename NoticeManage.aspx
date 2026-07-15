@@ -1,6 +1,11 @@
-﻿<%@ Page Title="Manage Notices" EnableEventValidation="false" Language="C#" MasterPageFile="~/Bit_Admin/Upload.master" AutoEventWireup="true" CodeBehind="NoticeManage.aspx.cs" Inherits="Learning_System.NoticeManage" %>
+﻿<%@ Page Title="Manage Notices" EnableEventValidation="false" Language="C#" AutoEventWireup="true" CodeBehind="NoticeManage.aspx.cs" Inherits="Learning_System.NoticeManage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Manage Notices</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
@@ -20,9 +25,17 @@
             --success-border: #4ade80;
         }
 
+        body {
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--gray-bg);
+        }
+
         .c-wrap {
             font-family: 'Plus Jakarta Sans', sans-serif;
             padding: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .c-hero {
@@ -332,6 +345,9 @@
             font-weight: 600;
         }
     </style>
+</head>
+<body>
+    <form id="form1" runat="server">
 
     <div class="c-wrap container-fluid">
 
@@ -460,6 +476,8 @@
 
     </div>
 
+    </form>
+
     <script>
         window.addEventListener('DOMContentLoaded', function () {
             var dropZone = document.getElementById('dropZone');
@@ -521,5 +539,5 @@
             }
         }
     </script>
-
-</asp:Content>
+</body>
+</html>
