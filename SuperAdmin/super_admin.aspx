@@ -271,10 +271,10 @@
                     <p>Logged in as <strong><%= Session["Username"] %></strong> &middot; System-wide access</p>
                 </div>
                 <div class="c-hero-actions">
-                    <a href="../AppointUser.aspx" class="c-hero-btn c-hero-btn-outline">
+                    <a href="/administrator/AppointUser.aspx" class="c-hero-btn c-hero-btn-outline">
                         <i class="ti ti-user-plus"></i> Appoint User
                     </a>
-                    <a href="../logout.aspx" class="c-hero-btn c-hero-btn-pink">
+                    <a href="/logout.aspx" class="c-hero-btn c-hero-btn-pink">
                         <i class="ti ti-logout"></i> Logout
                     </a>
                 </div>
@@ -347,10 +347,10 @@
                     <div class="c-panel-title"><i class="ti ti-bolt"></i> Quick Actions</div>
                 </div>
                 <div class="c-quick-grid">
-                    <a href="../AppointUser.aspx" class="c-quick-link">
+                    <a href="/administrator/AppointUser.aspx" class="c-quick-link">
                         <i class="ti ti-user-plus"></i> Appoint User
                     </a>
-                    <a href="../NoticeManage.aspx" class="c-quick-link">
+                    <a href="/NoticeManage.aspx" class="c-quick-link">
                         <i class="ti ti-speakerphone"></i> Manage Notices
                     </a>
                 </div>

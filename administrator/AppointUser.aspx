@@ -1,8 +1,23 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/learning.Master" AutoEventWireup="true" CodeBehind="AppointUser.aspx.cs" Inherits="Learning_System.AppointUser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AppointUser.aspx.cs" Inherits="Learning_System.AppointUser" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<!DOCTYPE html>
 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Appoint User</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
     <style>
+        body{
+            height:100vh;
+            width:100vw;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        #form1{
+            width:100%;
+        }
         .lp-app-wrap {
             --lp-primary: #2B397D;
             --lp-violet: #5b4fcf;
@@ -10,7 +25,7 @@
             --lp-danger: #dc2626;
             --lp-radius: 14px;
             --lp-radius-lg: 22px;
-            max-width: 820px;
+            max-width: 55%;
             margin: 40px auto;
             background: #fff;
             border-radius: var(--lp-radius-lg);
@@ -134,108 +149,105 @@
             margin-top: 6px;
         }
     </style>
-
-    <div class="lp-app-wrap">
-        <div class="lp-app-header">
-            <asp:LinkButton ID="btnClose" runat="server" CssClass="lp-close-btn"
-                OnClick="btnClose_Click" CausesValidation="false" ToolTip="Close">
-                <i class="fas fa-times"></i>
-            </asp:LinkButton>
-            <h2>Appoint User</h2>
-            <p>Create a Staff, Department Admin, or Super Admin account</p>
-        </div>
-
-        <div class="lp-app-body">
-
-            <!-- If the logged-in user isn't authorized, Page_Load redirects before this ever renders -->
-
-            <div class="lp-app-grid">
-
-                <div class="lp-field">
-                    <label class="lp-field-label" for="<%= ddlRoleToAppoint.ClientID %>">Role to Appoint</label>
-                    <div class="lp-input-wrap">
-                        <asp:DropDownList CssClass="lp-form-control" ID="ddlRoleToAppoint" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlRoleToAppoint_SelectedIndexChanged" />
-                    </div>
-                </div>
-
-                <div class="lp-field">
-                    <label class="lp-field-label" for="<%= txtFullName.ClientID %>">Full Name</label>
-                    <div class="lp-input-wrap">
-                        <asp:TextBox CssClass="lp-form-control" ID="txtFullName" runat="server" />
-                    </div>
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtFullName" ErrorMessage="Required*" CssClass="lp-error-text" Display="Dynamic" />
-                </div>
-
-                <div class="lp-field">
-                    <label class="lp-field-label" for="<%= txtEmail.ClientID %>">Email</label>
-                    <div class="lp-input-wrap">
-                        <asp:TextBox CssClass="lp-form-control" ID="txtEmail" runat="server" TextMode="Email" />
-                    </div>
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEmail" ErrorMessage="Required*" CssClass="lp-error-text" Display="Dynamic" />
-                </div>
-
-                <div class="lp-field">
-                    <label class="lp-field-label" for="<%= txtContact.ClientID %>">Contact No</label>
-                    <div class="lp-input-wrap">
-                        <asp:TextBox CssClass="lp-form-control" ID="txtContact" runat="server" />
-                    </div>
-                </div>
-
-                <div class="lp-field">
-                    <label class="lp-field-label" for="<%= txtUsername.ClientID %>">Username</label>
-                    <div class="lp-input-wrap">
-                        <asp:TextBox CssClass="lp-form-control" ID="txtUsername" runat="server" />
-                    </div>
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUsername" ErrorMessage="Required*" CssClass="lp-error-text" Display="Dynamic" />
-                </div>
-
-                <div class="lp-field">
-                    <label class="lp-field-label" for="<%= txtPassword.ClientID %>">Temporary Password</label>
-                    <div class="lp-input-wrap">
-                        <asp:TextBox CssClass="lp-form-control" ID="txtPassword" runat="server" TextMode="Password" />
-                    </div>
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" ErrorMessage="Required*" CssClass="lp-error-text" Display="Dynamic" />
-                </div>
-
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="lp-app-wrap">
+            <div class="lp-app-header">
+                <asp:LinkButton ID="btnClose" runat="server" CssClass="lp-close-btn"
+                    OnClick="btnClose_Click" CausesValidation="false" ToolTip="Close">
+                    <i class="fas fa-times"></i>
+                </asp:LinkButton>
+                <h2>Appoint User</h2>
+                <p>Create a Staff, Department Admin, or Super Admin account</p>
             </div>
 
-            <!-- ══ STAFF-SPECIFIC PANEL ══ -->
-            <asp:Panel ID="pnlStaff" runat="server" CssClass="lp-role-panel">
+            <div class="lp-app-body">
+
                 <div class="lp-app-grid">
+
                     <div class="lp-field">
-                        <label class="lp-field-label" for="<%= txtDesignation.ClientID %>">Designation</label>
+                        <label class="lp-field-label" for="<%= ddlRoleToAppoint.ClientID %>">Role to Appoint</label>
                         <div class="lp-input-wrap">
-                            <asp:TextBox CssClass="lp-form-control" ID="txtDesignation" runat="server" placeholder="e.g. Lecturer" />
+                            <asp:DropDownList CssClass="lp-form-control" ID="ddlRoleToAppoint" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlRoleToAppoint_SelectedIndexChanged" />
                         </div>
                     </div>
+
                     <div class="lp-field">
-                        <label class="lp-field-label" for="<%= txtSubjectsHandled.ClientID %>">Subjects Handled</label>
+                        <label class="lp-field-label" for="<%= txtFullName.ClientID %>">Full Name</label>
                         <div class="lp-input-wrap">
-                            <asp:TextBox CssClass="lp-form-control" ID="txtSubjectsHandled" runat="server" placeholder="e.g. DBMS, Networking" />
+                            <asp:TextBox CssClass="lp-form-control" ID="txtFullName" runat="server" />
+                        </div>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtFullName" ErrorMessage="Required*" CssClass="lp-error-text" Display="Dynamic" />
+                    </div>
+
+                    <div class="lp-field">
+                        <label class="lp-field-label" for="<%= txtEmail.ClientID %>">Email</label>
+                        <div class="lp-input-wrap">
+                            <asp:TextBox CssClass="lp-form-control" ID="txtEmail" runat="server" TextMode="Email" />
+                        </div>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEmail" ErrorMessage="Required*" CssClass="lp-error-text" Display="Dynamic" />
+                    </div>
+
+                    <div class="lp-field">
+                        <label class="lp-field-label" for="<%= txtContact.ClientID %>">Contact No</label>
+                        <div class="lp-input-wrap">
+                            <asp:TextBox CssClass="lp-form-control" ID="txtContact" runat="server" />
                         </div>
                     </div>
-                </div>
-            </asp:Panel>
 
-            <!-- ══ DEPARTMENT PICKER — shown for Staff and DepartmentAdmin ══ -->
-            <asp:Panel ID="pnlDepartmentPicker" runat="server" CssClass="lp-role-panel">
-                <div class="lp-field">
-                    <label class="lp-field-label" for="<%= ddlDepartment.ClientID %>">Department</label>
-                    <div class="lp-input-wrap">
-                        <asp:DropDownList CssClass="lp-form-control" ID="ddlDepartment" runat="server" />
+                    <div class="lp-field">
+                        <label class="lp-field-label" for="<%= txtUsername.ClientID %>">Username</label>
+                        <div class="lp-input-wrap">
+                            <asp:TextBox CssClass="lp-form-control" ID="txtUsername" runat="server" />
+                        </div>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUsername" ErrorMessage="Required*" CssClass="lp-error-text" Display="Dynamic" />
                     </div>
-                    <!-- If the logged-in admin is a DepartmentAdmin, this dropdown is locked
-                         to their own department server-side (see code-behind) -->
-                    <asp:Label ID="lblDepartmentLocked" runat="server" CssClass="lp-locked-note" Text="" />
-                </div>
-            </asp:Panel>
 
-            <div>
-                <asp:Button CssClass="lp-app-btn" ID="btnAppoint" runat="server" Text="Create Account" OnClick="btnAppoint_Click" />
-                <asp:Label ID="lblError" runat="server" CssClass="lp-error-text" Text="" />
+                    <div class="lp-field">
+                        <label class="lp-field-label" for="<%= txtPassword.ClientID %>">Temporary Password</label>
+                        <div class="lp-input-wrap">
+                            <asp:TextBox CssClass="lp-form-control" ID="txtPassword" runat="server" TextMode="Password" />
+                        </div>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" ErrorMessage="Required*" CssClass="lp-error-text" Display="Dynamic" />
+                    </div>
+
+                </div>
+
+                <asp:Panel ID="pnlStaff" runat="server" CssClass="lp-role-panel">
+                    <div class="lp-app-grid">
+                        <div class="lp-field">
+                            <label class="lp-field-label" for="<%= txtDesignation.ClientID %>">Designation</label>
+                            <div class="lp-input-wrap">
+                                <asp:TextBox CssClass="lp-form-control" ID="txtDesignation" runat="server" placeholder="e.g. Lecturer" />
+                            </div>
+                        </div>
+                        <div class="lp-field">
+                            <label class="lp-field-label" for="<%= txtSubjectsHandled.ClientID %>">Subjects Handled</label>
+                            <div class="lp-input-wrap">
+                                <asp:TextBox CssClass="lp-form-control" ID="txtSubjectsHandled" runat="server" placeholder="e.g. DBMS, Networking" />
+                            </div>
+                        </div>
+                    </div>
+                </asp:Panel>
+
+                <asp:Panel ID="pnlDepartmentPicker" runat="server" CssClass="lp-role-panel">
+                    <div class="lp-field">
+                        <label class="lp-field-label" for="<%= ddlDepartment.ClientID %>">Department</label>
+                        <div class="lp-input-wrap">
+                            <asp:DropDownList CssClass="lp-form-control" ID="ddlDepartment" runat="server" />
+                        </div>
+                        <asp:Label ID="lblDepartmentLocked" runat="server" CssClass="lp-locked-note" Text="" />
+                    </div>
+                </asp:Panel>
+
+                <div>
+                    <asp:Button CssClass="lp-app-btn" ID="btnAppoint" runat="server" Text="Create Account" OnClick="btnAppoint_Click" />
+                    <asp:Label ID="lblError" runat="server" CssClass="lp-error-text" Text="" />
+                </div>
+
             </div>
-
         </div>
-    </div>
-
-</asp:Content>
+    </form>
+</body>
+</html>

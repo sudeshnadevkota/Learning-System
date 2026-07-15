@@ -20,9 +20,9 @@
 
         /* Modern Navbar Styling */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
+            position:fixed;
+            top:0;
+            left:0;
             background: rgba(255, 255, 255, 0.95) !important;
             backdrop-filter: blur(10px);
             padding: 12px 0 !important;
@@ -81,7 +81,7 @@
             position: fixed;
             bottom: 0;
             left: 0;
-            width: 100%;
+            width:100%;
         }
 
         /* Main Content Spacing */

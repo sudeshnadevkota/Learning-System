@@ -103,9 +103,20 @@ namespace Learning_System
                         {
                             Response.Redirect("~/default.aspx");
                         }
-                        else if (role == "Teacher")
+                        else if (role == "Teacher" || role == "Staff")
                         {
-                            Response.Redirect("~/Staff/default_staff.aspx");
+                            // FIXED — Teacher/Staff now redirect based on department code,
+                            // same destination as DepartmentAdmin. This used to be dead code
+                            // nested inside the "Admin" branch, so it never ran.
+                            if (!string.IsNullOrEmpty(departmentCode))
+                            {
+                                string folderName = char.ToUpper(departmentCode[0]) + departmentCode.Substring(1).ToLower() + "_Admin";
+                                Response.Redirect("~/" + folderName + "/dash.aspx");
+                            }
+                            else
+                            {
+                                Label1.Text = "Your account has no department assigned. Contact DepartmentAdmin.";
+                            }
                         }
                         else if (role == "Admin")
                         {
@@ -127,18 +138,6 @@ namespace Learning_System
                                 else
                                 {
                                     Label1.Text = "Your admin account has no department assigned. Contact MainAdmin.";
-                                }
-                            }
-                            else if (role == "Teacher")
-                            {
-                                if (!string.IsNullOrEmpty(departmentCode))
-                                {
-                                    string folderName = char.ToUpper(departmentCode[0]) + departmentCode.Substring(1).ToLower() + "_Admin";
-                                    Response.Redirect("~/" + folderName + "/dash.aspx");
-                                }
-                                else
-                                {
-                                    Label1.Text = "Your staff account has no department assigned. Contact DepartmentAdmin.";
                                 }
                             }
                             else

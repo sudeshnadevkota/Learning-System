@@ -208,7 +208,6 @@
     <Content Include="Mcs_Notes\dash.aspx" />
     <Content Include="Mcs_Notes\logo\logo.png" />
     <Content Include="Profile.aspx" />
-    <Content Include="register.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="AboutUs.aspx" />
     <Content Include="Blog\Master.Master" />
@@ -216,6 +215,7 @@
     <Content Include="Feedback.aspx" />
     <Content Include="AIBlog.aspx" />
     <Content Include="administrator\administrator_master.Master" />
+    <Content Include="register.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />

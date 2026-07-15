@@ -207,7 +207,7 @@
         </div>
 
         <div class="d-card-foot">
-            <a href="RegisterStaff.aspx" class="d-go">
+            <a href="/administrator/AppointUser.aspx" class="d-go">
                 Open <i class="ti ti-arrow-right"></i>
             </a>
             <span class="d-badge-status">Admin</span>
