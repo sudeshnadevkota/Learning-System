@@ -464,6 +464,62 @@
                         </div>
                     </div>
 
+                    <div class="lp-field" id="studentDiv2" style="display: none;">
+                        <label class="lp-field-label" for="<%= Semester.ClientID %>">Semester</label>
+                        <div class="lp-input-wrap">
+                            <span class="lp-input-icon"><i class="bi bi-journal-bookmark-fill"></i></span>
+                            <asp:DropDownList CssClass="lp-form-control" ID="Semester" runat="server">
+                                <asp:ListItem Text="Select" Value=""></asp:ListItem>
+                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                <asp:ListItem Text="4" Value="4"></asp:ListItem>
+                                <asp:ListItem Text="5" Value="5"></asp:ListItem>
+                                <asp:ListItem Text="6" Value="6"></asp:ListItem>
+                                <asp:ListItem Text="7" Value="7"></asp:ListItem>
+                                <asp:ListItem Text="8" Value="8"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <!-- ══ STAFF FIELDS (conditionally shown) ══ -->
+                    <div class="lp-field" id="staffDiv1" style="display: none;">
+                        <label class="lp-field-label" for="<%= Designation.ClientID %>">Designation</label>
+                        <div class="lp-input-wrap">
+                            <span class="lp-input-icon"><i class="bi bi-award-fill"></i></span>
+                            <asp:TextBox CssClass="lp-form-control" ID="Designation" runat="server" placeholder="e.g. Lecturer, HOD"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div class="lp-field" id="staffDiv2" style="display: none;">
+                        <label class="lp-field-label" for="<%= StaffDepartment.ClientID %>">Department</label>
+                        <div class="lp-input-wrap">
+                            <span class="lp-input-icon"><i class="bi bi-diagram-3-fill"></i></span>
+                            <asp:TextBox CssClass="lp-form-control" ID="StaffDepartment" runat="server" placeholder="Department"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <!-- ══ ADMIN FIELDS (conditionally shown) ══ -->
+                    <div class="lp-field" id="adminDiv1" style="display: none;">
+                        <label class="lp-field-label" for="<%= AccessLevel.ClientID %>">Access Level</label>
+                        <div class="lp-input-wrap">
+                            <span class="lp-input-icon"><i class="bi bi-shield-lock-fill"></i></span>
+                            <asp:DropDownList CssClass="lp-form-control" ID="AccessLevel" runat="server">
+                                <asp:ListItem Text="Standard" Value="Standard"></asp:ListItem>
+                                <asp:ListItem Text="SuperAdmin" Value="SuperAdmin"></asp:ListItem>
+                                <asp:ListItem Text="Moderator" Value="Moderator"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <div class="lp-field" id="adminDiv2" style="display: none;">
+                        <label class="lp-field-label" for="<%= AdminDepartment.ClientID %>">Department (optional)</label>
+                        <div class="lp-input-wrap">
+                            <span class="lp-input-icon"><i class="bi bi-diagram-3-fill"></i></span>
+                            <asp:TextBox CssClass="lp-form-control" ID="AdminDepartment" runat="server" placeholder="Department"></asp:TextBox>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="lp-reg-btn-row">
