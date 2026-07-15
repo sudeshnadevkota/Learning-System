@@ -12,7 +12,6 @@ namespace Learning_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Only MainAdmin, SuperAdmin, or DepartmentAdmin may reach this page at all
             PermissionHelper.RequireAccessLevel(this, "MainAdmin", "SuperAdmin", "DepartmentAdmin");
 
             if (!IsPostBack)
@@ -20,11 +19,24 @@ namespace Learning_System
                 BindRoleDropdown();
                 BindDepartmentDropdown();
 
-                // Pre-select role from query string if it's a valid, appointable option
-                // for the currently logged-in user's access level.
-                // Safe by design: FindByValue only matches roles BindRoleDropdown already
-                // filtered via PermissionHelper.GetAppointableRoles(), so a DepartmentAdmin
-                // hitting ?role=SuperAdmin directly simply finds nothing and nothing changes.
+                // Capture where the user came from, once, before any postback happens.
+                // AutoPostBack on the role dropdown won't overwrite this because it only
+                // runs on the very first (non-postback) load.
+                string referrer = Request.UrlReferrer?.ToString();
+
+                // Only trust the referrer if it's actually our own site (avoid an
+                // open-redirect if someone links to this page with a crafted Referer).
+                if (!string.IsNullOrEmpty(referrer) &&
+                    Uri.TryCreate(referrer, UriKind.Absolute, out Uri refUri) &&
+                    refUri.Host == Request.Url.Host)
+                {
+                    ViewState["ReturnUrl"] = referrer;
+                }
+                else
+                {
+                    ViewState["ReturnUrl"] = ResolveUrl("~/MainAdmin/main_admin.aspx");
+                }
+
                 string requestedRole = Request.QueryString["role"];
                 if (!string.IsNullOrEmpty(requestedRole) &&
                     ddlRoleToAppoint.Items.FindByValue(requestedRole) != null)
@@ -34,6 +46,12 @@ namespace Learning_System
 
                 ddlRoleToAppoint_SelectedIndexChanged(null, null);
             }
+        }
+
+        protected void btnClose_Click(object sender, EventArgs e)
+        {
+            string returnUrl = ViewState["ReturnUrl"] as string;
+            Response.Redirect(!string.IsNullOrEmpty(returnUrl) ? returnUrl : ResolveUrl("~/MainAdmin/main_admin.aspx"));
         }
 
         private void BindRoleDropdown()

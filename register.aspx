@@ -464,23 +464,7 @@
                         </div>
                     </div>
 
-                    <div class="lp-field" id="studentDiv2" style="display: none;">
-                        <label class="lp-field-label" for="<%= Semester.ClientID %>">Semester</label>
-                        <div class="lp-input-wrap">
-                            <span class="lp-input-icon"><i class="bi bi-journal-bookmark-fill"></i></span>
-                            <asp:DropDownList CssClass="lp-form-control" ID="Semester" runat="server">
-                                <asp:ListItem Text="Select" Value=""></asp:ListItem>
-                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                <asp:ListItem Text="4" Value="4"></asp:ListItem>
-                                <asp:ListItem Text="5" Value="5"></asp:ListItem>
-                                <asp:ListItem Text="6" Value="6"></asp:ListItem>
-                                <asp:ListItem Text="7" Value="7"></asp:ListItem>
-                                <asp:ListItem Text="8" Value="8"></asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
-                    </div>
+         
 
                     <!-- ══ STAFF FIELDS (conditionally shown) ══ -->
                     <div class="lp-field" id="staffDiv1" style="display: none;">

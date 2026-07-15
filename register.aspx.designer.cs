@@ -204,6 +204,42 @@ namespace Learning_System
         protected global::System.Web.UI.WebControls.TextBox LCID;
 
         /// <summary>
+        /// Designation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Designation;
+
+        /// <summary>
+        /// StaffDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox StaffDepartment;
+
+        /// <summary>
+        /// AccessLevel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList AccessLevel;
+
+        /// <summary>
+        /// AdminDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox AdminDepartment;
+
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>

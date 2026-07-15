@@ -20,12 +20,14 @@
 
         /* Modern Navbar Styling */
         .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
             background: rgba(255, 255, 255, 0.95) !important;
             backdrop-filter: blur(10px);
             padding: 12px 0 !important;
             border-bottom: 1px solid rgba(0,0,0,0.05);
             z-index: 1030 !important;
-            
         }
 
         .navbar-nav .nav-link {
@@ -76,6 +78,10 @@
             text-align: center;
             font-size: 13px;
             margin-top: auto;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
         }
 
         /* Main Content Spacing */
@@ -306,7 +312,7 @@
             <div class="container d-flex align-items-center justify-content-between">
                 
                 <a class="navbar-brand" href="Default.aspx">
-                    <img src="slide/view logo.png" alt="logo" width="140" />
+                    <img src="~/slide/view logo.png" runat="server" alt="logo" width="140" />
                 </a>
                 
                 <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
@@ -363,10 +369,10 @@
                 style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #0B1F66;" />
         </a>
         <ul class="dropdown-menu dropdown-menu-end shadow">
-            <li><a class="dropdown-item" href="Profile.aspx"><i class="fas fa-user"></i>Display Profile</a></li>
+            <li><a class="dropdown-item" href="/Profile.aspx"><i class="fas fa-user"></i>Display Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
-                <asp:LinkButton ID="BtnLogout" runat="server" CssClass="dropdown-item text-danger" OnClick="BtnLogout_Click">
+                <asp:LinkButton ID="BtnLogout" runat="server" CssClass="dropdown-item text-danger" OnClick="BtnLogout_Click" CausesValidation="False">
                     <i class="fas fa-sign-out-alt"></i>Logout
                 </asp:LinkButton>
             </li>

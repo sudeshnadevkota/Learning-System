@@ -22,6 +22,7 @@
             background: linear-gradient(160deg, rgba(20,30,72,.95) 0%, rgba(35,48,108,.90) 50%, rgba(55,72,148,.92) 100%);
             padding: 28px 40px;
             color: #fff;
+            position: relative;
         }
 
             .lp-app-header h2 {
@@ -34,6 +35,30 @@
                 margin: 4px 0 0;
                 font-size: 13.5px;
                 color: rgba(255,255,255,.65);
+            }
+
+        .lp-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.18);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            text-decoration: none;
+            transition: background-color .2s ease, transform .2s ease;
+        }
+
+            .lp-close-btn:hover {
+                background: rgba(255,255,255,.28);
+                transform: rotate(90deg);
+                color: #fff;
             }
 
         .lp-app-body {
@@ -112,6 +137,10 @@
 
     <div class="lp-app-wrap">
         <div class="lp-app-header">
+            <asp:LinkButton ID="btnClose" runat="server" CssClass="lp-close-btn"
+                OnClick="btnClose_Click" CausesValidation="false" ToolTip="Close">
+                <i class="fas fa-times"></i>
+            </asp:LinkButton>
             <h2>Appoint User</h2>
             <p>Create a Staff, Department Admin, or Super Admin account</p>
         </div>

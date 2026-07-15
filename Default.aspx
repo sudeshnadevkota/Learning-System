@@ -176,12 +176,16 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            padding: 0 50px;
+            gap: 10px;
+            padding: 0 30px;
+            width: 100%;
+            box-sizing: border-box; /* Ensures wrapper padding doesn't cause overflow */
         }
 
         .nima-card {
-            width: 12rem !important;
+            /* Subtracts the 5 gaps (50px total) before dividing by 6 */
+            width: calc((100% - 50px) / 6) !important;
+            box-sizing: border-box; /* Crucial: includes padding in the width calculation */
             border: none !important;
             border-radius: 22px !important;
             overflow: hidden;
