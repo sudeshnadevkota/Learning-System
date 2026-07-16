@@ -132,5 +132,9 @@ namespace Learning_System
                 }
             }
         }
+        protected void BackHomeButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
     }
 }

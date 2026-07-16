@@ -44,7 +44,12 @@
         html, body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: var(--gray-bg);
+            background-image:
+                radial-gradient(circle at 100% 0%, rgba(11,31,102,0.035) 0%, transparent 45%),
+                radial-gradient(circle at 0% 100%, rgba(255,45,141,0.03) 0%, transparent 40%);
+            background-attachment: fixed;
             margin: 0;
+            overflow-x: hidden;
         }
 
         @media (prefers-reduced-motion: no-preference) {
@@ -186,6 +191,8 @@
         .c-main { flex: 1; min-width: 0; padding: 28px 34px 44px; }
 
         .c-topbar {
+            position: relative;
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -249,6 +256,7 @@
         .c-btn-pink {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 7px;
             padding: 10px 18px;
             border-radius: 10px;
@@ -285,6 +293,16 @@
             gap: 14px;
             overflow: hidden;
             transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+        }
+
+        .c-stat-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--pink));
+            opacity: 0;
+            transition: opacity 0.22s ease;
         }
 
         .c-stat-card::before {

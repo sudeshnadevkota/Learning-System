@@ -348,8 +348,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="lp-reg-wrap">
-            <div class="lp-reg-card">
+      <div class="lp-reg-wrap" onclick="if(event.target === this){ window.location.href = '<%= ResolveUrl("~/Default.aspx") %>'; }">
+    <div class="lp-reg-card" onclick="event.stopPropagation();">
                
                 <asp:HyperLink ID="HyperLinkClose" runat="server" CssClass="lp-reg-close-btn" NavigateUrl="~/Login.aspx" ToolTip="Back to Login">&times;</asp:HyperLink>
 
@@ -403,13 +403,22 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Enter your email*" ControlToValidate="Email" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
                         </div>
 
-                        <div class="lp-field">
+                     <div class="lp-field">
                             <label class="lp-field-label" for="<%= username.ClientID %>">Username</label>
                             <div class="lp-input-wrap">
                                 <span class="lp-input-icon"><i class="bi bi-person-badge-fill"></i></span>
                                 <asp:TextBox CssClass="lp-form-control" ID="username" runat="server" placeholder="Username"></asp:TextBox>
                             </div>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Enter your username*" ControlToValidate="username" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
+                        </div>
+
+                        <!-- LCID -->
+                        <div class="lp-field">
+                            <label class="lp-field-label" for="<%= LCID.ClientID %>">LCID</label>
+                            <div class="lp-input-wrap">
+                                <span class="lp-input-icon"><i class="bi bi-card-text"></i></span>
+                                <asp:TextBox CssClass="lp-form-control" ID="LCID" runat="server" placeholder="LCID"></asp:TextBox>
+                            </div>
                         </div>
 
                         <div class="lp-field">
@@ -419,6 +428,17 @@
                                 <asp:TextBox CssClass="lp-form-control" ID="Password" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
                             </div>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Enter your password*" ControlToValidate="Password" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="lp-field">
+                            <label class="lp-field-label" for="<%= ConfirmPassword.ClientID %>">Confirm Password</label>
+                            <div class="lp-input-wrap">
+                                <span class="lp-input-icon"><i class="bi bi-lock-fill"></i></span>
+                                <asp:TextBox CssClass="lp-form-control" ID="ConfirmPassword" runat="server" placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
+                            </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Confirm your password*" ControlToValidate="ConfirmPassword" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Passwords do not match*" ControlToValidate="ConfirmPassword" ControlToCompare="Password" CssClass="lp-error-text" Display="Dynamic"></asp:CompareValidator>
                         </div>
 
                         <div class="lp-field">
@@ -433,6 +453,36 @@
                                 </asp:DropDownList>
                             </div>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Select gender*" ControlToValidate="Gender" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
+                        </div>
+
+                        <!-- Parent's Name -->
+                        <div class="lp-field">
+                            <label class="lp-field-label" for="<%= ParentName.ClientID %>">Parent's Name</label>
+                            <div class="lp-input-wrap">
+                                <span class="lp-input-icon"><i class="bi bi-people-fill"></i></span>
+                                <asp:TextBox CssClass="lp-form-control" ID="ParentName" runat="server" placeholder="Parent's Name"></asp:TextBox>
+                            </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="Enter parent's name*" ControlToValidate="ParentName" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
+                        </div>
+
+                        <!-- Parent's Contact Number -->
+                        <div class="lp-field">
+                            <label class="lp-field-label" for="<%= ParentContact.ClientID %>">Parent's Contact Number</label>
+                            <div class="lp-input-wrap">
+                                <span class="lp-input-icon"><i class="bi bi-telephone-fill"></i></span>
+                                <asp:TextBox CssClass="lp-form-control" ID="ParentContact" runat="server" placeholder="Parent's Contact Number" TextMode="Number"></asp:TextBox>
+                            </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="Enter parent's contact number*" ControlToValidate="ParentContact" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
+                        </div>
+
+                        <!-- Parent's Email Address -->
+                        <div class="lp-field">
+                            <label class="lp-field-label" for="<%= ParentEmail.ClientID %>">Parent's Email Address</label>
+                            <div class="lp-input-wrap">
+                                <span class="lp-input-icon"><i class="bi bi-envelope-fill"></i></span>
+                                <asp:TextBox CssClass="lp-form-control" ID="ParentEmail" runat="server" placeholder="Parent's Email Address" TextMode="Email"></asp:TextBox>
+                            </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="Enter parent's email address*" ControlToValidate="ParentEmail" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="lp-field">
@@ -479,49 +529,26 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="Select your semester*" ControlToValidate="Semester" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
                         </div>
 
+                        <!-- Province / State -->
                         <div class="lp-field">
-                            <label class="lp-field-label" for="<%= LCID.ClientID %>">LCID</label>
+                            <label class="lp-field-label" for="<%= Province.ClientID %>">Province / State</label>
                             <div class="lp-input-wrap">
-                                <span class="lp-input-icon"><i class="bi bi-card-text"></i></span>
-                                <asp:TextBox CssClass="lp-form-control" ID="LCID" runat="server" placeholder="LCID"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="lp-field" id="staffDiv1" style="display: none;">
-                            <label class="lp-field-label" for="<%= Designation.ClientID %>">Designation</label>
-                            <div class="lp-input-wrap">
-                                <span class="lp-input-icon"><i class="bi bi-award-fill"></i></span>
-                                <asp:TextBox CssClass="lp-form-control" ID="Designation" runat="server" placeholder="e.g. Lecturer, HOD"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="lp-field" id="staffDiv2" style="display: none;">
-                            <label class="lp-field-label" for="<%= StaffDepartment.ClientID %>">Department</label>
-                            <div class="lp-input-wrap">
-                                <span class="lp-input-icon"><i class="bi bi-diagram-3-fill"></i></span>
-                                <asp:TextBox CssClass="lp-form-control" ID="StaffDepartment" runat="server" placeholder="Department"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="lp-field" id="adminDiv1" style="display: none;">
-                            <label class="lp-field-label" for="<%= AccessLevel.ClientID %>">Access Level</label>
-                            <div class="lp-input-wrap">
-                                <span class="lp-input-icon"><i class="bi bi-shield-lock-fill"></i></span>
-                                <asp:DropDownList CssClass="lp-form-control" ID="AccessLevel" runat="server">
-                                    <asp:ListItem Text="Standard" Value="Standard"></asp:ListItem>
-                                    <asp:ListItem Text="SuperAdmin" Value="SuperAdmin"></asp:ListItem>
-                                    <asp:ListItem Text="Moderator" Value="Moderator"></asp:ListItem>
+                                <span class="lp-input-icon"><i class="bi bi-geo-alt-fill"></i></span>
+                                <asp:DropDownList CssClass="lp-form-control" ID="Province" runat="server">
+                                    <asp:ListItem Text="Select" Value=""></asp:ListItem>
+                                    <asp:ListItem Text="Koshi Province" Value="Koshi Province"></asp:ListItem>
+                                    <asp:ListItem Text="Madhesh Province" Value="Madhesh Province"></asp:ListItem>
+                                    <asp:ListItem Text="Bagmati Province" Value="Bagmati Province"></asp:ListItem>
+                                    <asp:ListItem Text="Gandaki Province" Value="Gandaki Province"></asp:ListItem>
+                                    <asp:ListItem Text="Lumbini Province" Value="Lumbini Province"></asp:ListItem>
+                                    <asp:ListItem Text="Karnali Province" Value="Karnali Province"></asp:ListItem>
+                                    <asp:ListItem Text="Sudurpaschim Province" Value="Sudurpaschim Province"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="Select province/state*" ControlToValidate="Province" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
                         </div>
 
-                        <div class="lp-field" id="adminDiv2" style="display: none;">
-                            <label class="lp-field-label" for="<%= AdminDepartment.ClientID %>">Department (optional)</label>
-                            <div class="lp-input-wrap">
-                                <span class="lp-input-icon"><i class="bi bi-diagram-3-fill"></i></span>
-                                <asp:TextBox CssClass="lp-form-control" ID="AdminDepartment" runat="server" placeholder="Department"></asp:TextBox>
-                            </div>
-                        </div>
+                       
 
                     </div>
 

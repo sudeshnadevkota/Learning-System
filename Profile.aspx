@@ -1,6 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/learning.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="Learning_System.Profile" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="Learning_System.Profile" %>
 
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>My Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,16 +23,23 @@
             --lp-radius-lg: 24px;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
         .profile-page-bg {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: #f5efe6;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cg fill='none' stroke='%232B397D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.20'%3E%3Cg transform='translate(14,18) scale(1.35)'%3E%3Cpath d='M12 3L1 9l11 6 9-4.91V17'/%3E%3Cpath d='M5 12v5c0 0 2.5 3 7 3s7-3 7-3v-5'/%3E%3C/g%3E%3Cg transform='translate(116,18) scale(1.35)'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cline x1='3' y1='9' x2='21' y2='9'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cpolyline points='9,14 11,16 15,12'/%3E%3C/g%3E%3Cg transform='translate(14,118) scale(1.35)'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpolyline points='12,7 12,12 15,15'/%3E%3C/g%3E%3Cg transform='translate(116,118) scale(1.35)'%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3Cpath d='M4,20 C4,16 7.6,13 12,13 C16.4,13 20,16 20,20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-                radial-gradient(ellipse at 12% 15%, rgba(210,140,60,.22) 0%, transparent 50%),
-                radial-gradient(ellipse at 88% 88%, rgba(200,100,80,.16) 0%, transparent 50%),
-                radial-gradient(ellipse at 55% 45%, rgba(240,200,100,.12) 0%, transparent 45%);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cg fill='none' stroke='%232B397D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.20'%3E%3Cg transform='translate(14,18) scale(1.35)'%3E%3Cpath d='M12 3L1 9l11 6 9-4.91V17'/%3E%3Cpath d='M5 12v5c0 0 2.5 3 7 3s7-3 7-3v-5'/%3E%3C/g%3E%3Cg transform='translate(116,18) scale(1.35)'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cline x1='3' y1='9' x2='21' y2='9'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cpolyline points='9,14 11,16 15,12'/%3E%3C/g%3E%3Cg transform='translate(14,118) scale(1.35)'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpolyline points='12,7 12,12 15,15'/%3E%3C/g%3E%3Cg transform='translate(116,118) scale(1.35)'%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3Cpath d='M4,20 C4,16 7.6,13 12,13 C16.4,13 20,16 20,20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), radial-gradient(ellipse at 12% 15%, rgba(210,140,60,.22) 0%, transparent 50%), radial-gradient(ellipse at 88% 88%, rgba(200,100,80,.16) 0%, transparent 50%), radial-gradient(ellipse at 55% 45%, rgba(240,200,100,.12) 0%, transparent 45%);
             background-size: 200px 200px, 100% 100%, 100% 100%, 100% 100%;
             border-radius: var(--lp-radius-lg);
             padding: 48px 0;
+            min-height: 100vh;
         }
 
         .profile-wrapper {
@@ -55,6 +65,32 @@
             display: flex;
             align-items: center;
         }
+
+        .lp-back-home-link {
+            position: absolute;
+            top: 8px;
+            right: 20px;
+            width: auto;
+            height: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            font-weight: 400;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.65);
+            background: none;
+            border-radius: 0;
+            text-decoration: none;
+            z-index: 2;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+            .lp-back-home-link:hover {
+                color: #fff;
+                transform: scale(1.1);
+                text-decoration: none;
+            }
 
         .profile-banner::after {
             content: "";
@@ -87,6 +123,24 @@
             padding: 36px 36px 38px;
         }
 
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -12px;
+        }
+
+        .col-md-4 {
+            flex: 0 0 33.3333%;
+            max-width: 33.3333%;
+            padding: 0 12px;
+        }
+
+        .col-md-8 {
+            flex: 0 0 66.6667%;
+            max-width: 66.6667%;
+            padding: 0 12px;
+        }
+
         .photo-col {
             text-align: center;
         }
@@ -103,16 +157,16 @@
             display: inline-block;
         }
 
-        .photo-frame .img-circle {
-            width: 112px;
-            height: 112px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.85);
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
-            background: #eef0fa;
-            display: block;
-        }
+            .photo-frame .img-circle {
+                width: 112px;
+                height: 112px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 3px solid rgba(255, 255, 255, 0.85);
+                box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+                background: #eef0fa;
+                display: block;
+            }
 
         .change-badge {
             position: absolute;
@@ -136,9 +190,9 @@
             gap: 5px;
         }
 
-        .change-badge:hover {
-            background: var(--pink);
-        }
+            .change-badge:hover {
+                background: var(--pink);
+            }
 
         .file-upload-hidden {
             display: none;
@@ -215,16 +269,16 @@
             transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
         }
 
-        .form-section .form-control::placeholder {
-            color: #9AA1B2;
-        }
+            .form-section .form-control::placeholder {
+                color: #9AA1B2;
+            }
 
-        .form-section .form-control:focus {
-            border-color: var(--accent);
-            background: #fff;
-            box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.14);
-            outline: none;
-        }
+            .form-section .form-control:focus {
+                border-color: var(--accent);
+                background: #fff;
+                box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.14);
+                outline: none;
+            }
 
         .mb-3 {
             margin-bottom: 18px;
@@ -236,10 +290,10 @@
             flex-wrap: wrap;
         }
 
-        .form-row .mb-3 {
-            flex: 1 1 200px;
-            min-width: 0;
-        }
+            .form-row .mb-3 {
+                flex: 1 1 200px;
+                min-width: 0;
+            }
 
         .form-control[readonly] {
             background: #EEF0F5;
@@ -267,13 +321,14 @@
             letter-spacing: 0.2px;
             box-shadow: 0 6px 16px rgba(16, 33, 79, 0.22);
             transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+            cursor: pointer;
         }
 
-        .btn-update:hover {
-            background: var(--accent);
-            transform: translateY(-1px);
-            box-shadow: 0 8px 20px rgba(47, 111, 237, 0.28);
-        }
+            .btn-update:hover {
+                background: var(--accent);
+                transform: translateY(-1px);
+                box-shadow: 0 8px 20px rgba(47, 111, 237, 0.28);
+            }
 
         .msg-label {
             font-weight: 600;
@@ -284,9 +339,9 @@
             border-radius: 8px;
         }
 
-        .msg-label:empty {
-            display: none;
-        }
+            .msg-label:empty {
+                display: none;
+            }
 
         /* ---------- Responsive ---------- */
 
@@ -307,6 +362,11 @@
                 padding: 24px 20px 28px;
             }
 
+            .col-md-4, .col-md-8 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+
             .photo-col {
                 margin-bottom: 24px;
             }
@@ -325,9 +385,9 @@
                 gap: 0;
             }
 
-            .form-row .mb-3 {
-                flex: 1 1 100%;
-            }
+                .form-row .mb-3 {
+                    flex: 1 1 100%;
+                }
 
             .form-actions {
                 flex-direction: column;
@@ -359,97 +419,105 @@
             }
         }
     </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="profile-page-bg" onclick="if(event.target === this){ __doPostBack('<%= LinkButton1.UniqueID %>',''); }">
+            <div class="profile-wrapper">
+                <div class="profile-card" onclick="event.stopPropagation();">
 
-    <div class="profile-page-bg">
-        <div class="profile-wrapper">
-            <div class="profile-card">
-
-                <div class="profile-banner">
-                    <div class="profile-banner-text">
-                        <h2>My Profile</h2>
-                        <p>Manage your personal information and photo</p>
-                    </div>
-                </div>
-
-                <div class="profile-body">
-                    <div class="row">
-                        <div class="col-md-4 photo-col">
-                            <div class="profile-id-card">
-                                <div class="photo-frame">
-                                    <asp:Image ID="imgProfile" runat="server" CssClass="img-circle" />
-                                    <span class="change-badge" onclick="document.getElementById('<%= fileUpload.ClientID %>').click();">
-                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-                                            <circle cx="12" cy="13" r="4" />
-                                        </svg>
-                                        Change
-                                    </span>
-                                </div>
-                                <asp:FileUpload ID="fileUpload" runat="server" CssClass="file-upload-hidden" onchange="this.form.submit();" />
-
-                                <asp:Label ID="lblDisplayName" runat="server" CssClass="id-name" />
-                                <asp:Label ID="lblEmail" runat="server" CssClass="id-email" />
-                                <asp:Label ID="lblStudentId" runat="server" CssClass="id-student" />
-                            </div>
-                        </div>
-
-                        <div class="col-md-8 form-section">
-                            <p class="form-section-heading">Personal Information</p>
-
-                            <div class="form-row">
-                                <div class="mb-3">
-                                    <label>Full Name</label>
-                                    <asp:TextBox ID="txtFullName" runat="server" CssClass="form-control" placeholder="Enter your full name" />
-                                </div>
-                                <div class="mb-3">
-                                    <label>Email</label>
-                                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" placeholder="Enter your email" />
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="mb-3">
-                                    <label>Contact Number</label>
-                                    <asp:TextBox ID="txtContact" runat="server" CssClass="form-control" placeholder="Enter your contact number" />
-                                </div>
-                                <div class="mb-3">
-                                    <label>Date of Birth</label>
-                                    <asp:TextBox ID="txtDOB" runat="server" CssClass="form-control" TextMode="Date" />
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="mb-3">
-                                    <label>Parent's Name</label>
-                                    <asp:TextBox ID="txtParentName" runat="server" CssClass="form-control" placeholder="Enter parent's name" />
-                                </div>
-                                <div class="mb-3">
-                                    <label>Parent's Contact Number</label>
-                                    <asp:TextBox ID="txtParentContact" runat="server" CssClass="form-control" placeholder="Enter parent's contact number" />
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="mb-3">
-                                    <label>LCID</label>
-                                    <asp:TextBox ID="txtLCID" runat="server" CssClass="form-control" ReadOnly="true" placeholder="LC00017003701" />
-                                </div>
-                                <div class="mb-3">
-                                    <label>Address</label>
-                                    <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" placeholder="Enter your address" />
-                                </div>
-                            </div>
-
-                            <div class="form-actions">
-                                <asp:Button ID="btnUpdate" runat="server" Text="Update Profile" CssClass="btn btn-update" OnClick="btnUpdate_Click" />
-                                <asp:Label ID="lblMsg" runat="server" CssClass="msg-label" />
-                            </div>
+                    <div class="profile-banner">
+                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lp-back-home-link" OnClick="BackHomeButton_Click" ToolTip="Back to Home">
+        &times;
+                        </asp:LinkButton>
+                        <div class="profile-banner-text">
+                            <h2>My Profile</h2>
+                            <p>Manage your personal information and photo</p>
                         </div>
                     </div>
-                </div>
 
+                    <div class="profile-body">
+                        <div class="row">
+                            <div class="col-md-4 photo-col">
+                                <div class="profile-id-card">
+                                    <div class="photo-frame">
+                                        <asp:Image ID="imgProfile" runat="server" CssClass="img-circle" />
+                                        <span class="change-badge" onclick="document.getElementById('<%= fileUpload.ClientID %>').click();">
+                                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                                                <circle cx="12" cy="13" r="4" />
+                                            </svg>
+                                            Change
+                                        </span>
+                                    </div>
+                                    <asp:FileUpload ID="fileUpload" runat="server" CssClass="file-upload-hidden"
+                                        onchange="__doPostBack('<%= btnUpdate.UniqueID %>','');" />
+
+                                    <asp:Label ID="lblDisplayName" runat="server" CssClass="id-name" />
+                                    <asp:Label ID="lblEmail" runat="server" CssClass="id-email" />
+                                    <asp:Label ID="lblStudentId" runat="server" CssClass="id-student" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 form-section">
+                                <p class="form-section-heading">Personal Information</p>
+
+                                <div class="form-row">
+                                    <div class="mb-3">
+                                        <label>Full Name</label>
+                                        <asp:TextBox ID="txtFullName" runat="server" CssClass="form-control" placeholder="Enter your full name" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Email</label>
+                                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" placeholder="Enter your email" />
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="mb-3">
+                                        <label>Contact Number</label>
+                                        <asp:TextBox ID="txtContact" runat="server" CssClass="form-control" placeholder="Enter your contact number" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Date of Birth</label>
+                                        <asp:TextBox ID="txtDOB" runat="server" CssClass="form-control" TextMode="Date" />
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="mb-3">
+                                        <label>Parent's Name</label>
+                                        <asp:TextBox ID="txtParentName" runat="server" CssClass="form-control" placeholder="Enter parent's name" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Parent's Contact Number</label>
+                                        <asp:TextBox ID="txtParentContact" runat="server" CssClass="form-control" placeholder="Enter parent's contact number" />
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="mb-3">
+                                        <label>LCID</label>
+                                        <asp:TextBox ID="txtLCID" runat="server" CssClass="form-control" ReadOnly="true" placeholder="LC00017003701" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Address</label>
+                                        <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" placeholder="Enter your address" />
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <asp:Button ID="btnUpdate" runat="server" Text="Update Profile" CssClass="btn btn-update" OnClick="btnUpdate_Click" />
+                                    <asp:Label ID="lblMsg" runat="server" CssClass="msg-label" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+            
         </div>
-    </div>
-
-</asp:Content>
+    </form>
+</body>
+</html>

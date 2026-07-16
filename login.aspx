@@ -277,8 +277,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="lp-wrap">
-          <div class="lp-shell">
+       <div class="lp-wrap" onclick="if(event.target === this){ __doPostBack('<%= LinkButton1.UniqueID %>',''); }">
+  <div class="lp-shell" onclick="event.stopPropagation();">
 
               <asp:LinkButton ID="LinkButton1" runat="server" CssClass="lp-back-home-link" OnClick="BackHomeButton_Click" ToolTip="Back to Home">
     &times;
