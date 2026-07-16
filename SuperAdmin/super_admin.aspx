@@ -25,128 +25,232 @@
             --success-border: #4ade80;
             --danger: #dc2626;
             --danger-bg: #fef2f2;
+
+            /* stat / quick-action icon accents */
+            --icon-blue-bg: rgba(11,31,102,0.09);
+            --icon-blue: #0B1F66;
+            --icon-rose-bg: rgba(255,45,141,0.1);
+            --icon-rose: #FF2D8D;
+            --icon-purple-bg: rgba(124,58,237,0.1);
+            --icon-purple: #7c3aed;
+            --icon-amber-bg: rgba(217,119,6,0.12);
+            --icon-amber: #d97706;
+
+            --sidebar-w: 246px;
         }
 
         * { box-sizing: border-box; }
 
-        body {
+        html, body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: var(--gray-bg);
-            background-image:
-                radial-gradient(circle at 100% 0%, rgba(11,31,102,0.035) 0%, transparent 45%),
-                radial-gradient(circle at 0% 100%, rgba(255,45,141,0.03) 0%, transparent 40%);
-            background-attachment: fixed;
             margin: 0;
         }
 
-        .c-wrap {
-            padding: 1.5rem 2rem 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
         @media (prefers-reduced-motion: no-preference) {
-            .c-fade-up {
-                animation: cFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-            }
+            .c-fade-up { animation: cFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
             @keyframes cFadeUp {
                 from { opacity: 0; transform: translateY(10px); }
                 to { opacity: 1; transform: translateY(0); }
             }
         }
 
-        /* ── Hero ── */
-        .c-hero {
-            position: relative;
-            background: linear-gradient(135deg, #0B1F66 0%, #142d82 55%, #1a3499 100%);
-            padding: 32px 36px;
-            border-radius: 20px;
-            margin-bottom: 24px;
+        /* ── Shell ── */
+        .c-shell { display: flex; min-height: 100vh; }
+
+        /* ── Sidebar ── */
+        .c-sidebar {
+            width: var(--sidebar-w);
+            flex: none;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
             color: #fff;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            box-shadow: 0 20px 40px -12px rgba(11,31,102,0.45);
+            flex-direction: column;
+            padding: 22px 16px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
             overflow: hidden;
         }
 
-        .c-hero::before {
-            content: "";
+        /* Watermark logo, matching the Bit_Notes sidebar treatment */
+        .c-sidebar::after {
+            content: '';
             position: absolute;
-            inset: 0;
-            background-image: radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px);
-            background-size: 22px 22px;
-            mask-image: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, transparent 65%);
-            -webkit-mask-image: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, transparent 65%);
-            pointer-events: none;
-        }
-
-        .c-hero::after {
-            content: "";
-            position: absolute;
-            top: -60%;
-            right: -8%;
+            bottom: -10px;
+            left: -20px;
             width: 320px;
             height: 320px;
-            background: radial-gradient(circle, rgba(255,45,141,0.35) 0%, transparent 70%);
+            background: url('../Bit_Notes/logo/sidebar-removebg-preview.png') no-repeat center/contain;
+            opacity: 0.35;
             pointer-events: none;
+            z-index: 0;
         }
 
-        .c-hero-left {
+        /* Keep real sidebar content above the watermark */
+        .c-sidebar > * {
             position: relative;
             z-index: 1;
-            display: flex;
-            align-items: center;
-            gap: 16px;
         }
 
-        .c-hero-icon-badge {
-            width: 52px;
-            height: 52px;
-            flex: none;
-            border-radius: 14px;
-            background: linear-gradient(155deg, rgba(255,255,255,0.22), rgba(255,255,255,0.06));
+        .c-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 8px 24px;
+        }
+
+        .c-brand-badge {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            background: linear-gradient(155deg, rgba(255,255,255,0.24), rgba(255,255,255,0.06));
             border: 1px solid rgba(255,255,255,0.25);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            backdrop-filter: blur(6px);
+            font-size: 1.1rem;
+            flex: none;
         }
 
-        .c-hero h3 {
-            margin: 0 0 4px;
-            font-size: 1.35rem;
+        .c-brand span {
             font-weight: 800;
+            font-size: 15px;
             letter-spacing: -0.2px;
         }
 
-        .c-hero p {
-            margin: 0;
-            font-size: 13px;
-            color: rgba(255,255,255,0.68);
-        }
+        .c-nav { display: flex; flex-direction: column; gap: 3px; margin-bottom: 22px; }
 
-        .c-hero p strong {
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .c-hero-actions {
-            position: relative;
-            z-index: 1;
+        .c-nav-link {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            color: rgba(255,255,255,0.72);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13.5px;
+            transition: background 0.15s ease, color 0.15s ease;
         }
 
-        .c-hero-btn {
+        .c-nav-link i { font-size: 1.05rem; width: 20px; text-align: center; }
+
+        .c-nav-link:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+        .c-nav-link.active {
+            background: rgba(255,255,255,0.14);
+            color: #fff;
+            box-shadow: inset 3px 0 0 var(--pink);
+        }
+
+        .c-nav-eyebrow {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            color: rgba(255,255,255,0.42);
+            text-transform: uppercase;
+            padding: 4px 12px 8px;
+        }
+
+        .c-sidebar-spacer { flex: 1; }
+
+        .c-sidebar-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .c-sidebar-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink), #ff5aa5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+            flex: none;
+        }
+
+        .c-sidebar-user-name { font-size: 13px; font-weight: 700; line-height: 1.2; }
+        .c-sidebar-user-role { font-size: 11px; color: rgba(255,255,255,0.55); }
+        .c-sidebar-user i { margin-left: auto; color: rgba(255,255,255,0.5); font-size: 1rem; }
+
+        /* ── Main ── */
+        .c-main { flex: 1; min-width: 0; padding: 28px 34px 44px; }
+
+        .c-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 26px;
+        }
+
+        .c-topbar h1 {
+            margin: 0 0 4px;
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+
+        .c-topbar p { margin: 0; font-size: 13px; color: var(--text-muted); }
+
+        .c-topbar-actions { display: flex; align-items: center; gap: 12px; }
+
+        .c-search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 9px 14px;
+            font-size: 13px;
+            color: var(--text-muted);
+            min-width: 220px;
+        }
+
+        .c-search i { color: var(--text-muted); }
+
+        .c-bell {
+            position: relative;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .c-bell::after {
+            content: "";
+            position: absolute;
+            top: 8px;
+            right: 9px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--pink);
+            border: 1.5px solid #fff;
+        }
+
+        .c-btn-pink {
             display: inline-flex;
             align-items: center;
             gap: 7px;
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 10px;
             font-size: 13px;
             font-weight: 700;
@@ -154,31 +258,13 @@
             cursor: pointer;
             border: none;
             text-decoration: none;
-            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-            letter-spacing: 0.3px;
-        }
-
-        .c-hero-btn:hover {
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.22);
-        }
-
-        .c-hero-btn-outline {
-            background: rgba(255,255,255,0.15);
-            color: #fff;
-            border: 1.5px solid rgba(255,255,255,0.35);
-            backdrop-filter: blur(4px);
-        }
-
-        .c-hero-btn-outline:hover { background: rgba(255,255,255,0.25); color: #fff; }
-
-        .c-hero-btn-pink {
             background: linear-gradient(135deg, var(--pink), #ff5aa5);
             color: #fff;
             box-shadow: 0 3px 12px rgba(255,45,141,0.4);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
         }
 
-        .c-hero-btn-pink:hover { background: var(--pink-hover); color: #fff; }
+        .c-btn-pink:hover { transform: translateY(-2px) scale(1.03); color: #fff; }
 
         /* ── Stat Cards ── */
         .c-stats-grid {
@@ -228,16 +314,12 @@
             justify-content: center;
             font-size: 1.35rem;
             flex: none;
-            background: linear-gradient(155deg, var(--pink-light), rgba(255,45,141,0.14));
-            color: var(--pink);
-            box-shadow: inset 0 0 0 1px rgba(255,45,141,0.12);
         }
 
-        .c-stat-icon.blue {
-            background: linear-gradient(155deg, rgba(11,31,102,0.07), rgba(11,31,102,0.13));
-            color: var(--primary);
-            box-shadow: inset 0 0 0 1px rgba(11,31,102,0.1);
-        }
+        .c-stat-icon.blue   { background: var(--icon-blue-bg);   color: var(--icon-blue); }
+        .c-stat-icon.rose   { background: var(--icon-rose-bg);   color: var(--icon-rose); }
+        .c-stat-icon.purple { background: var(--icon-purple-bg); color: var(--icon-purple); }
+        .c-stat-icon.amber  { background: var(--icon-amber-bg);  color: var(--icon-amber); }
 
         .c-stat-value {
             font-size: 1.65rem;
@@ -301,6 +383,23 @@
             font-size: 0.95rem;
         }
 
+        .c-view-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 7px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: #fff;
+            color: var(--primary);
+            font-size: 12.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: border-color 0.15s ease, color 0.15s ease;
+        }
+
+        .c-view-all:hover { border-color: var(--pink); color: var(--pink); }
+
         /* ── Table ── */
         .c-table-container {
             overflow: hidden;
@@ -308,11 +407,7 @@
             border: 1px solid var(--border-color);
         }
 
-        .table-modern {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
+        .table-modern { width: 100%; border-collapse: collapse; font-size: 13px; }
 
         .table-modern th {
             background: var(--gray-bg);
@@ -333,19 +428,10 @@
             font-weight: 500;
         }
 
-        .table-modern tr {
-            transition: background-color 0.15s ease;
-        }
-
+        .table-modern tr { transition: background-color 0.15s ease; }
         .table-modern tr:last-child td { border-bottom: none; }
-
-        .table-modern tr:hover {
-            background-color: var(--gray-bg);
-        }
-
-        .table-modern tbody tr {
-            position: relative;
-        }
+        .table-modern tr:hover { background-color: var(--gray-bg); }
+        .table-modern tbody tr { position: relative; }
 
         .table-modern tbody tr td:first-child {
             font-weight: 700;
@@ -354,22 +440,20 @@
             transition: box-shadow 0.15s ease;
         }
 
-        .table-modern tbody tr:hover td:first-child {
-            box-shadow: inset 3px 0 0 var(--pink);
-        }
+        .table-modern tbody tr:hover td:first-child { box-shadow: inset 3px 0 0 var(--pink); }
 
         /* ── Quick Actions ── */
         .c-quick-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
             gap: 14px;
         }
 
         .c-quick-link {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 14px;
-            padding: 16px 18px;
+            padding: 20px 18px;
             border-radius: 14px;
             border: 1px solid var(--border-color);
             background: var(--gray-bg);
@@ -389,150 +473,185 @@
         }
 
         .c-quick-link-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: var(--pink-light);
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex: none;
-            transition: background 0.2s ease, transform 0.2s ease;
+            font-size: 1.2rem;
         }
 
-        .c-quick-link:hover .c-quick-link-icon {
-            background: var(--pink);
-            transform: scale(1.05);
-        }
+        .c-quick-link-icon.blue   { background: var(--icon-blue-bg);   color: var(--icon-blue); }
+        .c-quick-link-icon.rose   { background: var(--icon-rose-bg);   color: var(--icon-rose); }
+        .c-quick-link-icon.purple { background: var(--icon-purple-bg); color: var(--icon-purple); }
+        .c-quick-link-icon.amber  { background: var(--icon-amber-bg);  color: var(--icon-amber); }
 
-        .c-quick-link i { font-size: 1.15rem; color: var(--pink); transition: color 0.2s ease; }
-        .c-quick-link:hover i { color: #fff; }
-
-        .c-quick-link-arrow {
-            margin-left: auto;
-            color: var(--text-muted);
-            font-size: 1rem;
-            opacity: 0;
-            transform: translateX(-4px);
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-
-        .c-quick-link:hover .c-quick-link-arrow {
-            opacity: 1;
-            transform: translateX(0);
-            color: var(--pink);
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .c-shell { flex-direction: column; }
+            .c-sidebar { width: 100%; height: auto; position: relative; flex-direction: row; flex-wrap: wrap; }
+            .c-nav { flex-direction: row; flex-wrap: wrap; }
+            .c-sidebar-spacer { display: none; }
+            .c-sidebar-user { margin-top: 12px; }
+            .c-main { padding: 22px 18px 36px; }
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="c-wrap">
+        <div class="c-shell">
 
-            <!-- Hero -->
-            <div class="c-hero c-fade-up">
-                <div class="c-hero-left">
-                    <div class="c-hero-icon-badge"><i class="ti ti-shield-star"></i></div>
+            <!-- Sidebar -->
+            <aside class="c-sidebar">
+                <div class="c-brand">
+                    <div class="c-brand-badge"><i class="ti ti-shield-star"></i></div>
+                    <span>Super Admin</span>
+                </div>
+
+                <nav class="c-nav">
+                    <a href="super_admin.aspx" class="c-nav-link active"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+                    <a href="DepartmentManage.aspx" class="c-nav-link"><i class="ti ti-building"></i> Departments</a>
+                    <a href="DepartmentAdminManage.aspx" class="c-nav-link"><i class="ti ti-user-cog"></i> Department Admins</a>
+                    <a href="StaffManage.aspx" class="c-nav-link"><i class="ti ti-user-check"></i> Staff</a>
+                    <a href="StudentManage.aspx" class="c-nav-link"><i class="ti ti-users"></i> Students</a>
+                    <a href="SubjectManage.aspx" class="c-nav-link"><i class="ti ti-book-2"></i> Subjects</a>
+                </nav>
+
+                <div class="c-nav-eyebrow">Quick Actions</div>
+                <nav class="c-nav">
+                    <a href="DepartmentManage.aspx" class="c-nav-link"><i class="ti ti-building"></i> Manage Departments</a>
+                    <a href="/administrator/AppointUser.aspx" class="c-nav-link"><i class="ti ti-user-plus"></i> Manage Admins</a>
+                    <a href="StaffManage.aspx" class="c-nav-link"><i class="ti ti-user-check"></i> Manage Staff</a>
+                    <a href="SubjectManage.aspx" class="c-nav-link"><i class="ti ti-book-2"></i> Manage Subjects</a>
+                </nav>
+
+                <div class="c-sidebar-spacer"></div>
+
+                <div class="c-sidebar-user">
+                    <div class="c-sidebar-avatar">
+                        <i class="ti ti-user"></i>
+                    </div>
                     <div>
-                        <h3>Super Admin Dashboard</h3>
+                        <div class="c-sidebar-user-name">Super Admin</div>
+                        <div class="c-sidebar-user-role">Administrator</div>
+                    </div>
+                    <i class="ti ti-chevron-down"></i>
+                </div>
+            </aside>
+
+            <!-- Main -->
+            <main class="c-main">
+
+                <div class="c-topbar c-fade-up">
+                    <div>
+                        <h1>Welcome back, Super Admin! 👋</h1>
                         <p>Logged in as <strong><%= Session["Username"] %></strong> &middot; System-wide access</p>
                     </div>
+                    <div class="c-topbar-actions">
+                        <div class="c-search"><i class="ti ti-search"></i> Search anything…</div>
+                        <a class="c-bell" href="../NoticeManage.aspx"><i class="ti ti-bell"></i>
+                            
+                        </a>
+                        <a href="../logout.aspx" class="c-btn-pink"><i class="ti ti-logout"></i> Logout</a>
+                    </div>
                 </div>
-                <div class="c-hero-actions">
-                    <a href="/administrator/AppointUser.aspx" class="c-hero-btn c-hero-btn-outline">
-                        <i class="ti ti-user-plus"></i> Appoint User
-                    </a>
-                    <a href="../logout.aspx" class="c-hero-btn c-hero-btn-pink">
-                        <i class="ti ti-logout"></i> Logout
-                    </a>
-                </div>
-            </div>
 
-            <!-- Stat Cards -->
-            <div class="c-stats-grid c-fade-up" style="animation-delay: 0.05s;">
-                <div class="c-stat-card">
-                    <div class="c-stat-icon blue"><i class="ti ti-building"></i></div>
-                    <div>
-                        <div class="c-stat-value"><asp:Literal ID="litDeptCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Departments</div>
+                <!-- Stat Cards -->
+                <div class="c-stats-grid c-fade-up" style="animation-delay: 0.05s;">
+                    <div class="c-stat-card">
+                        <div class="c-stat-icon blue"><i class="ti ti-building"></i></div>
+                        <div>
+                            <div class="c-stat-value"><asp:Literal ID="litDeptCount" runat="server">0</asp:Literal></div>
+                            <div class="c-stat-label">Departments</div>
+                        </div>
+                    </div>
+                    <div class="c-stat-card">
+                        <div class="c-stat-icon rose"><i class="ti ti-user-cog"></i></div>
+                        <div>
+                            <div class="c-stat-value"><asp:Literal ID="litDeptAdminCount" runat="server">0</asp:Literal></div>
+                            <div class="c-stat-label">Dept Admins</div>
+                        </div>
+                    </div>
+                    <div class="c-stat-card">
+                        <div class="c-stat-icon purple"><i class="ti ti-user-check"></i></div>
+                        <div>
+                            <div class="c-stat-value"><asp:Literal ID="litStaffCount" runat="server">0</asp:Literal></div>
+                            <div class="c-stat-label">Staff</div>
+                        </div>
+                    </div>
+                    <div class="c-stat-card">
+                        <div class="c-stat-icon rose"><i class="ti ti-users"></i></div>
+                        <div>
+                            <div class="c-stat-value"><asp:Literal ID="litStudentCount" runat="server">0</asp:Literal></div>
+                            <div class="c-stat-label">Students</div>
+                        </div>
+                    </div>
+                    <div class="c-stat-card">
+                        <div class="c-stat-icon amber"><i class="ti ti-book-2"></i></div>
+                        <div>
+                            <div class="c-stat-value"><asp:Literal ID="litSubjectCount" runat="server">0</asp:Literal></div>
+                            <div class="c-stat-label">Subjects</div>
+                        </div>
                     </div>
                 </div>
-                <div class="c-stat-card">
-                    <div class="c-stat-icon"><i class="ti ti-user-cog"></i></div>
-                    <div>
-                        <div class="c-stat-value"><asp:Literal ID="litDeptAdminCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Dept Admins</div>
-                    </div>
-                </div>
-                <div class="c-stat-card">
-                    <div class="c-stat-icon blue"><i class="ti ti-user-check"></i></div>
-                    <div>
-                        <div class="c-stat-value"><asp:Literal ID="litStaffCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Staff</div>
-                    </div>
-                </div>
-                <div class="c-stat-card">
-                    <div class="c-stat-icon"><i class="ti ti-users"></i></div>
-                    <div>
-                        <div class="c-stat-value"><asp:Literal ID="litStudentCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Students</div>
-                    </div>
-                </div>
-                <div class="c-stat-card">
-                    <div class="c-stat-icon blue"><i class="ti ti-book-2"></i></div>
-                    <div>
-                        <div class="c-stat-value"><asp:Literal ID="litSubjectCount" runat="server">0</asp:Literal></div>
-                        <div class="c-stat-label">Subjects</div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Department Overview -->
-            <div class="c-panel c-fade-up" style="animation-delay: 0.1s;">
-                <div class="c-panel-header">
-                    <div class="c-panel-title">
-                        <span class="c-panel-title-icon"><i class="ti ti-building-community"></i></span>
-                        Department Overview
+                <!-- Department Overview -->
+                <div class="c-panel c-fade-up" style="animation-delay: 0.1s;">
+                    <div class="c-panel-header">
+                        <div class="c-panel-title">
+                            <span class="c-panel-title-icon"><i class="ti ti-building-community"></i></span>
+                            Department Overview
+                        </div>
+                        <a href="DepartmentManage.aspx" class="c-view-all">View All <i class="ti ti-chevron-right"></i></a>
+                    </div>
+                    <div class="c-table-container">
+                        <asp:GridView ID="gvDepartments" runat="server"
+                            AutoGenerateColumns="False"
+                            class="table-modern"
+                            GridLines="None" BorderWidth="0" CellPadding="0"
+                            EmptyDataText="No departments found.">
+                            <Columns>
+                                <asp:BoundField DataField="DepartmentName" HeaderText="Department" />
+                                <asp:BoundField DataField="DepartmentCode" HeaderText="Code" />
+                                <asp:BoundField DataField="DeptAdminCount" HeaderText="Dept Admins" />
+                                <asp:BoundField DataField="StaffCount" HeaderText="Staff" />
+                                <asp:BoundField DataField="StudentCount" HeaderText="Students" />
+                            </Columns>
+                        </asp:GridView>
                     </div>
                 </div>
-                <div class="c-table-container">
-                    <asp:GridView ID="gvDepartments" runat="server"
-                        AutoGenerateColumns="False"
-                        class="table-modern"
-                        GridLines="None" BorderWidth="0" CellPadding="0"
-                        EmptyDataText="No departments found.">
-                        <Columns>
-                            <asp:BoundField DataField="DepartmentName" HeaderText="Department" />
-                            <asp:BoundField DataField="DepartmentCode" HeaderText="Code" />
-                            <asp:BoundField DataField="DeptAdminCount" HeaderText="Dept Admins" />
-                            <asp:BoundField DataField="StaffCount" HeaderText="Staff" />
-                            <asp:BoundField DataField="StudentCount" HeaderText="Students" />
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </div>
 
-            <!-- Quick Actions -->
-            <div class="c-panel c-fade-up" style="animation-delay: 0.15s;">
-                <div class="c-panel-header">
-                    <div class="c-panel-title">
-                        <span class="c-panel-title-icon"><i class="ti ti-bolt"></i></span>
-                        Quick Actions
+                <!-- Quick Actions -->
+                <div class="c-panel c-fade-up" style="animation-delay: 0.15s;">
+                    <div class="c-panel-header">
+                        <div class="c-panel-title">
+                            <span class="c-panel-title-icon"><i class="ti ti-bolt"></i></span>
+                            Quick Actions
+                        </div>
+                    </div>
+                    <div class="c-quick-grid">
+                        <a href="DepartmentManage.aspx" class="c-quick-link">
+                            <span class="c-quick-link-icon blue"><i class="ti ti-building"></i></span>
+                            Manage Departments
+                        </a>
+                        <a href="/administrator/AppointUser.aspx" class="c-quick-link">
+                            <span class="c-quick-link-icon rose"><i class="ti ti-user-plus"></i></span>
+                            Manage Admins
+                        </a>
+                        <a href="StaffManage.aspx" class="c-quick-link">
+                            <span class="c-quick-link-icon purple"><i class="ti ti-user-check"></i></span>
+                            Manage Staff
+                        </a>
+                        <a href="SubjectManage.aspx" class="c-quick-link">
+                            <span class="c-quick-link-icon amber"><i class="ti ti-book-2"></i></span>
+                            Manage Subjects
+                        </a>
                     </div>
                 </div>
-                <div class="c-quick-grid">
-                    <a href="/administrator/AppointUser.aspx" class="c-quick-link">
-                        <span class="c-quick-link-icon"><i class="ti ti-user-plus"></i></span>
-                        Appoint User
-                        <i class="ti ti-chevron-right c-quick-link-arrow"></i>
-                    </a>
-                    <a href="../NoticeManage.aspx" class="c-quick-link">
-                        <span class="c-quick-link-icon"><i class="ti ti-speakerphone"></i></span>
-                        Manage Notices
-                        <i class="ti ti-chevron-right c-quick-link-arrow"></i>
-                    </a>
-                </div>
-            </div>
 
+            </main>
         </div>
     </form>
 </body>

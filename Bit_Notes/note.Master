@@ -55,7 +55,7 @@
             width: 400px;
             height: 400px;
             background: url('logo/sidebar-removebg-preview.png') no-repeat center/contain;
-            opacity: 0.25;
+            opacity: 0.35;
             pointer-events: none;
             z-index: 0;
         }

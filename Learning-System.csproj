@@ -392,6 +392,7 @@
     <Content Include="students\module_details.aspx" />
     <Content Include="students\ViewFile.aspx" />
     <Content Include="style.css" />
+    <Content Include="SuperAdmin\DepartmentManage.aspx" />
     <Content Include="SuperAdmin\super_admin.aspx" />
     <Content Include="TextFile1.txt" />
     <Content Include="TreeLineImages\dash.gif" />
@@ -982,6 +983,13 @@
     </Compile>
     <Compile Include="students\ViewFile.aspx.designer.cs">
       <DependentUpon>ViewFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperAdmin\DepartmentManage.aspx.cs">
+      <DependentUpon>DepartmentManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperAdmin\DepartmentManage.aspx.designer.cs">
+      <DependentUpon>DepartmentManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="SuperAdmin\super_admin.aspx.cs">
       <DependentUpon>super_admin.aspx</DependentUpon>
