@@ -21,23 +21,25 @@ namespace Learning_System
 
         private void BindNotices()
         {
-            string studentClass = Request.QueryString["class"];
-
-            // 1. Basic URL parameter validation
-            if (string.IsNullOrEmpty(studentClass) || !ValidClasses.Contains(studentClass))
-            {
-                Response.Redirect("~/Default.aspx");
-                return;
-            }
-
-            // 2. Session security handling based on your login schema
+            // 1. Session security handling based on your login schema
+            //    Check this FIRST so unauthenticated users are always caught,
+            //    regardless of what's in the query string.
             string userRole = Session["Role"] as string;
             string sessionDeptCode = Session["DepartmentCode"] as string;
 
             if (string.IsNullOrEmpty(userRole))
             {
-                // Kick unauthenticated users to login page
-                Response.Redirect("~/login.aspx");
+                // Not logged in -> Access Denied
+                Response.Redirect("~/AccessDenied.aspx");
+                return;
+            }
+
+            // 2. Basic URL parameter validation
+            string studentClass = Request.QueryString["class"];
+
+            if (string.IsNullOrEmpty(studentClass) || !ValidClasses.Contains(studentClass))
+            {
+                Response.Redirect("~/Default.aspx");
                 return;
             }
 
@@ -47,7 +49,7 @@ namespace Learning_System
                 // Students can only see notices if their session department code matches the query string
                 if (string.IsNullOrEmpty(sessionDeptCode) || !sessionDeptCode.Equals(studentClass, StringComparison.OrdinalIgnoreCase))
                 {
-                    Response.Redirect("~/Default.aspx");
+                    Response.Redirect("~/AccessDenied.aspx");
                     return;
                 }
             }
@@ -59,7 +61,7 @@ namespace Learning_System
                 {
                     if (!sessionDeptCode.Equals(studentClass, StringComparison.OrdinalIgnoreCase))
                     {
-                        Response.Redirect("~/Default.aspx");
+                        Response.Redirect("~/AccessDenied.aspx");
                         return;
                     }
                 }
