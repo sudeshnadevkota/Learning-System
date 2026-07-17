@@ -193,6 +193,8 @@
         .c-topbar {
             position: relative;
             z-index: 1;
+            position: relative;
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -293,6 +295,16 @@
             gap: 14px;
             overflow: hidden;
             transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+        }
+
+        .c-stat-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--pink));
+            opacity: 0;
+            transition: opacity 0.22s ease;
         }
 
         .c-stat-card::before {

@@ -1,11 +1,12 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="learning.master.cs" Inherits="Learning_System.learning" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Texas College Virtual System</title>
-    
+
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -15,8 +16,19 @@
 
     <style>
         /* Base Reset & Typography */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Segoe UI", Arial, sans-serif; background-color: #F5F7FD; display: flex; flex-direction: column; min-height: 100vh; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #F5F7FD;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
         /* Modern Navbar Styling */
         .navbar {
@@ -37,7 +49,9 @@
             transition: color 0.3s ease;
         }
 
-        .navbar-nav .nav-link:hover { color: #F6B400 !important; }
+            .navbar-nav .nav-link:hover {
+                color: #F6B400 !important;
+            }
 
         /* Enhanced Login Button */
         .login-btn {
@@ -51,10 +65,10 @@
             box-shadow: 0 4px 15px rgba(11, 31, 102, 0.2) !important;
         }
 
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(11, 31, 102, 0.35) !important;
-        }
+            .login-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(11, 31, 102, 0.35) !important;
+            }
 
         /* Mobile-Specific Login Button Styling Adjustment */
         .login-btn-mobile {
@@ -85,7 +99,10 @@
         }
 
         /* Main Content Spacing */
-        .main-content { padding-top: 80px; flex: 1; }
+        .main-content {
+            padding-top: 80px;
+            flex: 1;
+        }
 
         /* --- MOBILE SIDEBAR CLEANUP (Breaks nothing on Desktop) --- */
         @media (max-width: 991px) {
@@ -110,67 +127,65 @@
             .offcanvas-title {
                 color: #0B1F66 !important;
             }
-            
+
             /* Changed to Flex Layout to automatically push bottom items downwards */
             .offcanvas-body {
                 padding: 20px !important;
                 display: block !important;
-                
             }
 
-            /* Format mobile nav items cleanly */
-            .offcanvas-body .navbar-nav {
-                display: flex !important;
-                flex-direction: column !important; 
-                align-items: flex-start !important; 
-                width: 100% !important;
-            }
+                /* Format mobile nav items cleanly */
+                .offcanvas-body .navbar-nav {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: flex-start !important;
+                    width: 100% !important;
+                }
 
-            .offcanvas-body .nav-item {
-                display: block !important;
-                width: 100% !important;
-                margin-bottom: 8px !important;
-            }
+                .offcanvas-body .nav-item {
+                    display: block !important;
+                    width: 100% !important;
+                    margin-bottom: 8px !important;
+                }
 
-            .offcanvas-body .nav-link {
-                font-size: 15px !important;
-                font-weight: 600 !important;
-                color: #28346f !important;
-                display: flex !important;
-                align-items: center;
-                width: 100% !important;
-                padding: 12px 14px !important;
-                background-color: #F8FAFC; 
-                border-radius: 8px;
-                transition: all 0.2s ease;
-            }
+                .offcanvas-body .nav-link {
+                    font-size: 15px !important;
+                    font-weight: 600 !important;
+                    color: #28346f !important;
+                    display: flex !important;
+                    align-items: center;
+                    width: 100% !important;
+                    padding: 12px 14px !important;
+                    background-color: #F8FAFC;
+                    border-radius: 8px;
+                    transition: all 0.2s ease;
+                }
 
-            .offcanvas-body .nav-link:hover, .offcanvas-body .nav-link:active {
-                background-color: #E7ECFF !important;
-                color: #0B1F66 !important;
-            }
-            
-            .offcanvas-body .nav-link i {
-                color: #F6B400; 
-                width: 24px;
-                font-size: 16px;
-            }
+                    .offcanvas-body .nav-link:hover, .offcanvas-body .nav-link:active {
+                        background-color: #E7ECFF !important;
+                        color: #0B1F66 !important;
+                    }
 
-
+                    .offcanvas-body .nav-link i {
+                        color: #F6B400;
+                        width: 24px;
+                        font-size: 16px;
+                    }
         }
+
         @media (min-width: 992px) {
-    .navbar-expand-lg .offcanvas {
-        display: flex !important;
-        flex-grow: 1;
-        align-items: center !important;
-        justify-content: center !important;
-        background-color: transparent !important;
-        visibility: visible !important;
-        position: static !important;
-        border: none !important;
-        width: auto !important;
-    }
-}
+            .navbar-expand-lg .offcanvas {
+                display: flex !important;
+                flex-grow: 1;
+                align-items: center !important;
+                justify-content: center !important;
+                background-color: transparent !important;
+                visibility: visible !important;
+                position: static !important;
+                border: none !important;
+                width: auto !important;
+            }
+        }
 
         /* Responsive structural adjustments for narrow smartphone viewports */
         @media (max-width: 576px) {
@@ -197,22 +212,22 @@
             transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
 
-        #UserDropdown .dropdown-toggle img {
-            transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-        }
+            #UserDropdown .dropdown-toggle img {
+                transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+            }
 
-        #UserDropdown .dropdown-toggle:hover img,
-        #UserDropdown .dropdown-toggle:focus img {
-            border-color: #F6B400 !important;
-            box-shadow: 0 0 0 4px rgba(246, 180, 0, 0.15);
-            transform: translateY(-1px);
-        }
+            #UserDropdown .dropdown-toggle:hover img,
+            #UserDropdown .dropdown-toggle:focus img {
+                border-color: #F6B400 !important;
+                box-shadow: 0 0 0 4px rgba(246, 180, 0, 0.15);
+                transform: translateY(-1px);
+            }
 
-        #UserDropdown .dropdown-toggle::after {
-            vertical-align: middle;
-            margin-left: 6px;
-            color: #28346f;
-        }
+            #UserDropdown .dropdown-toggle::after {
+                vertical-align: middle;
+                margin-left: 6px;
+                color: #28346f;
+            }
 
         /* Dropdown panel */
         #UserDropdown .dropdown-menu {
@@ -231,6 +246,7 @@
                 opacity: 0;
                 transform: translateY(-6px) scale(0.98);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -250,52 +266,52 @@
             transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
         }
 
-        #UserDropdown .dropdown-item i {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 9px;
-            font-size: 13px;
-            margin-right: 0;
-            background: #EEF1FF;
-            color: #0B1F66;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
+            #UserDropdown .dropdown-item i {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border-radius: 9px;
+                font-size: 13px;
+                margin-right: 0;
+                background: #EEF1FF;
+                color: #0B1F66;
+                transition: background-color 0.2s ease, color 0.2s ease;
+            }
 
-        #UserDropdown .dropdown-item:hover,
-        #UserDropdown .dropdown-item:focus {
-            background-color: #F1F4FF;
-            color: #0B1F66;
-            transform: translateX(2px);
-        }
+            #UserDropdown .dropdown-item:hover,
+            #UserDropdown .dropdown-item:focus {
+                background-color: #F1F4FF;
+                color: #0B1F66;
+                transform: translateX(2px);
+            }
 
-        #UserDropdown .dropdown-item:hover i {
-            background: #0B1F66;
-            color: #FFFFFF;
-        }
+                #UserDropdown .dropdown-item:hover i {
+                    background: #0B1F66;
+                    color: #FFFFFF;
+                }
 
-        /* Logout item gets its own accent so it reads as a distinct action */
-        #UserDropdown .dropdown-item.text-danger {
-            color: #d63357 !important;
-        }
+            /* Logout item gets its own accent so it reads as a distinct action */
+            #UserDropdown .dropdown-item.text-danger {
+                color: #d63357 !important;
+            }
 
-        #UserDropdown .dropdown-item.text-danger i {
-            background: #FDEBF0;
-            color: #d63357;
-        }
+                #UserDropdown .dropdown-item.text-danger i {
+                    background: #FDEBF0;
+                    color: #d63357;
+                }
 
-        #UserDropdown .dropdown-item.text-danger:hover,
-        #UserDropdown .dropdown-item.text-danger:focus {
-            background-color: #FDEBF0;
-            color: #d63357 !important;
-        }
+                #UserDropdown .dropdown-item.text-danger:hover,
+                #UserDropdown .dropdown-item.text-danger:focus {
+                    background-color: #FDEBF0;
+                    color: #d63357 !important;
+                }
 
-        #UserDropdown .dropdown-item.text-danger:hover i {
-            background: #d63357;
-            color: #FFFFFF;
-        }
+                    #UserDropdown .dropdown-item.text-danger:hover i {
+                        background: #d63357;
+                        color: #FFFFFF;
+                    }
 
         /* Divider */
         #UserDropdown .dropdown-divider {
@@ -310,17 +326,17 @@
 
         <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
             <div class="container d-flex align-items-center justify-content-between">
-                
+
                 <a class="navbar-brand" href="Default.aspx">
                     <img src="~/slide/view logo.png" runat="server" alt="logo" width="140" />
                 </a>
-                
+
                 <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
                     <div class="offcanvas-header border-bottom">
                         <h6 class="offcanvas-title text-primary"><i class="fas fa-university me-2"></i>Texas Learning Portal</h6>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
                     </div>
-                    
+
                     <div class="offcanvas-body">
                         <ul class="navbar-nav ms-auto me-auto">
                             <li class="nav-item">
@@ -359,31 +375,33 @@
                 </div>
 
                 <div class="d-flex align-items-center gap-2">
-    <asp:LinkButton ID="Linklogin" runat="server" CssClass="btn login-btn" OnClick="Linklogin_Click" CausesValidation="False">
-        Login <i class="fas fa-sign-in-alt ms-2"></i>
-    </asp:LinkButton>
+                    <asp:LinkButton ID="Linklogin" runat="server" CssClass="btn login-btn" OnClick="Linklogin_Click" CausesValidation="False">
+                        Login <i class="fas fa-sign-in-alt ms-2"></i>
+                    </asp:LinkButton>
 
-    <div id="UserDropdown" runat="server" class="dropdown" Visible="false">
-        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <asp:Image ID="ProfileImage" runat="server" 
-                style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #0B1F66;" />
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end shadow">
-            <li><a class="dropdown-item" href="/Profile.aspx"><i class="fas fa-user"></i>Display Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li>
-                <asp:LinkButton ID="BtnLogout" runat="server" CssClass="dropdown-item text-danger" OnClick="BtnLogout_Click" CausesValidation="False">
+                    <div id="UserDropdown" runat="server" class="dropdown" visible="false">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <asp:Image ID="ProfileImage" runat="server"
+                                Style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #0B1F66;" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow">
+                            <li><a class="dropdown-item" href="/Profile.aspx"><i class="fas fa-user"></i>Display Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="BtnLogout" runat="server" CssClass="dropdown-item text-danger" OnClick="BtnLogout_Click" CausesValidation="False">
                     <i class="fas fa-sign-out-alt"></i>Logout
-                </asp:LinkButton>
-            </li>
-        </ul>
-    </div>
+                                </asp:LinkButton>
+                            </li>
+                        </ul>
+                    </div>
 
-    <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" 
-            data-bs-target="#offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
+                    <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
 
             </div>
         </nav>
