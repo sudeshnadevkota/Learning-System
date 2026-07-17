@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Web;
 using System.Web.SessionState;
 
@@ -86,6 +88,29 @@ namespace Learning_System
             return myDepartmentId.HasValue && myDepartmentId.Value == targetDepartmentId;
         }
 
+        // NEW — live check against UserProfile.IsActive, the same column login.aspx.cs
+        // gates sign-in on. Session values are set once at login time and never
+        // refreshed, so without this, deactivating someone mid-session has no effect
+        // until they log out or their session expires on its own.
+        private static bool IsUserCurrentlyActive(int profileId)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(connString))
+            using (SqlCommand cmd = new SqlCommand("SELECT IsActive FROM UserProfile WHERE ProfileId = @Id", con))
+            {
+                cmd.Parameters.AddWithValue("@Id", profileId);
+                con.Open();
+                object result = cmd.ExecuteScalar();
+
+                // If the profile no longer exists at all, treat that the same as inactive.
+                if (result == null || result == DBNull.Value)
+                    return false;
+
+                return Convert.ToBoolean(result);
+            }
+        }
+
         public static void RequireAccessLevel(System.Web.UI.Page page, params string[] allowedAccessLevels)
         {
             var session = page.Session;
@@ -106,6 +131,15 @@ namespace Learning_System
             if (!allowed)
             {
                 page.Response.Redirect("~/AccessDenied.aspx");
+                return;
+            }
+
+            // Live check: was this account deactivated after the session was created?
+            int profileId = GetProfileId(session);
+            if (!IsUserCurrentlyActive(profileId))
+            {
+                session.Abandon();
+                page.Response.Redirect("~/Suspended.aspx");
             }
         }
     }

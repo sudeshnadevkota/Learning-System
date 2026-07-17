@@ -20,8 +20,11 @@ namespace Learning_System
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                // NEW — added S.Semester so Students get their current semester in session too.
-                string query = @"SELECT U.ProfileId, U.UserName, U.Role,
+                // CHANGED — IsActive is no longer part of the WHERE clause. A deactivated
+                // account still matches on username/password so we can tell them apart
+                // from a genuinely wrong login and route them to Suspended.aspx instead
+                // of the generic "Incorrect username or password" message.
+                string query = @"SELECT U.ProfileId, U.UserName, U.Role, U.IsActive,
                                          A.AccessLevel, A.DepartmentId AS AdminDeptId,
                                          T.DepartmentId AS TeacherDeptId,
                                          S.DepartmentId AS StudentDeptId,
@@ -37,8 +40,7 @@ namespace Learning_System
                                   LEFT JOIN Department      DT ON T.DepartmentId = DT.DepartmentId
                                   LEFT JOIN Department      DS ON S.DepartmentId = DS.DepartmentId
                                   WHERE U.UserName = @Username
-                                    AND U.Password = @Password
-                                    AND U.IsActive = 1";
+                                    AND U.Password = @Password";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Username", username);
@@ -52,6 +54,16 @@ namespace Learning_System
                     if (reader.HasRows)
                     {
                         reader.Read();
+
+                        // NEW — check IsActive before doing anything else. A suspended
+                        // account never gets a session and never sees role-specific logic.
+                        bool isActive = reader["IsActive"] != DBNull.Value && Convert.ToBoolean(reader["IsActive"]);
+                        if (!isActive)
+                        {
+                            reader.Close();
+                            Response.Redirect("~/Suspended.aspx");
+                            return;
+                        }
 
                         string role = reader["Role"].ToString();
                         string accessLevel = reader["AccessLevel"] == DBNull.Value ? null : reader["AccessLevel"].ToString();

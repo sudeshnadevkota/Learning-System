@@ -392,8 +392,13 @@
     <Content Include="students\module_details.aspx" />
     <Content Include="students\ViewFile.aspx" />
     <Content Include="style.css" />
+    <Content Include="SuperAdmin\DepartmentAdminManage.aspx" />
     <Content Include="SuperAdmin\DepartmentManage.aspx" />
+    <Content Include="SuperAdmin\StaffManage.aspx" />
+    <Content Include="SuperAdmin\StudentManage.aspx" />
+    <Content Include="SuperAdmin\SubjectManage.aspx" />
     <Content Include="SuperAdmin\super_admin.aspx" />
+    <Content Include="Suspended.aspx" />
     <Content Include="TextFile1.txt" />
     <Content Include="TreeLineImages\dash.gif" />
     <Content Include="TreeLineImages\dashminus.gif" />
@@ -984,6 +989,13 @@
     <Compile Include="students\ViewFile.aspx.designer.cs">
       <DependentUpon>ViewFile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SuperAdmin\DepartmentAdminManage.aspx.cs">
+      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperAdmin\DepartmentAdminManage.aspx.designer.cs">
+      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SuperAdmin\DepartmentManage.aspx.cs">
       <DependentUpon>DepartmentManage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -991,12 +1003,40 @@
     <Compile Include="SuperAdmin\DepartmentManage.aspx.designer.cs">
       <DependentUpon>DepartmentManage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SuperAdmin\StaffManage.aspx.cs">
+      <DependentUpon>StaffManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperAdmin\StaffManage.aspx.designer.cs">
+      <DependentUpon>StaffManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperAdmin\StudentManage.aspx.cs">
+      <DependentUpon>StudentManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperAdmin\StudentManage.aspx.designer.cs">
+      <DependentUpon>StudentManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperAdmin\SubjectManage.aspx.cs">
+      <DependentUpon>SubjectManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SuperAdmin\SubjectManage.aspx.designer.cs">
+      <DependentUpon>SubjectManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SuperAdmin\super_admin.aspx.cs">
       <DependentUpon>super_admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SuperAdmin\super_admin.aspx.designer.cs">
       <DependentUpon>super_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Suspended.aspx.cs">
+      <DependentUpon>Suspended.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Suspended.aspx.designer.cs">
+      <DependentUpon>Suspended.aspx</DependentUpon>
     </Compile>
     <Compile Include="verification\approvestudents.aspx.cs">
       <DependentUpon>approvestudents.aspx</DependentUpon>
