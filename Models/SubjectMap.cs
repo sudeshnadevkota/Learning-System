@@ -37,6 +37,15 @@ namespace Learning_System
                 { "LA", new SubjectInfo { Table = "bit_3_LA", Title = "Linux Administration", DepartmentCode = "BIT" } },
                 { "DMS", new SubjectInfo { Table = "bit_3_DMS", Title = "Database Management System", DepartmentCode = "BIT" } },
 
+                //4th semester subjects
+
+                { "VP", new SubjectInfo { Table = "bit_4_VP", Title = "Visual Programming", DepartmentCode = "BIT" } },
+                { "SAD", new SubjectInfo { Table = "bit_4_SAD", Title = "System Analysis & Design", DepartmentCode = "BIT" } },
+                { "BIT_OB", new SubjectInfo { Table = "bit_4_OB", Title = "Organizational Behavior", DepartmentCode = "BIT" } }, // Fixed Key
+                { "ISS", new SubjectInfo { Table = "bit_4_ISS", Title = "Information System Security", DepartmentCode = "BIT" } },
+                { "CMS", new SubjectInfo { Table = "bit_4_CMS", Title = "CMS based E Commerce", DepartmentCode = "BIT" } },
+                { "AI", new SubjectInfo { Table = "bit_4_AI", Title = "Artificial Intelligence", DepartmentCode = "BIT" } },
+
                 // BCS - 1st Semester
                 { "BCS_ENG", new SubjectInfo { Table = "bcs_1_ENG", Title = "English", DepartmentCode = "BCS" } },
                 { "BCS_CN", new SubjectInfo { Table = "bcs_1_CN", Title = "Computer Network", DepartmentCode = "BCS" } },

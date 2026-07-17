@@ -454,11 +454,12 @@
             </a>
             <div id="fourth-submenu" class="submenu">
               <ul>
-                <li><a href="database_management_system.aspx">DBMS</a></li>
-                <li><a href="system_analysis_and_design.aspx">SAD</a></li>
-                <li><a href="Technopreneurship.aspx">Techno</a></li>
-                <li><a href="compiler_and_design_constructions.aspx">CDC</a></li>
-                <li><a href="AI.aspx">AI</a></li>
+                <li><a href="/Bit_Notes/course_content.aspx?code=VP">Visual Programming</a></li>
+                <li><a href="/Bit_Notes/course_content.aspx?code=SAD">System Analysis &amp; Design</a></li>
+                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_OB">Organizational Behavior</a></li>
+                <li><a href="/Bit_Notes/course_content.aspx?code=ISS">Information System Security</a></li>
+                <li><a href="/Bit_Notes/course_content.aspx?code=CMS">CMS based E Commerce</a></li>
+                <li><a href="/Bit_Notes/course_content.aspx?code=AI">Artifical Intelligence</a></li>
               </ul>
             </div>
           </li>
