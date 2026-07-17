@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Web.UI.WebControls;
 
 namespace Learning_System.MainAdmin
 {
@@ -12,10 +11,12 @@ namespace Learning_System.MainAdmin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Only MainAdmin may reach this page — it's the top of the hierarchy
+            PermissionHelper.RequireAccessLevel(this, "MainAdmin");
+
             if (!IsPostBack)
             {
                 LoadStats();
-                LoadSuperAdmins();
                 LoadDepartmentOverview();
             }
         }
@@ -54,29 +55,6 @@ namespace Learning_System.MainAdmin
             }
         }
 
-        // ===== SuperAdmin table =====
-        private void LoadSuperAdmins()
-        {
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-                string sql = @"SELECT a.AdminProfileId, u.FullName, u.Email
-                                FROM AdminProfile a
-                                INNER JOIN UserProfile u ON a.ProfileId = u.ProfileId
-                                WHERE a.AccessLevel = 'SuperAdmin'";
-                using (SqlCommand cmd = new SqlCommand(sql, con))
-                {
-                    con.Open();
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        gvSuperAdmins.DataSource = dt;
-                        gvSuperAdmins.DataBind();
-                    }
-                }
-            }
-        }
-
         // ===== Department overview table =====
         private void LoadDepartmentOverview()
         {
@@ -106,39 +84,6 @@ namespace Learning_System.MainAdmin
                     }
                 }
             }
-        }
-
-        // ===== SuperAdmin actions =====
-        protected void lnkSuspend_Click(object sender, EventArgs e)
-        {
-            LinkButton lnk = (LinkButton)sender;
-            int adminProfileId = Convert.ToInt32(lnk.CommandArgument);
-
-            // AdminProfile has no Status column in the current schema.
-            // Suspension would need to go through UserProfile.IsActive instead
-            // (via the ProfileId FK on AdminProfile). Left as TODO until you confirm
-            // whether "suspend" should mean IsActive = 0 on UserProfile.
-
-            LoadSuperAdmins();
-        }
-
-        protected void lnkRemove_Click(object sender, EventArgs e)
-        {
-            LinkButton lnk = (LinkButton)sender;
-            int adminProfileId = Convert.ToInt32(lnk.CommandArgument);
-
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-                string sql = "DELETE FROM AdminProfile WHERE AdminProfileId = @id";
-                using (SqlCommand cmd = new SqlCommand(sql, con))
-                {
-                    cmd.Parameters.AddWithValue("@id", adminProfileId);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-
-            LoadSuperAdmins();
         }
     }
 }

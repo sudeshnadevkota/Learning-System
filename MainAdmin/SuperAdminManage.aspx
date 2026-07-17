@@ -1,9 +1,9 @@
-﻿<%@ Page Title="Main Admin" Language="C#" AutoEventWireup="true" CodeFile="main_admin.aspx.cs" Inherits="Learning_System.MainAdmin.main_admin" %>
+﻿<%@ Page Title="Manage Super Admins" Language="C#" AutoEventWireup="true" CodeFile="SuperAdminManage.aspx.cs" Inherits="Learning_System.MainAdmin.SuperAdminManage" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Main Admin Dashboard</title>
+    <title>Manage Super Admins</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -16,7 +16,7 @@
             --pink-light: rgba(255,45,141,0.08); --pink-hover: #e0277c; --gray-bg: #fafbff;
             --border-color: rgba(11,31,102,0.08); --text-muted: #6b7280;
             --success: #16a34a; --success-bg: #f0fdf4; --success-border: #4ade80;
-            --danger: #dc2626; --danger-bg: #fef2f2;
+            --danger: #dc2626; --danger-bg: #fef2f2; --danger-border: #fca5a5;
             --icon-blue-bg: rgba(11,31,102,0.09); --icon-blue: #0B1F66;
             --icon-rose-bg: rgba(255,45,141,0.1); --icon-rose: #FF2D8D;
             --icon-purple-bg: rgba(124,58,237,0.1); --icon-purple: #7c3aed;
@@ -89,10 +89,8 @@
 
         .c-main { flex: 1; min-width: 0; padding: 28px 34px 44px; }
         .c-topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 26px; }
-        .c-topbar h1 { margin: 0 0 4px; font-size: 1.55rem; font-weight: 800; color: var(--primary); letter-spacing: -0.3px; display: flex; align-items: center; gap: 10px; }
+        .c-topbar h1 { margin: 0 0 4px; font-size: 1.55rem; font-weight: 800; color: var(--primary); letter-spacing: -0.3px; }
         .c-topbar p { margin: 0; font-size: 13px; color: var(--text-muted); }
-
-        .c-topbar-actions { display: flex; align-items: center; gap: 12px; }
 
         .c-btn-pink {
             display: inline-flex; align-items: center; gap: 7px; padding: 10px 18px; border-radius: 10px;
@@ -111,30 +109,12 @@
         }
         .c-btn-ghost:hover { border-color: var(--pink); color: var(--pink); }
 
-        .c-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; margin-bottom: 24px; }
-        .c-stat-card {
-            position: relative; background: #fff; border: 1px solid var(--border-color); border-radius: 16px;
-            padding: 22px 22px 20px; display: flex; align-items: center; gap: 14px; overflow: hidden;
-            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+        .c-alert {
+            display: flex; align-items: center; gap: 10px; padding: 13px 16px; border-radius: 12px;
+            font-size: 13px; font-weight: 600; margin-bottom: 18px; border: 1px solid transparent;
         }
-        .c-stat-card::before {
-            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--pink)); opacity: 0; transition: opacity 0.22s ease;
-        }
-        .c-stat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -8px rgba(11,31,102,0.14); border-color: transparent; }
-        .c-stat-card:hover::before { opacity: 1; }
-
-        .c-stat-icon {
-            width: 48px; height: 48px; border-radius: 13px; display: flex; align-items: center;
-            justify-content: center; font-size: 1.35rem; flex: none;
-        }
-        .c-stat-icon.blue   { background: var(--icon-blue-bg);   color: var(--icon-blue); }
-        .c-stat-icon.rose   { background: var(--icon-rose-bg);   color: var(--icon-rose); }
-        .c-stat-icon.purple { background: var(--icon-purple-bg); color: var(--icon-purple); }
-        .c-stat-icon.amber  { background: var(--icon-amber-bg);  color: var(--icon-amber); }
-
-        .c-stat-value { font-size: 1.65rem; font-weight: 800; color: var(--primary); line-height: 1.1; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; }
-        .c-stat-label { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 2px; }
+        .c-alert.success { background: var(--success-bg); border-color: var(--success-border); color: var(--success); }
+        .c-alert.danger { background: var(--danger-bg); border-color: var(--danger-border); color: var(--danger); }
 
         .c-panel {
             background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px;
@@ -153,13 +133,6 @@
             display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
         }
 
-        .c-view-all {
-            display: inline-flex; align-items: center; gap: 4px; padding: 7px 14px; border-radius: 8px;
-            border: 1px solid var(--border-color); background: #fff; color: var(--primary);
-            font-size: 12.5px; font-weight: 700; text-decoration: none; transition: border-color 0.15s ease, color 0.15s ease;
-        }
-        .c-view-all:hover { border-color: var(--pink); color: var(--pink); }
-
         .c-table-container { overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); }
         .table-modern { width: 100%; border-collapse: collapse; font-size: 13px; }
         .table-modern th {
@@ -173,32 +146,33 @@
         .table-modern tr:hover { background-color: var(--gray-bg); }
         .table-modern tbody tr td:first-child { font-weight: 700; color: var(--primary); }
 
-        .c-quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
-        .c-quick-link {
-            display: flex; flex-direction: column; gap: 14px; padding: 20px 18px; border-radius: 14px;
-            border: 1px solid var(--border-color); background: var(--gray-bg); text-decoration: none;
-            color: var(--primary); font-weight: 700; font-size: 13.5px;
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        .c-row-actions { display: flex; gap: 8px; }
+        .c-icon-btn {
+            width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border-color); background: #fff;
+            display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+            color: var(--primary); font-size: 14px; transition: all 0.15s ease;
         }
-        .c-quick-link:hover {
-            background: #fff; transform: translateY(-3px); box-shadow: 0 12px 28px -6px rgba(11,31,102,0.14);
-            border-color: rgba(255,45,141,0.2); color: var(--primary);
+        .c-icon-btn:hover { border-color: var(--pink); color: var(--pink); }
+        .c-icon-btn.danger:hover { border-color: var(--danger); color: var(--danger); }
+
+        .c-status-pill {
+            display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 50px;
+            font-weight: 700; font-size: 11.5px;
         }
-        .c-quick-link-icon {
-            width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center;
-            justify-content: center; flex: none; font-size: 1.2rem;
+        .c-status-pill.active { background: var(--success-bg); color: var(--success); }
+        .c-status-pill.inactive { background: var(--danger-bg); color: var(--danger); }
+
+        .c-you-badge {
+            display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 50px;
+            background: var(--icon-blue-bg); color: var(--icon-blue); font-size: 10.5px; font-weight: 700;
+            margin-left: 8px; text-transform: uppercase; letter-spacing: 0.4px;
         }
-        .c-quick-link-icon.blue   { background: var(--icon-blue-bg);   color: var(--icon-blue); }
-        .c-quick-link-icon.rose   { background: var(--icon-rose-bg);   color: var(--icon-rose); }
-        .c-quick-link-icon.purple { background: var(--icon-purple-bg); color: var(--icon-purple); }
-        .c-quick-link-icon.amber  { background: var(--icon-amber-bg);  color: var(--icon-amber); }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="c-shell">
 
-            <!-- Sidebar -->
             <aside class="c-sidebar">
                 <div class="c-brand">
                     <div class="c-brand-badge"><i class="ti ti-crown"></i></div>
@@ -206,8 +180,8 @@
                 </div>
 
                 <nav class="c-nav">
-                    <a href="main_admin.aspx" class="c-nav-link active"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
-                    <a href="SuperAdminManage.aspx" class="c-nav-link"><i class="ti ti-shield-star"></i> Super Admins</a>
+                    <a href="main_admin.aspx" class="c-nav-link"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+                    <a href="SuperAdminManage.aspx" class="c-nav-link active"><i class="ti ti-shield-star"></i> Super Admins</a>
                     <a href="../SuperAdmin/DepartmentManage.aspx" class="c-nav-link"><i class="ti ti-building"></i> Departments</a>
                     <a href="../SuperAdmin/DepartmentAdminManage.aspx" class="c-nav-link"><i class="ti ti-user-cog"></i> Department Admins</a>
                     <a href="../SuperAdmin/StaffManage.aspx" class="c-nav-link"><i class="ti ti-user-check"></i> Staff</a>
@@ -234,119 +208,70 @@
                 </div>
             </aside>
 
-            <!-- Main -->
             <main class="c-main">
 
                 <div class="c-topbar c-fade-up">
                     <div>
-                        <h1><i class="ti ti-crown"></i> Main Admin Dashboard</h1>
-                        <p>Logged in as <strong><%= Session["Username"] %></strong> &middot; Full system access</p>
+                        <h1>Super Admins</h1>
+                        <p>Only Main Admin can appoint, suspend, or remove Super Admins.</p>
                     </div>
-                    <div class="c-topbar-actions">
-                        <a href="/administrator/AppointUser.aspx" class="c-btn-ghost"><i class="ti ti-user-plus"></i> Appoint User</a>
-                        <asp:HyperLink runat="server" NavigateUrl="~/logout.aspx" CssClass="c-btn-pink">
-                            <i class="ti ti-logout"></i> Logout
-                        </asp:HyperLink>
+                    <div style="display:flex; gap:10px;">
+                        <a href="/administrator/AppointUser.aspx?role=SuperAdmin" class="c-btn-pink"><i class="ti ti-user-plus"></i> Appoint Super Admin</a>
+                        <a href="main_admin.aspx" class="c-btn-ghost"><i class="ti ti-arrow-left"></i> Dashboard</a>
                     </div>
                 </div>
 
-                <!-- Stat Cards -->
-                <div class="c-stats-grid c-fade-up" style="animation-delay: 0.05s;">
-                    <div class="c-stat-card">
-                        <div class="c-stat-icon blue"><i class="ti ti-building"></i></div>
-                        <div>
-                            <div class="c-stat-value"><asp:Literal ID="litDeptCount" runat="server">0</asp:Literal></div>
-                            <div class="c-stat-label">Departments</div>
-                        </div>
-                    </div>
-                    <div class="c-stat-card">
-                        <div class="c-stat-icon rose"><i class="ti ti-shield-star"></i></div>
-                        <div>
-                            <div class="c-stat-value"><asp:Literal ID="litSuperAdminCount" runat="server">0</asp:Literal></div>
-                            <div class="c-stat-label">Super Admins</div>
-                        </div>
-                    </div>
-                    <div class="c-stat-card">
-                        <div class="c-stat-icon blue"><i class="ti ti-user-cog"></i></div>
-                        <div>
-                            <div class="c-stat-value"><asp:Literal ID="litDeptAdminCount" runat="server">0</asp:Literal></div>
-                            <div class="c-stat-label">Dept Admins</div>
-                        </div>
-                    </div>
-                    <div class="c-stat-card">
-                        <div class="c-stat-icon purple"><i class="ti ti-user-check"></i></div>
-                        <div>
-                            <div class="c-stat-value"><asp:Literal ID="litStaffCount" runat="server">0</asp:Literal></div>
-                            <div class="c-stat-label">Staff</div>
-                        </div>
-                    </div>
-                    <div class="c-stat-card">
-                        <div class="c-stat-icon rose"><i class="ti ti-users"></i></div>
-                        <div>
-                            <div class="c-stat-value"><asp:Literal ID="litStudentCount" runat="server">0</asp:Literal></div>
-                            <div class="c-stat-label">Students</div>
-                        </div>
-                    </div>
-                    <div class="c-stat-card">
-                        <div class="c-stat-icon amber"><i class="ti ti-book-2"></i></div>
-                        <div>
-                            <div class="c-stat-value"><asp:Literal ID="litSubjectCount" runat="server">0</asp:Literal></div>
-                            <div class="c-stat-label">Subjects</div>
-                        </div>
-                    </div>
-                </div>
+                <asp:PlaceHolder ID="phSuccess" runat="server" Visible="false">
+                    <div class="c-alert success"><i class="ti ti-circle-check"></i> <asp:Literal ID="litSuccess" runat="server" /></div>
+                </asp:PlaceHolder>
+                <asp:PlaceHolder ID="phError" runat="server" Visible="false">
+                    <div class="c-alert danger"><i class="ti ti-alert-circle"></i> <asp:Literal ID="litError" runat="server" /></div>
+                </asp:PlaceHolder>
 
-                <!-- Department Overview -->
                 <div class="c-panel c-fade-up" style="animation-delay: 0.1s;">
                     <div class="c-panel-header">
                         <div class="c-panel-title">
-                            <span class="c-panel-title-icon"><i class="ti ti-building-community"></i></span>
-                            Department Overview
+                            <span class="c-panel-title-icon"><i class="ti ti-shield-star"></i></span>
+                            All Super Admins
                         </div>
-                        <a href="../SuperAdmin/DepartmentManage.aspx" class="c-view-all">View All <i class="ti ti-chevron-right"></i></a>
                     </div>
                     <div class="c-table-container">
-                        <asp:GridView ID="gvDepartments" runat="server"
-                            AutoGenerateColumns="False"
-                            class="table-modern"
-                            GridLines="None" BorderWidth="0" CellPadding="0"
-                            EmptyDataText="No departments found.">
+                        <asp:GridView ID="gvSuperAdmins" runat="server"
+                            AutoGenerateColumns="False" class="table-modern" GridLines="None" BorderWidth="0" CellPadding="0"
+                            DataKeyNames="ProfileId" EmptyDataText="No Super Admins appointed yet."
+                            OnRowCommand="gvSuperAdmins_RowCommand" OnRowDataBound="gvSuperAdmins_RowDataBound">
                             <Columns>
-                                <asp:BoundField DataField="DepartmentName" HeaderText="Department" />
-                                <asp:BoundField DataField="DepartmentCode" HeaderText="Code" />
-                                <asp:BoundField DataField="DeptAdminCount" HeaderText="Dept Admins" />
-                                <asp:BoundField DataField="StaffCount" HeaderText="Staff" />
-                                <asp:BoundField DataField="StudentCount" HeaderText="Students" />
+                                <asp:TemplateField HeaderText="Name">
+                                    <ItemTemplate>
+                                        <%# Eval("FullName") %><asp:Literal ID="litYouBadge" runat="server" Visible="false" Text="<span class='c-you-badge'>You</span>" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="Email" HeaderText="Email" />
+                                <asp:TemplateField HeaderText="Status">
+                                    <ItemTemplate>
+                                        <span class='c-status-pill <%# (bool)Eval("IsActive") ? "active" : "inactive" %>'>
+                                            <i class='ti <%# (bool)Eval("IsActive") ? "ti-circle-check" : "ti-circle-x" %>'></i>
+                                            <%# (bool)Eval("IsActive") ? "Active" : "Suspended" %>
+                                        </span>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Actions">
+                                    <ItemTemplate>
+                                        <div class="c-row-actions">
+                                            <asp:LinkButton ID="lnkToggle" runat="server" CssClass="c-icon-btn" ToolTip="Suspend/Activate"
+                                                CommandName="ToggleActive" CommandArgument='<%# Eval("ProfileId") %>'>
+                                                <i class='ti <%# (bool)Eval("IsActive") ? "ti-player-pause" : "ti-player-play" %>'></i>
+                                            </asp:LinkButton>
+                                            <asp:LinkButton ID="lnkRemove" runat="server" CssClass="c-icon-btn danger" ToolTip="Remove"
+                                                CommandName="RemoveAdmin" CommandArgument='<%# Eval("ProfileId") %>'
+                                                OnClientClick='<%# "return confirm(\"Remove " + Eval("FullName") + " as a Super Admin? This cannot be undone.\");" %>'>
+                                                <i class="ti ti-trash"></i>
+                                            </asp:LinkButton>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
-                    </div>
-                </div>
-
-                <!-- Quick Actions -->
-                <div class="c-panel c-fade-up" style="animation-delay: 0.15s;">
-                    <div class="c-panel-header">
-                        <div class="c-panel-title">
-                            <span class="c-panel-title-icon"><i class="ti ti-bolt"></i></span>
-                            Quick Actions
-                        </div>
-                    </div>
-                    <div class="c-quick-grid">
-                        <a href="SuperAdminManage.aspx" class="c-quick-link">
-                            <span class="c-quick-link-icon rose"><i class="ti ti-shield-star"></i></span>
-                            Manage Super Admins
-                        </a>
-                        <a href="../SuperAdmin/DepartmentManage.aspx" class="c-quick-link">
-                            <span class="c-quick-link-icon blue"><i class="ti ti-building"></i></span>
-                            Manage Departments
-                        </a>
-                        <a href="/NoticeManage.aspx" class="c-quick-link">
-                            <span class="c-quick-link-icon purple"><i class="ti ti-speakerphone"></i></span>
-                            Manage Notices
-                        </a>
-                        <a href="AuditLog.aspx" class="c-quick-link">
-                            <span class="c-quick-link-icon amber"><i class="ti ti-history"></i></span>
-                            Audit Log
-                        </a>
                     </div>
                 </div>
 
