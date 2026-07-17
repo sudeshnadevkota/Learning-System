@@ -151,13 +151,181 @@
 
         .c-subject-title { font-size: 12.5px; font-weight: 700; color: var(--primary); line-height: 1.3; }
         .c-subject-meta { font-size: 10.5px; color: var(--text-muted); font-family: monospace; }
+
+        /* ── Responsive (tablet: keep sidebar, just stack it) ── */
+        @media (max-width: 900px) and (min-width: 641px) {
+            .c-shell { flex-direction: column; }
+            .c-sidebar { width: 100%; height: auto; position: relative; flex-direction: row; flex-wrap: wrap; }
+            .c-nav { flex-direction: row; flex-wrap: wrap; }
+            .c-sidebar-spacer { display: none; }
+            .c-sidebar-user { margin-top: 12px; }
+            .c-main { padding: 22px 18px 36px; }
+        }
+
+        /* ── Mobile-only elements (hidden on desktop) ── */
+        .c-mobile-topbar,
+        .c-sidebar-close-btn,
+        .c-sidebar-backdrop { display: none; }
+
+        /* ── Mobile layout (app-style: top bar + slide-out drawer) ── */
+        @media (max-width: 640px) {
+            .c-shell { display: block; }
+
+            /* Desktop welcome/title header is replaced by the mobile top bar */
+            .c-topbar { display: none; }
+
+            .c-main { padding: 0 14px 32px; }
+
+            /* Mobile top bar */
+            .c-mobile-topbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                padding: 16px 2px 14px;
+            }
+
+            .c-mobile-topbar-left { display: flex; align-items: center; gap: 10px; }
+
+            .c-mobile-icon-btn {
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+                background: linear-gradient(155deg, var(--primary), var(--secondary));
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-size: 1.05rem;
+                flex: none;
+                box-shadow: 0 4px 12px rgba(11,31,102,0.28);
+            }
+
+            .c-mobile-topbar-title {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-weight: 800;
+                font-size: 15px;
+                color: var(--primary);
+            }
+
+            .c-mobile-topbar-title .c-brand-badge {
+                width: 30px;
+                height: 30px;
+                border-radius: 9px;
+                background: linear-gradient(155deg, var(--primary), var(--secondary));
+                color: #fff;
+                border: none;
+                font-size: 0.95rem;
+            }
+
+            .c-mobile-back-btn {
+                position: relative;
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+                background: #fff;
+                border: 1px solid var(--border-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--primary);
+                flex: none;
+                text-decoration: none;
+                font-size: 1rem;
+            }
+
+            .c-mobile-page-heading { margin-bottom: 14px; }
+            .c-mobile-page-heading h1 {
+                margin: 0 0 4px;
+                font-size: 1.2rem;
+                font-weight: 800;
+                color: var(--primary);
+                letter-spacing: -0.2px;
+            }
+            .c-mobile-page-heading p { margin: 0; font-size: 12px; color: var(--text-muted); }
+
+            /* Note banner */
+            .c-note { padding: 12px 14px; font-size: 11.5px; border-radius: 12px; margin-bottom: 16px; }
+
+            /* Department panels */
+            .c-dept-panel { padding: 16px; border-radius: 14px; margin-bottom: 14px; }
+            .c-dept-header { margin-bottom: 14px; padding-bottom: 12px; }
+            .c-dept-icon { width: 34px; height: 34px; font-size: 1rem; border-radius: 10px; }
+            .c-dept-name { font-size: 13.5px; }
+            .c-dept-code { font-size: 10.5px; }
+            .c-dept-count { font-size: 11px; padding: 3px 10px; }
+
+            .c-sem-label { font-size: 10px; }
+            .c-subject-grid { grid-template-columns: 1fr; gap: 8px; }
+            .c-subject-chip { padding: 10px 12px; border-radius: 10px; }
+            .c-subject-title { font-size: 12px; }
+            .c-subject-meta { font-size: 10px; }
+
+            /* Sidebar becomes a slide-out drawer on mobile */
+            .c-sidebar {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                height: 100%;
+                width: 260px;
+                z-index: 110;
+                transform: translateX(-105%);
+                transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: 24px 0 48px rgba(8,10,40,0.28);
+            }
+
+            body.c-sidebar-open .c-sidebar { transform: translateX(0); }
+
+            /* Floating arrow button attached to the drawer's edge, slides together with it */
+            .c-sidebar-close-btn {
+                display: none;
+                position: absolute;
+                top: 18px;
+                right: -50px;
+                width: 38px;
+                height: 38px;
+                border-radius: 10px;
+                background: #fff;
+                border: 1px solid var(--border-color);
+                box-shadow: 0 10px 24px rgba(8,10,40,0.18);
+                align-items: center;
+                justify-content: center;
+                color: var(--primary);
+                font-size: 1.05rem;
+                cursor: pointer;
+                z-index: 111;
+            }
+
+            body.c-sidebar-open .c-sidebar-close-btn { display: flex; }
+
+            /* Dim backdrop behind the open drawer */
+            .c-sidebar-backdrop {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(6,10,32,0.45);
+                z-index: 100;
+            }
+
+            body.c-sidebar-open .c-sidebar-backdrop { display: block; }
+            body.c-sidebar-open { overflow: hidden; }
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="c-shell">
 
+            <!-- Dim backdrop shown behind the drawer on mobile -->
+            <div class="c-sidebar-backdrop" id="sidebarBackdrop"></div>
+
             <aside class="c-sidebar">
+                <button type="button" class="c-sidebar-close-btn" id="btnCloseSidebar" aria-label="Close menu"><i class="ti ti-arrow-left"></i></button>
                 <div class="c-brand">
                     <div class="c-brand-badge"><i class="ti ti-shield-star"></i></div>
                     <span>Super Admin</span>
@@ -194,15 +362,37 @@
 
             <main class="c-main">
 
-                <div class="c-topbar c-fade-up">
-                    <div>
-                        <h1>Subjects</h1>
-                        <p>Read-only view, sourced from SubjectMap.cs and grouped by department and semester.</p>
+                <!-- Mobile-only top bar -->
+                <div class="c-mobile-topbar">
+                    <div class="c-mobile-topbar-left">
+                        <button type="button" class="c-mobile-icon-btn" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
+                        <div class="c-mobile-topbar-title">
+                            <span class="c-brand-badge"><i class="ti ti-shield-star"></i></span>
+                            Super Admin
+                        </div>
                     </div>
-                    <div>
-                        <a href="super_admin.aspx" class="c-btn-ghost"><i class="ti ti-arrow-left"></i> Back to Dashboard</a>
-                    </div>
+                    <a class="c-mobile-back-btn" href="super_admin.aspx" aria-label="Back to Dashboard"><i class="ti ti-arrow-left"></i></a>
                 </div>
+
+                <!-- Mobile-only page heading -->
+<!-- Mobile Page Heading -->
+<div class="c-mobile-page-heading c-fade-up">
+    <h1>Subjects</h1>
+    <p>View all subjects organized by department and semester.</p>
+</div>
+
+<!-- Desktop Page Heading -->
+<div class="c-topbar c-fade-up">
+    <div>
+        <h1>Subjects</h1>
+        <p>View all subjects organized by department and semester.</p>
+    </div>
+    <div>
+        <a href="super_admin.aspx" class="c-btn-ghost">
+            <i class="ti ti-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+</div>
 
                 <div class="c-note c-fade-up">
                     <i class="ti ti-info-circle"></i>
@@ -250,5 +440,21 @@
             </main>
         </div>
     </form>
+
+    <script>
+(function () {
+    var body = document.body;
+    var menuBtn = document.querySelector('.c-mobile-icon-btn');
+    var closeBtn = document.getElementById('btnCloseSidebar');
+    var backdrop = document.getElementById('sidebarBackdrop');
+
+    function openSidebar() { body.classList.add('c-sidebar-open'); }
+    function closeSidebar() { body.classList.remove('c-sidebar-open'); }
+
+    if (menuBtn) menuBtn.addEventListener('click', openSidebar);
+    if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+    if (backdrop) backdrop.addEventListener('click', closeSidebar);
+})();
+</script>
 </body>
 </html>

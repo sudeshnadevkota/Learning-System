@@ -61,25 +61,36 @@
         }
 
         /* ── Shell ── */
-        .c-shell { display: flex; min-height: 100vh; }
+        .c-shell { display: flex; min-height: 100vh; align-items: stretch; }
 
         /* ── Sidebar ── */
+        /* NOTE: .c-sidebar no longer carries position:sticky/height:100vh itself.
+           It now stretches (flex align-items: stretch) to match the height of
+           .c-main, so the dark gradient background always covers the full
+           page length — no more light-colored gap at the bottom on long pages.
+           The actual "stays pinned while scrolling" behaviour moves to the
+           new .c-sidebar-inner wrapper below. */
         .c-sidebar {
             width: var(--sidebar-w);
             flex: none;
             background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
             color: #fff;
-            display: flex;
-            flex-direction: column;
-            padding: 22px 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .c-sidebar-inner {
             position: sticky;
             top: 0;
             height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 22px 16px;
             overflow: hidden;
         }
 
         /* Watermark logo, matching the Bit_Notes sidebar treatment */
-        .c-sidebar::after {
+        .c-sidebar-inner::after {
             content: '';
             position: absolute;
             bottom: -10px;
@@ -93,7 +104,7 @@
         }
 
         /* Keep real sidebar content above the watermark */
-        .c-sidebar > * {
+        .c-sidebar-inner > * {
             position: relative;
             z-index: 1;
         }
@@ -518,14 +529,265 @@
         .c-quick-link-icon.purple { background: var(--icon-purple-bg); color: var(--icon-purple); }
         .c-quick-link-icon.amber  { background: var(--icon-amber-bg);  color: var(--icon-amber); }
 
-        /* ── Responsive ── */
-        @media (max-width: 900px) {
+        /* ── Responsive (tablet: keep sidebar, just stack it) ── */
+        @media (max-width: 900px) and (min-width: 641px) {
             .c-shell { flex-direction: column; }
-            .c-sidebar { width: 100%; height: auto; position: relative; flex-direction: row; flex-wrap: wrap; }
+            .c-sidebar { width: 100%; height: auto; }
+            .c-sidebar-inner { height: auto; position: relative; flex-direction: row; flex-wrap: wrap; }
             .c-nav { flex-direction: row; flex-wrap: wrap; }
             .c-sidebar-spacer { display: none; }
             .c-sidebar-user { margin-top: 12px; }
             .c-main { padding: 22px 18px 36px; }
+        }
+
+        /* ── Mobile-only elements (hidden on desktop) ── */
+        .c-mobile-topbar,
+        .c-mobile-welcome,
+        .c-sidebar-close-btn,
+        .c-sidebar-backdrop { display: none; }
+
+        /* ── Mobile layout (app-style: top bar + bottom tab nav) ── */
+        @media (max-width: 640px) {
+            .c-shell { display: block; }
+
+            /* Desktop welcome header is replaced by the mobile welcome card */
+            .c-topbar { display: none; }
+
+            .c-main { padding: 0 14px 32px; }
+
+            /* Mobile top bar */
+            .c-mobile-topbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                padding: 16px 2px 14px;
+            }
+
+            .c-mobile-topbar-left { display: flex; align-items: center; gap: 10px; }
+
+            .c-mobile-icon-btn {
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+                background: linear-gradient(155deg, var(--primary), var(--secondary));
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-size: 1.05rem;
+                flex: none;
+                box-shadow: 0 4px 12px rgba(11,31,102,0.28);
+            }
+
+            .c-mobile-topbar-title {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-weight: 800;
+                font-size: 15px;
+                color: var(--primary);
+            }
+
+            .c-mobile-topbar-title .c-brand-badge {
+                width: 30px;
+                height: 30px;
+                border-radius: 9px;
+                background: linear-gradient(155deg, var(--primary), var(--secondary));
+                color: #fff;
+                border: none;
+                font-size: 0.95rem;
+            }
+
+            .c-mobile-bell {
+                position: relative;
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+                background: #fff;
+                border: 1px solid var(--border-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--primary);
+                flex: none;
+            }
+
+            .c-mobile-bell::after {
+                content: "";
+                position: absolute;
+                top: 7px;
+                right: 8px;
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: var(--pink);
+                border: 1.5px solid #fff;
+            }
+
+            /* Mobile welcome card */
+            .c-mobile-welcome {
+                display: block;
+                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+                border-radius: 18px;
+                padding: 20px 20px 22px;
+                color: #fff;
+                margin-bottom: 16px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .c-mobile-welcome::after {
+                content: '';
+                position: absolute;
+                top: -30px;
+                right: -30px;
+                width: 140px;
+                height: 140px;
+                background: radial-gradient(circle, rgba(255,45,141,0.35), transparent 70%);
+                pointer-events: none;
+            }
+
+            .c-mobile-welcome h1 {
+                margin: 0 0 6px;
+                font-size: 1.15rem;
+                font-weight: 800;
+                letter-spacing: -0.2px;
+                position: relative;
+            }
+
+            .c-mobile-welcome p {
+                margin: 0 0 16px;
+                font-size: 12.5px;
+                color: rgba(255,255,255,0.72);
+                position: relative;
+            }
+
+            .c-mobile-welcome .c-btn-pink {
+                position: relative;
+                width: 100%;
+                padding: 11px 18px;
+            }
+
+            /* Stat cards: 3-column grid, last card (Subjects) spans the remaining width */
+            .c-stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                margin-bottom: 16px;
+            }
+
+            .c-stat-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 14px 12px 13px;
+                border-radius: 14px;
+            }
+
+            .c-stat-card:last-child {
+                grid-column: span 2;
+                flex-direction: row;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .c-stat-icon { width: 36px; height: 36px; font-size: 1.05rem; border-radius: 10px; }
+            .c-stat-value { font-size: 1.2rem; }
+            .c-stat-label { font-size: 10px; }
+
+            /* Panels */
+            .c-panel { padding: 18px; border-radius: 14px; margin-bottom: 16px; }
+            .c-panel-header { margin-bottom: 14px; padding-bottom: 12px; }
+            .c-panel-title { font-size: 10.5px; }
+
+            /* Department table scrolls horizontally instead of squeezing */
+            .c-table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .table-modern { min-width: 480px; }
+
+            /* Quick actions: single row of 4 compact, color-tinted tiles */
+            .c-quick-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+
+            .c-quick-link {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 14px 6px;
+                border-radius: 14px;
+                border: none;
+                font-size: 10.5px;
+                text-align: center;
+            }
+
+            .c-quick-link.qa-blue   { background: var(--icon-blue-bg);   color: var(--icon-blue); }
+            .c-quick-link.qa-rose   { background: var(--icon-rose-bg);   color: var(--icon-rose); }
+            .c-quick-link.qa-purple { background: var(--icon-purple-bg); color: var(--icon-purple); }
+            .c-quick-link.qa-amber  { background: var(--icon-amber-bg);  color: var(--icon-amber); }
+
+            .c-quick-link:hover { transform: none; box-shadow: none; }
+
+            .c-quick-link-icon { width: 34px; height: 34px; border-radius: 10px; font-size: 1rem; color: #fff; }
+            .c-quick-link-icon.blue   { background: var(--icon-blue); }
+            .c-quick-link-icon.rose   { background: var(--icon-rose); }
+            .c-quick-link-icon.purple { background: var(--icon-purple); }
+            .c-quick-link-icon.amber  { background: var(--icon-amber); }
+
+            /* Sidebar becomes a slide-out drawer on mobile */
+            .c-sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                height: 100%;
+                width: 260px;
+                z-index: 110;
+                transform: translateX(-105%);
+                transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: 24px 0 48px rgba(8,10,40,0.28);
+            }
+
+            .c-sidebar-inner {
+                display: flex;
+                height: 100%;
+                position: static;
+            }
+
+            body.c-sidebar-open .c-sidebar { transform: translateX(0); }
+
+            /* Floating arrow button attached to the drawer's edge, slides together with it */
+            .c-sidebar-close-btn {
+                display: none;
+                position: absolute;
+                top: 18px;
+                right: -50px;
+                width: 38px;
+                height: 38px;
+                border-radius: 10px;
+                background: #fff;
+                border: 1px solid var(--border-color);
+                box-shadow: 0 10px 24px rgba(8,10,40,0.18);
+                align-items: center;
+                justify-content: center;
+                color: var(--primary);
+                font-size: 1.05rem;
+                cursor: pointer;
+                z-index: 111;
+            }
+
+            body.c-sidebar-open .c-sidebar-close-btn { display: flex; }
+
+            /* Dim backdrop behind the open drawer */
+            .c-sidebar-backdrop {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(6,10,32,0.45);
+                z-index: 100;
+            }
+
+            body.c-sidebar-open .c-sidebar-backdrop { display: block; }
+            body.c-sidebar-open { overflow: hidden; }
         }
     </style>
 </head>
@@ -533,46 +795,71 @@
     <form id="form1" runat="server">
         <div class="c-shell">
 
+            <!-- Dim backdrop shown behind the drawer on mobile -->
+            <div class="c-sidebar-backdrop" id="sidebarBackdrop"></div>
+
             <!-- Sidebar -->
             <aside class="c-sidebar">
-                <div class="c-brand">
-                    <div class="c-brand-badge"><i class="ti ti-shield-star"></i></div>
-                    <span>Super Admin</span>
-                </div>
-
-                <nav class="c-nav">
-                    <a href="super_admin.aspx" class="c-nav-link active"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
-                    <a href="DepartmentManage.aspx" class="c-nav-link"><i class="ti ti-building"></i> Departments</a>
-                    <a href="DepartmentAdminManage.aspx" class="c-nav-link"><i class="ti ti-user-cog"></i> Department Admins</a>
-                    <a href="StaffManage.aspx" class="c-nav-link"><i class="ti ti-user-check"></i> Staff</a>
-                    <a href="StudentManage.aspx" class="c-nav-link"><i class="ti ti-users"></i> Students</a>
-                    <a href="SubjectManage.aspx" class="c-nav-link"><i class="ti ti-book-2"></i> Subjects</a>
-                </nav>
-
-                <div class="c-nav-eyebrow">Quick Actions</div>
-                <nav class="c-nav">
-                    <a href="DepartmentManage.aspx" class="c-nav-link"><i class="ti ti-building"></i> Manage Departments</a>
-                    <a href="/administrator/AppointUser.aspx" class="c-nav-link"><i class="ti ti-user-plus"></i> Manage Admins</a>
-                    <a href="StaffManage.aspx" class="c-nav-link"><i class="ti ti-user-check"></i> Manage Staff</a>
-                    <a href="SubjectManage.aspx" class="c-nav-link"><i class="ti ti-book-2"></i> Manage Subjects</a>
-                </nav>
-
-                <div class="c-sidebar-spacer"></div>
-
-                <div class="c-sidebar-user">
-                    <div class="c-sidebar-avatar">
-                        <i class="ti ti-user"></i>
+                <div class="c-sidebar-inner">
+                    <button type="button" class="c-sidebar-close-btn" id="btnCloseSidebar" aria-label="Close menu"><i class="ti ti-arrow-left"></i></button>
+                    <div class="c-brand">
+                        <div class="c-brand-badge"><i class="ti ti-shield-star"></i></div>
+                        <span>Super Admin</span>
                     </div>
-                    <div>
-                        <div class="c-sidebar-user-name">Super Admin</div>
-                        <div class="c-sidebar-user-role">Administrator</div>
+
+                    <nav class="c-nav">
+                        <a href="super_admin.aspx" class="c-nav-link active"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+                        <a href="DepartmentManage.aspx" class="c-nav-link"><i class="ti ti-building"></i> Departments</a>
+                        <a href="DepartmentAdminManage.aspx" class="c-nav-link"><i class="ti ti-user-cog"></i> Department Admins</a>
+                        <a href="StaffManage.aspx" class="c-nav-link"><i class="ti ti-user-check"></i> Staff</a>
+                        <a href="StudentManage.aspx" class="c-nav-link"><i class="ti ti-users"></i> Students</a>
+                        <a href="SubjectManage.aspx" class="c-nav-link"><i class="ti ti-book-2"></i> Subjects</a>
+                    </nav>
+
+                    <div class="c-nav-eyebrow">Quick Actions</div>
+                    <nav class="c-nav">
+                        <a href="DepartmentManage.aspx" class="c-nav-link"><i class="ti ti-building"></i> Manage Departments</a>
+                        <a href="/administrator/AppointUser.aspx" class="c-nav-link"><i class="ti ti-user-plus"></i> Manage Admins</a>
+                        <a href="StaffManage.aspx" class="c-nav-link"><i class="ti ti-user-check"></i> Manage Staff</a>
+                        <a href="SubjectManage.aspx" class="c-nav-link"><i class="ti ti-book-2"></i> Manage Subjects</a>
+                    </nav>
+
+                    <div class="c-sidebar-spacer"></div>
+
+                    <div class="c-sidebar-user">
+                        <div class="c-sidebar-avatar">
+                            <i class="ti ti-user"></i>
+                        </div>
+                        <div>
+                            <div class="c-sidebar-user-name">Super Admin</div>
+                            <div class="c-sidebar-user-role">Administrator</div>
+                        </div>
+                        <i class="ti ti-chevron-down"></i>
                     </div>
-                    <i class="ti ti-chevron-down"></i>
                 </div>
             </aside>
 
             <!-- Main -->
             <main class="c-main">
+
+                <!-- Mobile-only top bar -->
+                <div class="c-mobile-topbar">
+                    <div class="c-mobile-topbar-left">
+                        <button type="button" class="c-mobile-icon-btn" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
+                        <div class="c-mobile-topbar-title">
+                            <span class="c-brand-badge"><i class="ti ti-shield-star"></i></span>
+                            Super Admin
+                        </div>
+                    </div>
+                    <a class="c-mobile-bell" href="../NoticeManage.aspx"><i class="ti ti-bell"></i></a>
+                </div>
+
+                <!-- Mobile-only welcome card -->
+                <div class="c-mobile-welcome c-fade-up">
+                    <h1>Welcome back, Super Admin! 👋</h1>
+                    <p>Logged in as <strong><%= Session["Username"] %></strong> &middot; System-wide access</p>
+                    <a href="../logout.aspx" class="c-btn-pink"><i class="ti ti-logout"></i> Logout</a>
+                </div>
 
                 <div class="c-topbar c-fade-up">
                     <div>
@@ -662,19 +949,19 @@
                         </div>
                     </div>
                     <div class="c-quick-grid">
-                        <a href="DepartmentManage.aspx" class="c-quick-link">
+                        <a href="DepartmentManage.aspx" class="c-quick-link qa-blue">
                             <span class="c-quick-link-icon blue"><i class="ti ti-building"></i></span>
                             Manage Departments
                         </a>
-                        <a href="/administrator/AppointUser.aspx" class="c-quick-link">
+                        <a href="/administrator/AppointUser.aspx" class="c-quick-link qa-rose">
                             <span class="c-quick-link-icon rose"><i class="ti ti-user-plus"></i></span>
                             Manage Admins
                         </a>
-                        <a href="StaffManage.aspx" class="c-quick-link">
+                        <a href="StaffManage.aspx" class="c-quick-link qa-purple">
                             <span class="c-quick-link-icon purple"><i class="ti ti-user-check"></i></span>
                             Manage Staff
                         </a>
-                        <a href="SubjectManage.aspx" class="c-quick-link">
+                        <a href="SubjectManage.aspx" class="c-quick-link qa-amber">
                             <span class="c-quick-link-icon amber"><i class="ti ti-book-2"></i></span>
                             Manage Subjects
                         </a>
@@ -684,5 +971,21 @@
             </main>
         </div>
     </form>
+
+    <script>
+(function () {
+    var body = document.body;
+    var menuBtn = document.querySelector('.c-mobile-icon-btn');
+    var closeBtn = document.getElementById('btnCloseSidebar');
+    var backdrop = document.getElementById('sidebarBackdrop');
+
+    function openSidebar() { body.classList.add('c-sidebar-open'); }
+    function closeSidebar() { body.classList.remove('c-sidebar-open'); }
+
+    if (menuBtn) menuBtn.addEventListener('click', openSidebar);
+    if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+    if (backdrop) backdrop.addEventListener('click', closeSidebar);
+})();
+</script>
 </body>
 </html>
