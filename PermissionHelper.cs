@@ -111,6 +111,19 @@ namespace Learning_System
             }
         }
 
+        // Normalizes any DB casing ("BIT", "bit", "Bit") into the "Bit_Admin" folder-name
+        // convention used across the site. Centralized here so login.aspx.cs and any other
+        // caller (e.g. AppointUser.aspx.cs) never risk falling out of sync with each other.
+        public static string GetDepartmentAdminFolder(HttpSessionState session)
+        {
+            string code = GetDepartmentCode(session);
+            if (string.IsNullOrEmpty(code))
+                return null;
+
+            string normalized = char.ToUpper(code[0]) + code.Substring(1).ToLower();
+            return normalized + "_Admin";
+        }
+
         public static void RequireAccessLevel(System.Web.UI.Page page, params string[] allowedAccessLevels)
         {
             var session = page.Session;

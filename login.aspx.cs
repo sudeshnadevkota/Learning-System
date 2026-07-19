@@ -117,12 +117,9 @@ namespace Learning_System
                         }
                         else if (role == "Teacher" || role == "Staff")
                         {
-                            // FIXED — Teacher/Staff now redirect based on department code,
-                            // same destination as DepartmentAdmin. This used to be dead code
-                            // nested inside the "Admin" branch, so it never ran.
-                            if (!string.IsNullOrEmpty(departmentCode))
+                            string folderName = PermissionHelper.GetDepartmentAdminFolder(Session);
+                            if (!string.IsNullOrEmpty(folderName))
                             {
-                                string folderName = char.ToUpper(departmentCode[0]) + departmentCode.Substring(1).ToLower() + "_Admin";
                                 Response.Redirect("~/" + folderName + "/dash.aspx");
                             }
                             else
@@ -142,9 +139,9 @@ namespace Learning_System
                             }
                             else if (accessLevel == "DepartmentAdmin")
                             {
-                                if (!string.IsNullOrEmpty(departmentCode))
+                                string folderName = PermissionHelper.GetDepartmentAdminFolder(Session);
+                                if (!string.IsNullOrEmpty(folderName))
                                 {
-                                    string folderName = char.ToUpper(departmentCode[0]) + departmentCode.Substring(1).ToLower() + "_Admin";
                                     Response.Redirect("~/" + folderName + "/dash.aspx");
                                 }
                                 else

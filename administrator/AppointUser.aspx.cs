@@ -19,22 +19,24 @@ namespace Learning_System
                 BindRoleDropdown();
                 BindDepartmentDropdown();
 
-                // Capture where the user came from, once, before any postback happens.
-                // AutoPostBack on the role dropdown won't overwrite this because it only
-                // runs on the very first (non-postback) load.
-                string referrer = Request.UrlReferrer?.ToString();
+                // Only capture a "return to" location on a genuine first arrival at this page —
+                // NOT on the redirect-back-to-self we do after a successful appointment.
+                bool isPostAppointBounce = Request.QueryString["appointed"] == "true";
 
-                // Only trust the referrer if it's actually our own site (avoid an
-                // open-redirect if someone links to this page with a crafted Referer).
-                if (!string.IsNullOrEmpty(referrer) &&
-                    Uri.TryCreate(referrer, UriKind.Absolute, out Uri refUri) &&
-                    refUri.Host == Request.Url.Host)
+                if (!isPostAppointBounce)
                 {
-                    ViewState["ReturnUrl"] = referrer;
-                }
-                else
-                {
-                    ViewState["ReturnUrl"] = ResolveUrl("~/MainAdmin/main_admin.aspx");
+                    string referrer = Request.UrlReferrer?.ToString();
+
+                    bool referrerIsUsable =
+                        !string.IsNullOrEmpty(referrer) &&
+                        Uri.TryCreate(referrer, UriKind.Absolute, out Uri refUri) &&
+                        refUri.Host == Request.Url.Host &&
+                        !refUri.AbsolutePath.TrimEnd('/').EndsWith("AppointUser.aspx", StringComparison.OrdinalIgnoreCase);
+
+                    // Session survives Response.Redirect; ViewState does not.
+                    Session["AppointUserReturnUrl"] = referrerIsUsable
+                        ? referrer
+                        : GetDefaultDashboardUrl();
                 }
 
                 string requestedRole = Request.QueryString["role"];
@@ -50,8 +52,33 @@ namespace Learning_System
 
         protected void btnClose_Click(object sender, EventArgs e)
         {
-            string returnUrl = ViewState["ReturnUrl"] as string;
-            Response.Redirect(!string.IsNullOrEmpty(returnUrl) ? returnUrl : ResolveUrl("~/MainAdmin/main_admin.aspx"));
+            string returnUrl = Session["AppointUserReturnUrl"] as string;
+            Response.Redirect(!string.IsNullOrEmpty(returnUrl) ? returnUrl : GetDefaultDashboardUrl());
+        }
+
+        // Role-aware fallback: used both when there's no valid referrer, and as the
+        // stored ReturnUrl itself when the page was reached with no usable referrer.
+        private string GetDefaultDashboardUrl()
+        {
+            string accessLevel = PermissionHelper.GetAccessLevel(Session);
+
+            switch (accessLevel)
+            {
+                case "SuperAdmin":
+                    return ResolveUrl("~/SuperAdmin/super_admin.aspx"); // your confirmed path
+
+                case "MainAdmin":
+                    return ResolveUrl("~/MainAdmin/main_admin.aspx");
+
+                case "DepartmentAdmin":
+                    string folderName = PermissionHelper.GetDepartmentAdminFolder(Session);
+                    if (!string.IsNullOrEmpty(folderName))
+                        return ResolveUrl($"~/{folderName}/dash.aspx");
+                    return ResolveUrl("~/MainAdmin/main_admin.aspx");
+
+                default:
+                    return ResolveUrl("~/default.aspx");
+            }
         }
 
         private void BindRoleDropdown()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 
 namespace Learning_System.Bhm_Admin
@@ -14,6 +15,8 @@ namespace Learning_System.Bhm_Admin
         {
             Session.Clear();
             Session.Abandon();
+            FormsAuthentication.SignOut();
+
             Response.Redirect("~/Default.aspx");
         }
     }
