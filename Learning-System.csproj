@@ -159,6 +159,12 @@
     <Content Include="Bit_Notes\dash.aspx" />
     <Content Include="Bit_Notes\logo\logo.png" />
     <Content Include="Bit_Notes\logo\sidebar-removebg-preview.png" />
+    <Content Include="MainAdmin\DepartmentAdminManage.aspx" />
+    <Content Include="MainAdmin\DepartmentManage.aspx" />
+    <Content Include="MainAdmin\StaffManage.aspx" />
+    <Content Include="MainAdmin\StudentManage.aspx" />
+    <Content Include="MainAdmin\SubjectManage.aspx" />
+    <Content Include="MainAdmin\SuperAdminManage.aspx" />
     <Content Include="NoticeManage.aspx" />
     <Content Include="Notices.aspx" />
     <Content Include="NoticeWidget.ascx" />
@@ -700,6 +706,48 @@
     </Compile>
     <Compile Include="Bit_Notes\note.Master.designer.cs">
       <DependentUpon>note.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MainAdmin\DepartmentAdminManage.aspx.cs">
+      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainAdmin\DepartmentAdminManage.aspx.designer.cs">
+      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainAdmin\DepartmentManage.aspx.cs">
+      <DependentUpon>DepartmentManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainAdmin\DepartmentManage.aspx.designer.cs">
+      <DependentUpon>DepartmentManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainAdmin\StaffManage.aspx.cs">
+      <DependentUpon>StaffManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainAdmin\StaffManage.aspx.designer.cs">
+      <DependentUpon>StaffManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainAdmin\StudentManage.aspx.cs">
+      <DependentUpon>StudentManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainAdmin\StudentManage.aspx.designer.cs">
+      <DependentUpon>StudentManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainAdmin\SubjectManage.aspx.cs">
+      <DependentUpon>SubjectManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainAdmin\SubjectManage.aspx.designer.cs">
+      <DependentUpon>SubjectManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainAdmin\SuperAdminManage.aspx.cs">
+      <DependentUpon>SuperAdminManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainAdmin\SuperAdminManage.aspx.designer.cs">
+      <DependentUpon>SuperAdminManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="NoticeManage.aspx.cs">
       <DependentUpon>NoticeManage.aspx</DependentUpon>

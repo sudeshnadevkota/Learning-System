@@ -173,13 +173,184 @@
         }
         .c-status-pill.active { background: var(--success-bg); color: var(--success); }
         .c-status-pill.inactive { background: var(--danger-bg); color: var(--danger); }
+
+        /* ── Responsive (tablet: keep sidebar, just stack it) ── */
+        @media (max-width: 900px) and (min-width: 641px) {
+            .c-shell { flex-direction: column; }
+            .c-sidebar { width: 100%; height: auto; position: relative; flex-direction: row; flex-wrap: wrap; }
+            .c-nav { flex-direction: row; flex-wrap: wrap; }
+            .c-sidebar-spacer { display: none; }
+            .c-sidebar-user { margin-top: 12px; }
+            .c-main { padding: 22px 18px 36px; }
+        }
+
+        /* ── Mobile-only elements (hidden on desktop) ── */
+        .c-mobile-topbar,
+        .c-sidebar-close-btn,
+        .c-sidebar-backdrop { display: none; }
+
+        /* ── Mobile layout (app-style: top bar + slide-out drawer) ── */
+        @media (max-width: 640px) {
+            .c-shell { display: block; }
+
+            .c-main { padding: 0 14px 32px; }
+
+            /* Mobile top bar */
+            .c-mobile-topbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                padding: 16px 2px 14px;
+            }
+
+            .c-mobile-topbar-left { display: flex; align-items: center; gap: 10px; }
+
+            .c-mobile-icon-btn {
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+                background: linear-gradient(155deg, var(--primary), var(--secondary));
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-size: 1.05rem;
+                flex: none;
+                box-shadow: 0 4px 12px rgba(11,31,102,0.28);
+            }
+
+            .c-mobile-topbar-title {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-weight: 800;
+                font-size: 15px;
+                color: var(--primary);
+            }
+
+            .c-mobile-topbar-title .c-brand-badge {
+                width: 30px;
+                height: 30px;
+                border-radius: 9px;
+                background: linear-gradient(155deg, var(--primary), var(--secondary));
+                color: #fff;
+                border: none;
+                font-size: 0.95rem;
+            }
+
+            .c-mobile-back-btn {
+                position: relative;
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+                background: #fff;
+                border: 1px solid var(--border-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--primary);
+                flex: none;
+                text-decoration: none;
+                font-size: 1rem;
+            }
+
+            /* Single page heading + actions, reused on both mobile and desktop */
+            .c-topbar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+                margin-bottom: 14px;
+            }
+            .c-topbar h1 { font-size: 1.2rem; letter-spacing: -0.2px; }
+            .c-topbar p { font-size: 12px; }
+            .c-topbar > div[style] { display: flex !important; gap: 8px !important; }
+            .c-topbar .c-btn-pink,
+            .c-topbar .c-btn-ghost { flex: 1; padding: 10px 12px; font-size: 12px; justify-content: center; }
+            /* The ghost "Dashboard" button is redundant with the back arrow already in the mobile top bar */
+            .c-topbar .c-btn-ghost { display: none; }
+            .c-topbar .c-btn-pink { width: 100%; }
+
+            .c-alert { padding: 11px 14px; font-size: 12px; border-radius: 12px; }
+
+            /* Panels */
+            .c-panel { padding: 16px; border-radius: 14px; margin-bottom: 16px; }
+            .c-panel-header { margin-bottom: 14px; padding-bottom: 12px; }
+            .c-panel-title { font-size: 10.5px; }
+
+            /* Form */
+            .c-form-grid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 14px; }
+            .c-form-actions { flex-direction: column; }
+            .c-form-actions .c-btn-pink,
+            .c-form-actions .c-btn-ghost { width: 100%; justify-content: center; }
+
+            /* Table scrolls horizontally instead of squeezing */
+            .c-table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .table-modern { min-width: 480px; }
+
+            /* Sidebar becomes a slide-out drawer on mobile */
+            .c-sidebar {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                height: 100%;
+                width: 260px;
+                z-index: 110;
+                transform: translateX(-105%);
+                transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: 24px 0 48px rgba(8,10,40,0.28);
+            }
+
+            body.c-sidebar-open .c-sidebar { transform: translateX(0); }
+
+            /* Floating arrow button attached to the drawer's edge, slides together with it */
+            .c-sidebar-close-btn {
+                display: none;
+                position: absolute;
+                top: 18px;
+                right: -50px;
+                width: 38px;
+                height: 38px;
+                border-radius: 10px;
+                background: #fff;
+                border: 1px solid var(--border-color);
+                box-shadow: 0 10px 24px rgba(8,10,40,0.18);
+                align-items: center;
+                justify-content: center;
+                color: var(--primary);
+                font-size: 1.05rem;
+                cursor: pointer;
+                z-index: 111;
+            }
+
+            body.c-sidebar-open .c-sidebar-close-btn { display: flex; }
+
+            /* Dim backdrop behind the open drawer */
+            .c-sidebar-backdrop {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(6,10,32,0.45);
+                z-index: 100;
+            }
+
+            body.c-sidebar-open .c-sidebar-backdrop { display: block; }
+            body.c-sidebar-open { overflow: hidden; }
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="c-shell">
 
+            <!-- Dim backdrop shown behind the drawer on mobile -->
+            <div class="c-sidebar-backdrop" id="sidebarBackdrop"></div>
+
             <aside class="c-sidebar">
+                <button type="button" class="c-sidebar-close-btn" id="btnCloseSidebar" aria-label="Close menu"><i class="ti ti-arrow-left"></i></button>
                 <div class="c-brand">
                     <div class="c-brand-badge"><i class="ti ti-shield-star"></i></div>
                     <span>Super Admin</span>
@@ -215,6 +386,18 @@
             </aside>
 
             <main class="c-main">
+
+                <!-- Mobile-only top bar -->
+                <div class="c-mobile-topbar">
+                    <div class="c-mobile-topbar-left">
+                        <button type="button" class="c-mobile-icon-btn" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
+                        <div class="c-mobile-topbar-title">
+                            <span class="c-brand-badge"><i class="ti ti-shield-star"></i></span>
+                            Super Admin
+                        </div>
+                    </div>
+                    <a class="c-mobile-back-btn" href="super_admin.aspx" aria-label="Back to Dashboard"><i class="ti ti-arrow-left"></i></a>
+                </div>
 
                 <div class="c-topbar c-fade-up">
                     <div>
@@ -304,5 +487,21 @@
             </main>
         </div>
     </form>
+
+    <script>
+(function () {
+    var body = document.body;
+    var menuBtn = document.querySelector('.c-mobile-icon-btn');
+    var closeBtn = document.getElementById('btnCloseSidebar');
+    var backdrop = document.getElementById('sidebarBackdrop');
+
+    function openSidebar() { body.classList.add('c-sidebar-open'); }
+    function closeSidebar() { body.classList.remove('c-sidebar-open'); }
+
+    if (menuBtn) menuBtn.addEventListener('click', openSidebar);
+    if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+    if (backdrop) backdrop.addEventListener('click', closeSidebar);
+})();
+</script>
 </body>
 </html>
