@@ -22,5 +22,12 @@ namespace Learning_System.MainAdmin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.GridView gvSuperAdmins;
+
+        protected global::System.Web.UI.WebControls.PlaceHolder phSuccess;
+        protected global::System.Web.UI.WebControls.PlaceHolder phError;
+
+        protected global::System.Web.UI.WebControls.Literal litSuccess;
+        protected global::System.Web.UI.WebControls.Literal litError;
     }
 }

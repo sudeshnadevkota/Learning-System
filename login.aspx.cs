@@ -131,11 +131,11 @@ namespace Learning_System
                         {
                             if (accessLevel == "MainAdmin")
                             {
-                                Response.Redirect("~/MainAdmin/main_admin.aspx");
+                                Response.Redirect("~/MainAdmin/Dash.aspx");
                             }
                             else if (accessLevel == "SuperAdmin")
                             {
-                                Response.Redirect("~/SuperAdmin/super_admin.aspx");
+                                Response.Redirect("~/SuperAdmin/Dash.aspx");
                             }
                             else if (accessLevel == "DepartmentAdmin")
                             {

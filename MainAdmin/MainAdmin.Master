@@ -1,0 +1,105 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainAdmin.master.cs" Inherits="Learning_System.MainAdmin.MainAdminMaster" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Main Admin</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="~/styles/AdminStyles.css" />
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="sm" runat="server" />
+
+        <div class="c-shell">
+
+            <!-- Sidebar -->
+            <aside class="c-sidebar">
+                <div class="c-brand">
+                    <div class="c-brand-badge"><i class="ti ti-crown"></i></div>
+                    <span>Main Admin</span>
+                </div>
+
+                <nav class="c-nav">
+                    <a href='<%= ResolveUrl("~/MainAdmin/Dash.aspx") %>' class='<%= GetNavClass("Dashboard") %>'><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+                                        <asp:LinkButton ID="lnkSuperAdmin" runat="server" OnClick="NavLink_Click" CommandArgument="SuperAdmin">
+    <i class="ti ti-user-cog"></i> SuperAdmin 
+</asp:LinkButton>
+                    <asp:LinkButton ID="lnkDepartments" runat="server" OnClick="NavLink_Click" CommandArgument="Departments">
+    <i class="ti ti-user-cog"></i> Department 
+</asp:LinkButton>
+                   <asp:LinkButton ID="lnkDeptAdmins" runat="server" OnClick="NavLink_Click" CommandArgument="DeptAdmins">
+    <i class="ti ti-user-cog"></i> Department Admins
+</asp:LinkButton>
+
+                    <asp:LinkButton ID="lnkStaff" runat="server" CssClass='<%# GetNavClass("Staff") %>'
+                        OnClick="NavLink_Click" CommandArgument="Staff">
+                        <i class="ti ti-user-check"></i> Staff
+                    </asp:LinkButton>
+
+                    <asp:LinkButton ID="lnkStudents" runat="server" CssClass='<%# GetNavClass("Students") %>'
+                        OnClick="NavLink_Click" CommandArgument="Students">
+                        <i class="ti ti-users"></i> Students
+                    </asp:LinkButton>
+
+                    <asp:LinkButton ID="lnkSubjects" runat="server" CssClass='<%# GetNavClass("Subjects") %>'
+                        OnClick="NavLink_Click" CommandArgument="Subjects">
+                        <i class="ti ti-book-2"></i> Subjects
+                    </asp:LinkButton>
+                </nav>
+
+                <div class="c-nav-eyebrow">Quick Actions</div>
+                <nav class="c-nav">
+                    <a href='<%= ResolveUrl("~/administrator/AppointUser.aspx") %>' class='<%= GetNavClass("AppointUser") %>'><i class="ti ti-user-plus"></i> Appoint User</a>
+                    <a href='<%= ResolveUrl("~/NoticeManage.aspx") %>' class='<%= GetNavClass("Notices") %>'><i class="ti ti-speakerphone"></i> Manage Notices</a>
+                    <a href='<%= ResolveUrl("~/MainAdmin/AuditLog.aspx") %>' class='<%= GetNavClass("AuditLog") %>'><i class="ti ti-history"></i> Audit Log</a>
+                </nav>
+
+                <div class="c-sidebar-spacer"></div>
+
+                <div class="c-sidebar-user">
+                    <div class="c-sidebar-avatar"><i class="ti ti-user"></i></div>
+                    <div>
+                        <div class="c-sidebar-user-name">Main Admin</div>
+                        <div class="c-sidebar-user-role">Full System Access</div>
+                    </div>
+                    <i class="ti ti-chevron-down"></i>
+                </div>
+            </aside>
+
+            <!-- Main content -->
+            <main class="c-main">
+                <asp:UpdatePanel ID="upContent" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+
+                        <!-- Whatever the current .aspx page put in MainContent (e.g. Dash.aspx's stat cards) -->
+                        <asp:Panel ID="pnlStaticContent" runat="server">
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                        </asp:Panel>
+
+                        <!-- AJAX-swapped section (Staff / Students / Subjects) -->
+                        <asp:Panel ID="pnlDynamicContent" runat="server" Visible="false">
+                            <asp:PlaceHolder ID="phDynamic" runat="server" />
+                        </asp:Panel>
+
+                    </ContentTemplate>
+                     <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="lnkStaff" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="lnkStudents" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="lnkSubjects" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="lnkDeptAdmins" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="lnkDepartments" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="lnkSuperAdmin" EventName="Click" />
+
+        </Triggers>
+                </asp:UpdatePanel>
+            </main>
+
+        </div>
+    </form>
+</body>
+</html>

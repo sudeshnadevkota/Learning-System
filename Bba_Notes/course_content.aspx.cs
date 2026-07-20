@@ -102,7 +102,7 @@ namespace Learning_System.Bba_Notes
 
                             if (sdr["FileName"] != DBNull.Value)
                             {
-                                hidSylUrl.Value = ResolveUrl("~/Bcs_Notes/SyllabusViewer.ashx?code=" + code);
+                                hidSylUrl.Value = ResolveUrl("~/Bba_Notes/SyllabusViewer.ashx?code=" + code);
                             }
                         }
                         else

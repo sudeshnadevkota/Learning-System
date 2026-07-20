@@ -2,360 +2,225 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-    @import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css');
-
     :root {
         --primary: #0B1F66;
         --secondary: #081547;
         --pink: #FF2D8D;
-        --yellow: #F6B400;
+        --pink-light: rgba(255,45,141,0.08);
+        --gray-bg: #fafbff;
+        --border-color: rgba(11,31,102,0.08);
+        --text-muted: #6b7280;
+        --success: #16a34a;
+        --success-bg: #f0fdf4;
+        --danger: #dc2626;
+        --danger-bg: #fef2f2;
+        --icon-blue-bg: rgba(11,31,102,0.09); --icon-blue: #0B1F66;
+        --icon-rose-bg: rgba(255,45,141,0.1); --icon-rose: #FF2D8D;
+        --icon-purple-bg: rgba(124,58,237,0.1); --icon-purple: #7c3aed;
+        --icon-amber-bg: rgba(217,119,6,0.12); --icon-amber: #d97706;
     }
 
-    .d-wrap { font-family: 'Plus Jakarta Sans', sans-serif; }
+    * { box-sizing: border-box; }
+    .dd-wrap { font-family: 'Plus Jakarta Sans', sans-serif; padding: 28px 34px 12px; }
 
-    .d-hero {
+    /* ── Hero ── */
+    .dd-hero {
         background: linear-gradient(135deg, #0B1F66 0%, #1a3499 100%);
-        padding: 36px 32px 30px;
-        border-radius: 16px;
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 24px;
+        padding: 30px 34px; border-radius: 18px; margin-bottom: 24px; color: #fff;
+        position: relative; overflow: hidden;
     }
-    .d-hero-ring1 { position: absolute; right: -30px; top: -30px; width: 200px; height: 200px; border-radius: 50%; border: 1px solid rgba(255,45,141,0.12); pointer-events: none; }
-    .d-hero-ring2 { position: absolute; right: 30px; top: 30px; width: 110px; height: 110px; border-radius: 50%; border: 1px solid rgba(255,45,141,0.08); pointer-events: none; }
-    .d-hero-ring3 { position: absolute; left: -40px; bottom: -40px; width: 150px; height: 150px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.04); pointer-events: none; }
-    .d-hero-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: 1.5px; color: #FF2D8D; background: rgba(255,45,141,0.12); border: 1px solid rgba(255,45,141,0.25); border-radius: 20px; padding: 4px 14px; text-transform: uppercase; margin-bottom: 14px; }
-    .d-hero h1 { font-size: 26px; font-weight: 700; color: #fff; letter-spacing: 0.5px; margin-bottom: 6px; }
-    .d-hero-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
-    .d-hero-stats { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
-    .d-hstat { display: flex; flex-direction: column; }
-    .d-hstat-val { font-size: 22px; font-weight: 700; color: #fff; line-height: 1; }
-    .d-hstat-label { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.5px; margin-top: 3px; }
-    .d-hstat-sep { width: 1px; height: 36px; background: rgba(255,255,255,0.12); }
-
-    .d-section { font-size: 11px; letter-spacing: 2px; color: #0B1F66; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-    .d-section::after { content: ''; flex: 1; height: 1px; background: rgba(11,31,102,0.08); }
-
-    /* ── SYSTEM METRICS PANEL ── */
-    .d-metrics-panel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
-    .d-metric-box { border-radius: 14px; border: 1px solid rgba(11,31,102,0.06); background: #ffffff; padding: 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 12px rgba(11,31,102,0.01); }
-    .d-metric-icon-wrap { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-    .d-metric-icon-wrap.m-pink { background: rgba(255,45,141,0.08); color: #FF2D8D; }
-    .d-metric-icon-wrap.m-blue { background: rgba(11,31,102,0.06); color: #0B1F66; }
-    .d-metric-icon-wrap.m-yellow { background: rgba(246,180,0,0.1); color: #D49B00; }
-    .d-metric-info { display: flex; flex-direction: column; gap: 2px; }
-    .d-metric-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(11,31,102,0.45); font-weight: 600; }
-    .d-metric-count { font-size: 20px; font-weight: 700; color: #0B1F66; line-height: 1.2; }
-
-    /* ── MODULE CARDS ── */
-    .d-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
-
-    .d-card { border-radius: 14px; padding: 22px 20px; position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s; border: none; }
-    .d-card:hover { transform: translateY(-4px); }
-
-    .d-card.card-pink { background: linear-gradient(145deg, #FF2D8D, #ff6aae); }
-    .d-card.card-pink .d-card-top-bar { background: rgba(255,255,255,0.25); }
-    .d-card.card-pink .d-card-icon-inner { background: rgba(255,255,255,0.2); }
-    .d-card.card-pink .d-card-icon-inner i { color: #fff; }
-    .d-card.card-pink .d-card-kicker { color: rgba(255,255,255,0.65); }
-    .d-card.card-pink .d-card-title { color: #fff; }
-    .d-card.card-pink .d-card-text { color: rgba(255,255,255,0.8); }
-    .d-card.card-pink .d-go { color: #FF2D8D; background: #fff; border-color: transparent; }
-    .d-card.card-pink .d-go:hover { background: rgba(255,255,255,0.88); }
-    .d-card.card-pink .d-badge-status { color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.15); }
-
-    .d-card.card-blue { background: linear-gradient(145deg, #0B1F66, #1a3499); }
-    .d-card.card-blue .d-card-top-bar { background: rgba(255,255,255,0.15); }
-    .d-card.card-blue .d-card-icon-inner { background: rgba(255,255,255,0.12); }
-    .d-card.card-blue .d-card-icon-inner i { color: #fff; }
-    .d-card.card-blue .d-card-kicker { color: rgba(255,255,255,0.5); }
-    .d-card.card-blue .d-card-title { color: #fff; }
-    .d-card.card-blue .d-card-text { color: rgba(255,255,255,0.7); }
-    .d-card.card-blue .d-go { color: #0B1F66; background: #fff; border-color: transparent; }
-    .d-card.card-blue .d-go:hover { background: rgba(255,255,255,0.88); }
-    .d-card.card-blue .d-badge-status { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.12); }
-
-    .d-card.card-yellow { background: linear-gradient(145deg, #F6C84B, #fad96e); }
-    .d-card.card-yellow .d-card-top-bar { background: rgba(255,255,255,0.3); }
-    .d-card.card-yellow .d-card-icon-inner { background: rgba(255,255,255,0.3); }
-    .d-card.card-yellow .d-card-icon-inner i { color: #7a4f00; }
-    .d-card.card-yellow .d-card-kicker { color: rgba(100,65,0,0.6); }
-    .d-card.card-yellow .d-card-title { color: #3d2800; }
-    .d-card.card-yellow .d-card-text { color: rgba(80,50,0,0.75); }
-    .d-card.card-yellow .d-go { color: #7a4f00; background: rgba(255,255,255,0.7); border-color: transparent; }
-    .d-card.card-yellow .d-go:hover { background: rgba(255,255,255,0.9); }
-    .d-card.card-yellow .d-badge-status { color: rgba(80,50,0,0.6); background: rgba(255,255,255,0.25); }
-
-    .d-card-top-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 14px 14px 0 0; }
-    .d-card-icon { margin-bottom: 16px; }
-    .d-card-icon-inner { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; }
-    .d-card-icon-inner i { font-size: 22px; }
-    .d-card-kicker { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-    .d-card-title { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-    .d-card-text { font-size: 13px; line-height: 1.65; margin-bottom: 18px; }
-    .d-card-foot { display: flex; align-items: center; justify-content: space-between; }
-    .d-go { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; border-radius: 8px; padding: 7px 16px; text-decoration: none; transition: background .15s; }
-    .d-go i { font-size: 13px; }
-    .d-badge-status { font-size: 10px; font-weight: 700; border-radius: 6px; padding: 3px 10px; letter-spacing: 0.5px; }
-
-    /* ── FEATURE BOX ── */
-    .d-feature { border-radius: 14px; border: 1px solid rgba(11,31,102,0.08); background: #fff; overflow: hidden; margin-bottom: 8px; }
-    .d-feature-head { background: linear-gradient(90deg, #0B1F66, #1a3499); padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; }
-    .d-feature-head-left { display: flex; align-items: center; gap: 10px; }
-    .d-feature-head-left i { font-size: 20px; color: #FF2D8D; }
-    .d-feature-head-title { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 1px; text-transform: uppercase; }
-    .d-feature-head-badge { font-size: 10px; color: #F6B400; border: 1px solid rgba(246,180,0,0.45); border-radius: 6px; padding: 3px 10px; letter-spacing: 1px; text-transform: uppercase; }
-    .d-feature-body { padding: 24px 22px; }
-    .d-feature-title { font-size: 18px; font-weight: 700; color: #0B1F66; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px; }
-    .d-feature-text { font-size: 13.5px; color: rgba(11,31,102,0.6); line-height: 1.75; margin-bottom: 20px; }
-    .d-feature-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .d-btn-pink { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #fff; background: #FF2D8D; border: none; border-radius: 8px; padding: 9px 20px; text-decoration: none; cursor: pointer; transition: opacity .15s; }
-    .d-btn-pink:hover { opacity: 0.88; text-decoration: none; color: #fff; }
-    .d-btn-navy { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #0B1F66; background: transparent; border: 1px solid rgba(11,31,102,0.2); border-radius: 8px; padding: 9px 20px; text-decoration: none; cursor: pointer; transition: background .15s; }
-    .d-btn-navy:hover { background: rgba(11,31,102,0.05); text-decoration: none; color: #0B1F66; }
-    .d-btn-ghost { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: rgba(11,31,102,0.4); background: transparent; border: none; padding: 9px 6px; text-decoration: none; cursor: pointer; }
-    .d-btn-ghost:hover { color: rgba(11,31,102,0.7); text-decoration: none; }
-
-    /* ── ROSTER TABLE ── */
-    .d-feature-body table.table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    .d-feature-body table.table th {
-        text-align: left; padding: 12px 14px; color: rgba(11,31,102,0.5);
-        font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
-        border-bottom: 2px solid rgba(11,31,102,0.06); font-weight: 700;
+    .dd-hero-tag {
+        display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; letter-spacing: 1.5px;
+        color: var(--pink); background: rgba(255,45,141,0.12); border: 1px solid rgba(255,45,141,0.25);
+        border-radius: 20px; padding: 4px 14px; text-transform: uppercase; margin-bottom: 12px;
     }
-    .d-feature-body table.table td {
-        padding: 12px 14px; border-bottom: 1px solid rgba(11,31,102,0.06); color: #333;
-    }
-    .d-feature-body table.table tr:last-child td { border-bottom: none; }
-    .d-feature-body table.table tr:hover td { background: rgba(11,31,102,0.015); }
+    .dd-hero h1 { font-size: 24px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.3px; }
+    .dd-hero p { font-size: 13px; color: rgba(255,255,255,0.6); margin: 0; }
 
-    @media (max-width: 992px) { .d-metrics-panel { grid-template-columns: 1fr; } }
-    @media (max-width: 768px) { .d-cards { grid-template-columns: 1fr; } }
-    @media (max-width: 640px) { .d-hero h1 { font-size: 18px; } .d-hero { padding: 24px 20px 20px; } }
+    /* ── Stat cards ── */
+    .dd-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .dd-stat-card {
+        position: relative; background: #fff; border: 1px solid var(--border-color); border-radius: 16px;
+        padding: 22px; display: flex; align-items: center; gap: 14px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .dd-stat-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -8px rgba(11,31,102,0.14); }
+    .dd-stat-icon {
+        width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center;
+        justify-content: center; font-size: 1.3rem; flex: none;
+    }
+    .dd-stat-icon.blue { background: var(--icon-blue-bg); color: var(--icon-blue); }
+    .dd-stat-icon.rose { background: var(--icon-rose-bg); color: var(--icon-rose); }
+    .dd-stat-value { font-size: 1.55rem; font-weight: 800; color: var(--primary); line-height: 1.1; }
+    .dd-stat-label { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+    /* ── Panel ── */
+    .dd-panel { background: #fff; border: 1px solid var(--border-color); border-radius: 16px; padding: 26px; margin-bottom: 24px; }
+    .dd-panel-header {
+        display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;
+        padding-bottom: 14px; border-bottom: 1px solid var(--border-color); flex-wrap: wrap; gap: 10px;
+    }
+    .dd-panel-title {
+        font-size: 11.5px; letter-spacing: 1.5px; color: var(--primary); text-transform: uppercase;
+        font-weight: 800; display: flex; align-items: center; gap: 10px;
+    }
+    .dd-panel-title-icon {
+        width: 28px; height: 28px; border-radius: 8px; background: var(--pink-light); color: var(--pink);
+        display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+
+    /* ── Quick action tiles (admin-only) ── */
+    .dd-quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .dd-quick-link {
+        display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 14px;
+        border: 1px solid var(--border-color); background: var(--gray-bg); text-decoration: none;
+        color: var(--primary); transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+    .dd-quick-link:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 12px 26px -8px rgba(11,31,102,0.14); color: var(--primary); }
+    .dd-quick-icon {
+        width: 40px; height: 40px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .dd-quick-icon.blue { background: var(--icon-blue-bg); color: var(--icon-blue); }
+    .dd-quick-icon.rose { background: var(--icon-rose-bg); color: var(--icon-rose); }
+    .dd-quick-icon.purple { background: var(--icon-purple-bg); color: var(--icon-purple); }
+    .dd-quick-icon.amber { background: var(--icon-amber-bg); color: var(--icon-amber); }
+    .dd-quick-title { font-size: 13.5px; font-weight: 700; }
+    .dd-quick-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin: 0; }
+
+    /* ── Table ── */
+    .dd-table-container { overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); }
+    .table-modern { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .table-modern th {
+        background: var(--gray-bg); color: var(--primary); font-weight: 700; font-size: 11px;
+        text-transform: uppercase; letter-spacing: 0.6px; padding: 13px 18px; text-align: left;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .table-modern td { padding: 13px 18px; border-bottom: 1px solid var(--border-color); color: #4a4a4a; }
+    .table-modern tr:last-child td { border-bottom: none; }
+    .table-modern tr:hover { background-color: var(--gray-bg); }
+    .table-modern td:first-child { font-weight: 700; color: var(--primary); }
+
+    .dd-status-pill {
+        display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 50px;
+        font-weight: 700; font-size: 11px;
+    }
+    .dd-status-active { background: var(--success-bg); color: var(--success); }
+    .dd-status-suspended { background: var(--danger-bg); color: var(--danger); }
+
+    .table-modern a {
+        color: var(--pink); text-decoration: none; font-weight: 700; margin-right: 12px; font-size: 12px;
+    }
+    .table-modern a:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+        .dd-wrap { padding: 18px 16px 8px; }
+        .dd-stats-grid { grid-template-columns: 1fr 1fr; }
+    }
 </style>
 
-<div class="d-wrap container-fluid" style="padding: 1.5rem;">
+<div class="dd-wrap">
 
-    <%-- HERO --%>
-    <div class="d-hero">
-        <div class="d-hero-ring1"></div>
-        <div class="d-hero-ring2"></div>
-        <div class="d-hero-ring3"></div>
-        <div class="d-hero-tag">
-            <i class="ti ti-layout-dashboard" style="font-size:12px;"></i> Admin Dashboard
-        </div>
+    <!-- Hero -->
+    <div class="dd-hero">
+        <div class="dd-hero-tag"><i class="ti ti-layout-dashboard" style="font-size:11px;"></i> Department Dashboard</div>
         <h1>Welcome to BIT Upload Section</h1>
-        <p class="d-hero-sub">Manage and publish your e-learning content from one place</p>
-        <div class="d-hero-stats">
-            <div class="d-hstat">
-                <span class="d-hstat-val">8</span>
-                <span class="d-hstat-label">Semesters</span>
-            </div>
-            <div class="d-hstat-sep"></div>
-            <div class="d-hstat">
-                <span class="d-hstat-val">32</span>
-                <span class="d-hstat-label">Subjects</span>
-            </div>
-            <div class="d-hstat-sep"></div>
-            <div class="d-hstat">
-                <span class="d-hstat-val">Active</span>
-                <span class="d-hstat-label">System Status</span>
-            </div>
-        </div>
+        <p>Manage and publish your e-learning content from one place</p>
     </div>
 
-    
-
-    <%-- DEPARTMENT ROSTER — Staff + Student management --%>
-    <div class="d-section">Department Roster</div>
-
-    <div class="d-metrics-panel">
-        <asp:Panel ID="pnlStaffCountBox" runat="server" CssClass="d-metric-box">
-            <div class="d-metric-icon-wrap m-blue"><i class="ti ti-user-check"></i></div>
-            <div class="d-metric-info">
-                <span class="d-metric-title">Staff</span>
-                <span class="d-metric-count"><asp:Literal ID="litStaffCount" runat="server">0</asp:Literal></span>
+    <!-- Roster stat cards -->
+    <div class="dd-stats-grid">
+        <asp:Panel ID="pnlStaffCountBox" runat="server" CssClass="dd-stat-card">
+            <div class="dd-stat-icon blue"><i class="ti ti-user-check"></i></div>
+            <div>
+                <div class="dd-stat-value"><asp:Literal ID="litStaffCount" runat="server">0</asp:Literal></div>
+                <div class="dd-stat-label">Staff</div>
             </div>
         </asp:Panel>
-        <div class="d-metric-box">
-            <div class="d-metric-icon-wrap m-pink"><i class="ti ti-users"></i></div>
-            <div class="d-metric-info">
-                <span class="d-metric-title">Students</span>
-                <span class="d-metric-count"><asp:Literal ID="litStudentCount" runat="server">0</asp:Literal></span>
+        <div class="dd-stat-card">
+            <div class="dd-stat-icon rose"><i class="ti ti-users"></i></div>
+            <div>
+                <div class="dd-stat-value"><asp:Literal ID="litStudentCount" runat="server">0</asp:Literal></div>
+                <div class="dd-stat-label">Students</div>
             </div>
         </div>
     </div>
 
+    <!-- Admin-only quick actions (visibility controlled server-side, same as before) -->
     <asp:Panel ID="pnlAdminControls" runat="server">
-    <div class="d-section">Administrative Controls</div>
-
-<div class="d-cards">
-
-    <div class="d-card card-blue">
-        <div class="d-card-top-bar"></div>
-        <div class="d-card-icon">
-            <div class="d-card-icon-inner">
-                <i class="ti ti-user-plus"></i>
+        <div class="dd-panel">
+            <div class="dd-panel-header">
+                <div class="dd-panel-title"><span class="dd-panel-title-icon"><i class="ti ti-bolt"></i></span> Administrative Controls</div>
+            </div>
+            <div class="dd-quick-grid">
+                <a href="/administrator/AppointUser.aspx" class="dd-quick-link">
+                    <div class="dd-quick-icon blue"><i class="ti ti-user-plus"></i></div>
+                    <div class="dd-quick-title">Register Staff</div>
+                    <p class="dd-quick-text">Register new teachers and staff for this department.</p>
+                </a>
+                <a href="RegisterStudent.aspx" class="dd-quick-link">
+                    <div class="dd-quick-icon rose"><i class="ti ti-users-plus"></i></div>
+                    <div class="dd-quick-title">Register Student</div>
+                    <p class="dd-quick-text">Add and manage student registrations.</p>
+                </a>
+    <a href="/StaffManage.aspx" class="dd-quick-link">
+        <div class="dd-quick-icon amber"><i class="ti ti-user-cog"></i></div>
+        <div class="dd-quick-title">Manage Teachers</div>
+        <p class="dd-quick-text">Manage teacher accounts and assignments.</p>
+    </a>
+    <a href="/StudentManage.aspx" class="dd-quick-link">
+        <div class="dd-quick-icon rose"><i class="ti ti-users-plus"></i></div>
+        <div class="dd-quick-title">Manage Students</div>
+        <p class="dd-quick-text">Manage Students.</p>
+    </a>
+    <a href="/NoticeManage.aspx" class="dd-quick-link">
+        <div class="dd-quick-icon blue"><i class="ti ti-speakerphone"></i></div>
+        <div class="dd-quick-title">Notices</div>
+        <p class="dd-quick-text">Publish notices for students and teachers.</p>
+    </a>
+                <a href="Reports.aspx" class="dd-quick-link">
+                    <div class="dd-quick-icon rose"><i class="ti ti-chart-bar"></i></div>
+                    <div class="dd-quick-title">Reports</div>
+                    <p class="dd-quick-text">View department reports and activity.</p>
+                </a>
+                <a href="DepartmentSettings.aspx" class="dd-quick-link">
+                    <div class="dd-quick-icon purple"><i class="ti ti-settings"></i></div>
+                    <div class="dd-quick-title">Department Settings</div>
+                    <p class="dd-quick-text">Configure department info and preferences.</p>
+                </a>
             </div>
         </div>
+    </asp:Panel>
 
-        <div class="d-card-kicker">Administration</div>
-        <div class="d-card-title">Register Staff</div>
-        <div class="d-card-text">
-            Register new teachers and staff members for this department.
+    <!-- Staff roster — visible/bound for DepartmentAdmin only, removed server-side for Staff -->
+    <asp:Panel ID="pnlStaffRoster" runat="server" CssClass="dd-panel">
+        <div class="dd-panel-header">
+            <div class="dd-panel-title"><span class="dd-panel-title-icon"><i class="ti ti-user-cog"></i></span> Staff</div>
         </div>
-
-        <div class="d-card-foot">
-            <a href="/administrator/AppointUser.aspx" class="d-go">
-                Open <i class="ti ti-arrow-right"></i>
-            </a>
-            <span class="d-badge-status">Admin</span>
-        </div>
-    </div>
-
-    <div class="d-card card-pink">
-        <div class="d-card-top-bar"></div>
-        <div class="d-card-icon">
-            <div class="d-card-icon-inner">
-                <i class="ti ti-users-plus"></i>
-            </div>
-        </div>
-
-        <div class="d-card-kicker">Administration</div>
-        <div class="d-card-title">Register Student</div>
-        <div class="d-card-text">
-            Add and manage student registrations within your department.
-        </div>
-
-        <div class="d-card-foot">
-            <a href="RegisterStudent.aspx" class="d-go">
-                Open <i class="ti ti-arrow-right"></i>
-            </a>
-            <span class="d-badge-status">Admin</span>
-        </div>
-    </div>
-
-    <div class="d-card card-yellow">
-        <div class="d-card-top-bar"></div>
-        <div class="d-card-icon">
-            <div class="d-card-icon-inner">
-                <i class="ti ti-user-cog"></i>
-            </div>
-        </div>
-
-        <div class="d-card-kicker">Administration</div>
-        <div class="d-card-title">Manage Teachers</div>
-        <div class="d-card-text">
-            Manage teacher accounts and department assignments.
-        </div>
-
-        <div class="d-card-foot">
-            <a href="ManageTeachers.aspx" class="d-go">
-                Open <i class="ti ti-arrow-right"></i>
-            </a>
-            <span class="d-badge-status">Admin</span>
-        </div>
-    </div>
-
-    <div class="d-card card-blue">
-        <div class="d-card-top-bar"></div>
-        <div class="d-card-icon">
-            <div class="d-card-icon-inner">
-                <i class="ti ti-speakerphone"></i>
-            </div>
-        </div>
-
-        <div class="d-card-kicker">Communication</div>
-        <div class="d-card-title">Notices</div>
-        <div class="d-card-text">
-            Publish notices and announcements for students and teachers.
-        </div>
-
-        <div class="d-card-foot">
-            <a href="NoticeManage.aspx" class="d-go">
-                Open <i class="ti ti-arrow-right"></i>
-            </a>
-            <span class="d-badge-status">Admin</span>
-        </div>
-    </div>
-
-    <div class="d-card card-pink">
-        <div class="d-card-top-bar"></div>
-        <div class="d-card-icon">
-            <div class="d-card-icon-inner">
-                <i class="ti ti-chart-bar"></i>
-            </div>
-        </div>
-
-        <div class="d-card-kicker">Analytics</div>
-        <div class="d-card-title">Reports</div>
-        <div class="d-card-text">
-            View department reports, student statistics and activity.
-        </div>
-
-        <div class="d-card-foot">
-            <a href="Reports.aspx" class="d-go">
-                Open <i class="ti ti-arrow-right"></i>
-            </a>
-            <span class="d-badge-status">Admin</span>
-        </div>
-    </div>
-
-    <div class="d-card card-yellow">
-        <div class="d-card-top-bar"></div>
-        <div class="d-card-icon">
-            <div class="d-card-icon-inner">
-                <i class="ti ti-settings"></i>
-            </div>
-        </div>
-
-        <div class="d-card-kicker">System</div>
-        <div class="d-card-title">Department Settings</div>
-        <div class="d-card-text">
-            Configure department information and system preferences.
-        </div>
-
-        <div class="d-card-foot">
-            <a href="DepartmentSettings.aspx" class="d-go">
-                Open <i class="ti ti-arrow-right"></i>
-            </a>
-            <span class="d-badge-status">Admin</span>
-        </div>
-    </div>
-
-</div>
-</asp:Panel>
-
-    <%-- Staff roster — visible/bound for DepartmentAdmin only, removed server-side for Staff --%>
-    <asp:Panel ID="pnlStaffRoster" runat="server" CssClass="d-feature">
-        <div class="d-feature-head">
-            <div class="d-feature-head-left">
-                <i class="ti ti-user-cog"></i>
-                <span class="d-feature-head-title">Staff</span>
-            </div>
-        </div>
-        <div class="d-feature-body">
+        <div class="dd-table-container">
             <asp:GridView ID="gvStaff" runat="server"
                 AutoGenerateColumns="False"
                 DataKeyNames="ProfileId,IsActive"
-                CssClass="table"
-                GridLines="None"
+                CssClass="table-modern"
+                GridLines="None" BorderWidth="0" CellPadding="0"
                 OnRowCommand="gvStaff_RowCommand"
                 EmptyDataText="No staff in your department yet.">
                 <Columns>
                     <asp:BoundField DataField="FullName" HeaderText="Name" />
                     <asp:BoundField DataField="UserName" HeaderText="Username" />
                     <asp:TemplateField HeaderText="Status">
-                        <ItemTemplate><%# (bool)Eval("IsActive") ? "Active" : "Suspended" %></ItemTemplate>
+                        <ItemTemplate>
+                            <span class='dd-status-pill <%# (bool)Eval("IsActive") ? "dd-status-active" : "dd-status-suspended" %>'>
+                                <%# (bool)Eval("IsActive") ? "Active" : "Suspended" %>
+                            </span>
+                        </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Actions">
                         <ItemTemplate>
-                            <asp:LinkButton runat="server" CommandName="ToggleSuspend" CssClass="d-btn-ghost"
+                            <asp:LinkButton runat="server" CommandName="ToggleSuspend"
                                 OnClientClick='<%# "return confirm(\x27" + (((bool)Eval("IsActive")) ? "Suspend this staff member?" : "Reinstate this staff member?") + "\x27);" %>'>
                                 <%# (bool)Eval("IsActive") ? "Suspend" : "Reinstate" %>
                             </asp:LinkButton>
-                            <asp:LinkButton runat="server" CommandName="Delete" CssClass="d-btn-ghost"
+                            <asp:LinkButton runat="server" CommandName="Delete"
                                 OnClientClick="return confirm('Permanently remove this staff member? This cannot be undone.');">
                                 Remove
                             </asp:LinkButton>
@@ -366,35 +231,36 @@
         </div>
     </asp:Panel>
 
-    <%-- Student roster — visible to both DepartmentAdmin and Staff --%>
-    <div class="d-feature">
-        <div class="d-feature-head">
-            <div class="d-feature-head-left">
-                <i class="ti ti-users"></i>
-                <span class="d-feature-head-title">Students</span>
-            </div>
+    <!-- Student roster — visible to both DepartmentAdmin and Staff -->
+    <div class="dd-panel">
+        <div class="dd-panel-header">
+            <div class="dd-panel-title"><span class="dd-panel-title-icon"><i class="ti ti-users"></i></span> Students</div>
         </div>
-        <div class="d-feature-body">
+        <div class="dd-table-container">
             <asp:GridView ID="gvStudents" runat="server"
                 AutoGenerateColumns="False"
                 DataKeyNames="ProfileId,IsActive"
-                CssClass="table"
-                GridLines="None"
+                CssClass="table-modern"
+                GridLines="None" BorderWidth="0" CellPadding="0"
                 OnRowCommand="gvStudents_RowCommand"
                 EmptyDataText="No students in your department yet.">
                 <Columns>
                     <asp:BoundField DataField="FullName" HeaderText="Name" />
                     <asp:BoundField DataField="UserName" HeaderText="Username" />
                     <asp:TemplateField HeaderText="Status">
-                        <ItemTemplate><%# (bool)Eval("IsActive") ? "Active" : "Suspended" %></ItemTemplate>
+                        <ItemTemplate>
+                            <span class='dd-status-pill <%# (bool)Eval("IsActive") ? "dd-status-active" : "dd-status-suspended" %>'>
+                                <%# (bool)Eval("IsActive") ? "Active" : "Suspended" %>
+                            </span>
+                        </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Actions">
                         <ItemTemplate>
-                            <asp:LinkButton runat="server" CommandName="ToggleSuspend" CssClass="d-btn-ghost"
+                            <asp:LinkButton runat="server" CommandName="ToggleSuspend"
                                 OnClientClick='<%# "return confirm(\x27" + (((bool)Eval("IsActive")) ? "Suspend this student?" : "Reinstate this student?") + "\x27);" %>'>
                                 <%# (bool)Eval("IsActive") ? "Suspend" : "Reinstate" %>
                             </asp:LinkButton>
-                            <asp:LinkButton runat="server" CommandName="Delete" CssClass="d-btn-ghost"
+                            <asp:LinkButton runat="server" CommandName="Delete"
                                 OnClientClick="return confirm('Permanently remove this student? This cannot be undone.');">
                                 Remove
                             </asp:LinkButton>
@@ -404,8 +270,6 @@
             </asp:GridView>
         </div>
     </div>
-
-   
 
 </div>
 

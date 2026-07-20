@@ -1,9 +1,9 @@
-﻿<%@ Page Title="Manage Super Admins" Language="C#" AutoEventWireup="true" CodeBehind="SuperAdminManage.aspx.cs" Inherits="Learning_System.MainAdmin.SuperAdminManage" %>
+﻿<%@ Page Title="Manage Students" Language="C#" AutoEventWireup="true" CodeBehind="StudentManage.aspx.cs" Inherits="Learning_System.StudentManage" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Manage Super Admins</title>
+    <title>Manage Students</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -133,6 +133,19 @@
             display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
         }
 
+        .c-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 18px; }
+        .c-field label {
+            display: block; font-size: 11.5px; font-weight: 700; color: var(--primary);
+            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 7px;
+        }
+        .c-field select, .c-field input[type=text] {
+            width: 100%; padding: 11px 14px; border-radius: 10px; border: 1.5px solid var(--border-color);
+            font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13.5px; color: var(--primary);
+            background: var(--gray-bg); transition: border-color 0.15s ease, background 0.15s ease;
+        }
+        .c-field select:focus, .c-field input[type=text]:focus { outline: none; border-color: var(--pink); background: #fff; }
+        .c-form-actions { display: flex; gap: 10px; }
+
         .c-table-container { overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); }
         .table-modern { width: 100%; border-collapse: collapse; font-size: 13px; }
         .table-modern th {
@@ -153,7 +166,6 @@
             color: var(--primary); font-size: 14px; transition: all 0.15s ease;
         }
         .c-icon-btn:hover { border-color: var(--pink); color: var(--pink); }
-        .c-icon-btn.danger:hover { border-color: var(--danger); color: var(--danger); }
 
         .c-status-pill {
             display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 50px;
@@ -161,12 +173,6 @@
         }
         .c-status-pill.active { background: var(--success-bg); color: var(--success); }
         .c-status-pill.inactive { background: var(--danger-bg); color: var(--danger); }
-
-        .c-you-badge {
-            display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 50px;
-            background: var(--icon-blue-bg); color: var(--icon-blue); font-size: 10.5px; font-weight: 700;
-            margin-left: 8px; text-transform: uppercase; letter-spacing: 0.4px;
-        }
     </style>
 </head>
 <body>
@@ -175,25 +181,25 @@
 
             <aside class="c-sidebar">
                 <div class="c-brand">
-                    <div class="c-brand-badge"><i class="ti ti-crown"></i></div>
-                    <span>Main Admin</span>
+                    <div class="c-brand-badge"><i class="ti ti-shield-star"></i></div>
+                    <span>Super Admin</span>
                 </div>
 
                 <nav class="c-nav">
-                    <a href="main_admin.aspx" class="c-nav-link"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
-                    <a href="SuperAdminManage.aspx" class="c-nav-link active"><i class="ti ti-shield-star"></i> Super Admins</a>
-                    <a href="../SuperAdmin/DepartmentManage.aspx" class="c-nav-link"><i class="ti ti-building"></i> Departments</a>
-                    <a href="../SuperAdmin/DepartmentAdminManage.aspx" class="c-nav-link"><i class="ti ti-user-cog"></i> Department Admins</a>
-                    <a href="../SuperAdmin/StaffManage.aspx" class="c-nav-link"><i class="ti ti-user-check"></i> Staff</a>
-                    <a href="../SuperAdmin/StudentManage.aspx" class="c-nav-link"><i class="ti ti-users"></i> Students</a>
-                    <a href="../SuperAdmin/SubjectManage.aspx" class="c-nav-link"><i class="ti ti-book-2"></i> Subjects</a>
+                    <a href="super_admin.aspx" class="c-nav-link"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+                    <a href="DepartmentManage.aspx" class="c-nav-link"><i class="ti ti-building"></i> Departments</a>
+                    <a href="DepartmentAdminManage.aspx" class="c-nav-link"><i class="ti ti-user-cog"></i> Department Admins</a>
+                    <a href="StaffManage.aspx" class="c-nav-link"><i class="ti ti-user-check"></i> Staff</a>
+                    <a href="StudentManage.aspx" class="c-nav-link active"><i class="ti ti-users"></i> Students</a>
+                    <a href="SubjectManage.aspx" class="c-nav-link"><i class="ti ti-book-2"></i> Subjects</a>
                 </nav>
 
                 <div class="c-nav-eyebrow">Quick Actions</div>
                 <nav class="c-nav">
-                    <a href="/administrator/AppointUser.aspx" class="c-nav-link"><i class="ti ti-user-plus"></i> Appoint User</a>
-                    <a href="/NoticeManage.aspx" class="c-nav-link"><i class="ti ti-speakerphone"></i> Manage Notices</a>
-                    <a href="AuditLog.aspx" class="c-nav-link"><i class="ti ti-history"></i> Audit Log</a>
+                    <a href="DepartmentManage.aspx" class="c-nav-link"><i class="ti ti-building"></i> Manage Departments</a>
+                    <a href="/administrator/AppointUser.aspx" class="c-nav-link"><i class="ti ti-user-plus"></i> Manage Admins</a>
+                    <a href="StaffManage.aspx" class="c-nav-link"><i class="ti ti-user-check"></i> Manage Staff</a>
+                    <a href="SubjectManage.aspx" class="c-nav-link"><i class="ti ti-book-2"></i> Manage Subjects</a>
                 </nav>
 
                 <div class="c-sidebar-spacer"></div>
@@ -201,8 +207,8 @@
                 <div class="c-sidebar-user">
                     <div class="c-sidebar-avatar"><i class="ti ti-user"></i></div>
                     <div>
-                        <div class="c-sidebar-user-name">Main Admin</div>
-                        <div class="c-sidebar-user-role">Full System Access</div>
+                        <div class="c-sidebar-user-name">Super Admin</div>
+                        <div class="c-sidebar-user-role">Administrator</div>
                     </div>
                     <i class="ti ti-chevron-down"></i>
                 </div>
@@ -212,12 +218,12 @@
 
                 <div class="c-topbar c-fade-up">
                     <div>
-                        <h1>Super Admins</h1>
-                        <p>Only Main Admin can appoint, suspend, or remove Super Admins.</p>
+                        <h1>Students</h1>
+                        <p>Reassign department/semester, and activate or deactivate student accounts.</p>
                     </div>
                     <div style="display:flex; gap:10px;">
-                        <a href="/administrator/AppointUser.aspx?role=SuperAdmin" class="c-btn-pink"><i class="ti ti-user-plus"></i> Appoint Super Admin</a>
-                        <a href="main_admin.aspx" class="c-btn-ghost"><i class="ti ti-arrow-left"></i> Dashboard</a>
+                        <a href="/administrator/AppointUser.aspx" class="c-btn-pink"><i class="ti ti-user-plus"></i> Appoint New Student</a>
+                        <a href="super_admin.aspx" class="c-btn-ghost"><i class="ti ti-arrow-left"></i> Dashboard</a>
                     </div>
                 </div>
 
@@ -228,44 +234,77 @@
                     <div class="c-alert danger"><i class="ti ti-alert-circle"></i> <asp:Literal ID="litError" runat="server" /></div>
                 </asp:PlaceHolder>
 
+                <asp:Panel ID="pnlEdit" runat="server" CssClass="c-panel c-fade-up" Visible="false" style="animation-delay: 0.05s;">
+                    <div class="c-panel-header">
+                        <div class="c-panel-title">
+                            <span class="c-panel-title-icon"><i class="ti ti-users"></i></span>
+                            Edit Student — <asp:Literal ID="litEditingName" runat="server" />
+                        </div>
+                    </div>
+
+                    <asp:HiddenField ID="hfProfileId" runat="server" />
+
+                    <div class="c-form-grid">
+                        <div class="c-field">
+                            <label for="<%= ddlDepartment.ClientID %>">Department</label>
+                            <asp:DropDownList ID="ddlDepartment" runat="server" DataTextField="DepartmentName" DataValueField="DepartmentId" />
+                        </div>
+                        <div class="c-field">
+                            <label for="<%= ddlSemester.ClientID %>">Semester</label>
+                            <asp:DropDownList ID="ddlSemester" runat="server">
+                                <asp:ListItem Text="1" Value="1" />
+                                <asp:ListItem Text="2" Value="2" />
+                                <asp:ListItem Text="3" Value="3" />
+                                <asp:ListItem Text="4" Value="4" />
+                                <asp:ListItem Text="5" Value="5" />
+                                <asp:ListItem Text="6" Value="6" />
+                                <asp:ListItem Text="7" Value="7" />
+                                <asp:ListItem Text="8" Value="8" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <div class="c-form-actions">
+                        <asp:Button ID="btnSaveEdit" runat="server" Text="Save Changes" CssClass="c-btn-pink" OnClick="btnSaveEdit_Click" />
+                        <asp:Button ID="btnCancelEdit" runat="server" Text="Cancel" CssClass="c-btn-ghost" OnClick="btnCancelEdit_Click" CausesValidation="false" />
+                    </div>
+                </asp:Panel>
+
                 <div class="c-panel c-fade-up" style="animation-delay: 0.1s;">
                     <div class="c-panel-header">
                         <div class="c-panel-title">
-                            <span class="c-panel-title-icon"><i class="ti ti-shield-star"></i></span>
-                            All Super Admins
+                            <span class="c-panel-title-icon"><i class="ti ti-users"></i></span>
+                            All Students
                         </div>
                     </div>
                     <div class="c-table-container">
-                        <asp:GridView ID="gvSuperAdmins" runat="server"
+                        <asp:GridView ID="gvStudents" runat="server"
                             AutoGenerateColumns="False" class="table-modern" GridLines="None" BorderWidth="0" CellPadding="0"
-                            DataKeyNames="ProfileId" EmptyDataText="No Super Admins appointed yet."
-                            OnRowCommand="gvSuperAdmins_RowCommand" OnRowDataBound="gvSuperAdmins_RowDataBound">
+                            DataKeyNames="ProfileId" EmptyDataText="No students found."
+                            OnRowCommand="gvStudents_RowCommand">
                             <Columns>
-                                <asp:TemplateField HeaderText="Name">
-                                    <ItemTemplate>
-                                        <%# Eval("FullName") %><asp:Literal ID="litYouBadge" runat="server" Visible="false" Text="<span class='c-you-badge'>You</span>" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="Email" HeaderText="Email" />
+                                <asp:BoundField DataField="Username" HeaderText="Username" />
+                                <asp:BoundField DataField="DepartmentName" HeaderText="Department" />
+                                <asp:BoundField DataField="DepartmentCode" HeaderText="Code" />
+                                <asp:BoundField DataField="Semester" HeaderText="Semester" />
                                 <asp:TemplateField HeaderText="Status">
                                     <ItemTemplate>
                                         <span class='c-status-pill <%# (bool)Eval("IsActive") ? "active" : "inactive" %>'>
                                             <i class='ti <%# (bool)Eval("IsActive") ? "ti-circle-check" : "ti-circle-x" %>'></i>
-                                            <%# (bool)Eval("IsActive") ? "Active" : "Suspended" %>
+                                            <%# (bool)Eval("IsActive") ? "Active" : "Inactive" %>
                                         </span>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Actions">
                                     <ItemTemplate>
                                         <div class="c-row-actions">
-                                            <asp:LinkButton ID="lnkToggle" runat="server" CssClass="c-icon-btn" ToolTip="Suspend/Activate"
-                                                CommandName="ToggleActive" CommandArgument='<%# Eval("ProfileId") %>'>
-                                                <i class='ti <%# (bool)Eval("IsActive") ? "ti-player-pause" : "ti-player-play" %>'></i>
+                                            <asp:LinkButton ID="lnkEdit" runat="server" CssClass="c-icon-btn" ToolTip="Edit Department/Semester"
+                                                CommandName="EditStudent" CommandArgument='<%# Eval("ProfileId") %>'>
+                                                <i class="ti ti-pencil"></i>
                                             </asp:LinkButton>
-                                            <asp:LinkButton ID="lnkRemove" runat="server" CssClass="c-icon-btn danger" ToolTip="Remove"
-                                                CommandName="RemoveAdmin" CommandArgument='<%# Eval("ProfileId") %>'
-                                                OnClientClick='<%# "return confirm(\"Remove " + Eval("FullName") + " as a Super Admin? This cannot be undone.\");" %>'>
-                                                <i class="ti ti-trash"></i>
+                                            <asp:LinkButton ID="lnkToggle" runat="server" CssClass="c-icon-btn" ToolTip="Toggle Active/Inactive"
+                                                CommandName="ToggleActive" CommandArgument='<%# Eval("ProfileId") %>'>
+                                                <i class='ti <%# (bool)Eval("IsActive") ? "ti-toggle-right" : "ti-toggle-left" %>'></i>
                                             </asp:LinkButton>
                                         </div>
                                     </ItemTemplate>
