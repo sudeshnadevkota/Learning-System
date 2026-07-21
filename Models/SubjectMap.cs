@@ -46,6 +46,27 @@ namespace Learning_System
                 { "CMS", new SubjectInfo { Table = "bit_4_CMS", Title = "CMS based E Commerce", DepartmentCode = "BIT" } },
                 { "AI", new SubjectInfo { Table = "bit_4_AI", Title = "Artificial Intelligence", DepartmentCode = "BIT" } },
 
+                // 5th Semester
+{ "BIT_LHR", new SubjectInfo { Table = "bit_5_LHR", Title = "Leadership and Human Relations", DepartmentCode = "BIT" } },
+{ "BIT_SE", new SubjectInfo { Table = "bit_5_SE", Title = "Software Engineering", DepartmentCode = "BIT" } },
+{ "BIT_CRPT", new SubjectInfo { Table = "bit_5_CRPT", Title = "Cryptography", DepartmentCode = "BIT" } },
+{ "BIT_MMS", new SubjectInfo { Table = "bit_5_MMS", Title = "Multimedia System", DepartmentCode = "BIT" } },
+{ "BIT_CSLPA", new SubjectInfo { Table = "bit_5_CSLPA", Title = "Cyber Security Law & Policy", DepartmentCode = "BIT" } },
+
+
+// 6th Semester
+{ "BIT_VEP", new SubjectInfo { Table = "bit_6_VEP", Title = "Value & Ethics in Profession", DepartmentCode = "BIT" } },
+{ "BIT_MADF", new SubjectInfo { Table = "bit_6_MADF", Title = "Mobile App Development With Flutter", DepartmentCode = "BIT" } },
+{ "BIT_RM", new SubjectInfo { Table = "bit_6_RM", Title = "Research Methodology", DepartmentCode = "BIT" } },   // renamed from "RM"
+{ "BIT_SPM", new SubjectInfo { Table = "bit_6_SPM", Title = "Software Project Management", DepartmentCode = "BIT" } }, // renamed from "SPM"
+
+//7th Semester
+{ "BIT_SSA", new SubjectInfo { Table = "bit_7_SSA", Title = "System Software and Administration", DepartmentCode = "BIT" } },
+{ "BIT_MIS", new SubjectInfo { Table = "bit_7_MIS", Title = "Management Information System", DepartmentCode = "BIT" } },
+{ "BIT_CC", new SubjectInfo { Table = "bit_7_CC", Title = "Cloud Computing", DepartmentCode = "BIT" } },
+
+                                                    //BCS
+
                 // BCS - 1st Semester
                 { "BCS_ENG", new SubjectInfo { Table = "bcs_1_ENG", Title = "English", DepartmentCode = "BCS" } },
                 { "BCS_CN", new SubjectInfo { Table = "bcs_1_CN", Title = "Computer Network", DepartmentCode = "BCS" } },

@@ -32,104 +32,104 @@
             border-right: 1px solid rgba(124,58,237,0.20);
         }
 
-        /* Scrollbar */
-        #sidebar::-webkit-scrollbar {
-            width: 4px;
-        }
+            /* Scrollbar */
+            #sidebar::-webkit-scrollbar {
+                width: 4px;
+            }
 
-        #sidebar::-webkit-scrollbar-track {
-            background: transparent;
-        }
+            #sidebar::-webkit-scrollbar-track {
+                background: transparent;
+            }
 
-        #sidebar::-webkit-scrollbar-thumb {
-            background: rgba(124,58,237,0.30);
-            border-radius: 20px;
-        }
+            #sidebar::-webkit-scrollbar-thumb {
+                background: rgba(124,58,237,0.30);
+                border-radius: 20px;
+            }
 
-        /* Watermark logo at bottom of sidebar */
-        #sidebar::after {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            left: -70px;
-            width: 400px;
-            height: 400px;
-            background: url('logo/sidebar-removebg-preview.png') no-repeat center/contain;
-            opacity: 0.35;
-            pointer-events: none;
-            z-index: 0;
-        }
+            /* Watermark logo at bottom of sidebar */
+            #sidebar::after {
+                content: '';
+                position: absolute;
+                bottom: -30px;
+                left: -70px;
+                width: 400px;
+                height: 400px;
+                background: url('logo/sidebar-removebg-preview.png') no-repeat center/contain;
+                opacity: 0.35;
+                pointer-events: none;
+                z-index: 0;
+            }
 
-        /* ── SEMESTERS label at top ── */
-        #sidebar::before {
-            content: "SEMESTERS";
-            display: block;
-            font-family: 'Sora', sans-serif;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,0.35);
-            padding: 18px 20px 10px;
-            position: relative;
-            z-index: 1;
-        }
+            /* ── SEMESTERS label at top ── */
+            #sidebar::before {
+                content: "SEMESTERS";
+                display: block;
+                font-family: 'Sora', sans-serif;
+                font-size: 10px;
+                font-weight: 800;
+                letter-spacing: 2px;
+                color: rgba(255,255,255,0.35);
+                padding: 18px 20px 10px;
+                position: relative;
+                z-index: 1;
+            }
 
-        #sidebar ul {
-            padding: 0;
-            list-style: none;
-            margin: 0;
-        }
+            #sidebar ul {
+                padding: 0;
+                list-style: none;
+                margin: 0;
+            }
 
-        #sidebar > ul {
-            padding: 6px 10px 20px;
-            position: relative;
-            z-index: 1;
-        }
+            #sidebar > ul {
+                padding: 6px 10px 20px;
+                position: relative;
+                z-index: 1;
+            }
 
-        #sidebar ul li {
-            padding: 0;
-            margin-bottom: 2px;
-        }
+            #sidebar ul li {
+                padding: 0;
+                margin-bottom: 2px;
+            }
 
-        /* ── Semester top-level link ── */
-        #sidebar > ul > li > a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            padding: 10px 12px;
-            border-radius: 9px;
-            font-family: 'Sora', sans-serif;
-            font-size: 13.5px;
-            font-weight: 600;
-            position: relative;
-            transition: background 0.18s, color 0.18s;
-            gap: 10px;
-        }
+            /* ── Semester top-level link ── */
+            #sidebar > ul > li > a {
+                color: rgba(255,255,255,0.85);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                padding: 10px 12px;
+                border-radius: 9px;
+                font-family: 'Sora', sans-serif;
+                font-size: 13.5px;
+                font-weight: 600;
+                position: relative;
+                transition: background 0.18s, color 0.18s;
+                gap: 10px;
+            }
 
-        #sidebar > ul > li > a:hover {
-            background: rgba(124,58,237,0.18);
-            color: #fff;
-        }
+                #sidebar > ul > li > a:hover {
+                    background: rgba(124,58,237,0.18);
+                    color: #fff;
+                }
 
-        /* Active semester (when submenu is open) */
-        #sidebar > ul > li.active-sem > a {
-            background: rgba(30,58,138,0.55);
-            color: #fff;
-            font-weight: 700;
-            box-shadow: 0 3px 12px rgba(124,58,237,0.22);
-        }
+            /* Active semester (when submenu is open) */
+            #sidebar > ul > li.active-sem > a {
+                background: rgba(30,58,138,0.55);
+                color: #fff;
+                font-weight: 700;
+                box-shadow: 0 3px 12px rgba(124,58,237,0.22);
+            }
 
-        #sidebar > ul > li.active-sem > a::before {
-            content: "";
-            position: absolute;
-            left: -6px;
-            top: 25%;
-            bottom: 25%;
-            width: 3px;
-            border-radius: 2px;
-            background: #7c3aed;
-        }
+                #sidebar > ul > li.active-sem > a::before {
+                    content: "";
+                    position: absolute;
+                    left: -6px;
+                    top: 25%;
+                    bottom: 25%;
+                    width: 3px;
+                    border-radius: 2px;
+                    background: #7c3aed;
+                }
 
         /* ── Numbered badge ── */
         .sem-badge {
@@ -183,56 +183,56 @@
             padding: 2px 0 6px 0;
         }
 
-        #sidebar .submenu ul {
-            padding: 0;
-        }
+            #sidebar .submenu ul {
+                padding: 0;
+            }
 
-        #sidebar .submenu ul li a {
-            color: rgba(255,255,255,0.55);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            padding: 8px 12px 8px 40px;
-            margin-bottom: 1px;
-            border-radius: 8px;
-            font-size: 12.5px;
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 400;
-            transition: color 0.18s, background 0.18s;
-            position: relative;
-        }
+                #sidebar .submenu ul li a {
+                    color: rgba(255,255,255,0.55);
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 9px;
+                    padding: 8px 12px 8px 40px;
+                    margin-bottom: 1px;
+                    border-radius: 8px;
+                    font-size: 12.5px;
+                    font-family: 'DM Sans', sans-serif;
+                    font-weight: 400;
+                    transition: color 0.18s, background 0.18s;
+                    position: relative;
+                }
 
-        /* dot before each subject */
-        #sidebar .submenu ul li a::before {
-            content: "";
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.25);
-            flex-shrink: 0;
-            transition: background 0.18s;
-        }
+                    /* dot before each subject */
+                    #sidebar .submenu ul li a::before {
+                        content: "";
+                        width: 5px;
+                        height: 5px;
+                        border-radius: 50%;
+                        background: rgba(255,255,255,0.25);
+                        flex-shrink: 0;
+                        transition: background 0.18s;
+                    }
 
-        #sidebar .submenu ul li a:hover {
-            color: #fff;
-            background: rgba(124,58,237,0.14);
-        }
+                    #sidebar .submenu ul li a:hover {
+                        color: #fff;
+                        background: rgba(124,58,237,0.14);
+                    }
 
-        #sidebar .submenu ul li a:hover::before {
-            background: rgba(255,255,255,0.7);
-        }
+                        #sidebar .submenu ul li a:hover::before {
+                            background: rgba(255,255,255,0.7);
+                        }
 
-        /* Active subject link */
-        #sidebar .submenu ul li.active-subject > a {
-            color: #fff;
-            font-weight: 600;
-            background: rgba(124,58,237,0.22);
-        }
+                /* Active subject link */
+                #sidebar .submenu ul li.active-subject > a {
+                    color: #fff;
+                    font-weight: 600;
+                    background: rgba(124,58,237,0.22);
+                }
 
-        #sidebar .submenu ul li.active-subject > a::before {
-            background: #7c3aed;
-        }
+                    #sidebar .submenu ul li.active-subject > a::before {
+                        background: #7c3aed;
+                    }
 
         /* ══ CONTENT ══ */
         #content {
@@ -304,10 +304,10 @@
             cursor: pointer;
         }
 
-        #menu-bar button:hover {
-            background: #d0d8f0 !important;
-            box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
-        }
+            #menu-bar button:hover {
+                background: #d0d8f0 !important;
+                box-shadow: 0 4px 12px rgba(8,21,71,0.18) !important;
+            }
 
         #icon {
             color: #12183a !important;
@@ -319,7 +319,7 @@
         /* ══ MEDIA QUERIES FOR SIDEBAR LAYOUTS ══ */
         @media (max-width: 900px) {
             .sidebar-open #sidebar {
-                width: 280px; 
+                width: 280px;
             }
 
             .sidebar-open #menu-bar {
@@ -362,7 +362,7 @@
             }
 
             .sidebar-open #menu-bar {
-                left: 250px; 
+                left: 250px;
             }
 
             #menu-bar {
@@ -382,181 +382,171 @@
     <title>BIT notes</title>
 </head>
 <body>
-  <form id="form2" runat="server">
-    <div id="sidebar-overlay" onclick="closeSidebarOverlay()"></div>
+    <form id="form2" runat="server">
+        <div id="sidebar-overlay" onclick="closeSidebarOverlay()"></div>
 
-    <nav class="navbar navbar-light bg-light shadow"
-        style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1.25rem; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; box-sizing: border-box;">
+        <nav class="navbar navbar-light bg-light shadow"
+            style="position: fixed; top: 0; left: 0; width: 100%; height: 5rem; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 0 1.25rem; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; box-sizing: border-box;">
 
-        <div style="display: flex; align-items: center; margin: 0; padding: 0;">
-            <a href="../../Default.aspx" style="display: flex; align-items: center;">
-                <img src="../slide/view logo.png" alt="Logo" style="width: auto; max-width: 120px; height: auto; max-height: 3.2rem; display: block;">
-            </a>
+            <div style="display: flex; align-items: center; margin: 0; padding: 0;">
+                <a href="../../Default.aspx" style="display: flex; align-items: center;">
+                    <img src="../slide/view logo.png" alt="Logo" style="width: auto; max-width: 120px; height: auto; max-height: 3.2rem; display: block;">
+                </a>
+            </div>
+
+            <div style="display: flex; align-items: center; margin: 0; padding: 0; text-align: right;">
+                <h3 class="mobile-header-text" style="font-weight: bold; color: #002366; margin: 0; font-size: 1.6rem; letter-spacing: 0.5px; white-space: nowrap !important; display: inline-block;">BIT NOTES</h3>
+            </div>
+        </nav>
+
+        <div class="d-flex">
+            <div id="sidebar">
+                <ul>
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'first')">
+                            <span class="submenu-toggle"><span class="sem-badge">1</span><span class="sem-name">First Sem</span> <i class="fas fa-caret-down first"></i></span>
+                        </a>
+                        <div id="first-submenu" class="submenu">
+                            <ul>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BE">Business English</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=PIT">Principle of Information Technology </a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=ICP">Introduction to C++ Programming</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=Math">Computer Related Mathematics and Statistics</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BCA">Basic Computer Architecture</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'second')">
+                            <span class="submenu-toggle"><span class="sem-badge">2</span><span class="sem-name">Second Sem</span> <i class="fas fa-caret-down second"></i></span>
+                        </a>
+                        <div id="second-submenu" class="submenu">
+                            <ul>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=HCI">Human Computer Interaction</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=DM">Discrete Mathematics</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=DCN">Data Communication and Networks</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=OOP">Object Oriented Programming</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=OS">Operating System</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'third')">
+                            <span class="submenu-toggle"><span class="sem-badge">3</span><span class="sem-name">Third Sem</span> <i class="fas fa-caret-down third"></i></span>
+                        </a>
+                        <div id="third-submenu" class="submenu">
+                            <ul>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=DELD">Digital Electronics and Logic Design</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=DSA">Data Structure &amp; Algorithm</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=IM">Industrial Management</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=WT">Web Technology</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=LA">Linux Administration</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=DMS">Database Management System</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'fourth')">
+                            <span class="submenu-toggle"><span class="sem-badge">4</span><span class="sem-name">Fourth Sem</span> <i class="fas fa-caret-down fourth"></i></span>
+                        </a>
+                        <div id="fourth-submenu" class="submenu">
+                            <ul>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=VP">Visual Programming</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=SAD">System Analysis &amp; Design</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_OB">Organizational Behavior</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=ISS">Information System Security</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=CMS">CMS based E Commerce</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=AI">Artifical Intelligence</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'fifth')">
+                            <span class="submenu-toggle"><span class="sem-badge">5</span><span class="sem-name">Fifth Sem</span> <i class="fas fa-caret-down fifth"></i></span>
+                        </a>
+                        <div id="fifth-submenu" class="submenu">
+                            <ul>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_LHR">Leadership and Human Relations</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_SE">Software Engineering</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_CRPT">Cryptography</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_MMS">Multimedia System</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_CSLPA">Cyber Security Law &amp; Policy</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'sixth')">
+                            <span class="submenu-toggle"><span class="sem-badge">6</span><span class="sem-name">Sixth Sem</span> <i class="fas fa-caret-down sixth"></i></span>
+                        </a>
+                        <div id="sixth-submenu" class="submenu">
+                            <ul>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_VEP">Value &amp; Ethics in Profession</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_MADF">Mobile App Development With Flutter</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_RM">Research Methodology</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_SPM">Software Project Management</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" onclick="toggleSubmenu(event, 'seventh')">
+                            <span class="submenu-toggle"><span class="sem-badge">7</span><span class="sem-name">Seventh Sem</span> <i class="fas fa-caret-down seventh"></i></span>
+                        </a>
+                        <div id="seventh-submenu" class="submenu">
+                            <ul>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_SSA">System Software and Administration</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_MIS">Management Information System</a></li>
+                                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_CC">Cloud Computing</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div id="menu-bar">
+                <button type="button" onclick="toggleSidebar()" class="btn">
+                    <i class="fa fa-arrow-right" aria-hidden="true" style="color: black;" id="icon"></i>
+                </button>
+            </div>
+
+            <div id="content" style="padding-top: 1%; width: 90%; margin-left: 5%;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
+    </form>
 
-        <div style="display: flex; align-items: center; margin: 0; padding: 0; text-align: right;">
-            <h3 class="mobile-header-text" style="font-weight: bold; color: #002366; margin: 0; font-size: 1.6rem; letter-spacing: 0.5px; white-space: nowrap !important; display: inline-block;">BIT NOTES</h3>
-        </div>
-    </nav>
-
-    <div class="d-flex">
-      <div id="sidebar">
-        <ul>
-          <li>
-            <a href="#" onclick="toggleSubmenu(event, 'first')">
-              <span class="submenu-toggle"><span class="sem-badge">1</span><span class="sem-name">First Sem</span> <i class="fas fa-caret-down first"></i></span>
-            </a>
-            <div id="first-submenu" class="submenu">
-              <ul>
-                <li><a href="/Bit_Notes/course_content.aspx?code=BE">Business English</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=PIT">Principle of Information Technology </a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=ICP">Introduction to C++ Programming</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=Math">Computer Related Mathematics and Statistics</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=BCA">Basic Computer Architecture</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li>
-            <a href="#" onclick="toggleSubmenu(event, 'second')">
-              <span class="submenu-toggle"><span class="sem-badge">2</span><span class="sem-name">Second Sem</span> <i class="fas fa-caret-down second"></i></span>
-            </a>
-            <div id="second-submenu" class="submenu">
-              <ul>
-                <li><a href="/Bit_Notes/course_content.aspx?code=HCI">Human Computer Interaction</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=DM">Discrete Mathematics</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=DCN">Data Communication and Networks</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=OOP">Object Oriented Programming</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=OS">Operating System</a></li>
-              </ul>
-            </div>
-          </li>
-          
-          <li>
-            <a href="#" onclick="toggleSubmenu(event, 'third')">
-              <span class="submenu-toggle"><span class="sem-badge">3</span><span class="sem-name">Third Sem</span> <i class="fas fa-caret-down third"></i></span>
-            </a>
-            <div id="third-submenu" class="submenu">
-              <ul>
-                <li><a href="/Bit_Notes/course_content.aspx?code=DELD">Digital Electronics and Logic Design</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=DSA">Data Structure &amp; Algorithm</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=IM">Industrial Management</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=WT">Web Technology</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=LA">Linux Administration</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=DMS">Database Management System</a></li>
-              </ul>
-            </div>
-          </li>
-          
-          <li>
-            <a href="#" onclick="toggleSubmenu(event, 'fourth')">
-              <span class="submenu-toggle"><span class="sem-badge">4</span><span class="sem-name">Fourth Sem</span> <i class="fas fa-caret-down fourth"></i></span>
-            </a>
-            <div id="fourth-submenu" class="submenu">
-              <ul>
-                <li><a href="/Bit_Notes/course_content.aspx?code=VP">Visual Programming</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=SAD">System Analysis &amp; Design</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=BIT_OB">Organizational Behavior</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=ISS">Information System Security</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=CMS">CMS based E Commerce</a></li>
-                <li><a href="/Bit_Notes/course_content.aspx?code=AI">Artifical Intelligence</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li>
-            <a href="#" onclick="toggleSubmenu(event, 'fifth')">
-              <span class="submenu-toggle"><span class="sem-badge">5</span><span class="sem-name">Fifth Sem</span> <i class="fas fa-caret-down fifth"></i></span>
-            </a>
-            <div id="fifth-submenu" class="submenu">
-              <ul>
-                <li><a href="cyber_security_law_and_policy.aspx">CLS&amp;P</a></li>
-                <li><a href="leadership_and_human_relations.aspx">LS&amp;HR</a></li>
-                <li><a href="software_engineering.aspx">SE</a></li>
-                <li><a href="multimedia_system.aspx">MS</a></li>
-                <li><a href="Cryptography.aspx">Cryptography</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li>
-            <a href="#" onclick="toggleSubmenu(event, 'sixth')">
-              <span class="submenu-toggle"><span class="sem-badge">6</span><span class="sem-name">Sixth Sem</span> <i class="fas fa-caret-down sixth"></i></span>
-            </a>
-            <div id="sixth-submenu" class="submenu">
-              <ul>
-                <li><a href="mobile_computing.aspx">Mobile Com.</a></li>
-                <li><a href="software_project_management.aspx">SPM</a></li>
-                <li><a href="ResearchMethodology.aspx">Research Methodology</a></li>
-                <li><a href="SocialValues&Ethics.aspx">Social Values &amp; Ethics</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li>
-            <a href="#" onclick="toggleSubmenu(event, 'seventh')">
-              <span class="submenu-toggle"><span class="sem-badge">7</span><span class="sem-name">Seventh Sem</span> <i class="fas fa-caret-down seventh"></i></span>
-            </a>
-            <div id="seventh-submenu" class="submenu">
-              <ul>
-                <li><a href="cloud_computing.aspx">Cloud Com.</a></li>
-                <li><a href="project_work.aspx">Project Work</a></li>
-                <li><a href="ManagementInformationSystem.aspx">MIS</a></li>
-                <li><a href="SystemSoftware_Admin.aspx">SystemSoftware Admin</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li>
-            <a href="#" onclick="toggleSubmenu(event, 'eighth')">
-              <span class="submenu-toggle"><span class="sem-badge">8</span><span class="sem-name">Eighth Sem</span> <i class="fas fa-caret-down eighth"></i></span>
-            </a>
-            <div id="eighth-submenu" class="submenu">
-              <ul>
-                <li><a href="industrial_training.aspx">Industrial Training</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div id="menu-bar">
-        <button type="button" onclick="toggleSidebar()" class="btn">
-          <i class="fa fa-arrow-right" aria-hidden="true" style="color: black;" id="icon"></i>
-        </button>
-      </div>
-
-      <div id="content" style="padding-top: 1%; width: 90%; margin-left: 5%;">
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
-      </div>
-    </div>
-  </form>
-
-<script>
-  function isMobile() {
+    <script>
+function isMobile() {
     return window.innerWidth <= 900;
-  }
+}
 
-  function updateMenuBarPosition() {
+function updateMenuBarPosition() {
     var sidebar = document.getElementById('sidebar');
     var menuBar = document.getElementById('menu-bar');
     if (!sidebar || !menuBar) return;
 
     if (document.body.classList.contains('sidebar-open')) {
-      if (window.innerWidth <= 576) {
-        menuBar.style.left = '250px';
-      } else if (window.innerWidth <= 900) {
-        menuBar.style.left = '290px';
-      } else {
-        menuBar.style.left = '310px';
-      }
+        if (window.innerWidth <= 576) {
+            menuBar.style.left = '250px';
+        } else if (window.innerWidth <= 900) {
+            menuBar.style.left = '290px';
+        } else {
+            menuBar.style.left = '310px';
+        }
     } else {
-      menuBar.style.left = '10px';
+        menuBar.style.left = '10px';
     }
-  }
+}
 
-  function toggleSidebar() {
+function toggleSidebar() {
     var sidebar = document.getElementById('sidebar');
     var content = document.getElementById('content');
     var icon = document.getElementById('icon');
@@ -564,28 +554,28 @@
     if (!sidebar || !content || !icon) return;
 
     if (document.body.classList.contains('sidebar-open')) {
-      document.body.classList.remove('sidebar-open');
-      sidebar.style.width = '0';
-      content.style.marginLeft = '0';
-      content.style.width = '100%';
-      icon.style.transform = 'rotate(0deg)';
-    } else {
-      document.body.classList.add('sidebar-open');
-      if (isMobile()) {
-        sidebar.style.width = window.innerWidth <= 576 ? '240px' : '280px';
+        document.body.classList.remove('sidebar-open');
+        sidebar.style.width = '0';
         content.style.marginLeft = '0';
         content.style.width = '100%';
-      } else {
-        sidebar.style.width = '300px';
-        content.style.marginLeft = '300px';
-        content.style.width = 'calc(100% - 300px)';
-      }
-      icon.style.transform = 'rotate(180deg)';
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        document.body.classList.add('sidebar-open');
+        if (isMobile()) {
+            sidebar.style.width = window.innerWidth <= 576 ? '240px' : '280px';
+            content.style.marginLeft = '0';
+            content.style.width = '100%';
+        } else {
+            sidebar.style.width = '300px';
+            content.style.marginLeft = '300px';
+            content.style.width = 'calc(100% - 300px)';
+        }
+        icon.style.transform = 'rotate(180deg)';
     }
     updateMenuBarPosition();
-  }
+}
 
-  function closeSidebarOverlay() {
+function closeSidebarOverlay() {
     var sidebar = document.getElementById('sidebar');
     var content = document.getElementById('content');
     var icon = document.getElementById('icon');
@@ -595,9 +585,9 @@
     if (content) { content.style.marginLeft = '0'; content.style.width = '100%'; }
     if (icon) icon.style.transform = 'rotate(0deg)';
     updateMenuBarPosition();
-  }
+}
 
-  function toggleSubmenu(event, submenuId) {
+function toggleSubmenu(event, submenuId) {
     if (event) event.preventDefault();
 
     var submenu = document.getElementById(submenuId + '-submenu');
@@ -609,45 +599,45 @@
 
     var items = document.querySelectorAll('#sidebar > ul > li');
     for (var i = 0; i < items.length; i++) {
-      var li = items[i];
-      if (li !== parentLi) {
-        li.classList.remove('active-sem');
-        var otherSubmenu = li.querySelector('.submenu');
-        var otherIcon = li.querySelector('.fas.fa-caret-down');
-        if (otherSubmenu) otherSubmenu.style.display = 'none';
-        if (otherIcon) otherIcon.classList.remove('rotate');
-      }
+        var li = items[i];
+        if (li !== parentLi) {
+            li.classList.remove('active-sem');
+            var otherSubmenu = li.querySelector('.submenu');
+            var otherIcon = li.querySelector('.fas.fa-caret-down');
+            if (otherSubmenu) otherSubmenu.style.display = 'none';
+            if (otherIcon) otherIcon.classList.remove('rotate');
+        }
     }
 
     if (submenu.style.display === 'block') {
-      submenu.style.display = 'none';
-      if (icon) icon.classList.remove('rotate');
-      if (parentLi) parentLi.classList.remove('active-sem');
-      sessionStorage.removeItem('openSubmenu');
+        submenu.style.display = 'none';
+        if (icon) icon.classList.remove('rotate');
+        if (parentLi) parentLi.classList.remove('active-sem');
+        sessionStorage.removeItem('openSubmenu');
     } else {
-      submenu.style.display = 'block';
-      if (icon) icon.classList.add('rotate');
-      if (parentLi) parentLi.classList.add('active-sem');
+        submenu.style.display = 'block';
+        if (icon) icon.classList.add('rotate');
+        if (parentLi) parentLi.classList.add('active-sem');
 
-      var sidebar = document.getElementById('sidebar');
-      var content = document.getElementById('content');
-      var mainIcon = document.getElementById('icon');
+        var sidebar = document.getElementById('sidebar');
+        var content = document.getElementById('content');
+        var mainIcon = document.getElementById('icon');
 
-      if (isMobile()) {
-        sidebar.style.width = window.innerWidth <= 576 ? '240px' : '280px';
-        if (content) { content.style.marginLeft = '0'; content.style.width = '100%'; }
-      } else {
-        if (sidebar) sidebar.style.width = '300px';
-        if (content) { content.style.marginLeft = '300px'; content.style.width = 'calc(100% - 300px)'; }
-      }
-      if (mainIcon) mainIcon.style.transform = 'rotate(180deg)';
+        if (isMobile()) {
+            sidebar.style.width = window.innerWidth <= 576 ? '240px' : '280px';
+            if (content) { content.style.marginLeft = '0'; content.style.width = '100%'; }
+        } else {
+            if (sidebar) sidebar.style.width = '300px';
+            if (content) { content.style.marginLeft = '300px'; content.style.width = 'calc(100% - 300px)'; }
+        }
+        if (mainIcon) mainIcon.style.transform = 'rotate(180deg)';
 
-      sessionStorage.setItem('openSubmenu', submenuId);
+        sessionStorage.setItem('openSubmenu', submenuId);
     }
     updateMenuBarPosition();
-  }
+}
 
-  function openSubmenuById(submenuId) {
+function openSubmenuById(submenuId) {
     var submenu = document.getElementById(submenuId + '-submenu');
     var icon = document.querySelector('.' + submenuId);
     if (!submenu) return;
@@ -656,26 +646,26 @@
     submenu.style.display = 'block';
     if (icon) icon.classList.add('rotate');
     if (parentLi) parentLi.classList.add('active-sem');
-  }
+}
 
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     var sidebar = document.getElementById('sidebar');
     var content = document.getElementById('content');
     var icon = document.getElementById('icon');
 
     if (!isMobile()) {
-      document.body.classList.add('no-transition');
-      document.body.classList.add('sidebar-open');
+        document.body.classList.add('no-transition');
+        document.body.classList.add('sidebar-open');
 
-      if (sidebar) sidebar.style.width = '300px';
-      if (content) { content.style.marginLeft = '300px'; content.style.width = 'calc(100% - 300px)'; }
-      if (icon) icon.style.transform = 'rotate(180deg)';
+        if (sidebar) sidebar.style.width = '300px';
+        if (content) { content.style.marginLeft = '300px'; content.style.width = 'calc(100% - 300px)'; }
+        if (icon) icon.style.transform = 'rotate(180deg)';
 
-      requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          document.body.classList.remove('no-transition');
+            requestAnimationFrame(function () {
+                document.body.classList.remove('no-transition');
+            });
         });
-      });
     }
 
     updateMenuBarPosition();
@@ -687,42 +677,42 @@
     var matchedSubmenuId = null;
 
     for (var j = 0; j < links.length; j++) {
-      var link = links[j];
-      var hrefAttr = link.getAttribute('href');
-      if (!hrefAttr) continue;
+        var link = links[j];
+        var hrefAttr = link.getAttribute('href');
+        if (!hrefAttr) continue;
 
-      var linkUrl = new URL(hrefAttr, window.location.origin);
-      var linkFull = (linkUrl.pathname + linkUrl.search).toLowerCase();
+        var linkUrl = new URL(hrefAttr, window.location.origin);
+        var linkFull = (linkUrl.pathname + linkUrl.search).toLowerCase();
 
-      if (linkFull === currentFull) {
-        if (link.parentElement) link.parentElement.classList.add('active-subject');
-        var parentSubmenu = link.parentElement;
+        if (linkFull === currentFull) {
+            if (link.parentElement) link.parentElement.classList.add('active-subject');
+            var parentSubmenu = link.parentElement;
 
-        while (parentSubmenu && !parentSubmenu.classList.contains('submenu')) {
-          parentSubmenu = parentSubmenu.parentElement;
+            while (parentSubmenu && !parentSubmenu.classList.contains('submenu')) {
+                parentSubmenu = parentSubmenu.parentElement;
+            }
+
+            if (parentSubmenu) {
+                parentSubmenu.style.display = 'block';
+                var parentLi = parentSubmenu.parentElement;
+                if (parentLi) {
+                    parentLi.classList.add('active-sem');
+                    var caret = parentLi.querySelector('.fas.fa-caret-down');
+                    if (caret) caret.classList.add('rotate');
+                    matchedSubmenuId = parentSubmenu.id.replace('-submenu', '');
+                }
+            }
         }
-
-        if (parentSubmenu) {
-          parentSubmenu.style.display = 'block';
-          var parentLi = parentSubmenu.parentElement;
-          if (parentLi) {
-            parentLi.classList.add('active-sem');
-            var caret = parentLi.querySelector('.fas.fa-caret-down');
-            if (caret) caret.classList.add('rotate');
-            matchedSubmenuId = parentSubmenu.id.replace('-submenu', '');
-          }
-        }
-      }
     }
 
     if (matchedSubmenuId) {
-      sessionStorage.setItem('openSubmenu', matchedSubmenuId);
+        sessionStorage.setItem('openSubmenu', matchedSubmenuId);
     } else {
-      var savedSubmenu = sessionStorage.getItem('openSubmenu');
-      if (savedSubmenu) openSubmenuById(savedSubmenu);
+        var savedSubmenu = sessionStorage.getItem('openSubmenu');
+        if (savedSubmenu) openSubmenuById(savedSubmenu);
     }
     updateMenuBarPosition();
-  });
+});
 </script>
 </body>
 </html>

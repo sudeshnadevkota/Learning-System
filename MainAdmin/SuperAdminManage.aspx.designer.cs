@@ -29,5 +29,6 @@ namespace Learning_System.MainAdmin
 
         protected global::System.Web.UI.WebControls.Literal litSuccess;
         protected global::System.Web.UI.WebControls.Literal litError;
+
     }
 }

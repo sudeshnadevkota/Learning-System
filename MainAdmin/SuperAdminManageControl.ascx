@@ -162,40 +162,7 @@
 </style>
 
 <div class="c-shell">
-    <aside class="c-sidebar">
-        <div class="c-brand">
-            <div class="c-brand-badge"><i class="ti ti-crown"></i></div>
-            <span>Main Admin</span>
-        </div>
-
-        <nav class="c-nav">
-            <a href="main_admin.aspx" class="c-nav-link"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
-            <a href="SuperAdminManage.aspx" class="c-nav-link active"><i class="ti ti-shield-star"></i> Super Admins</a>
-            <a href="../SuperAdmin/DepartmentManage.aspx" class="c-nav-link"><i class="ti ti-building"></i> Departments</a>
-            <a href="../SuperAdmin/DepartmentAdminManage.aspx" class="c-nav-link"><i class="ti ti-user-cog"></i> Department Admins</a>
-            <a href="../SuperAdmin/StaffManage.aspx" class="c-nav-link"><i class="ti ti-user-check"></i> Staff</a>
-            <a href="../SuperAdmin/StudentManage.aspx" class="c-nav-link"><i class="ti ti-users"></i> Students</a>
-            <a href="../SuperAdmin/SubjectManage.aspx" class="c-nav-link"><i class="ti ti-book-2"></i> Subjects</a>
-        </nav>
-
-        <div class="c-nav-eyebrow">Quick Actions</div>
-        <nav class="c-nav">
-            <a href="/administrator/AppointUser.aspx" class="c-nav-link"><i class="ti ti-user-plus"></i> Appoint User</a>
-            <a href="/NoticeManage.aspx" class="c-nav-link"><i class="ti ti-speakerphone"></i> Manage Notices</a>
-            <a href="AuditLog.aspx" class="c-nav-link"><i class="ti ti-history"></i> Audit Log</a>
-        </nav>
-
-        <div class="c-sidebar-spacer"></div>
-
-        <div class="c-sidebar-user">
-            <div class="c-sidebar-avatar"><i class="ti ti-user"></i></div>
-            <div>
-                <div class="c-sidebar-user-name">Main Admin</div>
-                <div class="c-sidebar-user-role">Full System Access</div>
-            </div>
-            <i class="ti ti-chevron-down"></i>
-        </div>
-    </aside>
+   
 
     <main class="c-main">
         <div class="c-topbar c-fade-up">

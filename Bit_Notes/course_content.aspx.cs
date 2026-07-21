@@ -102,7 +102,7 @@ namespace Learning_System.Bit_Notes
 
                             if (sdr["FileName"] != DBNull.Value)
                             {
-                                hidSylUrl.Value = ResolveUrl("~/Bit_Notes/SyllabusViewer.ashx?code=" + code);
+                               hidSylUrl.Value = ResolveUrl("~/Bit_Notes/SyllabusViewer.ashx?code=" + code);
                             }
                         }
                         else

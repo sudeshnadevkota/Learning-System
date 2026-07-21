@@ -171,31 +171,8 @@
 
         .c-sidebar-spacer { flex: 1; }
 
-        .c-sidebar-user {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
 
-        .c-sidebar-avatar {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--pink), #ff5aa5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 13px;
-            flex: none;
-        }
-
-        .c-sidebar-user-name { font-size: 13px; font-weight: 700; line-height: 1.2; }
-        .c-sidebar-user-role { font-size: 11px; color: rgba(255,255,255,0.55); }
+      
         .c-sidebar-user i { margin-left: auto; color: rgba(255,255,255,0.5); font-size: 1rem; }
 
         /* ── Main ── */
@@ -826,16 +803,7 @@
 
                     <div class="c-sidebar-spacer"></div>
 
-                    <div class="c-sidebar-user">
-                        <div class="c-sidebar-avatar">
-                            <i class="ti ti-user"></i>
-                        </div>
-                        <div>
-                            <div class="c-sidebar-user-name">Super Admin</div>
-                            <div class="c-sidebar-user-role">Administrator</div>
-                        </div>
-                        <i class="ti ti-chevron-down"></i>
-                    </div>
+                    
                 </div>
             </aside>
 

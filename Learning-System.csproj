@@ -150,8 +150,6 @@
     <Content Include="Bhm_Notes\logo\logo.png" />
     <Content Include="Bit_Admin\bulk_upload.aspx" />
     <Content Include="Bit_Admin\course_content.aspx" />
-    <Content Include="DepartmentAdminManageControl.ascx" />
-    <Content Include="DepartmentAdminManage.aspx" />
     <Content Include="DepartmentAdmin\dash.aspx" />
     <Content Include="Bit_Admin\dash.aspx" />
     <Content Include="Bit_Admin\logo\logo.png" />
@@ -161,14 +159,11 @@
     <Content Include="Bit_Notes\dash.aspx" />
     <Content Include="Bit_Notes\logo\logo.png" />
     <Content Include="Bit_Notes\logo\sidebar-removebg-preview.png" />
-    <Content Include="DepartmentManageControl.ascx" />
-    <Content Include="DepartmentManage.aspx" />
-    <Content Include="MainAdmin\Dash.aspx" />
-    <Content Include="MainAdmin\SuperAdminManageControl.ascx" />
-    <Content Include="StaffManage.ascx" />
-    <Content Include="StaffManage.aspx" />
-    <Content Include="StudentManage.ascx" />
-    <Content Include="StudentManage.aspx" />
+    <Content Include="MainAdmin\DepartmentAdminManage.aspx" />
+    <Content Include="MainAdmin\DepartmentManage.aspx" />
+    <Content Include="MainAdmin\StaffManage.aspx" />
+    <Content Include="MainAdmin\StudentManage.aspx" />
+    <Content Include="MainAdmin\SubjectManage.aspx" />
     <Content Include="MainAdmin\SuperAdminManage.aspx" />
     <Content Include="NoticeManage.aspx" />
     <Content Include="Notices.aspx" />
@@ -199,6 +194,7 @@
     <Content Include="img\sidebar-removebg-preview.png" />
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
+    <Content Include="MainAdmin\main_admin.aspx" />
     <Content Include="Mba_Admin\bulk_upload.aspx" />
     <Content Include="Mba_Admin\course_content.aspx" />
     <Content Include="Mba_Admin\dash.aspx" />
@@ -252,8 +248,6 @@
     <Content Include="Mba_Notes\SyllabusViewer.ashx" />
     <Content Include="Bba_Notes\SyllabusViewer.ashx" />
     <Content Include="Mcs_Notes\SyllabusViewer.ashx" />
-    <Content Include="MainAdmin\MainAdmin.Master" />
-    <Content Include="common\Handler1.ashx" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <None Include="Scripts\jquery-3.7.1-vsdoc.js" />
@@ -404,10 +398,11 @@
     <Content Include="students\module_details.aspx" />
     <Content Include="students\ViewFile.aspx" />
     <Content Include="style.css" />
-    <Content Include="styles\AdminStyles.css" />
-    <Content Include="SubjectManage.ascx" />
-    <Content Include="SubjectManage.aspx" />
-    <Content Include="SuperAdmin\Dash.aspx" />
+    <Content Include="SuperAdmin\DepartmentAdminManage.aspx" />
+    <Content Include="SuperAdmin\DepartmentManage.aspx" />
+    <Content Include="SuperAdmin\StaffManage.aspx" />
+    <Content Include="SuperAdmin\StudentManage.aspx" />
+    <Content Include="SuperAdmin\SubjectManage.aspx" />
     <Content Include="SuperAdmin\super_admin.aspx" />
     <Content Include="Suspended.aspx" />
     <Content Include="TextFile1.txt" />
@@ -468,11 +463,9 @@
     <Compile Include="administrator\default_administrator.aspx.designer.cs">
       <DependentUpon>default_administrator.aspx</DependentUpon>
     </Compile>
-    <Compile Include="common\BasePage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Content Include="common\IISHandler1.cs" />
-    <Compile Include="common\Handler1.ashx.cs">
+    <Compile Include="App_Code\BasePage.cs" />
+    <Content Include="App_Code\IISHandler1.cs" />
+    <Compile Include="App_Code\Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -659,25 +652,8 @@
     <Compile Include="Bit_Admin\course_content.aspx.designer.cs">
       <DependentUpon>course_content.aspx</DependentUpon>
     </Compile>
-    <Compile Include="common\BaseAdminMaster.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="DepartmentAdminDashBase.cs">
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DepartmentAdminManageControl.ascx.cs">
-      <DependentUpon>DepartmentAdminManageControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DepartmentAdminManageControl.ascx.designer.cs">
-      <DependentUpon>DepartmentAdminManageControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="DepartmentAdminManage.aspx.cs">
-      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DepartmentAdminManage.aspx.designer.cs">
-      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="DepartmentAdmin\dash.aspx.cs">
       <DependentUpon>dash.aspx</DependentUpon>
@@ -729,68 +705,36 @@
     <Compile Include="Bit_Notes\note.Master.designer.cs">
       <DependentUpon>note.Master</DependentUpon>
     </Compile>
-    <Compile Include="DepartmentManageControl.ascx.cs">
-      <DependentUpon>DepartmentManageControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="MainAdmin\DepartmentAdminManage.aspx.cs">
+      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DepartmentManageControl.ascx.designer.cs">
-      <DependentUpon>DepartmentManageControl.ascx</DependentUpon>
+    <Compile Include="MainAdmin\DepartmentAdminManage.aspx.designer.cs">
+      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DepartmentManage.aspx.cs">
-      <DependentUpon>DepartmentManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DepartmentManage.aspx.designer.cs">
+    <Compile Include="MainAdmin\DepartmentManage.aspx.cs">
       <DependentUpon>DepartmentManage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MainAdmin\Dash.aspx.cs">
-      <DependentUpon>Dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="MainAdmin\DepartmentManage.aspx.designer.cs">
+      <DependentUpon>DepartmentManage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MainAdmin\Dash.aspx.designer.cs">
-      <DependentUpon>Dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\MainAdmin.Master.cs">
-      <DependentUpon>MainAdmin.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MainAdmin\MainAdmin.Master.designer.cs">
-      <DependentUpon>MainAdmin.Master</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\SuperAdminManageControl.ascx.cs">
-      <DependentUpon>SuperAdminManageControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MainAdmin\SuperAdminManageControl.ascx.designer.cs">
-      <DependentUpon>SuperAdminManageControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="StaffManage.ascx.cs">
-      <DependentUpon>StaffManage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="StaffManage.ascx.designer.cs">
-      <DependentUpon>StaffManage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="StaffManage.aspx.cs">
+    <Compile Include="MainAdmin\StaffManage.aspx.cs">
       <DependentUpon>StaffManage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="StaffManage.aspx.designer.cs">
+    <Compile Include="MainAdmin\StaffManage.aspx.designer.cs">
       <DependentUpon>StaffManage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="StudentManage.ascx.cs">
-      <DependentUpon>StudentManage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="StudentManage.ascx.designer.cs">
-      <DependentUpon>StudentManage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="StudentManage.aspx.cs">
+    <Compile Include="MainAdmin\StudentManage.aspx.cs">
       <DependentUpon>StudentManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="StudentManage.aspx.designer.cs">
+    <Compile Include="MainAdmin\StudentManage.aspx.designer.cs">
       <DependentUpon>StudentManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainAdmin\SubjectManage.aspx.cs">
+      <DependentUpon>SubjectManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainAdmin\SubjectManage.aspx.designer.cs">
+      <DependentUpon>SubjectManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainAdmin\SuperAdminManage.aspx.cs">
       <DependentUpon>SuperAdminManage.aspx</DependentUpon>
@@ -874,6 +818,13 @@
     </Compile>
     <Compile Include="logout.aspx.designer.cs">
       <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainAdmin\main_admin.aspx.cs">
+      <DependentUpon>main_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainAdmin\main_admin.aspx.designer.cs">
+      <DependentUpon>main_admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mba_Admin\bulk_upload.aspx.cs">
       <DependentUpon>bulk_upload.aspx</DependentUpon>
@@ -1080,33 +1031,35 @@
     <Compile Include="students\ViewFile.aspx.designer.cs">
       <DependentUpon>ViewFile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SubjectManage.ascx.cs">
-      <DependentUpon>SubjectManage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="SuperAdmin\DepartmentAdminManage.aspx.cs">
+      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SubjectManage.ascx.designer.cs">
-      <DependentUpon>SubjectManage.ascx</DependentUpon>
+    <Compile Include="SuperAdmin\DepartmentAdminManage.aspx.designer.cs">
+      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SubjectManage.aspx.cs">
+    <Compile Include="SuperAdmin\DepartmentManage.aspx.cs">
+      <DependentUpon>DepartmentManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperAdmin\DepartmentManage.aspx.designer.cs">
+      <DependentUpon>DepartmentManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperAdmin\StaffManage.aspx.cs">
+      <DependentUpon>StaffManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperAdmin\StaffManage.aspx.designer.cs">
+      <DependentUpon>StaffManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperAdmin\StudentManage.aspx.cs">
+      <DependentUpon>StudentManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperAdmin\StudentManage.aspx.designer.cs">
+      <DependentUpon>StudentManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SuperAdmin\SubjectManage.aspx.cs">
       <DependentUpon>SubjectManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SubjectManage.aspx.designer.cs">
+    <Compile Include="SuperAdmin\SubjectManage.aspx.designer.cs">
       <DependentUpon>SubjectManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\Dash.aspx.cs">
-      <DependentUpon>Dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SuperAdmin\Dash.aspx.designer.cs">
-      <DependentUpon>Dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\SuperAdmin.Master.cs">
-      <DependentUpon>SuperAdmin.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SuperAdmin\SuperAdmin.Master.designer.cs">
-      <DependentUpon>SuperAdmin.Master</DependentUpon>
     </Compile>
     <Compile Include="SuperAdmin\super_admin.aspx.cs">
       <DependentUpon>super_admin.aspx</DependentUpon>
@@ -1189,7 +1142,6 @@
     <Content Include="students\student.Master" />
     <Content Include="verification\verification_dash.Master" />
     <Content Include="slide\Tcmit.webp" />
-    <Content Include="SuperAdmin\SuperAdmin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

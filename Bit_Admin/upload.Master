@@ -274,70 +274,59 @@
               <a href="~/Bit_Admin/course_content.aspx?subject=DMS" runat="server">Database Management System</a>
             </div>
           </div>
+<div class="sem-item" data-sem="fourth">
+  <div class="sem-header" onclick="bitToggleSem(this)">
+    <span class="sem-badge">4</span><span class="sem-name">Fourth Semester</span>
+    <i class="ti ti-chevron-down sem-chevron"></i>
+  </div>
+  <div class="sem-submenu">
+    <a href="~/Bit_Admin/course_content.aspx?subject=VP" runat="server">Visual Programming</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=SAD" runat="server">System Analysis &amp; Design</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_OB" runat="server">Organizational Behavior</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=ISS" runat="server">Information System Security</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=CMS" runat="server">CMS based E-Commerce</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=AI" runat="server">Artificial Intelligence</a>
+  </div>
+</div>
 
-          <div class="sem-item" data-sem="fourth">
-            <div class="sem-header" onclick="bitToggleSem(this)">
-              <span class="sem-badge">4</span><span class="sem-name">Fourth Semester</span>
-              <i class="ti ti-chevron-down sem-chevron"></i>
-            </div>
-            <div class="sem-submenu">
-              <a href="~/Bit_Admin/AI.aspx" runat="server">Artificial Intelligence</a>
-              <a href="~/Bit_Admin/complier_and_design_constructions.aspx" runat="server">Compiler Design &amp; Construction</a>
-              <a href="~/Bit_Admin/Technopreneurship.aspx" runat="server">Technopreneurship</a>
-              <a href="~/Bit_Admin/database_management_system.aspx" runat="server">Database Management System</a>
-              <a href="~/Bit_Admin/system_analysis_and_design.aspx" runat="server">System Analysis &amp; Design</a>
-            </div>
-          </div>
+<div class="sem-item" data-sem="fifth">
+  <div class="sem-header" onclick="bitToggleSem(this)">
+    <span class="sem-badge">5</span><span class="sem-name">Fifth Semester</span>
+    <i class="ti ti-chevron-down sem-chevron"></i>
+  </div>
+  <div class="sem-submenu">
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_LHR" runat="server">Leadership &amp; Human Relations</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_SE" runat="server">Software Engineering</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_CRPT" runat="server">Cryptography</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_MMS" runat="server">Multimedia System</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_CSLPA" runat="server">Cyber Security Law &amp; Policy</a>
+  </div>
+</div>
 
-          <div class="sem-item" data-sem="fifth">
-            <div class="sem-header" onclick="bitToggleSem(this)">
-              <span class="sem-badge">5</span><span class="sem-name">Fifth Semester</span>
-              <i class="ti ti-chevron-down sem-chevron"></i>
-            </div>
-            <div class="sem-submenu">
-              <a href="~/Bit_Admin/software_engineering.aspx" runat="server">Software Engineering</a>
-              <a href="~/Bit_Admin/cyber_security_law_and_policy.aspx" runat="server">Cyber Security Law &amp; Policy</a>
-              <a href="~/Bit_Admin/leadership_and_human_relations.aspx" runat="server">LR &amp; HR</a>
-              <a href="~/Bit_Admin/multimedia_system.aspx" runat="server">Multimedia System</a>
-              <a href="~/Bit_Admin/cyptography.aspx" runat="server">Cryptography</a>
-            </div>
-          </div>
+<div class="sem-item" data-sem="sixth">
+  <div class="sem-header" onclick="bitToggleSem(this)">
+    <span class="sem-badge">6</span><span class="sem-name">Sixth Semester</span>
+    <i class="ti ti-chevron-down sem-chevron"></i>
+  </div>
+  <div class="sem-submenu">
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_VEP" runat="server">Value &amp; Ethics in Profession</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_MADF" runat="server">Mobile App Development With Flutter</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_RM" runat="server">Research Methodology</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_SPM" runat="server">Software Project Management</a>
+  </div>
+</div>
 
-          <div class="sem-item" data-sem="sixth">
-            <div class="sem-header" onclick="bitToggleSem(this)">
-              <span class="sem-badge">6</span><span class="sem-name">Sixth Semester</span>
-              <i class="ti ti-chevron-down sem-chevron"></i>
-            </div>
-            <div class="sem-submenu">
-              <a href="~/Bit_Admin/mobile_computing.aspx" runat="server">Mobile Computing</a>
-              <a href="~/Bit_Admin/software_project_management.aspx" runat="server">Software Project Management</a>
-              <a href="~/Bit_Admin/SocialValues&Ethics.aspx" runat="server">Social Values &amp; Ethics</a>
-              <a href="~/Bit_Admin/ResearchMethodoly.aspx" runat="server">Research Methodoly</a>
-            </div>
-          </div>
-
-          <div class="sem-item" data-sem="seventh">
-            <div class="sem-header" onclick="bitToggleSem(this)">
-              <span class="sem-badge">7</span><span class="sem-name">Seventh Semester</span>
-              <i class="ti ti-chevron-down sem-chevron"></i>
-            </div>
-            <div class="sem-submenu">
-              <a href="~/Bit_Admin/project_work.aspx" runat="server">Final Project Work</a>
-              <a href="~/Bit_Admin/cloud_computing.aspx" runat="server">Cloud Computing</a>
-              <a href="~/Bit_Admin/ManagementInforamtionSystem.aspx" runat="server">Management Information System</a>
-              <a href="~/Bit_Admin/SystemSoftware_Administration.aspx" runat="server">SystemSoftware Administration</a>
-            </div>
-          </div>
-
-          <div class="sem-item" data-sem="eighth">
-            <div class="sem-header" onclick="bitToggleSem(this)">
-              <span class="sem-badge">8</span><span class="sem-name">Eighth Semester</span>
-              <i class="ti ti-chevron-down sem-chevron"></i>
-            </div>
-            <div class="sem-submenu">
-              <a href="~/Bit_Admin/industrial_training.aspx" runat="server">Industrial Training</a>
-            </div>
-          </div>
+<div class="sem-item" data-sem="seventh">
+  <div class="sem-header" onclick="bitToggleSem(this)">
+    <span class="sem-badge">7</span><span class="sem-name">Seventh Semester</span>
+    <i class="ti ti-chevron-down sem-chevron"></i>
+  </div>
+  <div class="sem-submenu">
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_SSA" runat="server">System Software Administration</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_MIS" runat="server">Management Information System</a>
+    <a href="~/Bit_Admin/course_content.aspx?subject=BIT_CC" runat="server">Cloud Computing</a>
+  </div>
+</div>
 
           <% if (Learning_System.PermissionHelper.IsDepartmentAdmin(Session)) { %>
           <div class="bit-eyebrow">Quick Actions</div>
@@ -384,71 +373,71 @@
     </div>
 
     <script>
-        function bitToggleSem(headerEl) {
-            var item = headerEl.parentElement;
-            var isOpen = item.classList.contains('open');
+function bitToggleSem(headerEl) {
+    var item = headerEl.parentElement;
+    var isOpen = item.classList.contains('open');
 
-            document.querySelectorAll('.sem-item').forEach(function (el) {
-                el.classList.remove('open');
-                var h = el.querySelector('.sem-header');
-                if (h) h.classList.remove('active');
-            });
+    document.querySelectorAll('.sem-item').forEach(function (el) {
+        el.classList.remove('open');
+        var h = el.querySelector('.sem-header');
+        if (h) h.classList.remove('active');
+    });
 
-            if (!isOpen) {
-                item.classList.add('open');
-                headerEl.classList.add('active');
-                sessionStorage.setItem('bitOpenSem', item.getAttribute('data-sem'));
-            } else {
-                sessionStorage.removeItem('bitOpenSem');
+    if (!isOpen) {
+        item.classList.add('open');
+        headerEl.classList.add('active');
+        sessionStorage.setItem('bitOpenSem', item.getAttribute('data-sem'));
+    } else {
+        sessionStorage.removeItem('bitOpenSem');
+    }
+}
+
+function bitOpenSidebar() {
+    document.getElementById('bitSidebar').classList.add('open');
+    document.getElementById('bitOverlay').classList.add('show');
+}
+function bitCloseSidebar() {
+    document.getElementById('bitSidebar').classList.remove('open');
+    document.getElementById('bitOverlay').classList.remove('show');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Highlight the current page's link and auto-open its semester group
+    var links = document.querySelectorAll('.sem-submenu a');
+    var current = (window.location.pathname + window.location.search).toLowerCase();
+    var matchedSemEl = null;
+
+    links.forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (!href) return;
+        try {
+            var full = new URL(href, window.location.origin);
+            var target = (full.pathname + full.search).toLowerCase();
+            if (target === current) {
+                a.classList.add('active-link');
+                matchedSemEl = a.closest('.sem-item');
             }
+        } catch (e) { /* ignore malformed hrefs */ }
+    });
+
+    if (matchedSemEl) {
+        matchedSemEl.classList.add('open');
+        matchedSemEl.querySelector('.sem-header').classList.add('active');
+    } else {
+        var saved = sessionStorage.getItem('bitOpenSem');
+        if (saved) {
+            var el = document.querySelector('.sem-item[data-sem="' + saved + '"]');
+            if (el) { el.classList.add('open'); el.querySelector('.sem-header').classList.add('active'); }
         }
+    }
 
-        function bitOpenSidebar() {
-            document.getElementById('bitSidebar').classList.add('open');
-            document.getElementById('bitOverlay').classList.add('show');
-        }
-        function bitCloseSidebar() {
-            document.getElementById('bitSidebar').classList.remove('open');
-            document.getElementById('bitOverlay').classList.remove('show');
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            // Highlight the current page's link and auto-open its semester group
-            var links = document.querySelectorAll('.sem-submenu a');
-            var current = (window.location.pathname + window.location.search).toLowerCase();
-            var matchedSemEl = null;
-
-            links.forEach(function (a) {
-                var href = a.getAttribute('href');
-                if (!href) return;
-                try {
-                    var full = new URL(href, window.location.origin);
-                    var target = (full.pathname + full.search).toLowerCase();
-                    if (target === current) {
-                        a.classList.add('active-link');
-                        matchedSemEl = a.closest('.sem-item');
-                    }
-                } catch (e) { /* ignore malformed hrefs */ }
-            });
-
-            if (matchedSemEl) {
-                matchedSemEl.classList.add('open');
-                matchedSemEl.querySelector('.sem-header').classList.add('active');
-            } else {
-                var saved = sessionStorage.getItem('bitOpenSem');
-                if (saved) {
-                    var el = document.querySelector('.sem-item[data-sem="' + saved + '"]');
-                    if (el) { el.classList.add('open'); el.querySelector('.sem-header').classList.add('active'); }
-                }
-            }
-
-            // Highlight Dashboard link when on dash.aspx
-            if (current.indexOf('dash.aspx') !== -1) {
-                var dashLink = document.querySelector('.bit-nav-link');
-                if (dashLink) dashLink.classList.add('active');
-            }
-        });
-    </script>
+    // Highlight Dashboard link when on dash.aspx
+    if (current.indexOf('dash.aspx') !== -1) {
+        var dashLink = document.querySelector('.bit-nav-link');
+        if (dashLink) dashLink.classList.add('active');
+    }
+});
+</script>
 
   </form>
 </body>
