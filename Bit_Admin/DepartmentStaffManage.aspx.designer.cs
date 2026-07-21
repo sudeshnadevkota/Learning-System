@@ -7,83 +7,110 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Learning_System.Bit_Admin
+namespace Learning_System
 {
 
 
-    public partial class upload
+    public partial class DepartmentStaffManage
     {
 
         /// <summary>
-        /// form2 control.
+        /// phSuccess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+        protected global::System.Web.UI.WebControls.PlaceHolder phSuccess;
 
         /// <summary>
-        /// lnkStaffManage control.
+        /// litSuccess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkStaffManage;
+        protected global::System.Web.UI.WebControls.Literal litSuccess;
 
         /// <summary>
-        /// lnkDeptSettings control.
+        /// phError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkDeptSettings;
+        protected global::System.Web.UI.WebControls.PlaceHolder phError;
 
         /// <summary>
-        /// LinkButton1 control.
+        /// litError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.Literal litError;
 
         /// <summary>
-        /// pnlStaticContent control.
+        /// pnlEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlStaticContent;
+        protected global::System.Web.UI.WebControls.Panel pnlEdit;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// litEditingName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Literal litEditingName;
 
         /// <summary>
-        /// pnlDynamicContent control.
+        /// hfProfileId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlDynamicContent;
+        protected global::System.Web.UI.WebControls.HiddenField hfProfileId;
 
         /// <summary>
-        /// phDynamic control.
+        /// ddlDepartment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phDynamic;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDepartment;
+
+        /// <summary>
+        /// btnSaveEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveEdit;
+
+        /// <summary>
+        /// btnCancelEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelEdit;
+
+        /// <summary>
+        /// gvStaff control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvStaff;
     }
 }

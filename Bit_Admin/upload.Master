@@ -5,6 +5,7 @@
 <head runat="server">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="~/styles/AdminStyles.css" />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
@@ -95,6 +96,8 @@
       font-weight: 600; font-size: 13px;
       transition: background .15s, color .15s;
       margin-bottom: 2px;
+      border: none; background-color: transparent; width: 100%; text-align: left;
+      font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer;
     }
     .bit-nav-link i { width: 18px; text-align: center; font-size: 1rem; }
     .bit-nav-link:hover { background: rgba(255,255,255,.08); color: #fff; }
@@ -328,14 +331,24 @@
   </div>
 </div>
 
-          <% if (Learning_System.PermissionHelper.IsDepartmentAdmin(Session)) { %>
+          <% if (IsDepartmentAdmin) { %>
           <div class="bit-eyebrow">Quick Actions</div>
-          <a href="/administrator/AppointUser.aspx" class="bit-nav-link"><i class="ti ti-user-plus"></i> Register Staff</a>
+
+          <a href="~/AppointUser.aspx" runat="server" class="bit-nav-link"><i class="ti ti-user-plus"></i> Register Staff</a>
           <a href="~/Bit_Admin/RegisterStudent.aspx" runat="server" class="bit-nav-link"><i class="ti ti-users-plus"></i> Register Student</a>
-          <a href="~/Bit_Admin/ManageTeachers.aspx" runat="server" class="bit-nav-link"><i class="ti ti-user-cog"></i> Manage Teachers</a>
-          <a href="~/Bit_Admin/NoticeManage.aspx" runat="server" class="bit-nav-link"><i class="ti ti-speakerphone"></i> Notices</a>
+
+          <asp:LinkButton ID="lnkStaffManage" runat="server" CssClass="bit-nav-link"
+              CommandArgument="StaffManage" OnClick="NavLink_Click">
+              <i class="ti ti-user-cog"></i> Manage Staff
+          </asp:LinkButton>
+
+          <a href="~/NoticeManage.aspx" runat="server" class="bit-nav-link"><i class="ti ti-speakerphone"></i> Notices</a>
           <a href="~/Bit_Admin/Reports.aspx" runat="server" class="bit-nav-link"><i class="ti ti-chart-bar"></i> Reports</a>
-          <a href="~/Bit_Admin/DepartmentSettings.aspx" runat="server" class="bit-nav-link"><i class="ti ti-settings"></i> Department Settings</a>
+
+          <asp:LinkButton ID="lnkDeptSettings" runat="server" CssClass="bit-nav-link"
+              CommandArgument="DeptSettings" OnClick="NavLink_Click">
+              <i class="ti ti-settings"></i> Department Settings
+          </asp:LinkButton>
           <% } %>
         </div>
 
@@ -344,7 +357,7 @@
             <div class="bit-sidebar-avatar"><i class="ti ti-user"></i></div>
             <div>
               <div class="bit-sidebar-user-name"><%= Session["Username"] %></div>
-              <div class="bit-sidebar-user-role"><%= Learning_System.PermissionHelper.IsDepartmentAdmin(Session) ? "Department Admin" : "Staff" %></div>
+              <div class="bit-sidebar-user-role"><%= IsDepartmentAdmin ? "Department Admin" : "Staff" %></div>
             </div>
           </div>
           <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkOut_Click" CausesValidation="False" CssClass="bit-logout-btn">
@@ -361,8 +374,14 @@
           <span style="width:36px;"></span>
         </div>
 
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
+        <asp:Panel ID="pnlStaticContent" runat="server">
+          <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+          </asp:ContentPlaceHolder>
+        </asp:Panel>
+
+        <asp:Panel ID="pnlDynamicContent" runat="server" Visible="false">
+          <asp:PlaceHolder ID="phDynamic" runat="server" />
+        </asp:Panel>
 
         <div class="bit-footer">
           <i class="ti ti-copyright" style="font-size: 12px; vertical-align: -1px;"></i>

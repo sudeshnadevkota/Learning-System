@@ -1,1198 +1,1246 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FEA017D7-0FF1-40CA-B623-C3748A104E42}</ProjectGuid>
-    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Learning_System</RootNamespace>
-    <AssemblyName>Learning-System</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
-    <IISExpressSSLPort>44301</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
-    <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <TypeScriptTarget>ES5</TypeScriptTarget>
-    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
-    <TypeScriptModuleKind />
-    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
-    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
-    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
-    <TypeScriptOutFile />
-    <TypeScriptOutDir />
-    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
-    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
-    <TypeScriptSourceMap>True</TypeScriptSourceMap>
-    <TypeScriptMapRoot />
-    <TypeScriptSourceRoot />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
-      <HintPath>packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.Mvc.5.3.0\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.Razor.3.3.0\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="AccessDenied.aspx" />
-    <Content Include="administrator\access.aspx" />
-    <Content Include="administrator\AppointUser.aspx" />
-    <Content Include="administrator\default_administrator.aspx" />
-    <Content Include="administrator\images\logo.png" />
-    <Content Include="Bba_Admin\bulk_upload.aspx" />
-    <Content Include="Bba_Admin\course_content.aspx" />
-    <Content Include="Bba_Admin\dash.aspx" />
-    <Content Include="Bba_Admin\logo\logo.png" />
-    <Content Include="Bba_Admin\Syllabus.aspx" />
-    <Content Include="Bba_Notes\course_content.aspx" />
-    <Content Include="Bba_Notes\Css\note.css" />
-    <Content Include="Bba_Notes\dash.aspx" />
-    <Content Include="Bba_Notes\logo\logo.png" />
-    <Content Include="Bcs_Admin\bulk_upload.aspx" />
-    <Content Include="Bcs_Admin\course_content.aspx" />
-    <Content Include="Bcs_Admin\dash.aspx" />
-    <Content Include="Bcs_Admin\logo\logo.png" />
-    <Content Include="Bcs_Admin\Syllabus.aspx" />
-    <Content Include="Bcs_Notes\course_content.aspx" />
-    <Content Include="Bcs_Notes\Css\note.css" />
-    <Content Include="Bcs_Notes\dash.aspx" />
-    <Content Include="Bcs_Notes\logo\logo.png" />
-    <Content Include="Bhm_Admin\bulk_upload.aspx" />
-    <Content Include="Bhm_Admin\course_content.aspx" />
-    <Content Include="Bhm_Admin\dash.aspx" />
-    <Content Include="Bhm_Admin\logo\logo.png" />
-    <Content Include="Bhm_Admin\Syllabus.aspx" />
-    <Content Include="Bhm_Notes\course_content.aspx" />
-    <Content Include="Bhm_Notes\Css\note.css" />
-    <Content Include="Bhm_Notes\dash.aspx" />
-    <Content Include="Bhm_Notes\logo\logo.png" />
-    <Content Include="Bit_Admin\bulk_upload.aspx" />
-    <Content Include="Bit_Admin\course_content.aspx" />
-    <Content Include="DepartmentAdmin\dash.aspx" />
-    <Content Include="Bit_Admin\dash.aspx" />
-    <Content Include="Bit_Admin\logo\logo.png" />
-    <Content Include="Bit_Admin\Syllabus.aspx" />
-    <Content Include="Bit_Notes\course_content.aspx" />
-    <Content Include="Bit_Notes\Css\note.css" />
-    <Content Include="Bit_Notes\dash.aspx" />
-    <Content Include="Bit_Notes\logo\logo.png" />
-    <Content Include="Bit_Notes\logo\sidebar-removebg-preview.png" />
-    <Content Include="MainAdmin\DepartmentAdminManage.aspx" />
-    <Content Include="MainAdmin\DepartmentManage.aspx" />
-    <Content Include="MainAdmin\StaffManage.aspx" />
-    <Content Include="MainAdmin\StudentManage.aspx" />
-    <Content Include="MainAdmin\SubjectManage.aspx" />
-    <Content Include="MainAdmin\SuperAdminManage.aspx" />
-    <Content Include="NoticeManage.aspx" />
-    <Content Include="Notices.aspx" />
-    <Content Include="NoticeWidget.ascx" />
-    <Content Include="Blog\blog1.aspx" />
-    <Content Include="Blog\dash.aspx" />
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-grid.rtl.css" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap-reboot.rtl.css" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
-    <Content Include="Content\bootstrap-utilities.css" />
-    <Content Include="Content\bootstrap-utilities.min.css" />
-    <Content Include="Content\bootstrap-utilities.rtl.css" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bootstrap.rtl.css" />
-    <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="Default.aspx" />
-    <Content Include="Global.asax" />
-    <Content Include="img\6 semester-BIT.png" />
-    <Content Include="img\back.png" />
-    <Content Include="img\Capture.PNG" />
-    <Content Include="img\sidebar-removebg-preview.png" />
-    <Content Include="login.aspx" />
-    <Content Include="logout.aspx" />
-    <Content Include="MainAdmin\main_admin.aspx" />
-    <Content Include="Mba_Admin\bulk_upload.aspx" />
-    <Content Include="Mba_Admin\course_content.aspx" />
-    <Content Include="Mba_Admin\dash.aspx" />
-    <Content Include="Mba_Admin\logo\logo.png" />
-    <Content Include="Mba_Admin\Syllabus.aspx" />
-    <Content Include="Mba_Notes\course_content.aspx" />
-    <Content Include="Mba_Notes\Css\note.css" />
-    <Content Include="Mba_Notes\dash.aspx" />
-    <Content Include="Mba_Notes\logo\logo.png" />
-    <Content Include="Mcs_Admin\bulk_upload.aspx" />
-    <Content Include="Mcs_Admin\course_content.aspx" />
-    <Content Include="Mcs_Admin\dash.aspx" />
-    <Content Include="Mcs_Admin\logo\logo.png" />
-    <Content Include="Mcs_Admin\Syllabus.aspx" />
-    <Content Include="Mcs_Notes\course_content.aspx" />
-    <Content Include="Mcs_Notes\Css\note.css" />
-    <Content Include="Mcs_Notes\dash.aspx" />
-    <Content Include="Mcs_Notes\logo\logo.png" />
-    <Content Include="Profile.aspx" />
-    <Content Include="Contact.aspx" />
-    <Content Include="AboutUs.aspx" />
-    <Content Include="Blog\Master.Master" />
-    <Content Include="Blog.aspx" />
-    <Content Include="Feedback.aspx" />
-    <Content Include="AIBlog.aspx" />
-    <Content Include="administrator\administrator_master.Master" />
-    <Content Include="register.aspx" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.esm.js" />
-    <Content Include="Scripts\bootstrap.esm.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\index.js.flow" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Bit_Notes\Syllabus\BCA_Syllabus.pdf" />
-    <Content Include="Bit_Notes\Syllabus\BE_Syllabus.pdf" />
-    <Content Include="Bit_Notes\Syllabus\ICP_Syllabus.pdf" />
-    <Content Include="Bit_Notes\Syllabus\PIT_Syllabus.pdf" />
-    <Content Include="Bit_Notes\Syllabus\Math_Syllabus.pdf" />
-    <Content Include="Bit_Notes\SyllabusViewer.ashx" />
-    <Content Include="NoticeViewer.ashx" />
-    <Content Include="Bhm_Notes\SyllabusViewer.ashx" />
-    <Content Include="Mba_Notes\SyllabusViewer.ashx" />
-    <Content Include="Bba_Notes\SyllabusViewer.ashx" />
-    <Content Include="Mcs_Notes\SyllabusViewer.ashx" />
-    <None Include="packages.config" />
-    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
-    <None Include="Scripts\jquery-3.7.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-3.7.1.js" />
-    <Content Include="Scripts\jquery-3.7.1.min.js" />
-    <Content Include="Scripts\jquery-3.7.1.slim.js" />
-    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
-    <Content Include="Scripts\popper-utils.js" />
-    <Content Include="Scripts\popper-utils.min.js" />
-    <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\src\index.js" />
-    <Content Include="Scripts\src\methods\defaults.js" />
-    <Content Include="Scripts\src\methods\destroy.js" />
-    <Content Include="Scripts\src\methods\disableEventListeners.js" />
-    <Content Include="Scripts\src\methods\enableEventListeners.js" />
-    <Content Include="Scripts\src\methods\placements.js" />
-    <Content Include="Scripts\src\methods\update.js" />
-    <Content Include="Scripts\src\modifiers\applyStyle.js" />
-    <Content Include="Scripts\src\modifiers\arrow.js" />
-    <Content Include="Scripts\src\modifiers\computeStyle.js" />
-    <Content Include="Scripts\src\modifiers\flip.js" />
-    <Content Include="Scripts\src\modifiers\hide.js" />
-    <Content Include="Scripts\src\modifiers\index.js" />
-    <Content Include="Scripts\src\modifiers\inner.js" />
-    <Content Include="Scripts\src\modifiers\keepTogether.js" />
-    <Content Include="Scripts\src\modifiers\offset.js" />
-    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
-    <Content Include="Scripts\src\modifiers\shift.js" />
-    <Content Include="Scripts\src\utils\clockwise.js" />
-    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
-    <Content Include="Scripts\src\utils\debounce.js" />
-    <Content Include="Scripts\src\utils\find.js" />
-    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
-    <Content Include="Scripts\src\utils\findIndex.js" />
-    <Content Include="Scripts\src\utils\getBordersSize.js" />
-    <Content Include="Scripts\src\utils\getBoundaries.js" />
-    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
-    <Content Include="Scripts\src\utils\getClientRect.js" />
-    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
-    <Content Include="Scripts\src\utils\getOffsetParent.js" />
-    <Content Include="Scripts\src\utils\getOffsetRect.js" />
-    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
-    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
-    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
-    <Content Include="Scripts\src\utils\getOuterSizes.js" />
-    <Content Include="Scripts\src\utils\getParentNode.js" />
-    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
-    <Content Include="Scripts\src\utils\getReferenceNode.js" />
-    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
-    <Content Include="Scripts\src\utils\getRoot.js" />
-    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
-    <Content Include="Scripts\src\utils\getScroll.js" />
-    <Content Include="Scripts\src\utils\getScrollParent.js" />
-    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
-    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
-    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
-    <Content Include="Scripts\src\utils\getWindow.js" />
-    <Content Include="Scripts\src\utils\getWindowSizes.js" />
-    <Content Include="Scripts\src\utils\includeScroll.js" />
-    <Content Include="Scripts\src\utils\index.js" />
-    <Content Include="Scripts\src\utils\isBrowser.js" />
-    <Content Include="Scripts\src\utils\isFixed.js" />
-    <Content Include="Scripts\src\utils\isFunction.js" />
-    <Content Include="Scripts\src\utils\isIE.js" />
-    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
-    <Content Include="Scripts\src\utils\isModifierRequired.js" />
-    <Content Include="Scripts\src\utils\isNumeric.js" />
-    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
-    <Content Include="Scripts\src\utils\removeEventListeners.js" />
-    <Content Include="Scripts\src\utils\runModifiers.js" />
-    <Content Include="Scripts\src\utils\setAttributes.js" />
-    <Content Include="Scripts\src\utils\setStyles.js" />
-    <Content Include="Scripts\src\utils\setupEventListeners.js" />
-    <Content Include="Scripts\umd\popper-utils.js" />
-    <Content Include="Scripts\umd\popper-utils.min.js" />
-    <Content Include="Scripts\umd\popper.js" />
-    <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="slide\2.jpg" />
-    <Content Include="slide\3.jpg" />
-    <Content Include="slide\a.jpg" />
-    <Content Include="slide\arik.png" />
-    <Content Include="slide\attendence.png" />
-    <Content Include="slide\bba2.jpg" />
-    <Content Include="slide\bcs3.png" />
-    <Content Include="slide\bcs4.png" />
-    <Content Include="slide\BHM.png" />
-    <Content Include="slide\bhm2.jpg" />
-    <Content Include="slide\bhm4.jpg" />
-    <Content Include="slide\bhmcard.png" />
-    <Content Include="slide\bit.png" />
-    <Content Include="slide\bit2.jpeg" />
-    <Content Include="slide\canteen-03.png" />
-    <Content Include="slide\certificate.png" />
-    <Content Include="slide\chefcap.png" />
-    <Content Include="slide\college.jpg" />
-    <Content Include="slide\comcard.jpg" />
-    <Content Include="slide\deepaksir.png" />
-    <Content Include="slide\Durganand.png" />
-    <Content Include="slide\facedetection.png" />
-    <Content Include="slide\fs.jpg" />
-    <Content Include="slide\haik.jpg" />
-    <Content Include="slide\images-removebg-preview.png" />
-    <Content Include="slide\info.png" />
-    <Content Include="slide\job.png" />
-    <Content Include="slide\learn.png" />
-    <Content Include="slide\learn2.png" />
-    <Content Include="slide\learn3.png" />
-    <Content Include="slide\learn4.jfif" />
-    <Content Include="slide\leave.png" />
-    <Content Include="slide\lgo.png" />
-    <Content Include="slide\manoj.png" />
-    <Content Include="slide\mba.png" />
-    <Content Include="slide\mba5.jpg" />
-    <Content Include="slide\mbacard.png" />
-    <Content Include="slide\mcs.jpg" />
-    <Content Include="slide\mcs2.png" />
-    <Content Include="slide\QRinfo.png" />
-    <Content Include="slide\rohitsri.png" />
-    <Content Include="slide\saroj.png" />
-    <Content Include="slide\sartak.png" />
-    <Content Include="slide\sd.jpg" />
-    <Content Include="slide\se1.jpg" />
-    <Content Include="slide\sl1.jpg" />
-    <Content Include="slide\subash.png" />
-    <Content Include="slide\sumansir.png" />
-    <Content Include="slide\tara.png" />
-    <Content Include="slide\Tcmit.png" />
-    <Content Include="slide\td.jpg" />
-    <Content Include="Mcs_Admin\upload.Master" />
-    <Content Include="Mba_Admin\upload.Master" />
-    <Content Include="Bcs_Admin\upload.Master" />
-    <Content Include="Bhm_Admin\upload.Master" />
-    <Content Include="Bba_Admin\upload.Master" />
-    <Content Include="Bit_Admin\upload.Master" />
-    <Content Include="Mcs_Notes\note.Master" />
-    <Content Include="Bhm_Notes\note.Master" />
-    <Content Include="Bit_Notes\note.Master" />
-    <Content Include="Mba_Notes\note.Master" />
-    <Content Include="Bba_Notes\note.Master" />
-    <Content Include="Bcs_Notes\note.Master" />
-    <Content Include="slide\view logo.png" />
-    <Content Include="slide\zidan.png" />
-    <Content Include="Staff\default_staff.aspx" />
-    <Content Include="students\abcd.aspx" />
-    <Content Include="students\default_student.aspx" />
-    <Content Include="students\images\logo.png" />
-    <Content Include="students\module_details.aspx" />
-    <Content Include="students\ViewFile.aspx" />
-    <Content Include="style.css" />
-    <Content Include="SuperAdmin\DepartmentAdminManage.aspx" />
-    <Content Include="SuperAdmin\DepartmentManage.aspx" />
-    <Content Include="SuperAdmin\StaffManage.aspx" />
-    <Content Include="SuperAdmin\StudentManage.aspx" />
-    <Content Include="SuperAdmin\SubjectManage.aspx" />
-    <Content Include="SuperAdmin\super_admin.aspx" />
-    <Content Include="Suspended.aspx" />
-    <Content Include="TextFile1.txt" />
-    <Content Include="TreeLineImages\dash.gif" />
-    <Content Include="TreeLineImages\dashminus.gif" />
-    <Content Include="TreeLineImages\dashplus.gif" />
-    <Content Include="TreeLineImages\i.gif" />
-    <Content Include="TreeLineImages\l.gif" />
-    <Content Include="TreeLineImages\lminus.gif" />
-    <Content Include="TreeLineImages\lplus.gif" />
-    <Content Include="TreeLineImages\minus.gif" />
-    <Content Include="TreeLineImages\noexpand.gif" />
-    <Content Include="TreeLineImages\plus.gif" />
-    <Content Include="TreeLineImages\r.gif" />
-    <Content Include="TreeLineImages\rminus.gif" />
-    <Content Include="TreeLineImages\rplus.gif" />
-    <Content Include="TreeLineImages\t.gif" />
-    <Content Include="TreeLineImages\tminus.gif" />
-    <Content Include="TreeLineImages\tplus.gif" />
-    <Content Include="verification\approvestudents.aspx" />
-    <Content Include="verification\images\logo.png" />
-    <Content Include="verification\verification_default.aspx" />
-    <Content Include="Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AccessDenied.aspx.cs">
-      <DependentUpon>AccessDenied.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AccessDenied.aspx.designer.cs">
-      <DependentUpon>AccessDenied.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="administrator\access.aspx.cs">
-      <DependentUpon>access.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="administrator\access.aspx.designer.cs">
-      <DependentUpon>access.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="administrator\administrator_master.Master.cs">
-      <DependentUpon>administrator_master.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="administrator\administrator_master.Master.designer.cs">
-      <DependentUpon>administrator_master.Master</DependentUpon>
-    </Compile>
-    <Compile Include="administrator\AppointUser.aspx.cs">
-      <DependentUpon>AppointUser.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="administrator\AppointUser.aspx.designer.cs">
-      <DependentUpon>AppointUser.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="administrator\default_administrator.aspx.cs">
-      <DependentUpon>default_administrator.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="administrator\default_administrator.aspx.designer.cs">
-      <DependentUpon>default_administrator.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Code\BasePage.cs" />
-    <Content Include="App_Code\IISHandler1.cs" />
-    <Compile Include="App_Code\Handler1.ashx.cs">
-      <DependentUpon>Handler1.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Bba_Admin\bulk_upload.aspx.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bba_Admin\bulk_upload.aspx.designer.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bba_Admin\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bba_Admin\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bba_Admin\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bba_Admin\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bba_Admin\Syllabus.aspx.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bba_Admin\Syllabus.aspx.designer.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bba_Admin\upload.Master.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bba_Admin\upload.Master.designer.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Bba_Notes\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bba_Notes\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bba_Notes\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bba_Notes\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bba_Notes\note.Master.cs">
-      <DependentUpon>note.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bba_Notes\note.Master.designer.cs">
-      <DependentUpon>note.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Admin\bulk_upload.aspx.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Admin\bulk_upload.aspx.designer.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Admin\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Admin\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Admin\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Admin\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Admin\Syllabus.aspx.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Admin\Syllabus.aspx.designer.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Admin\upload.Master.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Admin\upload.Master.designer.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Notes\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Notes\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <None Include="Bcs_Notes\SyllabusViewer.ashx" />
-    <Compile Include="Bcs_Notes\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Notes\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bcs_Notes\note.Master.cs">
-      <DependentUpon>note.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bcs_Notes\note.Master.designer.cs">
-      <DependentUpon>note.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Bhm_Admin\bulk_upload.aspx.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bhm_Admin\bulk_upload.aspx.designer.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bhm_Admin\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bhm_Admin\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bhm_Admin\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bhm_Admin\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bhm_Admin\Syllabus.aspx.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bhm_Admin\Syllabus.aspx.designer.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bhm_Admin\upload.Master.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bhm_Admin\upload.Master.designer.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Bhm_Notes\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bhm_Notes\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bhm_Notes\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bhm_Notes\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bhm_Notes\note.Master.cs">
-      <DependentUpon>note.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bhm_Notes\note.Master.designer.cs">
-      <DependentUpon>note.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Bit_Admin\bulk_upload.aspx.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Admin\bulk_upload.aspx.designer.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bit_Admin\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Admin\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DepartmentAdminDashBase.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DepartmentAdmin\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DepartmentAdmin\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DepartmentDataService.cs" />
-    <Compile Include="Bit_Admin\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Admin\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bit_Admin\upload.Master.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Admin\upload.Master.designer.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Bit_Admin\Syllabus.aspx.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Admin\Syllabus.aspx.designer.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bit_Notes\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Notes\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bit_Notes\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Notes\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Bit_Notes\note.Master.cs">
-      <DependentUpon>note.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bit_Notes\note.Master.designer.cs">
-      <DependentUpon>note.Master</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\DepartmentAdminManage.aspx.cs">
-      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\DepartmentAdminManage.aspx.designer.cs">
-      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\DepartmentManage.aspx.cs">
-      <DependentUpon>DepartmentManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\DepartmentManage.aspx.designer.cs">
-      <DependentUpon>DepartmentManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\StaffManage.aspx.cs">
-      <DependentUpon>StaffManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MainAdmin\StaffManage.aspx.designer.cs">
-      <DependentUpon>StaffManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\StudentManage.aspx.cs">
-      <DependentUpon>StudentManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\StudentManage.aspx.designer.cs">
-      <DependentUpon>StudentManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\SubjectManage.aspx.cs">
-      <DependentUpon>SubjectManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\SubjectManage.aspx.designer.cs">
-      <DependentUpon>SubjectManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\SuperAdminManage.aspx.cs">
-      <DependentUpon>SuperAdminManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MainAdmin\SuperAdminManage.aspx.designer.cs">
-      <DependentUpon>SuperAdminManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NoticeManage.aspx.cs">
-      <DependentUpon>NoticeManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NoticeManage.aspx.designer.cs">
-      <DependentUpon>NoticeManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NoticeRoles.cs" />
-    <Compile Include="Notices.aspx.cs">
-      <DependentUpon>Notices.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Notices.aspx.designer.cs">
-      <DependentUpon>Notices.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NoticeWidget.ascx.cs">
-      <DependentUpon>NoticeWidget.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NoticeWidget.ascx.designer.cs">
-      <DependentUpon>NoticeWidget.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Blog\blog1.aspx.cs">
-      <DependentUpon>blog1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Blog\blog1.aspx.designer.cs">
-      <DependentUpon>blog1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Blog\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Blog\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Blog\Master.Master.cs">
-      <DependentUpon>Master.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Blog\Master.Master.designer.cs">
-      <DependentUpon>Master.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="PermissionHelper.cs" />
-    <Compile Include="learning.Master.cs">
-      <DependentUpon>learning.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="learning.Master.designer.cs">
-      <DependentUpon>learning.Master</DependentUpon>
-    </Compile>
-    <Compile Include="login.aspx.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="login.aspx.designer.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="logout.aspx.cs">
-      <DependentUpon>logout.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="logout.aspx.designer.cs">
-      <DependentUpon>logout.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainAdmin\main_admin.aspx.cs">
-      <DependentUpon>main_admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MainAdmin\main_admin.aspx.designer.cs">
-      <DependentUpon>main_admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mba_Admin\bulk_upload.aspx.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mba_Admin\bulk_upload.aspx.designer.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mba_Admin\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mba_Admin\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mba_Admin\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mba_Admin\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mba_Admin\Syllabus.aspx.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mba_Admin\Syllabus.aspx.designer.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mba_Admin\upload.Master.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mba_Admin\upload.Master.designer.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Mba_Notes\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mba_Notes\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mba_Notes\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mba_Notes\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mba_Notes\note.Master.cs">
-      <DependentUpon>note.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mba_Notes\note.Master.designer.cs">
-      <DependentUpon>note.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Mcs_Admin\bulk_upload.aspx.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mcs_Admin\bulk_upload.aspx.designer.cs">
-      <DependentUpon>bulk_upload.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mcs_Admin\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mcs_Admin\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mcs_Admin\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mcs_Admin\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mcs_Admin\Syllabus.aspx.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mcs_Admin\Syllabus.aspx.designer.cs">
-      <DependentUpon>Syllabus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mcs_Admin\upload.Master.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mcs_Admin\upload.Master.designer.cs">
-      <DependentUpon>upload.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Mcs_Notes\course_content.aspx.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mcs_Notes\course_content.aspx.designer.cs">
-      <DependentUpon>course_content.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mcs_Notes\dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mcs_Notes\dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mcs_Notes\note.Master.cs">
-      <DependentUpon>note.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mcs_Notes\note.Master.designer.cs">
-      <DependentUpon>note.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SubjectMap.cs" />
-    <Compile Include="Profile.aspx.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Profile.aspx.designer.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AboutUs.aspx.cs">
-      <DependentUpon>AboutUs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AboutUs.aspx.designer.cs">
-      <DependentUpon>AboutUs.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Blog.aspx.cs">
-      <DependentUpon>Blog.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Blog.aspx.designer.cs">
-      <DependentUpon>Blog.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Feedback.aspx.cs">
-      <DependentUpon>Feedback.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Feedback.aspx.designer.cs">
-      <DependentUpon>Feedback.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AIBlog.aspx.cs">
-      <DependentUpon>AIBlog.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AIBlog.aspx.designer.cs">
-      <DependentUpon>AIBlog.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="register.aspx.cs">
-      <DependentUpon>register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="register.aspx.designer.cs">
-      <DependentUpon>register.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Staff\default_staff.aspx.cs">
-      <DependentUpon>default_staff.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\default_staff.aspx.designer.cs">
-      <DependentUpon>default_staff.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="students\abcd.aspx.cs">
-      <DependentUpon>abcd.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="students\abcd.aspx.designer.cs">
-      <DependentUpon>abcd.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="students\default_student.aspx.cs">
-      <DependentUpon>default_student.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="students\default_student.aspx.designer.cs">
-      <DependentUpon>default_student.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="students\module_details.aspx.cs">
-      <DependentUpon>module_details.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="students\module_details.aspx.designer.cs">
-      <DependentUpon>module_details.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="students\student.Master.cs">
-      <DependentUpon>student.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="students\student.Master.designer.cs">
-      <DependentUpon>student.Master</DependentUpon>
-    </Compile>
-    <Compile Include="students\ViewFile.aspx.cs">
-      <DependentUpon>ViewFile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="students\ViewFile.aspx.designer.cs">
-      <DependentUpon>ViewFile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\DepartmentAdminManage.aspx.cs">
-      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\DepartmentAdminManage.aspx.designer.cs">
-      <DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\DepartmentManage.aspx.cs">
-      <DependentUpon>DepartmentManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\DepartmentManage.aspx.designer.cs">
-      <DependentUpon>DepartmentManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\StaffManage.aspx.cs">
-      <DependentUpon>StaffManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\StaffManage.aspx.designer.cs">
-      <DependentUpon>StaffManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\StudentManage.aspx.cs">
-      <DependentUpon>StudentManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\StudentManage.aspx.designer.cs">
-      <DependentUpon>StudentManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\SubjectManage.aspx.cs">
-      <DependentUpon>SubjectManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\SubjectManage.aspx.designer.cs">
-      <DependentUpon>SubjectManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SuperAdmin\super_admin.aspx.cs">
-      <DependentUpon>super_admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SuperAdmin\super_admin.aspx.designer.cs">
-      <DependentUpon>super_admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Suspended.aspx.cs">
-      <DependentUpon>Suspended.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Suspended.aspx.designer.cs">
-      <DependentUpon>Suspended.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="verification\approvestudents.aspx.cs">
-      <DependentUpon>approvestudents.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="verification\approvestudents.aspx.designer.cs">
-      <DependentUpon>approvestudents.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="verification\verification_dash.Master.cs">
-      <DependentUpon>verification_dash.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="verification\verification_dash.Master.designer.cs">
-      <DependentUpon>verification_dash.Master</DependentUpon>
-    </Compile>
-    <Compile Include="verification\verification_default.aspx.cs">
-      <DependentUpon>verification_default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="verification\verification_default.aspx.designer.cs">
-      <DependentUpon>verification_default.aspx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\web.config" />
-    <Content Include="learning.Master" />
-    <Content Include="students\student.Master" />
-    <Content Include="verification\verification_dash.Master" />
-    <Content Include="slide\Tcmit.webp" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.esm.min.js.map" />
-    <Content Include="Scripts\bootstrap.esm.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Content\bootstrap.rtl.min.css.map" />
-    <Content Include="Content\bootstrap.rtl.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Content\bootstrap-utilities.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.7.1.min.map" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper.js.map" />
-    <Content Include="Scripts\umd\popper.js.flow" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.js.map" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper.js.map" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.7.1.min.map" />
-    <Content Include="students\student.Master" />
-    <Content Include="verification\verification_dash.Master" />
-    <Content Include="slide\Tcmit.webp" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="photo\" />
-    <Folder Include="Uploded_datas\" />
-    <Folder Include="Views\Home\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-  </PropertyGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
-  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-  <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
-        <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55625</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44301/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-        </WebProjectProperties>
-      </FlavorProperties>
-    </VisualStudio>
-  </ProjectExtensions>
-  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
-  </Target>
+	<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		<ProductVersion>
+		</ProductVersion>
+		<SchemaVersion>2.0</SchemaVersion>
+		<ProjectGuid>{FEA017D7-0FF1-40CA-B623-C3748A104E42}</ProjectGuid>
+		<ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+		<OutputType>Library</OutputType>
+		<AppDesignerFolder>Properties</AppDesignerFolder>
+		<RootNamespace>Learning_System</RootNamespace>
+		<AssemblyName>Learning-System</AssemblyName>
+		<TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+		<UseIISExpress>true</UseIISExpress>
+		<Use64BitIISExpress />
+		<IISExpressSSLPort>44301</IISExpressSSLPort>
+		<IISExpressAnonymousAuthentication />
+		<IISExpressWindowsAuthentication />
+		<IISExpressUseClassicPipelineMode />
+		<UseGlobalApplicationHostFile />
+		<NuGetPackageImportStamp>
+		</NuGetPackageImportStamp>
+		<TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\</OutputPath>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<TypeScriptTarget>ES5</TypeScriptTarget>
+		<TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+		<TypeScriptModuleKind />
+		<TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+		<TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+		<TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+		<TypeScriptOutFile />
+		<TypeScriptOutDir />
+		<TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+		<TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+		<TypeScriptSourceMap>True</TypeScriptSourceMap>
+		<TypeScriptMapRoot />
+		<TypeScriptSourceRoot />
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+			<HintPath>packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<HintPath>packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+			<HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+			<HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Numerics" />
+		<Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+			<HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+			<HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Web.DynamicData" />
+		<Reference Include="System.Web.Entity" />
+		<Reference Include="System.Web.ApplicationServices" />
+		<Reference Include="System.ComponentModel.DataAnnotations" />
+		<Reference Include="System" />
+		<Reference Include="System.Data" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="System.Web.Extensions" />
+		<Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.Helpers.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Web.Mvc, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<HintPath>packages\Microsoft.AspNet.Mvc.5.3.0\lib\net45\System.Web.Mvc.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<HintPath>packages\Microsoft.AspNet.Razor.3.3.0\lib\net45\System.Web.Razor.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Xml.Linq" />
+		<Reference Include="System.Drawing" />
+		<Reference Include="System.Web" />
+		<Reference Include="System.Xml" />
+		<Reference Include="System.Configuration" />
+		<Reference Include="System.Web.Services" />
+		<Reference Include="System.EnterpriseServices" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="AccessDenied.aspx" />
+		<Content Include="administrator\access.aspx" />
+		<Content Include="administrator\AppointUser.aspx" />
+		<Content Include="administrator\default_administrator.aspx" />
+		<Content Include="administrator\images\logo.png" />
+		<Content Include="Bba_Admin\bulk_upload.aspx" />
+		<Content Include="Bba_Admin\course_content.aspx" />
+		<Content Include="Bba_Admin\dash.aspx" />
+		<Content Include="Bba_Admin\logo\logo.png" />
+		<Content Include="Bba_Admin\Syllabus.aspx" />
+		<Content Include="Bba_Notes\course_content.aspx" />
+		<Content Include="Bba_Notes\Css\note.css" />
+		<Content Include="Bba_Notes\dash.aspx" />
+		<Content Include="Bba_Notes\logo\logo.png" />
+		<Content Include="Bcs_Admin\bulk_upload.aspx" />
+		<Content Include="Bcs_Admin\course_content.aspx" />
+		<Content Include="Bcs_Admin\dash.aspx" />
+		<Content Include="Bcs_Admin\logo\logo.png" />
+		<Content Include="Bcs_Admin\Syllabus.aspx" />
+		<Content Include="Bcs_Notes\course_content.aspx" />
+		<Content Include="Bcs_Notes\Css\note.css" />
+		<Content Include="Bcs_Notes\dash.aspx" />
+		<Content Include="Bcs_Notes\logo\logo.png" />
+		<Content Include="Bhm_Admin\bulk_upload.aspx" />
+		<Content Include="Bhm_Admin\course_content.aspx" />
+		<Content Include="Bhm_Admin\dash.aspx" />
+		<Content Include="Bhm_Admin\logo\logo.png" />
+		<Content Include="Bhm_Admin\Syllabus.aspx" />
+		<Content Include="Bhm_Notes\course_content.aspx" />
+		<Content Include="Bhm_Notes\Css\note.css" />
+		<Content Include="Bhm_Notes\dash.aspx" />
+		<Content Include="Bhm_Notes\logo\logo.png" />
+		<Content Include="Bit_Admin\bulk_upload.aspx" />
+		<Content Include="Bit_Admin\course_content.aspx" />
+		<Content Include="DepartmentAdminManageControl.ascx" />
+		<Content Include="DepartmentAdminManage.aspx" />
+		<Content Include="DepartmentAdmin\dash.aspx" />
+		<Content Include="Bit_Admin\dash.aspx" />
+		<Content Include="Bit_Admin\logo\logo.png" />
+		<Content Include="Bit_Admin\Syllabus.aspx" />
+		<Content Include="Bit_Notes\course_content.aspx" />
+		<Content Include="Bit_Notes\Css\note.css" />
+		<Content Include="Bit_Notes\dash.aspx" />
+		<Content Include="Bit_Notes\logo\logo.png" />
+		<Content Include="Bit_Notes\logo\sidebar-removebg-preview.png" />
+		<Content Include="DepartmentManageControl.ascx" />
+		<Content Include="DepartmentManage.aspx" />
+		<Content Include="MainAdmin\Dash.aspx" />
+		<Content Include="MainAdmin\SuperAdminManageControl.ascx" />
+		<Content Include="StaffManage.ascx" />
+		<Content Include="StaffManage.aspx" />
+		<Content Include="StudentManage.ascx" />
+		<Content Include="StudentManage.aspx" />
+		<Content Include="MainAdmin\SuperAdminManage.aspx" />
+		<Content Include="NoticeManage.aspx" />
+		<Content Include="Notices.aspx" />
+		<Content Include="NoticeWidget.ascx" />
+		<Content Include="Blog\blog1.aspx" />
+		<Content Include="Blog\dash.aspx" />
+		<Content Include="Content\bootstrap-grid.css" />
+		<Content Include="Content\bootstrap-grid.min.css" />
+		<Content Include="Content\bootstrap-grid.rtl.css" />
+		<Content Include="Content\bootstrap-grid.rtl.min.css" />
+		<Content Include="Content\bootstrap-reboot.css" />
+		<Content Include="Content\bootstrap-reboot.min.css" />
+		<Content Include="Content\bootstrap-reboot.rtl.css" />
+		<Content Include="Content\bootstrap-reboot.rtl.min.css" />
+		<Content Include="Content\bootstrap-utilities.css" />
+		<Content Include="Content\bootstrap-utilities.min.css" />
+		<Content Include="Content\bootstrap-utilities.rtl.css" />
+		<Content Include="Content\bootstrap-utilities.rtl.min.css" />
+		<Content Include="Content\bootstrap.css" />
+		<Content Include="Content\bootstrap.min.css" />
+		<Content Include="Content\bootstrap.rtl.css" />
+		<Content Include="Content\bootstrap.rtl.min.css" />
+		<Content Include="Default.aspx" />
+		<Content Include="Global.asax" />
+		<Content Include="img\6 semester-BIT.png" />
+		<Content Include="img\back.png" />
+		<Content Include="img\Capture.PNG" />
+		<Content Include="img\sidebar-removebg-preview.png" />
+		<Content Include="login.aspx" />
+		<Content Include="logout.aspx" />
+		<Content Include="Mba_Admin\bulk_upload.aspx" />
+		<Content Include="Mba_Admin\course_content.aspx" />
+		<Content Include="Mba_Admin\dash.aspx" />
+		<Content Include="Mba_Admin\logo\logo.png" />
+		<Content Include="Mba_Admin\Syllabus.aspx" />
+		<Content Include="Mba_Notes\course_content.aspx" />
+		<Content Include="Mba_Notes\Css\note.css" />
+		<Content Include="Mba_Notes\dash.aspx" />
+		<Content Include="Mba_Notes\logo\logo.png" />
+		<Content Include="Mcs_Admin\bulk_upload.aspx" />
+		<Content Include="Mcs_Admin\course_content.aspx" />
+		<Content Include="Mcs_Admin\dash.aspx" />
+		<Content Include="Mcs_Admin\logo\logo.png" />
+		<Content Include="Mcs_Admin\Syllabus.aspx" />
+		<Content Include="Mcs_Notes\course_content.aspx" />
+		<Content Include="Mcs_Notes\Css\note.css" />
+		<Content Include="Mcs_Notes\dash.aspx" />
+		<Content Include="Mcs_Notes\logo\logo.png" />
+		<Content Include="Profile.aspx" />
+		<Content Include="Contact.aspx" />
+		<Content Include="AboutUs.aspx" />
+		<Content Include="Blog\Master.Master" />
+		<Content Include="Blog.aspx" />
+		<Content Include="Feedback.aspx" />
+		<Content Include="AIBlog.aspx" />
+		<Content Include="administrator\administrator_master.Master" />
+		<Content Include="register.aspx" />
+		<Content Include="Scripts\bootstrap.bundle.js" />
+		<Content Include="Scripts\bootstrap.bundle.min.js" />
+		<Content Include="Scripts\bootstrap.esm.js" />
+		<Content Include="Scripts\bootstrap.esm.min.js" />
+		<Content Include="Scripts\bootstrap.js" />
+		<Content Include="Scripts\bootstrap.min.js" />
+		<Content Include="Scripts\esm\popper-utils.js" />
+		<Content Include="Scripts\esm\popper-utils.min.js" />
+		<Content Include="Scripts\esm\popper.js" />
+		<Content Include="Scripts\esm\popper.min.js" />
+		<Content Include="Scripts\index.js.flow" />
+		<Content Include="Scripts\esm\popper.min.js.map" />
+		<Content Include="Scripts\esm\popper.js.map" />
+		<Content Include="Scripts\esm\popper-utils.min.js.map" />
+		<Content Include="Scripts\esm\popper-utils.js.map" />
+		<Content Include="Bit_Notes\Syllabus\BCA_Syllabus.pdf" />
+		<Content Include="Bit_Notes\Syllabus\BE_Syllabus.pdf" />
+		<Content Include="Bit_Notes\Syllabus\ICP_Syllabus.pdf" />
+		<Content Include="Bit_Notes\Syllabus\PIT_Syllabus.pdf" />
+		<Content Include="Bit_Notes\Syllabus\Math_Syllabus.pdf" />
+		<Content Include="Bit_Notes\SyllabusViewer.ashx" />
+		<Content Include="NoticeViewer.ashx" />
+		<Content Include="Bhm_Notes\SyllabusViewer.ashx" />
+		<Content Include="Mba_Notes\SyllabusViewer.ashx" />
+		<Content Include="Bba_Notes\SyllabusViewer.ashx" />
+		<Content Include="Mcs_Notes\SyllabusViewer.ashx" />
+		<Content Include="MainAdmin\MainAdmin.Master" />
+		<Content Include="common\Handler1.ashx" />
+		<None Include="packages.config" />
+		<None Include="Scripts\jquery-3.7.1.intellisense.js" />
+		<None Include="Scripts\jquery-3.7.1-vsdoc.js" />
+		<Content Include="Scripts\jquery-3.7.1.js" />
+		<Content Include="Scripts\jquery-3.7.1.min.js" />
+		<Content Include="Scripts\jquery-3.7.1.slim.js" />
+		<Content Include="Scripts\jquery-3.7.1.slim.min.js" />
+		<Content Include="Scripts\popper-utils.js" />
+		<Content Include="Scripts\popper-utils.min.js" />
+		<Content Include="Scripts\popper.js" />
+		<Content Include="Scripts\popper.min.js" />
+		<Content Include="Scripts\src\index.js" />
+		<Content Include="Scripts\src\methods\defaults.js" />
+		<Content Include="Scripts\src\methods\destroy.js" />
+		<Content Include="Scripts\src\methods\disableEventListeners.js" />
+		<Content Include="Scripts\src\methods\enableEventListeners.js" />
+		<Content Include="Scripts\src\methods\placements.js" />
+		<Content Include="Scripts\src\methods\update.js" />
+		<Content Include="Scripts\src\modifiers\applyStyle.js" />
+		<Content Include="Scripts\src\modifiers\arrow.js" />
+		<Content Include="Scripts\src\modifiers\computeStyle.js" />
+		<Content Include="Scripts\src\modifiers\flip.js" />
+		<Content Include="Scripts\src\modifiers\hide.js" />
+		<Content Include="Scripts\src\modifiers\index.js" />
+		<Content Include="Scripts\src\modifiers\inner.js" />
+		<Content Include="Scripts\src\modifiers\keepTogether.js" />
+		<Content Include="Scripts\src\modifiers\offset.js" />
+		<Content Include="Scripts\src\modifiers\preventOverflow.js" />
+		<Content Include="Scripts\src\modifiers\shift.js" />
+		<Content Include="Scripts\src\utils\clockwise.js" />
+		<Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+		<Content Include="Scripts\src\utils\debounce.js" />
+		<Content Include="Scripts\src\utils\find.js" />
+		<Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+		<Content Include="Scripts\src\utils\findIndex.js" />
+		<Content Include="Scripts\src\utils\getBordersSize.js" />
+		<Content Include="Scripts\src\utils\getBoundaries.js" />
+		<Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+		<Content Include="Scripts\src\utils\getClientRect.js" />
+		<Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+		<Content Include="Scripts\src\utils\getOffsetParent.js" />
+		<Content Include="Scripts\src\utils\getOffsetRect.js" />
+		<Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+		<Content Include="Scripts\src\utils\getOppositePlacement.js" />
+		<Content Include="Scripts\src\utils\getOppositeVariation.js" />
+		<Content Include="Scripts\src\utils\getOuterSizes.js" />
+		<Content Include="Scripts\src\utils\getParentNode.js" />
+		<Content Include="Scripts\src\utils\getPopperOffsets.js" />
+		<Content Include="Scripts\src\utils\getReferenceNode.js" />
+		<Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+		<Content Include="Scripts\src\utils\getRoot.js" />
+		<Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+		<Content Include="Scripts\src\utils\getScroll.js" />
+		<Content Include="Scripts\src\utils\getScrollParent.js" />
+		<Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+		<Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+		<Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+		<Content Include="Scripts\src\utils\getWindow.js" />
+		<Content Include="Scripts\src\utils\getWindowSizes.js" />
+		<Content Include="Scripts\src\utils\includeScroll.js" />
+		<Content Include="Scripts\src\utils\index.js" />
+		<Content Include="Scripts\src\utils\isBrowser.js" />
+		<Content Include="Scripts\src\utils\isFixed.js" />
+		<Content Include="Scripts\src\utils\isFunction.js" />
+		<Content Include="Scripts\src\utils\isIE.js" />
+		<Content Include="Scripts\src\utils\isModifierEnabled.js" />
+		<Content Include="Scripts\src\utils\isModifierRequired.js" />
+		<Content Include="Scripts\src\utils\isNumeric.js" />
+		<Content Include="Scripts\src\utils\isOffsetContainer.js" />
+		<Content Include="Scripts\src\utils\removeEventListeners.js" />
+		<Content Include="Scripts\src\utils\runModifiers.js" />
+		<Content Include="Scripts\src\utils\setAttributes.js" />
+		<Content Include="Scripts\src\utils\setStyles.js" />
+		<Content Include="Scripts\src\utils\setupEventListeners.js" />
+		<Content Include="Scripts\umd\popper-utils.js" />
+		<Content Include="Scripts\umd\popper-utils.min.js" />
+		<Content Include="Scripts\umd\popper.js" />
+		<Content Include="Scripts\umd\popper.min.js" />
+		<Content Include="slide\2.jpg" />
+		<Content Include="slide\3.jpg" />
+		<Content Include="slide\a.jpg" />
+		<Content Include="slide\arik.png" />
+		<Content Include="slide\attendence.png" />
+		<Content Include="slide\bba2.jpg" />
+		<Content Include="slide\bcs3.png" />
+		<Content Include="slide\bcs4.png" />
+		<Content Include="slide\BHM.png" />
+		<Content Include="slide\bhm2.jpg" />
+		<Content Include="slide\bhm4.jpg" />
+		<Content Include="slide\bhmcard.png" />
+		<Content Include="slide\bit.png" />
+		<Content Include="slide\bit2.jpeg" />
+		<Content Include="slide\canteen-03.png" />
+		<Content Include="slide\certificate.png" />
+		<Content Include="slide\chefcap.png" />
+		<Content Include="slide\college.jpg" />
+		<Content Include="slide\comcard.jpg" />
+		<Content Include="slide\deepaksir.png" />
+		<Content Include="slide\Durganand.png" />
+		<Content Include="slide\facedetection.png" />
+		<Content Include="slide\fs.jpg" />
+		<Content Include="slide\haik.jpg" />
+		<Content Include="slide\images-removebg-preview.png" />
+		<Content Include="slide\info.png" />
+		<Content Include="slide\job.png" />
+		<Content Include="slide\learn.png" />
+		<Content Include="slide\learn2.png" />
+		<Content Include="slide\learn3.png" />
+		<Content Include="slide\learn4.jfif" />
+		<Content Include="slide\leave.png" />
+		<Content Include="slide\lgo.png" />
+		<Content Include="slide\manoj.png" />
+		<Content Include="slide\mba.png" />
+		<Content Include="slide\mba5.jpg" />
+		<Content Include="slide\mbacard.png" />
+		<Content Include="slide\mcs.jpg" />
+		<Content Include="slide\mcs2.png" />
+		<Content Include="slide\QRinfo.png" />
+		<Content Include="slide\rohitsri.png" />
+		<Content Include="slide\saroj.png" />
+		<Content Include="slide\sartak.png" />
+		<Content Include="slide\sd.jpg" />
+		<Content Include="slide\se1.jpg" />
+		<Content Include="slide\sl1.jpg" />
+		<Content Include="slide\subash.png" />
+		<Content Include="slide\sumansir.png" />
+		<Content Include="slide\tara.png" />
+		<Content Include="slide\Tcmit.png" />
+		<Content Include="slide\td.jpg" />
+		<Content Include="Mcs_Admin\upload.Master" />
+		<Content Include="Mba_Admin\upload.Master" />
+		<Content Include="Bcs_Admin\upload.Master" />
+		<Content Include="Bhm_Admin\upload.Master" />
+		<Content Include="Bba_Admin\upload.Master" />
+		<Content Include="Bit_Admin\upload.Master" />
+		<Content Include="Mcs_Notes\note.Master" />
+		<Content Include="Bhm_Notes\note.Master" />
+		<Content Include="Bit_Notes\note.Master" />
+		<Content Include="Mba_Notes\note.Master" />
+		<Content Include="Bba_Notes\note.Master" />
+		<Content Include="Bcs_Notes\note.Master" />
+		<Content Include="slide\view logo.png" />
+		<Content Include="slide\zidan.png" />
+		<Content Include="Staff\default_staff.aspx" />
+		<Content Include="students\abcd.aspx" />
+		<Content Include="students\default_student.aspx" />
+		<Content Include="students\images\logo.png" />
+		<Content Include="students\module_details.aspx" />
+		<Content Include="students\ViewFile.aspx" />
+		<Content Include="style.css" />
+		<Content Include="styles\AdminStyles.css" />
+		<Content Include="SubjectManage.ascx" />
+		<Content Include="SubjectManage.aspx" />
+		<Content Include="SuperAdmin\Dash.aspx" />
+		<Content Include="SuperAdmin\super_admin.aspx" />
+		<Content Include="Suspended.aspx" />
+		<Content Include="TextFile1.txt" />
+		<Content Include="TreeLineImages\dash.gif" />
+		<Content Include="TreeLineImages\dashminus.gif" />
+		<Content Include="TreeLineImages\dashplus.gif" />
+		<Content Include="TreeLineImages\i.gif" />
+		<Content Include="TreeLineImages\l.gif" />
+		<Content Include="TreeLineImages\lminus.gif" />
+		<Content Include="TreeLineImages\lplus.gif" />
+		<Content Include="TreeLineImages\minus.gif" />
+		<Content Include="TreeLineImages\noexpand.gif" />
+		<Content Include="TreeLineImages\plus.gif" />
+		<Content Include="TreeLineImages\r.gif" />
+		<Content Include="TreeLineImages\rminus.gif" />
+		<Content Include="TreeLineImages\rplus.gif" />
+		<Content Include="TreeLineImages\t.gif" />
+		<Content Include="TreeLineImages\tminus.gif" />
+		<Content Include="TreeLineImages\tplus.gif" />
+		<Content Include="verification\approvestudents.aspx" />
+		<Content Include="verification\images\logo.png" />
+		<Content Include="verification\verification_default.aspx" />
+		<Content Include="Web.config" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="AccessDenied.aspx.cs">
+			<DependentUpon>AccessDenied.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="AccessDenied.aspx.designer.cs">
+			<DependentUpon>AccessDenied.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="administrator\access.aspx.cs">
+			<DependentUpon>access.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="administrator\access.aspx.designer.cs">
+			<DependentUpon>access.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="administrator\administrator_master.Master.cs">
+			<DependentUpon>administrator_master.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="administrator\administrator_master.Master.designer.cs">
+			<DependentUpon>administrator_master.Master</DependentUpon>
+		</Compile>
+		<Compile Include="administrator\AppointUser.aspx.cs">
+			<DependentUpon>AppointUser.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="administrator\AppointUser.aspx.designer.cs">
+			<DependentUpon>AppointUser.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="administrator\default_administrator.aspx.cs">
+			<DependentUpon>default_administrator.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="administrator\default_administrator.aspx.designer.cs">
+			<DependentUpon>default_administrator.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="common\BasePage.cs">
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Content Include="common\IISHandler1.cs" />
+		<Compile Include="common\Handler1.ashx.cs">
+			<DependentUpon>Handler1.ashx</DependentUpon>
+		</Compile>
+		<Compile Include="App_Start\RouteConfig.cs" />
+		<Compile Include="Bba_Admin\bulk_upload.aspx.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bba_Admin\bulk_upload.aspx.designer.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bba_Admin\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bba_Admin\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bba_Admin\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bba_Admin\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bba_Admin\Syllabus.aspx.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bba_Admin\Syllabus.aspx.designer.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bba_Admin\upload.Master.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bba_Admin\upload.Master.designer.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Bba_Notes\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bba_Notes\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bba_Notes\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bba_Notes\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bba_Notes\note.Master.cs">
+			<DependentUpon>note.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bba_Notes\note.Master.designer.cs">
+			<DependentUpon>note.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Bcs_Admin\bulk_upload.aspx.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bcs_Admin\bulk_upload.aspx.designer.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bcs_Admin\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bcs_Admin\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bcs_Admin\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bcs_Admin\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bcs_Admin\Syllabus.aspx.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bcs_Admin\Syllabus.aspx.designer.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bcs_Admin\upload.Master.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bcs_Admin\upload.Master.designer.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Bcs_Notes\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bcs_Notes\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<None Include="Bcs_Notes\SyllabusViewer.ashx" />
+		<Compile Include="Bcs_Notes\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bcs_Notes\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bcs_Notes\note.Master.cs">
+			<DependentUpon>note.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bcs_Notes\note.Master.designer.cs">
+			<DependentUpon>note.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Bhm_Admin\bulk_upload.aspx.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bhm_Admin\bulk_upload.aspx.designer.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bhm_Admin\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bhm_Admin\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bhm_Admin\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bhm_Admin\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bhm_Admin\Syllabus.aspx.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bhm_Admin\Syllabus.aspx.designer.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bhm_Admin\upload.Master.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bhm_Admin\upload.Master.designer.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Bhm_Notes\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bhm_Notes\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bhm_Notes\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bhm_Notes\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bhm_Notes\note.Master.cs">
+			<DependentUpon>note.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bhm_Notes\note.Master.designer.cs">
+			<DependentUpon>note.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Bit_Admin\bulk_upload.aspx.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bit_Admin\bulk_upload.aspx.designer.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bit_Admin\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bit_Admin\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="common\BaseAdminMaster.cs">
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="DepartmentAdminDashBase.cs">
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="DepartmentAdminManageControl.ascx.cs">
+			<DependentUpon>DepartmentAdminManageControl.ascx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="DepartmentAdminManageControl.ascx.designer.cs">
+			<DependentUpon>DepartmentAdminManageControl.ascx</DependentUpon>
+		</Compile>
+		<Compile Include="DepartmentAdminManage.aspx.cs">
+			<DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="DepartmentAdminManage.aspx.designer.cs">
+			<DependentUpon>DepartmentAdminManage.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="DepartmentAdmin\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="DepartmentAdmin\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="DepartmentDataService.cs" />
+		<Compile Include="Bit_Admin\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bit_Admin\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bit_Admin\upload.Master.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bit_Admin\upload.Master.designer.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Bit_Admin\Syllabus.aspx.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bit_Admin\Syllabus.aspx.designer.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bit_Notes\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bit_Notes\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bit_Notes\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bit_Notes\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Bit_Notes\note.Master.cs">
+			<DependentUpon>note.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Bit_Notes\note.Master.designer.cs">
+			<DependentUpon>note.Master</DependentUpon>
+		</Compile>
+		<Compile Include="DepartmentManageControl.ascx.cs">
+			<DependentUpon>DepartmentManageControl.ascx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="DepartmentManageControl.ascx.designer.cs">
+			<DependentUpon>DepartmentManageControl.ascx</DependentUpon>
+		</Compile>
+		<Compile Include="DepartmentManage.aspx.cs">
+			<DependentUpon>DepartmentManage.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="DepartmentManage.aspx.designer.cs">
+			<DependentUpon>DepartmentManage.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="MainAdmin\Dash.aspx.cs">
+			<DependentUpon>Dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="MainAdmin\Dash.aspx.designer.cs">
+			<DependentUpon>Dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="MainAdmin\MainAdmin.Master.cs">
+			<DependentUpon>MainAdmin.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="MainAdmin\MainAdmin.Master.designer.cs">
+			<DependentUpon>MainAdmin.Master</DependentUpon>
+		</Compile>
+		<Compile Include="MainAdmin\SuperAdminManageControl.ascx.cs">
+			<DependentUpon>SuperAdminManageControl.ascx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="MainAdmin\SuperAdminManageControl.ascx.designer.cs">
+			<DependentUpon>SuperAdminManageControl.ascx</DependentUpon>
+		</Compile>
+		<Compile Include="StaffManage.ascx.cs">
+			<DependentUpon>StaffManage.ascx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="StaffManage.ascx.designer.cs">
+			<DependentUpon>StaffManage.ascx</DependentUpon>
+		</Compile>
+		<Compile Include="StaffManage.aspx.cs">
+			<DependentUpon>StaffManage.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="StaffManage.aspx.designer.cs">
+			<DependentUpon>StaffManage.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="StudentManage.ascx.cs">
+			<DependentUpon>StudentManage.ascx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="StudentManage.ascx.designer.cs">
+			<DependentUpon>StudentManage.ascx</DependentUpon>
+		</Compile>
+		<Compile Include="StudentManage.aspx.cs">
+			<DependentUpon>StudentManage.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="StudentManage.aspx.designer.cs">
+			<DependentUpon>StudentManage.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="MainAdmin\SuperAdminManage.aspx.cs">
+			<DependentUpon>SuperAdminManage.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="MainAdmin\SuperAdminManage.aspx.designer.cs">
+			<DependentUpon>SuperAdminManage.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="NoticeManage.aspx.cs">
+			<DependentUpon>NoticeManage.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="NoticeManage.aspx.designer.cs">
+			<DependentUpon>NoticeManage.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="NoticeRoles.cs" />
+		<Compile Include="Notices.aspx.cs">
+			<DependentUpon>Notices.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Notices.aspx.designer.cs">
+			<DependentUpon>Notices.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="NoticeWidget.ascx.cs">
+			<DependentUpon>NoticeWidget.ascx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="NoticeWidget.ascx.designer.cs">
+			<DependentUpon>NoticeWidget.ascx</DependentUpon>
+		</Compile>
+		<Compile Include="Blog\blog1.aspx.cs">
+			<DependentUpon>blog1.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Blog\blog1.aspx.designer.cs">
+			<DependentUpon>blog1.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Blog\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Blog\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Blog\Master.Master.cs">
+			<DependentUpon>Master.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Blog\Master.Master.designer.cs">
+			<DependentUpon>Master.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Controllers\HomeController.cs" />
+		<Compile Include="Default.aspx.cs">
+			<DependentUpon>Default.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Default.aspx.designer.cs">
+			<DependentUpon>Default.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Global.asax.cs">
+			<DependentUpon>Global.asax</DependentUpon>
+		</Compile>
+		<Compile Include="PermissionHelper.cs" />
+		<Compile Include="learning.Master.cs">
+			<DependentUpon>learning.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="learning.Master.designer.cs">
+			<DependentUpon>learning.Master</DependentUpon>
+		</Compile>
+		<Compile Include="login.aspx.cs">
+			<DependentUpon>login.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="login.aspx.designer.cs">
+			<DependentUpon>login.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="logout.aspx.cs">
+			<DependentUpon>logout.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="logout.aspx.designer.cs">
+			<DependentUpon>logout.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mba_Admin\bulk_upload.aspx.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mba_Admin\bulk_upload.aspx.designer.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mba_Admin\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mba_Admin\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mba_Admin\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mba_Admin\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mba_Admin\Syllabus.aspx.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mba_Admin\Syllabus.aspx.designer.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mba_Admin\upload.Master.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mba_Admin\upload.Master.designer.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Mba_Notes\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mba_Notes\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mba_Notes\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mba_Notes\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mba_Notes\note.Master.cs">
+			<DependentUpon>note.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mba_Notes\note.Master.designer.cs">
+			<DependentUpon>note.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Mcs_Admin\bulk_upload.aspx.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mcs_Admin\bulk_upload.aspx.designer.cs">
+			<DependentUpon>bulk_upload.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mcs_Admin\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mcs_Admin\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mcs_Admin\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mcs_Admin\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mcs_Admin\Syllabus.aspx.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mcs_Admin\Syllabus.aspx.designer.cs">
+			<DependentUpon>Syllabus.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mcs_Admin\upload.Master.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mcs_Admin\upload.Master.designer.cs">
+			<DependentUpon>upload.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Mcs_Notes\course_content.aspx.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mcs_Notes\course_content.aspx.designer.cs">
+			<DependentUpon>course_content.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mcs_Notes\dash.aspx.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mcs_Notes\dash.aspx.designer.cs">
+			<DependentUpon>dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Mcs_Notes\note.Master.cs">
+			<DependentUpon>note.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Mcs_Notes\note.Master.designer.cs">
+			<DependentUpon>note.Master</DependentUpon>
+		</Compile>
+		<Compile Include="Models\SubjectMap.cs" />
+		<Compile Include="Profile.aspx.cs">
+			<DependentUpon>Profile.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Profile.aspx.designer.cs">
+			<DependentUpon>Profile.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Properties\AssemblyInfo.cs" />
+		<Compile Include="Contact.aspx.cs">
+			<DependentUpon>Contact.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Contact.aspx.designer.cs">
+			<DependentUpon>Contact.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="AboutUs.aspx.cs">
+			<DependentUpon>AboutUs.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="AboutUs.aspx.designer.cs">
+			<DependentUpon>AboutUs.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Blog.aspx.cs">
+			<DependentUpon>Blog.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Blog.aspx.designer.cs">
+			<DependentUpon>Blog.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Feedback.aspx.cs">
+			<DependentUpon>Feedback.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Feedback.aspx.designer.cs">
+			<DependentUpon>Feedback.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="AIBlog.aspx.cs">
+			<DependentUpon>AIBlog.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="AIBlog.aspx.designer.cs">
+			<DependentUpon>AIBlog.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="register.aspx.cs">
+			<DependentUpon>register.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="register.aspx.designer.cs">
+			<DependentUpon>register.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Staff\default_staff.aspx.cs">
+			<DependentUpon>default_staff.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Staff\default_staff.aspx.designer.cs">
+			<DependentUpon>default_staff.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="students\abcd.aspx.cs">
+			<DependentUpon>abcd.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="students\abcd.aspx.designer.cs">
+			<DependentUpon>abcd.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="students\default_student.aspx.cs">
+			<DependentUpon>default_student.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="students\default_student.aspx.designer.cs">
+			<DependentUpon>default_student.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="students\module_details.aspx.cs">
+			<DependentUpon>module_details.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="students\module_details.aspx.designer.cs">
+			<DependentUpon>module_details.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="students\student.Master.cs">
+			<DependentUpon>student.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="students\student.Master.designer.cs">
+			<DependentUpon>student.Master</DependentUpon>
+		</Compile>
+		<Compile Include="students\ViewFile.aspx.cs">
+			<DependentUpon>ViewFile.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="students\ViewFile.aspx.designer.cs">
+			<DependentUpon>ViewFile.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="SubjectManage.ascx.cs">
+			<DependentUpon>SubjectManage.ascx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="SubjectManage.ascx.designer.cs">
+			<DependentUpon>SubjectManage.ascx</DependentUpon>
+		</Compile>
+		<Compile Include="SubjectManage.aspx.cs">
+			<DependentUpon>SubjectManage.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="SubjectManage.aspx.designer.cs">
+			<DependentUpon>SubjectManage.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="SuperAdmin\Dash.aspx.cs">
+			<DependentUpon>Dash.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="SuperAdmin\Dash.aspx.designer.cs">
+			<DependentUpon>Dash.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="SuperAdmin\SuperAdmin.Master.cs">
+			<DependentUpon>SuperAdmin.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="SuperAdmin\SuperAdmin.Master.designer.cs">
+			<DependentUpon>SuperAdmin.Master</DependentUpon>
+		</Compile>
+		<Compile Include="SuperAdmin\super_admin.aspx.cs">
+			<DependentUpon>super_admin.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="SuperAdmin\super_admin.aspx.designer.cs">
+			<DependentUpon>super_admin.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="Suspended.aspx.cs">
+			<DependentUpon>Suspended.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="Suspended.aspx.designer.cs">
+			<DependentUpon>Suspended.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="verification\approvestudents.aspx.cs">
+			<DependentUpon>approvestudents.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="verification\approvestudents.aspx.designer.cs">
+			<DependentUpon>approvestudents.aspx</DependentUpon>
+		</Compile>
+		<Compile Include="verification\verification_dash.Master.cs">
+			<DependentUpon>verification_dash.Master</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="verification\verification_dash.Master.designer.cs">
+			<DependentUpon>verification_dash.Master</DependentUpon>
+		</Compile>
+		<Compile Include="verification\verification_default.aspx.cs">
+			<DependentUpon>verification_default.aspx</DependentUpon>
+			<SubType>ASPXCodeBehind</SubType>
+		</Compile>
+		<Compile Include="verification\verification_default.aspx.designer.cs">
+			<DependentUpon>verification_default.aspx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="Views\web.config" />
+		<Content Include="learning.Master" />
+		<Content Include="students\student.Master" />
+		<Content Include="verification\verification_dash.Master" />
+		<Content Include="slide\Tcmit.webp" />
+		<Content Include="Scripts\bootstrap.min.js.map" />
+		<Content Include="Scripts\bootstrap.js.map" />
+		<Content Include="Scripts\bootstrap.esm.min.js.map" />
+		<Content Include="Scripts\bootstrap.esm.js.map" />
+		<Content Include="Scripts\bootstrap.bundle.min.js.map" />
+		<Content Include="Scripts\bootstrap.bundle.js.map" />
+		<Content Include="Content\bootstrap.rtl.min.css.map" />
+		<Content Include="Content\bootstrap.rtl.css.map" />
+		<Content Include="Content\bootstrap.min.css.map" />
+		<Content Include="Content\bootstrap.css.map" />
+		<Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+		<Content Include="Content\bootstrap-utilities.rtl.css.map" />
+		<Content Include="Content\bootstrap-utilities.min.css.map" />
+		<Content Include="Content\bootstrap-utilities.css.map" />
+		<Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+		<Content Include="Content\bootstrap-reboot.rtl.css.map" />
+		<Content Include="Content\bootstrap-reboot.min.css.map" />
+		<Content Include="Content\bootstrap-reboot.css.map" />
+		<Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+		<Content Include="Content\bootstrap-grid.rtl.css.map" />
+		<Content Include="Content\bootstrap-grid.min.css.map" />
+		<Content Include="Content\bootstrap-grid.css.map" />
+		<Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+		<Content Include="Scripts\jquery-3.7.1.min.map" />
+		<Content Include="Scripts\umd\popper.min.js.map" />
+		<Content Include="Scripts\umd\popper.js.map" />
+		<Content Include="Scripts\umd\popper.js.flow" />
+		<Content Include="Scripts\umd\popper-utils.min.js.map" />
+		<Content Include="Scripts\umd\popper-utils.js.map" />
+		<Content Include="Scripts\README.md" />
+		<Content Include="Scripts\popper.min.js.map" />
+		<Content Include="Scripts\popper.js.map" />
+		<Content Include="Scripts\popper-utils.min.js.map" />
+		<Content Include="Scripts\popper-utils.js.map" />
+		<Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+		<Content Include="Scripts\jquery-3.7.1.min.map" />
+		<Content Include="students\student.Master" />
+		<Content Include="verification\verification_dash.Master" />
+		<Content Include="slide\Tcmit.webp" />
+		<Content Include="SuperAdmin\SuperAdmin.Master" />
+		<None Include="Web.Debug.config">
+			<DependentUpon>Web.config</DependentUpon>
+		</None>
+		<None Include="Web.Release.config">
+			<DependentUpon>Web.config</DependentUpon>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="App_Data\" />
+		<Folder Include="Helpers\" />
+		<Folder Include="photo\" />
+		<Folder Include="Uploded_datas\" />
+		<Folder Include="Views\Home\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+	</ItemGroup>
+	<ItemGroup>
+		<TypeScriptCompile Include="Scripts\index.d.ts" />
+	</ItemGroup>
+	<PropertyGroup>
+		<VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+		<VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+	</PropertyGroup>
+	<Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+	<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+	<Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+	<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+	<ProjectExtensions>
+		<VisualStudio>
+			<FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+				<WebProjectProperties>
+					<UseIIS>True</UseIIS>
+					<AutoAssignPort>True</AutoAssignPort>
+					<DevelopmentServerPort>55625</DevelopmentServerPort>
+					<DevelopmentServerVPath>/</DevelopmentServerVPath>
+					<IISUrl>https://localhost:44301/</IISUrl>
+					<NTLMAuthentication>False</NTLMAuthentication>
+					<UseCustomServer>False</UseCustomServer>
+					<CustomServerUrl>
+					</CustomServerUrl>
+					<SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+				</WebProjectProperties>
+			</FlavorProperties>
+		</VisualStudio>
+	</ProjectExtensions>
+	<Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+	<Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+		<PropertyGroup>
+			<ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+		</PropertyGroup>
+		<Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+	</Target>
 </Project>

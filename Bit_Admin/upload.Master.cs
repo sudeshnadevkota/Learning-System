@@ -1,12 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Security;
+using System.Web.UI.WebControls;
+using Learning_System.Common;
 
 namespace Learning_System.Bit_Admin
 {
-    public partial class upload : System.Web.UI.MasterPage
+    public partial class upload : BaseAdminMaster
     {
+        protected override PlaceHolder DynamicPlaceHolder => phDynamic;
+
         protected bool IsDepartmentAdmin;
         protected bool IsTeacher;
+
+        // Only Quick Action items that already have a working .ascx control go here.
+        // AppointUser, RegisterStudent, Notices, Reports are still plain .aspx links
+        // in the markup above — add them here (and switch their markup to
+        // asp:LinkButton) once their .ascx controls exist.
+        private static readonly Dictionary<string, string> Sections = new Dictionary<string, string>
+        {
+            { "StaffManage",  "~/StaffManage.ascx" },
+            { "DeptSettings", "~/DepartmentManageControl.ascx" }, // confirm this is the real path/name
+        };
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (IsPostBack)
+                RestoreSection();
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,41 +49,33 @@ namespace Learning_System.Bit_Admin
                 return;
             }
 
+            if (IsDepartmentAdmin)
+            {
+                lnkStaffManage.CssClass = GetNavClass("StaffManage");
+                lnkDeptSettings.CssClass = GetNavClass("DeptSettings");
+            }
+
             if (!IsPostBack)
             {
-                ApplyPermissions();
+                pnlStaticContent.Visible = true;
+                pnlDynamicContent.Visible = false;
+            }
+            else if (HasActiveSection)
+            {
+                // Section was restored in Page_Init — just fix panel visibility here.
+                pnlStaticContent.Visible = false;
+                pnlDynamicContent.Visible = true;
             }
         }
 
-        private void ApplyPermissions()
+        protected void NavLink_Click(object sender, EventArgs e)
         {
-            // ===================================================
-            // Department Admin only menu items can be hidden here.
-            //
-            // Your current menu only contains:
-            //  - Dashboard
-            //  - Semester 1-8
-            //
-            // Since Teachers are allowed to upload notes/resources,
-            // they should also see these menu items.
-            //
-            // If you later add menu items such as:
-            //  • Register Staff
-            //  • Register Student
-            //  • Department Settings
-            //  • Manage Teachers
-            //
-            // Then hide them here for teachers.
-            // ===================================================
-
-            if (!IsDepartmentAdmin)
+            var key = ((LinkButton)sender).CommandArgument;
+            if (Sections.TryGetValue(key, out var path))
             {
-                // Example:
-                // Menu1.FindItem("Register Staff").Selectable = false;
-                // Menu1.FindItem("Register Staff").NavigateUrl = "";
-
-                // Menu1.FindItem("Register Student").Selectable = false;
-                // Menu1.FindItem("Register Student").NavigateUrl = "";
+                LoadSection(key, path);
+                pnlStaticContent.Visible = false;
+                pnlDynamicContent.Visible = true;
             }
         }
 

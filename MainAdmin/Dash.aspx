@@ -9,7 +9,7 @@
             <p>Logged in as <strong><%= Session["Username"] %></strong> &middot; Full system access</p>
         </div>
         <div class="c-topbar-actions">
-            <a href="/administrator/AppointUser.aspx" class="c-btn-ghost"><i class="ti ti-user-plus"></i> Appoint User</a>
+            
             <asp:HyperLink runat="server" NavigateUrl="~/logout.aspx" CssClass="c-btn-pink">
                 <i class="ti ti-logout"></i> Logout
             </asp:HyperLink>

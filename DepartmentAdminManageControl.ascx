@@ -175,7 +175,7 @@
             </div>
             <div style="display:flex; gap:10px;">
                 <a href="/administrator/AppointUser.aspx" class="c-btn-pink"><i class="ti ti-user-plus"></i> Appoint New Admin</a>
-                <a href="super_admin.aspx" class="c-btn-ghost"><i class="ti ti-arrow-left"></i> Dashboard</a>
+               
             </div>
         </div>
 

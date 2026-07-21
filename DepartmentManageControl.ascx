@@ -258,9 +258,7 @@
                 <h1>Departments</h1>
                 <p>Create, edit, and remove departments across the system.</p>
             </div>
-            <div>
-                <a href="super_admin.aspx" class="c-btn-ghost"><i class="ti ti-arrow-left"></i> Back to Dashboard</a>
-            </div>
+           
         </div>
 
         <asp:PlaceHolder ID="phSuccess" runat="server" Visible="false">

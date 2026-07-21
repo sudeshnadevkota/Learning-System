@@ -151,14 +151,11 @@
                     <p>Read-only view, sourced from SubjectMap.cs and grouped by department and semester.</p>
                 </div>
                 <div>
-                    <a href="super_admin.aspx" class="c-btn-ghost"><i class="ti ti-arrow-left"></i> Back to Dashboard</a>
+                 
                 </div>
             </div>
 
-            <div class="c-note c-fade-up">
-                <i class="ti ti-info-circle"></i>
-                <div>Subjects are defined in code (<strong>SubjectMap.cs</strong>), not in a database table, so this page is read-only. Adding, renaming, or removing a subject means editing that file — and usually creating a matching content table — then redeploying.</div>
-            </div>
+    
 
             <asp:Repeater ID="rptDepartments" runat="server">
                 <ItemTemplate>
