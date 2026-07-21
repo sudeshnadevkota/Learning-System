@@ -417,6 +417,7 @@
 <iframe
     id="sylPdfFrame"
     runat="server"
+    ClientIDMode="Static"
     width="100%"
     height="700">
 </iframe>

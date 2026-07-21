@@ -19,7 +19,7 @@ namespace Learning_System.MainAdmin
             { "DeptAdmins",  "~/DepartmentAdminManageControl.ascx" },
             { "Departments", "~/DepartmentManageControl.ascx" },
             { "SuperAdmin", "SuperAdminManageControl.ascx" },
-            { "AppointUser", "/administrator/AppointUserControl.ascx" },
+            { "AppointUser", "~/administrator/AppointUserControl.ascx" },
             { "NoticeManage", "~/NoticeManageControl.ascx" },
 
 
