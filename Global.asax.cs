@@ -14,5 +14,6 @@ namespace Learning_System
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
     }
 }
