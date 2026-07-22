@@ -8,7 +8,7 @@
         --lp-danger: #dc2626;
         --lp-radius: 14px;
         --lp-radius-lg: 22px;
-        max-width: 55%;
+        max-width: 80%;
         margin: 40px auto;
         background: #fff;
         border-radius: var(--lp-radius-lg);
@@ -135,10 +135,10 @@
 
 <div class="lp-app-wrap">
     <div class="lp-app-header">
-        <asp:LinkButton ID="btnClose" runat="server" CssClass="lp-close-btn"
+        <%--<asp:LinkButton ID="btnClose" runat="server" CssClass="lp-close-btn"
             OnClick="btnClose_Click" CausesValidation="false" ToolTip="Close">
             <i class="fas fa-times"></i>
-        </asp:LinkButton>
+        </asp:LinkButton>--%>
         <h2>Appoint User</h2>
         <p>Create a Staff, Department Admin, or Super Admin account</p>
     </div>

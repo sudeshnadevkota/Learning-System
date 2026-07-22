@@ -11,14 +11,18 @@
 
     <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
 </head>
+
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="sm" runat="server" />
 
         <div class="c-shell">
 
+            <div class="c-sidebar-backdrop" id="sidebarBackdrop"></div>
+
             <!-- Sidebar -->
             <aside class="c-sidebar">
+                <button type="button" class="c-sidebar-close-btn" id="btnCloseSidebar" aria-label="Close menu"><i class="ti ti-arrow-left"></i></button>
                 <div class="c-brand">
                     <div class="c-brand-badge"><i class="ti ti-shield-star"></i></div>
                     <span>Super Admin</span>
@@ -62,18 +66,33 @@
 
                 <div class="c-sidebar-spacer"></div>
 
-                <div class="c-sidebar-user">
+                <div class="c-sidebar-user" id="sidebarUserToggle">
                     <div class="c-sidebar-avatar"><i class="ti ti-user"></i></div>
                     <div>
                         <div class="c-sidebar-user-name">Super Admin</div>
                         <div class="c-sidebar-user-role">Department-wide Access</div>
                     </div>
                     <i class="ti ti-chevron-down"></i>
+
+                    <div class="c-user-popup">
+                        <a href='<%= ResolveUrl("~/Profile.aspx") %>?returnUrl=<%= Server.UrlEncode(Request.Url.PathAndQuery) %>'>
+                            <i class="ti ti-user-circle"></i>View Profile</a>
+                        <a href="~/logout.aspx" runat="server" class="logout-link"><i class="ti ti-logout"></i>Logout</a>
+                    </div>
                 </div>
             </aside>
 
             <!-- Main content -->
             <main class="c-main">
+                <div class="c-mobile-topbar">
+                    <button type="button" class="c-mobile-icon-btn" id="btnOpenSidebar" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
+                    <div class="c-mobile-topbar-title">
+                        <span class="c-brand-badge"><i class="ti ti-shield-star"></i></span>
+                        Super Admin
+       
+                    </div>
+                </div>
+
                 <asp:UpdatePanel ID="upContent" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
 
@@ -103,5 +122,41 @@
 
         </div>
     </form>
+    <script>
+        (function () {
+            var body = document.body;
+            var openBtn = document.getElementById('btnOpenSidebar');
+            var closeBtn = document.getElementById('btnCloseSidebar');
+            var backdrop = document.getElementById('sidebarBackdrop');
+
+            function openSidebar() { body.classList.add('c-sidebar-open'); }
+            function closeSidebar() { body.classList.remove('c-sidebar-open'); }
+
+            if (openBtn) openBtn.addEventListener('click', openSidebar);
+            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+            if (backdrop) backdrop.addEventListener('click', closeSidebar);
+        })();
+    </script>
+    <script>
+        (function () {
+            var toggle = document.getElementById('sidebarUserToggle');
+            if (!toggle) return;
+
+            toggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggle.classList.toggle('open');
+            });
+
+            document.addEventListener('click', function () {
+                toggle.classList.remove('open');
+            });
+
+            // Prevent the popup itself from closing when clicked inside
+            var popup = toggle.querySelector('.c-user-popup');
+            if (popup) {
+                popup.addEventListener('click', function (e) { e.stopPropagation(); });
+            }
+        })();
+    </script>
 </body>
 </html>

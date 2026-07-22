@@ -11,7 +11,28 @@ namespace Learning_System
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["ProfileId"] == null) Response.Redirect("~/login.aspx");
-            if (!IsPostBack) LoadProfile();
+
+            if (!IsPostBack)
+            {
+                LoadProfile();
+
+                // Prefer the explicit returnUrl query string (always reliable).
+                // Fall back to the browser referrer, then to Default.aspx as a last resort.
+                string returnUrl = Request.QueryString["returnUrl"];
+
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    Session["ProfileReturnUrl"] = returnUrl;
+                }
+                else if (Request.UrlReferrer != null)
+                {
+                    Session["ProfileReturnUrl"] = Request.UrlReferrer.PathAndQuery;
+                }
+                else if (Session["ProfileReturnUrl"] == null)
+                {
+                    Session["ProfileReturnUrl"] = "~/Default.aspx";
+                }
+            }
         }
 
         private void LoadProfile()
@@ -132,9 +153,11 @@ namespace Learning_System
                 }
             }
         }
+
         protected void BackHomeButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Default.aspx");
+            string returnUrl = Session["ProfileReturnUrl"] as string;
+            Response.Redirect(!string.IsNullOrEmpty(returnUrl) ? returnUrl : "~/Default.aspx");
         }
     }
 }

@@ -338,9 +338,7 @@
     <!-- Hero -->
     <div class="c-hero">
         <div class="c-hero-text">
-            <a href="<%= ResolveUrl("~/Default.aspx") %>" class="c-back-link">
-                <i class="ti ti-arrow-left"></i>Back to Dashboard
-            </a>
+           
             <h3><i class="ti ti-speakerphone"></i>Manage Notices</h3>
             <small>Create and publish notices for students to view on the notice board</small>
         </div>
@@ -354,11 +352,6 @@
     <!-- Form Panel -->
     <div class="c-panel">
         <div class="c-panel-title">Notice Details</div>
-
-        <div class="c-notice">
-            <i class="ti ti-info-circle"></i>
-            <span>Notices appear on the student notice board and dashboard widget once saved.</span>
-        </div>
 
         <asp:HiddenField ID="hidNoticeId" runat="server" />
 
@@ -419,10 +412,10 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <%--<div class="form-group">
             <label>Expiry Date <small style="color: var(--text-muted); font-weight: 400;">(optional)</small></label>
             <asp:TextBox ID="txtExpiry" runat="server" CssClass="c-input" TextMode="Date" Style="max-width: 240px;" />
-        </div>
+        </div>--%>
 
         <div style="display: flex; gap: 10px; margin-top: 6px;">
             <asp:Button ID="btnSave" runat="server" Text="Save Notice" CssClass="c-btn-submit" OnClick="btnSave_Click" />

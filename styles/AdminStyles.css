@@ -208,7 +208,7 @@ html, body {
     color: rgba(255,255,255,0.55);
 }
 
-.c-sidebar-user i {
+.c-sidebar-user > i {
     margin-left: auto;
     color: rgba(255,255,255,0.5);
     font-size: 1rem;
@@ -558,3 +558,339 @@ html, body {
         background: var(--icon-amber-bg);
         color: var(--icon-amber);
     }
+
+/* ===========================================================
+   RESPONSIVE — tablet & mobile
+   =========================================================== */
+
+.c-mobile-topbar,
+.c-sidebar-close-btn,
+.c-sidebar-backdrop {
+    display: none;
+}
+
+/* ---------- Tablet (900px–641px): sidebar stacks on top ---------- */
+@media (max-width: 900px) and (min-width: 641px) {
+    .c-shell {
+        flex-direction: column;
+    }
+
+    .c-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 16px;
+    }
+
+        .c-sidebar::after {
+            display: none;
+        }
+
+    .c-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 0;
+    }
+
+    .c-nav-eyebrow {
+        width: 100%;
+    }
+
+    .c-sidebar-spacer {
+        display: none;
+    }
+
+    .c-sidebar-user {
+        margin-left: auto;
+    }
+
+    .c-main {
+        padding: 22px 18px 36px;
+    }
+}
+
+/* ---------- Mobile (≤640px): drawer sidebar + top bar ---------- */
+@media (max-width: 640px) {
+    .c-shell {
+        display: block;
+    }
+
+    .c-topbar {
+        display: none;
+    }
+
+    .c-main {
+        padding: 0 14px 32px;
+    }
+
+    /* Mobile top bar (hamburger + brand) */
+    .c-mobile-topbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 2px 14px;
+    }
+
+    .c-mobile-icon-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: linear-gradient(155deg, var(--primary), var(--secondary));
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.05rem;
+        flex: none;
+        box-shadow: 0 4px 12px rgba(11,31,102,0.28);
+        cursor: pointer;
+    }
+
+    .c-mobile-topbar-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 800;
+        font-size: 15px;
+        color: var(--primary);
+    }
+
+        .c-mobile-topbar-title .c-brand-badge {
+            width: 30px;
+            height: 30px;
+            border-radius: 9px;
+            background: linear-gradient(155deg, var(--primary), var(--secondary));
+            color: #fff;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+    /* Stat cards: 3-col grid, compact */
+    .c-stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .c-stat-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 14px 12px 13px;
+        border-radius: 14px;
+    }
+
+        .c-stat-card:last-child {
+            grid-column: span 2;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+        }
+
+    .c-stat-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.05rem;
+        border-radius: 10px;
+    }
+
+    .c-stat-value {
+        font-size: 1.2rem;
+    }
+
+    .c-stat-label {
+        font-size: 10px;
+    }
+
+    /* Panels */
+    .c-panel {
+        padding: 18px;
+        border-radius: 14px;
+        margin-bottom: 16px;
+    }
+
+    .c-panel-header {
+        margin-bottom: 14px;
+        padding-bottom: 12px;
+    }
+
+    .c-panel-title {
+        font-size: 10.5px;
+    }
+
+    /* Table scrolls horizontally instead of squeezing */
+    .c-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-modern {
+        min-width: 480px;
+    }
+
+    /* Quick actions: compact tile row */
+    .c-quick-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    .c-quick-link {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 6px;
+        border-radius: 14px;
+        border: none;
+        background: var(--gray-bg);
+        font-size: 10.5px;
+        text-align: center;
+    }
+
+        .c-quick-link:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+    .c-quick-link-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+
+    /* Sidebar becomes a slide-out drawer */
+    .c-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        height: 100%;
+        width: 260px;
+        z-index: 110;
+        transform: translateX(-105%);
+        transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 24px 0 48px rgba(8,10,40,0.28);
+    }
+
+    body.c-sidebar-open .c-sidebar {
+        transform: translateX(0);
+    }
+
+    .c-sidebar-close-btn {
+        display: none;
+        position: absolute;
+        top: 18px;
+        right: -50px;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: #fff;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 10px 24px rgba(8,10,40,0.18);
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.05rem;
+        cursor: pointer;
+        z-index: 111;
+    }
+
+    body.c-sidebar-open .c-sidebar-close-btn {
+        display: flex;
+    }
+
+    .c-sidebar-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(6,10,32,0.45);
+        z-index: 100;
+    }
+
+    body.c-sidebar-open .c-sidebar-backdrop {
+        display: block;
+    }
+
+    body.c-sidebar-open {
+        overflow: hidden;
+    }
+}
+
+/* ---------- Sidebar user dropdown ---------- */
+.c-sidebar-user {
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+    .c-sidebar-user i.ti-chevron-down {
+        transition: transform 0.2s ease;
+    }
+
+    .c-sidebar-user.open i.ti-chevron-down {
+        transform: rotate(180deg);
+    }
+
+.c-user-popup {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, #10267a 0%, var(--secondary) 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(4,6,24,0.45);
+    overflow: hidden;
+    z-index: 30;
+    padding: 6px;
+}
+
+.c-sidebar-user.open .c-user-popup {
+    display: block;
+}
+
+.c-user-popup a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 11px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    text-align: left;
+    width: 100%;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+    .c-user-popup a:hover {
+        background: rgba(255,255,255,0.08);
+        color: #fff;
+    }
+
+    .c-user-popup a i {
+        font-size: 1rem;
+        width: 18px;
+        text-align: center;
+        flex: none;
+    }
+
+    .c-user-popup a.logout-link {
+        color: var(--pink);
+        margin-top: 2px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 12px;
+        border-radius: 0 0 8px 8px;
+    }
+
+        .c-user-popup a.logout-link:hover {
+            background: rgba(255,45,141,0.12);
+            color: #ff5aa5;
+        }

@@ -189,6 +189,8 @@
 
         /* Responsive structural adjustments for narrow smartphone viewports */
         @media (max-width: 576px) {
+
+
             .navbar-brand img {
                 width: 105px !important;
             }
@@ -346,7 +348,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="https://tcmitlearn.com/Login.aspx" class="nav-link">
-                                    <i class="fas fa-certificate d-lg-none me-2"></i>Certificate
+                                    <i class="fas fa-certificate d-lg-none me-2"></i>E-Certificate
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -359,6 +361,21 @@
                                     <i class="fas fa-briefcase d-lg-none me-2"></i>Jobs
                                 </a>
                             </li>
+                             <li class="nav-item">
+     <a href="https://texasjobportal.com/default.aspx" class="nav-link">
+         <i class="fas fa-briefcase d-lg-none me-2"></i>Alumni
+     </a>
+ </li>
+                             <li class="nav-item">
+     <a href="https://texasjobportal.com/default.aspx" class="nav-link">
+         <i class="fas fa-briefcase d-lg-none me-2"></i>Leave 
+     </a>
+ </li>
+                             <li class="nav-item">
+     <a href="https://texasjobportal.com/default.aspx" class="nav-link">
+         <i class="fas fa-briefcase d-lg-none me-2"></i>Issue
+     </a>
+ </li>
                             <li class="nav-item">
                                 <a href="<%= ResolveUrl("~/notices.aspx?class=" + Server.UrlEncode(Session["DepartmentCode"]?.ToString())) %>" class="nav-link">
                                     <i class="fas fa-bell d-lg-none me-2"></i>Notice Board

@@ -115,8 +115,8 @@ namespace Learning_System
 
             DateTime? expiry = null;
             DateTime parsedExpiry;
-            if (!string.IsNullOrWhiteSpace(txtExpiry.Text) && DateTime.TryParse(txtExpiry.Text, out parsedExpiry))
-                expiry = parsedExpiry;
+            //if (!string.IsNullOrWhiteSpace(txtExpiry.Text) && DateTime.TryParse(txtExpiry.Text, out parsedExpiry))
+            //    expiry = parsedExpiry;
 
             if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(description) ||
                 string.IsNullOrWhiteSpace(className) || (!isAllDepartments && string.IsNullOrWhiteSpace(semester)))
@@ -286,14 +286,14 @@ namespace Learning_System
                                 ddlClass.SelectedValue = sdr["Class"].ToString();
                             }
 
-                            if (sdr["ExpiryDate"] != DBNull.Value)
-                            {
-                                txtExpiry.Text = Convert.ToDateTime(sdr["ExpiryDate"]).ToString("yyyy-MM-dd");
-                            }
-                            else
-                            {
-                                txtExpiry.Text = string.Empty;
-                            }
+                            //if (sdr["ExpiryDate"] != DBNull.Value)
+                            //{
+                            //    txtExpiry.Text = Convert.ToDateTime(sdr["ExpiryDate"]).ToString("yyyy-MM-dd");
+                            //}
+                            //else
+                            //{
+                            //    txtExpiry.Text = string.Empty;
+                            //}
 
                             string selectedClass = ddlClass.SelectedValue;
                             string selectedSem = sdr["Semester"].ToString();
@@ -317,7 +317,7 @@ namespace Learning_System
             hidNoticeId.Value = string.Empty;
             txtTitle.Text = string.Empty;
             txtDescription.Text = string.Empty;
-            txtExpiry.Text = string.Empty;
+            //txtExpiry.Text = string.Empty;
             lblMessage.Text = string.Empty;
 
             if (ddlClass.Enabled)

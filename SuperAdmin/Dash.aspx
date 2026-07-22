@@ -81,28 +81,6 @@
         </div>
     </div>
 
-    <!-- Quick Actions -->
-    <div class="c-panel c-fade-up" style="animation-delay: 0.15s;">
-        <div class="c-panel-header">
-            <div class="c-panel-title">
-                <span class="c-panel-title-icon"><i class="ti ti-bolt"></i></span>
-                Quick Actions
-            </div>
-        </div>
-        <div class="c-quick-grid">
-            <a href="DepartmentManage.aspx" class="c-quick-link">
-                <span class="c-quick-link-icon blue"><i class="ti ti-building"></i></span>
-                Manage Departments
-            </a>
-            <a href="/NoticeManage.aspx" class="c-quick-link">
-                <span class="c-quick-link-icon purple"><i class="ti ti-speakerphone"></i></span>
-                Manage Notices
-            </a>
-            <a href="AuditLog.aspx" class="c-quick-link">
-                <span class="c-quick-link-icon amber"><i class="ti ti-history"></i></span>
-                Audit Log
-            </a>
-        </div>
-    </div>
+   
 
 </asp:Content>

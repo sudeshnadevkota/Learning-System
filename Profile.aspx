@@ -4,6 +4,7 @@
 <html>
 <head runat="server">
     <title>My Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -27,6 +28,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
         body {
             margin: 0;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -40,6 +45,7 @@
             border-radius: var(--lp-radius-lg);
             padding: 48px 0;
             min-height: 100vh;
+            min-height: 100dvh;
         }
 
         .profile-wrapper {
@@ -70,8 +76,8 @@
             position: absolute;
             top: 8px;
             right: 20px;
-            width: auto;
-            height: auto;
+            width: 40px;
+            height: 40px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -80,16 +86,21 @@
             line-height: 1;
             color: rgba(255, 255, 255, 0.65);
             background: none;
-            border-radius: 0;
+            border-radius: 50%;
             text-decoration: none;
             z-index: 2;
-            transition: color 0.2s ease, transform 0.2s ease;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
         }
 
             .lp-back-home-link:hover {
                 color: #fff;
                 transform: scale(1.1);
                 text-decoration: none;
+            }
+
+            .lp-back-home-link:active {
+                background: rgba(255, 255, 255, 0.12);
             }
 
         .profile-banner::after {
@@ -100,6 +111,10 @@
             width: 100%;
             height: 4px;
             background: linear-gradient(90deg, var(--pink), var(--yellow));
+        }
+
+        .profile-banner-text {
+            padding-right: 36px;
         }
 
         .profile-banner-text h2 {
@@ -178,7 +193,7 @@
             font-size: 0.68rem;
             font-weight: 600;
             letter-spacing: 0.3px;
-            padding: 5px 14px;
+            padding: 7px 14px;
             border-radius: 20px;
             cursor: pointer;
             white-space: nowrap;
@@ -188,6 +203,8 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
+            min-height: 30px;
+            -webkit-tap-highlight-color: transparent;
         }
 
             .change-badge:hover {
@@ -208,6 +225,7 @@
             text-align: center;
             width: 100%;
             clear: both;
+            word-break: break-word;
         }
 
         .id-email {
@@ -267,6 +285,8 @@
             font-size: 0.92rem;
             color: var(--ink);
             transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            /* Prevents iOS Safari from auto-zooming into inputs (needs >=16px font) */
+            font-size: max(0.92rem, 16px);
         }
 
             .form-section .form-control::placeholder {
@@ -322,6 +342,8 @@
             box-shadow: 0 6px 16px rgba(16, 33, 79, 0.22);
             transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
             cursor: pointer;
+            min-height: 44px;
+            -webkit-tap-highlight-color: transparent;
         }
 
             .btn-update:hover {
@@ -347,19 +369,41 @@
 
         @media (max-width: 767px) {
             .profile-page-bg {
-                padding: 24px 0;
+                padding: 20px 0;
+                border-radius: 0;
+            }
+
+            .profile-wrapper {
+                padding: 0 12px;
+            }
+
+            .profile-card {
+                border-radius: 16px;
             }
 
             .profile-banner {
-                padding: 26px 22px 24px;
+                padding: 22px 50px 20px 20px;
+            }
+
+            .lp-back-home-link {
+                top: 6px;
+                right: 8px;
+            }
+
+            .profile-banner-text {
+                padding-right: 0;
             }
 
             .profile-banner-text h2 {
-                font-size: 1.25rem;
+                font-size: 1.15rem;
+            }
+
+            .profile-banner-text p {
+                font-size: 0.82rem;
             }
 
             .profile-body {
-                padding: 24px 20px 28px;
+                padding: 20px 16px 24px;
             }
 
             .col-md-4, .col-md-8 {
@@ -368,16 +412,28 @@
             }
 
             .photo-col {
-                margin-bottom: 24px;
+                margin-bottom: 20px;
             }
 
             .profile-id-card {
-                padding: 26px 16px 22px;
+                padding: 22px 16px 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
             .photo-frame .img-circle {
-                width: 96px;
-                height: 96px;
+                width: 92px;
+                height: 92px;
+            }
+
+            .id-name {
+                margin-top: 20px;
+                font-size: 1rem;
+            }
+
+            .form-section-heading {
+                margin-bottom: 14px;
             }
 
             .form-row {
@@ -389,14 +445,24 @@
                     flex: 1 1 100%;
                 }
 
+            .mb-3 {
+                margin-bottom: 14px;
+            }
+
+            .form-section .form-control {
+                padding: 12px 14px;
+            }
+
             .form-actions {
                 flex-direction: column;
                 align-items: stretch;
+                gap: 12px;
             }
 
             .btn-update {
                 width: 100%;
                 text-align: center;
+                padding: 13px 24px;
             }
 
             .msg-label {
@@ -409,6 +475,23 @@
                 padding: 0 8px;
             }
 
+            .profile-banner {
+                padding: 18px 46px 18px 16px;
+            }
+
+            .profile-body {
+                padding: 16px 12px 20px;
+            }
+
+            .profile-id-card {
+                padding: 18px 12px 16px;
+            }
+
+            .photo-frame .img-circle {
+                width: 80px;
+                height: 80px;
+            }
+
             .id-name {
                 font-size: 0.95rem;
             }
@@ -416,6 +499,11 @@
             .id-email,
             .id-student {
                 font-size: 0.75rem;
+            }
+
+            .change-badge {
+                font-size: 0.62rem;
+                padding: 6px 11px;
             }
         }
     </style>
