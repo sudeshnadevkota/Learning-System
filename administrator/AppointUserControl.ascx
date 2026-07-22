@@ -131,22 +131,119 @@
         color: #64748b;
         margin-top: 6px;
     }
+
+    /* --- MOBILE RESPONSIVENESS --- */
+    @media (max-width: 768px) {
+        .lp-app-wrap {
+            max-width: 95%;
+            margin: 20px auto;
+        }
+        .lp-app-grid {
+            grid-template-columns: 1fr; /* Stacks inputs vertically */
+        }
+        .lp-app-header {
+            padding: 24px 20px;
+        }
+        .lp-app-body {
+            padding: 24px 20px;
+        }
+    }
+
+    /* --- THEMED SUCCESS MODAL --- */
+    .lp-success-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(15, 23, 42, 0.65);
+        backdrop-filter: blur(4px);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .lp-success-box {
+        background: #fff;
+        border-radius: var(--lp-radius-lg);
+        text-align: center;
+        max-width: 420px;
+        width: 90%;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+        position: relative;
+        animation: modalFadeIn 0.3s ease-out forwards;
+    }
+
+    .lp-success-header {
+        background: linear-gradient(135deg, var(--lp-primary) 0%, var(--lp-violet) 100%);
+        padding: 24px 20px;
+        color: #fff;
+        position: relative;
+    }
+
+    .lp-success-header h3 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+    }
+
+    .lp-modal-close-btn {
+        position: absolute;
+        top: 16px;
+        right: 18px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        text-decoration: none;
+        line-height: 1;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .lp-modal-close-btn:hover {
+        background: rgba(255, 255, 255, 0.35);
+        color: #fff;
+        transform: scale(1.08);
+    }
+
+    .lp-success-body {
+        padding: 32px 24px;
+    }
+
+    .lp-success-body p {
+        color: #374151;
+        margin: 0 0 28px 0;
+        line-height: 1.6;
+        font-size: 15.5px;
+        font-weight: 600;
+    }
+
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
 </style>
 
 <div class="lp-app-wrap">
     <div class="lp-app-header">
-        <%--<asp:LinkButton ID="btnClose" runat="server" CssClass="lp-close-btn"
-            OnClick="btnClose_Click" CausesValidation="false" ToolTip="Close">
-            <i class="fas fa-times"></i>
-        </asp:LinkButton>--%>
         <h2>Appoint User</h2>
         <p>Create a Staff, Department Admin, or Super Admin account</p>
     </div>
 
     <div class="lp-app-body">
-
         <div class="lp-app-grid">
-
             <div class="lp-field">
                 <label class="lp-field-label" for="<%= ddlRoleToAppoint.ClientID %>">Role to Appoint</label>
                 <div class="lp-input-wrap">
@@ -192,7 +289,6 @@
                 </div>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" ErrorMessage="Required*" CssClass="lp-error-text" Display="Dynamic" />
             </div>
-
         </div>
 
         <asp:Panel ID="pnlStaff" runat="server" CssClass="lp-role-panel">
@@ -226,6 +322,19 @@
             <asp:Button CssClass="lp-app-btn" ID="btnAppoint" runat="server" Text="Create Account" OnClick="btnAppoint_Click" />
             <asp:Label ID="lblError" runat="server" CssClass="lp-error-text" Text="" />
         </div>
-
     </div>
 </div>
+
+<%-- SUCCESS MESSAGE OVERLAY --%>
+<asp:Panel ID="pnlSuccess" runat="server" Visible="false" CssClass="lp-success-overlay">
+    <div class="lp-success-box">
+        <div class="lp-success-header">
+            <asp:LinkButton ID="btnCloseSuccess" runat="server" OnClick="btnDismissSuccess_Click" CausesValidation="false" CssClass="lp-modal-close-btn" ToolTip="Close">&times;</asp:LinkButton>
+            <h3>Success!</h3>
+        </div>
+        <div class="lp-success-body">
+            <p><asp:Label ID="lblSuccessMessage" runat="server" /></p>
+            <asp:Button ID="btnDismissSuccess" runat="server" Text="Continue" CssClass="lp-app-btn" OnClick="btnDismissSuccess_Click" CausesValidation="false" />
+        </div>
+    </div>
+</asp:Panel>

@@ -46,6 +46,33 @@ namespace Learning_System
                 }
             }
         }
+        protected void btnClose_Click(object sender, EventArgs e)
+        {
+            string returnUrl = Session["AppointUserReturnUrl"] as string;
+            Response.Redirect(!string.IsNullOrEmpty(returnUrl) ? returnUrl : GetDefaultDashboardUrl());
+        }
+        private string GetDefaultDashboardUrl()
+        {
+            string accessLevel = PermissionHelper.GetAccessLevel(Session);
+
+            switch (accessLevel)
+            {
+                case "SuperAdmin":
+                    return ResolveUrl("~/SuperAdmin/Dash.aspx"); // your confirmed path
+
+                case "MainAdmin":
+                    return ResolveUrl("~/MainAdmin/Dash.aspx");
+
+                case "DepartmentAdmin":
+                    string folderName = PermissionHelper.GetDepartmentAdminFolder(Session);
+                    if (!string.IsNullOrEmpty(folderName))
+                        return ResolveUrl($"~/{folderName}/Dash.aspx");
+                    return ResolveUrl("~/MainAdmin/Dash.aspx");
+
+                default:
+                    return ResolveUrl("~/default.aspx");
+            }
+        }
 
         private void BindGrid()
         {

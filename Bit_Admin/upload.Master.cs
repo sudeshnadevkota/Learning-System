@@ -21,8 +21,8 @@ namespace Learning_System.Bit_Admin
         {
             //{ "StaffManage",  "~/StaffManage.ascx" },
             //{ "DeptSettings", "~/DepartmentManageControl.ascx" }, // confirm this is the real path/name
-            { "NoticeManage", "~/NoticeManageControl.ascx" },
-            { "AppointUser", "~/administrator/AppointUserControl.ascx" },
+            //{ "NoticeManage", "~/NoticeManageControl.ascx" },
+            //{ "AppointUser", "~/administrator/AppointUserControl.ascx" },
 
         };
 
@@ -54,10 +54,10 @@ namespace Learning_System.Bit_Admin
 
             if (IsDepartmentAdmin)
             {
-                lnkStaffManage.CssClass = GetNavClass("StaffManage");
-                lnkAppointUser.CssClass = GetNavClass("AppointUser");
-                //lnkDeptSettings.CssClass = GetNavClass("DeptSettings");
-                lnkNoticeManage.CssClass = GetNavClass("NoticeManage");
+                //lnkStaffManage.CssClass = GetNavClass("StaffManage");
+                //lnkAppointUser.CssClass = GetNavClass("AppointUser");
+                ////lnkDeptSettings.CssClass = GetNavClass("DeptSettings");
+                //lnkNoticeManage.CssClass = GetNavClass("NoticeManage");
             }
 
             if (!IsPostBack)

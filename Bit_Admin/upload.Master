@@ -374,22 +374,24 @@
 
           <% if (IsDepartmentAdmin) { %>
           <div class="bit-eyebrow">Quick Actions</div>
+                                <a href='<%= ResolveUrl("~/NoticeManage.aspx") %>' class='<%= GetNavClass("NoticeManage") %>'><i class="ti ti-history"></i>Notice Manage</a>
+                    <a href='<%= ResolveUrl("~/administrator/AppointUser.aspx") %>' class='<%= GetNavClass("AppointUser") %>'><i class="ti ti-history"></i>Appoint User</a>
 
-          <asp:LinkButton ID="lnkAppointUser" runat="server" CssClass="bit-nav-link"
+         <%-- <asp:LinkButton ID="lnkAppointUser" runat="server" CssClass="bit-nav-link"
      CommandArgument="AppointUser" OnClick="NavLink_Click">
      <i class="ti ti-user-cog"></i> Appoint User
- </asp:LinkButton>
-          <a href="~/Bit_Admin/RegisterStudent.aspx" runat="server" class="bit-nav-link"><i class="ti ti-users-plus"></i> Register Student</a>
+ </asp:LinkButton>--%>
+     <%--     <a href="~/Bit_Admin/RegisterStudent.aspx" runat="server" class="bit-nav-link"><i class="ti ti-users-plus"></i> Register Student</a>--%>
 
-          <asp:LinkButton ID="lnkStaffManage" runat="server" CssClass="bit-nav-link"
+          <%--<asp:LinkButton ID="lnkStaffManage" runat="server" CssClass="bit-nav-link"
               CommandArgument="StaffManage" OnClick="NavLink_Click">
               <i class="ti ti-user-cog"></i> Manage Staff
-          </asp:LinkButton>
+          </asp:LinkButton>--%>
 
-             <asp:LinkButton ID="lnkNoticeManage" runat="server" CssClass="bit-nav-link"
+           <%--  <asp:LinkButton ID="lnkNoticeManage" runat="server" CssClass="bit-nav-link"
         CommandArgument="NoticeManage" OnClick="NavLink_Click">
         <i class="ti ti-user-cog"></i> Manage Notice
-    </asp:LinkButton>
+    </asp:LinkButton>--%>
 <%--          <a href="~/Bit_Admin/Reports.aspx" runat="server" class="bit-nav-link"><i class="ti ti-chart-bar"></i> Reports</a>--%>
 
       <%--    <asp:LinkButton ID="lnkDeptSettings" runat="server" CssClass="bit-nav-link"

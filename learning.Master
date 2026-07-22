@@ -72,6 +72,7 @@
 
         /* Mobile-Specific Login Button Styling Adjustment */
         .login-btn-mobile {
+            text-decoration:none;
             background: linear-gradient(135deg, #0B1F66, #1e2754) !important;
             border: none !important;
             color: white !important;
@@ -106,6 +107,9 @@
 
         /* --- MOBILE SIDEBAR CLEANUP (Breaks nothing on Desktop) --- */
         @media (max-width: 991px) {
+            .login-btn{
+                display:none;
+            }
             .sidebar.offcanvas {
                 z-index: 2000 !important;
                 background-color: #FFFFFF !important;
@@ -342,7 +346,7 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav ms-auto me-auto">
                             <li class="nav-item">
-                                <a href="https://texasattendance.com/Admin/Dashboard.aspx" class="nav-link">
+                                <a href="https://texascollegenepal.com/Login.aspx" class="nav-link">
                                     <i class="fas fa-calendar-check d-lg-none me-2"></i>Attendance
                                 </a>
                             </li>
@@ -351,28 +355,28 @@
                                     <i class="fas fa-certificate d-lg-none me-2"></i>E-Certificate
                                 </a>
                             </li>
-                            <li class="nav-item">
+                           <%-- <li class="nav-item">
                                 <a href="https://texasleave.com/" class="nav-link">
                                     <i class="fas fa-id-card d-lg-none me-2"></i>V-Card
                                 </a>
-                            </li>
+                            </li>--%>
                             <li class="nav-item">
                                 <a href="https://texasjobportal.com/default.aspx" class="nav-link">
                                     <i class="fas fa-briefcase d-lg-none me-2"></i>Jobs
                                 </a>
                             </li>
-                             <li class="nav-item">
+                             <%--<li class="nav-item">
      <a href="https://texasjobportal.com/default.aspx" class="nav-link">
          <i class="fas fa-briefcase d-lg-none me-2"></i>Alumni
      </a>
- </li>
-                             <li class="nav-item">
+ </li>--%>
+                            <%-- <li class="nav-item">
      <a href="https://texasjobportal.com/default.aspx" class="nav-link">
          <i class="fas fa-briefcase d-lg-none me-2"></i>Leave 
      </a>
- </li>
+ </li>--%>
                              <li class="nav-item">
-     <a href="https://texasjobportal.com/default.aspx" class="nav-link">
+     <a href="https://tcmitinfo.net/" class="nav-link">
          <i class="fas fa-briefcase d-lg-none me-2"></i>Issue
      </a>
  </li>

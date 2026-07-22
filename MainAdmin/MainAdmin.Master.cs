@@ -19,8 +19,8 @@ namespace Learning_System.MainAdmin
             { "DeptAdmins",  "~/DepartmentAdminManageControl.ascx" },
             { "Departments", "~/DepartmentManageControl.ascx" },
             { "SuperAdmin", "SuperAdminManageControl.ascx" },
-            { "AppointUser", "~/administrator/AppointUserControl.ascx" },
-            { "NoticeManage", "~/NoticeManageControl.ascx" },
+            //{ "AppointUser", "~/administrator/AppointUserControl.ascx" },
+            //{ "NoticeManage", "~/NoticeManageControl.ascx" },
 
 
 
@@ -43,8 +43,8 @@ namespace Learning_System.MainAdmin
             lnkDeptAdmins.CssClass = GetNavClass("DeptAdmins");
             lnkDepartments.CssClass = GetNavClass("Departments");
             lnkSuperAdmin.CssClass = GetNavClass("SuperAdmin");
-            lnkAppointUser.CssClass = GetNavClass("AppointUser");
-            lnkNoticeManage.CssClass = GetNavClass("NoticeManage");
+            //lnkAppointUser.CssClass = GetNavClass("AppointUser");
+            //lnkNoticeManage.CssClass = GetNavClass("NoticeManage");
 
             if (!IsPostBack)
             {

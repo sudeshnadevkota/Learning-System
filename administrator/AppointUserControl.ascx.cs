@@ -15,20 +15,8 @@ namespace Learning_System
         protected void Page_Load(object sender, EventArgs e)
         {
             PermissionHelper.RequireAccessLevel(this.Page, "MainAdmin", "SuperAdmin", "DepartmentAdmin");
-
-            // NOTE: dropdown binding / query-string handling used to live here behind
-            // "if (!IsPostBack)". That's wrong for a control that gets loaded dynamically
-            // via LoadControl() in response to a sidebar click — that click IS a postback,
-            // so this.IsPostBack is true even on this control's very first appearance.
-            // BaseAdminMaster.LoadSection() now calls LoadInitialData() explicitly right
-            // after adding this control to the tree, so all of that logic moved there.
         }
 
-        // Called by BaseAdminMaster.LoadSection() immediately after this control is
-        // freshly added to the page — i.e. exactly once, when the user first navigates
-        // to this section. NOT called on ordinary postbacks within the section (e.g.
-        // ddlRoleToAppoint's own AutoPostBack), so in-progress form data and the
-        // dropdown's current selection survive via ViewState instead of being reset.
         public void LoadInitialData()
         {
             BindRoleDropdown();
@@ -46,7 +34,6 @@ namespace Learning_System
                     refUri.Host == Request.Url.Host &&
                     !refUri.AbsolutePath.TrimEnd('/').EndsWith("AppointUser.aspx", StringComparison.OrdinalIgnoreCase);
 
-                // Session survives Response.Redirect; ViewState does not.
                 Session["AppointUserReturnUrl"] = referrerIsUsable
                     ? referrer
                     : GetDefaultDashboardUrl();
@@ -68,8 +55,6 @@ namespace Learning_System
             Response.Redirect(!string.IsNullOrEmpty(returnUrl) ? returnUrl : GetDefaultDashboardUrl());
         }
 
-        // Role-aware fallback: used both when there's no valid referrer, and as the
-        // stored ReturnUrl itself when the page was reached with no usable referrer.
         private string GetDefaultDashboardUrl()
         {
             string accessLevel = PermissionHelper.GetAccessLevel(Session);
@@ -127,9 +112,6 @@ namespace Learning_System
                 }
             }
 
-            // A DepartmentAdmin can only ever appoint within their own department —
-            // lock the dropdown so the choice can't be tampered with client-side.
-            // (btnAppoint_Click re-derives this from Session regardless, as a second layer.)
             if (myAccessLevel == "DepartmentAdmin" && myDepartmentId.HasValue)
             {
                 ddlDepartment.SelectedValue = myDepartmentId.Value.ToString();
@@ -154,7 +136,24 @@ namespace Learning_System
             {
                 pnlDepartmentPicker.CssClass = "lp-role-panel active";
             }
-            // SuperAdmin needs neither panel — no department scope, no designation
+        }
+
+        private void ClearFields()
+        {
+            txtFullName.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtContact.Text = string.Empty;
+            txtUsername.Text = string.Empty;
+            txtPassword.Attributes.Add("value", string.Empty);
+            txtPassword.Text = string.Empty;
+            txtDesignation.Text = string.Empty;
+            txtSubjectsHandled.Text = string.Empty;
+            lblError.Text = string.Empty;
+        }
+
+        protected void btnDismissSuccess_Click(object sender, EventArgs e)
+        {
+            pnlSuccess.Visible = false;
         }
 
         protected void btnAppoint_Click(object sender, EventArgs e)
@@ -164,7 +163,6 @@ namespace Learning_System
             string myAccessLevel = PermissionHelper.GetAccessLevel(Session);
             string roleToAppoint = ddlRoleToAppoint.SelectedValue;
 
-            // Re-validate server-side — never trust that the dropdown wasn't tampered with
             if (!PermissionHelper.CanAppointRole(myAccessLevel, roleToAppoint))
             {
                 lblError.Text = "You are not authorized to appoint that role.";
@@ -173,6 +171,7 @@ namespace Learning_System
 
             int appointerProfileId = PermissionHelper.GetProfileId(Session);
             int? myDepartmentId = PermissionHelper.GetDepartmentId(Session);
+            string appointedName = txtFullName.Text.Trim();
 
             using (SqlConnection con = new SqlConnection(constr))
             {
@@ -181,10 +180,8 @@ namespace Learning_System
 
                 try
                 {
-                    // Map appointed role -> the Role value stored in UserProfile
                     string userProfileRole = (roleToAppoint == "Staff") ? "Teacher" : "Admin";
 
-                    // 1. Insert into UserProfile
                     int newProfileId;
                     string profileQuery = @"INSERT INTO UserProfile
                                 (FullName, UserName, Password, Email, ContactNumber, Role, RegisteredDate, ApprovalStatus, IsActive)
@@ -194,23 +191,17 @@ namespace Learning_System
 
                     using (SqlCommand cmd = new SqlCommand(profileQuery, con, transaction))
                     {
-                        cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@FullName", appointedName);
                         cmd.Parameters.AddWithValue("@UserName", txtUsername.Text.Trim());
-
-                        // TODO: replace with your existing password hashing method
                         cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-
                         cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
                         cmd.Parameters.AddWithValue("@ContactNumber", string.IsNullOrWhiteSpace(txtContact.Text) ? (object)DBNull.Value : txtContact.Text.Trim());
                         cmd.Parameters.AddWithValue("@Role", userProfileRole);
                         newProfileId = (int)cmd.ExecuteScalar();
                     }
 
-                    // 2. Insert into the role-specific table
                     if (roleToAppoint == "Staff")
                     {
-                        // DepartmentAdmin is always forced to their OWN department server-side,
-                        // regardless of what the (disabled) dropdown posted back
                         int departmentId = (myAccessLevel == "DepartmentAdmin" && myDepartmentId.HasValue)
                             ? myDepartmentId.Value
                             : Convert.ToInt32(ddlDepartment.SelectedValue);
@@ -241,7 +232,7 @@ namespace Learning_System
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    else // SuperAdmin — only MainAdmin can reach this branch (enforced above)
+                    else
                     {
                         string q = @"INSERT INTO AdminProfile (ProfileId, AccessLevel, DepartmentId, AppointedBy)
                                      VALUES (@ProfileId, 'SuperAdmin', NULL, @AppointedBy)";
@@ -254,7 +245,10 @@ namespace Learning_System
                     }
 
                     transaction.Commit();
-                    Response.Redirect(Request.RawUrl.Contains("?") ? Request.RawUrl + "&appointed=true" : Request.RawUrl + "?appointed=true");
+
+                    lblSuccessMessage.Text = $"Successfully appointed {appointedName} as {roleToAppoint}.";
+                    pnlSuccess.Visible = true;
+                    ClearFields();
                 }
                 catch (Exception ex)
                 {

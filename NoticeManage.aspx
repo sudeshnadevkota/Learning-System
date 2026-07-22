@@ -36,6 +36,7 @@
             padding: 1.5rem;
             max-width: 1100px;
             margin: 0 auto;
+            box-sizing: border-box;
         }
 
         .c-hero {
@@ -71,9 +72,9 @@
             transition: color 0.15s ease;
         }
 
-            .c-back-link:hover {
-                color: #fff;
-            }
+        .c-back-link:hover {
+            color: #fff;
+        }
 
         .c-hero h3 {
             margin: 0;
@@ -133,12 +134,12 @@
             gap: 8px;
         }
 
-            .c-panel-title::after {
-                content: '';
-                flex: 1;
-                height: 1px;
-                background: var(--border-color);
-            }
+        .c-panel-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
 
         .c-notice {
             display: flex;
@@ -154,24 +155,24 @@
             color: var(--primary);
         }
 
-            .c-notice i {
-                flex-shrink: 0;
-                font-size: 1.1rem;
-                margin-top: 1px;
-            }
+        .c-notice i {
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            margin-top: 1px;
+        }
 
         .form-group {
             position: relative;
             margin-bottom: 18px;
         }
 
-            .form-group label {
-                font-size: 12px;
-                font-weight: 600;
-                color: var(--primary);
-                margin-bottom: 8px;
-                display: block;
-            }
+        .form-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: block;
+        }
 
         .c-input, .c-textarea, select.c-input {
             width: 100%;
@@ -186,10 +187,10 @@
             transition: border-color 0.15s ease;
         }
 
-            .c-input:focus, .c-textarea:focus, select.c-input:focus {
-                outline: none;
-                border-color: var(--primary);
-            }
+        .c-input:focus, .c-textarea:focus, select.c-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
 
         .c-textarea {
             resize: vertical;
@@ -202,10 +203,16 @@
             flex-wrap: wrap;
         }
 
-            .c-row-2 > div {
-                flex: 1;
-                min-width: 200px;
-            }
+        .c-row-2 > div {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .c-btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 6px;
+        }
 
         .c-btn-submit {
             background: var(--pink);
@@ -222,11 +229,11 @@
             transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
         }
 
-            .c-btn-submit:hover {
-                background: var(--pink-hover);
-                transform: translateY(-1px);
-                box-shadow: 0 4px 14px rgba(255,45,141,0.35);
-            }
+        .c-btn-submit:hover {
+            background: var(--pink-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(255,45,141,0.35);
+        }
 
         .c-btn-outline {
             background: #fff;
@@ -242,10 +249,10 @@
             transition: border-color 0.15s ease, background 0.15s ease;
         }
 
-            .c-btn-outline:hover {
-                border-color: var(--primary);
-                background: var(--gray-bg);
-            }
+        .c-btn-outline:hover {
+            border-color: var(--primary);
+            background: var(--gray-bg);
+        }
 
         #dropZone {
             border: 2px dashed rgba(11,31,102,0.2);
@@ -257,15 +264,15 @@
             cursor: pointer;
         }
 
-            #dropZone.dragover {
-                border-color: var(--pink);
-                background: var(--pink-light);
-            }
+        #dropZone.dragover {
+            border-color: var(--pink);
+            background: var(--pink-light);
+        }
 
-            #dropZone.has-file {
-                border-color: var(--success-border);
-                background: var(--success-bg);
-            }
+        #dropZone.has-file {
+            border-color: var(--success-border);
+            background: var(--success-bg);
+        }
 
         #filePreview {
             display: none;
@@ -278,12 +285,13 @@
             gap: 10px;
         }
 
-            #filePreview.visible {
-                display: flex !important;
-            }
+        #filePreview.visible {
+            display: flex !important;
+        }
 
         .c-table-container {
-            overflow: hidden;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             background: #ffffff;
@@ -299,50 +307,133 @@
             font-size: 13px;
         }
 
-            .table-modern th {
-                background: var(--gray-bg);
-                color: var(--primary);
-                font-weight: 700;
-                padding: 16px 20px;
-                text-align: left;
-                border-bottom: 2px solid var(--border-color);
-            }
+        .table-modern th {
+            background: var(--gray-bg);
+            color: var(--primary);
+            font-weight: 700;
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
+        }
 
-            .table-modern td {
-                padding: 14px 20px;
-                border-bottom: 1px solid var(--border-color);
-                color: #4a4a4a;
-                vertical-align: middle;
-            }
+        .table-modern td {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border-color);
+            color: #4a4a4a;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
 
-            .table-modern tr:last-child td {
-                border-bottom: none;
-            }
+        .table-modern tr:last-child td {
+            border-bottom: none;
+        }
 
-            .table-modern tr:hover {
-                background-color: #fcfcfd;
-            }
+        .table-modern tr:hover {
+            background-color: #fcfcfd;
+        }
 
-            .table-modern a {
-                color: var(--pink);
-                text-decoration: none;
-                font-weight: 600;
-                margin-right: 10px;
-            }
+        .table-modern a {
+            color: var(--pink);
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 10px;
+            display: inline-block;
+        }
 
-                .table-modern a:hover {
-                    text-decoration: underline;
-                }
+        .table-modern a:hover {
+            text-decoration: underline;
+        }
 
-                .table-modern a.status-inactive {
-                    color: var(--text-muted);
-                }
+        .table-modern a.status-inactive {
+            color: var(--text-muted);
+        }
 
         .c-val-msg {
             font-size: 13px;
             margin-top: 10px;
             display: block;
             font-weight: 600;
+        }
+        .close-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #0B1F66;
+            height: 40px !important;
+            width: 200px !important;
+            border-radius: 25px;
+            border: none;
+            background-color: white;
+            font-weight: 600;
+            gap: 5px;
+        }
+        
+        /* Mobile Responsiveness Styles */
+        @media (max-width: 768px) {
+            .c-wrap {
+                padding: 10px;
+            }
+
+            .c-hero {
+                padding: 20px 18px;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .c-hero-actions {
+                width: 100%;
+            }
+
+            .c-hero-btn {
+                width: 100%;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+
+            .c-panel {
+                padding: 18px;
+                border-radius: 12px;
+            }
+
+            .c-row-2 {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .c-row-2 > div {
+                width: 100%;
+                min-width: 100%;
+            }
+
+            .c-input, select.c-input, .c-textarea {
+                font-size: 14px; /* Prevents auto-zoom on iOS inputs */
+            }
+
+            #txtExpiry {
+                max-width: 100% !important;
+            }
+
+            .c-btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .c-btn-submit, .c-btn-outline {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+            #dropZone {
+                padding: 20px 14px;
+            }
+
+            #filePreview {
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
@@ -354,9 +445,13 @@
         <!-- Hero -->
         <div class="c-hero">
             <div class="c-hero-text">
-                <a href="<%= ResolveUrl("~/Default.aspx") %>" class="c-back-link">
+                <asp:LinkButton ID="btnClose" runat="server" CssClass="close-btn"
+    OnClick="btnClose_Click" CausesValidation="false" ToolTip="Close">
+     <i class="ti ti-arrow-left"></i> <span>Back to Dashboard</span>
+</asp:LinkButton>
+                <%--<a href="<%= ResolveUrl("~/Default.aspx") %>" class="c-back-link">
                     <i class="ti ti-arrow-left"></i>Back to Dashboard
-                </a>
+                </a>--%>
                 <h3><i class="ti ti-speakerphone"></i>Manage Notices</h3>
                 <small>Create and publish notices for students to view on the notice board</small>
             </div>
@@ -440,7 +535,7 @@
                 <asp:TextBox ID="txtExpiry" runat="server" CssClass="c-input" TextMode="Date" Style="max-width: 240px;" />
             </div>
 
-            <div style="display: flex; gap: 10px; margin-top: 6px;">
+            <div class="c-btn-group">
                 <asp:Button ID="btnSave" runat="server" Text="Save Notice" CssClass="c-btn-submit" OnClick="btnSave_Click" />
                 <asp:Button ID="btnClear" runat="server" Text="Clear / New" CssClass="c-btn-outline" OnClick="btnClear_Click" CausesValidation="false" />
             </div>

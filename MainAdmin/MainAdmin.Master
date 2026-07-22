@@ -59,13 +59,17 @@
 
                 <div class="c-nav-eyebrow">Quick Actions</div>
                 <nav class="c-nav">
-                    <asp:LinkButton ID="lnkAppointUser" runat="server" OnClick="NavLink_Click" CommandArgument="AppointUser">
+                    <a href='<%= ResolveUrl("~/administrator/AppointUser.aspx") %>' class='<%= GetNavClass("AppointUser") %>'><i class="ti ti-history"></i>Appoint User</a>
+                   
+                    <%--<asp:LinkButton ID="lnkAppointUser" runat="server" OnClick="NavLink_Click" CommandArgument="AppointUser">
     <i class="ti ti-user-cog"></i> Appoint Admins & Users
-                    </asp:LinkButton>
-                                    <asp:LinkButton ID="lnkNoticeManage" runat="server" OnClick="NavLink_Click" CommandArgument="NoticeManage">
+                    </asp:LinkButton>--%>
+                                 <%--   <asp:LinkButton ID="lnkNoticeManage" runat="server" OnClick="NavLink_Click" CommandArgument="NoticeManage">
 <i class="ti ti-user-cog"></i> Manage Notices
-                </asp:LinkButton>
-                    <a href='<%= ResolveUrl("~/MainAdmin/AuditLog.aspx") %>' class='<%= GetNavClass("AuditLog") %>'><i class="ti ti-history"></i>Audit Log</a>
+                </asp:LinkButton>--%>
+                    <a href='<%= ResolveUrl("~/NoticeManage.aspx") %>' class='<%= GetNavClass("NoticeManage") %>'><i class="ti ti-history"></i>Notice Manage</a>
+
+                   <%-- <a href='<%= ResolveUrl("~/MainAdmin/AuditLog.aspx") %>' class='<%= GetNavClass("AuditLog") %>'><i class="ti ti-history"></i>Audit Log</a>--%>
                 </nav>
 
                 <div class="c-sidebar-spacer"></div>
@@ -120,8 +124,8 @@
                         <asp:AsyncPostBackTrigger ControlID="lnkDeptAdmins" EventName="Click" />
                         <asp:AsyncPostBackTrigger ControlID="lnkDepartments" EventName="Click" />
                         <asp:AsyncPostBackTrigger ControlID="lnkSuperAdmin" EventName="Click" />
-                        <asp:AsyncPostBackTrigger ControlID="lnkAppointUser" EventName="Click" />
-                        <asp:AsyncPostBackTrigger ControlID="lnkNoticeManage" EventName="Click" />
+                       <%-- <asp:AsyncPostBackTrigger ControlID="lnkAppointUser" EventName="Click" />
+                        <asp:AsyncPostBackTrigger ControlID="lnkNoticeManage" EventName="Click" />--%>
 
 
                     </Triggers>

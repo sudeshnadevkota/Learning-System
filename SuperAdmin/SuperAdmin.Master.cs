@@ -18,8 +18,8 @@ namespace Learning_System.SuperAdmin
             { "Subjects", "~/SubjectManage.ascx" },
             { "DeptAdmins",  "~/DepartmentAdminManageControl.ascx" },
             { "Departments", "~/DepartmentManageControl.ascx" },
-                { "AppointUser", "/administrator/AppointUserControl.ascx" },
-    { "NoticeManage", "~/NoticeManageControl.ascx" },
+    //            { "AppointUser", "/administrator/AppointUserControl.ascx" },
+    //{ "NoticeManage", "~/NoticeManageControl.ascx" },
         };
 
         protected void Page_Init(object sender, EventArgs e)
@@ -37,8 +37,8 @@ namespace Learning_System.SuperAdmin
             lnkSubjects.CssClass = GetNavClass("Subjects");
             lnkDeptAdmins.CssClass = GetNavClass("DeptAdmins");
             lnkDepartments.CssClass = GetNavClass("Departments");
-            lnkAppointUser.CssClass = GetNavClass("AppointUser");
-            lnkNoticeManage.CssClass = GetNavClass("NoticeManage");
+            //lnkAppointUser.CssClass = GetNavClass("AppointUser");
+            //lnkNoticeManage.CssClass = GetNavClass("NoticeManage");
 
             if (!IsPostBack)
             {

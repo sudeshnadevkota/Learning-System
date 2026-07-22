@@ -5,12 +5,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Student Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     
     <style>
-        body{
+        body {
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
+
         .lp-reg-wrap {
             --lp-primary: #2B397D;
             --lp-violet: #5b4fcf;
@@ -23,65 +27,56 @@
             --lp-transition: .18s ease;
         }
 
-            .lp-reg-wrap *, .lp-reg-wrap *::before, .lp-reg-wrap *::after {
-                box-sizing: border-box;
-            }
+        .lp-reg-wrap *, .lp-reg-wrap *::before, .lp-reg-wrap *::after {
+            box-sizing: border-box;
+        }
 
         .lp-reg-wrap {
             width: 100%;
-            min-height: 80vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px 12px;
+            padding: 40px 16px;
             position: relative;
             overflow: hidden;
             background-color: #f5efe6;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cg fill='none' stroke='%232B397D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.20'%3E%3Cg transform='translate(14,18) scale(1.35)'%3E%3Cpath d='M12 3L1 9l11 6 9-4.91V17'/%3E%3Cpath d='M5 12v5c0 0 2.5 3 7 3s7-3 7-3v-5'/%3E%3C/g%3E%3Cg transform='translate(116,18) scale(1.35)'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cline x1='3' y1='9' x2='21' y2='9'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cpolyline points='9,14 11,16 15,12'/%3E%3C/g%3E%3Cg transform='translate(14,118) scale(1.35)'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpolyline points='12,7 12,12 15,15'/%3E%3C/g%3E%3Cg transform='translate(116,118) scale(1.35)'%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3Cpath d='M4,20 C4,16 7.6,13 12,13 C16.4,13 20,16 20,20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), radial-gradient(ellipse at 12% 15%, rgba(210,140,60,.22) 0%, transparent 50%), radial-gradient(ellipse at 88% 88%, rgba(200,100,80,.16) 0%, transparent 50%);
             background-size: 200px 200px, 100% 100%, 100% 100%;
-            border-radius: var(--lp-radius-lg);
         }
 
-            .lp-reg-wrap::before {
-                content: '';
-                position: absolute;
-                width: 420px;
-                height: 420px;
-                border-radius: 50%;
-                background: radial-gradient(circle, rgba(210,140,60,.18) 0%, transparent 70%);
-                top: -120px;
-                left: -120px;
-                animation: lpRegOrb 15s ease-in-out infinite alternate;
-                pointer-events: none;
-                z-index: 0;
-            }
+        .lp-reg-wrap::before {
+            content: '';
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(210,140,60,.18) 0%, transparent 70%);
+            top: -120px;
+            left: -120px;
+            animation: lpRegOrb 15s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-            .lp-reg-wrap::after {
-                content: '';
-                position: absolute;
-                width: 360px;
-                height: 360px;
-                border-radius: 50%;
-                background: radial-gradient(circle, rgba(200,100,80,.14) 0%, transparent 70%);
-                bottom: -90px;
-                right: -90px;
-                animation: lpRegOrb 19s ease-in-out infinite alternate-reverse;
-                pointer-events: none;
-                z-index: 0;
-            }
+        .lp-reg-wrap::after {
+            content: '';
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200,100,80,.14) 0%, transparent 70%);
+            bottom: -90px;
+            right: -90px;
+            animation: lpRegOrb 19s ease-in-out infinite alternate-reverse;
+            pointer-events: none;
+            z-index: 0;
+        }
 
         @keyframes lpRegOrb {
-            0% {
-                transform: translate(0,0) scale(1);
-            }
-
-            50% {
-                transform: translate(30px,-38px) scale(1.08);
-            }
-
-            100% {
-                transform: translate(-18px,24px) scale(.95);
-            }
+            0% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(30px,-38px) scale(1.08); }
+            100% { transform: translate(-18px,24px) scale(.95); }
         }
 
         .lp-reg-card {
@@ -101,7 +96,6 @@
                 opacity: 0;
                 transform: translateY(24px) scale(.97);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -137,13 +131,11 @@
             z-index: 2;
             transition: color var(--lp-transition), transform var(--lp-transition);
         }
+
         .lp-reg-close-btn:hover {
             color: #ffffff;
             transform: scale(1.1);
             text-decoration: none;
-        }
-        @media (max-width: 700px) {
-            .lp-reg-close-btn { top: 8px; right: 14px; }
         }
 
         .lp-reg-header {
@@ -167,11 +159,11 @@
             flex-shrink: 0;
         }
 
-            .lp-reg-logo-box img {
-                width: 40px;
-                height: 40px;
-                object-fit: contain;
-            }
+        .lp-reg-logo-box img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
 
         .lp-reg-title {
             font-size: 24px;
@@ -217,11 +209,11 @@
             transition: border-color var(--lp-transition), box-shadow var(--lp-transition), background var(--lp-transition);
         }
 
-            .lp-input-wrap:focus-within {
-                border-color: var(--lp-primary);
-                background: #fff;
-                box-shadow: 0 0 0 3.5px rgba(43,57,125,.10);
-            }
+        .lp-input-wrap:focus-within {
+            border-color: var(--lp-primary);
+            background: #fff;
+            box-shadow: 0 0 0 3.5px rgba(43,57,125,.10);
+        }
 
         .lp-input-icon {
             padding: 0 14px;
@@ -247,10 +239,10 @@
             width: 100%;
         }
 
-            .lp-form-control::placeholder {
-                color: #b8c2d0;
-                font-weight: 400;
-            }
+        .lp-form-control::placeholder {
+            color: #b8c2d0;
+            font-weight: 400;
+        }
 
         select.lp-form-control {
             padding: 13px 12px 13px 0;
@@ -258,7 +250,7 @@
             -webkit-appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%2364748b' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 4px center;
+            background-position: right 8px center;
             padding-right: 22px;
         }
 
@@ -277,7 +269,8 @@
 
         .lp-reg-btn-row {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             margin-top: 8px;
         }
 
@@ -298,16 +291,16 @@
             transition: opacity var(--lp-transition), transform var(--lp-transition), box-shadow var(--lp-transition);
         }
 
-            .lp-reg-btn:hover {
-                opacity: .92;
-                transform: translateY(-1px);
-                box-shadow: 0 8px 28px rgba(43,57,125,.40);
-            }
+        .lp-reg-btn:hover {
+            opacity: .92;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px rgba(43,57,125,.40);
+        }
 
-            .lp-reg-btn:active {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        .lp-reg-btn:active {
+            transform: translateY(0);
+            opacity: 1;
+        }
 
         .lp-reg-login-row {
             text-align: center;
@@ -322,35 +315,69 @@
             text-decoration: none;
         }
 
-            .lp-login-link:hover {
-                text-decoration: underline;
+        .lp-login-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness Rules */
+        @media (max-width: 768px) {
+            .lp-reg-wrap {
+                padding: 16px 10px;
             }
 
-        @media (max-width: 700px) {
+            .lp-reg-card {
+                border-radius: 16px;
+            }
+
+            .lp-reg-close-btn { 
+                top: 12px; 
+                right: 16px; 
+            }
+
             .lp-reg-header {
-                padding: 26px 28px;
+                padding: 24px 30px;
+                gap: 12px;
+            }
+
+            .lp-reg-logo-box {
+                width: 50px;
+                height: 50px;
+            }
+
+            .lp-reg-logo-box img {
+                width: 32px;
+                height: 32px;
             }
 
             .lp-reg-body {
-                padding: 30px 26px 28px;
+                padding: 24px 30px 20px;
             }
 
+            /* Stack all inputs vertically */
             .lp-reg-grid {
                 grid-template-columns: 1fr;
-                gap: 18px;
+                gap: 16px;
             }
 
             .lp-reg-title {
-                font-size: 20px;
+                font-size: 18px;
+            }
+
+            .lp-reg-subtitle {
+                font-size: 12px;
+            }
+
+            .lp-reg-btn {
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-      <div class="lp-reg-wrap" onclick="if(event.target === this){ window.location.href = '<%= ResolveUrl("~/Default.aspx") %>'; }">
-    <div class="lp-reg-card" onclick="event.stopPropagation();">
-               
+        <div class="lp-reg-wrap" onclick="if(event.target === this){ window.location.href = '<%= ResolveUrl("~/Default.aspx") %>'; }">
+            <div class="lp-reg-card" onclick="event.stopPropagation();">
+                
                 <asp:HyperLink ID="HyperLinkClose" runat="server" CssClass="lp-reg-close-btn" NavigateUrl="~/Login.aspx" ToolTip="Back to Login">&times;</asp:HyperLink>
 
                 <div class="lp-reg-header">
@@ -403,7 +430,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Enter your email*" ControlToValidate="Email" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
                         </div>
 
-                     <div class="lp-field">
+                        <div class="lp-field">
                             <label class="lp-field-label" for="<%= username.ClientID %>">Username</label>
                             <div class="lp-input-wrap">
                                 <span class="lp-input-icon"><i class="bi bi-person-badge-fill"></i></span>
@@ -547,8 +574,6 @@
                             </div>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="Select province/state*" ControlToValidate="Province" CssClass="lp-error-text" Display="Dynamic"></asp:RequiredFieldValidator>
                         </div>
-
-                       
 
                     </div>
 
