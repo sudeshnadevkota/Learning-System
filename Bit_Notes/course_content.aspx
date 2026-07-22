@@ -34,8 +34,9 @@
         gap: 22px !important;
         position: relative !important;
         z-index: 1 !important;
-        flex: 1 1 380px !important;
+/*        flex: 1 1 380px !important;*/
         min-width: 0 !important;
+        justify-content:center;
     }
 
     .status-banner-wrapper .status-icon-badge {

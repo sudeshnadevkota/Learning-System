@@ -338,9 +338,7 @@
     <!-- Hero -->
     <div class="c-hero">
         <div class="c-hero-text">
-            <a href="<%= ResolveUrl("~/Default.aspx") %>" class="c-back-link">
-                <i class="ti ti-arrow-left"></i>Back to Dashboard
-            </a>
+           
             <h3><i class="ti ti-speakerphone"></i>Manage Notices</h3>
             <small>Create and publish notices for students to view on the notice board</small>
         </div>

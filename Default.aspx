@@ -153,6 +153,7 @@
             background: white !important;
             padding: 70px 50px 50px 50px !important;
             margin-top: 0;
+            margin-bottom: 70px;
         }
 
         .container, .container-xl {
