@@ -244,8 +244,7 @@ namespace Learning_System.Bit_Admin
 
             using (SqlConnection con = new SqlConnection(strcon))
             {
-                // Clears file fields only — keeps SubjectCode/CreditScore/TotalHours metadata intact
-                string query = "UPDATE Syllabus SET FileName = NULL, ContentType = NULL, FileData = NULL, UploadedDate = NULL WHERE Id = @Id";
+                string query = "DELETE FROM Syllabus WHERE Id = @Id";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@Id", id);

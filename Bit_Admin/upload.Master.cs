@@ -19,8 +19,11 @@ namespace Learning_System.Bit_Admin
         // asp:LinkButton) once their .ascx controls exist.
         private static readonly Dictionary<string, string> Sections = new Dictionary<string, string>
         {
-            { "StaffManage",  "~/StaffManage.ascx" },
-            { "DeptSettings", "~/DepartmentManageControl.ascx" }, // confirm this is the real path/name
+            //{ "StaffManage",  "~/StaffManage.ascx" },
+            //{ "DeptSettings", "~/DepartmentManageControl.ascx" }, // confirm this is the real path/name
+            { "NoticeManage", "~/NoticeManageControl.ascx" },
+            { "AppointUser", "~/administrator/AppointUserControl.ascx" },
+
         };
 
         protected void Page_Init(object sender, EventArgs e)
@@ -52,7 +55,9 @@ namespace Learning_System.Bit_Admin
             if (IsDepartmentAdmin)
             {
                 lnkStaffManage.CssClass = GetNavClass("StaffManage");
-                lnkDeptSettings.CssClass = GetNavClass("DeptSettings");
+                lnkAppointUser.CssClass = GetNavClass("AppointUser");
+                //lnkDeptSettings.CssClass = GetNavClass("DeptSettings");
+                lnkNoticeManage.CssClass = GetNavClass("NoticeManage");
             }
 
             if (!IsPostBack)

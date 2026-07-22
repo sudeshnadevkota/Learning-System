@@ -354,6 +354,8 @@
         <div class="c-panel-title">Notice Details</div>
 
         <asp:HiddenField ID="hidNoticeId" runat="server" />
+<asp:HiddenField ID="hidPresetClass" runat="server" />
+<asp:HiddenField ID="hidPresetSemester" runat="server" />
 
         <div class="form-group">
             <label>Title <span style="color: var(--pink);">*</span></label>
@@ -453,66 +455,3 @@
 
 </div>
 
-<script>
-    window.addEventListener('DOMContentLoaded', function () {
-        var dropZone = document.getElementById('dropZone');
-        var fileInput = document.getElementById('<%= fileAttachment.ClientID %>');
-        var filePreview = document.getElementById('filePreview');
-        var fileNameEl = document.getElementById('fileName');
-        var fileSizeEl = document.getElementById('fileSize');
-        var btnBrowse = document.getElementById('btnBrowse');
-        var btnClear = document.getElementById('btnClearFile');
-
-        function formatSize(bytes) {
-            if (bytes < 1024) return bytes + ' B';
-            if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-            return (bytes / 1048576).toFixed(2) + ' MB';
-        }
-
-        function showFile(file) {
-            if (fileNameEl) fileNameEl.textContent = file.name;
-            if (fileSizeEl) fileSizeEl.textContent = formatSize(file.size);
-            if (filePreview) filePreview.classList.add('visible');
-            dropZone.classList.add('has-file');
-            dropZone.classList.remove('dragover');
-        }
-
-        function clearFile() {
-            fileInput.value = '';
-            if (filePreview) filePreview.classList.remove('visible');
-            dropZone.classList.remove('has-file');
-            if (fileNameEl) fileNameEl.textContent = '';
-            if (fileSizeEl) fileSizeEl.textContent = '';
-        }
-
-        if (dropZone && fileInput && btnBrowse && btnClear) {
-            btnBrowse.addEventListener('click', function (e) { e.stopPropagation(); fileInput.click(); });
-            dropZone.addEventListener('click', function (e) { if (e.target !== btnBrowse && e.target !== btnClear) fileInput.click(); });
-            fileInput.addEventListener('change', function () { if (this.files && this.files[0]) showFile(this.files[0]); });
-            btnClear.addEventListener('click', function (e) { e.stopPropagation(); clearFile(); });
-            dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('dragover'); });
-            dropZone.addEventListener('dragleave', function (e) { if (!dropZone.contains(e.relatedTarget)) dropZone.classList.remove('dragover'); });
-            dropZone.addEventListener('drop', function (e) {
-                e.preventDefault(); dropZone.classList.remove('dragover');
-                var files = e.dataTransfer.files;
-                if (files && files[0]) {
-                    try { var dt = new DataTransfer(); dt.items.add(files[0]); fileInput.files = dt.files; } catch (err) { }
-                    showFile(files[0]);
-                }
-            });
-        }
-    });
-
-    function updateSemesters(selectedClass) {
-        var ddlSem = document.getElementById('<%= ddlSemester.ClientID %>');
-        if (!ddlSem) return;
-        ddlSem.innerHTML = ''; // Clear existing
-        var limit = (['MCS', 'MBA'].includes(selectedClass)) ? 4 : 8;
-        for (var i = 1; i <= limit; i++) {
-            var opt = document.createElement('option');
-            opt.value = i;
-            opt.innerHTML = 'Semester ' + i;
-            ddlSem.appendChild(opt);
-        }
-    }
-</script>

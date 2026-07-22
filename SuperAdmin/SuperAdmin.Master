@@ -158,5 +158,115 @@
             }
         })();
     </script>
+
+    <!-- NEW: Manage Notices form logic (semester dropdown + file drop zone).
+         Lives here instead of inside NoticeManageControl.ascx because that control
+         gets swapped into the UpdatePanel via AJAX, and inline <script> tags inside
+         AJAX-injected content don't reliably execute. This script is defined once,
+         on the real page load, and re-runs itself after every async postback via
+         PageRequestManager's endRequest event — which always fires, regardless of
+         what got swapped in. -->
+    <script>
+        (function () {
+            function populateSemesters(selectedClass) {
+                var ddlSem = document.querySelector('[id$="ddlSemester"]');
+                if (!ddlSem) return;
+                ddlSem.innerHTML = '';
+
+                var allOpt = document.createElement('option');
+                allOpt.value = 'ALL';
+                allOpt.innerHTML = 'All Semesters';
+                ddlSem.appendChild(allOpt);
+
+                var limit = (['MCS', 'MBA'].includes(selectedClass)) ? 4 : 8;
+                for (var i = 1; i <= limit; i++) {
+                    var opt = document.createElement('option');
+                    opt.value = i;
+                    opt.innerHTML = 'Semester ' + i;
+                    ddlSem.appendChild(opt);
+                }
+            }
+            // Exposed globally so ddlClass's onchange="updateSemesters(this.value)" markup still works.
+            window.updateSemesters = populateSemesters;
+
+            function initNoticeManagePanel() {
+                var ddlClass = document.querySelector('[id$="ddlClass"]');
+                var ddlSem = document.querySelector('[id$="ddlSemester"]');
+                if (!ddlClass || !ddlSem) return; // Manage Notices panel isn't the active one right now
+
+                var hidClass = document.querySelector('[id$="hidPresetClass"]');
+                var hidSem = document.querySelector('[id$="hidPresetSemester"]');
+                var presetClass = hidClass ? hidClass.value : '';
+                var presetSem = hidSem ? hidSem.value : '';
+
+                if (presetClass) {
+                    populateSemesters(presetClass);
+                    if (presetSem) ddlSem.value = presetSem;
+                }
+
+                initDropZone();
+            }
+
+            function initDropZone() {
+                var dropZone = document.getElementById('dropZone');
+                var fileInput = document.querySelector('[id$="fileAttachment"]');
+                var filePreview = document.getElementById('filePreview');
+                var fileNameEl = document.getElementById('fileName');
+                var fileSizeEl = document.getElementById('fileSize');
+                var btnBrowse = document.getElementById('btnBrowse');
+                var btnClear = document.getElementById('btnClearFile');
+                if (!dropZone || !fileInput || !btnBrowse || !btnClear) return;
+
+                // Avoid double-binding listeners if this ever runs twice on the same DOM
+                if (dropZone.dataset.wired === '1') return;
+                dropZone.dataset.wired = '1';
+
+                function formatSize(bytes) {
+                    if (bytes < 1024) return bytes + ' B';
+                    if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+                    return (bytes / 1048576).toFixed(2) + ' MB';
+                }
+                function showFile(file) {
+                    if (fileNameEl) fileNameEl.textContent = file.name;
+                    if (fileSizeEl) fileSizeEl.textContent = formatSize(file.size);
+                    if (filePreview) filePreview.classList.add('visible');
+                    dropZone.classList.add('has-file');
+                    dropZone.classList.remove('dragover');
+                }
+                function clearFile() {
+                    fileInput.value = '';
+                    if (filePreview) filePreview.classList.remove('visible');
+                    dropZone.classList.remove('has-file');
+                    if (fileNameEl) fileNameEl.textContent = '';
+                    if (fileSizeEl) fileSizeEl.textContent = '';
+                }
+
+                btnBrowse.addEventListener('click', function (e) { e.stopPropagation(); fileInput.click(); });
+                dropZone.addEventListener('click', function (e) { if (e.target !== btnBrowse && e.target !== btnClear) fileInput.click(); });
+                fileInput.addEventListener('change', function () { if (this.files && this.files[0]) showFile(this.files[0]); });
+                btnClear.addEventListener('click', function (e) { e.stopPropagation(); clearFile(); });
+                dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('dragover'); });
+                dropZone.addEventListener('dragleave', function (e) { if (!dropZone.contains(e.relatedTarget)) dropZone.classList.remove('dragover'); });
+                dropZone.addEventListener('drop', function (e) {
+                    e.preventDefault(); dropZone.classList.remove('dragover');
+                    var files = e.dataTransfer.files;
+                    if (files && files[0]) {
+                        try { var dt = new DataTransfer(); dt.items.add(files[0]); fileInput.files = dt.files; } catch (err) { }
+                        showFile(files[0]);
+                    }
+                });
+            }
+
+            // Runs on the very first full page load...
+            document.addEventListener('DOMContentLoaded', initNoticeManagePanel);
+
+            // ...and again after EVERY async (UpdatePanel) postback, guaranteed by the
+            // AJAX framework regardless of whether inline <script> tags in the swapped
+            // content actually executed.
+            if (window.Sys && Sys.WebForms && Sys.WebForms.PageRequestManager) {
+                Sys.WebForms.PageRequestManager.getInstance().add_endRequest(initNoticeManagePanel);
+            }
+        })();
+    </script>
 </body>
 </html>

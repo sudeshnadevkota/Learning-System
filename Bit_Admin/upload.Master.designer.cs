@@ -24,6 +24,15 @@ namespace Learning_System.Bit_Admin
         protected global::System.Web.UI.HtmlControls.HtmlForm form2;
 
         /// <summary>
+        /// lnkAppointUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkAppointUser;
+
+        /// <summary>
         /// lnkStaffManage control.
         /// </summary>
         /// <remarks>
@@ -33,13 +42,13 @@ namespace Learning_System.Bit_Admin
         protected global::System.Web.UI.WebControls.LinkButton lnkStaffManage;
 
         /// <summary>
-        /// lnkDeptSettings control.
+        /// lnkNoticeManage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkDeptSettings;
+        protected global::System.Web.UI.WebControls.LinkButton lnkNoticeManage;
 
         /// <summary>
         /// LinkButton1 control.

@@ -2,15 +2,14 @@
 using System.Data.SqlClient;
 using System.IO;
 using System.Web.UI;
-using static System.Collections.Specialized.BitVector32;
 
 namespace Learning_System
 {
     public partial class NoticeManageControl : UserControl
     {
-        // Connection string property (inheriting page context or fallback)
-        protected string constr => System.Configuration.ConfigurationManager.ConnectionStrings["constr"]?.ConnectionString
-            ?? System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"]?.ConnectionString;
+        protected string constr => System.Configuration.ConfigurationManager.ConnectionStrings["conn"]?.ConnectionString
+    ?? System.Configuration.ConfigurationManager.ConnectionStrings["constr"]?.ConnectionString
+    ?? System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"]?.ConnectionString;
 
         private static readonly string[] AllowedExtensions = { ".pdf", ".jpg", ".jpeg", ".png" };
         private const int MaxFileSizeBytes = 8 * 1024 * 1024; // 8 MB
@@ -26,6 +25,22 @@ namespace Learning_System
             }
         }
 
+        protected override void Render(System.Web.UI.HtmlTextWriter writer)
+{
+    // Since ddlSemester's <option> elements are added by client-side JS
+    // (updateSemesters in the master), the server never "sees" them and
+    // would normally reject the posted value as invalid. This whitelists
+    // every value the JS could possibly produce, without disabling event
+    // validation for the whole page.
+    Page.ClientScript.RegisterForEventValidation(ddlSemester.UniqueID, "ALL");
+    for (int i = 1; i <= 8; i++)
+    {
+        Page.ClientScript.RegisterForEventValidation(ddlSemester.UniqueID, i.ToString());
+    }
+
+    base.Render(writer);
+}
+
         private void SetupClassDropdown()
         {
             string myAccessLevel = PermissionHelper.GetAccessLevel(Session);
@@ -38,9 +53,9 @@ namespace Learning_System
                 ddlClass.Items.Add(new System.Web.UI.WebControls.ListItem(myDeptCode, myDeptCode));
                 ddlClass.Enabled = false;
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "presetSem",
-                    "document.addEventListener('DOMContentLoaded', function(){ updateSemesters('" + myDeptCode + "'); });",
-                    true);
+                // Tell the master-page JS (initNoticeManagePanel) to populate the
+                // semester list for this fixed department once the panel is active.
+                hidPresetClass.Value = myDeptCode;
             }
             else
             {
@@ -113,10 +128,11 @@ namespace Learning_System
             string semester = Request.Form[ddlSemester.UniqueID];
             bool isAllDepartments = (className == "ALL");
 
+            // "All Semesters" sentinel, same idea as "ALL" for class.
+            // isAllDepartments already implies every semester, so either condition counts.
+            bool isAllSemesters = isAllDepartments || semester == "ALL";
+
             DateTime? expiry = null;
-            DateTime parsedExpiry;
-            //if (!string.IsNullOrWhiteSpace(txtExpiry.Text) && DateTime.TryParse(txtExpiry.Text, out parsedExpiry))
-            //    expiry = parsedExpiry;
 
             if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(description) ||
                 string.IsNullOrWhiteSpace(className) || (!isAllDepartments && string.IsNullOrWhiteSpace(semester)))
@@ -177,7 +193,7 @@ namespace Learning_System
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@Class", className);
-                        cmd.Parameters.AddWithValue("@Semester", isAllDepartments ? (object)DBNull.Value : semester);
+                        cmd.Parameters.AddWithValue("@Semester", isAllSemesters ? (object)DBNull.Value : semester);
                         cmd.Parameters.AddWithValue("@NoticeId", noticeId);
                         AddCommonParams(cmd, title, description, expiry, fileName, fileType, fileBytes, includeAttachmentOnlyIfPresent: true);
                         cmd.ExecuteNonQuery();
@@ -199,7 +215,7 @@ namespace Learning_System
                         cmd.Parameters.AddWithValue("@PostedByName", postedByName);
                         cmd.Parameters.AddWithValue("@PostedByRole", postedByRole);
                         cmd.Parameters.AddWithValue("@Class", className);
-                        cmd.Parameters.AddWithValue("@Semester", isAllDepartments ? (object)DBNull.Value : semester);
+                        cmd.Parameters.AddWithValue("@Semester", isAllSemesters ? (object)DBNull.Value : semester);
                         cmd.Parameters.AddWithValue("@Section", "");
                         AddCommonParams(cmd, title, description, expiry, fileName, fileType, fileBytes);
                         cmd.ExecuteNonQuery();
@@ -286,21 +302,12 @@ namespace Learning_System
                                 ddlClass.SelectedValue = sdr["Class"].ToString();
                             }
 
-                            //if (sdr["ExpiryDate"] != DBNull.Value)
-                            //{
-                            //    txtExpiry.Text = Convert.ToDateTime(sdr["ExpiryDate"]).ToString("yyyy-MM-dd");
-                            //}
-                            //else
-                            //{
-                            //    txtExpiry.Text = string.Empty;
-                            //}
-
-                            string selectedClass = ddlClass.SelectedValue;
-                            string selectedSem = sdr["Semester"].ToString();
-
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "loadSemesters",
-                                $"updateSemesters('{selectedClass}'); setTimeout(function() {{ var d = document.getElementById('{ddlSemester.ClientID}'); if(d) d.value = '{selectedSem}'; }}, 50);",
-                                true);
+                            // Tell the master-page JS which class + semester to preselect
+                            // once the panel is active in the DOM.
+                            hidPresetClass.Value = ddlClass.SelectedValue;
+                            hidPresetSemester.Value = sdr["Semester"] != DBNull.Value
+                                ? sdr["Semester"].ToString()
+                                : "ALL";
                         }
                     }
                 }
@@ -315,9 +322,10 @@ namespace Learning_System
         private void ClearForm()
         {
             hidNoticeId.Value = string.Empty;
+            hidPresetClass.Value = string.Empty;
+            hidPresetSemester.Value = string.Empty;
             txtTitle.Text = string.Empty;
             txtDescription.Text = string.Empty;
-            //txtExpiry.Text = string.Empty;
             lblMessage.Text = string.Empty;
 
             if (ddlClass.Enabled)

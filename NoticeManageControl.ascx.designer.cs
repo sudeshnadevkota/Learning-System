@@ -24,6 +24,24 @@ namespace Learning_System
         protected global::System.Web.UI.WebControls.HiddenField hidNoticeId;
 
         /// <summary>
+        /// hidPresetClass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidPresetClass;
+
+        /// <summary>
+        /// hidPresetSemester control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidPresetSemester;
+
+        /// <summary>
         /// txtTitle control.
         /// </summary>
         /// <remarks>
