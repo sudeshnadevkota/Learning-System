@@ -4,7 +4,7 @@
 <html>
 <head runat="server">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="stylesheet" href="~/styles/AdminStyles.css" />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -52,7 +52,7 @@
       position: absolute;
       bottom: -10px; left: -20px;
       width: 320px; height: 320px;
-      background: url('../Bit_Notes/logo/sidebar-removebg-preview.png') no-repeat center/contain;
+      background: url('../slide/logo2.0.png') no-repeat center/contain;
       opacity: 0.35;
       pointer-events: none;
       z-index: 0;
@@ -66,6 +66,7 @@
       flex: 1;
       margin: 0 -14px;
       padding: 0 14px;
+      -webkit-overflow-scrolling: touch;
     }
 
     .bit-sidebar-scroll::-webkit-scrollbar { width: 4px; }
@@ -80,13 +81,7 @@
     .bit-brand-text strong { display: block; font-weight: 800; font-size: 14.5px; letter-spacing: -.2px; }
     .bit-brand-text span { display: block; font-size: 10.5px; color: rgba(255,255,255,.5); }
 
-    .bit-live {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 10.5px; color: rgba(255,255,255,.55);
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-      border-radius: 20px; padding: 4px 10px; margin: 0 6px 16px; font-weight: 600;
-    }
-    .bit-live-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; animation: bitpulse 1.5s infinite; }
+   
     @keyframes bitpulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
 
     .bit-nav-link {
@@ -184,10 +179,33 @@
     /* ══ MOBILE ══ */
     .bit-mobile-topbar { display: none; }
 
+    /* ══ FLOATING MENU TOGGLE (menu-bar) ══ */
+    #menu-bar {
+      display: none;
+      position: fixed;
+      top: 14px;
+      left: 10px;
+      z-index: 1300;
+      transition: left .25s ease;
+    }
+    #menu-bar .btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 10px rgba(11,31,102,.2);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; padding: 0;
+    }
+    #menu-bar .btn i {
+      font-size: 13px;
+      transition: transform .25s ease;
+    }
+
     @media (max-width: 900px) {
       .bit-shell { flex-direction: column; }
       .bit-sidebar {
-        position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
+        position: fixed; top: 0; left: -85vw; width: min(280px, 85vw); height: 100vh;
         z-index: 1200; transition: left .25s ease;
       }
       .bit-sidebar.open { left: 0; }
@@ -207,7 +225,24 @@
         z-index: 1150;
       }
       .bit-sidebar-overlay.show { display: block; }
+
+      #menu-bar { display: block; }
+
+      /* Bigger, more comfortable tap targets on mobile */
+      .bit-nav-link { padding: 12px 14px; font-size: 14px; }
+      .sem-header { padding: 11px 14px; font-size: 13.5px; }
+      .sem-submenu a { padding: 10px 14px 10px 40px; font-size: 13px; }
+      .bit-sidebar-user { padding: 12px; }
+      .bit-logout-btn { padding: 12px; font-size: 13px; }
+      .bit-content { width: 100%; }
     }
+
+    @media (max-width: 420px) {
+      .bit-brand-text strong { font-size: 13.5px; }
+      .bit-footer { font-size: 10.5px; padding: 14px; }
+    }
+
+    body.bit-no-scroll { overflow: hidden; }
   </style>
   <title>BIT ADMIN</title>
 </head>
@@ -215,6 +250,12 @@
   <form id="form2" runat="server" enctype="multipart/form-data">
 
     <div class="bit-sidebar-overlay" id="bitOverlay" onclick="bitCloseSidebar()"></div>
+
+    <div id="menu-bar" style="left: 10px;">
+      <button type="button" onclick="toggleSidebar()" class="btn">
+        <i class="fa fa-arrow-right" aria-hidden="true" style="color: black;" id="icon"></i>
+      </button>
+    </div>
 
     <div class="bit-shell">
 
@@ -228,7 +269,7 @@
           </div>
         </div>
 
-        <div class="bit-live"><span class="bit-live-dot"></span> Live</div>
+        
 
         <div class="bit-sidebar-scroll">
           <a href="~/Bit_Admin/dash.aspx" runat="server" class="bit-nav-link"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
@@ -369,7 +410,7 @@
       <!-- ── CONTENT ── -->
       <div class="bit-content">
         <div class="bit-mobile-topbar">
-          <button type="button" onclick="bitOpenSidebar()"><i class="ti ti-menu-2"></i></button>
+          <button type="button" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
           <strong style="color:var(--primary); font-size:14px;">BIT Admin</strong>
           <span style="width:36px;"></span>
         </div>
@@ -411,14 +452,38 @@ function bitToggleSem(headerEl) {
     }
 }
 
-function bitOpenSidebar() {
-    document.getElementById('bitSidebar').classList.add('open');
-    document.getElementById('bitOverlay').classList.add('show');
+/* ── Sidebar open/close (mobile) ──
+   setSidebarState is the single source of truth. bitOpenSidebar / bitCloseSidebar
+   are kept as-is for backward compatibility (used by the overlay's onclick),
+   and the new floating #menu-bar button + the topbar button both call
+   toggleSidebar(), which flips whatever the current state is. */
+function setSidebarState(isOpen) {
+    var sidebar = document.getElementById('bitSidebar');
+    var overlay = document.getElementById('bitOverlay');
+    var menuBar = document.getElementById('menu-bar');
+    var icon = document.getElementById('icon');
+
+    if (!sidebar) return;
+
+    sidebar.classList.toggle('open', isOpen);
+    if (overlay) overlay.classList.toggle('show', isOpen);
+    document.body.classList.toggle('bit-no-scroll', isOpen && window.innerWidth <= 900);
+
+    if (menuBar && window.innerWidth <= 900) {
+        menuBar.style.left = isOpen ? '250px' : '10px';
+    }
+    if (icon) {
+        icon.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
 }
-function bitCloseSidebar() {
-    document.getElementById('bitSidebar').classList.remove('open');
-    document.getElementById('bitOverlay').classList.remove('show');
+
+function toggleSidebar() {
+    var sidebar = document.getElementById('bitSidebar');
+    setSidebarState(!(sidebar && sidebar.classList.contains('open')));
 }
+
+function bitOpenSidebar() { setSidebarState(true); }
+function bitCloseSidebar() { setSidebarState(false); }
 
 document.addEventListener('DOMContentLoaded', function () {
     // Highlight the current page's link and auto-open its semester group
@@ -455,6 +520,19 @@ document.addEventListener('DOMContentLoaded', function () {
         var dashLink = document.querySelector('.bit-nav-link');
         if (dashLink) dashLink.classList.add('active');
     }
+
+    // Sidebar starts closed on mobile - make sure menu-bar/icon reflect that
+    setSidebarState(false);
+
+    // Keep things sane when rotating device / resizing across the breakpoint
+    var lastWasMobile = window.innerWidth <= 900;
+    window.addEventListener('resize', function () {
+        var isMobile = window.innerWidth <= 900;
+        if (isMobile !== lastWasMobile) {
+            setSidebarState(false);
+            lastWasMobile = isMobile;
+        }
+    });
 });
 </script>
 

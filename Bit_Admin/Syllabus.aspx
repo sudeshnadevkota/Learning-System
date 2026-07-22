@@ -199,7 +199,7 @@
                     <i class="ti ti-arrow-left"></i> Back to Course Content
                 </a>
                 <h3><i class="ti ti-file-text"></i> Syllabus Upload: <%= PageTitleText %></h3>
-                <small>Upload the official syllabus document for this subject</small>
+                
             </div>
             <div class="c-hero-actions">
                 <span class="c-hero-btn c-hero-btn-syllabus">

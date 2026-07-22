@@ -18,25 +18,47 @@
             --success: #16a34a;
             --success-bg: #f0fdf4;
             --success-border: #4ade80;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 1px 3px rgba(11,31,102,0.06);
+            --shadow-md: 0 8px 24px rgba(11,31,102,0.10);
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .c-wrap {
             font-family: 'Plus Jakarta Sans', sans-serif;
             padding: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .c-wrap *:focus-visible {
+            outline: 2.5px solid var(--pink);
+            outline-offset: 2px;
+            border-radius: 6px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .c-wrap * {
+                animation: none !important;
+                transition: none !important;
+            }
         }
 
         /* ── Hero (matches course_content.aspx / syllabus.aspx) ── */
         .c-hero {
             background: linear-gradient(135deg, #0B1F66 0%, #1a3499 100%);
             padding: 28px 32px;
-            border-radius: 16px;
-            margin-bottom: 24px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 20px;
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 16px;
+            box-shadow: var(--shadow-md);
         }
 
         .c-hero-text small {
@@ -57,7 +79,8 @@
             color: rgba(255,255,255,0.75);
             text-decoration: none;
             margin-bottom: 10px;
-            transition: color 0.15s ease;
+            padding: 4px 0;
+            transition: color 0.15s var(--ease);
         }
 
         .c-back-link:hover {
@@ -67,10 +90,11 @@
         .c-hero h3 {
             margin: 0;
             font-size: 1.25rem;
-            font-weight: 700;
+            font-weight: 800;
             display: flex;
             align-items: center;
             gap: 10px;
+            letter-spacing: -0.2px;
         }
 
         .c-hero-actions {
@@ -92,8 +116,9 @@
             cursor: pointer;
             border: none;
             text-decoration: none;
-            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s var(--ease);
             letter-spacing: 0.3px;
+            white-space: nowrap;
         }
 
         .c-hero-btn:hover {
@@ -120,9 +145,10 @@
         .c-panel {
             background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 14px;
+            border-radius: var(--radius-lg);
             padding: 28px;
             margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
         }
 
         .c-panel-title {
@@ -157,6 +183,7 @@
             margin-bottom: 22px;
             font-size: 13px;
             color: var(--primary);
+            line-height: 1.5;
         }
 
         .c-notice i {
@@ -170,17 +197,17 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            margin-bottom: 12px;
+            margin-bottom: 4px;
         }
 
         .form-group {
             position: relative;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .form-group label {
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 12.5px;
+            font-weight: 700;
             color: var(--primary);
             margin-bottom: 8px;
             display: block;
@@ -190,14 +217,37 @@
             width: 100%;
             box-sizing: border-box;
             display: block;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-sm);
             background-color: var(--gray-bg);
+            padding: 12px 14px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13.5px;
+            color: #1f2937;
+            transition: border-color 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s var(--ease);
+        }
+
+        .form-control:hover {
+            border-color: rgba(11,31,102,0.2);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--pink);
+            background: #fff;
+            box-shadow: 0 0 0 4px var(--pink-light);
         }
 
         select.form-control {
             width: 100%;
             min-width: 0;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%230B1F66' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+            cursor: pointer;
         }
 
         .c-val-msg {
@@ -207,20 +257,24 @@
             display: block;
         }
 
+        .c-val-msg:empty {
+            display: none;
+        }
+
         /* ── Submit Button ── */
         .c-btn-submit {
             background: var(--pink);
             color: #fff;
             border: none;
-            border-radius: 8px;
-            padding: 11px 28px;
+            border-radius: var(--radius-sm);
+            padding: 12px 28px;
             cursor: pointer;
             text-transform: uppercase;
             font-weight: 700;
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 13px;
             letter-spacing: 0.5px;
-            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s var(--ease);
         }
 
         .c-btn-submit:hover {
@@ -238,12 +292,16 @@
         /* ── Drop Zone ── */
         #dropZone {
             border: 2px dashed rgba(11,31,102,0.2);
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             padding: 36px 20px;
             text-align: center;
             background: var(--gray-bg);
-            transition: border-color 0.25s, background 0.25s;
+            transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
             cursor: pointer;
+        }
+
+        #dropZone:hover {
+            border-color: rgba(11,31,102,0.35);
         }
 
         #dropZone.dragover {
@@ -265,6 +323,17 @@
             flex-direction: column;
             gap: 8px;
             text-align: left;
+            max-height: 260px;
+            overflow-y: auto;
+        }
+
+        .bulk-file-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .bulk-file-list::-webkit-scrollbar-thumb {
+            background: var(--pink);
+            border-radius: 8px;
         }
 
         .bulk-file-item {
@@ -272,9 +341,9 @@
             align-items: center;
             gap: 10px;
             padding: 10px 14px;
-            background: var(--success-bg);
+            background: #fff;
             border: 1px solid var(--success-border);
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             font-size: 13px;
         }
 
@@ -285,12 +354,14 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            min-width: 0;
         }
 
         .bulk-file-item .fi-size {
             font-size: 11px;
             color: var(--text-muted);
             white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .bulk-file-count {
@@ -310,7 +381,7 @@
             overflow: hidden;
             max-height: 0;
             opacity: 0;
-            transition: max-height 0.3s ease, opacity 0.3s ease;
+            transition: max-height 0.3s var(--ease), opacity 0.3s var(--ease);
         }
 
         #divFileDestination.visible {
@@ -321,7 +392,7 @@
         /* ── Table ── */
         .c-table-container {
             overflow: hidden;
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             border: 1px solid var(--border-color);
             background: #ffffff;
         }
@@ -342,15 +413,19 @@
             background: var(--gray-bg);
             color: var(--primary);
             font-weight: 700;
-            padding: 16px 20px;
+            padding: 14px 20px;
             text-align: left;
             border-bottom: 2px solid var(--border-color);
+            font-size: 11.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
         }
 
         .table-modern td {
             padding: 14px 20px;
             border-bottom: 1px solid var(--border-color);
-            color: #4a4a4a;
+            color: #374151;
+            vertical-align: middle;
         }
 
         .table-modern tr:last-child td {
@@ -364,8 +439,9 @@
         .table-modern a {
             color: var(--pink);
             text-decoration: none;
-            font-weight: 600;
-            margin-right: 10px;
+            font-weight: 700;
+            margin-right: 14px;
+            font-size: 12.5px;
         }
 
         .table-modern a:hover {
@@ -402,7 +478,11 @@
                 align-items: flex-start;
                 padding: 20px;
                 border-radius: 14px;
-                gap: 16px;
+                gap: 14px;
+            }
+
+            .c-back-link {
+                margin-bottom: 6px;
             }
 
                 .c-hero h3 {
@@ -418,6 +498,11 @@
                         flex-shrink: 0;
                     }
 
+            .c-hero-text small {
+                font-size: 11.5px;
+                line-height: 1.5;
+            }
+
             .c-hero-actions {
                 width: 100%;
                 flex-direction: column;
@@ -431,13 +516,106 @@
             }
 
             .c-panel {
-                padding: 20px;
+                padding: 18px;
                 border-radius: 12px;
+                margin-bottom: 16px;
+            }
+
+            .c-notice {
+                padding: 12px 14px;
+                font-size: 12.5px;
+            }
+
+            #dropZone {
+                padding: 26px 14px;
+            }
+
+            #btnBrowse {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .bulk-file-item {
+                flex-wrap: wrap;
+            }
+
+            .bulk-file-item .fi-name {
+                white-space: normal;
+                word-break: break-word;
+                flex-basis: 100%;
+            }
+
+            .bulk-file-item .fi-size {
+                margin-left: 30px;
+            }
+
+            .c-btn-submit {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Card-ified table for small screens (CSS only, no markup change) */
+            .c-table-container {
+                border: none;
+                background: transparent;
+                overflow: visible;
             }
 
             .table-modern {
-                min-width: 640px;
+                min-width: 0;
             }
+
+            .table-modern thead {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+                white-space: nowrap;
+            }
+
+            .table-modern tr {
+                display: block;
+                background: #fff;
+                border: 1px solid var(--border-color);
+                border-radius: var(--radius-md);
+                margin-bottom: 12px;
+                padding: 6px 4px;
+                box-shadow: var(--shadow-sm);
+            }
+
+            .table-modern tr:hover {
+                background: #fff;
+            }
+
+            .table-modern td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 12px;
+                text-align: right;
+                padding: 10px 14px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .table-modern tr td:last-child {
+                border-bottom: none;
+                justify-content: flex-end;
+            }
+
+            .table-modern td::before {
+                font-weight: 700;
+                color: var(--primary);
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                text-align: left;
+            }
+
+            /* Column order: File Name, Data Type, Action — matches the GridView's fixed columns */
+            .table-modern td:nth-of-type(1)::before { content: "File Name"; }
+            .table-modern td:nth-of-type(2)::before { content: "Data Type"; }
+            .table-modern td:nth-of-type(3)::before { display: none; }
         }
     </style>
 
@@ -450,7 +628,7 @@
                     <i class="ti ti-arrow-left"></i> Back to Course Content
                 </a>
                 <h3><i class="ti ti-files"></i> Bulk Upload: <%= PageTitleText %></h3>
-                <small>Upload multiple resource files for this subject at once</small>
+               
             </div>
             <div class="c-hero-actions">
                 <span class="c-hero-btn c-hero-btn-bulk">
@@ -591,10 +769,10 @@
 
             // ── Drop Zone (multi-file) ──────────────────────────────────────
             var dropZone     = document.getElementById('dropZone');
-            var fileInput    = document.getElementById('<%= FileUpload1.ClientID %>');
-            var btnBrowse    = document.getElementById('btnBrowse');
+            var fileInput = document.getElementById('<%= FileUpload1.ClientID %>');
+            var btnBrowse = document.getElementById('btnBrowse');
             var bulkFileList = document.getElementById('bulkFileList');
-            var bulkCount    = document.getElementById('bulkFileCount');
+            var bulkCount = document.getElementById('bulkFileCount');
 
             function formatSize(bytes) {
                 if (bytes < 1024) return bytes + ' B';
@@ -655,6 +833,6 @@
                 });
             }
         });
-    </script>
+</script>
 
 </asp:Content>

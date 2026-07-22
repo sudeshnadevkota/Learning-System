@@ -166,6 +166,8 @@
     <Content Include="DepartmentManage.aspx" />
     <Content Include="MainAdmin\Dash.aspx" />
     <Content Include="MainAdmin\SuperAdminManageControl.ascx" />
+    <Content Include="NoticeManageControl.ascx" />
+    <Content Include="slide\logo2.0.png" />
     <Content Include="StaffManage.ascx" />
     <Content Include="StaffManage.aspx" />
     <Content Include="StudentManage.ascx" />
@@ -771,6 +773,13 @@
     </Compile>
     <Compile Include="MainAdmin\SuperAdminManageControl.ascx.designer.cs">
       <DependentUpon>SuperAdminManageControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="NoticeManageControl.ascx.cs">
+      <DependentUpon>NoticeManageControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoticeManageControl.ascx.designer.cs">
+      <DependentUpon>NoticeManageControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="StaffManage.ascx.cs">
       <DependentUpon>StaffManage.ascx</DependentUpon>
