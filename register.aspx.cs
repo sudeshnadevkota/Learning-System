@@ -65,7 +65,7 @@ namespace Learning_System
                                 OUTPUT INSERTED.ProfileId
                                 VALUES
                                 (@FullName, @UserName, @Password, @Email, @ContactNumber, @DOB, @Gender, @Address,
-                                 'Student', @ProfilePhoto, GETDATE(), 'Approved', 1)";
+                                 'Student', @ProfilePhoto, GETDATE(), 'Pending', 0)";
 
                     using (SqlCommand cmd = new SqlCommand(profileQuery, con, transaction))
                     {

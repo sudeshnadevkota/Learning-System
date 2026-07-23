@@ -3,558 +3,647 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link href="mcsdash.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="~/styles/AdminStyles.css" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
 
-    <style>
-        :root {
-            --primary: #0B1F66;
-            --secondary: #081547;
-            --pink: #FF2D8D;
-            --yellow: #F6B400;
-        }
+  <style>
+    :root {
+      --primary: #0B1F66;
+      --secondary: #081547;
+      --pink: #FF2D8D;
+      --pink-light: rgba(255,45,141,0.08);
+      --gray-bg: #fafbff;
+      --border-color: rgba(11,31,102,0.08);
+      --text-muted: #6b7280;
+      --sidebar-w: 260px;
+    }
 
-        * {
-            box-sizing: border-box;
-        }
+    * { box-sizing: border-box; }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #f4f6fb;
-            margin: 0;
-        }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--gray-bg);
+      margin: 0;
+    }
 
-        /* ══════════════════════════════
-           TOP NAVBAR (logo + title + logout)
-        ══════════════════════════════ */
-        .top-navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 64px;
-            background: #fff;
-            border-bottom: 1px solid rgba(11,31,102,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1.5rem;
-            z-index: 1100;
-        }
+    .bit-shell { display: flex; min-height: 100vh; }
 
-        .top-navbar-logo a {
-            display: flex;
-            align-items: center;
-        }
+    /* ══ SIDEBAR ══ */
+    .bit-sidebar {
+      width: var(--sidebar-w);
+      flex: none;
+      background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 14px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-        .top-navbar-logo img {
-            width: 9rem;
-            height: 3.5rem;
-            object-fit: contain;
-        }
+    .bit-sidebar::after {
+      content: '';
+      position: absolute;
+      bottom: -10px; left: -20px;
+      width: 320px; height: 320px;
+      background: url('../slide/logo2.0.png') no-repeat center/contain;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        .top-navbar-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #0B1F66;
-            letter-spacing: 0.5px;
-        }
+    .bit-sidebar > * { position: relative; z-index: 1; }
 
-        .top-navbar-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .bit-sidebar-scroll {
+      overflow-y: auto;
+      overflow-x: hidden;
+      flex: 1;
+      margin: 0 -14px;
+      padding: 0 14px;
+      -webkit-overflow-scrolling: touch;
+    }
 
-        .live-badge {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-            color: rgba(11,31,102,0.6);
-            background: rgba(11,31,102,0.05);
-            border: 1px solid rgba(11,31,102,0.1);
-            border-radius: 20px;
-            padding: 5px 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
+    .bit-sidebar-scroll::-webkit-scrollbar { width: 4px; }
+    .bit-sidebar-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
 
-        .live-dot {
-            width: 7px;
-            height: 7px;
-            background: #4ade80;
-            border-radius: 50%;
-            animation: livepulse 1.5s infinite;
-        }
+    .bit-brand {
+      display: flex; align-items: center; gap: 12px;
+      padding: 6px 6px 20px;
+    }
 
-        @keyframes livepulse {
-            0%,100% { opacity: 1 }
-            50%      { opacity: 0.3 }
-        }
+    .bit-brand img { width: 40px; height: 40px; object-fit: contain; border-radius: 10px; background: #fff; padding: 4px; }
+    .bit-brand-text strong { display: block; font-weight: 800; font-size: 14.5px; letter-spacing: -.2px; }
+    .bit-brand-text span { display: block; font-size: 10.5px; color: rgba(255,255,255,.5); }
 
-        .top-navbar-right .btn-primary {
-            font-size: 12px !important;
-            font-weight: 600 !important;
-            background: #FF2D8D !important;
-            border-color: #FF2D8D !important;
-            border-radius: 8px !important;
-            padding: 6px 16px !important;
-            letter-spacing: 0.5px;
-            transition: opacity .15s;
-        }
+    @keyframes bitpulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
 
-        .top-navbar-right .btn-primary:hover {
-            opacity: 0.88;
-        }
+    .bit-nav-link {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; border-radius: 10px;
+      color: rgba(255,255,255,.75); text-decoration: none;
+      font-weight: 600; font-size: 13px;
+      transition: background .15s, color .15s;
+      margin-bottom: 2px;
+      border: none; background-color: transparent; width: 100%; text-align: left;
+      font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer;
+    }
+    .bit-nav-link i { width: 18px; text-align: center; font-size: 1rem; }
+    .bit-nav-link:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .bit-nav-link.active { background: rgba(255,45,141,.16); color: #fff; box-shadow: inset 3px 0 0 var(--pink); }
 
-        /* ══════════════════════════════
-           MENU NAVBAR (Dashboard + Semesters)
-        ══════════════════════════════ */
-        #menu {
-            position: fixed;
-            top: 64px;
-            left: 0;
-            width: 100%;
-            height: auto;
-            min-height: 52px;
-            background: linear-gradient(90deg, #0B1F66, #1a3499);
-            z-index: 1050;
-            padding: 0 1.5rem;
-            border-bottom: 2px solid #FF2D8D;
-            display: flex;
-            align-items: center;
-        }
+    .bit-eyebrow {
+      font-size: 10px; font-weight: 800; letter-spacing: 1.6px;
+      color: rgba(255,255,255,.35); text-transform: uppercase;
+      padding: 14px 12px 8px;
+    }
 
-        #menu .navbar-toggler {
-            border: 1px solid rgba(255,255,255,0.3) !important;
-            border-radius: 8px;
-            padding: 5px 10px;
-        }
+    /* Semester accordion */
+    .sem-item { margin-bottom: 1px; }
+    .sem-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; border-radius: 9px; cursor: pointer; user-select: none;
+      color: rgba(255,255,255,.6); font-size: 13px; font-weight: 500;
+      transition: background .15s, color .15s;
+    }
+    .sem-header:hover { background: rgba(255,255,255,.06); color: rgba(255,255,255,.9); }
+    .sem-header.active { background: rgba(30,58,138,.5); color: #fff; }
+    .sem-badge {
+      width: 19px; height: 19px; border-radius: 6px; background: rgba(255,255,255,.1);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 10.5px; font-weight: 800; flex: none; color: rgba(255,255,255,.65);
+    }
+    .sem-header.active .sem-badge { background: var(--pink); color: #fff; }
+    .sem-name { flex: 1; }
+    .sem-chevron { font-size: 10.5px; opacity: .45; transition: transform .25s; }
+    .sem-item.open .sem-chevron { transform: rotate(180deg); opacity: 1; color: var(--pink); }
 
-        #menu .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255%2C255%2C255%2C0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
+    .sem-submenu { display: none; padding: 2px 0 6px 0; }
+    .sem-item.open .sem-submenu { display: block; }
 
-        #menu ul.navbar-nav,
-        #menu .navbar-nav {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 2px;
-        }
+    .sem-submenu a {
+      display: flex; align-items: center; gap: 8px;
+      padding: 7px 12px 7px 38px; margin-bottom: 1px; border-radius: 8px;
+      color: rgba(255,255,255,.5); text-decoration: none; font-size: 12px;
+      transition: color .15s, background .15s;
+    }
+    .sem-submenu a::before {
+      content: ''; width: 4px; height: 4px; border-radius: 50%;
+      background: rgba(255,255,255,.25); flex: none;
+    }
+    .sem-submenu a:hover { color: #fff; background: rgba(255,45,141,.12); }
+    .sem-submenu a:hover::before { background: rgba(255,255,255,.7); }
+    .sem-submenu a.active-link { color: #fff; font-weight: 600; background: rgba(255,45,141,.18); }
+    .sem-submenu a.active-link::before { background: var(--pink); }
 
-        #menu ul li,
-        #menu .navbar-nav li {
-            position: relative;
-        }
+    .bit-sidebar-foot { padding-top: 12px; }
 
-        #menu ul li a,
-        #menu .navbar-nav > li > a {
-            display: flex;
-            align-items: center;
-            padding: 14px 16px;
-            font-size: 12.5px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.85) !important;
-            text-decoration: none;
-            letter-spacing: 0.3px;
-            border-radius: 0;
-            transition: color .15s, background .15s;
-            white-space: nowrap;
-        }
+    .bit-sidebar-user {
+      display: flex; align-items: center; gap: 10px; padding: 11px;
+      border-radius: 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 8px;
+    }
+    .bit-sidebar-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), #ff5aa5);
+      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; flex: none;
+    }
+    .bit-sidebar-user-name { font-size: 12.5px; font-weight: 700; line-height: 1.2; }
+    .bit-sidebar-user-role { font-size: 10.5px; color: rgba(255,255,255,.5); }
 
-        #menu ul li a:hover,
-        #menu .navbar-nav > li > a:hover {
-            color: #fff !important;
-            background: rgba(255,45,141,0.18);
-        }
+    .bit-logout-btn {
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      width: 100%; padding: 10px; border-radius: 10px; border: none;
+      background: var(--pink); color: #fff; font-weight: 700; font-size: 12.5px;
+      cursor: pointer; text-decoration: none; font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: opacity .15s;
+    }
+    .bit-logout-btn:hover { opacity: .88; color: #fff; }
 
-        #menu ul li.active > a,
-        #menu ul li a.selected {
-            color: #FF2D8D !important;
-            border-bottom: 2px solid #FF2D8D;
-        }
+    /* ══ CONTENT ══ */
+    .bit-content { flex: 1; min-width: 0; }
 
-        #menu ul ul,
-        #menu .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            min-width: 240px;
-            background: #0B1F66;
-            border: 1px solid rgba(255,255,255,0.08);
-            border-top: 2px solid #FF2D8D;
-            border-radius: 0 0 10px 10px;
-            padding: 6px 0;
-            z-index: 9999;
-            list-style: none;
-        }
+    /* ══ FOOTER ══ */
+    .bit-footer {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: rgba(255,255,255,.55);
+      text-align: center; padding: 18px; font-size: 11.5px; letter-spacing: .5px;
+    }
 
-        #menu ul li:hover > ul,
-        #menu ul li:focus-within > ul {
-            display: block;
-        }
+    /* ══ MOBILE ══ */
+    .bit-mobile-topbar { display: none; }
 
-        #menu ul ul li a,
-        #menu .dropdown-menu .dropdown-item {
-            padding: 10px 18px !important;
-            font-size: 12.5px !important;
-            font-weight: 500 !important;
-            color: rgba(255,255,255,0.8) !important;
-            background: transparent !important;
-            border-radius: 0 !important;
-            display: block;
-            transition: background .15s, color .15s;
-            white-space: nowrap;
-        }
+    /* ══ FLOATING MENU TOGGLE (menu-bar) ══ */
+    #menu-bar {
+      display: none;
+      position: fixed;
+      top: 14px;
+      left: 10px;
+      z-index: 1300;
+      transition: left .25s ease;
+    }
+    #menu-bar .btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 10px rgba(11,31,102,.2);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; padding: 0;
+    }
+    #menu-bar .btn i {
+      font-size: 13px;
+      transition: transform .25s ease;
+    }
 
-        #menu ul ul li a:hover,
-        #menu .dropdown-menu .dropdown-item:hover {
-            background: #FF2D8D !important;
-            color: #fff !important;
-        }
+    @media (max-width: 900px) {
+      .bit-shell { flex-direction: column; }
+      .bit-sidebar {
+        position: fixed; top: 0; left: -85vw; width: min(280px, 85vw); height: 100vh;
+        z-index: 1200; transition: left .25s ease;
+      }
+      .bit-sidebar.open { left: 0; }
+      .bit-mobile-topbar {
+        display: flex; align-items: center; justify-content: space-between;
+        position: sticky; top: 0; z-index: 1100;
+        background: #fff; border-bottom: 1px solid var(--border-color);
+        padding: 12px 16px;
+      }
+      .bit-mobile-topbar button {
+        border: 1px solid var(--border-color); background: #fff; border-radius: 8px;
+        width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+        color: var(--primary); font-size: 16px; cursor: pointer;
+      }
+      .bit-sidebar-overlay {
+        display: none; position: fixed; inset: 0; background: rgba(8,21,71,.4);
+        z-index: 1150;
+      }
+      .bit-sidebar-overlay.show { display: block; }
 
-        /* ══════════════════════════════
-           CONTENT AREA
-        ══════════════════════════════ */
-        #content {
-            margin-top: 116px;
-            width: 100%;
-            transition: margin-left 0.3s ease;
-        }
+      #menu-bar { display: block; }
 
-        /* ══════════════════════════════
-           SIDEBAR (kept for compatibility)
-        ══════════════════════════════ */
-        #sidebar {
-            position: fixed;
-            top: 116px;
-            left: 0;
-            width: 0;
-            height: 100vh;
-            background-color: #0B1F66;
-            color: #fff;
-            overflow-x: hidden;
-            overflow-y: auto;
-            z-index: 999;
-            transition: width 0.3s ease;
-        }
+      .bit-nav-link { padding: 12px 14px; font-size: 14px; }
+      .sem-header { padding: 11px 14px; font-size: 13.5px; }
+      .sem-submenu a { padding: 10px 14px 10px 40px; font-size: 13px; }
+      .bit-sidebar-user { padding: 12px; }
+      .bit-logout-btn { padding: 12px; font-size: 13px; }
+      .bit-content { width: 100%; }
+    }
 
-        #sidebar a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            padding: 0.5rem 1rem;
-        }
+    @media (max-width: 420px) {
+      .bit-brand-text strong { font-size: 13.5px; }
+      .bit-footer { font-size: 10.5px; padding: 14px; }
+    }
 
-        #sidebar a:hover {
-            background-color: rgba(255,45,141,0.2);
-        }
-
-        #sidebar ul {
-            padding: 0;
-            list-style: none;
-            margin: 0;
-        }
-
-        #sidebar ul li {
-            padding: 0;
-        }
-
-        #sidebar .submenu {
-            display: none;
-            padding-left: 1rem;
-        }
-
-        .sidebar-open #sidebar {
-            width: 30%;
-        }
-
-        .sidebar-open #content {
-            margin-left: 30%;
-        }
-
-        .submenu-toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .fas.fa-caret-down {
-            transition: transform 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .rotate {
-            transform: rotate(180deg);
-        }
-
-        #menu-bar {
-            padding-top: 6rem;
-            position: fixed;
-            left: 1rem;
-            z-index: 1000;
-        }
-
-        /* ══════════════════════════════
-           FOOTER
-        ══════════════════════════════ */
-        .bit-footer {
-            background: linear-gradient(90deg, #0B1F66, #081547);
-            color: rgba(255,255,255,0.6);
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-            margin-top: 3rem;
-            border-top: 2px solid #FF2D8D;
-        }
-
-        /* ══════════════════════════════
-           RESPONSIVE
-        ══════════════════════════════ */
-        @media (max-width: 768px) {
-            .top-navbar-title {
-                display: none;
-            }
-
-            #menu {
-                flex-wrap: wrap;
-                height: auto;
-                padding: 8px 1rem;
-            }
-
-            #menu .collapse.navbar-collapse {
-                background: #081547;
-                border-radius: 0 0 10px 10px;
-                padding: 8px 0;
-                width: 100%;
-            }
-
-            #menu ul.navbar-nav,
-            #menu .navbar-nav {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            #menu ul ul,
-            #menu .dropdown-menu {
-                position: static;
-                border-radius: 0;
-                border: none;
-                border-left: 2px solid #FF2D8D;
-                margin-left: 1rem;
-                background: rgba(255,255,255,0.03);
-            }
-
-            #content {
-                margin-top: 130px;
-            }
-
-            .sidebar-open #sidebar {
-                width: 60%;
-            }
-
-            .sidebar-open #content {
-                margin-left: 60%;
-                width: 40%;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .sidebar-open #sidebar {
-                width: 75%;
-            }
-
-            .sidebar-open #content {
-                margin-left: 75%;
-                width: 25%;
-            }
-        }
-
-        #menu.expanded {
-            transition: height 0.3s ease;
-        }
-    </style>
-    <title>BCS ADMIN</title>
+    body.bit-no-scroll { overflow: hidden; }
+  </style>
+  <title>BCS ADMIN</title>
 </head>
 <body>
-    <form id="form2" runat="server" enctype="multipart/form-data">
+  <form id="form2" runat="server" enctype="multipart/form-data">
 
-        <!-- ── TOP NAVBAR ── -->
-        <nav class="top-navbar">
-            <div class="top-navbar-logo">
-                <a href="../../Default.aspx">
-                    <img src="logo/logo.png" alt="Logo">
-                </a>
-            </div>
+    <div class="bit-sidebar-overlay" id="bitOverlay" onclick="bitCloseSidebar()"></div>
 
-            <div class="top-navbar-title d-none d-sm-block">
-                Texas Learning System
-            </div>
+    <div id="menu-bar" style="left: 10px;">
+      <button type="button" onclick="toggleSidebar()" class="btn">
+        <i class="fa fa-arrow-right" aria-hidden="true" style="color: black;" id="icon"></i>
+      </button>
+    </div>
 
-            <div class="top-navbar-right">
-                <div class="live-badge">
-                    <span class="live-dot"></span>Live
-                </div>
-                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkOut_Click" CausesValidation="False" CssClass="btn btn-primary">
-                    <i class="ti ti-logout" style="font-size:14px; vertical-align:-1px; margin-right:4px;"></i> Logout
-                </asp:LinkButton>
-            </div>
-        </nav>
+    <div class="bit-shell">
 
-        <!-- ── MENU NAVBAR ── -->
-        <div id="menu" class="navbar navbar-expand-md navbar-dark">
-            <button class="navbar-toggler" type="button"
-                data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <asp:Menu ID="Menu1" runat="server"
-                    Orientation="Horizontal"
-                    CssClass="navbar-nav mr-auto"
-                    StaticMenuStyle-CssClass="nav-item"
-                    StaticSelectedStyle-CssClass="nav-item"
-                    DynamicMenuStyle-CssClass="nav-item dropdown-menu"
-                    RenderingMode="List"
-                    Font-Bold="True"
-                    Font-Names="Plus Jakarta Sans"
-                    Font-Size="Small"
-                    ForeColor="White"
-                    StaticEnableDefaultPopOutImage="false">
-
-
-
-                    <DynamicMenuStyle CssClass="nav-item dropdown-menu" VerticalPadding="0px"></DynamicMenuStyle>
-                    <DynamicSelectedStyle BackColor="#666666" />
-                    <Items>
-                        <asp:MenuItem Text="Dashboard" Value="Dashboard" NavigateUrl="~/Bcs_Admin/dash.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="1st Semester" Value="1st Semester">
-                        <asp:MenuItem Text="Business English" Value="English" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=BCS_ENG"></asp:MenuItem>
-                        <asp:MenuItem Text="Computer Network" Value="Computer Network" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CN"></asp:MenuItem>
-                        <asp:MenuItem Text="C programming" Value="Principle of Programming" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=POP"></asp:MenuItem>
-                        <asp:MenuItem Text="Discrete Math" Value="Discrete Mathematics and Probability" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=DMP"></asp:MenuItem>
-                       <asp:MenuItem Text="Basic Computer Architecture" Value="Computer Systems" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CS"></asp:MenuItem>
-                   </asp:MenuItem>
-
-                  <asp:MenuItem Text="2nd Semester" Value="2nd Semester">
-                 <asp:MenuItem Text="Security in Computing" Value="Computer Ethics" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CE"></asp:MenuItem>
-                 <asp:MenuItem Text="Advance Computer Network" Value="Data Communication & Networking" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=DCN"></asp:MenuItem>
-                <asp:MenuItem Text="Python" Value="Object Oriented Programming" NavigateUrl="~/course_content.aspx?subject=OOP"></asp:MenuItem>
-               <asp:MenuItem Text="Advance Computer Architecture" Value="Computer Organization" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CO"></asp:MenuItem>
-               <asp:MenuItem Text="Operating System" Value="Operating Systems" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=OS"></asp:MenuItem>
-              </asp:MenuItem>
-
-             <asp:MenuItem Text="3rd Semester" Value="3rd Semester">
-
-             <asp:MenuItem Text="Cyber Security Law and Policy" Value="Cyber Security Leagal Issues & Policy Analysis" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CSLPA"></asp:MenuItem>
-             <asp:MenuItem Text="E-Commerce" Value="Human Computer Interaction" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=HCI"></asp:MenuItem>
-             <asp:MenuItem Text="Wnidows Server 2016" Value="Microsoft Windows Server Administration" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=MWSA"></asp:MenuItem>
-             <asp:MenuItem Text="Digital Logic" Value="Applied Statistics" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=AS"></asp:MenuItem>
-             <asp:MenuItem Text="Software Enigeering(including SAD Portion)" Value="Software Engineering Fundamentals" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=SEF"></asp:MenuItem>
-             <asp:MenuItem Text="Cisco Certified Network Associate" Value="Cisco Certified Network Associate" NavigateUrl="~/Bcs_Admin/course_content.aspx?subject=CCNA"></asp:MenuItem>
-        
-                        </asp:MenuItem>
-
-
-
-                        <asp:MenuItem Text="4th Semester" Value="4th Semester">
-                            <asp:MenuItem Text="Artificial Intelligence" Value="Artificial Intelligence" NavigateUrl="~/Bcs_Admin/AI.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Compiler Design and Construction" Value="Compiler Design and Construction" NavigateUrl="~/Bcs_Admin/complier_and_design_constructions.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Technopreneurship" Value="Technopreneurship" NavigateUrl="~/Bcs_Admin/Technopreneurship.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Database Management System" Value="Database Management System" NavigateUrl="~/Bcs_Admin/database_management_system.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="System Analysis and Design" Value="System Analysis and Design" NavigateUrl="~/Bcs_Admin/system_analysis_and_design.aspx"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="5th Semester" Value="5th Semester">
-                            <asp:MenuItem Text="Software Engineering" Value="Software Engineering" NavigateUrl="~/Bcs_Admin/software_engineering.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Cyber Security Law and Policy" Value="Cyber Security Law and Policy" NavigateUrl="~/Bcs_Admin/cyber_security_law_and_policy.aspx"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Bcs_Admin/leadership_and_human_relations.aspx" Text="LR &amp; HR" Value="LR &amp; HR"></asp:MenuItem>
-                            <asp:MenuItem Text="Multimedia System" Value="EPPT" NavigateUrl="~/Bcs_Admin/multimedia_system.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="cyptography" Value="Crytpo" NavigateUrl="~/Bcs_Admin/cyptography.aspx"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="6th Semester" Value="6th Semester">
-                            <asp:MenuItem Text="Mobile Computing" Value="Mobile Computing" NavigateUrl="~/Bcs_Admin/mobile_computing.aspx"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Bcs_Admin/software_project_management.aspx" Text="Software Project Management" Value="Software Project Management"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Bcs_Admin/SocialValues&Ethics.aspx" Text="Social Values &amp; Ethics" Value="Social Values &amp; Ethics"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Bcs_Admin/ResearchMethodoly.aspx" Text="Research Methodoly" Value="Research Methodoly"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="7th Semester" Value="7th Semester">
-                            <asp:MenuItem NavigateUrl="~/Bcs_Admin/project_work.aspx" Text="Final Project Work" Value="Project Work"></asp:MenuItem>
-                            <asp:MenuItem Text="Cloud Computing" Value="Cloud Computing" NavigateUrl="~/Bcs_Admin/cloud_computing.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Management InforamtionSystem" Value="Management InforamtionSystem" NavigateUrl="~/Bcs_Admin/ManagementInforamtionSystem.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="SystemSoftware Administration" Value="SystemSoftware Administration" NavigateUrl="~/Bcs_Admin/SystemSoftware_Administration.aspx"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="8th Semester" Value="8th Semester">
-                            <asp:MenuItem Text="Industrial Training" Value="Industrial Training" NavigateUrl="~/Bcs_Admin/industrial_training.aspx"></asp:MenuItem>
-                        </asp:MenuItem>
-                    </Items>
-
-                    <LevelMenuItemStyles>
-                        <asp:MenuItemStyle CssClass="dropdown-item" HorizontalPadding="15px" Height="50px" VerticalPadding="15px" />
-                    </LevelMenuItemStyles>
-                    <LevelSelectedStyles>
-                        <asp:MenuItemStyle CssClass="nav-item active" Font-Underline="False" />
-                    </LevelSelectedStyles>
-                    <StaticHoverStyle Font-Underline="false" ForeColor="#FF2D8D" BackColor="Transparent" Font-Bold="True" />
-                    <StaticMenuStyle CssClass="nav-item"></StaticMenuStyle>
-                    <StaticSelectedStyle Font-Bold="true" />
-                    <DynamicHoverStyle BackColor="#FF2D8D" ForeColor="White" />
-                    <DynamicMenuItemStyle CssClass="dropdown-item" BackColor="#0B1F66" BorderStyle="None" />
-                </asp:Menu>
-            </div>
+      <!-- ── SIDEBAR ── -->
+      <aside class="bit-sidebar" id="bitSidebar">
+        <div class="bit-brand">
+          <a href="../../Default.aspx"><img src="logo/logo.png" alt="Logo" /></a>
+          <div class="bit-brand-text">
+            <strong>BCS Admin</strong>
+            <span>Texas Learning System</span>
+          </div>
         </div>
 
-        <!-- ── CONTENT ── -->
-        <div class="d-flex justify-content-center align-items-center">
-            <div id="content" style="margin-top: 116px; width: 100%;">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
+        <div class="bit-sidebar-scroll">
+          <a href="~/Bcs_Admin/dash.aspx" runat="server" class="bit-nav-link"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+
+          <div class="bit-eyebrow">Semesters</div>
+
+          <!-- BCS 1ST SEMESTER -->
+          <div class="sem-item" data-sem="first">
+            <div class="sem-header" onclick="bitToggleSem(this)">
+              <span class="sem-badge">1</span><span class="sem-name">First Semester</span>
+              <i class="ti ti-chevron-down sem-chevron"></i>
             </div>
+            <div class="sem-submenu">
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_ENG" runat="server">English</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_CN" runat="server">Computer Network</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_POP" runat="server">Principle of Programming</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_DMP" runat="server">Discrete Mathematics and Probability</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_CS" runat="server">Computer Systems</a>
+            </div>
+          </div>
+
+          <!-- BCS 2ND SEMESTER -->
+          <div class="sem-item" data-sem="second">
+            <div class="sem-header" onclick="bitToggleSem(this)">
+              <span class="sem-badge">2</span><span class="sem-name">Second Semester</span>
+              <i class="ti ti-chevron-down sem-chevron"></i>
+            </div>
+            <div class="sem-submenu">
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_CE" runat="server">Computer Ethics</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_DCN" runat="server">Data Communication &amp; Networking</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_OOP" runat="server">Object Oriented Programming</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_OS" runat="server">Operating Systems</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_CO" runat="server">Computer Organization</a>
+            </div>
+          </div>
+
+          <!-- BCS 3RD SEMESTER -->
+          <div class="sem-item" data-sem="third">
+            <div class="sem-header" onclick="bitToggleSem(this)">
+              <span class="sem-badge">3</span><span class="sem-name">Third Semester</span>
+              <i class="ti ti-chevron-down sem-chevron"></i>
+            </div>
+            <div class="sem-submenu">
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_SEF" runat="server">Software Engineering Fundamentals</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_HCI" runat="server">Human Computer Interaction</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_AS" runat="server">Applied Statistics</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_MWSA" runat="server">Microsoft Windows Server Administration</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_CSLPA" runat="server">Cyber Security Legal Issues &amp; Policy Analysis</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BCS_CCNA" runat="server">Cisco Certified Network Associate</a>
+            </div>
+          </div>
+
+          <div class="sem-item" data-sem="fourth">
+            <div class="sem-header" onclick="bitToggleSem(this)">
+              <span class="sem-badge">4</span><span class="sem-name">Fourth Semester</span>
+              <i class="ti ti-chevron-down sem-chevron"></i>
+            </div>
+            <div class="sem-submenu">
+              <a href="~/Bcs_Admin/course_content.aspx?subject=VP" runat="server">Visual Programming</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=SAD" runat="server">System Analysis &amp; Design</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_OB" runat="server">Organizational Behavior</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=ISS" runat="server">Information System Security</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=CMS" runat="server">CMS based E-Commerce</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=AI" runat="server">Artificial Intelligence</a>
+            </div>
+          </div>
+
+          <div class="sem-item" data-sem="fifth">
+            <div class="sem-header" onclick="bitToggleSem(this)">
+              <span class="sem-badge">5</span><span class="sem-name">Fifth Semester</span>
+              <i class="ti ti-chevron-down sem-chevron"></i>
+            </div>
+            <div class="sem-submenu">
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_LHR" runat="server">Leadership &amp; Human Relations</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_SE" runat="server">Software Engineering</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_CRPT" runat="server">Cryptography</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_MMS" runat="server">Multimedia System</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_CSLPA" runat="server">Cyber Security Law &amp; Policy</a>
+            </div>
+          </div>
+
+          <div class="sem-item" data-sem="sixth">
+            <div class="sem-header" onclick="bitToggleSem(this)">
+              <span class="sem-badge">6</span><span class="sem-name">Sixth Semester</span>
+              <i class="ti ti-chevron-down sem-chevron"></i>
+            </div>
+            <div class="sem-submenu">
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_VEP" runat="server">Value &amp; Ethics in Profession</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_MADF" runat="server">Mobile App Development With Flutter</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_RM" runat="server">Research Methodology</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_SPM" runat="server">Software Project Management</a>
+            </div>
+          </div>
+
+          <div class="sem-item" data-sem="seventh">
+            <div class="sem-header" onclick="bitToggleSem(this)">
+              <span class="sem-badge">7</span><span class="sem-name">Seventh Semester</span>
+              <i class="ti ti-chevron-down sem-chevron"></i>
+            </div>
+            <div class="sem-submenu">
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_SSA" runat="server">System Software Administration</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_MIS" runat="server">Management Information System</a>
+              <a href="~/Bcs_Admin/course_content.aspx?subject=BIT_CC" runat="server">Cloud Computing</a>
+            </div>
+          </div>
+
+          <% if (IsDepartmentAdmin) { %>
+          <div class="bit-eyebrow">Quick Actions</div>
+            <asp:LinkButton ID="lnkApproveStudents" runat="server" CommandArgument="ApproveStudents" OnClick="NavLink_Click" CssClass="nav-link"> <i class="ti ti-user-check"></i> Approve Students</asp:LinkButton>
+            <a href='<%= ResolveUrl("~/NoticeManage.aspx") %>' class='<%= GetNavClass("NoticeManage") %>'><i class="ti ti-history"></i>Notice Manage</a>
+            <a href='<%= ResolveUrl("~/administrator/AppointUser.aspx") %>' class='<%= GetNavClass("AppointUser") %>'><i class="ti ti-history"></i>Appoint User</a>
+          <% } %>
         </div>
 
-        <!-- ── FOOTER ── -->
+        <div class="bit-sidebar-foot">
+          <div class="bit-sidebar-user">
+            <div class="bit-sidebar-avatar"><i class="ti ti-user"></i></div>
+            <div>
+              <div class="bit-sidebar-user-name"><%= Session["Username"] %></div>
+              <div class="bit-sidebar-user-role"><%= IsDepartmentAdmin ? "Department Admin" : "Staff" %></div>
+            </div>
+          </div>
+          <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkOut_Click" CausesValidation="False" CssClass="bit-logout-btn">
+            <i class="ti ti-logout"></i> Logout
+          </asp:LinkButton>
+        </div>
+      </aside>
+
+      <!-- ── CONTENT ── -->
+      <div class="bit-content">
+        <div class="bit-mobile-topbar">
+          <button type="button" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+          <strong style="color:var(--primary); font-size:14px;">BCS Admin</strong>
+          <span style="width:36px;"></span>
+        </div>
+
+        <asp:Panel ID="pnlStaticContent" runat="server">
+          <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+          </asp:ContentPlaceHolder>
+        </asp:Panel>
+
+        <asp:Panel ID="pnlDynamicContent" runat="server" Visible="false">
+          <asp:PlaceHolder ID="phDynamic" runat="server" />
+        </asp:Panel>
+
         <div class="bit-footer">
-            <i class="ti ti-copyright" style="font-size: 13px; vertical-align: -1px;"></i>
-            Texas Learning Portal &nbsp;·&nbsp; 2021/22
+          <i class="ti ti-copyright" style="font-size: 12px; vertical-align: -1px;"></i>
+          Texas Learning Portal &nbsp;&middot;&nbsp; 2021/22
         </div>
+      </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var navbarToggler = document.querySelector('.navbar-toggler');
-                var navbar = document.getElementById('menu');
-                var collapse = document.querySelector('#navbarSupportedContent');
+    </div>
 
-                if (navbarToggler) {
-                    navbarToggler.addEventListener('click', function () {
-                        if (collapse.classList.contains('show')) {
-                            navbar.classList.remove('expanded');
-                        } else {
-                            navbar.classList.add('expanded');
-                        }
-                    });
-                }
-            });
-        </script>
+    <script>
+function bitToggleSem(headerEl) {
+    var item = headerEl.parentElement;
+    var isOpen = item.classList.contains('open');
 
-    </form>
+    document.querySelectorAll('.sem-item').forEach(function (el) {
+        el.classList.remove('open');
+        var h = el.querySelector('.sem-header');
+        if (h) h.classList.remove('active');
+    });
+
+    if (!isOpen) {
+        item.classList.add('open');
+        headerEl.classList.add('active');
+        sessionStorage.setItem('bitOpenSem', item.getAttribute('data-sem'));
+    } else {
+        sessionStorage.removeItem('bitOpenSem');
+    }
+}
+
+function setSidebarState(isOpen) {
+    var sidebar = document.getElementById('bitSidebar');
+    var overlay = document.getElementById('bitOverlay');
+    var menuBar = document.getElementById('menu-bar');
+    var icon = document.getElementById('icon');
+
+    if (!sidebar) return;
+
+    sidebar.classList.toggle('open', isOpen);
+    if (overlay) overlay.classList.toggle('show', isOpen);
+    document.body.classList.toggle('bit-no-scroll', isOpen && window.innerWidth <= 900);
+
+    if (menuBar && window.innerWidth <= 900) {
+        menuBar.style.left = isOpen ? '250px' : '10px';
+    }
+    if (icon) {
+        icon.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+}
+
+function toggleSidebar() {
+    var sidebar = document.getElementById('bitSidebar');
+    setSidebarState(!(sidebar && sidebar.classList.contains('open')));
+}
+
+function bitOpenSidebar() { setSidebarState(true); }
+function bitCloseSidebar() { setSidebarState(false); }
+
+document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('.sem-submenu a');
+    var current = (window.location.pathname + window.location.search).toLowerCase();
+    var matchedSemEl = null;
+
+    links.forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (!href) return;
+        try {
+            var full = new URL(href, window.location.origin);
+            var target = (full.pathname + full.search).toLowerCase();
+            if (target === current) {
+                a.classList.add('active-link');
+                matchedSemEl = a.closest('.sem-item');
+            }
+        } catch (e) { /* ignore malformed hrefs */ }
+    });
+
+    if (matchedSemEl) {
+        matchedSemEl.classList.add('open');
+        matchedSemEl.querySelector('.sem-header').classList.add('active');
+    } else {
+        var saved = sessionStorage.getItem('bitOpenSem');
+        if (saved) {
+            var el = document.querySelector('.sem-item[data-sem="' + saved + '"]');
+            if (el) { el.classList.add('open'); el.querySelector('.sem-header').classList.add('active'); }
+        }
+    }
+
+    if (current.indexOf('dash.aspx') !== -1) {
+        var dashLink = document.querySelector('.bit-nav-link');
+        if (dashLink) dashLink.classList.add('active');
+    }
+
+    setSidebarState(false);
+
+    var lastWasMobile = window.innerWidth <= 900;
+    window.addEventListener('resize', function () {
+        var isMobile = window.innerWidth <= 900;
+        if (isMobile !== lastWasMobile) {
+            setSidebarState(false);
+            lastWasMobile = isMobile;
+        }
+    });
+});
+</script>
+    <script>
+        (function () {
+            var body = document.body;
+            var openBtn = document.getElementById('btnOpenSidebar');
+            var closeBtn = document.getElementById('btnCloseSidebar');
+            var backdrop = document.getElementById('sidebarBackdrop');
+
+            function openSidebar() { body.classList.add('c-sidebar-open'); }
+            function closeSidebar() { body.classList.remove('c-sidebar-open'); }
+
+            if (openBtn) openBtn.addEventListener('click', openSidebar);
+            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+            if (backdrop) backdrop.addEventListener('click', closeSidebar);
+        })();
+    </script>
+   <script>
+       (function () {
+           var toggle = document.getElementById('sidebarUserToggle');
+           if (!toggle) return;
+
+           toggle.addEventListener('click', function (e) {
+               e.stopPropagation();
+               toggle.classList.toggle('open');
+           });
+
+           document.addEventListener('click', function () {
+               toggle.classList.remove('open');
+           });
+
+           var popup = toggle.querySelector('.c-user-popup');
+           if (popup) {
+               popup.addEventListener('click', function (e) { e.stopPropagation(); });
+           }
+       })();
+   </script>
+   <script>
+       (function () {
+           function populateSemesters(selectedClass) {
+               var ddlSem = document.querySelector('[id$="ddlSemester"]');
+               if (!ddlSem) return;
+               ddlSem.innerHTML = '';
+
+               var allOpt = document.createElement('option');
+               allOpt.value = 'ALL';
+               allOpt.innerHTML = 'All Semesters';
+               ddlSem.appendChild(allOpt);
+
+               var limit = (['MCS', 'MBA'].includes(selectedClass)) ? 4 : 8;
+               for (var i = 1; i <= limit; i++) {
+                   var opt = document.createElement('option');
+                   opt.value = i;
+                   opt.innerHTML = 'Semester ' + i;
+                   ddlSem.appendChild(opt);
+               }
+           }
+           window.updateSemesters = populateSemesters;
+
+           function initNoticeManagePanel() {
+               var ddlClass = document.querySelector('[id$="ddlClass"]');
+               var ddlSem = document.querySelector('[id$="ddlSemester"]');
+               if (!ddlClass || !ddlSem) return;
+
+               var hidClass = document.querySelector('[id$="hidPresetClass"]');
+               var hidSem = document.querySelector('[id$="hidPresetSemester"]');
+               var presetClass = hidClass ? hidClass.value : '';
+               var presetSem = hidSem ? hidSem.value : '';
+
+               if (presetClass) {
+                   populateSemesters(presetClass);
+                   if (presetSem) ddlSem.value = presetSem;
+               }
+
+               initDropZone();
+           }
+
+           function initDropZone() {
+               var dropZone = document.getElementById('dropZone');
+               var fileInput = document.querySelector('[id$="fileAttachment"]');
+               var filePreview = document.getElementById('filePreview');
+               var fileNameEl = document.getElementById('fileName');
+               var fileSizeEl = document.getElementById('fileSize');
+               var btnBrowse = document.getElementById('btnBrowse');
+               var btnClear = document.getElementById('btnClearFile');
+               if (!dropZone || !fileInput || !btnBrowse || !btnClear) return;
+
+               if (dropZone.dataset.wired === '1') return;
+               dropZone.dataset.wired = '1';
+
+               function formatSize(bytes) {
+                   if (bytes < 1024) return bytes + ' B';
+                   if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+                   return (bytes / 1048576).toFixed(2) + ' MB';
+               }
+               function showFile(file) {
+                   if (fileNameEl) fileNameEl.textContent = file.name;
+                   if (fileSizeEl) fileSizeEl.textContent = formatSize(file.size);
+                   if (filePreview) filePreview.classList.add('visible');
+                   dropZone.classList.add('has-file');
+                   dropZone.classList.remove('dragover');
+               }
+               function clearFile() {
+                   fileInput.value = '';
+                   if (filePreview) filePreview.classList.remove('visible');
+                   dropZone.classList.remove('has-file');
+                   if (fileNameEl) fileNameEl.textContent = '';
+                   if (fileSizeEl) fileSizeEl.textContent = '';
+               }
+
+               btnBrowse.addEventListener('click', function (e) { e.stopPropagation(); fileInput.click(); });
+               dropZone.addEventListener('click', function (e) { if (e.target !== btnBrowse && e.target !== btnClear) fileInput.click(); });
+               fileInput.addEventListener('change', function () { if (this.files && this.files[0]) showFile(this.files[0]); });
+               btnClear.addEventListener('click', function (e) { e.stopPropagation(); clearFile(); });
+               dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('dragover'); });
+               dropZone.addEventListener('dragleave', function (e) { if (!dropZone.contains(e.relatedTarget)) dropZone.classList.remove('dragover'); });
+               dropZone.addEventListener('drop', function (e) {
+                   e.preventDefault(); dropZone.classList.remove('dragover');
+                   var files = e.dataTransfer.files;
+                   if (files && files[0]) {
+                       try { var dt = new DataTransfer(); dt.items.add(files[0]); fileInput.files = dt.files; } catch (err) { }
+                       showFile(files[0]);
+                   }
+               });
+           }
+
+           document.addEventListener('DOMContentLoaded', initNoticeManagePanel);
+
+           if (window.Sys && Sys.WebForms && Sys.WebForms.PageRequestManager) {
+               Sys.WebForms.PageRequestManager.getInstance().add_endRequest(initNoticeManagePanel);
+           }
+       })();
+   </script>
+  </form>
 </body>
 </html>

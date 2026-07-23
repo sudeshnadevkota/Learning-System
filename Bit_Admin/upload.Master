@@ -12,7 +12,7 @@
 
   <style>
     :root {
-      --primary: #0B1F66;
+      --primary: #0B1F66;a
       --secondary: #081547;
       --pink: #FF2D8D;
       --pink-light: rgba(255,45,141,0.08);
@@ -374,6 +374,7 @@
 
           <% if (IsDepartmentAdmin) { %>
           <div class="bit-eyebrow">Quick Actions</div>
+            <asp:LinkButton ID="lnkApproveStudents" runat="server" CommandArgument="ApproveStudents" OnClick="NavLink_Click" CssClass="nav-link"> <i class="ti ti-user-check"></i> Approve Students</asp:LinkButton>
                                 <a href='<%= ResolveUrl("~/NoticeManage.aspx") %>' class='<%= GetNavClass("NoticeManage") %>'><i class="ti ti-history"></i>Notice Manage</a>
                     <a href='<%= ResolveUrl("~/administrator/AppointUser.aspx") %>' class='<%= GetNavClass("AppointUser") %>'><i class="ti ti-history"></i>Appoint User</a>
 

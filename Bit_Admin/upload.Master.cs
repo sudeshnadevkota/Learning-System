@@ -23,6 +23,7 @@ namespace Learning_System.Bit_Admin
             //{ "DeptSettings", "~/DepartmentManageControl.ascx" }, // confirm this is the real path/name
             //{ "NoticeManage", "~/NoticeManageControl.ascx" },
             //{ "AppointUser", "~/administrator/AppointUserControl.ascx" },
+            { "ApproveStudents", "~/ApproveStudents.ascx" },
 
         };
 
@@ -58,6 +59,7 @@ namespace Learning_System.Bit_Admin
                 //lnkAppointUser.CssClass = GetNavClass("AppointUser");
                 ////lnkDeptSettings.CssClass = GetNavClass("DeptSettings");
                 //lnkNoticeManage.CssClass = GetNavClass("NoticeManage");
+                lnkApproveStudents.CssClass = GetNavClass("ApproveStudents");
             }
 
             if (!IsPostBack)

@@ -122,6 +122,7 @@
     <Content Include="administrator\AppointUserControl.ascx" />
     <Content Include="administrator\default_administrator.aspx" />
     <Content Include="administrator\images\logo.png" />
+    <Content Include="ApproveStudents.ascx" />
     <Content Include="Bba_Admin\bulk_upload.aspx" />
     <Content Include="Bba_Admin\course_content.aspx" />
     <Content Include="Bba_Admin\dash.aspx" />
@@ -167,6 +168,8 @@
     <Content Include="MainAdmin\Dash.aspx" />
     <Content Include="MainAdmin\SuperAdminManageControl.ascx" />
     <Content Include="NoticeManageControl.ascx" />
+    <Content Include="Pending.aspx" />
+    <Content Include="Rejected.aspx" />
     <Content Include="slide\computer.png" />
     <Content Include="slide\logo2.0.png" />
     <Content Include="slide\mbacard1.png" />
@@ -480,6 +483,13 @@
     <Compile Include="administrator\default_administrator.aspx.designer.cs">
       <DependentUpon>default_administrator.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ApproveStudents.ascx.cs">
+      <DependentUpon>ApproveStudents.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApproveStudents.ascx.designer.cs">
+      <DependentUpon>ApproveStudents.ascx</DependentUpon>
+    </Compile>
     <Compile Include="common\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -782,6 +792,20 @@
     </Compile>
     <Compile Include="NoticeManageControl.ascx.designer.cs">
       <DependentUpon>NoticeManageControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pending.aspx.cs">
+      <DependentUpon>Pending.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pending.aspx.designer.cs">
+      <DependentUpon>Pending.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Rejected.aspx.cs">
+      <DependentUpon>Rejected.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rejected.aspx.designer.cs">
+      <DependentUpon>Rejected.aspx</DependentUpon>
     </Compile>
     <Compile Include="StaffManage.ascx.cs">
       <DependentUpon>StaffManage.ascx</DependentUpon>

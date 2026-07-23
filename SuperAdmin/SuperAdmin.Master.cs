@@ -20,6 +20,7 @@ namespace Learning_System.SuperAdmin
             { "Departments", "~/DepartmentManageControl.ascx" },
     //            { "AppointUser", "/administrator/AppointUserControl.ascx" },
     //{ "NoticeManage", "~/NoticeManageControl.ascx" },
+    { "ApproveStudents", "~/ApproveStudents.ascx" },
         };
 
         protected void Page_Init(object sender, EventArgs e)
@@ -39,6 +40,7 @@ namespace Learning_System.SuperAdmin
             lnkDepartments.CssClass = GetNavClass("Departments");
             //lnkAppointUser.CssClass = GetNavClass("AppointUser");
             //lnkNoticeManage.CssClass = GetNavClass("NoticeManage");
+            lnkApproveStudents.CssClass = GetNavClass("ApproveStudents");
 
             if (!IsPostBack)
             {

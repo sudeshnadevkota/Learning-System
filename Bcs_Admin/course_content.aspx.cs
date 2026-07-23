@@ -5,7 +5,6 @@ using System.IO;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 //using Learning_System;
 
 namespace Learning_System.Bcs_Admin
@@ -23,7 +22,7 @@ namespace Learning_System.Bcs_Admin
 
             if (string.IsNullOrEmpty(subject) || !SubjectMap.Subjects.ContainsKey(subject))
             {
-                Response.Redirect("~/Bit_Admin/Default.aspx");
+                Response.Redirect("~/Bcs_Admin/Default.aspx");
                 return;
             }
 

@@ -87,6 +87,15 @@ namespace Learning_System.SuperAdmin
         protected global::System.Web.UI.WebControls.LinkButton lnkSubjects;
 
         /// <summary>
+        /// lnkApproveStudents control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkApproveStudents;
+
+        /// <summary>
         /// upContent control.
         /// </summary>
         /// <remarks>

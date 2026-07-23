@@ -7,74 +7,56 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Learning_System.Bit_Admin
+namespace Learning_System
 {
 
 
-    public partial class upload
+    public partial class ApproveStudents
     {
 
         /// <summary>
-        /// form2 control.
+        /// pnlDenied control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+        protected global::System.Web.UI.WebControls.Panel pnlDenied;
 
         /// <summary>
-        /// lnkApproveStudents control.
+        /// pnlContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkApproveStudents;
+        protected global::System.Web.UI.WebControls.Panel pnlContent;
 
         /// <summary>
-        /// LinkButton1 control.
+        /// ScopeLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.Literal ScopeLiteral;
 
         /// <summary>
-        /// pnlStaticContent control.
+        /// MessageLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlStaticContent;
+        protected global::System.Web.UI.WebControls.Label MessageLabel;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
-
-        /// <summary>
-        /// pnlDynamicContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlDynamicContent;
-
-        /// <summary>
-        /// phDynamic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phDynamic;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

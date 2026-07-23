@@ -55,6 +55,7 @@
 
                 <div class="c-nav-eyebrow">Quick Actions</div>
                 <nav class="c-nav">
+                    <asp:LinkButton ID="lnkApproveStudents" runat="server" CommandArgument="ApproveStudents" OnClick="NavLink_Click" CssClass="nav-link"> <i class="ti ti-user-check"></i> Approve Students</asp:LinkButton>
                     <a href='<%= ResolveUrl("~/administrator/AppointUser.aspx") %>' class='<%= GetNavClass("AppointUser") %>'><i class="ti ti-history"></i>Appoint User</a>
                                         <a href='<%= ResolveUrl("~/NoticeManage.aspx") %>' class='<%= GetNavClass("NoticeManage") %>'><i class="ti ti-history"></i>Notice Manage</a>
 
@@ -118,6 +119,7 @@
             <asp:AsyncPostBackTrigger ControlID="lnkDepartments" EventName="Click" />
                           <%--   <asp:AsyncPostBackTrigger ControlID="lnkAppointUser" EventName="Click" />
     <asp:AsyncPostBackTrigger ControlID="lnkNoticeManage" EventName="Click" />--%>
+                         <asp:AsyncPostBackTrigger ControlID="lnkApproveStudents" EventName="Click" />
 
         </Triggers>
                 </asp:UpdatePanel>

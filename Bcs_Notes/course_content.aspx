@@ -34,7 +34,7 @@
         gap: 22px !important;
         position: relative !important;
         z-index: 1 !important;
-        flex: 1 1 380px !important;
+        /*flex: 1 1 380px !important;*/
         min-width: 0 !important;
     }
 

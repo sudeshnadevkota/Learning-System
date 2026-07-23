@@ -24,7 +24,7 @@ namespace Learning_System
                 // account still matches on username/password so we can tell them apart
                 // from a genuinely wrong login and route them to Suspended.aspx instead
                 // of the generic "Incorrect username or password" message.
-                string query = @"SELECT U.ProfileId, U.UserName, U.Role, U.IsActive,
+                string query = @"SELECT U.ProfileId, U.UserName, U.Role, U.ApprovalStatus, U.IsActive,
                                          A.AccessLevel, A.DepartmentId AS AdminDeptId,
                                          T.DepartmentId AS TeacherDeptId,
                                          S.DepartmentId AS StudentDeptId,
@@ -60,8 +60,9 @@ namespace Learning_System
                         bool isActive = reader["IsActive"] != DBNull.Value && Convert.ToBoolean(reader["IsActive"]);
                         if (!isActive)
                         {
+                            int inactiveProfileId = Convert.ToInt32(reader["ProfileId"]);
                             reader.Close();
-                            Response.Redirect("~/Suspended.aspx");
+                            Response.Redirect("~/Pending.aspx?id=" + inactiveProfileId);
                             return;
                         }
 
