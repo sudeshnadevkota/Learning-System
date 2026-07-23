@@ -344,27 +344,27 @@
                     </div>
 
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav ms-auto me-auto">
+                     <ul class="navbar-nav ms-auto me-auto">
                             <li class="nav-item">
                                 <a href="https://texascollegenepal.com/Login.aspx" class="nav-link">
                                     <i class="fas fa-calendar-check d-lg-none me-2"></i>Attendance
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <%--<li class="nav-item">
                                 <a href="https://tcmitlearn.com/Login.aspx" class="nav-link">
                                     <i class="fas fa-certificate d-lg-none me-2"></i>E-Certificate
                                 </a>
-                            </li>
+                            </li>--%>
                            <%-- <li class="nav-item">
                                 <a href="https://texasleave.com/" class="nav-link">
                                     <i class="fas fa-id-card d-lg-none me-2"></i>V-Card
                                 </a>
                             </li>--%>
-                            <li class="nav-item">
+                          <%--  <li class="nav-item">
                                 <a href="https://texasjobportal.com/default.aspx" class="nav-link">
                                     <i class="fas fa-briefcase d-lg-none me-2"></i>Jobs
                                 </a>
-                            </li>
+                            </li>--%>
                              <%--<li class="nav-item">
      <a href="https://texasjobportal.com/default.aspx" class="nav-link">
          <i class="fas fa-briefcase d-lg-none me-2"></i>Alumni
@@ -375,16 +375,16 @@
          <i class="fas fa-briefcase d-lg-none me-2"></i>Leave 
      </a>
  </li>--%>
-                             <li class="nav-item">
+                           <%--  <li class="nav-item">
      <a href="https://tcmitinfo.net/" class="nav-link">
          <i class="fas fa-briefcase d-lg-none me-2"></i>Issue
      </a>
- </li>
-                            <li class="nav-item">
+ </li>--%>
+                           <%-- <li class="nav-item">
                                 <a href="<%= ResolveUrl("~/notices.aspx?class=" + Server.UrlEncode(Session["DepartmentCode"]?.ToString())) %>" class="nav-link">
                                     <i class="fas fa-bell d-lg-none me-2"></i>Notice Board
                                 </a>
-                            </li>
+                            </li>--%>
                         </ul>
 
                         <div class="mt-auto pt-3 d-lg-none w-100">

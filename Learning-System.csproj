@@ -173,6 +173,7 @@
     <Content Include="slide\computer.png" />
     <Content Include="slide\logo2.0.png" />
     <Content Include="slide\mbacard1.png" />
+    <Content Include="slide\notice.jpg" />
     <Content Include="StaffManage.ascx" />
     <Content Include="StaffManage.aspx" />
     <Content Include="StudentManage.ascx" />

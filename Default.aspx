@@ -177,7 +177,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
             padding: 0 30px;
             width: 100%;
             box-sizing: border-box; /* Ensures wrapper padding doesn't cause overflow */
@@ -185,7 +185,7 @@
 
         .nima-card {
             /* Subtracts the 5 gaps (50px total) before dividing by 6 */
-            width: calc((100% - 50px) / 6) !important;
+            width: calc((100% - 45px) / 4) !important;
             box-sizing: border-box; /* Crucial: includes padding in the width calculation */
             border: none !important;
             border-radius: 22px !important;
@@ -262,6 +262,12 @@
                 <h5 class="card-title text-center">BHM</h5>
                 <a href="Bhm_Notes/dash.aspx" class="btn btn-secondary mb-2">Study Materials</a>
             </div>
+             <div class="nima-card card">
+     <img src="slide/notice.jpg" class="card-img-top" />
+     <h5 class="card-title text-center">BHM</h5>
+     <%--<a href="/NoticeManage.aspx" class="btn btn-secondary mb-2">Notices</a>--%>
+                   <a href="<%= ResolveUrl("~/notices.aspx?class=" + Server.UrlEncode(Session["DepartmentCode"]?.ToString())) %>" class="btn btn-secondary mb-2"> Notices </a>
+ </div>
            
         </div>
     </div>
